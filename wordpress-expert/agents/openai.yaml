@@ -1,0 +1,4 @@
+interface:
+  display_name: "WordPress Expert"
+  short_description: "Principal-grade WordPress engineering workflows"
+  default_prompt: "Use $wordpress-expert to review, implement, or harden a WordPress plugin, theme, or enterprise/VIP codebase."

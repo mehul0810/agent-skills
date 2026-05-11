@@ -1,0 +1,82 @@
+# WordPress Expert Codex Skill Planning Report
+
+## Objective
+
+Create a Codex skill that helps future agents operate like a principal WordPress engineer with enterprise and WordPress VIP experience: fast context discovery, high-signal review, safe implementation, strong validation, and token-efficient use of deeper references.
+
+## Design Principles
+
+- Token-efficient by default: keep `SKILL.md` short and route deeper knowledge to references only when relevant.
+- Evidence-first: require repository facts, runtime mapping, file/line findings, and validation commands.
+- Enterprise-grade: include security, performance, async jobs, data migrations, multisite, cache strategy, observability, and release readiness.
+- VIP-aware but not stale: encode stable platform principles and require current official-doc verification for exact VIP policy.
+- Implementation-focused: guide Codex to make narrow durable changes, not generic advice or broad refactors.
+- Safety-first: preserve local work, protect secrets/PII, avoid destructive DB/filesystem actions, and respect production boundaries.
+
+## Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Compact hot-path `SKILL.md` | Yes | Add | Keeps future invocations fast while still enforcing senior engineering behavior. |
+| Reference routing map | Yes | Add | Lets Codex load only the needed deep playbook, reducing token and memory waste. |
+| Review checklist | Yes | Add | Produces sharper audits with concrete file/line impact instead of generic WordPress commentary. |
+| Enterprise architecture playbook | Yes | Add | Captures principal-level design patterns for services, data, async, caching, migrations, and BC. |
+| VIP scale playbook | Yes | Add | Encodes VIP-scale assumptions while pointing to official docs for drift-prone policies. |
+| Implementation patterns | Yes | Add | Speeds safe code generation for REST, AJAX, SQL, async token jobs, cache, assets, and dynamic blocks. |
+| Validation command reference | Yes | Add | Makes verification practical across WP-CLI, Studio, Composer, npm, and wp-load.php environments. |
+| Read-only helper scripts | Yes | Add | Gives future agents deterministic repo discovery and lightweight validation without loading large instructions. |
+| Massive WordPress encyclopedia | No | Skip | Would waste context and duplicate model knowledge. The skill should teach process and sharp heuristics, not generic docs. |
+| Hard-coded current VIP rules only | No | Refine | VIP policies change. The skill uses stable principles and tells Codex to verify exact current rules. |
+
+## Skill Structure
+
+```text
+wordpress-expert/
+|-- SKILL.md
+|-- agents/openai.yaml
+|-- references/
+|   |-- enterprise-architecture.md
+|   |-- implementation-patterns.md
+|   |-- review-checklists.md
+|   |-- validation-commands.md
+|   `-- vip-scale-playbook.md
+`-- scripts/
+    |-- wp-context.sh
+    `-- wp-validate.sh
+```
+
+## Validation Plan
+
+- Run `quick_validate.py` against the skill folder.
+- Run both helper scripts against this repository to confirm safe execution.
+- Review Git diff for accidental placeholder content or excess documentation inside the skill.
+
+## Future Improvements
+
+- Add project-specific reference packs for WooCommerce, multisite migrations, and block-theme architecture if repeated tasks justify the token cost.
+- Forward-test the skill on real plugin review and implementation tasks after first use, then tighten weak instructions.
+
+## Implemented Artifacts
+
+- Created the installable `wordpress-expert` skill folder with valid Codex skill metadata.
+- Added a compact operating workflow in `SKILL.md` to minimize token load on every invocation.
+- Added five selective reference playbooks for reviews, enterprise architecture, VIP scale, implementation patterns, and validation commands.
+- Added two read-only helper scripts for WordPress repo discovery and lightweight validation.
+- Updated `README.md` with the skill purpose and invocation.
+
+## Validation Results
+
+- `quick_validate.py wordpress-expert`: passed.
+- `bash -n wordpress-expert/scripts/wp-context.sh`: passed.
+- `bash -n wordpress-expert/scripts/wp-validate.sh`: passed.
+- `bash wordpress-expert/scripts/wp-context.sh .`: passed and confirmed the cloned GitHub repo context.
+- `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP or JS files exist in this skill repo.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.
+
+## Source Anchors Checked
+
+- WordPress VIP performance documentation: https://docs.wpvip.com/performance/
+- WordPress VIP caching and object-cache documentation: https://docs.wpvip.com/caching/ and https://docs.wpvip.com/caching/object-cache/
+- WordPress VIP file system documentation: https://docs.wpvip.com/vip-file-system/
+- WordPress VIP PHPCS installed standards documentation: https://docs.wpvip.com/php_codesniffer/installed-standards/
+- WordPress plugin security handbook: https://developer.wordpress.org/plugins/security/
