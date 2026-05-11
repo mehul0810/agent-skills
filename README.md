@@ -10,6 +10,7 @@ This repository contains the `wordpress-expert` Codex skill for complete, princi
 - Admin UX, settings screens, onboarding, list tables, notices, and frontend UI improvement.
 - Performance, caching, database scale, security, privacy, secrets, and PII handling.
 - Enterprise architecture, multisite, migrations, async jobs, observability, and rollout/backout planning.
+- WordPress monorepos, multi-plugin/theme packages, shared tooling, generated artifacts, and release engineering.
 - WordPress VIP readiness and high-traffic production constraints.
 - Troubleshooting, incident triage, WP-CLI probes, activation checks, and operational debugging.
 - Coding standards, linting, static analysis, tests, GitHub Actions, CI/CD, PR workflows, and releases.

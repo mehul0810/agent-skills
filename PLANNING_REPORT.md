@@ -138,3 +138,21 @@ Expand the skill from strong plugin/VIP engineering coverage into an efficient a
 - `bash wordpress-expert/scripts/wp-context.sh .`: passed.
 - `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
 - ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.
+
+## Monorepo Expert Addition
+
+### Objective
+
+Add monorepo expertise as a first-class WordPress expert capability covering shared Composer/npm tooling, multi-plugin/theme packages, generated artifacts, symlinked local development, path-filtered CI, and release engineering.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Dedicated monorepo playbook | Yes | Add | Monorepo work has unique WordPress discovery, artifact, symlink, and release failure modes that generic plugin guidance misses. |
+| Add only a README bullet | No | Reject | The skill router must know when to load monorepo guidance. |
+| Add heavy scripts now | Not yet | Defer | Deterministic monorepo scripts should be added only after repeated repo-specific workflows justify them. |
+
+### Added Artifact
+
+- `references/monorepo-engineering.md`
