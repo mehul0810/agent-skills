@@ -1,6 +1,6 @@
 # Admin UX, Product UX, And UI Improvement
 
-Use this for WordPress admin screens, settings pages, onboarding, dashboard widgets, list tables, plugin UX, editor controls, frontend UI critique, and UX-centric brainstorming.
+Use this for WordPress admin screens, settings pages, onboarding, dashboard widgets, list tables, plugin UX, editor controls, frontend UI critique, and UX-centric brainstorming. For deeper product-grade visual QA and interaction-state coverage, also read `ui-ux-pro-for-wordpress.md`. For WordPress-native component/token mapping, also read `wordpress-design-system.md`.
 
 ## UX Workflow
 
@@ -8,7 +8,7 @@ Use this for WordPress admin screens, settings pages, onboarding, dashboard widg
 2. Map current path: entry point, primary action, secondary actions, validation, errors, success, empty states, and recovery.
 3. Remove friction before adding UI: fewer required fields, better defaults, progressive disclosure, clearer labels, safer flows.
 4. Preserve WordPress conventions unless the product has a strong design system.
-5. Validate accessibility, responsive behavior, and failure states.
+5. Validate accessibility, responsive behavior, interaction states, and failure states.
 
 ## Admin Screen Principles
 

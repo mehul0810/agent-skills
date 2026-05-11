@@ -1,4 +1,4 @@
 interface:
   display_name: "WordPress Expert"
   short_description: "Complete WordPress engineering workflows"
-  default_prompt: "Use $wordpress-expert to review, implement, debug, harden, or improve a WordPress plugin, Plugin Directory submission, theme, block editor, WordPress Design System UI, admin UX, monorepo, build tooling, CI/CD workflow, or enterprise/VIP codebase."
+  default_prompt: "Use $wordpress-expert to review, implement, debug, harden, or improve a WordPress plugin, Plugin Directory submission, theme, block editor, product UI/UX, WordPress Design System UI, admin UX, monorepo, build tooling, CI/CD workflow, or enterprise/VIP codebase."

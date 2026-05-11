@@ -1,6 +1,6 @@
 # WordPress Design System Support
 
-Use this for WordPress-native UI design, admin/product interfaces, block editor controls, Figma-to-code translation, component selection, design tokens, accessibility, editor consistency, and visual QA against WordPress conventions.
+Use this for WordPress-native UI design, admin/product interfaces, block editor controls, Figma-to-code translation, component selection, design tokens, accessibility, editor consistency, and visual QA against WordPress conventions. For product UX strategy, state coverage, and visual quality review, also read `ui-ux-pro-for-wordpress.md`.
 
 ## Official Anchors
 
@@ -11,6 +11,8 @@ Use this for WordPress-native UI design, admin/product interfaces, block editor 
 - Gutenberg Storybook: https://wordpress.github.io/gutenberg/
 
 WordPress UI patterns and component APIs evolve with Gutenberg and WordPress releases. Re-check official component docs and Storybook for exact props, deprecations, and examples before implementing non-trivial UI.
+
+If a WPDS MCP server is available in the environment, prefer it for canonical component and token details before falling back to web docs or local package inspection.
 
 ## Design System Mental Model
 

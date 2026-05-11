@@ -8,6 +8,7 @@ This repository contains the `wordpress-expert` Codex skill for complete, princi
 - WordPress.org Plugin Directory guideline review, block directory eligibility, readme policy, licensing, tracking, and trademark checks.
 - Theme development, classic themes, block themes, and `theme.json`.
 - Block editor compatible code generation and dynamic/static block work.
+- Product-grade UI/UX improvement: visual QA, interaction states, forms, dashboards, responsive polish, and conversion clarity.
 - WordPress Design System support: `@wordpress/components`, design tokens, Figma-to-code mapping, and accessibility.
 - Admin UX, settings screens, onboarding, list tables, notices, and frontend UI improvement.
 - Performance, caching, database scale, security, privacy, secrets, and PII handling.

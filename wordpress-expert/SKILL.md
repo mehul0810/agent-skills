@@ -1,6 +1,6 @@
 ---
 name: wordpress-expert
-description: Comprehensive principal-level WordPress engineering skill for efficient plugin development, theme development, block editor compatible code, WordPress Design System support, WordPress.org plugin guideline review, admin UX/UI, frontend UI improvement, performance, security, enterprise architecture, WordPress VIP, monorepos, webpack, Composer, npm, troubleshooting, refactoring, WP-CLI automation, coding standards, linting, CI/CD, GitHub Actions, PR workflows, releases, migrations, and validation. Use when Codex works on WordPress PHP/JS codebases, plugins, themes, mu-plugins, blocks, REST/AJAX, cron/Action Scheduler, custom tables, multisite, WooCommerce-style extensions, admin screens, editor interfaces, Figma-to-WordPress UI, Plugin Directory submissions, monorepo workflows, build tooling, GitHub workflows, or VIP/enterprise production readiness.
+description: Comprehensive principal-level WordPress engineering skill for efficient plugin development, theme development, block editor compatible code, WordPress Design System support, product-grade UI/UX improvement, WordPress.org plugin guideline review, admin UX/UI, frontend UI improvement, performance, security, enterprise architecture, WordPress VIP, monorepos, webpack, Composer, npm, troubleshooting, refactoring, WP-CLI automation, coding standards, linting, CI/CD, GitHub Actions, PR workflows, releases, migrations, and validation. Use when Codex works on WordPress PHP/JS codebases, plugins, themes, mu-plugins, blocks, REST/AJAX, cron/Action Scheduler, custom tables, multisite, WooCommerce-style extensions, admin screens, editor interfaces, Figma-to-WordPress UI, Plugin Directory submissions, monorepo workflows, build tooling, GitHub workflows, or VIP/enterprise production readiness.
 ---
 
 # WordPress Expert
@@ -18,7 +18,7 @@ Use this skill to operate like a principal WordPress engineer: find the real run
 
 ## Fast Workflow
 
-1. Classify the task: review, plugin, Plugin Directory guidelines, theme, block/editor, WordPress Design System, admin UX, UI polish, performance, security, VIP, monorepo, build tooling, troubleshooting, refactor, CI/CD, release, or incident.
+1. Classify the task: review, plugin, Plugin Directory guidelines, theme, block/editor, WordPress Design System, product UI/UX, admin UX, UI polish, performance, security, VIP, monorepo, build tooling, troubleshooting, refactor, CI/CD, release, or incident.
 2. Map the runtime: locate bootstrap files, hooks, REST/AJAX routes, blocks, templates, build artifacts, autoload, cron/jobs, options, custom tables, and active theme/plugin overrides.
 3. Identify risk: authorization, data integrity, backward compatibility, cache behavior, migrations, multisite, layout regression, editor/frontend parity, and deployment safety.
 4. Select references from the router below; load only what the task requires.
@@ -33,6 +33,7 @@ Read the smallest relevant set:
 - `references/plugin-architecture.md`: plugin development, service boundaries, REST/AJAX, custom tables, migrations, async jobs, settings, releases.
 - `references/plugin-guidelines-review.md`: WordPress.org Plugin Directory guidelines, block directory rules, readme policy, licensing, tracking, trademarks, submission blockers.
 - `references/theme-and-block-editor.md`: classic/block themes, `theme.json`, block editor code, dynamic blocks, Query Loop, patterns, editor/frontend parity.
+- `references/ui-ux-pro-for-wordpress.md`: product-grade UX strategy, visual QA, interaction states, forms, dashboards, responsive polish, WordPress UI quality bar.
 - `references/wordpress-design-system.md`: WordPress-native UI, `@wordpress/components`, design tokens, Figma-to-code mapping, accessibility, component selection.
 - `references/admin-ux-and-ui.md`: admin screens, settings UX, onboarding, notices, list tables, accessibility, frontend/UI improvement brainstorming.
 - `references/review-checklists.md`: audits, PR review, security/performance/modularity/correctness findings.

@@ -234,3 +234,27 @@ Add a durable guideline that new interactive WordPress endpoints should use REST
 - `references/implementation-patterns.md`
 - `references/review-checklists.md`
 - `references/performance-and-security.md`
+
+## UI/UX Pro And WPDS Fusion Addition
+
+### Objective
+
+Improve the WordPress UI/UX guidance by synthesizing product-grade UI/UX reasoning from `nextlevelbuilder/ui-ux-pro-max-skill` with WordPress-native WPDS guidance from `WordPress/agent-skills`.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Dedicated WordPress UI/UX pro reference | Yes | Add | It gives Codex a product UX quality bar without turning every UI task into generic design advice. |
+| Fuse with WPDS rather than replace it | Yes | Add | Product-grade UX and WordPress-native components solve different parts of the problem. |
+| Copy full UI/UX data tables | No | Reject | The data set is large and not WordPress-specific; a distilled decision framework is more token-efficient. |
+| Introduce Tailwind/shadcn defaults | No | Reject | WordPress admin/editor UI should map to WPDS first unless the project already uses another app stack. |
+
+### Added Artifact
+
+- `references/ui-ux-pro-for-wordpress.md`
+
+### Source Repositories Reviewed
+
+- UI/UX Pro Max skill: https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/
+- WordPress agent skills WPDS skill: https://github.com/WordPress/agent-skills/tree/trunk/skills/wpds
