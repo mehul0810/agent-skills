@@ -156,3 +156,33 @@ Add monorepo expertise as a first-class WordPress expert capability covering sha
 ### Added Artifact
 
 - `references/monorepo-engineering.md`
+
+## Plugin Guidelines And Build Tooling Addition
+
+### Objective
+
+Add WordPress.org Plugin Directory guideline reviewer expertise plus webpack, Composer, and npm build/dependency tooling expertise as first-class skill routes.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Dedicated plugin guideline review playbook | Yes | Add | Directory submission and rejection remediation are policy reviews, not just code reviews. |
+| Dedicated build tooling playbook | Yes | Add | Webpack/Composer/npm failures are common in modern WordPress plugins, blocks, themes, and monorepos. |
+| Fold build tooling into CI docs only | No | Reject | Build debugging often happens outside CI and needs its own decision path. |
+| Hard-code guidelines forever | No | Reject | Plugin guidelines change, so the skill must verify official docs for real submissions. |
+
+### Added Artifacts
+
+- `references/plugin-guidelines-review.md`
+- `references/build-tooling.md`
+
+### Additional Source Anchors Checked
+
+- WordPress.org Detailed Plugin Guidelines: https://developer.wordpress.org/plugins/wordpress-org/detailed-plugin-guidelines/
+- WordPress.org Block Specific Plugin Guidelines: https://developer.wordpress.org/plugins/wordpress-org/block-specific-plugin-guidelines/
+- Composer basic usage: https://getcomposer.org/doc/01-basic-usage.md
+- Composer scripts: https://getcomposer.org/doc/articles/scripts.md
+- npm ci documentation: https://docs.npmjs.com/cli/v8/commands/npm-ci/
+- webpack concepts/configuration: https://webpack.js.org/concepts/ and https://webpack.js.org/configuration/
+- WordPress dependency extraction webpack plugin: https://developer.wordpress.org/block-editor/reference-guides/packages/packages-dependency-extraction-webpack-plugin/

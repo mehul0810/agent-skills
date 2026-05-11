@@ -1,6 +1,6 @@
 ---
 name: wordpress-expert
-description: Comprehensive principal-level WordPress engineering skill for efficient plugin development, theme development, block editor compatible code, admin UX/UI, frontend UI improvement, performance, security, enterprise architecture, WordPress VIP, monorepos, troubleshooting, refactoring, WP-CLI automation, coding standards, linting, CI/CD, GitHub Actions, PR workflows, releases, migrations, and validation. Use when Codex works on WordPress PHP/JS codebases, plugins, themes, mu-plugins, blocks, REST/AJAX, cron/Action Scheduler, custom tables, multisite, WooCommerce-style extensions, admin screens, monorepo workflows, GitHub workflows, or VIP/enterprise production readiness.
+description: Comprehensive principal-level WordPress engineering skill for efficient plugin development, theme development, block editor compatible code, WordPress.org plugin guideline review, admin UX/UI, frontend UI improvement, performance, security, enterprise architecture, WordPress VIP, monorepos, webpack, Composer, npm, troubleshooting, refactoring, WP-CLI automation, coding standards, linting, CI/CD, GitHub Actions, PR workflows, releases, migrations, and validation. Use when Codex works on WordPress PHP/JS codebases, plugins, themes, mu-plugins, blocks, REST/AJAX, cron/Action Scheduler, custom tables, multisite, WooCommerce-style extensions, admin screens, Plugin Directory submissions, monorepo workflows, build tooling, GitHub workflows, or VIP/enterprise production readiness.
 ---
 
 # WordPress Expert
@@ -18,7 +18,7 @@ Use this skill to operate like a principal WordPress engineer: find the real run
 
 ## Fast Workflow
 
-1. Classify the task: review, plugin, theme, block/editor, admin UX, UI polish, performance, security, VIP, monorepo, troubleshooting, refactor, CI/CD, release, or incident.
+1. Classify the task: review, plugin, Plugin Directory guidelines, theme, block/editor, admin UX, UI polish, performance, security, VIP, monorepo, build tooling, troubleshooting, refactor, CI/CD, release, or incident.
 2. Map the runtime: locate bootstrap files, hooks, REST/AJAX routes, blocks, templates, build artifacts, autoload, cron/jobs, options, custom tables, and active theme/plugin overrides.
 3. Identify risk: authorization, data integrity, backward compatibility, cache behavior, migrations, multisite, layout regression, editor/frontend parity, and deployment safety.
 4. Select references from the router below; load only what the task requires.
@@ -31,6 +31,7 @@ Use this skill to operate like a principal WordPress engineer: find the real run
 Read the smallest relevant set:
 
 - `references/plugin-architecture.md`: plugin development, service boundaries, REST/AJAX, custom tables, migrations, async jobs, settings, releases.
+- `references/plugin-guidelines-review.md`: WordPress.org Plugin Directory guidelines, block directory rules, readme policy, licensing, tracking, trademarks, submission blockers.
 - `references/theme-and-block-editor.md`: classic/block themes, `theme.json`, block editor code, dynamic blocks, Query Loop, patterns, editor/frontend parity.
 - `references/admin-ux-and-ui.md`: admin screens, settings UX, onboarding, notices, list tables, accessibility, frontend/UI improvement brainstorming.
 - `references/review-checklists.md`: audits, PR review, security/performance/modularity/correctness findings.
@@ -40,6 +41,7 @@ Read the smallest relevant set:
 - `references/troubleshooting-operations.md`: production/debug triage, fatal errors, REST/AJAX issues, cron queues, mail, media, cache, multisite.
 - `references/standards-ci-github.md`: WPCS/VIPCS, PHPStan/Psalm, ESLint, PHPUnit, GitHub Actions, CI/CD, PR/release workflows.
 - `references/monorepo-engineering.md`: WordPress monorepos, shared tooling, multi-plugin/theme packages, generated artifacts, symlinks, path-filtered CI.
+- `references/build-tooling.md`: webpack, Composer, npm, dependency extraction, lockfiles, build scripts, package managers, release artifacts.
 - `references/wp-cli-automation.md`: WP-CLI, `wp eval`, activation probes, scaffold, search-replace, database and cron commands.
 - `references/implementation-patterns.md`: safe code snippets for REST, admin mutations, SQL, async token jobs, cache, assets, dynamic blocks.
 - `references/validation-commands.md`: command selection for linting, tests, activation checks, WP-CLI, Studio/local environments.

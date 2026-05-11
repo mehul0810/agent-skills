@@ -5,6 +5,7 @@ This repository contains the `wordpress-expert` Codex skill for complete, princi
 ## What It Covers
 
 - Plugin development and refactoring.
+- WordPress.org Plugin Directory guideline review, block directory eligibility, readme policy, licensing, tracking, and trademark checks.
 - Theme development, classic themes, block themes, and `theme.json`.
 - Block editor compatible code generation and dynamic/static block work.
 - Admin UX, settings screens, onboarding, list tables, notices, and frontend UI improvement.
@@ -14,6 +15,7 @@ This repository contains the `wordpress-expert` Codex skill for complete, princi
 - WordPress VIP readiness and high-traffic production constraints.
 - Troubleshooting, incident triage, WP-CLI probes, activation checks, and operational debugging.
 - Coding standards, linting, static analysis, tests, GitHub Actions, CI/CD, PR workflows, and releases.
+- Webpack, Composer, npm, dependency extraction, lockfiles, build scripts, and release artifact packaging.
 
 ## Skill
 
