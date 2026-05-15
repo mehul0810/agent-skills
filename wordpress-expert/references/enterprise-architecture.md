@@ -5,7 +5,7 @@ Use this for feature design, refactors, plugin architecture, migrations, async j
 ## Principal Engineer Defaults
 
 - Design for production traffic, years of maintenance, partial deploys, rollback, and multiple contributors.
-- Preserve backward compatibility unless the user explicitly accepts a breaking change.
+- Preserve backward compatibility for launched/public contracts and real production/client data. Do not preserve abandoned intermediate shapes from unreleased work; use `release-contract-compatibility.md` when deciding.
 - Prefer boring WordPress-native integration points with clear boundaries over clever abstractions.
 - Keep every decision tied to a failure mode: security, scale, data integrity, operability, or developer velocity.
 - Add comments/docblocks where they preserve architectural intent for future maintainers: hook timing, compatibility shims, migrations, cache invalidation, security boundaries, and external integration quirks.
@@ -124,6 +124,8 @@ Minimum useful production signals:
 - Feature flags or kill switches for risky external integrations.
 
 ## Backward Compatibility
+
+Use `release-contract-compatibility.md` before adding shims, fallback reads, migrations, route aliases, old block attributes, or legacy option/meta support.
 
 Before changing public behavior, check:
 

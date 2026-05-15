@@ -593,3 +593,45 @@ Add first-class expertise for writing WordPress/product changelogs and release n
 - `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
 - `git diff --check`: passed.
 - ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.
+
+## Release Contract Compatibility Policy Addition
+
+### Objective
+
+Add expertise to prevent unnecessary backward-compatibility shims for unreleased in-progress feature shapes. Compatibility should protect launched/public contracts and real production/client data, not temporary implementation details created while a feature is being reworked before first launch or before the next release ships.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Dedicated release-contract compatibility playbook | Yes | Add | Prevents over-engineering shims, migrations, fallback reads, route aliases, and tests for draft feature shapes that users never received. |
+| Release-state matrix | Yes | Add | Internal QA, private preview, public beta/RC, production feature flags, and stable releases require different compatibility decisions. |
+| WordPress contract-surface checklist | Yes | Add | Options, meta keys, custom tables, REST routes, hooks, blocks, shortcodes, WP-CLI, template paths, asset handles, and docs can all become released contracts. |
+| Cross-link from architecture and implementation references | Yes | Add | The broad "preserve backward compatibility" rule needs narrower release-contract context at implementation time. |
+| Always preserve every previous local shape | No | Reject | Draft shapes from unlaunched features should be deleted or replaced cleanly before launch. |
+| Always ignore preview/beta/flagged data | No | Reject | If real users, client preview environments, public testers, or production flags consumed it, compatibility or migration may be required. |
+
+### Added Artifact
+
+- `references/release-contract-compatibility.md`
+
+### Updated Artifacts
+
+- `SKILL.md`: added release contract/backward compatibility to task classification, reference routing, and hard rules.
+- `README.md`: documented release-contract compatibility coverage and default invocation.
+- `agents/openai.yaml`: added release compatibility policy to the default invocation prompt.
+- `references/enterprise-architecture.md`: narrowed the principal compatibility default and routed compatibility decisions to the new reference.
+- `references/implementation-patterns.md`: added a pre-pattern compatibility decision gate.
+- `references/delivery-excellence.md`: added release-state checks to planning and implementation choice criteria.
+- `references/changelog-release-notes.md`: connected unreleased feature changelog rules with compatibility-shim rules.
+- `PLANNING_REPORT.md`: recorded add/skip rationale and validation results.
+
+### Release Contract Compatibility Validation Results
+
+- `quick_validate.py wordpress-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wordpress-expert`: passed, confirming the installed symlink resolves correctly.
+- `bash -n wordpress-expert/scripts/wp-context.sh`: passed.
+- `bash -n wordpress-expert/scripts/wp-validate.sh`: passed.
+- `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
+- `git diff --check`: passed.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.

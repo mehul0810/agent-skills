@@ -2,6 +2,14 @@
 
 Use this when writing or refactoring code. Adapt names and capabilities to the codebase.
 
+## Compatibility Before Patterns
+
+Before adding compatibility wrappers, fallback reads, migrations, aliases, legacy block attributes, or old REST fields, use `release-contract-compatibility.md`.
+
+- Preserve compatibility for launched/public contracts and real production/client data.
+- Do not add compatibility for abandoned intermediate shapes of unreleased features.
+- For unreleased rework, prefer deleting draft code and creating the clean final launch contract.
+
 ## REST Route
 
 ```php

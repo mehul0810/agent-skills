@@ -129,6 +129,7 @@ Before editing substantial code, produce or mentally confirm:
 
 - Runtime surface and exact files likely affected.
 - Data/API contract and backward compatibility implications.
+- Release state: whether the affected behavior is unreleased, private preview, beta/RC, feature-flagged in production, or publicly launched. Use `release-contract-compatibility.md` before adding compatibility shims.
 - Security model: actor, capability, nonce/CSRF, validation, escaping.
 - Performance model: hot paths, queries, cache, remote calls, assets.
 - UX model: admin/editor/frontend/mobile states.
@@ -166,6 +167,7 @@ When choosing between implementation options, score them by:
 - Security and privacy.
 - Performance at production scale.
 - Backward compatibility.
+- Release-contract scope: preserve launched behavior and real data, but do not preserve unreleased draft shapes.
 - Admin/editor/visitor ease of use.
 - Testability.
 - Operational visibility.

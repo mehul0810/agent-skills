@@ -48,6 +48,8 @@ Avoid for unreleased work:
 
 Use `Fixed` only when the bug existed in a released version the target audience could access. Use `Improved` only when improving behavior already released to that audience.
 
+Use the same release-state decision for backward compatibility: do not add compatibility shims for unreleased intermediate feature shapes unless real users/client preview environments, production feature-flag data, public beta/RC testers, or external contracts consumed them. See `release-contract-compatibility.md`.
+
 ## Release State Matrix
 
 Classify against the audience receiving notes:
