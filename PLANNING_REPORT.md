@@ -635,3 +635,58 @@ Add expertise to prevent unnecessary backward-compatibility shims for unreleased
 - `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
 - `git diff --check`: passed.
 - ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.
+
+## Duplicate Code, Modularity, And Testability Review Addition
+
+### Objective
+
+Add first-class expertise for reviewing duplicate code and improving modularity, test coverage, simplicity, reliability, and maintainability in WordPress codebases.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Dedicated duplicate-code/modularity review playbook | Yes | Add | Duplicate logic drifts quickly across WordPress hooks, routes, settings, queries, provider clients, and tests. |
+| WordPress duplication hotspots | Yes | Add | WordPress projects often repeat hooks, REST/AJAX paths, option/meta access, cache keys, block defaults, and provider clients. |
+| Extraction decision rules | Yes | Add | Prevents over-abstraction while keeping real shared responsibilities testable and maintainable. |
+| Test strategy for refactors | Yes | Add | Duplicate-code cleanup should increase behavior-level coverage and reduce brittle fixture drift. |
+| Tooling guidance | Yes | Add | Uses existing tools first and recommends duplicate/complexity tooling only when signal is useful. |
+| Refactor every similar block | No | Reject | Similar syntax is not enough; abstraction can hide domain differences and reduce simplicity. |
+
+### Added Artifact
+
+- `references/duplicate-code-modularity-review.md`
+
+### Updated Artifacts
+
+- `SKILL.md`
+- `README.md`
+- `agents/openai.yaml`
+- `references/review-checklists.md`
+- `references/implementation-patterns.md`
+- `references/delivery-excellence.md`
+- `references/standards-ci-github.md`
+- `PLANNING_REPORT.md`
+
+### Additional Source Anchors Checked
+
+- WordPress PHP coding standards: https://developer.wordpress.org/coding-standards/wordpress-coding-standards/php/
+- WordPress PHPUnit testing: https://make.wordpress.org/core/handbook/testing/automated-testing/phpunit/
+- Writing WordPress PHPUnit tests: https://make.wordpress.org/core/handbook/testing/automated-testing/writing-phpunit-tests/
+- PHP Mess Detector rules: https://phpmd.org/rules/index.html
+- PHP Copy/Paste Detector: https://phpqa.io/projects/phpcpd.html
+- jscpd duplicate detector: https://jscpd.dev/
+- ESLint rules reference: https://eslint.org/docs/latest/rules/
+
+### Duplicate Code Modularity Validation Results
+
+- `SKILL.md` description length check: passed at 590 characters.
+- `quick_validate.py wordpress-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wordpress-expert`: passed, confirming the installed symlink resolves correctly.
+- `bash -n wordpress-expert/scripts/wp-context.sh`: passed.
+- `bash -n wordpress-expert/scripts/wp-validate.sh`: passed.
+- `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
+- `git diff --check`: passed.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.
+- Reference count: 32 markdown reference files.
+- Route search confirmed duplicate-code/modularity guidance is wired into `README.md`, `SKILL.md`, `agents/openai.yaml`, and relevant references.

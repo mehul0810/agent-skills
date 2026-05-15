@@ -9,6 +9,7 @@ This repository contains the `wordpress-expert` Codex skill for complete, princi
 - Runtime and toolchain version policy: choose the minimum stable actively maintained non-EOL PHP, Node, npm, Composer, database, CI image, and tool versions that satisfy WordPress, host/VIP, dependency, and deployment constraints.
 - Changelog and release notes expertise: public/internal changelogs, unreleased feature aggregation, WordPress.org `readme.txt` changelog rules, SemVer impact, security notes, migrations, and developer-facing API notes.
 - Release contract and backward compatibility policy: preserve launched/public contracts and real production/client data, but avoid compatibility shims for abandoned intermediate shapes of unreleased features.
+- Duplicate code, modularity, and maintainability review: find repeated logic, reduce drift, improve service boundaries, add better tests, and keep refactors simple and reliable.
 - Requirements analysis, PRDs, scope of work, technical breakdowns, Codex-aware estimates, milestones, and delivery buffers.
 - WordPress.org Plugin Directory guideline review, block directory eligibility, readme policy, licensing, tracking, and trademark checks.
 - Theme development, classic themes, block themes, and `theme.json`.
@@ -47,7 +48,7 @@ wordpress-expert/
 Default invocation:
 
 ```text
-Use $wordpress-expert to review, implement, debug, harden, or improve a WordPress plugin, changelog/release notes, release compatibility policy, third-party API integration, theme, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
+Use $wordpress-expert to review, implement, debug, harden, or improve a WordPress plugin, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, theme, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
 ```
 
 ## Design

@@ -1,6 +1,6 @@
 # Coding Standards, Linting, CI/CD, And GitHub Workflows
 
-Use this for standards setup, linting, static analysis, tests, GitHub Actions, PR workflows, release pipelines, and CI troubleshooting. For changelogs and release notes, read `changelog-release-notes.md`. For runtime and tool minimums, also read `runtime-toolchain-version-policy.md`. For issue triage, PR descriptions, labels, estimates, milestones, and enterprise delivery workflow, also read `delivery-excellence.md`.
+Use this for standards setup, linting, static analysis, tests, GitHub Actions, PR workflows, release pipelines, and CI troubleshooting. For duplicate-code and modularity checks, read `duplicate-code-modularity-review.md`. For changelogs and release notes, read `changelog-release-notes.md`. For runtime and tool minimums, also read `runtime-toolchain-version-policy.md`. For issue triage, PR descriptions, labels, estimates, milestones, and enterprise delivery workflow, also read `delivery-excellence.md`.
 
 ## Official Anchors
 
@@ -27,6 +27,12 @@ JavaScript/CSS:
 - `@wordpress/scripts` when the project already uses WordPress packages.
 - ESLint, Stylelint, Prettier, TypeScript, Jest/Vitest, Playwright/Cypress as project conventions require.
 - `node --check` only for plain JS; it is not enough for JSX/TypeScript.
+
+Duplication/modularity:
+
+- Use existing project tooling first; recommend new duplicate/complexity tools only when they add signal.
+- Exclude generated files, build output, dependencies, snapshots, translations, and fixtures from duplication checks unless intentionally reviewing them.
+- Do not fail legacy CI on broad duplicate-code thresholds before the team has reviewed and ratcheted a baseline.
 
 ## PHPCS Strategy
 

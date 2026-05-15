@@ -10,6 +10,14 @@ Before adding compatibility wrappers, fallback reads, migrations, aliases, legac
 - Do not add compatibility for abandoned intermediate shapes of unreleased features.
 - For unreleased rework, prefer deleting draft code and creating the clean final launch contract.
 
+## Modularity Before Extraction
+
+Before extracting shared code, use `duplicate-code-modularity-review.md`.
+
+- Extract duplicated behavior only when the shared responsibility is real and the abstraction improves reliability, testing, and maintainability.
+- Keep intentional duplication when product rules will diverge or abstraction would hide important domain differences.
+- For unreleased duplicate draft code, prefer deleting/reworking it into the final simple implementation instead of creating reusable helpers.
+
 ## REST Route
 
 ```php

@@ -168,6 +168,7 @@ When choosing between implementation options, score them by:
 - Performance at production scale.
 - Backward compatibility.
 - Release-contract scope: preserve launched behavior and real data, but do not preserve unreleased draft shapes.
+- Modularity: remove harmful duplication when it reduces drift and improves tests, but avoid abstraction that hides domain-specific behavior.
 - Admin/editor/visitor ease of use.
 - Testability.
 - Operational visibility.
@@ -213,6 +214,7 @@ Test the behavior, not only the implementation:
 Keep tests effective and efficient:
 
 - Add the narrowest test that would have caught the bug or will protect the feature contract.
+- When refactoring duplicate code, add tests around the shared behavior and the important divergent cases before or alongside extraction.
 - Avoid brittle snapshots unless markup shape is the contract.
 - Prefer factories/fixtures that express user intent.
 - Include negative permission tests for endpoints and admin actions.

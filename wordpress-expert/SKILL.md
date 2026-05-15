@@ -1,6 +1,6 @@
 ---
 name: wordpress-expert
-description: Principal-level WordPress engineering skill for plugins, themes, blocks, React, third-party APIs, runtime/toolchain versions, changelogs, release notes, release contracts, backward compatibility, admin UI, WPDS, UX, VIP, monorepos, build tooling, CI/CD, GitHub, WP-CLI, performance, security, observability, incidents, edge caching/CDN, load testing, Enterprise Search, deployments, migrations, accessibility, i18n, and troubleshooting. Use for WordPress delivery tasks including PRD/SOW, estimates, tests, validation, and enterprise choices.
+description: Principal-level WordPress engineering skill for plugins, themes, blocks, React, third-party APIs, runtime/toolchain versions, changelogs, release notes, release contracts, backward compatibility, duplicate-code review, modularity, testability, admin UI, WPDS, UX, VIP, monorepos, build tooling, CI/CD, GitHub, WP-CLI, performance, security, observability, incidents, edge caching/CDN, load testing, Enterprise Search, deployments, migrations, accessibility, i18n, and troubleshooting. Use for WordPress delivery tasks including PRD/SOW, estimates, tests, validation, and enterprise choices.
 ---
 
 # WordPress Expert
@@ -20,7 +20,7 @@ Use this skill to operate like a principal WordPress engineer: find the real run
 
 ## Fast Workflow
 
-1. Classify the task: requirements/planning, estimate/SOW, review, plugin, Plugin Directory guidelines, changelog/release notes, release contract/backward compatibility, theme, block/editor, React with WordPress, third-party API integration, runtime/toolchain version policy, WordPress Design System, product UI/UX, responsive architecture, admin UX, UI polish, performance, security, VIP, observability/incident, edge caching/CDN, load testing/capacity, Enterprise Search/content scale, deployment/release, migration/editorial scale, accessibility/i18n, monorepo, build tooling, troubleshooting, refactor, CI/CD, or release.
+1. Classify the task: requirements/planning, estimate/SOW, review, duplicate-code/modularity review, plugin, Plugin Directory guidelines, changelog/release notes, release contract/backward compatibility, theme, block/editor, React with WordPress, third-party API integration, runtime/toolchain version policy, WordPress Design System, product UI/UX, responsive architecture, admin UX, UI polish, performance, security, VIP, observability/incident, edge caching/CDN, load testing/capacity, Enterprise Search/content scale, deployment/release, migration/editorial scale, accessibility/i18n, monorepo, build tooling, troubleshooting, refactor, CI/CD, or release.
 2. Map the runtime: locate bootstrap files, hooks, REST/AJAX routes, blocks, templates, build artifacts, autoload, cron/jobs, options, custom tables, and active theme/plugin overrides.
 3. Identify risk: authorization, data integrity, backward compatibility, cache behavior, migrations, multisite, layout regression, editor/frontend parity, and deployment safety.
 4. Select references from the router below; load only what the task requires.
@@ -45,6 +45,7 @@ Read the smallest relevant set:
 - `references/wordpress-design-system.md`: WordPress-native UI, `@wordpress/components`, design tokens, Figma-to-code mapping, accessibility, component selection.
 - `references/admin-ux-and-ui.md`: admin screens, settings UX, onboarding, notices, list tables, accessibility, frontend/UI improvement brainstorming.
 - `references/review-checklists.md`: audits, PR review, security/performance/modularity/correctness findings.
+- `references/duplicate-code-modularity-review.md`: duplicate code discovery, modularity decisions, extraction rules, test improvements, maintainability and reliability review.
 - `references/performance-and-security.md`: high-risk performance, caching, database, security hardening, privacy, secrets, PII.
 - `references/enterprise-architecture.md`: enterprise design, data modeling, multisite, observability, backward compatibility, rollout/backout.
 - `references/vip-scale-playbook.md`: WordPress VIP, high traffic, platform constraints, cache layers, filesystem, PHPCS/VIPCS.
@@ -97,6 +98,7 @@ Severity guide:
 - Place editor UI in the right surface: classic editor post fields belong in meta boxes; block editor document-level settings belong in document/sidebar panels; block-specific settings belong in inspector/block panels. Do not show newly implemented meta boxes in the block editor unless preserving an intentional legacy compatibility surface.
 - Load assets only on screens, routes, blocks, or templates that need them.
 - Favor existing repo workflows for Composer/npm/build/release. Do not add tooling churn without a clear payoff.
+- Remove harmful duplication when it improves reliability, tests, and maintainability, but avoid abstractions that hide domain differences or preserve unreleased draft shapes.
 - Add concise comments/docblocks for non-obvious hooks, data contracts, compatibility shims, migrations, cache invalidation, and security-sensitive decisions.
 
 ## Universal WordPress Hard Rules
