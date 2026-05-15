@@ -5,6 +5,7 @@ This repository contains the `wordpress-expert` Codex skill for complete, princi
 ## What It Covers
 
 - Plugin development and refactoring.
+- Third-party API integrations of any type using official documentation or user-provided specs: REST, GraphQL, SOAP/WSDL, XML-RPC, SDKs, webhooks, OAuth, API keys, rate limits, retries, idempotency, queues, and provider operations.
 - Requirements analysis, PRDs, scope of work, technical breakdowns, Codex-aware estimates, milestones, and delivery buffers.
 - WordPress.org Plugin Directory guideline review, block directory eligibility, readme policy, licensing, tracking, and trademark checks.
 - Theme development, classic themes, block themes, and `theme.json`.
@@ -43,7 +44,7 @@ wordpress-expert/
 Default invocation:
 
 ```text
-Use $wordpress-expert to review, implement, debug, harden, or improve a WordPress plugin, theme, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
+Use $wordpress-expert to review, implement, debug, harden, or improve a WordPress plugin, third-party API integration, theme, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
 ```
 
 ## Design

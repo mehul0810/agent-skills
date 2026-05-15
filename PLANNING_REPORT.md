@@ -444,3 +444,51 @@ Add first-class expertise for using React inside WordPress with enterprise stand
 - `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
 - `git diff --check`: passed.
 - ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.
+
+## Third-Party API Integration Expertise Addition
+
+### Objective
+
+Add first-class expertise for working with third-party APIs of any type by using current official documentation, user-provided specs, or discoverable API references. The skill should search for API docs when not provided and ask for docs/specs or missing contract details when reliable documentation cannot be found.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Dedicated third-party API integration playbook | Yes | Add | External integrations have provider-specific contracts, auth, rate limits, retries, webhooks, and operational failure modes that generic plugin guidance misses. |
+| Documentation-first rule | Yes | Add | Prevents invented endpoints, stale assumptions, and unsafe implementations when provider APIs change. |
+| Search-then-ask workflow | Yes | Add | Lets Codex find official docs when possible and ask the user for docs/specs when the API is private, missing, or ambiguous. |
+| Protocol-agnostic coverage | Yes | Add | Enterprise WordPress work touches REST, GraphQL, SOAP/WSDL, XML-RPC, SDK-only APIs, webhooks, file/SFTP, and batch APIs. |
+| Security and secret-handling gates | Yes | Add | API work often includes tokens, webhook secrets, PII, logs, cron args, and localized JS exposure risks. |
+| Fold into performance/security only | No | Reject | Third-party integration needs its own route because docs discovery, auth flows, provider testing, and operational support are distinct workflows. |
+
+### Added Artifact
+
+- `references/third-party-api-integrations.md`
+
+### Updated Artifacts
+
+- `SKILL.md`: added third-party API integration to task classification and reference routing.
+- `README.md`: documented third-party API coverage and default invocation.
+- `agents/openai.yaml`: added third-party API integration to the default invocation prompt.
+- `PLANNING_REPORT.md`: recorded add/skip rationale and source anchors.
+
+### Additional Source Anchors Checked
+
+- WordPress HTTP API: https://developer.wordpress.org/plugins/http-api/
+- `wp_remote_request()`: https://developer.wordpress.org/reference/functions/wp_remote_request/
+- WordPress REST API authentication: https://developer.wordpress.org/rest-api/using-the-rest-api/authentication/
+- WordPress REST API global parameters: https://developer.wordpress.org/rest-api/using-the-rest-api/global-parameters/
+- OpenAPI Specification: https://spec.openapis.org/oas/latest.html
+- OAuth 2.0 RFC 6749: https://www.rfc-editor.org/rfc/rfc6749
+- GraphQL official docs: https://graphql.org/
+
+### Third-Party API Validation Results
+
+- `quick_validate.py wordpress-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wordpress-expert`: passed, confirming the installed symlink resolves correctly.
+- `bash -n wordpress-expert/scripts/wp-context.sh`: passed.
+- `bash -n wordpress-expert/scripts/wp-validate.sh`: passed.
+- `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
+- `git diff --check`: passed.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.
