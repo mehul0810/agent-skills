@@ -1,6 +1,6 @@
 ---
 name: wordpress-expert
-description: Principal-level WordPress engineering skill for plugins, themes, blocks, React, third-party APIs, runtime/toolchain versions, admin UI, WPDS, UX, VIP, monorepos, build tooling, CI/CD, GitHub, WP-CLI, performance, security, observability, incidents, edge caching/CDN, load testing, Enterprise Search, deployments, migrations, accessibility, i18n, and troubleshooting. Use for WordPress delivery tasks including PRD/SOW, estimates, tests, validation, and enterprise choices.
+description: Principal-level WordPress engineering skill for plugins, themes, blocks, React, third-party APIs, runtime/toolchain versions, changelogs, release notes, admin UI, WPDS, UX, VIP, monorepos, build tooling, CI/CD, GitHub, WP-CLI, performance, security, observability, incidents, edge caching/CDN, load testing, Enterprise Search, deployments, migrations, accessibility, i18n, and troubleshooting. Use for WordPress delivery tasks including PRD/SOW, estimates, tests, validation, and enterprise choices.
 ---
 
 # WordPress Expert
@@ -20,7 +20,7 @@ Use this skill to operate like a principal WordPress engineer: find the real run
 
 ## Fast Workflow
 
-1. Classify the task: requirements/planning, estimate/SOW, review, plugin, Plugin Directory guidelines, theme, block/editor, React with WordPress, third-party API integration, runtime/toolchain version policy, WordPress Design System, product UI/UX, responsive architecture, admin UX, UI polish, performance, security, VIP, observability/incident, edge caching/CDN, load testing/capacity, Enterprise Search/content scale, deployment/release, migration/editorial scale, accessibility/i18n, monorepo, build tooling, troubleshooting, refactor, CI/CD, or release.
+1. Classify the task: requirements/planning, estimate/SOW, review, plugin, Plugin Directory guidelines, changelog/release notes, theme, block/editor, React with WordPress, third-party API integration, runtime/toolchain version policy, WordPress Design System, product UI/UX, responsive architecture, admin UX, UI polish, performance, security, VIP, observability/incident, edge caching/CDN, load testing/capacity, Enterprise Search/content scale, deployment/release, migration/editorial scale, accessibility/i18n, monorepo, build tooling, troubleshooting, refactor, CI/CD, or release.
 2. Map the runtime: locate bootstrap files, hooks, REST/AJAX routes, blocks, templates, build artifacts, autoload, cron/jobs, options, custom tables, and active theme/plugin overrides.
 3. Identify risk: authorization, data integrity, backward compatibility, cache behavior, migrations, multisite, layout regression, editor/frontend parity, and deployment safety.
 4. Select references from the router below; load only what the task requires.
@@ -35,6 +35,7 @@ Read the smallest relevant set:
 - `references/plugin-architecture.md`: plugin development, service boundaries, REST/AJAX, custom tables, migrations, async jobs, settings, releases.
 - `references/third-party-api-integrations.md`: external API docs discovery, REST/GraphQL/SOAP/webhooks/SDKs, auth, rate limits, retries, idempotency, secrets, testing, provider operations.
 - `references/plugin-guidelines-review.md`: WordPress.org Plugin Directory guidelines, block directory rules, readme policy, licensing, tracking, trademarks, submission blockers.
+- `references/changelog-release-notes.md`: public/internal changelogs, unreleased feature aggregation, WordPress.org readme changelogs, SemVer impact, security/migration/developer release notes.
 - `references/theme-and-block-editor.md`: classic/block themes, `theme.json`, block editor code, dynamic blocks, Query Loop, patterns, editor/frontend parity.
 - `references/react-wordpress-enterprise.md`: React in WordPress admin/editor/frontend/headless contexts, dependency extraction, REST/data stores, WPDS UI, accessibility, tests, enterprise release standards.
 - `references/runtime-toolchain-version-policy.md`: selecting minimum PHP/Node/npm/Composer/database/tool versions that are stable, actively maintained, compatible, and not EOL.

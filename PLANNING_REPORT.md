@@ -544,3 +544,52 @@ Add a durable rule that new minimum versions for PHP, Node, npm, Composer, datab
 - `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
 - `git diff --check`: passed.
 - ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.
+
+## Changelog And Release Notes Expertise Addition
+
+### Objective
+
+Add first-class expertise for writing WordPress/product changelogs and release notes, including the rule that fixes and improvements to unreleased features should be folded into the original `Added` entry instead of creating fake `Improved` or `Fixed` entries.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Dedicated changelog/release-notes playbook | Yes | Add | Changelog quality directly affects client communication, WordPress.org releases, GitHub releases, and upgrade confidence. |
+| Unreleased feature aggregation rule | Yes | Add | Prevents noise and misleading fixed/improved entries for behavior users never received. |
+| Release-state matrix | Yes | Add | Beta, client preview, feature flags, internal QA, and public release all need different treatment. |
+| WordPress.org readme guidance | Yes | Add | WordPress plugin changelogs must account for readme parsing, stable tag behavior, validator usage, and readme size. |
+| Audience-based categories | Yes | Add | WordPress products need user/admin/developer/operator/security/migration notes, not just raw commit types. |
+| Dump git log into changelog | No | Reject | Changelogs should be outcome-based, verified from diffs/PRs/tags, and written for the release audience. |
+
+### Added Artifact
+
+- `references/changelog-release-notes.md`
+
+### Updated Artifacts
+
+- `SKILL.md`: added changelog/release notes to task classification and reference routing.
+- `README.md`: documented changelog/release-notes coverage and default invocation.
+- `agents/openai.yaml`: added changelog/release notes to the default invocation prompt.
+- `references/plugin-guidelines-review.md`: corrected plugin readme anchor and linked changelog wording guidance.
+- `references/standards-ci-github.md`: routed release workflow changelog work to the new reference.
+- `references/delivery-excellence.md`: added changelog/release-note routing for delivery workflow.
+- `PLANNING_REPORT.md`: recorded add/skip rationale and source anchors.
+
+### Additional Source Anchors Checked
+
+- WordPress plugin readmes: https://developer.wordpress.org/plugins/wordpress-org/how-your-readme-txt-works/
+- WordPress plugin readme file standard: https://wordpress.org/plugins/developers/#readme
+- Official WordPress readme validator: https://wordpress.org/plugins/developers/readme-validator/
+- Keep a Changelog: https://keepachangelog.com/en/1.1.0/
+- Semantic Versioning: https://semver.org/
+
+### Changelog Release Notes Validation Results
+
+- `quick_validate.py wordpress-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wordpress-expert`: passed, confirming the installed symlink resolves correctly.
+- `bash -n wordpress-expert/scripts/wp-context.sh`: passed.
+- `bash -n wordpress-expert/scripts/wp-validate.sh`: passed.
+- `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
+- `git diff --check`: passed.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.

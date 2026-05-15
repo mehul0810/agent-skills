@@ -1,6 +1,6 @@
 # Coding Standards, Linting, CI/CD, And GitHub Workflows
 
-Use this for standards setup, linting, static analysis, tests, GitHub Actions, PR workflows, release pipelines, and CI troubleshooting. For runtime and tool minimums, also read `runtime-toolchain-version-policy.md`. For issue triage, PR descriptions, labels, estimates, milestones, and enterprise delivery workflow, also read `delivery-excellence.md`.
+Use this for standards setup, linting, static analysis, tests, GitHub Actions, PR workflows, release pipelines, and CI troubleshooting. For changelogs and release notes, read `changelog-release-notes.md`. For runtime and tool minimums, also read `runtime-toolchain-version-policy.md`. For issue triage, PR descriptions, labels, estimates, milestones, and enterprise delivery workflow, also read `delivery-excellence.md`.
 
 ## Official Anchors
 
@@ -123,4 +123,5 @@ Adapt this to project scripts. Do not paste generic CI if the repo already has a
 - Install production dependencies only where release policy requires them.
 - Exclude tests, dev configs, source maps, local env, node modules, and secrets unless intentionally shipped.
 - Confirm plugin/theme headers, versions, asset manifests, translation files, and readme/changelog.
+- Generate changelog entries from the real diff/tag/PR range, and fold fixes/improvements for unreleased features into the original added feature entry.
 - Verify activation/install from the packaged artifact, not only source checkout.

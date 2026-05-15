@@ -1,4 +1,4 @@
 interface:
   display_name: "WordPress Expert"
   short_description: "Principal WordPress engineering workflows"
-  default_prompt: "Use $wordpress-expert to plan, estimate, review, implement, debug, harden, or improve a WordPress plugin, third-party API integration, theme, block editor, React/admin app, runtime/toolchain policy, product UI/UX, GitHub/CI workflow, enterprise/VIP codebase, incident, migration, deployment, accessibility/i18n issue, or high-scale performance system."
+  default_prompt: "Use $wordpress-expert to plan, estimate, review, implement, debug, harden, or improve a WordPress plugin, changelog/release notes, third-party API integration, theme, block editor, React/admin app, runtime/toolchain policy, product UI/UX, GitHub/CI workflow, enterprise/VIP codebase, incident, migration, deployment, accessibility/i18n issue, or high-scale performance system."

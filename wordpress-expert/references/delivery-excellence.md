@@ -192,6 +192,7 @@ Branches and commits:
 Pull requests:
 
 - PR description should include summary, changed areas, screenshots for UI, validation, risks, deployment notes, and rollback notes when relevant.
+- For changelogs and release notes, use `changelog-release-notes.md` so entries are audience-appropriate and unreleased feature fixes are not inflated into fake fixed/improved entries.
 - Link issues and call out breaking changes or migrations.
 - Reply to each actionable review thread individually when requested.
 - Keep PRs reviewable; split large work by milestone or package boundary.

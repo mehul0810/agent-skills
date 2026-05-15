@@ -7,7 +7,7 @@ Use this when reviewing a plugin for WordPress.org Plugin Directory submission, 
 - Detailed Plugin Guidelines: https://developer.wordpress.org/plugins/wordpress-org/detailed-plugin-guidelines/
 - Block Specific Plugin Guidelines: https://developer.wordpress.org/plugins/wordpress-org/block-specific-plugin-guidelines/
 - Plugin developer information: https://wordpress.org/plugins/developers/
-- Plugin readme standard: https://developer.wordpress.org/plugins/wordpress-org/how-your-plugin-assets-work/
+- Plugin readmes: https://developer.wordpress.org/plugins/wordpress-org/how-your-readme-txt-works/
 
 Guidelines can change. The Detailed Plugin Guidelines page showed a March 11, 2026 last-updated date when this reference was written. Re-check official docs for any real submission/rejection review.
 
@@ -59,6 +59,7 @@ Check the final artifact:
 - `readme.txt` includes required metadata, service disclosures, privacy notes, external dependencies, and clear setup instructions.
 - Plugin headers, text domain, stable tag, version constants, and readme version are consistent.
 - Assets in `.wordpress-org/` or plugin assets follow expected naming and licensing.
+- For changelog and release-note wording, use `changelog-release-notes.md` and validate WordPress.org `readme.txt` when relevant.
 
 ## Review Output Format
 
