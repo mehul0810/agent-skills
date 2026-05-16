@@ -1,8 +1,11 @@
-# WP Expert Codex Skill
+# WP Expert Codex Skill Pack
 
-This repository contains the `wp-expert` Codex skill for complete, principal-grade WordPress engineering work.
+This repository contains WordPress-focused Codex skills:
 
-## What It Covers
+- `wp-expert`: principal-grade WordPress engineering for client, product, enterprise, VIP, plugin, theme, block editor, performance, security, and delivery work.
+- `wp-contributor`: official WordPress project contribution workflows for Core, Meta, Gutenberg, Trac, GitHub PRs, patches, testing, docs, triage, releases, and contributor communication.
+
+## wp-expert Coverage
 
 - Plugin development and refactoring.
 - Third-party API integrations of any type using official documentation or user-provided specs: REST, GraphQL, SOAP/WSDL, XML-RPC, SDKs, webhooks, OAuth, API keys, rate limits, retries, idempotency, queues, and provider operations.
@@ -37,26 +40,39 @@ This repository contains the `wp-expert` Codex skill for complete, principal-gra
 - Efficient tests and maintainable code comments/docblocks for onboarding and future regression prevention.
 - Webpack, Composer, npm, dependency extraction, lockfiles, build scripts, and release artifact packaging.
 
-## Skill
+## wp-contributor Coverage
 
-Install or reference the skill folder:
+- WordPress Core contribution through `wordpress-develop`, Core Trac, SVN/Git patches, and linked GitHub PRs.
+- WordPress Meta contribution for WordPress.org, WordCamp.org, Make sites, developer.wordpress.org, directories, profiles, badges, and project infrastructure.
+- Gutenberg and block editor contribution through GitHub issues, PRs, packages, editor tests, accessibility, Storybook, and Core sync awareness.
+- Ticket triage, issue reproduction, component/milestone/keyword guidance, patch refreshes, review comments, and maintainer-ready summaries.
+- Testing and validation strategy for Core, Meta, and Gutenberg using existing repo scripts first.
+- WordPress coding standards, inline docs, i18n, accessibility, performance, privacy, security, dev-note, props, and commit-message guidance.
+- Release phase, backport, RC/minor-release caution, and private security disclosure workflows.
+
+## Skills
+
+Install or reference the skill folders:
 
 ```text
 wp-expert/
+wp-contributor/
 ```
 
-Default invocation:
+Default invocations:
 
 ```text
 Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugin, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, theme, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
+
+Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-develop, WordPress.org, WordCamp.org, Trac tickets, GitHub PRs, patches, tests, docs, standards, triage, release/backport work, or contributor communication.
 ```
 
 ## Design
 
-The skill is intentionally token-efficient:
+The skills are intentionally token-efficient:
 
-- `SKILL.md` contains the core operating workflow and reference router.
-- `references/` contains deeper playbooks loaded only when relevant.
-- `scripts/` contains read-only discovery and validation helpers.
+- Each `SKILL.md` contains the core operating workflow and reference router.
+- Each `references/` directory contains deeper playbooks loaded only when relevant.
+- Each `scripts/` directory contains read-only discovery and validation helpers.
 
 See `PLANNING_REPORT.md` for the planning rationale and validation history.

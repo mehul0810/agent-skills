@@ -731,3 +731,77 @@ Rename the installed Codex skill identity to `wp-expert` so the folder name, fro
 - Stale skill slug scan: passed.
 - Reference count: 32 markdown reference files.
 - Local symlink now resolves at `/Users/mehulgohil/.codex/skills/wp-expert`; the old long-form symlink is absent.
+
+## WP Contributor Skill Addition
+
+### Objective
+
+Add a second skill named `wp-contributor` for official WordPress project contribution work across Core, Meta, Gutenberg, Trac, GitHub PRs, patches, testing, docs, triage, release/backport work, and contributor communication.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Separate `wp-contributor` skill | Yes | Add | Official WordPress contribution has different source-of-truth, etiquette, patch, ticket, and release rules than client/plugin implementation work. |
+| Compact router plus references | Yes | Add | Keeps invocation efficient while still covering Core, Meta, Gutenberg, Trac, testing, standards, docs, props, and release workflows. |
+| Core workflow reference | Yes | Add | Core uses trunk-first patches, SVN-backed history, Core Trac, and GitHub PR linkage rules that generic WordPress engineering misses. |
+| Meta workflow reference | Yes | Add | WordPress.org and WordCamp.org projects have distinct production, privacy, deployment, and environment constraints. |
+| Gutenberg workflow reference | Yes | Add | Block editor work uses GitHub-first issue/PR practices and package-specific tests while still affecting Core release behavior. |
+| Triage and communication playbook | Yes | Add | Maintainer-ready comments, reproduction evidence, keywords, labels, and patch refreshes are central to upstream acceptance. |
+| Validation and standards references | Yes | Add | Contribution work needs repo-native tests, coding standards, inline docs, props, dev-note awareness, and accessibility/i18n/performance checks. |
+| Security/release reference | Yes | Add | Public issue creation can be harmful for vulnerabilities, and release phase changes require special caution. |
+| Bundle every handbook page into the skill | No | Reject | Official docs change. The skill should route to current official anchors instead of duplicating the whole handbook. |
+
+### Added Artifacts
+
+- `wp-contributor/SKILL.md`
+- `wp-contributor/agents/openai.yaml`
+- `wp-contributor/references/official-anchors.md`
+- `wp-contributor/references/contribution-map.md`
+- `wp-contributor/references/core-workflow.md`
+- `wp-contributor/references/meta-workflow.md`
+- `wp-contributor/references/gutenberg-workflow.md`
+- `wp-contributor/references/trac-github-triage.md`
+- `wp-contributor/references/testing-validation.md`
+- `wp-contributor/references/standards-docs-props.md`
+- `wp-contributor/references/release-backport-security.md`
+- `wp-contributor/scripts/wp-contrib-context.sh`
+
+### Updated Artifacts
+
+- `README.md`
+- `PLANNING_REPORT.md`
+- Local symlink: `/Users/mehulgohil/.codex/skills/wp-contributor`
+
+### Source Anchors Checked
+
+- Core Contributor Handbook: https://make.wordpress.org/core/handbook/
+- Contribute with Code: https://make.wordpress.org/core/handbook/contribute/
+- Core Getting Started: https://make.wordpress.org/core/handbook/tutorials/getting-started/
+- Core Git repository workflow: https://make.wordpress.org/core/handbook/contribute/git/
+- Core GitHub PR workflow: https://make.wordpress.org/core/handbook/contribute/git/github-pull-requests-for-code-review/
+- Core Trac: https://make.wordpress.org/core/handbook/contribute/trac/
+- Trac workflow keywords: https://make.wordpress.org/core/handbook/contribute/trac/keywords/
+- Core writing patches: https://make.wordpress.org/core/handbook/best-practices/writing-patches/
+- Core commit messages: https://make.wordpress.org/core/handbook/best-practices/commit-messages/
+- Core PHPUnit testing: https://make.wordpress.org/core/handbook/testing/automated-testing/phpunit/
+- Meta Handbook: https://make.wordpress.org/meta/handbook/
+- Meta Getting Started: https://make.wordpress.org/meta/handbook/getting-started/
+- Meta setup: https://make.wordpress.org/meta/handbook/getting-started/contribute-with-code/setting-up-your-machine/
+- Gutenberg Contributor Guide: https://developer.wordpress.org/block-editor/contributors/
+- Gutenberg Code Contributions: https://developer.wordpress.org/block-editor/contributors/code/
+- Security reporting: https://make.wordpress.org/core/handbook/testing/reporting-security-vulnerabilities/
+
+### Validation Results
+
+- `SKILL.md` frontmatter checks: passed for `wp-expert` and `wp-contributor`.
+- `wp-contributor` description length check: passed at 492 characters.
+- `quick_validate.py wp-contributor`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wp-contributor`: passed, confirming the installed symlink resolves correctly.
+- `quick_validate.py wp-expert`: passed, confirming the existing skill remains valid.
+- `bash -n wp-contributor/scripts/wp-contrib-context.sh`: passed.
+- `bash wp-contributor/scripts/wp-contrib-context.sh .`: passed and safely reported this skill repo as an unknown contribution target.
+- `git diff --check`: passed.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, `wp-expert/`, and `wp-contributor/`: passed.
+- `wp-contributor` reference count: 9 markdown reference files.
+- Local symlink now resolves at `/Users/mehulgohil/.codex/skills/wp-contributor`.
