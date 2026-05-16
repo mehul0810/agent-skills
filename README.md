@@ -1,6 +1,6 @@
 # WP Expert Codex Skill
 
-This repository contains the `wordpress-expert` Codex skill for complete, principal-grade WordPress engineering work.
+This repository contains the `wp-expert` Codex skill for complete, principal-grade WordPress engineering work.
 
 ## What It Covers
 
@@ -42,13 +42,13 @@ This repository contains the `wordpress-expert` Codex skill for complete, princi
 Install or reference the skill folder:
 
 ```text
-wordpress-expert/
+wp-expert/
 ```
 
 Default invocation:
 
 ```text
-Use $wordpress-expert to review, implement, debug, harden, or improve a WordPress plugin, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, theme, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
+Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugin, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, theme, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
 ```
 
 ## Design

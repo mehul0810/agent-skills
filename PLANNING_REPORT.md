@@ -1,4 +1,4 @@
-# WordPress Expert Codex Skill Planning Report
+# WP Expert Codex Skill Planning Report
 
 ## Objective
 
@@ -31,7 +31,7 @@ Create a Codex skill that helps future agents operate like a principal WordPress
 ## Skill Structure
 
 ```text
-wordpress-expert/
+wp-expert/
 |-- SKILL.md
 |-- agents/openai.yaml
 |-- references/
@@ -63,7 +63,7 @@ wordpress-expert/
 
 ## Implemented Artifacts
 
-- Created the installable `wordpress-expert` skill folder with valid Codex skill metadata.
+- Created the installable `wp-expert` skill folder with valid Codex skill metadata.
 - Added a compact operating workflow in `SKILL.md` to minimize token load on every invocation.
 - Added five selective reference playbooks for reviews, enterprise architecture, VIP scale, implementation patterns, and validation commands.
 - Added two read-only helper scripts for WordPress repo discovery and lightweight validation.
@@ -71,12 +71,12 @@ wordpress-expert/
 
 ## Validation Results
 
-- `quick_validate.py wordpress-expert`: passed.
-- `bash -n wordpress-expert/scripts/wp-context.sh`: passed.
-- `bash -n wordpress-expert/scripts/wp-validate.sh`: passed.
-- `bash wordpress-expert/scripts/wp-context.sh .`: passed and confirmed the cloned GitHub repo context.
-- `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP or JS files exist in this skill repo.
-- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.
+- `quick_validate.py wp-expert`: passed.
+- `bash -n wp-expert/scripts/wp-context.sh`: passed.
+- `bash -n wp-expert/scripts/wp-validate.sh`: passed.
+- `bash wp-expert/scripts/wp-context.sh .`: passed and confirmed the cloned GitHub repo context.
+- `bash wp-expert/scripts/wp-validate.sh .`: passed; no PHP or JS files exist in this skill repo.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wp-expert/`: passed.
 
 ## Source Anchors Checked
 
@@ -86,7 +86,7 @@ wordpress-expert/
 - WordPress VIP PHPCS installed standards documentation: https://docs.wpvip.com/php_codesniffer/installed-standards/
 - WordPress plugin security handbook: https://developer.wordpress.org/plugins/security/
 
-## Expansion Iteration: Complete WordPress Expert Coverage
+## Expansion Iteration: Complete WP Expert Coverage
 
 ### New Objective
 
@@ -136,13 +136,13 @@ Expand the skill from strong plugin/VIP engineering coverage into an efficient a
 
 ### Expansion Validation Results
 
-- `quick_validate.py wordpress-expert`: passed.
-- `quick_validate.py /Users/mehulgohil/.codex/skills/wordpress-expert`: passed, confirming the installed symlink resolves correctly.
-- `bash -n wordpress-expert/scripts/wp-context.sh`: passed.
-- `bash -n wordpress-expert/scripts/wp-validate.sh`: passed.
-- `bash wordpress-expert/scripts/wp-context.sh .`: passed.
-- `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
-- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.
+- `quick_validate.py wp-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wp-expert`: passed, confirming the installed symlink resolves correctly.
+- `bash -n wp-expert/scripts/wp-context.sh`: passed.
+- `bash -n wp-expert/scripts/wp-validate.sh`: passed.
+- `bash wp-expert/scripts/wp-context.sh .`: passed.
+- `bash wp-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wp-expert/`: passed.
 
 ## Monorepo Expert Addition
 
@@ -388,13 +388,13 @@ Add the missing highest-priority enterprise/VIP operations expertise for WordPre
 
 ### Enterprise Ops Validation Results
 
-- `quick_validate.py wordpress-expert`: passed.
-- `quick_validate.py /Users/mehulgohil/.codex/skills/wordpress-expert`: passed, confirming the installed symlink resolves correctly.
-- `bash -n wordpress-expert/scripts/wp-context.sh`: passed.
-- `bash -n wordpress-expert/scripts/wp-validate.sh`: passed.
-- `bash wordpress-expert/scripts/wp-context.sh .`: passed and confirmed the repo context plus changed/untracked files.
-- `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
-- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.
+- `quick_validate.py wp-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wp-expert`: passed, confirming the installed symlink resolves correctly.
+- `bash -n wp-expert/scripts/wp-context.sh`: passed.
+- `bash -n wp-expert/scripts/wp-validate.sh`: passed.
+- `bash wp-expert/scripts/wp-context.sh .`: passed and confirmed the repo context plus changed/untracked files.
+- `bash wp-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wp-expert/`: passed.
 
 ## React With WordPress Enterprise Standards Addition
 
@@ -437,13 +437,13 @@ Add first-class expertise for using React inside WordPress with enterprise stand
 
 ### React WordPress Validation Results
 
-- `quick_validate.py wordpress-expert`: passed.
-- `quick_validate.py /Users/mehulgohil/.codex/skills/wordpress-expert`: passed, confirming the installed symlink resolves correctly.
-- `bash -n wordpress-expert/scripts/wp-context.sh`: passed.
-- `bash -n wordpress-expert/scripts/wp-validate.sh`: passed.
-- `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
+- `quick_validate.py wp-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wp-expert`: passed, confirming the installed symlink resolves correctly.
+- `bash -n wp-expert/scripts/wp-context.sh`: passed.
+- `bash -n wp-expert/scripts/wp-validate.sh`: passed.
+- `bash wp-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
 - `git diff --check`: passed.
-- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wp-expert/`: passed.
 
 ## Third-Party API Integration Expertise Addition
 
@@ -485,13 +485,13 @@ Add first-class expertise for working with third-party APIs of any type by using
 
 ### Third-Party API Validation Results
 
-- `quick_validate.py wordpress-expert`: passed.
-- `quick_validate.py /Users/mehulgohil/.codex/skills/wordpress-expert`: passed, confirming the installed symlink resolves correctly.
-- `bash -n wordpress-expert/scripts/wp-context.sh`: passed.
-- `bash -n wordpress-expert/scripts/wp-validate.sh`: passed.
-- `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
+- `quick_validate.py wp-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wp-expert`: passed, confirming the installed symlink resolves correctly.
+- `bash -n wp-expert/scripts/wp-context.sh`: passed.
+- `bash -n wp-expert/scripts/wp-validate.sh`: passed.
+- `bash wp-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
 - `git diff --check`: passed.
-- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wp-expert/`: passed.
 
 ## Runtime And Toolchain Version Policy Addition
 
@@ -537,13 +537,13 @@ Add a durable rule that new minimum versions for PHP, Node, npm, Composer, datab
 
 ### Runtime Version Policy Validation Results
 
-- `quick_validate.py wordpress-expert`: passed.
-- `quick_validate.py /Users/mehulgohil/.codex/skills/wordpress-expert`: passed, confirming the installed symlink resolves correctly.
-- `bash -n wordpress-expert/scripts/wp-context.sh`: passed.
-- `bash -n wordpress-expert/scripts/wp-validate.sh`: passed.
-- `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
+- `quick_validate.py wp-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wp-expert`: passed, confirming the installed symlink resolves correctly.
+- `bash -n wp-expert/scripts/wp-context.sh`: passed.
+- `bash -n wp-expert/scripts/wp-validate.sh`: passed.
+- `bash wp-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
 - `git diff --check`: passed.
-- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wp-expert/`: passed.
 
 ## Changelog And Release Notes Expertise Addition
 
@@ -586,13 +586,13 @@ Add first-class expertise for writing WordPress/product changelogs and release n
 
 ### Changelog Release Notes Validation Results
 
-- `quick_validate.py wordpress-expert`: passed.
-- `quick_validate.py /Users/mehulgohil/.codex/skills/wordpress-expert`: passed, confirming the installed symlink resolves correctly.
-- `bash -n wordpress-expert/scripts/wp-context.sh`: passed.
-- `bash -n wordpress-expert/scripts/wp-validate.sh`: passed.
-- `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
+- `quick_validate.py wp-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wp-expert`: passed, confirming the installed symlink resolves correctly.
+- `bash -n wp-expert/scripts/wp-context.sh`: passed.
+- `bash -n wp-expert/scripts/wp-validate.sh`: passed.
+- `bash wp-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
 - `git diff --check`: passed.
-- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wp-expert/`: passed.
 
 ## Release Contract Compatibility Policy Addition
 
@@ -628,13 +628,13 @@ Add expertise to prevent unnecessary backward-compatibility shims for unreleased
 
 ### Release Contract Compatibility Validation Results
 
-- `quick_validate.py wordpress-expert`: passed.
-- `quick_validate.py /Users/mehulgohil/.codex/skills/wordpress-expert`: passed, confirming the installed symlink resolves correctly.
-- `bash -n wordpress-expert/scripts/wp-context.sh`: passed.
-- `bash -n wordpress-expert/scripts/wp-validate.sh`: passed.
-- `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
+- `quick_validate.py wp-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wp-expert`: passed, confirming the installed symlink resolves correctly.
+- `bash -n wp-expert/scripts/wp-context.sh`: passed.
+- `bash -n wp-expert/scripts/wp-validate.sh`: passed.
+- `bash wp-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
 - `git diff --check`: passed.
-- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wp-expert/`: passed.
 
 ## Duplicate Code, Modularity, And Testability Review Addition
 
@@ -681,12 +681,53 @@ Add first-class expertise for reviewing duplicate code and improving modularity,
 ### Duplicate Code Modularity Validation Results
 
 - `SKILL.md` description length check: passed at 590 characters.
-- `quick_validate.py wordpress-expert`: passed.
-- `quick_validate.py /Users/mehulgohil/.codex/skills/wordpress-expert`: passed, confirming the installed symlink resolves correctly.
-- `bash -n wordpress-expert/scripts/wp-context.sh`: passed.
-- `bash -n wordpress-expert/scripts/wp-validate.sh`: passed.
-- `bash wordpress-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
+- `quick_validate.py wp-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wp-expert`: passed, confirming the installed symlink resolves correctly.
+- `bash -n wp-expert/scripts/wp-context.sh`: passed.
+- `bash -n wp-expert/scripts/wp-validate.sh`: passed.
+- `bash wp-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
 - `git diff --check`: passed.
-- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wordpress-expert/`: passed.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wp-expert/`: passed.
 - Reference count: 32 markdown reference files.
 - Route search confirmed duplicate-code/modularity guidance is wired into `README.md`, `SKILL.md`, `agents/openai.yaml`, and relevant references.
+
+## Skill Rename To wp-expert
+
+### Objective
+
+Rename the installed Codex skill identity to `wp-expert` so the folder name, frontmatter name, default invocation, helper script examples, and local symlink all use the shorter skill name.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Rename folder and frontmatter together | Yes | Add | Codex discovery should see one consistent skill identity instead of mismatched metadata and folder paths. |
+| Update default invocation to `$wp-expert` | Yes | Add | The invocation users type should match the new skill name. |
+| Update local symlink | Yes | Add | Local Codex usage should resolve immediately without depending on the old path. |
+| Keep the old long-form symlink | No | Reject | Keeping both paths can create duplicate or confusing skill discovery. |
+
+### Updated Artifacts
+
+- `wp-expert/SKILL.md`
+- `wp-expert/agents/openai.yaml`
+- `wp-expert/references/validation-commands.md`
+- `wp-expert/scripts/wp-context.sh`
+- `README.md`
+- `PLANNING_REPORT.md`
+- Local symlink: `/Users/mehulgohil/.codex/skills/wp-expert`
+
+### Validation Results
+
+- `SKILL.md` frontmatter name check: passed with `name: wp-expert`.
+- `SKILL.md` description length check: passed at 590 characters.
+- `quick_validate.py wp-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wp-expert`: passed, confirming the installed symlink resolves correctly.
+- `bash -n wp-expert/scripts/wp-context.sh`: passed.
+- `bash -n wp-expert/scripts/wp-validate.sh`: passed.
+- `bash wp-expert/scripts/wp-context.sh .`: passed and confirmed the renamed repo context.
+- `bash wp-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
+- `git diff --check`: passed.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, and `wp-expert/`: passed.
+- Stale skill slug scan: passed.
+- Reference count: 32 markdown reference files.
+- Local symlink now resolves at `/Users/mehulgohil/.codex/skills/wp-expert`; the old long-form symlink is absent.

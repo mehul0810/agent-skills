@@ -48,7 +48,7 @@ find . -maxdepth 7 -type f \( -name block.json -o -name 'edit.js' -o -name 'save
 echo
 echo "== WordPress Entry Points =="
 if command -v rg >/dev/null 2>&1; then
-  rg -n --glob '!vendor/**' --glob '!node_modules/**' --glob '!build/**' --glob '!dist/**' --glob '!coverage/**' --glob '!wordpress-expert/**' 'register_rest_route|register_block_type|add_action|add_filter|wp_ajax_|wp_schedule_|as_enqueue_|register_activation_hook|register_deactivation_hook' . || true
+  rg -n --glob '!vendor/**' --glob '!node_modules/**' --glob '!build/**' --glob '!dist/**' --glob '!coverage/**' --glob '!wp-expert/**' 'register_rest_route|register_block_type|add_action|add_filter|wp_ajax_|wp_schedule_|as_enqueue_|register_activation_hook|register_deactivation_hook' . || true
 else
-  grep -RInE --exclude-dir=vendor --exclude-dir=node_modules --exclude-dir=build --exclude-dir=dist --exclude-dir=coverage --exclude-dir=wordpress-expert 'register_rest_route|register_block_type|add_action|add_filter|wp_ajax_|wp_schedule_|as_enqueue_|register_activation_hook|register_deactivation_hook' . || true
+  grep -RInE --exclude-dir=vendor --exclude-dir=node_modules --exclude-dir=build --exclude-dir=dist --exclude-dir=coverage --exclude-dir=wp-expert 'register_rest_route|register_block_type|add_action|add_filter|wp_ajax_|wp_schedule_|as_enqueue_|register_activation_hook|register_deactivation_hook' . || true
 fi

@@ -15,7 +15,7 @@ rg -n "Plugin Name:|register_rest_route|add_action|add_filter|wp_ajax_|register_
 Skill helper:
 
 ```bash
-bash /path/to/wordpress-expert/scripts/wp-context.sh /path/to/repo
+bash /path/to/wp-expert/scripts/wp-context.sh /path/to/repo
 ```
 
 ## PHP Syntax
@@ -45,7 +45,7 @@ find . -type f -name '*.php' \
 Skill helper:
 
 ```bash
-bash /path/to/wordpress-expert/scripts/wp-validate.sh /path/to/repo
+bash /path/to/wp-expert/scripts/wp-validate.sh /path/to/repo
 ```
 
 ## Composer And PHP Static Analysis

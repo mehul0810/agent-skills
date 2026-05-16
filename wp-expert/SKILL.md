@@ -1,9 +1,9 @@
 ---
-name: wordpress-expert
+name: wp-expert
 description: Principal-level WordPress engineering skill for plugins, themes, blocks, React, third-party APIs, runtime/toolchain versions, changelogs, release notes, release contracts, backward compatibility, duplicate-code review, modularity, testability, admin UI, WPDS, UX, VIP, monorepos, build tooling, CI/CD, GitHub, WP-CLI, performance, security, observability, incidents, edge caching/CDN, load testing, Enterprise Search, deployments, migrations, accessibility, i18n, and troubleshooting. Use for WordPress delivery tasks including PRD/SOW, estimates, tests, validation, and enterprise choices.
 ---
 
-# WordPress Expert
+# WP Expert
 
 Use this skill to operate like a principal WordPress engineer: find the real runtime surface, protect production behavior, design for scale and maintainability, improve UX intentionally, and validate with evidence.
 
@@ -68,8 +68,8 @@ Read the smallest relevant set:
 Use scripts when helpful:
 
 ```bash
-bash /path/to/wordpress-expert/scripts/wp-context.sh /path/to/repo
-bash /path/to/wordpress-expert/scripts/wp-validate.sh /path/to/repo
+bash /path/to/wp-expert/scripts/wp-context.sh /path/to/repo
+bash /path/to/wp-expert/scripts/wp-validate.sh /path/to/repo
 ```
 
 ## Review Mode
