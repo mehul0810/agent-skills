@@ -1,6 +1,6 @@
 # Theme Development And Block Editor
 
-Use this for classic themes, block themes, child themes, `theme.json`, block editor compatible code generation, dynamic/static blocks, patterns, Query Loop behavior, and editor/frontend visual parity.
+Use this for classic themes, block themes, child themes, `theme.json`, block editor compatible code generation, dynamic/static blocks, patterns, Query Loop behavior, and editor/frontend visual parity. For Ollie block theme or Ollie Pro work, also read `ollie-block-theme.md`.
 
 ## Official Anchors
 

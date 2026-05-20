@@ -805,3 +805,69 @@ Add a second skill named `wp-contributor` for official WordPress project contrib
 - ASCII scan across `README.md`, `PLANNING_REPORT.md`, `wp-expert/`, and `wp-contributor/`: passed.
 - `wp-contributor` reference count: 9 markdown reference files.
 - Local symlink now resolves at `/Users/mehulgohil/.codex/skills/wp-contributor`.
+
+## Ollie Block Theme Expertise Addition
+
+### Objective
+
+Add first-class Ollie block theme and Ollie Pro expertise to `wp-expert`, covering free Ollie, Ollie Pro, Site Editor workflows, child themes, block theme structure, design tokens, Pro pattern library, setup wizard, starter sites, extensions, Menu Designer, WooCommerce use cases, authentication, local/staging behavior, and troubleshooting.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Dedicated Ollie reference | Yes | Add | Ollie has product-specific workflows, Pro plugin behavior, design tokens, pattern library decisions, and auth/licensing concerns that generic block theme guidance misses. |
+| Free and Pro split | Yes | Add | Free Ollie is a block theme; Ollie Pro is a premium plugin with cloud patterns, setup wizard, starter sites, extensions, and account/auth behavior. |
+| Child-theme and style-override guidance | Yes | Add | Ollie docs describe child-theme blank JSON overrides for disabling built-in styles, and parent theme edits would be fragile. |
+| Pattern library decision rules | Yes | Add | Pro patterns can be inserted, copied, favorited, or downloaded into `/patterns`; each path has different maintenance and version-control implications. |
+| Security guidance for Pro auth | Yes | Add | Site-wide authentication uses credentials in constants, so the skill must protect secrets and discourage committing credentials. |
+| WooCommerce/Menu Designer coverage | Yes | Add | Ollie Pro increasingly targets WooCommerce and native block navigation workflows, which require accessibility, responsive, and conversion QA. |
+| Hard-code all current style hex values | No | Reject | Active theme version/style variation can change; use current installed `theme.json` and docs instead of bloating the skill with volatile palettes. |
+
+### Added Artifact
+
+- `wp-expert/references/ollie-block-theme.md`
+
+### Updated Artifacts
+
+- `wp-expert/SKILL.md`
+- `wp-expert/agents/openai.yaml`
+- `wp-expert/references/theme-and-block-editor.md`
+- `README.md`
+- `PLANNING_REPORT.md`
+
+### Source Anchors Checked
+
+- Ollie Docs: https://olliewp.com/docs/
+- Getting Started: https://olliewp.com/docs/ollie-block-theme/getting-started/
+- WordPress Block Themes: https://olliewp.com/docs/ollie-block-theme/wordpress-block-theme/
+- Block Theme Structure: https://olliewp.com/docs/ollie-block-theme/block-theme-structure/
+- Ollie Color Palette: https://olliewp.com/docs/ollie-block-theme/ollie-color-palette/
+- Disable Ollie Styles: https://olliewp.com/docs/ollie-block-theme/disable-ollie-styles/
+- Ollie Pro intro: https://olliewp.com/docs/ollie-pro/
+- Ollie Pro Dashboard: https://olliewp.com/docs/ollie-pro/ollie-pro-dashboard/
+- Ollie Pro Pattern Library: https://olliewp.com/docs/ollie-pro/ollie-pro-pattern-library/
+- Ollie Pro Extensions: https://olliewp.com/docs/ollie-pro/ollie-pro-extensions/
+- Site-Wide Authentication: https://olliewp.com/docs/ollie-pro/site-wide-authentication/
+- Ollie Pro Local/Staging: https://olliewp.com/docs/ollie-pro/using-ollie-pro-on-local-and-staging-sites/
+- Ollie on WordPress.org: https://wordpress.org/themes/ollie/
+- Ollie Pro page: https://olliewp.com/pro/
+- Ollie WP vs Ollie Pro: https://olliewp.com/olliewp-vs-ollie-pro/
+- Menu Designer: https://olliewp.com/menu-designer/
+- Ollie for WooCommerce: https://olliewp.com/ollie-for-woocommerce
+- New Ollie Pattern Library and Ollie AI: https://olliewp.com/introducing-the-new-and-improved-ollie-pattern-library/
+
+### Validation Results
+
+- `SKILL.md` frontmatter check: passed with `name: wp-expert`.
+- `SKILL.md` description length check: passed at 619 characters.
+- `quick_validate.py wp-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wp-expert`: passed, confirming the installed symlink resolves correctly.
+- `quick_validate.py wp-contributor`: passed, confirming the additional repo skill remains valid.
+- `bash -n wp-expert/scripts/wp-context.sh`: passed.
+- `bash -n wp-expert/scripts/wp-validate.sh`: passed.
+- `bash wp-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
+- `git diff --check`: passed.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, `wp-expert/`, and `wp-contributor/`: passed.
+- `wp-expert` reference count: 33 markdown reference files.
+- Route search confirmed Ollie guidance is wired into `README.md`, `SKILL.md`, `agents/openai.yaml`, and theme guidance.
