@@ -871,3 +871,76 @@ Add first-class Ollie block theme and Ollie Pro expertise to `wp-expert`, coveri
 - ASCII scan across `README.md`, `PLANNING_REPORT.md`, `wp-expert/`, and `wp-contributor/`: passed.
 - `wp-expert` reference count: 33 markdown reference files.
 - Route search confirmed Ollie guidance is wired into `README.md`, `SKILL.md`, `agents/openai.yaml`, and theme guidance.
+
+## Blocksy Theme Expertise Addition
+
+### Objective
+
+Add first-class Blocksy theme and Blocksy Pro expertise to `wp-expert`, covering free Blocksy, Blocksy Companion, Blocksy Pro, Customizer workflows, header/footer builders, starter sites, Content Blocks, Dynamic Data, Post Types Extra, Shop Extra/WooCommerce, Advanced Menu, Pro extensions, licensing, local/staging, multisite, developer hooks, snippets, and troubleshooting.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Dedicated Blocksy reference | Yes | Add | Blocksy is Customizer/header-footer-builder centric and has product-specific Companion/Pro modules that generic theme guidance misses. |
+| Free, Companion, and Pro split | Yes | Add | The theme, free companion plugin, and Companion Pro plugin have different responsibilities, dependencies, and licensing constraints. |
+| Content Blocks and Dynamic Data guidance | Yes | Add | Blocksy Pro uses Content Blocks, hooks, conditions, Dynamic Data, and Post Types Extra for template-like and dynamic layouts. |
+| Shop Extra/WooCommerce route | Yes | Add | Blocksy Pro has a deep WooCommerce module surface that needs conversion, accessibility, mobile, AJAX, and performance validation. |
+| License/local/staging/multisite guidance | Yes | Add | Blocksy Pro licensing, development domains, and multisite seats can affect delivery and deployment planning. |
+| Treat Blocksy as a pure block theme | No | Reject | Blocksy is Gutenberg-friendly but Customizer/theme-builder centric, so Site Editor assumptions would lead to wrong implementation choices. |
+| Put all feature tables into SKILL.md | No | Reject | The details are product-specific and drift-prone; a focused reference keeps runtime context efficient. |
+
+### Added Artifact
+
+- `wp-expert/references/blocksy-theme.md`
+
+### Updated Artifacts
+
+- `wp-expert/SKILL.md`
+- `wp-expert/agents/openai.yaml`
+- `wp-expert/references/theme-and-block-editor.md`
+- `README.md`
+- `PLANNING_REPORT.md`
+
+### Source Anchors Checked
+
+- Blocksy docs: https://creativethemes.com/blocksy/docs/
+- Installing Blocksy: https://creativethemes.com/blocksy/docs/general/install-blocksy-theme/
+- Theme Options intro: https://creativethemes.com/blocksy/docs/theme-options/theme-options-intro/
+- Blocksy Dashboard: https://creativethemes.com/blocksy/docs/getting-started/blocksy-dashboard/
+- Manage Options: https://creativethemes.com/blocksy/docs/general-options/manage-options/
+- Blocksy Companion: https://creativethemes.com/blocksy/companion/
+- Starter Sites: https://creativethemes.com/blocksy/starter-sites/
+- Premium features: https://creativethemes.com/blocksy/premium/
+- Upgrade to Blocksy Pro: https://creativethemes.com/blocksy/docs/general/install-activate-blocksy-companion-pro/
+- Blocksy Pro Plans: https://creativethemes.com/blocksy/docs/general/blocksy-pro-plans-comparison/
+- Licence Utilisation: https://creativethemes.com/blocksy/docs/general/licence-utilisation/
+- Header Builder elements: https://creativethemes.com/blocksy/docs/header-elements/header-builder-elements/
+- Footer introduction: https://creativethemes.com/blocksy/docs/footer-elements/footer-introduction/
+- Extensions overview: https://creativethemes.com/blocksy/docs/extensions/extensions-general/
+- Content Blocks Hooks: https://creativethemes.com/blocksy/docs/modules/content-blocks/
+- Conditional Module: https://creativethemes.com/blocksy/docs/modules/conditions-module/
+- Theme Blocks intro: https://creativethemes.com/blocksy/docs/theme-blocks/theme-blocks-getting-started/
+- Dynamic Data: https://creativethemes.com/blocksy/docs/theme-blocks/dynamic-data/
+- Post Types Extra: https://creativethemes.com/blocksy/docs/extensions/post-types-extra/
+- Shop Extra: https://creativethemes.com/blocksy/docs/extensions/woocommerce-extra/
+- Quick View: https://creativethemes.com/blocksy/docs/woocommerce/quick-view/
+- Floating Cart: https://creativethemes.com/blocksy/docs/woocommerce/floating-cart/
+- Filters Canvas: https://creativethemes.com/blocksy/docs/woocommerce/off-canvas-filter/
+- Custom Code Snippets: https://creativethemes.com/blocksy/docs/extensions/custom-code-snippets/
+- Blocksy on WordPress.org: https://wordpress.org/themes/blocksy/
+
+### Validation Results
+
+- `SKILL.md` frontmatter check: passed with `name: wp-expert`.
+- `SKILL.md` description length check: passed at 646 characters.
+- `quick_validate.py wp-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wp-expert`: passed, confirming the installed symlink resolves correctly.
+- `quick_validate.py wp-contributor`: passed, confirming the additional repo skill remains valid.
+- `bash -n wp-expert/scripts/wp-context.sh`: passed.
+- `bash -n wp-expert/scripts/wp-validate.sh`: passed.
+- `bash wp-expert/scripts/wp-validate.sh .`: passed; no PHP/JS files or GitHub Actions workflows exist in this skill repo.
+- `git diff --check`: passed.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, `wp-expert/`, and `wp-contributor/`: passed.
+- `wp-expert` reference count: 34 markdown reference files.
+- Route search confirmed Blocksy guidance is wired into `README.md`, `SKILL.md`, `agents/openai.yaml`, and theme guidance.

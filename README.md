@@ -17,6 +17,7 @@ This repository contains WordPress-focused Codex skills:
 - WordPress.org Plugin Directory guideline review, block directory eligibility, readme policy, licensing, tracking, and trademark checks.
 - Theme development, classic themes, block themes, and `theme.json`.
 - Ollie block theme and Ollie Pro expertise: Site Editor workflows, child themes, design tokens, Pro pattern library, setup wizard, starter sites, extensions, Menu Designer, WooCommerce layouts, and troubleshooting.
+- Blocksy theme and Blocksy Pro expertise: Customizer workflows, Companion plugin, header/footer builders, Content Blocks, Dynamic Data, starter sites, Shop Extra/WooCommerce, Advanced Menu, Pro extensions, licensing, and troubleshooting.
 - Block editor compatible code generation and dynamic/static block work.
 - React with WordPress enterprise standards: admin/editor apps, frontend interactive blocks, headless boundaries, dependency extraction, REST contracts, `@wordpress/data`, `@wordpress/components`, testing, accessibility, and release artifacts.
 - Product-grade UI/UX improvement: visual QA, interaction states, forms, dashboards, responsive polish, and conversion clarity.
@@ -63,7 +64,7 @@ wp-contributor/
 Default invocations:
 
 ```text
-Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugin, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, theme, Ollie block theme/Ollie Pro site, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
+Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugin, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, theme, Ollie block theme/Ollie Pro site, Blocksy theme/Blocksy Pro site, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
 
 Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-develop, WordPress.org, WordCamp.org, Trac tickets, GitHub PRs, patches, tests, docs, standards, triage, release/backport work, or contributor communication.
 ```
