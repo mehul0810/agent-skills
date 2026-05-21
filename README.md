@@ -46,7 +46,7 @@ This repository contains WordPress-focused Codex skills:
 
 - WordPress Core contribution through `wordpress-develop`, Core Trac, SVN/Git patches, and linked GitHub PRs.
 - WordPress Meta contribution for WordPress.org, WordCamp.org, Make sites, developer.wordpress.org, directories, profiles, badges, and project infrastructure.
-- Gutenberg and block editor contribution through GitHub issues, PRs, packages, editor tests, accessibility, Storybook, and Core sync awareness.
+- Gutenberg and block editor contribution through `wordpress/gutenberg` guidelines, GitHub issues, PRs, labels, milestones, package boundaries, editor tests, accessibility, React Native parity, Storybook, and Core sync awareness.
 - Ticket triage, issue reproduction, component/milestone/keyword guidance, patch refreshes, review comments, and maintainer-ready summaries.
 - Testing and validation strategy for Core, Meta, and Gutenberg using existing repo scripts first.
 - WordPress coding standards, inline docs, i18n, accessibility, performance, privacy, security, dev-note, props, and commit-message guidance.

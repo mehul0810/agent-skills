@@ -944,3 +944,57 @@ Add first-class Blocksy theme and Blocksy Pro expertise to `wp-expert`, covering
 - ASCII scan across `README.md`, `PLANNING_REPORT.md`, `wp-expert/`, and `wp-contributor/`: passed.
 - `wp-expert` reference count: 34 markdown reference files.
 - Route search confirmed Blocksy guidance is wired into `README.md`, `SKILL.md`, `agents/openai.yaml`, and theme guidance.
+
+## Gutenberg Project Contribution Guidelines Addition
+
+### Objective
+
+Strengthen `wp-contributor` for `wordpress/gutenberg` contribution work so Codex follows Gutenberg's current contribution guidelines, repository-management expectations, branch/rebase workflow, PR discipline, testing strategy, accessibility requirements, React Native/mobile parity checks, and package-boundary rules.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Dedicated Gutenberg contribution guideline expansion | Yes | Add | Gutenberg uses GitHub-first issue, PR, label, milestone, review, package, and CI workflows that differ from Core Trac-first contribution work. |
+| Official anchor expansion | Yes | Add | Current `CONTRIBUTING.md`, code contribution, git workflow, repository management, coding, testing, accessibility, and React Native docs are the right process anchors. |
+| Branch/rebase and PR discipline guidance | Yes | Add | Gutenberg expects focused feature branches, PR updates on the same branch, and rebasing onto `trunk` for merge readiness. |
+| Label, milestone, and triage guidance | Yes | Add | Issues and PRs rely on actionable scope, current labels, milestones, and project context; the skill should recommend these without overclaiming permissions. |
+| Package-boundary and public API rules | Yes | Add | Gutenberg is a monorepo with `@wordpress/*` packages, downstream consumers, public APIs, deprecations, and release implications. |
+| Accessibility and React Native parity checks | Yes | Add | Official guidelines call out accessibility testing and native-file parity when changes affect shared names or mobile editor behavior. |
+| Hard-code exact npm commands as permanent truth | No | Reject | Scripts and tool versions drift; the skill now directs Codex to inspect current `package.json`, `.nvmrc`, and docs before giving exact commands. |
+| Duplicate the entire Gutenberg handbook | No | Reject | Full handbook duplication would waste tokens and become stale; focused guidance plus official anchors is more durable and efficient. |
+
+### Updated Artifacts
+
+- `wp-contributor/SKILL.md`
+- `wp-contributor/agents/openai.yaml`
+- `wp-contributor/references/gutenberg-workflow.md`
+- `wp-contributor/references/official-anchors.md`
+- `README.md`
+- `PLANNING_REPORT.md`
+
+### Source Anchors Checked
+
+- Gutenberg repository: https://github.com/WordPress/gutenberg
+- Gutenberg contributing guidelines: https://github.com/WordPress/gutenberg/blob/trunk/CONTRIBUTING.md
+- Gutenberg code contribution docs: https://github.com/WordPress/gutenberg/blob/trunk/docs/contributors/code/README.md
+- Gutenberg Git workflow: https://github.com/WordPress/gutenberg/blob/trunk/docs/contributors/code/git-workflow.md
+- Gutenberg repository management: https://github.com/WordPress/gutenberg/blob/trunk/docs/contributors/repository-management.md
+- Gutenberg coding guidelines: https://github.com/WordPress/gutenberg/blob/trunk/docs/contributors/code/coding-guidelines.md
+- Gutenberg testing overview: https://github.com/WordPress/gutenberg/blob/trunk/docs/contributors/code/testing-overview.md
+- Gutenberg accessibility testing: https://github.com/WordPress/gutenberg/blob/trunk/docs/contributors/accessibility-testing.md
+- Gutenberg React Native mobile editor docs: https://github.com/WordPress/gutenberg/tree/trunk/docs/contributors/code/react-native
+
+### Validation Results
+
+- `SKILL.md` frontmatter checks: passed for `wp-contributor` and `wp-expert`.
+- `wp-contributor` description length check: passed at 492 characters.
+- `wp-expert` description length check: passed at 646 characters.
+- `quick_validate.py wp-contributor`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wp-contributor`: passed, confirming the installed symlink resolves correctly.
+- `quick_validate.py wp-expert`: passed, confirming the existing skill remains valid.
+- `bash -n wp-contributor/scripts/wp-contrib-context.sh`: passed.
+- `bash wp-contributor/scripts/wp-contrib-context.sh .`: passed and safely reported this skill repo as an unknown contribution target.
+- `git diff --check`: passed.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, `wp-expert/`, and `wp-contributor/`: passed.
+- Route search confirmed Gutenberg guidance is wired into `README.md`, `SKILL.md`, `agents/openai.yaml`, `official-anchors.md`, and `gutenberg-workflow.md`.

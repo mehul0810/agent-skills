@@ -1,4 +1,4 @@
 interface:
   display_name: "WP Contributor"
-  short_description: "WordPress Core and Meta contribution workflows"
+  short_description: "WordPress Core, Meta, and Gutenberg contribution workflows"
   default_prompt: "Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-develop, WordPress.org, WordCamp.org, Trac tickets, GitHub PRs, patches, tests, docs, standards, triage, release/backport work, or contributor communication."

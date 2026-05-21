@@ -32,6 +32,13 @@ Use these as starting points. Recheck current pages before making exact process 
 - Block Editor Code Contributions: https://developer.wordpress.org/block-editor/contributors/code/
 - Gutenberg repository: https://github.com/WordPress/gutenberg
 - Gutenberg contributing guidelines: https://github.com/WordPress/gutenberg/blob/trunk/CONTRIBUTING.md
+- Gutenberg code contribution docs: https://github.com/WordPress/gutenberg/blob/trunk/docs/contributors/code/README.md
+- Gutenberg Git workflow: https://github.com/WordPress/gutenberg/blob/trunk/docs/contributors/code/git-workflow.md
+- Gutenberg repository management: https://github.com/WordPress/gutenberg/blob/trunk/docs/contributors/repository-management.md
+- Gutenberg coding guidelines: https://github.com/WordPress/gutenberg/blob/trunk/docs/contributors/code/coding-guidelines.md
+- Gutenberg testing overview: https://github.com/WordPress/gutenberg/blob/trunk/docs/contributors/code/testing-overview.md
+- Gutenberg accessibility testing: https://github.com/WordPress/gutenberg/blob/trunk/docs/contributors/accessibility-testing.md
+- Gutenberg React Native mobile editor docs: https://github.com/WordPress/gutenberg/tree/trunk/docs/contributors/code/react-native
 
 ## Broad Project Sources
 
@@ -47,6 +54,6 @@ Before producing exact commands or process-critical guidance, verify:
 
 - Current repository branch names and package scripts.
 - Current Trac ticket status, milestone, component, owner, keywords, and attachments.
-- Current GitHub labels, PR status, merge conflicts, and CI state.
+- Current Gutenberg/GitHub labels, PR status, merge conflicts, package ownership, package scripts, and CI state.
 - Current release phase, feature freeze, beta, RC, or minor-release constraints.
 - Current security reporting process for suspected vulnerabilities.

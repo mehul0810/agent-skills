@@ -36,7 +36,7 @@ Read the smallest relevant set:
 - `references/contribution-map.md`: WordPress project areas, where to file issues, and how Core, Meta, Gutenberg, Docs, Test, Accessibility, Performance, and i18n differ.
 - `references/core-workflow.md`: `wordpress-develop`, trunk-first work, SVN/Git mirrors, patch files, Core Trac, GitHub PR linkage, and patch refreshes.
 - `references/meta-workflow.md`: Meta team scope, WordPress.org/WordCamp.org projects, Meta Trac, local environment expectations, and project-specific caution.
-- `references/gutenberg-workflow.md`: Gutenberg/block editor contribution, GitHub issues/PRs, labels, packages, tests, accessibility, and Core sync awareness.
+- `references/gutenberg-workflow.md`: Gutenberg/block editor contribution guidelines, GitHub issues/PRs, labels, packages, tests, accessibility, React Native parity, and Core sync awareness.
 - `references/trac-github-triage.md`: ticket quality, components, milestones, keywords, labels, PR linkage, comments, and triage discipline.
 - `references/testing-validation.md`: Core, Meta, and Gutenberg validation strategy, local environment commands, focused tests, lints, builds, and evidence format.
 - `references/standards-docs-props.md`: WordPress coding standards, inline docs, commit-message style, props, dev notes, i18n, accessibility, and compatibility expectations.
