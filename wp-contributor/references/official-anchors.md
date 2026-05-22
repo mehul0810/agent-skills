@@ -19,11 +19,19 @@ Use these as starting points. Recheck current pages before making exact process 
 ## Meta
 
 - Meta Handbook: https://make.wordpress.org/meta/handbook/
-- Meta Getting Started: https://make.wordpress.org/meta/handbook/getting-started/
 - Meta Team Scope: https://make.wordpress.org/meta/handbook/about/
-- Meta Setup: https://make.wordpress.org/meta/handbook/getting-started/contribute-with-code/setting-up-your-machine/
 - Meta Projects: https://make.wordpress.org/meta/handbook/about/projects/
+- Meta Getting Started: https://make.wordpress.org/meta/handbook/getting-started/
+- Meta Contribute with Code: https://make.wordpress.org/meta/handbook/getting-started/contribute-with-code/
+- Meta Setup: https://make.wordpress.org/meta/handbook/getting-started/contribute-with-code/setting-up-your-machine/
+- Meta Contribute with Testing: https://make.wordpress.org/meta/handbook/getting-started/contribute-with-testing/
+- Meta Contribute with Docs: https://make.wordpress.org/meta/handbook/getting-started/contribute-with-docs/
+- Meta Contributor Day: https://make.wordpress.org/meta/handbook/getting-started/contributor-day/
 - Meta Tutorials and Guides: https://make.wordpress.org/meta/handbook/tutorials-guides/
+- Meta Contributing with Git: https://make.wordpress.org/meta/handbook/tutorials-guides/contributing-with-git/
+- Meta GitHub administration: https://make.wordpress.org/meta/handbook/tutorials-guides/github/
+- Meta Slack guide: https://make.wordpress.org/meta/handbook/tutorials-guides/slack/
+- Meta Subversion access: https://make.wordpress.org/meta/handbook/tutorials-guides/svn-access/
 - Meta Trac: https://meta.trac.wordpress.org/
 
 ## Gutenberg And Block Editor
@@ -54,6 +62,7 @@ Before producing exact commands or process-critical guidance, verify:
 
 - Current repository branch names and package scripts.
 - Current Trac ticket status, milestone, component, owner, keywords, and attachments.
+- Current Meta project/component, source location, environment setup, tracker, SVN/GitHub access model, and Slack/admin permission path.
 - Current Gutenberg/GitHub labels, PR status, merge conflicts, package ownership, package scripts, and CI state.
 - Current release phase, feature freeze, beta, RC, or minor-release constraints.
 - Current security reporting process for suspected vulnerabilities.

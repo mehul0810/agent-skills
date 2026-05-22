@@ -1045,3 +1045,60 @@ Add a focused reusable reference that makes token-efficient reasoning, repositor
 - `git diff --check`: passed.
 - ASCII scan across `README.md`, `PLANNING_REPORT.md`, `wp-expert/`, `wp-contributor/`, and `shared/`: passed.
 - Route search confirmed `research-token-discipline.md` is wired into both skill routers and documented in `README.md`.
+
+## Meta Handbook Expertise Addition
+
+### Objective
+
+Strengthen `wp-contributor` with focused Meta Handbook expertise for WordPress.org, WordCamp.org, Make sites, project routing, Meta Trac, project-specific GitHub repositories, SVN/Git patch flow, local environments, Slack escalation, contributor-day work, docs/testing contribution paths, privacy, cache, and admin/access boundaries.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Expanded Meta workflow reference | Yes | Add | Meta contribution work spans WordPress.org properties, WordCamp.org, Make sites, directories, profiles, badges, handbooks, and infrastructure with different rules than Core or Gutenberg. |
+| Official Meta Handbook anchors | Yes | Add | The handbook is the current source for scope, projects, setup, Git, SVN, Slack, and access guidance. |
+| Project routing checklist | Yes | Add | Meta work can live in Meta Trac, project GitHub repos, SVN/Git mirrors, handbook pages, or project-specific environments. |
+| Local environment guidance | Yes | Add | The handbook covers older VVV/WordPress Meta Environment paths, newer project-bundled environments, and Dockerized project environments; the skill must not assume one setup fits all projects. |
+| Git/SVN patch discipline | Yes | Add | Meta projects are historically SVN-backed and often use Git locally with Trac patches, so patch root, `trunk`, and comment etiquette matter. |
+| Access/admin boundaries | Yes | Add | GitHub organization, SVN, Slack, and app/admin changes require documented permissions and should be routed rather than promised. |
+| Privacy/cache/deployment review points | Yes | Add | WordPress.org properties include profiles, badges, event data, moderation data, directories, search, navigation, and caches with public impact. |
+| Copy the whole Meta Handbook | No | Reject | The handbook changes; the skill should provide a compact playbook and official anchors rather than duplicate full pages. |
+
+### Updated Artifacts
+
+- `wp-contributor/SKILL.md`
+- `wp-contributor/references/meta-workflow.md`
+- `wp-contributor/references/official-anchors.md`
+- `wp-contributor/references/contribution-map.md`
+- `wp-contributor/references/testing-validation.md`
+- `wp-contributor/references/trac-github-triage.md`
+- `README.md`
+- `PLANNING_REPORT.md`
+
+### Source Anchors Checked
+
+- Meta Handbook: https://make.wordpress.org/meta/handbook/
+- About the Meta Team: https://make.wordpress.org/meta/handbook/about/
+- Meta Projects: https://make.wordpress.org/meta/handbook/about/projects/
+- Meta Getting Started: https://make.wordpress.org/meta/handbook/getting-started/
+- Meta Contribute with Code: https://make.wordpress.org/meta/handbook/getting-started/contribute-with-code/
+- Meta Setup: https://make.wordpress.org/meta/handbook/getting-started/contribute-with-code/setting-up-your-machine/
+- Meta Contribute with Testing: https://make.wordpress.org/meta/handbook/getting-started/contribute-with-testing/
+- Meta Contribute with Docs: https://make.wordpress.org/meta/handbook/getting-started/contribute-with-docs/
+- Meta Contributing with Git: https://make.wordpress.org/meta/handbook/tutorials-guides/contributing-with-git/
+- Meta GitHub administration: https://make.wordpress.org/meta/handbook/tutorials-guides/github/
+- Meta Slack guide: https://make.wordpress.org/meta/handbook/tutorials-guides/slack/
+- Meta Subversion access: https://make.wordpress.org/meta/handbook/tutorials-guides/svn-access/
+
+### Validation Results
+
+- `SKILL.md` frontmatter checks: passed for `wp-contributor` and `wp-expert`.
+- `wp-contributor` description length check: passed at 529 characters.
+- `wp-expert` description length check: passed at 683 characters.
+- `quick_validate.py wp-contributor`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wp-contributor`: passed.
+- `quick_validate.py wp-expert`: passed.
+- `git diff --check`: passed.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, `wp-expert/`, `wp-contributor/`, and `shared/`: passed.
+- Route search confirmed Meta Handbook guidance is wired into `README.md`, `SKILL.md`, `meta-workflow.md`, `official-anchors.md`, `contribution-map.md`, `testing-validation.md`, and `trac-github-triage.md`.

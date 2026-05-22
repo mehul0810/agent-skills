@@ -16,9 +16,9 @@ Gutenberg uses GitHub for issue and PR management. Still consider Core sync and 
 
 ## Meta
 
-Use Meta workflow for WordPress.org, WordCamp.org, Make sites, developer.wordpress.org, plugin/theme directories, Pattern Directory, Learn WordPress, global.wordpress.org, jobs.wordpress.net, profile/badge behavior, and project infrastructure maintained by the Meta team.
+Use Meta workflow for WordPress.org, WordCamp.org, Make sites, developer.wordpress.org, plugin/theme directories, Pattern Directory, Learn WordPress, global.wordpress.org, jobs.wordpress.net, profile/badge behavior, Slack integrations, handbooks, and project infrastructure maintained by the Meta team.
 
-Meta issues usually belong in Meta Trac or a project-specific GitHub repository. Confirm the component before opening or moving tickets.
+Meta issues usually belong in Meta Trac or a project-specific GitHub repository listed by the Meta Handbook/project docs. Confirm the component, source location, environment, and tracker before opening or moving tickets.
 
 ## Docs, Test, Accessibility, Performance, i18n
 

@@ -52,6 +52,13 @@ For Gutenberg PRs:
 - Provide manual testing steps for editor changes.
 - Include screenshots/videos for UI when useful, but do not let visuals replace test evidence.
 
+For Meta tickets or PRs:
+
+- Confirm the Meta Handbook/project docs identify the correct tracker: Meta Trac or a project-specific GitHub repository.
+- Include the affected property, component, source path/repository, local environment, reproduction steps, and privacy/cache/deployment concerns.
+- For Trac patches, mention the attached patch filename in a comment; do not rely on attachment upload alone.
+- For access/admin requests, route through documented Meta Trac or `#meta` ownership paths instead of promising GitHub, SVN, or Slack permissions.
+
 ## Triage Output
 
 Use this shape:

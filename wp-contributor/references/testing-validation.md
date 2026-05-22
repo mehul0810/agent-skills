@@ -56,15 +56,18 @@ For editor UI changes, include keyboard and screen reader-relevant checks when p
 
 ## Meta Validation
 
-Meta validation is project-specific. First identify project docs, local environment, and deployment path.
+Meta validation is project-specific. First identify the Meta Handbook/project docs, tracker, source location, local environment, and deployment path.
 
 Typical checks:
 
 - PHP syntax and project linting.
 - JS/CSS build and linting if present.
-- Local reproduction against the relevant WordPress.org/WordCamp.org component.
+- Local reproduction against the relevant WordPress.org/WordCamp.org/Make/component environment.
+- Patch application from the correct root and diff path sanity for Trac attachments.
+- Manual browser testing with screenshots/video when public UI, navigation, directory, or handbook behavior changes.
 - Cache behavior and invalidation for directory/search/profile changes.
 - Privacy checks for profile, event, moderation, application, or attendee data.
+- Access and credential checks for SVN, GitHub organization, Slack channel, or admin-only changes; do not claim permissions that are not present.
 
 ## Evidence Format
 
