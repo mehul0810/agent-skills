@@ -1,6 +1,6 @@
 # Theme Development And Block Editor
 
-Use this for classic themes, block themes, child themes, `theme.json`, block editor compatible code generation, dynamic/static blocks, patterns, Query Loop behavior, and editor/frontend visual parity. For Ollie block theme or Ollie Pro work, also read `ollie-block-theme.md`. For Blocksy theme or Blocksy Pro work, also read `blocksy-theme.md`.
+Use this for classic themes, block themes, child themes, `theme.json`, block editor compatible code generation, dynamic/static blocks, patterns, Query Loop behavior, and editor/frontend visual parity. For converting a provided design into a custom editable FSE/block theme, also read `custom-block-theme-from-design.md`. For Ollie block theme or Ollie Pro work, also read `ollie-block-theme.md`. For Blocksy theme or Blocksy Pro work, also read `blocksy-theme.md`.
 
 ## Official Anchors
 
@@ -34,6 +34,8 @@ Before editing theme behavior, inspect:
 - Use templates and parts for structure, patterns for reusable content composition, and CSS for gaps `theme.json` cannot express.
 - Prefer style engine/theme supports over custom CSS when it preserves editor/frontend parity.
 - Do not fight the Site Editor. Build with core blocks, supports, patterns, and constrained custom blocks.
+- For design-to-theme work, map the design to `theme.json`, core blocks, patterns, template parts, and block styles before creating custom blocks.
+- Do not use Custom HTML blocks or Shortcode blocks to implement new block theme design sections; create a proper pattern, template part, block style/variation, or custom block instead.
 
 ## Block Editor Development
 

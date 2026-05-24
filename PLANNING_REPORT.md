@@ -1198,3 +1198,60 @@ Add focused `wp-expert` expertise from the WordPress.org release lessons: SVN-fi
 - `git diff --check`: passed.
 - ASCII scan across `README.md`, `PLANNING_REPORT.md`, `wp-expert/`, `wp-contributor/`, and `shared/`: passed.
 - Route search confirmed WordPress.org release operations are wired into `README.md`, `SKILL.md`, `agents/openai.yaml`, `plugin-guidelines-review.md`, `deployment-release-resilience.md`, `production-dependency-discipline.md`, and the new reference.
+
+## Design-To-FSE Custom Block Theme Addition
+
+### Objective
+
+Strengthen `wp-expert` for building custom block-based Full Site Editing themes from provided designs, with modular admin-editable architecture, core-block-first mapping, no Custom HTML/Shortcode blocks for new design implementation, and clear rules for when a custom block is actually necessary.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Dedicated design-to-FSE reference | Yes | Add | The existing theme guidance lacked a concrete workflow for translating visual designs into editable block theme architecture. |
+| Design-to-theme audit | Yes | Add | A successful FSE build needs templates, parts, patterns, tokens, content model, and interactions mapped before implementation. |
+| Block mapping ladder | Yes | Add | Core blocks, `theme.json`, patterns, template parts, block styles, and variations should be exhausted before creating custom blocks. |
+| No Custom HTML/Shortcode blocks rule | Yes | Add | These blocks undermine admin editability, validation, accessibility, and maintainability for new design implementation. |
+| Custom block decision matrix | Yes | Add | Custom blocks are still needed for structured editing, dynamic data, interactions, constrained repeaters, and stable semantics. |
+| Admin editability model | Yes | Add | The skill now distinguishes templates, template parts, patterns, synced patterns, locking, allowed blocks, and inspector/document settings. |
+| Theme file architecture and validation checklist | Yes | Add | Durable FSE builds need clear file locations, editor/frontend parity checks, responsive QA, a11y checks, and release packaging checks. |
+| Force every unique design section into a custom block | No | Reject | Many sections should be patterns or block styles so editors can keep using native WordPress controls. |
+| Allow raw HTML or shortcodes for speed | No | Reject | It may appear faster, but it creates brittle, non-native, less editable themes and defeats the FSE goal. |
+
+### Added Artifact
+
+- `wp-expert/references/custom-block-theme-from-design.md`
+
+### Updated Artifacts
+
+- `wp-expert/SKILL.md`
+- `wp-expert/agents/openai.yaml`
+- `wp-expert/references/theme-and-block-editor.md`
+- `README.md`
+- `PLANNING_REPORT.md`
+
+### Source Anchors Checked
+
+- Theme Handbook: https://developer.wordpress.org/themes/
+- Global Settings and Styles: https://developer.wordpress.org/themes/global-settings-and-styles/
+- Global Settings and Styles overview: https://developer.wordpress.org/themes/core-concepts/global-settings-and-styles/
+- Theme styles: https://developer.wordpress.org/themes/global-settings-and-styles/styles/
+- Template parts: https://developer.wordpress.org/themes/templates/template-parts/
+- Style variations: https://developer.wordpress.org/themes/global-settings-and-styles/style-variations/
+- Block style variations: https://developer.wordpress.org/themes/features/block-style-variations/
+- theme.json reference: https://developer.wordpress.org/block-editor/reference-guides/theme-json-reference/
+- Create Block: https://developer.wordpress.org/block-editor/getting-started/devenv/get-started-with-create-block/
+
+### Validation Results
+
+- `SKILL.md` frontmatter checks: passed for `wp-expert` and `wp-contributor`.
+- `wp-expert` description length check: passed at 776 characters.
+- `wp-contributor` description length check: passed at 560 characters.
+- `custom-block-theme-from-design.md` path resolution from repo and installed symlink paths: passed.
+- `quick_validate.py wp-expert`: passed.
+- `quick_validate.py /Users/mehulgohil/.codex/skills/wp-expert`: passed.
+- `quick_validate.py wp-contributor`: passed.
+- `git diff --check`: passed.
+- ASCII scan across `README.md`, `PLANNING_REPORT.md`, `wp-expert/`, `wp-contributor/`, and `shared/`: passed.
+- Route search confirmed design-to-FSE guidance is wired into `README.md`, `SKILL.md`, `agents/openai.yaml`, `theme-and-block-editor.md`, and the new reference.
