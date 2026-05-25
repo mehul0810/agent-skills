@@ -77,6 +77,32 @@ Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugi
 Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-develop, WordPress.org, WordCamp.org, Trac tickets, GitHub PRs, patches, tests, docs, standards, triage, release/backport work, or contributor communication.
 ```
 
+## Global Symlink Install (Codex + Claude)
+
+This repo uses Agent Skills format (`SKILL.md`) so the same skill folders work in both Codex and Claude Code.
+
+Run:
+
+```bash
+bash scripts/install-global-skill-links.sh
+```
+
+What it does:
+
+- Validates each skill folder has compatible frontmatter (`name`, `description`) and naming.
+- Symlinks skills to Codex global path: `${CODEX_HOME:-~/.codex}/skills/<skill-name>`.
+- Symlinks skills to Claude global path: `${CLAUDE_HOME:-~/.claude}/skills/<skill-name>`.
+
+Optional:
+
+```bash
+# Replace existing non-symlink targets
+bash scripts/install-global-skill-links.sh --force
+
+# Link only selected skills
+bash scripts/install-global-skill-links.sh wp-expert wp-contributor
+```
+
 ## Design
 
 The skills are intentionally token-efficient:
