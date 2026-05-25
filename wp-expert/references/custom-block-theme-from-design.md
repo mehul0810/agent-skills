@@ -12,6 +12,7 @@ Use this when converting a Figma/static/brand design into a custom block-based F
 - Style variations: `https://developer.wordpress.org/themes/global-settings-and-styles/style-variations/`
 - Block style variations: `https://developer.wordpress.org/themes/features/block-style-variations/`
 - `theme.json` reference: `https://developer.wordpress.org/block-editor/reference-guides/theme-json-reference/`
+- Block Bindings API: `https://developer.wordpress.org/block-editor/reference-guides/block-api/block-bindings/`
 - Create Block: `https://developer.wordpress.org/block-editor/getting-started/devenv/get-started-with-create-block/`
 
 ## Non-Negotiables
@@ -39,11 +40,12 @@ Use the first layer that satisfies design fidelity, editability, accessibility, 
 
 1. `theme.json`: global styles, presets, layout sizes, block settings, spacing, typography, color, shadows, borders, custom properties, template part registration, and style variations.
 2. Core blocks: Group, Row, Stack, Columns, Cover, Media & Text, Image, Gallery, Heading, Paragraph, Buttons, Navigation, Site Logo, Site Title, Query Loop, Post Template, Post Terms, Featured Image, Template Part, and Post Content.
-3. Block supports and styles: spacing, dimensions, layout, color, typography, border, shadow, alignment, block style variations, and scoped CSS for gaps that `theme.json` cannot express cleanly.
-4. Patterns: reusable section markup in `/patterns`, pattern categories, clear titles, viewport width metadata, and starter layouts editors can insert and modify.
-5. Template parts and templates: reusable block markup in `/parts` and top-level templates in `/templates`; register parts in `theme.json` so they appear cleanly in the Site Editor.
-6. Block variations or block styles: use when a core block can handle the content model but needs a named preset or controlled variation.
-7. Custom block: use only when core blocks/patterns cannot provide the required structured editing, dynamic rendering, interaction, data source, validation model, or accessibility semantics.
+3. Block bindings: bind supported core block attributes to post meta, post data, term data, pattern overrides, or custom binding sources when the need is dynamic data mapping, not a full custom editing UI.
+4. Block supports and styles: spacing, dimensions, layout, color, typography, border, shadow, alignment, block style variations, and scoped CSS for gaps that `theme.json` cannot express cleanly.
+5. Patterns: reusable section markup in `/patterns`, pattern categories, clear titles, viewport width metadata, and starter layouts editors can insert and modify.
+6. Template parts and templates: reusable block markup in `/parts` and top-level templates in `/templates`; register parts in `theme.json` so they appear cleanly in the Site Editor.
+7. Block variations or block styles: use when a core block can handle the content model but needs a named preset or controlled variation.
+8. Custom block: use only when core blocks/patterns/bindings cannot provide the required structured editing, dynamic rendering, interaction, data source, validation model, or accessibility semantics.
 
 ## When To Create A Custom Block
 
@@ -58,9 +60,17 @@ Create a custom block when at least one is true:
 Do not create a custom block when:
 
 - A pattern made of core blocks can satisfy the section.
+- A core block plus Block Bindings can satisfy the data model with stable editor UX.
 - The only gap is spacing, color, border, radius, shadow, or responsive behavior that can be solved with `theme.json`, block supports, block styles, or scoped CSS.
 - The block would simply wrap a hard-coded design with no meaningful editor controls.
 - A shortcode or Custom HTML block is being used to avoid proper block/theme architecture.
+
+## Block Bindings Guidance
+
+- Use Block Bindings for dynamic text/media/link/date fields that map cleanly to supported core block attributes and keep the editing surface native.
+- Register source data with explicit schema and permissions. For post meta sources, expose only intended keys and keep sensitive keys unbound.
+- Validate compatibility per WordPress version and supported block attributes before committing to bindings as the primary model.
+- Promote a custom block only when bindings cannot support required structure, editorial constraints, or interaction semantics.
 
 ## Admin Editability Model
 
@@ -70,6 +80,7 @@ Do not create a custom block when:
 - Use block locking, allowed blocks, InnerBlocks templates, and template locking to protect layout while preserving content editability.
 - Prefer document/sidebar panels for document-level settings and inspector controls for block-specific settings.
 - Keep classic editor meta boxes out of the block editor unless preserving a legacy compatibility contract.
+- When classic editor support requires meta boxes, register/show them for classic screens and keep them hidden in the block editor UI.
 
 ## Theme File Architecture
 
@@ -113,7 +124,8 @@ Guidelines:
 4. Replace fragile sections with block styles/variations or custom blocks only when the decision matrix justifies it.
 5. Register template parts and pattern categories so the admin UI is understandable.
 6. Build custom blocks with `block.json`, `useBlockProps`, meaningful attributes, editor preview, frontend rendering, and accessibility baked in.
-7. Validate editor editability, frontend fidelity, responsive behavior, accessibility, performance, and release packaging.
+7. Add visual parity checks for editor canvas, Site Editor preview, and frontend render states across breakpoints.
+8. Validate editor editability, frontend fidelity, responsive behavior, accessibility, performance, and release packaging.
 
 ## Validation Checklist
 
@@ -122,6 +134,7 @@ Guidelines:
 - Header, footer, navigation, templates, template parts, and patterns appear with clear labels.
 - Core block patterns remain valid; no invalid block warnings appear after save/reload.
 - Editor canvas, frontend, and preview match within acceptable design tolerance.
+- Dynamic fields mapped through Block Bindings render correctly in editor and frontend with expected empty/error states.
 - Mobile, tablet, desktop, and wide layouts are verified.
 - Keyboard navigation, focus states, landmarks, headings, alt text, contrast, and reduced motion are checked.
 - Query Loop and dynamic content states cover empty, long content, missing image, and translated text.

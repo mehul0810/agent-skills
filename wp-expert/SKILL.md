@@ -22,62 +22,44 @@ Use this skill to operate like a principal WordPress engineer: find the real run
 
 ## Fast Workflow
 
-1. Classify the task: requirements/planning, estimate/SOW, review, duplicate-code/modularity review, plugin, Plugin Directory guidelines, WordPress.org release operations, custom block theme from design, changelog/release notes, release contract/backward compatibility, theme, Ollie block theme/Ollie Pro, Blocksy theme/Blocksy Pro, block/editor, React with WordPress, third-party API integration, runtime/toolchain version policy, WordPress Design System, product UI/UX, responsive architecture, admin UX, UI polish, performance, security, VIP, observability/incident, edge caching/CDN, load testing/capacity, Enterprise Search/content scale, deployment/release, migration/editorial scale, accessibility/i18n, monorepo, build tooling, troubleshooting, refactor, CI/CD, or release.
+1. Classify into one primary lane: planning/delivery, build implementation, theme/block editor/FSE, product UI/UX, release/operations, enterprise scale/security, or troubleshooting/review.
 2. Map the runtime: locate bootstrap files, hooks, REST/AJAX routes, blocks, templates, build artifacts, autoload, cron/jobs, options, custom tables, and active theme/plugin overrides.
 3. Identify risk: authorization, data integrity, backward compatibility, cache behavior, migrations, multisite, layout regression, editor/frontend parity, and deployment safety.
-4. Select references from the router below; load only what the task requires.
+4. Select one primary reference from the router below and at most two supporting references.
 5. Implement narrowly unless the user requested planning/review only.
 6. Validate with the cheapest reliable gate first, then run deeper gates available in the repo.
 7. Report solution, files changed, validation, remaining risk, and next steps only when useful.
+
+## Reference Routing Rules
+
+- Load one primary reference first. Add supporting references only when a concrete gap remains.
+- Start with `references/reference-routing-map.md` when classification is ambiguous or spans multiple lanes.
+- Use `../shared/references/research-token-discipline.md` only for web-heavy, drift-prone, or broad exploration tasks.
+- Use `../shared/references/production-dependency-discipline.md` only for packaging, CI, release, and deployment tasks.
+- For code reviews, start with `references/review-checklists.md`, then route deeper by confirmed risk area.
 
 ## Reference Router
 
 Read the smallest relevant set:
 
+- `references/reference-routing-map.md`: deterministic task-to-reference selection matrix for choosing primary and supporting references.
 - `../shared/references/research-token-discipline.md`: token-efficient reasoning, repo exploration, web search, source selection, validation, and output discipline.
 - `../shared/references/production-dependency-discipline.md`: Composer/npm production artifact hygiene, `require-dev`/`devDependencies` boundaries, production installs, and release ZIP/deploy checks.
-- `references/plugin-architecture.md`: plugin development, service boundaries, REST/AJAX, custom tables, migrations, async jobs, settings, releases.
-- `references/third-party-api-integrations.md`: external API docs discovery, REST/GraphQL/SOAP/webhooks/SDKs, auth, rate limits, retries, idempotency, secrets, testing, provider operations.
-- `references/plugin-guidelines-review.md`: WordPress.org Plugin Directory guidelines, block directory rules, readme policy, licensing, tracking, trademarks, submission blockers.
-- `references/wordpress-org-release-operations.md`: WordPress.org SVN-first releases, 10up deploy action behavior, Plugin Check fallbacks, production vendor, assets, GitHub ZIPs, and release verification.
-- `references/changelog-release-notes.md`: public/internal changelogs, unreleased feature aggregation, WordPress.org readme changelogs, SemVer impact, security/migration/developer release notes.
-- `references/release-contract-compatibility.md`: when to preserve backward compatibility, when to delete unreleased draft shapes, release-state matrix, migrations, shims, public contracts.
-- `references/custom-block-theme-from-design.md`: design-to-FSE custom block theme architecture, admin-editable templates/parts/patterns, no Custom HTML/shortcode blocks, and custom-block decision matrix.
-- `references/theme-and-block-editor.md`: classic/block themes, `theme.json`, block editor code, dynamic blocks, Query Loop, patterns, editor/frontend parity.
-- `references/ollie-block-theme.md`: Ollie block theme, Ollie Pro, child themes, Site Editor, Pro pattern library, setup wizard, extensions, Menu Designer, WooCommerce, and troubleshooting.
-- `references/blocksy-theme.md`: Blocksy theme, Blocksy Companion, Blocksy Pro, Customizer, header/footer builders, Content Blocks, Dynamic Data, Shop Extra, starter sites, licensing, and troubleshooting.
-- `references/react-wordpress-enterprise.md`: React in WordPress admin/editor/frontend/headless contexts, dependency extraction, REST/data stores, WPDS UI, accessibility, tests, enterprise release standards.
-- `references/runtime-toolchain-version-policy.md`: selecting minimum PHP/Node/npm/Composer/database/tool versions that are stable, actively maintained, compatible, and not EOL.
-- `references/ui-ux-pro-for-wordpress.md`: product-grade UX strategy, visual QA, interaction states, forms, dashboards, responsive polish, WordPress UI quality bar.
-- `references/delivery-excellence.md`: requirements, PRD/SOW, estimates, milestones, mobile-first architecture, token discipline, confirmation gates, GitHub enterprise workflow, tests, code comments.
-- `references/wordpress-design-system.md`: WordPress-native UI, `@wordpress/components`, design tokens, Figma-to-code mapping, accessibility, component selection.
-- `references/admin-ux-and-ui.md`: admin screens, settings UX, onboarding, notices, list tables, accessibility, frontend/UI improvement brainstorming.
-- `references/review-checklists.md`: audits, PR review, security/performance/modularity/correctness findings.
-- `references/duplicate-code-modularity-review.md`: duplicate code discovery, modularity decisions, extraction rules, test improvements, maintainability and reliability review.
-- `references/performance-and-security.md`: high-risk performance, caching, database, security hardening, privacy, secrets, PII.
-- `references/enterprise-architecture.md`: enterprise design, data modeling, multisite, observability, backward compatibility, rollout/backout.
-- `references/vip-scale-playbook.md`: WordPress VIP, high traffic, platform constraints, cache layers, filesystem, PHPCS/VIPCS.
-- `references/observability-incident-response.md`: production incidents, SLOs, VIP Insights/New Relic/logs, slow queries, postmortems.
-- `references/edge-caching-cdn-architecture.md`: edge/page cache, CDN, static assets, personalization, purge strategy, stampede protection.
-- `references/load-testing-capacity-planning.md`: launch readiness, traffic models, VIP load-test coordination, peak-event planning.
-- `references/enterprise-search-content-scale.md`: VIP Enterprise Search, indexing, query offload, search relevance, content-scale queries.
-- `references/security-operations-compliance.md`: security operations, access governance, pen tests, audit evidence, privacy/compliance.
-- `references/deployment-release-resilience.md`: VIP releases, built artifacts, rollback, feature flags, smoke checks, cache/search impact.
-- `references/content-migration-editorial-scale.md`: large imports, media/database migration, redirects, editorial workflows, launch cutovers.
-- `references/accessibility-i18n-global-readiness.md`: WCAG, keyboard/screen reader, i18n/l10n, RTL, multilingual/global readiness.
-- `references/troubleshooting-operations.md`: production/debug triage, fatal errors, REST/AJAX issues, cron queues, mail, media, cache, multisite.
-- `references/standards-ci-github.md`: WPCS/VIPCS, PHPStan/Psalm, ESLint, PHPUnit, GitHub Actions, CI/CD, PR/release workflows.
-- `references/monorepo-engineering.md`: WordPress monorepos, shared tooling, multi-plugin/theme packages, generated artifacts, symlinks, path-filtered CI.
-- `references/build-tooling.md`: webpack, Composer, npm, dependency extraction, lockfiles, build scripts, package managers, release artifacts.
-- `references/wp-cli-automation.md`: WP-CLI, `wp eval`, activation probes, scaffold, search-replace, database and cron commands.
-- `references/implementation-patterns.md`: safe code snippets for REST, admin mutations, SQL, async token jobs, cache, assets, dynamic blocks.
-- `references/validation-commands.md`: command selection for linting, tests, activation checks, WP-CLI, Studio/local environments.
+- `references/delivery-excellence.md`, `references/changelog-release-notes.md`, `references/release-contract-compatibility.md`: requirements, PRD/SOW, estimates, milestones, changelog discipline, release contracts, and compatibility policy.
+- `references/plugin-architecture.md`, `references/third-party-api-integrations.md`, `references/implementation-patterns.md`: plugin architecture, API integrations, and safe implementation patterns.
+- `references/custom-block-theme-from-design.md`, `references/theme-and-block-editor.md`, `references/react-wordpress-enterprise.md`: FSE/theme/editor architecture and React integration patterns.
+- `references/ui-ux-pro-for-wordpress.md`, `references/wordpress-design-system.md`, `references/admin-ux-and-ui.md`, `references/visual-parity-regression.md`: UI/UX strategy, WPDS usage, admin UX patterns, and visual parity QA workflow.
+- `references/performance-and-security.md`, `references/enterprise-architecture.md`, `references/vip-scale-playbook.md`, `references/observability-incident-response.md`, `references/edge-caching-cdn-architecture.md`, `references/load-testing-capacity-planning.md`, `references/enterprise-search-content-scale.md`, `references/security-operations-compliance.md`: enterprise scale, reliability, security, and traffic-readiness playbooks.
+- `references/wordpress-org-release-operations.md`, `references/plugin-guidelines-review.md`, `references/deployment-release-resilience.md`, `references/runtime-toolchain-version-policy.md`, `references/standards-ci-github.md`, `references/build-tooling.md`, `references/monorepo-engineering.md`, `references/wp-cli-automation.md`, `references/content-migration-editorial-scale.md`: release operations, governance, CI/CD, tooling, monorepo ops, CLI automation, and migration execution.
+- `references/review-checklists.md`, `references/duplicate-code-modularity-review.md`, `references/troubleshooting-operations.md`, `references/accessibility-i18n-global-readiness.md`, `references/validation-commands.md`, `references/ollie-block-theme.md`, `references/blocksy-theme.md`: review rigor, modularity checks, troubleshooting, accessibility/i18n readiness, validation commands, and theme-specific expertise.
 
 Use scripts when helpful:
 
 ```bash
 bash /path/to/wp-expert/scripts/wp-context.sh /path/to/repo
 bash /path/to/wp-expert/scripts/wp-validate.sh /path/to/repo
+bash /path/to/wp-expert/scripts/fse-design-map.sh /path/to/design-map.md
+bash /path/to/wp-expert/scripts/wporg-release-verify.sh /path/to/svn-checkout 1.2.3
 ```
 
 ## Review Mode

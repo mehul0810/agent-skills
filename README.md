@@ -5,6 +5,7 @@ This repository contains WordPress-focused Codex skills:
 - `wp-expert`: principal-grade WordPress engineering for client, product, enterprise, VIP, plugin, theme, block editor, performance, security, and delivery work.
 - `wp-contributor`: official WordPress project contribution workflows for Core, Meta, Gutenberg, Trac, GitHub PRs, patches, testing, docs, triage, releases, and contributor communication.
 - `shared/references/research-token-discipline.md`: reusable token-efficient reasoning, repo exploration, web search, validation, and output discipline used by both skills.
+- `shared/references/production-dependency-discipline.md`: reusable Composer/npm production dependency hygiene used by both skills.
 
 ## wp-expert Coverage
 
@@ -19,11 +20,13 @@ This repository contains WordPress-focused Codex skills:
 - WordPress.org release operations: SVN-first verification, `trunk/`, `tags/<version>/`, `assets/`, production `vendor/`, Plugin Check fallbacks, 10up deploy behavior, and GitHub ZIP workflows.
 - Theme development, classic themes, block themes, and `theme.json`.
 - Design-to-FSE custom block themes: map designs to `theme.json`, core blocks, patterns, template parts, block styles, and custom blocks only when necessary, without Custom HTML or Shortcode blocks.
+- Block Bindings in block themes: map supported core block attributes to dynamic sources before creating custom blocks when native editability is sufficient.
 - Ollie block theme and Ollie Pro expertise: Site Editor workflows, child themes, design tokens, Pro pattern library, setup wizard, starter sites, extensions, Menu Designer, WooCommerce layouts, and troubleshooting.
 - Blocksy theme and Blocksy Pro expertise: Customizer workflows, Companion plugin, header/footer builders, Content Blocks, Dynamic Data, starter sites, Shop Extra/WooCommerce, Advanced Menu, Pro extensions, licensing, and troubleshooting.
 - Block editor compatible code generation and dynamic/static block work.
 - React with WordPress enterprise standards: admin/editor apps, frontend interactive blocks, headless boundaries, dependency extraction, REST contracts, `@wordpress/data`, `@wordpress/components`, testing, accessibility, and release artifacts.
 - Product-grade UI/UX improvement: visual QA, interaction states, forms, dashboards, responsive polish, and conversion clarity.
+- Visual parity regression workflow: deterministic screenshot/state checks across Site Editor, block editor canvas, and frontend surfaces.
 - Mobile-first responsive architecture for frontend/customer-facing flows and responsive-safe admin/editor interfaces.
 - WordPress Design System support: `@wordpress/components`, design tokens, Figma-to-code mapping, and accessibility.
 - Admin UX, settings screens, onboarding, list tables, notices, and frontend UI improvement.
@@ -82,6 +85,6 @@ The skills are intentionally token-efficient:
 - Each `references/` directory contains deeper playbooks loaded only when relevant.
 - The shared `research-token-discipline.md` reference keeps web/research behavior explicit without duplicating guidance across skills.
 - The shared `production-dependency-discipline.md` reference keeps Composer/npm production-artifact hygiene consistent across both skills.
-- Each `scripts/` directory contains read-only discovery and validation helpers.
+- Each `scripts/` directory contains lightweight discovery, validation, and workflow helpers.
 
 See `PLANNING_REPORT.md` for the planning rationale and validation history.
