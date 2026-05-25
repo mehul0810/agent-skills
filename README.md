@@ -1,9 +1,10 @@
 # WP Expert Codex Skill Pack
 
-This repository contains WordPress-focused Codex skills:
+This repository contains WordPress and organic-search-focused Codex skills:
 
 - `wp-expert`: principal-grade WordPress engineering for client, product, enterprise, VIP, plugin, theme, block editor, performance, security, and delivery work.
 - `wp-contributor`: official WordPress project contribution workflows for Core, Meta, Gutenberg, Trac, GitHub PRs, patches, testing, docs, triage, releases, and contributor communication.
+- `content-writer`: organic search content writing for SEO, AEO, GEO, AI Overviews, AI Mode, answer engines, AI tools, briefs, outlines, drafts, audits, and content refreshes.
 - `shared/references/research-token-discipline.md`: reusable token-efficient reasoning, repo exploration, web search, validation, and output discipline used by both skills.
 - `shared/references/production-dependency-discipline.md`: reusable Composer/npm production dependency hygiene used by both skills.
 
@@ -48,6 +49,14 @@ This repository contains WordPress-focused Codex skills:
 - Enterprise GitHub workflows: issue triage, labels, milestones, scoped commits, PR descriptions, review response discipline.
 - Efficient tests and maintainable code comments/docblocks for onboarding and future regression prevention.
 - Webpack, Composer, npm, dependency extraction, lockfiles, build scripts, and release artifact packaging.
+- Small focused commits for separable validated changes, followed by pushing all task commits after completion when a remote is configured.
+
+## content-writer Coverage
+
+- SEO, AEO, GEO, AI Overviews, AI Mode, answer-engine, and AI-tool-aware content planning and writing.
+- Topic research, content briefs, outlines, drafts, landing pages, comparison pages, product/service pages, FAQs, metadata, content audits, and refresh plans.
+- Helpful people-first content, E-E-A-T/trust signals, search intent mapping, entity coverage, schema-aware copy, internal-link guidance, and source-grounded fact handling.
+- Organic search content for any topic, with stronger source standards for current, regulated, YMYL, technical, or high-stakes topics.
 
 ## wp-contributor Coverage
 
@@ -67,6 +76,7 @@ Install or reference the skill folders:
 ```text
 wp-expert/
 wp-contributor/
+content-writer/
 ```
 
 Default invocations:
@@ -75,6 +85,8 @@ Default invocations:
 Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugin, custom block/FSE theme from design, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, theme, Ollie block theme/Ollie Pro site, Blocksy theme/Blocksy Pro site, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
 
 Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-develop, WordPress.org, WordCamp.org, Trac tickets, GitHub PRs, patches, tests, docs, standards, triage, release/backport work, or contributor communication.
+
+Use $content-writer to research, brief, draft, rewrite, audit, or refresh organic-search-focused content for SEO, AEO, GEO, AI Overviews, answer engines, and AI tools.
 ```
 
 ## Quick Start
@@ -96,6 +108,7 @@ This symlinks the skills into `~/.claude/skills/`, where Claude Code discovers p
 ```text
 ~/.claude/skills/wp-expert/SKILL.md
 ~/.claude/skills/wp-contributor/SKILL.md
+~/.claude/skills/content-writer/SKILL.md
 ```
 
 Install selected skills only:
@@ -103,6 +116,7 @@ Install selected skills only:
 ```bash
 bash scripts/install-global-skill-links.sh wp-expert
 bash scripts/install-global-skill-links.sh wp-expert wp-contributor
+bash scripts/install-global-skill-links.sh content-writer
 ```
 
 Replace existing non-symlink targets if needed:
@@ -117,9 +131,10 @@ Verify Claude can see the skill files on disk:
 ls -la ~/.claude/skills
 test -f ~/.claude/skills/wp-expert/SKILL.md && echo "wp-expert installed"
 test -f ~/.claude/skills/wp-contributor/SKILL.md && echo "wp-contributor installed"
+test -f ~/.claude/skills/content-writer/SKILL.md && echo "content-writer installed"
 ```
 
-After first install, fully restart Claude Code if the skills do not appear immediately. Then run `/help` or explicitly ask Claude Code to use `wp-expert` or `wp-contributor`.
+After first install, fully restart Claude Code if the skills do not appear immediately. Then run `/help` or explicitly ask Claude Code to use `wp-expert`, `wp-contributor`, or `content-writer`.
 
 ### Install Globally For Codex
 
@@ -128,6 +143,7 @@ The same installer also symlinks skills into Codex's global skills directory:
 ```text
 ~/.codex/skills/wp-expert/SKILL.md
 ~/.codex/skills/wp-contributor/SKILL.md
+~/.codex/skills/content-writer/SKILL.md
 ```
 
 If `CODEX_HOME` or `CLAUDE_HOME` is set, the installer uses those locations instead of `~/.codex` or `~/.claude`.

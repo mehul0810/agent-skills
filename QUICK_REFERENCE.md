@@ -2,6 +2,22 @@
 
 Fast lookup for common WordPress tasks and which references to use.
 
+## Organic Search Content Tasks
+
+Use `$content-writer` for SEO, AEO, GEO, AI Overviews, answer engines, AI tools, content briefs, outlines, drafts, audits, and refreshes.
+
+**"I need an SEO/AEO/GEO content brief for a topic"**
+- Skill: `content-writer`
+- Load: `organic-search-content.md`
+
+**"Write an organic-search-focused article, landing page, comparison page, or FAQ"**
+- Skill: `content-writer`
+- Load: `organic-search-content.md`
+
+**"Audit or refresh existing content for AI Overview and organic search readiness"**
+- Skill: `content-writer`
+- Load: `organic-search-content.md`
+
 ## Common WordPress Tasks
 
 ### Plugin Development & Architecture

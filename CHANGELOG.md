@@ -4,6 +4,17 @@ All notable changes to the WP Expert skill pack are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- **Content Writer Skill**: SEO, AEO, GEO, AI Overviews, AI Mode, answer-engine, and AI-tool-aware content strategy, briefs, drafts, audits, refreshes, schema-aware copy, and source-grounded editorial workflows.
+- **Git Delivery Discipline**: wp-expert now explicitly prefers small focused commits for separable validated changes and pushing all task commits after completion when a remote is configured.
+
+### Changed
+
+- Validation tooling now discovers top-level skill directories dynamically so new skills are covered by reference and script checks.
+
 ## [1.0.0] - 2026-05-25
 
 ### Added

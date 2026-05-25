@@ -35,6 +35,16 @@ Examples:
 USAGE
 }
 
+find_skill_dirs() {
+  find "$repo_root" -mindepth 1 -maxdepth 1 -type d \
+    ! -name ".git" \
+    ! -name ".claude" \
+    ! -name "shared" \
+    ! -name "scripts" \
+    -exec test -f "{}/SKILL.md" \; \
+    -print | sort
+}
+
 log_error() {
   echo -e "${RED}✗ ERROR: $1${NC}" >&2
   ((errors++))
@@ -63,10 +73,12 @@ check_file_exists() {
 validate_skill_files() {
   echo "=== Checking SKILL.md files ==="
 
-  check_file_exists "$repo_root/wp-expert/SKILL.md"
-  check_file_exists "$repo_root/wp-contributor/SKILL.md"
+  local skill_dir
+  while IFS= read -r skill_dir; do
+    check_file_exists "$skill_dir/SKILL.md"
+  done < <(find_skill_dirs)
 
-  log_success "Both SKILL.md files exist"
+  log_success "SKILL.md files exist"
 }
 
 # Check for referenced files
@@ -94,7 +106,7 @@ validate_referenced_files() {
 
   # Also check shared references - resolve relative paths from each skill directory
   local skill_dir
-  for skill_dir in "$repo_root"/wp-expert "$repo_root"/wp-contributor; do
+  while IFS= read -r skill_dir; do
     grep -o '\.\./shared/references/[a-z0-9-]*\.md' "$skill_dir/SKILL.md" 2>/dev/null | sort -u | while read -r ref_path; do
       # Resolve relative to the skill directory
       local full_path="$skill_dir/$ref_path"
@@ -105,7 +117,7 @@ validate_referenced_files() {
         log_success "Found shared: $ref_path"
       fi
     done
-  done
+  done < <(find_skill_dirs)
 }
 
 # Validate reference routing map
@@ -146,7 +158,7 @@ validate_unreferenced_files() {
   echo "=== Checking for unreferenced reference files ==="
 
   local skill_dir
-  for skill_dir in "$repo_root"/wp-expert "$repo_root"/wp-contributor; do
+  while IFS= read -r skill_dir; do
     local skill_name
     skill_name="$(basename "$skill_dir")"
 
@@ -172,7 +184,7 @@ validate_unreferenced_files() {
         log_success "[$skill_name] Referenced: $ref_file"
       fi
     done
-  done
+  done < <(find_skill_dirs)
 }
 
 # Validate SKILL.md format
@@ -214,7 +226,7 @@ validate_reference_sizes() {
   echo "=== Checking reference file sizes ==="
 
   local skill_dir
-  for skill_dir in "$repo_root"/wp-expert "$repo_root"/wp-contributor; do
+  while IFS= read -r skill_dir; do
     local skill_name
     skill_name="$(basename "$skill_dir")"
 
@@ -237,7 +249,7 @@ validate_reference_sizes() {
         log_success "[$skill_name] Good size: $filename ($lines lines)"
       fi
     done
-  done
+  done < <(find_skill_dirs)
 }
 
 # Check helper scripts
@@ -245,29 +257,32 @@ validate_scripts() {
   echo ""
   echo "=== Validating helper scripts ==="
 
-  local script
-  for script in "$repo_root"/wp-expert/scripts/*.sh "$repo_root"/wp-contributor/scripts/*.sh; do
-    if [ ! -f "$script" ]; then
-      continue
-    fi
+  local skill_dir
+  while IFS= read -r skill_dir; do
+    local script
+    for script in "$skill_dir"/scripts/*.sh; do
+      if [ ! -f "$script" ]; then
+        continue
+      fi
 
-    local script_name
-    script_name="$(basename "$script")"
+      local script_name
+      script_name="$(basename "$script")"
 
-    # Check syntax
-    if bash -n "$script" 2>/dev/null; then
-      log_success "Script syntax OK: $script_name"
-    else
-      log_error "Script syntax error: $script_name"
-    fi
+      # Check syntax
+      if bash -n "$script" 2>/dev/null; then
+        log_success "Script syntax OK: $script_name"
+      else
+        log_error "Script syntax error: $script_name"
+      fi
 
-    # Check executable
-    if [ -x "$script" ]; then
-      log_success "Script is executable: $script_name"
-    else
-      log_warning "Script not executable: $script_name"
-    fi
-  done
+      # Check executable
+      if [ -x "$script" ]; then
+        log_success "Script is executable: $script_name"
+      else
+        log_warning "Script not executable: $script_name"
+      fi
+    done
+  done < <(find_skill_dirs)
 }
 
 # Check metadata files
