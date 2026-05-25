@@ -77,31 +77,70 @@ Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugi
 Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-develop, WordPress.org, WordCamp.org, Trac tickets, GitHub PRs, patches, tests, docs, standards, triage, release/backport work, or contributor communication.
 ```
 
-## Global Symlink Install (Codex + Claude)
+## Quick Start
 
-This repo uses Agent Skills format (`SKILL.md`) so the same skill folders work in both Codex and Claude Code.
+### Install Globally For Claude Code
 
-Run:
+Clone this repo and run the installer from the repo root:
 
 ```bash
+git clone https://github.com/mehul0810/wp-expert-codex-skill.git
+cd wp-expert-codex-skill
+
+# Install all skills globally.
 bash scripts/install-global-skill-links.sh
 ```
+
+This symlinks the skills into `~/.claude/skills/`, where Claude Code discovers personal/global skills across projects:
+
+```text
+~/.claude/skills/wp-expert/SKILL.md
+~/.claude/skills/wp-contributor/SKILL.md
+```
+
+Install selected skills only:
+
+```bash
+bash scripts/install-global-skill-links.sh wp-expert
+bash scripts/install-global-skill-links.sh wp-expert wp-contributor
+```
+
+Replace existing non-symlink targets if needed:
+
+```bash
+bash scripts/install-global-skill-links.sh --force
+```
+
+Verify Claude can see the skill files on disk:
+
+```bash
+ls -la ~/.claude/skills
+test -f ~/.claude/skills/wp-expert/SKILL.md && echo "wp-expert installed"
+test -f ~/.claude/skills/wp-contributor/SKILL.md && echo "wp-contributor installed"
+```
+
+After first install, fully restart Claude Code if the skills do not appear immediately. Then run `/help` or explicitly ask Claude Code to use `wp-expert` or `wp-contributor`.
+
+### Install Globally For Codex
+
+The same installer also symlinks skills into Codex's global skills directory:
+
+```text
+~/.codex/skills/wp-expert/SKILL.md
+~/.codex/skills/wp-contributor/SKILL.md
+```
+
+If `CODEX_HOME` or `CLAUDE_HOME` is set, the installer uses those locations instead of `~/.codex` or `~/.claude`.
+
+## Global Symlink Installer
+
+This repo uses Agent Skills format (`SKILL.md`) so the same skill folders work in both Codex and Claude Code.
 
 What it does:
 
 - Validates each skill folder has compatible frontmatter (`name`, `description`) and naming.
 - Symlinks skills to Codex global path: `${CODEX_HOME:-~/.codex}/skills/<skill-name>`.
 - Symlinks skills to Claude global path: `${CLAUDE_HOME:-~/.claude}/skills/<skill-name>`.
-
-Optional:
-
-```bash
-# Replace existing non-symlink targets
-bash scripts/install-global-skill-links.sh --force
-
-# Link only selected skills
-bash scripts/install-global-skill-links.sh wp-expert wp-contributor
-```
 
 ## Design
 
