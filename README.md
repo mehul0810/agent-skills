@@ -20,6 +20,15 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - Enterprise code-quality gate: generated and reviewed code must be modular, performant, secure, maintainable, testable, and validated against relevant rare/failure scenarios.
 - Planning drift control and risk-calibrated validation: scope guardrails, stop/ask triggers, and exact user-fed CSS/value changes that can be confirmed by diff without unnecessary visual verification.
 - Requirements analysis, PRDs, scope of work, technical breakdowns, Codex-aware estimates, milestones, and delivery buffers.
+- WooCommerce and commerce engineering: HPOS, Checkout Blocks, Store API, payment/shipping integrations, subscriptions, refunds, order operations, and high-scale store validation.
+- Headless and decoupled WordPress: REST vs WPGraphQL, Next.js/React frontends, previews, cache revalidation, media, redirects, and editorial workflows.
+- Advanced multisite and network engineering: network activation, domain mapping, cross-site data, tenant governance, provisioning, migrations, and cache boundaries.
+- Technical SEO engineering: canonicals, redirects, robots, sitemaps, structured data, crawl budget, Core Web Vitals, hreflang, and migration SEO checks.
+- Privacy, consent, and data governance: consent, telemetry, personal data export/erase, data retention, audit logs, PII minimization, and vendor disclosures.
+- Content modeling and information architecture: CPTs, taxonomies, meta, custom tables, block-based content models, editorial workflows, and scalable admin/search behavior.
+- Disaster recovery and business continuity: RTO/RPO, backups, restore drills, rollback, queue/search/cache recovery, incident communication, and release backout planning.
+- AI and LLM WordPress product engineering: provider abstraction, streaming UX, embeddings, structured outputs, cost controls, prompt safety, privacy, and auditability.
+- Marketplace and product readiness: freemium/pro boundaries, licensing, update servers, support diagnostics, WordPress.org compliance, onboarding, and release packaging.
 - WordPress.org Plugin Directory guideline review, block directory eligibility, readme policy, licensing, tracking, and trademark checks.
 - WordPress.org release operations: SVN-first verification, `trunk/`, `tags/<version>/`, `assets/`, production `vendor/`, Plugin Check fallbacks, 10up deploy behavior, and GitHub ZIP workflows.
 - Theme development, classic themes, block themes, and `theme.json`.
@@ -90,7 +99,7 @@ content-writer/
 Default invocations:
 
 ```text
-Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugin, custom block/FSE theme from design, style guide/design-token translation, custom theme, custom child theme, local HTTPS testing issue, planning drift-control issue, enterprise code-quality gate, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, theme, Ollie block theme/Ollie Pro site, Blocksy theme/Blocksy Pro site, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
+Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugin, WooCommerce store, headless/decoupled frontend, multisite network, technical SEO surface, privacy/data-governance flow, content model, disaster recovery plan, AI/LLM WordPress product, marketplace/freemium product, custom block/FSE theme from design, style guide/design-token translation, custom theme, custom child theme, local HTTPS testing issue, planning drift-control issue, enterprise code-quality gate, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, theme, Ollie block theme/Ollie Pro site, Blocksy theme/Blocksy Pro site, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
 
 Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-develop, WordPress.org, WordCamp.org, Trac tickets, GitHub PRs, patches, tests, docs, standards, enterprise code-quality gates, triage, release/backport work, or contributor communication.
 
@@ -176,5 +185,6 @@ The skills are intentionally token-efficient:
 - The shared `production-dependency-discipline.md` reference keeps Composer/npm production-artifact hygiene consistent across both skills.
 - The shared `enterprise-code-quality-gate.md` reference keeps modular, secure, performant, maintainable, test-backed engineering expectations consistent across code-oriented skills.
 - Each `scripts/` directory contains lightweight discovery, validation, and workflow helpers.
+- `skill-evals/wp-expert-scenarios.md` contains lightweight scenario prompts for checking routing and behavior after skill changes.
 
 See `PLANNING_REPORT.md` for the planning rationale and validation history.

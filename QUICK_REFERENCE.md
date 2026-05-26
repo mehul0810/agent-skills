@@ -31,6 +31,10 @@ Use `$content-writer` for SEO, AEO, GEO, AI Overviews, answer engines, AI tools,
 - Load: `third-party-api-integrations.md`
 - Supporting: `performance-and-security.md`
 
+**"I'm building or reviewing WooCommerce checkout, HPOS, payments, or orders"**
+- Load: `woocommerce-commerce-engineering.md`
+- Supporting: `performance-and-security.md`, `privacy-consent-data-governance.md`
+
 **"I need to refactor a plugin to reduce code duplication"**
 - Load: `duplicate-code-modularity-review.md`
 - Then: `implementation-patterns.md`
@@ -46,6 +50,14 @@ Use `$content-writer` for SEO, AEO, GEO, AI Overviews, answer engines, AI tools,
 **"Should I add a custom REST endpoint?"**
 - Load: `implementation-patterns.md` (REST section)
 - Also check: `standards-ci-github.md`
+
+**"I'm building an AI/LLM WordPress product or admin assistant"**
+- Load: `ai-llm-wordpress-product-engineering.md`
+- Supporting: `privacy-consent-data-governance.md`, `third-party-api-integrations.md`
+
+**"I'm preparing a freemium/pro plugin or marketplace product"**
+- Load: `marketplace-product-readiness.md`
+- Supporting: `plugin-guidelines-review.md`, `../shared/references/production-dependency-discipline.md`
 
 ---
 
@@ -87,6 +99,10 @@ Use `$content-writer` for SEO, AEO, GEO, AI Overviews, answer engines, AI tools,
 - Load: `react-wordpress-enterprise.md`
 - Supporting: `wordpress-design-system.md`, `standards-ci-github.md`
 
+**"I'm building a headless WordPress frontend"**
+- Load: `headless-decoupled-wordpress.md`
+- Supporting: `technical-seo-engineering.md`, `edge-caching-cdn-architecture.md`
+
 **"I need to test my WordPress React code"**
 - Load: `react-wordpress-enterprise.md` (testing section)
 - Also check: `validation-commands.md`
@@ -124,6 +140,10 @@ Use `$content-writer` for SEO, AEO, GEO, AI Overviews, answer engines, AI tools,
 - Load: `deployment-release-resilience.md`
 - Supporting: `release-contract-compatibility.md`
 
+**"I need a disaster recovery, restore, or business continuity plan"**
+- Load: `disaster-recovery-business-continuity.md`
+- Supporting: `deployment-release-resilience.md`, `observability-incident-response.md`
+
 ---
 
 ### Admin & UI/UX
@@ -154,6 +174,22 @@ Use `$content-writer` for SEO, AEO, GEO, AI Overviews, answer engines, AI tools,
 
 ---
 
+### SEO, Privacy & Content Architecture
+
+**"I need technical SEO implementation or review"**
+- Load: `technical-seo-engineering.md`
+- Supporting: `content-migration-editorial-scale.md`, `headless-decoupled-wordpress.md`
+
+**"I need to handle privacy, consent, telemetry, PII, export, or erasure"**
+- Load: `privacy-consent-data-governance.md`
+- Supporting: `security-operations-compliance.md`, `plugin-guidelines-review.md`
+
+**"Should this be a CPT, taxonomy, meta, custom table, pattern, block, or option?"**
+- Load: `content-modeling-information-architecture.md`
+- Supporting: `block-theme-architecture.md`, `enterprise-architecture.md`
+
+---
+
 ### Enterprise & Scale
 
 **"We're architecting for 100K+ requests/day"**
@@ -161,8 +197,8 @@ Use `$content-writer` for SEO, AEO, GEO, AI Overviews, answer engines, AI tools,
 - Supporting: `edge-caching-cdn-architecture.md`, `load-testing-capacity-planning.md`
 
 **"I need to set up multisite correctly"**
-- Load: `enterprise-architecture.md` (multisite section)
-- Then: `vip-scale-playbook.md` if on VIP
+- Load: `advanced-multisite-network-engineering.md`
+- Supporting: `enterprise-architecture.md`, `content-migration-editorial-scale.md`
 
 **"We need to migrate a large amount of content"**
 - Load: `content-migration-editorial-scale.md`
@@ -230,6 +266,13 @@ Use `$content-writer` for SEO, AEO, GEO, AI Overviews, answer engines, AI tools,
 | Enterprise code quality | enterprise-code-quality-gate.md | 6 min |
 | Planning drift control | planning-drift-control.md | 6 min |
 | API integration | third-party-api-integrations.md | 10 min |
+| WooCommerce commerce | woocommerce-commerce-engineering.md | 10 min |
+| Headless WordPress | headless-decoupled-wordpress.md | 10 min |
+| Technical SEO | technical-seo-engineering.md | 8 min |
+| Privacy/data governance | privacy-consent-data-governance.md | 8 min |
+| Content modeling | content-modeling-information-architecture.md | 8 min |
+| AI/LLM product | ai-llm-wordpress-product-engineering.md | 10 min |
+| Marketplace readiness | marketplace-product-readiness.md | 8 min |
 | Refactor code | duplicate-code-modularity-review.md | 8 min |
 | Style guide/tokens | style-guide-theme-translation.md | 8 min |
 | Design to FSE | custom-block-theme-from-design.md | 12 min |
@@ -242,6 +285,8 @@ Use `$content-writer` for SEO, AEO, GEO, AI Overviews, answer engines, AI tools,
 | Admin UI | admin-ux-and-ui.md | 8 min |
 | Accessibility | accessibility-i18n-global-readiness.md | 10 min |
 | VIP scale | vip-scale-playbook.md | 12 min |
+| Advanced multisite | advanced-multisite-network-engineering.md | 10 min |
+| Disaster recovery | disaster-recovery-business-continuity.md | 8 min |
 | Migration | content-migration-editorial-scale.md | 12 min |
 | Observability | observability-incident-response.md | 10 min |
 | CI/CD setup | standards-ci-github.md | 10 min |
