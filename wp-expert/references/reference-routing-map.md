@@ -34,7 +34,9 @@ Use this map to choose references with low context cost.
 | React in WordPress (admin/editor/frontend/headless) | `react-wordpress-enterprise.md` | `wordpress-design-system.md`, `standards-ci-github.md` |
 | UI/UX improvement, premium feel, or admin UX | `ui-ux-pro-for-wordpress.md` | `admin-ux-and-ui.md`, `visual-parity-regression.md` |
 | WordPress Design System implementation | `wordpress-design-system.md` | `admin-ux-and-ui.md`, `ui-ux-pro-for-wordpress.md` |
-| Performance/security hardening | `performance-and-security.md` | `enterprise-architecture.md`, `vip-scale-playbook.md` |
+| Performance/security quick triage | `performance-and-security.md` | `performance-profiling-scale-budgets.md`, `security-threat-modeling-review.md` |
+| Performance profiling, budgets, query/object-cache scale, Core Web Vitals, admin/editor speed | `performance-profiling-scale-budgets.md` | `edge-caching-cdn-architecture.md`, `load-testing-capacity-planning.md` |
+| Security threat model, sensitive endpoint review, REST/admin/upload/webhook/OAuth/MCP risk | `security-threat-modeling-review.md` | `security-operations-compliance.md`, `privacy-consent-data-governance.md` |
 | Privacy, consent, telemetry, PII, data retention, exporter/eraser support | `privacy-consent-data-governance.md` | `security-operations-compliance.md`, `plugin-guidelines-review.md` |
 | VIP/high-scale architecture decisions | `vip-scale-playbook.md` | `edge-caching-cdn-architecture.md`, `load-testing-capacity-planning.md` |
 | Advanced multisite, network activation, domain mapping, cross-site data, tenant governance | `advanced-multisite-network-engineering.md` | `enterprise-architecture.md`, `content-migration-editorial-scale.md` |

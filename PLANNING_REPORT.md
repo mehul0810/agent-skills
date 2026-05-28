@@ -1255,3 +1255,36 @@ Strengthen `wp-expert` for building custom block-based Full Site Editing themes 
 - `git diff --check`: passed.
 - ASCII scan across `README.md`, `PLANNING_REPORT.md`, `wp-expert/`, `wp-contributor/`, and `shared/`: passed.
 - Route search confirmed design-to-FSE guidance is wired into `README.md`, `SKILL.md`, `agents/openai.yaml`, `theme-and-block-editor.md`, and the new reference.
+
+## Security And Performance Expertise Expansion
+
+### Objective
+
+Deepen `wp-expert` security and performance behavior for enterprise and WP VIP-style projects where sensitive endpoints, high-traffic pages, admin/editor performance, and production reliability require explicit threat models, measurable budgets, and negative tests.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Dedicated security threat-modeling reference | Yes | Add | The existing hardening checklist was useful but too compressed for high-risk REST/admin/upload/webhook/OAuth/MCP work. |
+| Dedicated performance profiling and budgets reference | Yes | Add | Enterprise performance work needs baseline, budget, measurement, hot-path profiling, and re-measurement discipline. |
+| Keep `performance-and-security.md` as quick triage | Yes | Keep and route | This preserves token efficiency while giving agents a deeper path when risk requires it. |
+| Add test recipes for negative security cases | Yes | Add | Security work is not complete if denied, malformed, wrong-owner, replay, and redaction cases are untested. |
+| Add performance review output template | Yes | Add | Performance findings need path, trigger, evidence, impact, fix, and BC risk rather than generic "optimize" advice. |
+| Add hard-coded universal performance SLA values | No | Reject | Budgets must be calibrated to route, host, data volume, and project goals; the reference uses review triggers and measurement workflow. |
+
+### Added Artifacts
+
+- `wp-expert/references/security-threat-modeling-review.md`
+- `wp-expert/references/performance-profiling-scale-budgets.md`
+
+### Updated Artifacts
+
+- `wp-expert/SKILL.md`
+- `wp-expert/references/performance-and-security.md`
+- `wp-expert/references/reference-routing-map.md`
+- `wp-expert/references/review-checklists.md`
+- `README.md`
+- `QUICK_REFERENCE.md`
+- `CHANGELOG.md`
+- `skill-evals/wp-expert-scenarios.md`

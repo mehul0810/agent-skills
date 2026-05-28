@@ -49,6 +49,8 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - WordPress Design System support: `@wordpress/components`, design tokens, Figma-to-code mapping, and accessibility.
 - Admin UX, settings screens, onboarding, list tables, notices, and frontend UI improvement.
 - Performance, caching, database scale, security, privacy, secrets, and PII handling.
+- Performance profiling and scale budgets: baseline/measure hot paths, query count, object-cache behavior, REST/admin/editor latency, Core Web Vitals, async backpressure, and high-traffic acceptance checks.
+- Security threat modeling and review: assets, actors, trust boundaries, REST/admin/upload/webhook/OAuth/MCP entry points, capability/ownership checks, abuse cases, and negative security tests.
 - Enterprise architecture, multisite, migrations, async jobs, observability, and rollout/backout planning.
 - Observability and incident response: SLOs, VIP Insights, New Relic, logs, slow queries, runbooks, and postmortems.
 - Edge caching and CDN architecture: page cache, object cache, static assets, personalization, purge strategy, and stampede protection.
@@ -103,7 +105,7 @@ content-writer/
 Default invocations:
 
 ```text
-Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugin, WooCommerce store, headless/decoupled frontend, multisite network, technical SEO surface, privacy/data-governance flow, content model, disaster recovery plan, AI/LLM WordPress product, marketplace/freemium product, custom block/FSE theme from design, style guide/design-token translation, custom theme, custom child theme, local HTTPS testing issue, planning drift-control issue, enterprise code-quality gate, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, theme, Ollie block theme/Ollie Pro site, Blocksy theme/Blocksy Pro site, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
+Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugin, WooCommerce store, headless/decoupled frontend, multisite network, technical SEO surface, privacy/data-governance flow, content model, disaster recovery plan, AI/LLM WordPress product, marketplace/freemium product, custom block/FSE theme from design, style guide/design-token translation, custom theme, custom child theme, local HTTPS testing issue, planning drift-control issue, enterprise code-quality gate, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, threat model, performance profile, scale budget, theme, Ollie block theme/Ollie Pro site, Blocksy theme/Blocksy Pro site, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
 
 Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-develop, WordPress.org, WordCamp.org, Trac tickets, GitHub PRs, patches, tests, docs, standards, AI-assisted contribution guidelines, enterprise code-quality gates, triage, release/backport work, or contributor communication.
 

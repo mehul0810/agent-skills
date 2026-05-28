@@ -257,6 +257,14 @@ Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR,
 - Load: `vip-scale-playbook.md`
 - Supporting: `performance-and-security.md`, `security-operations-compliance.md`
 
+**"Threat model this REST/admin/upload/webhook feature"**
+- Load: `security-threat-modeling-review.md`
+- Supporting: `security-operations-compliance.md`
+
+**"Profile this hot path and set performance budgets"**
+- Load: `performance-profiling-scale-budgets.md`
+- Supporting: `edge-caching-cdn-architecture.md`, `load-testing-capacity-planning.md`
+
 ---
 
 ### Troubleshooting
@@ -296,6 +304,8 @@ Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR,
 | Custom block | theme-and-block-editor.md | 10 min |
 | React component | react-wordpress-enterprise.md | 12 min |
 | Performance | performance-and-security.md | 10 min |
+| Performance profiling/budgets | performance-profiling-scale-budgets.md | 10 min |
+| Security threat model | security-threat-modeling-review.md | 10 min |
 | Incident response | troubleshooting-operations.md | 8 min |
 | PR base/release branch safety | session-continuity-pr-discipline.md | 5 min |
 | Release plugin | wordpress-org-release-operations.md | 10 min |

@@ -1,6 +1,12 @@
 # Performance And Security Hardening
 
-Use this for speed, scalability, caching, database, secure coding, privacy, secrets, PII, and production hardening.
+Use this as the quick triage entry for speed, scalability, caching, database, secure coding, privacy, secrets, PII, and production hardening.
+
+Escalate to deeper playbooks when needed:
+
+- Use `performance-profiling-scale-budgets.md` when the task needs measurement, budgets, query profiling, Core Web Vitals, object-cache behavior, admin/editor speed, async backpressure, load readiness, or high-traffic acceptance criteria.
+- Use `security-threat-modeling-review.md` when the task touches public endpoints, REST/admin actions, uploads, webhooks, OAuth/API credentials, checkout/account flows, MCP/AI tools, privilege boundaries, or sensitive data.
+- Use `security-operations-compliance.md` for enterprise governance, penetration testing, access reviews, audit evidence, and incident/compliance deliverables.
 
 ## Performance Triage
 
@@ -80,3 +86,13 @@ For every security issue, include:
 - Exploit path or realistic abuse.
 - Data/action affected.
 - Compatible fix.
+- Negative test that would fail before the fix and pass after it.
+
+## Performance Review Output
+
+For every performance issue, include:
+
+- Path and trigger: route, screen, hook, job, template, role, data volume, traffic shape, and cache state.
+- Evidence: measured timing, query count, slow query, object-cache behavior, remote call, bundle size, or code path.
+- Impact: origin load, slow editor/admin, checkout/form risk, cache stampede, memory growth, queue backlog, or Core Web Vitals regression.
+- Compatible fix and validation budget.
