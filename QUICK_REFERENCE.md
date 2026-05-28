@@ -265,6 +265,10 @@ Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR,
 - Load: `performance-profiling-scale-budgets.md`
 - Supporting: `edge-caching-cdn-architecture.md`, `load-testing-capacity-planning.md`
 
+**"Review this custom database table architecture"**
+- Load: `database-table-architecture-review.md`
+- Supporting: `performance-profiling-scale-budgets.md`, `content-modeling-information-architecture.md`
+
 ---
 
 ### Troubleshooting
@@ -296,6 +300,7 @@ Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR,
 | Technical SEO | technical-seo-engineering.md | 8 min |
 | Privacy/data governance | privacy-consent-data-governance.md | 8 min |
 | Content modeling | content-modeling-information-architecture.md | 8 min |
+| Database table architecture | database-table-architecture-review.md | 10 min |
 | AI/LLM product | ai-llm-wordpress-product-engineering.md | 10 min |
 | Marketplace readiness | marketplace-product-readiness.md | 8 min |
 | Refactor code | duplicate-code-modularity-review.md | 8 min |

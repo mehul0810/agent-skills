@@ -1,6 +1,6 @@
 # Performance Profiling And Scale Budgets
 
-Use this for WordPress performance design, profiling, optimization, regression review, load-readiness, Core Web Vitals, admin/editor speed, database/query engineering, object-cache behavior, and high-traffic acceptance criteria.
+Use this for WordPress performance design, profiling, optimization, regression review, load-readiness, Core Web Vitals, admin/editor speed, database/query engineering, object-cache behavior, and high-traffic acceptance criteria. For custom table schema/index/migration architecture review, use `database-table-architecture-review.md`.
 
 ## Official Anchors
 

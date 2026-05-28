@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 - **Block/FSE Architecture Decisioning**: Dedicated guidance for theme vs plugin ownership, content/data contracts, editor ownership, templates, template parts, patterns, block styles, variations, bindings, custom blocks, dynamic rendering, and Interactivity API.
 - **Content Writer Skill**: SEO, AEO, GEO, AI Overviews, AI Mode, answer-engine, and AI-tool-aware content strategy, briefs, drafts, audits, refreshes, schema-aware copy, and source-grounded editorial workflows.
+- **Database Table Architecture Review**: Added wp-expert guidance for custom table decisioning, schema design, query-to-index mapping, migrations, multisite ownership, retention, privacy, concurrency, and maintainability review.
 - **Git Delivery Discipline**: wp-expert now explicitly prefers small focused commits for separable validated changes and pushing all task commits after completion when a remote is configured.
 - **Session Continuity And PR Branch Discipline**: Shared guidance for rehydrating repo context in new chats, checking release/hotfix/support branches, explicitly setting PR bases, and verifying PR `baseRefName` before reporting success.
 - **Style Guide And Theme Translation**: wp-expert now includes guidance for translating style guides, design patterns, and design tokens into WordPress-native custom themes, child themes, `theme.json`, patterns, template parts, block styles, and variations.

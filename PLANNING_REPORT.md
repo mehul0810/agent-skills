@@ -1288,3 +1288,36 @@ Deepen `wp-expert` security and performance behavior for enterprise and WP VIP-s
 - `QUICK_REFERENCE.md`
 - `CHANGELOG.md`
 - `skill-evals/wp-expert-scenarios.md`
+
+## Database Table Architecture Review Addition
+
+### Objective
+
+Add focused `wp-expert` expertise for reviewing custom database table architecture from performance, scalability, maintainability, WordPress portability, migration, multisite, retention, privacy, and data-integrity standpoints.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Dedicated custom table architecture reference | Yes | Add | Table review is broader than query performance; it needs schema ownership, lifecycle, migrations, retention, and maintainability guidance. |
+| Query-to-index mapping checklist | Yes | Add | Enterprise review must prove indexes match real read paths rather than guessed columns. |
+| Migration and lifecycle guidance | Yes | Add | Activation, upgrades, backfills, uninstall, and launched schema compatibility are common production failure points. |
+| Multisite and `$wpdb->prefix` guidance | Yes | Add | Per-site vs network/global table choices are expensive to change later and affect cache keys, unique keys, exports, and repair commands. |
+| Repository/query layer maintainability rules | Yes | Add | Custom table code becomes hard to maintain when raw SQL is scattered across controllers, cron, REST, and templates. |
+| Force every custom table to use database foreign keys | No | Reject | WordPress portability and core table behavior make application-level integrity, cleanup hooks, and repair tooling safer by default. |
+
+### Added Artifact
+
+- `wp-expert/references/database-table-architecture-review.md`
+
+### Updated Artifacts
+
+- `wp-expert/SKILL.md`
+- `wp-expert/references/reference-routing-map.md`
+- `wp-expert/references/content-modeling-information-architecture.md`
+- `wp-expert/references/performance-profiling-scale-budgets.md`
+- `wp-expert/references/review-checklists.md`
+- `README.md`
+- `QUICK_REFERENCE.md`
+- `CHANGELOG.md`
+- `skill-evals/wp-expert-scenarios.md`

@@ -21,6 +21,7 @@ Use this map to choose references with low context cost.
 | WooCommerce, commerce, checkout, HPOS, payments, subscriptions, order operations | `woocommerce-commerce-engineering.md` | `performance-and-security.md`, `privacy-consent-data-governance.md` |
 | Headless WordPress, Next.js, WPGraphQL, decoupled previews, frontend cache revalidation | `headless-decoupled-wordpress.md` | `technical-seo-engineering.md`, `edge-caching-cdn-architecture.md` |
 | Content modeling, information architecture, CPT/taxonomy/meta/custom-table decisions | `content-modeling-information-architecture.md` | `block-theme-architecture.md`, `enterprise-architecture.md` |
+| Database table architecture review, custom table schema, indexes, migrations, maintainability | `database-table-architecture-review.md` | `performance-profiling-scale-budgets.md`, `content-modeling-information-architecture.md` |
 | AI/LLM WordPress product, admin assistant, embeddings, provider abstraction | `ai-llm-wordpress-product-engineering.md` | `privacy-consent-data-governance.md`, `third-party-api-integrations.md` |
 | Marketplace readiness, freemium/pro, licensing, update server, support diagnostics | `marketplace-product-readiness.md` | `plugin-guidelines-review.md`, `production-dependency-discipline.md` |
 | WordPress.org plugin compliance review | `plugin-guidelines-review.md` | `changelog-release-notes.md`, `release-contract-compatibility.md` |

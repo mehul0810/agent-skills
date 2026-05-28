@@ -22,6 +22,7 @@ Use these lightweight scenarios to verify that `wp-expert` routes to the right r
 | Privacy review | "Review this plugin for consent, telemetry, and data erasure readiness." | `privacy-consent-data-governance.md` | Maps data inventory, consent, disclosures, exporters/erasers, retention, PII leaks. |
 | Security threat model | "Threat model this REST route that uploads files and triggers an external webhook." | `security-threat-modeling-review.md` | Maps assets, actors, entry points, trust boundaries, capability/ownership checks, SSRF/upload risks, webhook replay, and negative tests. |
 | Performance budget | "Profile this admin report and set scale budgets for a site with 500k posts." | `performance-profiling-scale-budgets.md` | Defines path/traffic/data model, baseline measurements, query/cache/admin latency budgets, structural fixes, and re-measurement plan. |
+| Database table architecture | "Review these custom tables for performance, scalability, and maintainability." | `database-table-architecture-review.md` | Checks custom-table fit, schema ownership, query-to-index mapping, migrations, multisite, retention, privacy, concurrency, and repository/test boundaries. |
 | Content model | "Should this feature use CPTs, taxonomies, blocks, post meta, or custom tables?" | `content-modeling-information-architecture.md` | Chooses by editorial workflow, query needs, lifecycle, permissions, scale. |
 | Disaster recovery | "Create a release backout and restore plan for a high-traffic launch." | `disaster-recovery-business-continuity.md` | Defines RTO/RPO, backup surfaces, rollback, restore checks, approvals. |
 | AI product | "Build an AI writing assistant inside wp-admin with streaming and provider fallback." | `ai-llm-wordpress-product-engineering.md` | Covers REST capabilities, secrets, privacy, cost limits, jobs, structured outputs, failure modes. |
@@ -34,6 +35,7 @@ Use these lightweight scenarios to verify that `wp-expert` routes to the right r
 - Did the agent avoid `admin-ajax.php` for new interactive endpoints when REST fits?
 - Did the agent threat-model sensitive endpoints and require negative security tests?
 - Did the agent measure or define budgets before claiming performance work is done?
+- Did the agent map custom table queries to indexes, migrations, ownership, retention, and maintainability before approving the schema?
 - Did the agent preserve premium/enterprise UI expectations?
 - Did the agent validate before completion and disclose any unrun checks?
 - Did the agent keep token use low by loading only the needed references?

@@ -1,6 +1,6 @@
 # Content Modeling And Information Architecture
 
-Use this for CPTs, taxonomies, metadata, custom tables, block-based content models, editorial workflows, permissions, search/index strategy, reusable patterns, and long-term content maintainability.
+Use this for CPTs, taxonomies, metadata, custom tables, block-based content models, editorial workflows, permissions, search/index strategy, reusable patterns, and long-term content maintainability. For custom table schema/index/migration review, use `database-table-architecture-review.md`.
 
 ## Current Official Anchors
 
@@ -29,6 +29,7 @@ Start with how editors and visitors think, not how developers want tables:
 - Use taxonomies when many items share a controlled vocabulary that drives navigation, filtering, permissions, or reporting.
 - Use post meta for bounded attributes; avoid broad unindexed meta queries on high-traffic paths.
 - Use custom tables for high-volume writes, complex queries, reporting, queues, logs, event data, or data that would abuse postmeta.
+- When custom tables are chosen, document expected cardinality, read/write paths, indexes, retention, migrations, multisite ownership, and repository boundaries using `database-table-architecture-review.md`.
 - Use options for configuration, not content or high-churn state.
 - Use reusable blocks/patterns/template parts for layout reuse; use CPTs or global styles/tokens for durable data and design systems.
 
