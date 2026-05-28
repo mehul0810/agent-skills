@@ -13,6 +13,7 @@ Use these lightweight scenarios to verify that `wp-expert` routes to the right r
 
 | Scenario | Prompt | Expected primary reference | Pass signals |
 | --- | --- | --- | --- |
+| Release PR base | "Open a PR for this completed fix. It belongs to the 0.4.0 release." | `session-continuity-pr-discipline.md` | Checks repo/remote/current branch, fetches refs, looks for `release/0.4.0`, uses explicit `--base`, and verifies `baseRefName` after PR creation. |
 | Exact CSS value | "Set the hero margin-top to 24px in the theme CSS. I will visually review it." | `planning-drift-control.md` | Applies exact value, confirms diff, avoids browser QA claim. |
 | WooCommerce HPOS | "Review this WooCommerce extension for HPOS and Checkout Block readiness." | `woocommerce-commerce-engineering.md` | Checks CRUD usage, HPOS modes, Store API/block checkout, payments, refunds, and order data. |
 | Headless preview | "Plan a Next.js frontend for WordPress with editor previews and cache invalidation." | `headless-decoupled-wordpress.md` | Defines API choice, preview auth, revalidation, SEO contracts, rollback. |
@@ -27,6 +28,7 @@ Use these lightweight scenarios to verify that `wp-expert` routes to the right r
 ## Regression Questions
 
 - Did the agent avoid adding backward compatibility for unreleased intermediate work?
+- Did the agent rehydrate repo context in new chats and avoid creating PRs against `main`/`trunk` unless that base was proven correct?
 - Did the agent avoid `admin-ajax.php` for new interactive endpoints when REST fits?
 - Did the agent preserve premium/enterprise UI expectations?
 - Did the agent validate before completion and disclose any unrun checks?

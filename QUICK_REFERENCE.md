@@ -233,6 +233,10 @@ Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR,
 - Load: `standards-ci-github.md` (CI/CD section)
 - Supporting: `build-tooling.md`
 
+**"Open a PR for this release-scoped fix"**
+- Load: `../shared/references/session-continuity-pr-discipline.md`
+- Supporting: `standards-ci-github.md`
+
 **"I need to manage a monorepo of WordPress plugins"**
 - Load: `monorepo-engineering.md`
 - Supporting: `build-tooling.md`, `standards-ci-github.md`
@@ -293,6 +297,7 @@ Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR,
 | React component | react-wordpress-enterprise.md | 12 min |
 | Performance | performance-and-security.md | 10 min |
 | Incident response | troubleshooting-operations.md | 8 min |
+| PR base/release branch safety | session-continuity-pr-discipline.md | 5 min |
 | Release plugin | wordpress-org-release-operations.md | 10 min |
 | Release notes | changelog-release-notes.md | 8 min |
 | Admin UI | admin-ux-and-ui.md | 8 min |
@@ -361,6 +366,11 @@ Use these for **any** task:
 **Production Dependencies**
 - Load: `../shared/references/production-dependency-discipline.md`
 - When: Composer/npm, CI artifacts, releases
+- Time: 5 min read
+
+**Session Continuity & PR Branch Safety**
+- Load: `../shared/references/session-continuity-pr-discipline.md`
+- When: New chats, resumed repo work, branch creation, release branches, PR creation
 - Time: 5 min read
 
 **Enterprise Code Quality**

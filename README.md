@@ -6,6 +6,7 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - `wp-contributor`: official WordPress project contribution workflows for Core, Meta, Gutenberg, Trac, GitHub PRs, patches, testing, docs, triage, releases, and contributor communication.
 - `content-writer`: organic search content writing for SEO, AEO, GEO, AI Overviews, AI Mode, answer engines, AI tools, briefs, outlines, drafts, audits, and content refreshes.
 - `shared/references/research-token-discipline.md`: reusable token-efficient reasoning, repo exploration, web search, validation, and output discipline used by both skills.
+- `shared/references/session-continuity-pr-discipline.md`: reusable new-chat context rehydration, release-branch detection, explicit PR base selection, and branch/PR safety used by code-oriented skills.
 - `shared/references/production-dependency-discipline.md`: reusable Composer/npm production dependency hygiene used by both skills.
 - `shared/references/enterprise-code-quality-gate.md`: reusable enterprise/WPVIP-grade code creation and review gate for modularity, performance, security, maintainability, observability, and rare-scenario tests.
 
@@ -63,6 +64,7 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - Troubleshooting, incident triage, WP-CLI probes, activation checks, and operational debugging.
 - Coding standards, linting, static analysis, tests, GitHub Actions, CI/CD, PR workflows, and releases.
 - Enterprise GitHub workflows: issue triage, labels, milestones, scoped commits, PR descriptions, review response discipline.
+- New-chat and PR branch discipline: rehydrate repo context, check release/hotfix/support branches, explicitly pass PR base branches, and verify PR `baseRefName` before reporting success.
 - Efficient tests and maintainable code comments/docblocks for onboarding and future regression prevention.
 - Webpack, Composer, npm, dependency extraction, lockfiles, build scripts, and release artifact packaging.
 - Small focused commits for separable validated changes, followed by pushing all task commits after completion when a remote is configured.
@@ -84,6 +86,7 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - Testing and validation strategy for Core, Meta, and Gutenberg using existing repo scripts first.
 - Enterprise code-quality gate for upstream patches and reviews: modularity, performance, security, maintainability, and rare/failure scenario coverage framed as concrete acceptance risks.
 - Production dependency hygiene for Composer and npm in contribution packaging, CI artifacts, release branches, and deploy checks.
+- New-chat and PR branch discipline for contribution work: verify trunk/main versus release/backport branches, explicitly set PR bases, and avoid defaulting to the wrong upstream branch.
 - WordPress coding standards, inline docs, i18n, accessibility, performance, privacy, security, dev-note, props, and commit-message guidance.
 - Release phase, backport, RC/minor-release caution, and private security disclosure workflows.
 
@@ -183,6 +186,7 @@ The skills are intentionally token-efficient:
 - Each `SKILL.md` contains the core operating workflow and reference router.
 - Each `references/` directory contains deeper playbooks loaded only when relevant.
 - The shared `research-token-discipline.md` reference keeps web/research behavior explicit without duplicating guidance across skills.
+- The shared `session-continuity-pr-discipline.md` reference keeps new-chat context recovery and PR base-branch safety explicit across code-oriented skills.
 - The shared `production-dependency-discipline.md` reference keeps Composer/npm production-artifact hygiene consistent across both skills.
 - The shared `enterprise-code-quality-gate.md` reference keeps modular, secure, performant, maintainable, test-backed engineering expectations consistent across code-oriented skills.
 - Each `scripts/` directory contains lightweight discovery, validation, and workflow helpers.

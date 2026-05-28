@@ -1,6 +1,6 @@
 ---
 name: wp-expert
-description: Principal-level WordPress engineering skill for plugins, themes, blocks/FSE, WooCommerce, headless/decoupled, multisite, technical SEO, privacy/consent, content modeling, disaster recovery, AI/LLM products, marketplace readiness, React, APIs, runtime versions, changelogs, release contracts, admin/WPDS/premium UX, VIP/enterprise scale, monorepos, build tooling, production dependency hygiene, WordPress.org releases, CI/CD, GitHub, WP-CLI, performance, security, observability, migrations, accessibility, i18n, troubleshooting, planning drift control, enterprise code quality, and token-efficient research. Use for WordPress PRD/SOW, estimates, implementation, review, tests, validation, refactoring, debugging, releases, and enterprise decisions.
+description: Principal-level WordPress engineering skill for plugins, themes, blocks/FSE, WooCommerce, headless/decoupled, multisite, technical SEO, privacy/consent, content modeling, disaster recovery, AI/LLM products, marketplace readiness, React, APIs, runtime versions, changelogs, release contracts, admin/WPDS/premium UX, VIP/enterprise scale, monorepos, build tooling, production dependency hygiene, WordPress.org releases, CI/CD, GitHub, PR/base-branch discipline, WP-CLI, performance, security, observability, migrations, accessibility, i18n, troubleshooting, planning drift control, enterprise code quality, and token-efficient research. Use for WordPress PRD/SOW, estimates, implementation, review, tests, validation, refactoring, debugging, releases, and enterprise decisions.
 ---
 
 # WP Expert
@@ -13,6 +13,7 @@ Use this skill to operate like a principal WordPress engineer: find the real run
 - Load only the reference needed for the task. Do not read every reference by default.
 - Prefer targeted `rg`, `git diff`, small file reads, and project scripts over broad context dumps.
 - Use `../shared/references/research-token-discipline.md` for web-heavy, drift-prone, ambiguous, or broad-exploration tasks to keep reasoning and source lookup token-efficient.
+- Use `../shared/references/session-continuity-pr-discipline.md` for new chats, resumed repo work, release branches, GitHub issues/PRs, and any branch/PR creation. Never create a PR until the intended base branch is proven and passed explicitly.
 - Use `../shared/references/production-dependency-discipline.md` for Composer/npm packaging, CI, release, and deploy tasks so dev-only packages never ship to production.
 - Use `../shared/references/enterprise-code-quality-gate.md` for code creation, refactoring, and reviews so generated or reviewed code meets modularity, performance, security, maintainability, and edge-case test expectations.
 - Use `references/planning-drift-control.md` for scope guardrails and risk-calibrated validation, especially when the user provides exact CSS values, units, copy, or configuration that should be applied directly and confirmed by diff instead of over-verified.
@@ -50,6 +51,7 @@ Read the smallest relevant set:
 
 - `references/reference-routing-map.md`: deterministic task-to-reference selection matrix for choosing primary and supporting references.
 - `../shared/references/research-token-discipline.md`: token-efficient reasoning, repo exploration, web search, source selection, validation, and output discipline.
+- `../shared/references/session-continuity-pr-discipline.md`: new-chat context rehydration, branch creation discipline, release-branch detection, explicit PR base selection, and post-create PR verification.
 - `../shared/references/production-dependency-discipline.md`: Composer/npm production artifact hygiene, `require-dev`/`devDependencies` boundaries, production installs, and release ZIP/deploy checks.
 - `../shared/references/enterprise-code-quality-gate.md`: enterprise/WPVIP-grade code creation and review gate for modularity, performance, security, maintainability, observability, and rare-scenario tests.
 - `references/delivery-excellence.md`, `references/planning-drift-control.md`, `references/changelog-release-notes.md`, `references/release-contract-compatibility.md`: requirements, PRD/SOW, estimates, milestones, scope drift control, risk-calibrated validation, changelog discipline, release contracts, and compatibility policy.

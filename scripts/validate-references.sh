@@ -138,6 +138,7 @@ validate_routing_map() {
 
     # Skip shared references (they're not in the routing map, they're in the SKILL.md)
     if [ "$ref_file" = "research-token-discipline.md" ] || \
+       [ "$ref_file" = "session-continuity-pr-discipline.md" ] || \
        [ "$ref_file" = "production-dependency-discipline.md" ] || \
        [ "$ref_file" = "enterprise-code-quality-gate.md" ]; then
       log_success "Routing map: $ref_file (shared, skipped)"

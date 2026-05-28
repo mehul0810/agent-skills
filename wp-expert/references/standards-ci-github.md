@@ -1,6 +1,6 @@
 # Coding Standards, Linting, CI/CD, And GitHub Workflows
 
-Use this for standards setup, linting, static analysis, tests, GitHub Actions, PR workflows, release pipelines, and CI troubleshooting. For duplicate-code and modularity checks, read `duplicate-code-modularity-review.md`. For changelogs and release notes, read `changelog-release-notes.md`. For runtime and tool minimums, also read `runtime-toolchain-version-policy.md`. For issue triage, PR descriptions, labels, estimates, milestones, and enterprise delivery workflow, also read `delivery-excellence.md`.
+Use this for standards setup, linting, static analysis, tests, GitHub Actions, PR workflows, release pipelines, and CI troubleshooting. For new chats, branch creation, release branch selection, and PR base safety, first apply `../shared/references/session-continuity-pr-discipline.md`. For duplicate-code and modularity checks, read `duplicate-code-modularity-review.md`. For changelogs and release notes, read `changelog-release-notes.md`. For runtime and tool minimums, also read `runtime-toolchain-version-policy.md`. For issue triage, PR descriptions, labels, estimates, milestones, and enterprise delivery workflow, also read `delivery-excellence.md`.
 
 ## Official Anchors
 
@@ -116,6 +116,12 @@ Adapt this to project scripts. Do not paste generic CI if the repo already has a
 
 ## GitHub PR Workflow
 
+- Rehydrate repo context at the start of a new chat or resumed task: verify Git root, remote, default branch, current branch, dirty tree, ahead/behind state, workflow docs, active issue/milestone, and release/hotfix/support branches.
+- Fetch remote refs before deciding a PR base when network access is available.
+- Never create a PR by relying on the GitHub default base. Explicitly choose and pass `--base`; `main`/`trunk` is only correct when evidence says it is the intended target.
+- If release, hotfix, support, milestone, or version-scoped branches exist, choose the matching branch as the PR base unless repo docs or the user explicitly say otherwise.
+- If the correct PR base is ambiguous and a wrong choice would cause release drift, stop and ask before creating the PR.
+- After creating a PR, verify `baseRefName` and `headRefName` before reporting success.
 - Check branch status and dirty tree before changes.
 - Link the relevant issue, milestone, and labels when the repo uses them.
 - Keep commits scoped and messages specific. For implementation tasks, create small focused commits for separately validated units of work when the change naturally splits.
