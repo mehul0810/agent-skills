@@ -1289,6 +1289,39 @@ Deepen `wp-expert` security and performance behavior for enterprise and WP VIP-s
 - `CHANGELOG.md`
 - `skill-evals/wp-expert-scenarios.md`
 
+## Test Coverage Discipline Addition
+
+### Objective
+
+Add focused `wp-expert` expertise so every implementation, PR, or review makes an explicit test-coverage decision, adds or updates tests when behavior risk warrants it, and treats missing coverage as a concrete review finding when a realistic regression could affect users, security, data, scale, editor behavior, or releases.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Dedicated test coverage discipline reference | Yes | Add | Existing guidance said tests matter, but did not force a per-change decision or missing-coverage review behavior. |
+| Risk-calibrated test need gate | Yes | Add | Not every docs/CSS/value change needs automated tests; behavior, security, data, API, migration, cache, editor, and release risks do. |
+| Coverage selection by change type | Yes | Add | Future agents need to pick PHPUnit, Brain Monkey, WP integration, JS unit, e2e, visual, or runtime validation based on risk. |
+| PR checklist for tests added/omitted | Yes | Add | PRs should explain tests added, existing coverage, commands run, or why tests were not needed. |
+| Missing coverage review severity | Yes | Add | Missing tests should be findings only when tied to concrete regressions, with severity based on impact. |
+| Require tests for every single textual or exact-value change | No | Reject | This would waste effort and contradict risk-calibrated validation for direct user-fed edits. |
+
+### Added Artifact
+
+- `wp-expert/references/test-coverage-discipline.md`
+
+### Updated Artifacts
+
+- `wp-expert/SKILL.md`
+- `wp-expert/references/reference-routing-map.md`
+- `wp-expert/references/review-checklists.md`
+- `wp-expert/references/standards-ci-github.md`
+- `wp-expert/references/validation-commands.md`
+- `README.md`
+- `QUICK_REFERENCE.md`
+- `CHANGELOG.md`
+- `skill-evals/wp-expert-scenarios.md`
+
 ## Database Table Architecture Review Addition
 
 ### Objective

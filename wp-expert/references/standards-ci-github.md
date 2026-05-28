@@ -1,6 +1,6 @@
 # Coding Standards, Linting, CI/CD, And GitHub Workflows
 
-Use this for standards setup, linting, static analysis, tests, GitHub Actions, PR workflows, release pipelines, and CI troubleshooting. For new chats, branch creation, release branch selection, and PR base safety, first apply `../shared/references/session-continuity-pr-discipline.md`. For duplicate-code and modularity checks, read `duplicate-code-modularity-review.md`. For changelogs and release notes, read `changelog-release-notes.md`. For runtime and tool minimums, also read `runtime-toolchain-version-policy.md`. For issue triage, PR descriptions, labels, estimates, milestones, and enterprise delivery workflow, also read `delivery-excellence.md`.
+Use this for standards setup, linting, static analysis, tests, GitHub Actions, PR workflows, release pipelines, and CI troubleshooting. For new chats, branch creation, release branch selection, and PR base safety, first apply `../shared/references/session-continuity-pr-discipline.md`. For test coverage decisions and missing-coverage review, read `test-coverage-discipline.md`. For duplicate-code and modularity checks, read `duplicate-code-modularity-review.md`. For changelogs and release notes, read `changelog-release-notes.md`. For runtime and tool minimums, also read `runtime-toolchain-version-policy.md`. For issue triage, PR descriptions, labels, estimates, milestones, and enterprise delivery workflow, also read `delivery-excellence.md`.
 
 ## Official Anchors
 
@@ -131,6 +131,7 @@ Adapt this to project scripts. Do not paste generic CI if the repo already has a
 - For review comments, reply to each actionable thread individually when requested.
 - Avoid PR bodies with unescaped shell-sensitive backticks when creating PRs through CLI.
 - Include summary, scope, validation commands, screenshots for UI, risks, deployment notes, rollback notes, and known gaps in PR descriptions.
+- Include what tests were added/updated, what existing tests cover the change, or why new automated tests were not needed.
 
 ## Release Workflow
 

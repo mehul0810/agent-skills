@@ -1,6 +1,6 @@
 # WordPress Review Checklists
 
-Use this for audits, PR review, plugin/theme review, VIP readiness review, and security/performance/modularity checks. For enterprise/WPVIP-grade code generation or review, also read `../shared/references/enterprise-code-quality-gate.md`. For duplicate-code and modularity reviews, also read `duplicate-code-modularity-review.md`. For high-risk security reviews, route to `security-threat-modeling-review.md`; for measured performance reviews, route to `performance-profiling-scale-budgets.md`; for custom table architecture reviews, route to `database-table-architecture-review.md`.
+Use this for audits, PR review, plugin/theme review, VIP readiness review, and security/performance/modularity checks. For enterprise/WPVIP-grade code generation or review, also read `../shared/references/enterprise-code-quality-gate.md`. For duplicate-code and modularity reviews, also read `duplicate-code-modularity-review.md`. For high-risk security reviews, route to `security-threat-modeling-review.md`; for measured performance reviews, route to `performance-profiling-scale-budgets.md`; for custom table architecture reviews, route to `database-table-architecture-review.md`; for missing or omitted tests, route to `test-coverage-discipline.md`.
 
 ## Triage Map
 
@@ -78,9 +78,11 @@ Look for production-scale failure modes:
 
 ## Tests And Rare Scenarios
 
+- Every PR/change should include an explicit test decision: tests added/updated, existing tests that cover the change, or a clear reason tests are not needed.
 - Confirm tests cover the behavior change, not only a trivial happy path.
 - Require edge/failure coverage when the risk exists: permission denied, invalid nonce, malformed input, empty/missing data, deleted dependencies, duplicate submissions, retries, race conditions, stale cache, multisite scope, migration boundaries, external API failures, editor reload, and accessibility-sensitive UI states.
 - If a rare scenario is plausible but untested, report the concrete production failure it could cause.
+- Flag missing test coverage as a finding when untested behavior could regress security, data integrity, migrations, REST/admin/editor contracts, cache invalidation, async jobs, custom tables, or public launched contracts.
 
 ## Block Editor And Frontend
 

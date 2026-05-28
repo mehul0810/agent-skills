@@ -63,6 +63,24 @@ composer phpstan
 
 Run only scripts that exist in `composer.json` or project docs. Do not introduce dependency updates unless needed.
 
+## Test Coverage Discipline
+
+For implementation and PR work, use `test-coverage-discipline.md` to decide whether the change needs new or updated tests. Prefer existing project scripts first:
+
+```bash
+composer test
+composer test:unit
+composer test:integration
+composer test:coverage
+./vendor/bin/phpunit
+./vendor/bin/phpunit --filter TestName
+npm test -- --runInBand
+npm run test:unit
+npm run test:e2e
+```
+
+If no test harness exists, state that explicitly and use the strongest available syntax/static/runtime validation. For high-risk behavior, add or propose the smallest maintainable test harness instead of silently relying on smoke checks.
+
 ## JavaScript And Blocks
 
 ```bash

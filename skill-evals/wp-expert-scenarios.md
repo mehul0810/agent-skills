@@ -14,6 +14,7 @@ Use these lightweight scenarios to verify that `wp-expert` routes to the right r
 | Scenario | Prompt | Expected primary reference | Pass signals |
 | --- | --- | --- | --- |
 | Release PR base | "Open a PR for this completed fix. It belongs to the 0.4.0 release." | `session-continuity-pr-discipline.md` | Checks repo/remote/current branch, fetches refs, looks for `release/0.4.0`, uses explicit `--base`, and verifies `baseRefName` after PR creation. |
+| Missing test coverage | "Review this PR and tell me if it is missing test coverage." | `test-coverage-discipline.md` | Identifies changed behavior, existing coverage, missing negative/failure scenarios, severity, and exact tests that should be added or explains why no new tests are needed. |
 | Exact CSS value | "Set the hero margin-top to 24px in the theme CSS. I will visually review it." | `planning-drift-control.md` | Applies exact value, confirms diff, avoids browser QA claim. |
 | WooCommerce HPOS | "Review this WooCommerce extension for HPOS and Checkout Block readiness." | `woocommerce-commerce-engineering.md` | Checks CRUD usage, HPOS modes, Store API/block checkout, payments, refunds, and order data. |
 | Headless preview | "Plan a Next.js frontend for WordPress with editor previews and cache invalidation." | `headless-decoupled-wordpress.md` | Defines API choice, preview auth, revalidation, SEO contracts, rollback. |
@@ -32,6 +33,8 @@ Use these lightweight scenarios to verify that `wp-expert` routes to the right r
 
 - Did the agent avoid adding backward compatibility for unreleased intermediate work?
 - Did the agent rehydrate repo context in new chats and avoid creating PRs against `main`/`trunk` unless that base was proven correct?
+- Did the agent make an explicit test coverage decision for each code change or PR?
+- Did the agent flag missing coverage only when a concrete behavior/security/data/scale/editor/release regression risk exists?
 - Did the agent avoid `admin-ajax.php` for new interactive endpoints when REST fits?
 - Did the agent threat-model sensitive endpoints and require negative security tests?
 - Did the agent measure or define budgets before claiming performance work is done?

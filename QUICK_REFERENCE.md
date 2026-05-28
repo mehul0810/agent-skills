@@ -269,6 +269,10 @@ Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR,
 - Load: `database-table-architecture-review.md`
 - Supporting: `performance-profiling-scale-budgets.md`, `content-modeling-information-architecture.md`
 
+**"Review whether this PR is missing test coverage"**
+- Load: `test-coverage-discipline.md`
+- Supporting: `review-checklists.md`, `validation-commands.md`
+
 ---
 
 ### Troubleshooting
@@ -293,6 +297,7 @@ Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR,
 |------|-------------------|-----------------|
 | New plugin | plugin-architecture.md | 10 min |
 | Enterprise code quality | enterprise-code-quality-gate.md | 6 min |
+| Test coverage decision | test-coverage-discipline.md | 8 min |
 | Planning drift control | planning-drift-control.md | 6 min |
 | API integration | third-party-api-integrations.md | 10 min |
 | WooCommerce commerce | woocommerce-commerce-engineering.md | 10 min |
