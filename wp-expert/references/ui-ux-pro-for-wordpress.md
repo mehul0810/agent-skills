@@ -2,7 +2,7 @@
 
 Use this for UX strategy, UI improvement, visual QA, product flows, interaction design, responsive polish, conversion-oriented WordPress screens, admin/editor experiences, frontend feature pages, dashboards, onboarding, forms, tables, and design-to-code implementation.
 
-This reference fuses product-grade UI/UX reasoning with WordPress-native design constraints. Use it alongside `wordpress-design-system.md` when the implementation should use WPDS or `@wordpress/components`. For style guides, design patterns, design tokens, custom themes, or child themes on top of an existing theme, also read `style-guide-theme-translation.md`. For estimates, milestones, and mobile-first delivery architecture, also read `delivery-excellence.md`.
+This reference fuses product-grade UI/UX reasoning with WordPress-native design constraints. Use it alongside `ux-product-strategy-design-qa.md` when the task involves UX discovery, product strategy, information architecture, UX writing, conversion flows, premium/enterprise design QA, or matching a provided image/screenshot/mockup. Use it alongside `wordpress-design-system.md` when the implementation should use WPDS or `@wordpress/components`. For style guides, design patterns, design tokens, custom themes, or child themes on top of an existing theme, also read `style-guide-theme-translation.md`. For estimates, milestones, and mobile-first delivery architecture, also read `delivery-excellence.md`.
 
 ## UX Triage
 
@@ -108,6 +108,7 @@ Every serious UI should cover:
 Avoid generic AI-looking UI:
 
 - Never compromise on premium and enterprise feel when the product, client, or brand positioning requires it.
+- If a visual reference is provided, match the approved hierarchy, alignment, spacing, typography, color, and component treatment as closely as practical; document any accessibility, responsive, or WordPress-platform constraint that requires deviation.
 - Pick one visual direction and make spacing, type, borders, shadows, and states coherent.
 - Do not default to purple gradients, dark mode, glassmorphism, or oversized bento cards unless the product context justifies it.
 - Use contrast, spacing, and typography for hierarchy before decoration.

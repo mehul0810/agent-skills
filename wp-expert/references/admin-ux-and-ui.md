@@ -1,6 +1,6 @@
 # Admin UX, Product UX, And UI Improvement
 
-Use this for WordPress admin screens, settings pages, onboarding, dashboard widgets, list tables, plugin UX, editor controls, frontend UI critique, and UX-centric brainstorming. For deeper product-grade visual QA and interaction-state coverage, also read `ui-ux-pro-for-wordpress.md`. For WordPress-native component/token mapping, also read `wordpress-design-system.md`.
+Use this for WordPress admin screens, settings pages, onboarding, dashboard widgets, list tables, plugin UX, editor controls, frontend UI critique, and UX-centric brainstorming. For UX discovery, information architecture, UX writing, conversion flows, premium/enterprise design QA, or image/screenshot matching, also read `ux-product-strategy-design-qa.md`. For deeper product-grade visual QA and interaction-state coverage, also read `ui-ux-pro-for-wordpress.md`. For WordPress-native component/token mapping, also read `wordpress-design-system.md`.
 
 ## UX Workflow
 

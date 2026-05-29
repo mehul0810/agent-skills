@@ -1,6 +1,6 @@
 # Style Guide To WordPress Theme Translation
 
-Use this when implementing a design system, style guide, brand guide, design patterns, design tokens, custom theme, block theme, or custom child theme on top of an existing theme.
+Use this when implementing a design system, style guide, brand guide, design patterns, design tokens, custom theme, block theme, or custom child theme on top of an existing theme. For product strategy, information architecture, UX writing, conversion flow, premium/enterprise design QA, or image/screenshot matching, also read `ux-product-strategy-design-qa.md`.
 
 ## Core Principle
 

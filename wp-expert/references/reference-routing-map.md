@@ -34,7 +34,8 @@ Use this map to choose references with low context cost.
 | Design to custom FSE block theme | `block-theme-architecture.md` | `custom-block-theme-from-design.md`, `visual-parity-regression.md` |
 | Theme/block editor behavior or block implementation | `block-theme-architecture.md` | `theme-and-block-editor.md`, `validation-commands.md` |
 | React in WordPress (admin/editor/frontend/headless) | `react-wordpress-enterprise.md` | `wordpress-design-system.md`, `standards-ci-github.md` |
-| UI/UX improvement, premium feel, or admin UX | `ui-ux-pro-for-wordpress.md` | `admin-ux-and-ui.md`, `visual-parity-regression.md` |
+| UX discovery, product strategy, information architecture, UX writing, conversion UX, or image/pixel design QA | `ux-product-strategy-design-qa.md` | `ui-ux-pro-for-wordpress.md`, `visual-parity-regression.md` |
+| UI/UX implementation, premium feel, or admin UX | `ui-ux-pro-for-wordpress.md` | `ux-product-strategy-design-qa.md`, `admin-ux-and-ui.md` |
 | WordPress Design System implementation | `wordpress-design-system.md` | `admin-ux-and-ui.md`, `ui-ux-pro-for-wordpress.md` |
 | Performance/security quick triage | `performance-and-security.md` | `performance-profiling-scale-budgets.md`, `security-threat-modeling-review.md` |
 | Performance profiling, budgets, query/object-cache scale, Core Web Vitals, admin/editor speed | `performance-profiling-scale-budgets.md` | `edge-caching-cdn-architecture.md`, `load-testing-capacity-planning.md` |

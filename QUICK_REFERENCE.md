@@ -161,6 +161,14 @@ Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR,
 
 ### Admin & UI/UX
 
+**"I need to plan or review the UX before implementation"**
+- Load: `ux-product-strategy-design-qa.md`
+- Supporting: `ui-ux-pro-for-wordpress.md`, `wordpress-design-system.md`
+
+**"I provided a design image or screenshot and need the implementation to match it"**
+- Load: `ux-product-strategy-design-qa.md`
+- Supporting: `visual-parity-regression.md`, `style-guide-theme-translation.md`
+
 **"I need to improve the WordPress admin experience"**
 - Load: `admin-ux-and-ui.md`
 - Supporting: `ui-ux-pro-for-wordpress.md`
@@ -311,6 +319,7 @@ Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR,
 | Refactor code | duplicate-code-modularity-review.md | 8 min |
 | Style guide/tokens | style-guide-theme-translation.md | 8 min |
 | Design to FSE | custom-block-theme-from-design.md | 12 min |
+| UX strategy/design QA | ux-product-strategy-design-qa.md | 10 min |
 | Custom block | theme-and-block-editor.md | 10 min |
 | React component | react-wordpress-enterprise.md | 12 min |
 | Performance | performance-and-security.md | 10 min |

@@ -1354,3 +1354,41 @@ Add focused `wp-expert` expertise for reviewing custom database table architectu
 - `QUICK_REFERENCE.md`
 - `CHANGELOG.md`
 - `skill-evals/wp-expert-scenarios.md`
+
+## UX Product Strategy And Design QA Addition
+
+### Objective
+
+Add first-class `wp-expert` expertise for understanding and implementing UI/UX at a premium enterprise standard, including UX discovery, user journeys, information architecture, UX writing, conversion flows, usability review, design-system governance, and pixel-faithful implementation when the user provides an image, screenshot, Figma frame, or approved mockup.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Dedicated UX product strategy and design QA reference | Yes | Add | Existing UI guidance covered implementation quality, but not enough upstream discovery, IA, content design, conversion, or design QA discipline. |
+| Premium/enterprise feel rubric | Yes | Add | Future UI work needs a concrete quality bar for typography, spacing, layout, density, color, components, motion, brand fit, WordPress fit, and engineering fit. |
+| Image/screenshot/mockup matching rules | Yes | Add | When a design is supplied, the agent should treat it as the visual source of truth, target pixel-faithful parity, and document justified deviations. |
+| UX writing and content design coverage | Yes | Add | Labels, helper text, empty states, errors, success messages, and confirmations materially affect enterprise product quality. |
+| Conversion and funnel UX guidance | Yes | Add | WordPress work often includes marketing, checkout, pricing, onboarding, and lead flows where task completion and trust matter. |
+| Usability testing and heuristic severity model | Yes | Add | Reviews need to distinguish blockers from polish and tie UX issues to task completion, data loss, accessibility, or trust impact. |
+| Force pixel perfection over accessibility or maintainability | No | Reject | Pixel parity matters, but not at the cost of accessibility, responsive behavior, editor editability, performance, semantic markup, or long-term maintainability. |
+
+### Added Artifact
+
+- `wp-expert/references/ux-product-strategy-design-qa.md`
+
+### Updated Artifacts
+
+- `wp-expert/SKILL.md`
+- `wp-expert/references/reference-routing-map.md`
+- `wp-expert/references/ui-ux-pro-for-wordpress.md`
+- `wp-expert/references/wordpress-design-system.md`
+- `wp-expert/references/visual-parity-regression.md`
+- `wp-expert/references/style-guide-theme-translation.md`
+- `wp-expert/references/admin-ux-and-ui.md`
+- `wp-expert/references/block-theme-architecture.md`
+- `wp-expert/references/custom-block-theme-from-design.md`
+- `README.md`
+- `QUICK_REFERENCE.md`
+- `CHANGELOG.md`
+- `skill-evals/wp-expert-scenarios.md`

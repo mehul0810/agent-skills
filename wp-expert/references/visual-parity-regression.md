@@ -1,6 +1,6 @@
 # Visual Parity Regression
 
-Use this when UI/UX, block editor, theme, or FSE work must match design intent across editor and frontend.
+Use this when UI/UX, block editor, theme, or FSE work must match design intent across editor and frontend. If the user provides an image, screenshot, Figma frame, or approved mockup as the source of truth, also read `ux-product-strategy-design-qa.md` and treat screenshot comparison as required evidence unless the user explicitly says they will perform visual review.
 
 ## Goals
 
@@ -22,6 +22,16 @@ Use this when UI/UX, block editor, theme, or FSE work must match design intent a
 4. Diff baseline and candidate.
 5. Classify differences as expected design updates or regressions.
 6. Fix regressions, then re-run capture and diff.
+
+## Provided Design Reference Workflow
+
+When a static image, screenshot, or mockup is the target:
+
+1. Confirm whether it is exact, directional, or inspiration-only.
+2. Match candidate viewport, zoom, content, font loading, and image assets to the reference as closely as possible.
+3. Compare layout geometry, spacing, alignment, typography, color, radii, shadows, borders, image crop, and visible state treatment.
+4. Preserve pixel-faithful parity for the visible state unless accessibility, responsive behavior, editor editability, or platform constraints require an intentional deviation.
+5. Document every meaningful deviation as intentional, constrained, or unresolved.
 
 ## State Matrix
 

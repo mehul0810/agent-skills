@@ -43,8 +43,10 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - Blocksy theme and Blocksy Pro expertise: Customizer workflows, Companion plugin, header/footer builders, Content Blocks, Dynamic Data, starter sites, Shop Extra/WooCommerce, Advanced Menu, Pro extensions, licensing, and troubleshooting.
 - Block editor compatible code generation and dynamic/static block work.
 - React with WordPress enterprise standards: admin/editor apps, frontend interactive blocks, headless boundaries, dependency extraction, REST contracts, `@wordpress/data`, `@wordpress/components`, testing, accessibility, and release artifacts.
+- UX product strategy and design QA: discovery, user journeys, information architecture, UX writing, conversion flows, usability checks, design-system governance, and enterprise/premium quality scoring.
 - Product-grade UI/UX improvement: visual QA, interaction states, forms, dashboards, responsive polish, and conversion clarity.
 - Premium and enterprise visual quality discipline: never settle for generic, inconsistent, or unfinished UI when the project requires a polished brand experience.
+- Image/screenshot/mockup-to-implementation discipline: treat provided designs as the visual source of truth, target pixel-faithful parity, and document any accessibility, responsive, editability, performance, or WordPress-platform deviation.
 - Visual parity regression workflow: deterministic screenshot/state checks across Site Editor, block editor canvas, and frontend surfaces.
 - Local HTTPS testing support for custom WordPress development domains that are blocked by the in-app browser, using terminal probes and certificate-error-tolerant browser runners.
 - Mobile-first responsive architecture for frontend/customer-facing flows and responsive-safe admin/editor interfaces.
@@ -107,7 +109,7 @@ content-writer/
 Default invocations:
 
 ```text
-Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugin, WooCommerce store, headless/decoupled frontend, multisite network, technical SEO surface, privacy/data-governance flow, content model, database table architecture, disaster recovery plan, AI/LLM WordPress product, marketplace/freemium product, custom block/FSE theme from design, style guide/design-token translation, custom theme, custom child theme, local HTTPS testing issue, planning drift-control issue, test coverage decision, missing test coverage review, enterprise code-quality gate, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, threat model, performance profile, scale budget, theme, Ollie block theme/Ollie Pro site, Blocksy theme/Blocksy Pro site, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
+Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugin, WooCommerce store, headless/decoupled frontend, multisite network, technical SEO surface, privacy/data-governance flow, content model, database table architecture, disaster recovery plan, AI/LLM WordPress product, marketplace/freemium product, custom block/FSE theme from design, style guide/design-token translation, custom theme, custom child theme, UX product strategy, information architecture, UX writing, conversion flow, image/screenshot pixel-parity implementation, premium enterprise design QA, local HTTPS testing issue, planning drift-control issue, test coverage decision, missing test coverage review, enterprise code-quality gate, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, threat model, performance profile, scale budget, theme, Ollie block theme/Ollie Pro site, Blocksy theme/Blocksy Pro site, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
 
 Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-develop, WordPress.org, WordCamp.org, Trac tickets, GitHub PRs, patches, tests, docs, standards, AI-assisted contribution guidelines, enterprise code-quality gates, triage, release/backport work, or contributor communication.
 
@@ -193,6 +195,7 @@ The skills are intentionally token-efficient:
 - The shared `session-continuity-pr-discipline.md` reference keeps new-chat context recovery and PR base-branch safety explicit across code-oriented skills.
 - The shared `production-dependency-discipline.md` reference keeps Composer/npm production-artifact hygiene consistent across both skills.
 - The shared `enterprise-code-quality-gate.md` reference keeps modular, secure, performant, maintainable, test-backed engineering expectations consistent across code-oriented skills.
+- The `wp-expert/references/ux-product-strategy-design-qa.md` reference keeps premium UI/UX strategy, image parity, and design QA explicit without bloating the core skill.
 - Each `scripts/` directory contains lightweight discovery, validation, and workflow helpers.
 - `skill-evals/wp-expert-scenarios.md` contains lightweight scenario prompts for checking routing and behavior after skill changes.
 

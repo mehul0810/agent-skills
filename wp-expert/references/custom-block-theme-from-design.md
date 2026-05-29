@@ -1,6 +1,6 @@
 # Custom Block Theme From Design
 
-Use this when converting a Figma/static/brand design into a custom block-based Full Site Editing theme that stays modular, editable from WordPress admin, visually faithful, and maintainable without using Custom HTML or Shortcode blocks for new design implementation. Read `block-theme-architecture.md` first when the task involves non-trivial block, pattern, template, data, or interaction decisions.
+Use this when converting a Figma/static/brand design into a custom block-based Full Site Editing theme that stays modular, editable from WordPress admin, visually faithful, and maintainable without using Custom HTML or Shortcode blocks for new design implementation. Read `block-theme-architecture.md` first when the task involves non-trivial block, pattern, template, data, or interaction decisions. If a design image, screenshot, or approved mockup is provided, also read `ux-product-strategy-design-qa.md` and use `visual-parity-regression.md` for pixel-parity evidence.
 
 ## Official Anchors
 

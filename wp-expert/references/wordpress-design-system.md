@@ -1,6 +1,6 @@
 # WordPress Design System Support
 
-Use this for WordPress-native UI design, admin/product interfaces, block editor controls, Figma-to-code translation, component selection, design tokens, accessibility, editor consistency, and visual QA against WordPress conventions. For product UX strategy, state coverage, and visual quality review, also read `ui-ux-pro-for-wordpress.md`.
+Use this for WordPress-native UI design, admin/product interfaces, block editor controls, Figma-to-code translation, component selection, design tokens, accessibility, editor consistency, and visual QA against WordPress conventions. For product UX strategy, information architecture, content design, conversion UX, image/pixel parity, and premium enterprise QA, also read `ux-product-strategy-design-qa.md`. For product UI implementation, state coverage, and visual quality review, also read `ui-ux-pro-for-wordpress.md`.
 
 ## Official Anchors
 
@@ -58,6 +58,7 @@ When translating designs into WordPress UI:
 - Convert colors, typography, spacing, radii, shadows, and layout values to existing `theme.json` presets, CSS custom properties, or WordPress component props when possible.
 - Preserve component state coverage: default, hover, focus, active, disabled, loading, error, empty, selected, bulk-selected, and responsive.
 - Do not hard-code design tokens if the plugin/theme already exposes token variables or `theme.json` presets.
+- If the source is an image, screenshot, or approved mockup, preserve visual hierarchy and measurable spacing/typography/color intent while translating into WordPress-native components and tokens.
 - Flag mismatches where the Figma design conflicts with WordPress conventions, accessibility, or editor behavior.
 
 ## Accessibility Requirements
