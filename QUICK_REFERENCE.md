@@ -161,9 +161,21 @@ Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR,
 
 ### Admin & UI/UX
 
+**"I need acceptance criteria before implementation"**
+- Load: `enterprise-acceptance-criteria-templates.md`
+- Supporting: `test-coverage-discipline.md`, `validation-commands.md`
+
 **"I need to plan or review the UX before implementation"**
 - Load: `ux-product-strategy-design-qa.md`
 - Supporting: `ui-ux-pro-for-wordpress.md`, `wordpress-design-system.md`
+
+**"I need to build or improve a conversion-focused website or landing page"**
+- Load: `conversion-focused-website-engineering.md`
+- Supporting: `ux-product-strategy-design-qa.md`, `analytics-measurement-engineering.md`
+
+**"I need analytics or conversion tracking implemented correctly"**
+- Load: `analytics-measurement-engineering.md`
+- Supporting: `privacy-consent-data-governance.md`, `conversion-focused-website-engineering.md`
 
 **"I provided a design image or screenshot and need the implementation to match it"**
 - Load: `ux-product-strategy-design-qa.md`
@@ -265,6 +277,10 @@ Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR,
 - Load: `vip-scale-playbook.md`
 - Supporting: `performance-and-security.md`, `security-operations-compliance.md`
 
+**"I need a go/no-go launch readiness review"**
+- Load: `vip-enterprise-launch-readiness.md`
+- Supporting: `deployment-release-resilience.md`, `observability-incident-response.md`
+
 **"Threat model this REST/admin/upload/webhook feature"**
 - Load: `security-threat-modeling-review.md`
 - Supporting: `security-operations-compliance.md`
@@ -289,6 +305,14 @@ Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR,
 - Load: `troubleshooting-operations.md`
 - Also: `wp-context.sh` script for repo discovery
 
+**"I need a systematic debugging decision tree"**
+- Load: `advanced-troubleshooting-decision-tree.md`
+- Supporting: `troubleshooting-operations.md`, `validation-commands.md`
+
+**"I need plugin support diagnostics or Site Health checks"**
+- Load: `plugin-debuggability-supportability.md`
+- Supporting: `plugin-product-architecture.md`, `observability-incident-response.md`
+
 **"I need to debug a WordPress configuration issue"**
 - Load: `validation-commands.md`
 - Run: Helper scripts (wp-context.sh, wp-validate.sh)
@@ -304,7 +328,10 @@ Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR,
 | Task | Primary Reference | Quick Load Time |
 |------|-------------------|-----------------|
 | New plugin | plugin-architecture.md | 10 min |
+| Plugin product architecture | plugin-product-architecture.md | 10 min |
+| Plugin supportability | plugin-debuggability-supportability.md | 8 min |
 | Enterprise code quality | enterprise-code-quality-gate.md | 6 min |
+| Enterprise acceptance criteria | enterprise-acceptance-criteria-templates.md | 6 min |
 | Test coverage decision | test-coverage-discipline.md | 8 min |
 | Planning drift control | planning-drift-control.md | 6 min |
 | API integration | third-party-api-integrations.md | 10 min |
@@ -319,19 +346,25 @@ Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR,
 | Refactor code | duplicate-code-modularity-review.md | 8 min |
 | Style guide/tokens | style-guide-theme-translation.md | 8 min |
 | Design to FSE | custom-block-theme-from-design.md | 12 min |
+| Hybrid theme migration | hybrid-theme-migration-modernization.md | 12 min |
+| Theme frontend performance | theme-frontend-performance-quality-gate.md | 10 min |
 | UX strategy/design QA | ux-product-strategy-design-qa.md | 10 min |
+| Conversion website | conversion-focused-website-engineering.md | 10 min |
+| Analytics/measurement | analytics-measurement-engineering.md | 8 min |
 | Custom block | theme-and-block-editor.md | 10 min |
 | React component | react-wordpress-enterprise.md | 12 min |
 | Performance | performance-and-security.md | 10 min |
 | Performance profiling/budgets | performance-profiling-scale-budgets.md | 10 min |
 | Security threat model | security-threat-modeling-review.md | 10 min |
 | Incident response | troubleshooting-operations.md | 8 min |
+| Advanced troubleshooting | advanced-troubleshooting-decision-tree.md | 8 min |
 | PR base/release branch safety | session-continuity-pr-discipline.md | 5 min |
 | Release plugin | wordpress-org-release-operations.md | 10 min |
 | Release notes | changelog-release-notes.md | 8 min |
 | Admin UI | admin-ux-and-ui.md | 8 min |
 | Accessibility | accessibility-i18n-global-readiness.md | 10 min |
 | VIP scale | vip-scale-playbook.md | 12 min |
+| Launch readiness | vip-enterprise-launch-readiness.md | 10 min |
 | Advanced multisite | advanced-multisite-network-engineering.md | 10 min |
 | Disaster recovery | disaster-recovery-business-continuity.md | 8 min |
 | Migration | content-migration-editorial-scale.md | 12 min |

@@ -1,6 +1,6 @@
 # Technical SEO Engineering
 
-Use this for WordPress technical SEO implementation and review: canonicals, redirects, robots, sitemaps, structured data, crawl budget, Core Web Vitals, hreflang, feeds, pagination, archives, migrations, and headless SEO contracts.
+Use this for WordPress technical SEO implementation and review: canonicals, redirects, robots, sitemaps, structured data, crawl budget, Core Web Vitals, hreflang, feeds, pagination, archives, migrations, and headless SEO contracts. For conversion-focused website builds, also read `conversion-focused-website-engineering.md`. For analytics and measurement events, also read `analytics-measurement-engineering.md`.
 
 ## Current Official Anchors
 

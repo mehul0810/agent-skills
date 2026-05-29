@@ -1,6 +1,6 @@
 # Delivery Excellence And Estimation
 
-Use this for client requirement review, PRDs, scope of work, estimates, milestones, implementation plans, GitHub issue/PR discipline, mobile-first responsive architecture, token-efficient execution, confirmation gates, testing strategy, and maintainable onboarding-friendly code. Use `planning-drift-control.md` when a task needs explicit scope guardrails or risk-calibrated validation.
+Use this for client requirement review, PRDs, scope of work, estimates, milestones, implementation plans, GitHub issue/PR discipline, mobile-first responsive architecture, token-efficient execution, confirmation gates, testing strategy, and maintainable onboarding-friendly code. Use `enterprise-acceptance-criteria-templates.md` for concrete definition-of-done and acceptance checks by work type. Use `planning-drift-control.md` when a task needs explicit scope guardrails or risk-calibrated validation.
 
 ## Delivery Defaults
 

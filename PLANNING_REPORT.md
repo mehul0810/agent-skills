@@ -1392,3 +1392,54 @@ Add first-class `wp-expert` expertise for understanding and implementing UI/UX a
 - `QUICK_REFERENCE.md`
 - `CHANGELOG.md`
 - `skill-evals/wp-expert-scenarios.md`
+
+## Enterprise WordPress Gap Expansion
+
+### Objective
+
+Implement all identified gaps for WordPress plugin development, theme development, troubleshooting/debugging, conversion-focused website development, and VIP/enterprise delivery standards without bloating `SKILL.md`. The update adds focused routed references so future agents can load only the expertise needed for each task.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Plugin product architecture reference | Yes | Add | Enterprise plugins need safe extension contracts, add-on/pro boundaries, feature flags, diagnostics contracts, and launched public API discipline beyond basic module layout. |
+| Plugin supportability reference | Yes | Add | Serious client work needs Site Health checks, redacted diagnostics, support exports, correlation IDs, log levels, and safe recovery controls. |
+| Advanced troubleshooting decision tree | Yes | Add | Production debugging benefits from symptom-to-probe matrices, conflict isolation, cache/CDN diagnosis, REST/auth triage, and rollback-first mitigation. |
+| Conversion-focused website engineering | Yes | Add | CRO-grade WordPress builds need offer clarity, CTA strategy, trust proof, form friction reduction, checkout/lead funnel quality, SEO, accessibility, performance, and measurement. |
+| Analytics and measurement engineering | Yes | Add | Conversion work is incomplete without consent-aware tracking, duplicate-event prevention, privacy boundaries, and validation without production pollution. |
+| Theme frontend performance quality gate | Yes | Add | Theme work needs explicit Core Web Vitals, fonts, images, asset scoping, CLS/LCP/INP, block CSS bloat, and frontend/editor CSS checks. |
+| VIP enterprise launch readiness matrix | Yes | Add | Enterprise launches need go/no-go checks across code, data, cache, search, redirects, observability, rollback, support, and post-launch monitoring. |
+| Hybrid theme migration modernization | Yes | Add | Classic-to-block, page-builder-to-block, child-theme cleanup, WooCommerce template modernization, and SEO/content preservation require a dedicated migration playbook. |
+| Enterprise acceptance criteria templates | Yes | Add | Implementation drift is reduced when plugin, theme, REST, migration, performance, security, and conversion work has explicit definition-of-done gates. |
+| Put all guidance into existing files only | No | Reject | Existing files are already broad; separate references preserve token efficiency and make routing more deterministic. |
+
+### Added Artifacts
+
+- `wp-expert/references/plugin-product-architecture.md`
+- `wp-expert/references/plugin-debuggability-supportability.md`
+- `wp-expert/references/advanced-troubleshooting-decision-tree.md`
+- `wp-expert/references/conversion-focused-website-engineering.md`
+- `wp-expert/references/analytics-measurement-engineering.md`
+- `wp-expert/references/theme-frontend-performance-quality-gate.md`
+- `wp-expert/references/vip-enterprise-launch-readiness.md`
+- `wp-expert/references/hybrid-theme-migration-modernization.md`
+- `wp-expert/references/enterprise-acceptance-criteria-templates.md`
+
+### Updated Artifacts
+
+- `wp-expert/SKILL.md`
+- `wp-expert/references/reference-routing-map.md`
+- `wp-expert/references/plugin-architecture.md`
+- `wp-expert/references/troubleshooting-operations.md`
+- `wp-expert/references/theme-and-block-editor.md`
+- `wp-expert/references/ux-product-strategy-design-qa.md`
+- `wp-expert/references/vip-scale-playbook.md`
+- `wp-expert/references/review-checklists.md`
+- `wp-expert/references/delivery-excellence.md`
+- `wp-expert/references/technical-seo-engineering.md`
+- `wp-expert/references/privacy-consent-data-governance.md`
+- `README.md`
+- `QUICK_REFERENCE.md`
+- `CHANGELOG.md`
+- `skill-evals/wp-expert-scenarios.md`

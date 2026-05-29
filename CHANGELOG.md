@@ -8,14 +8,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ### Added
 
+- **Advanced Troubleshooting Decision Tree**: Added symptom-to-probe debugging, conflict isolation, REST/auth diagnosis, cache/CDN debugging, and rollback-first production triage guidance.
+- **Analytics And Measurement Engineering**: Added consent-aware analytics, GA4/GTM/data layer, WooCommerce and lead-funnel events, duplicate-event prevention, privacy boundaries, and validation guidance.
 - **Block/FSE Architecture Decisioning**: Dedicated guidance for theme vs plugin ownership, content/data contracts, editor ownership, templates, template parts, patterns, block styles, variations, bindings, custom blocks, dynamic rendering, and Interactivity API.
+- **Conversion Focused Website Engineering**: Added landing page, lead funnel, checkout/booking funnel, CTA, trust proof, CRO experiment, measurement, accessibility, SEO, and performance guidance.
 - **Content Writer Skill**: SEO, AEO, GEO, AI Overviews, AI Mode, answer-engine, and AI-tool-aware content strategy, briefs, drafts, audits, refreshes, schema-aware copy, and source-grounded editorial workflows.
 - **Database Table Architecture Review**: Added wp-expert guidance for custom table decisioning, schema design, query-to-index mapping, migrations, multisite ownership, retention, privacy, concurrency, and maintainability review.
+- **Enterprise Acceptance Criteria Templates**: Added definition-of-done gates for plugin features, themes, REST APIs, migrations, performance fixes, security fixes, and conversion pages.
 - **Git Delivery Discipline**: wp-expert now explicitly prefers small focused commits for separable validated changes and pushing all task commits after completion when a remote is configured.
+- **Hybrid Theme Migration And Modernization**: Added guidance for classic-to-block migration, page-builder migration, child-theme modernization, WooCommerce template cleanup, and SEO/content preservation.
+- **Plugin Debuggability And Supportability**: Added Site Health, diagnostics, redacted support bundles, safe logs, correlation IDs, recovery controls, and enterprise support exports.
+- **Plugin Product Architecture**: Added guidance for add-on/pro boundaries, extension contracts, public APIs, hooks/filters, feature flags, dependency detection, and upgrade-safe product architecture.
 - **Session Continuity And PR Branch Discipline**: Shared guidance for rehydrating repo context in new chats, checking release/hotfix/support branches, explicitly setting PR bases, and verifying PR `baseRefName` before reporting success.
 - **Style Guide And Theme Translation**: wp-expert now includes guidance for translating style guides, design patterns, and design tokens into WordPress-native custom themes, child themes, `theme.json`, patterns, template parts, block styles, and variations.
+- **Theme Frontend Performance Quality Gate**: Added Core Web Vitals, fonts, images, responsive media, asset scoping, block CSS bloat, CLS/LCP/INP, and frontend/editor CSS quality guidance.
 - **Test Coverage Discipline**: Added wp-expert guidance requiring every PR/change to make an explicit test decision, add or update coverage when behavior risk warrants it, and flag missing coverage as a concrete review finding.
 - **UX Product Strategy And Pixel-Parity Design QA**: Added wp-expert guidance for UX discovery, user journeys, information architecture, UX writing, conversion UX, usability review, design-system governance, premium/enterprise design scoring, and image/screenshot/mockup matching.
+- **VIP Enterprise Launch Readiness**: Added enterprise go/no-go matrix, code/data/cache/search/CDN/redirect/observability/rollback/support checks, launch window discipline, and post-launch monitoring guidance.
 - **Local HTTPS Testing Workaround**: Added guidance and a helper script for validating custom local HTTPS WordPress domains when the in-app browser blocks self-signed certificates or local proxy routes.
 - **Premium Enterprise UI Bar**: wp-expert now explicitly requires polished, brand-aligned, accessible, responsive UI quality for premium and enterprise WordPress work.
 - **Performance Profiling And Scale Budgets**: Added deeper wp-expert guidance for baseline measurement, hot-path budgets, query/object-cache profiling, admin/editor speed, Core Web Vitals, async backpressure, and high-traffic acceptance checks.

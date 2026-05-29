@@ -2,7 +2,7 @@
 
 Use this when WordPress work needs more than component placement: UX discovery, product strategy, information architecture, UX writing, conversion flows, design critique, usability testing, enterprise/premium design QA, or pixel-faithful implementation from an image, screenshot, mockup, Figma frame, or visual reference.
 
-Use alongside `ui-ux-pro-for-wordpress.md` for UI implementation, `wordpress-design-system.md` for wp-admin/editor components, `style-guide-theme-translation.md` for tokens and theme translation, and `visual-parity-regression.md` for screenshot evidence.
+Use alongside `ui-ux-pro-for-wordpress.md` for UI implementation, `conversion-focused-website-engineering.md` for landing pages and funnels, `analytics-measurement-engineering.md` for measurement, `wordpress-design-system.md` for wp-admin/editor components, `style-guide-theme-translation.md` for tokens and theme translation, and `visual-parity-regression.md` for screenshot evidence.
 
 ## Non-Negotiables
 

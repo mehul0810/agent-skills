@@ -13,6 +13,8 @@ This repository contains WordPress and organic-search-focused Codex skills:
 ## wp-expert Coverage
 
 - Plugin development and refactoring.
+- Plugin product architecture: add-ons/pro boundaries, public hooks/filters, extension contracts, feature flags, dependency detection, diagnostics contracts, and upgrade-safe public APIs.
+- Plugin debuggability and supportability: Site Health checks, redacted support bundles, log levels, correlation IDs, safe recovery controls, and enterprise support exports.
 - Third-party API integrations of any type using official documentation or user-provided specs: REST, GraphQL, SOAP/WSDL, XML-RPC, SDKs, webhooks, OAuth, API keys, rate limits, retries, idempotency, queues, and provider operations.
 - Runtime and toolchain version policy: choose the minimum stable actively maintained non-EOL PHP, Node, npm, Composer, database, CI image, and tool versions that satisfy WordPress, host/VIP, dependency, and deployment constraints.
 - Changelog and release notes expertise: public/internal changelogs, unreleased feature aggregation, WordPress.org `readme.txt` changelog rules, SemVer impact, security notes, migrations, and developer-facing API notes.
@@ -35,6 +37,7 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - WordPress.org Plugin Directory guideline review, block directory eligibility, readme policy, licensing, tracking, and trademark checks.
 - WordPress.org release operations: SVN-first verification, `trunk/`, `tags/<version>/`, `assets/`, production `vendor/`, Plugin Check fallbacks, 10up deploy behavior, and GitHub ZIP workflows.
 - Theme development, classic themes, block themes, and `theme.json`.
+- Hybrid theme migration and modernization: classic-to-block migration, page-builder-to-block migration, child-theme modernization, WooCommerce template cleanup, and SEO/content preservation.
 - Style guide, design pattern, and design token translation into WordPress-native primitives, including custom themes and custom child themes on top of existing parent themes.
 - Block/FSE architecture decisioning: theme vs plugin ownership, content model, editor ownership, templates, parts, patterns, variations, bindings, custom blocks, dynamic rendering, and Interactivity API.
 - Design-to-FSE custom block themes: map designs to `theme.json`, core blocks, patterns, template parts, block styles, and custom blocks only when necessary, without Custom HTML or Shortcode blocks.
@@ -44,10 +47,13 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - Block editor compatible code generation and dynamic/static block work.
 - React with WordPress enterprise standards: admin/editor apps, frontend interactive blocks, headless boundaries, dependency extraction, REST contracts, `@wordpress/data`, `@wordpress/components`, testing, accessibility, and release artifacts.
 - UX product strategy and design QA: discovery, user journeys, information architecture, UX writing, conversion flows, usability checks, design-system governance, and enterprise/premium quality scoring.
+- Conversion-focused website engineering: landing pages, lead funnels, checkout/booking flows, offer clarity, CTA strategy, trust proof, form friction, CRO-safe experiments, and conversion-quality gates.
+- Analytics and measurement engineering: GA4/GTM/data layer, consent-aware tracking, WooCommerce/lead funnel events, telemetry boundaries, duplicate-event prevention, and validation without production pollution.
 - Product-grade UI/UX improvement: visual QA, interaction states, forms, dashboards, responsive polish, and conversion clarity.
 - Premium and enterprise visual quality discipline: never settle for generic, inconsistent, or unfinished UI when the project requires a polished brand experience.
 - Image/screenshot/mockup-to-implementation discipline: treat provided designs as the visual source of truth, target pixel-faithful parity, and document any accessibility, responsive, editability, performance, or WordPress-platform deviation.
 - Visual parity regression workflow: deterministic screenshot/state checks across Site Editor, block editor canvas, and frontend surfaces.
+- Theme/frontend performance quality gate: Core Web Vitals, fonts, images, asset scoping, CLS/LCP/INP, block CSS bloat, frontend/editor CSS separation, and responsive media validation.
 - Local HTTPS testing support for custom WordPress development domains that are blocked by the in-app browser, using terminal probes and certificate-error-tolerant browser runners.
 - Mobile-first responsive architecture for frontend/customer-facing flows and responsive-safe admin/editor interfaces.
 - WordPress Design System support: `@wordpress/components`, design tokens, Figma-to-code mapping, and accessibility.
@@ -67,11 +73,14 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - WordPress monorepos, multi-plugin/theme packages, shared tooling, generated artifacts, and release engineering.
 - Production dependency hygiene for Composer and npm: development-only packages stay in source/CI and out of runtime artifacts.
 - WordPress VIP readiness and high-traffic production constraints.
+- VIP and enterprise launch readiness: go/no-go matrix, code/data/cache/search/CDN/redirects/observability/rollback/support checks, launch windows, and post-launch monitoring.
 - Troubleshooting, incident triage, WP-CLI probes, activation checks, and operational debugging.
+- Advanced troubleshooting decision trees: symptom-to-probe matrix, plugin/theme conflict isolation, REST nonce/auth debugging, object-cache/CDN debugging, production triage, and rollback-first mitigation.
 - Coding standards, linting, static analysis, tests, GitHub Actions, CI/CD, PR workflows, and releases.
 - Enterprise GitHub workflows: issue triage, labels, milestones, scoped commits, PR descriptions, review response discipline.
 - New-chat and PR branch discipline: rehydrate repo context, check release/hotfix/support branches, explicitly pass PR base branches, and verify PR `baseRefName` before reporting success.
 - Efficient tests and maintainable code comments/docblocks for onboarding and future regression prevention.
+- Enterprise acceptance criteria templates: definition-of-done gates for plugin features, themes, REST APIs, migrations, performance fixes, security fixes, and conversion pages.
 - Webpack, Composer, npm, dependency extraction, lockfiles, build scripts, and release artifact packaging.
 - Small focused commits for separable validated changes, followed by pushing all task commits after completion when a remote is configured.
 
@@ -109,7 +118,7 @@ content-writer/
 Default invocations:
 
 ```text
-Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugin, WooCommerce store, headless/decoupled frontend, multisite network, technical SEO surface, privacy/data-governance flow, content model, database table architecture, disaster recovery plan, AI/LLM WordPress product, marketplace/freemium product, custom block/FSE theme from design, style guide/design-token translation, custom theme, custom child theme, UX product strategy, information architecture, UX writing, conversion flow, image/screenshot pixel-parity implementation, premium enterprise design QA, local HTTPS testing issue, planning drift-control issue, test coverage decision, missing test coverage review, enterprise code-quality gate, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, threat model, performance profile, scale budget, theme, Ollie block theme/Ollie Pro site, Blocksy theme/Blocksy Pro site, React/admin app, block editor, admin UX, CI/CD workflow, or enterprise/VIP codebase.
+Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugin, plugin product architecture, plugin supportability, WooCommerce store, headless/decoupled frontend, multisite network, technical SEO surface, privacy/data-governance flow, analytics/measurement plan, content model, database table architecture, disaster recovery plan, AI/LLM WordPress product, marketplace/freemium product, custom block/FSE theme from design, style guide/design-token translation, custom theme, custom child theme, hybrid theme migration, frontend performance quality gate, conversion-focused website, UX product strategy, information architecture, UX writing, conversion flow, image/screenshot pixel-parity implementation, premium enterprise design QA, VIP/enterprise launch readiness, local HTTPS testing issue, planning drift-control issue, enterprise acceptance criteria, test coverage decision, missing test coverage review, enterprise code-quality gate, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, threat model, performance profile, scale budget, theme, Ollie block theme/Ollie Pro site, Blocksy theme/Blocksy Pro site, React/admin app, block editor, admin UX, advanced troubleshooting issue, CI/CD workflow, or enterprise/VIP codebase.
 
 Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-develop, WordPress.org, WordCamp.org, Trac tickets, GitHub PRs, patches, tests, docs, standards, AI-assisted contribution guidelines, enterprise code-quality gates, triage, release/backport work, or contributor communication.
 
@@ -196,6 +205,7 @@ The skills are intentionally token-efficient:
 - The shared `production-dependency-discipline.md` reference keeps Composer/npm production-artifact hygiene consistent across both skills.
 - The shared `enterprise-code-quality-gate.md` reference keeps modular, secure, performant, maintainable, test-backed engineering expectations consistent across code-oriented skills.
 - The `wp-expert/references/ux-product-strategy-design-qa.md` reference keeps premium UI/UX strategy, image parity, and design QA explicit without bloating the core skill.
+- Focused `wp-expert/references/` playbooks keep plugin product architecture, troubleshooting, conversion engineering, frontend performance, launch readiness, hybrid migration, supportability, analytics, and acceptance criteria loadable only when needed.
 - Each `scripts/` directory contains lightweight discovery, validation, and workflow helpers.
 - `skill-evals/wp-expert-scenarios.md` contains lightweight scenario prompts for checking routing and behavior after skill changes.
 

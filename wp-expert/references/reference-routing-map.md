@@ -14,10 +14,13 @@ Use this map to choose references with low context cost.
 | --- | --- | --- |
 | New chat/session continuity, branch creation, PR base selection, release branch drift | `session-continuity-pr-discipline.md` | `standards-ci-github.md`, `delivery-excellence.md` |
 | PRD, SOW, estimates, milestones, mobile-first planning | `delivery-excellence.md` | `review-checklists.md`, `runtime-toolchain-version-policy.md` |
+| Enterprise acceptance criteria or definition of done for plugin/theme/API/migration/security/performance/conversion work | `enterprise-acceptance-criteria-templates.md` | `test-coverage-discipline.md`, `validation-commands.md` |
 | Planning drift control, scope guard, exact CSS/value change, calibrated validation | `planning-drift-control.md` | `delivery-excellence.md`, `validation-commands.md` |
 | Code creation/review quality gate, enterprise/WPVIP engineering bar | `enterprise-code-quality-gate.md` | `review-checklists.md`, `validation-commands.md` |
 | Test coverage decision, missing coverage review, PR/change test plan | `test-coverage-discipline.md` | `validation-commands.md`, `review-checklists.md` |
 | Plugin architecture, new feature, refactor, service boundaries | `plugin-architecture.md` | `implementation-patterns.md`, `enterprise-code-quality-gate.md` |
+| Plugin product architecture, add-ons/pro, public hooks/filters, feature flags, diagnostics contracts | `plugin-product-architecture.md` | `plugin-architecture.md`, `release-contract-compatibility.md` |
+| Plugin debuggability, support bundle, Site Health, recovery controls, support diagnostics | `plugin-debuggability-supportability.md` | `plugin-product-architecture.md`, `observability-incident-response.md` |
 | Third-party API integration | `third-party-api-integrations.md` | `performance-and-security.md`, `implementation-patterns.md` |
 | WooCommerce, commerce, checkout, HPOS, payments, subscriptions, order operations | `woocommerce-commerce-engineering.md` | `performance-and-security.md`, `privacy-consent-data-governance.md` |
 | Headless WordPress, Next.js, WPGraphQL, decoupled previews, frontend cache revalidation | `headless-decoupled-wordpress.md` | `technical-seo-engineering.md`, `edge-caching-cdn-architecture.md` |
@@ -32,9 +35,13 @@ Use this map to choose references with low context cost.
 | Technical SEO, canonicals, redirects, robots, sitemaps, structured data, crawl risk | `technical-seo-engineering.md` | `content-migration-editorial-scale.md`, `headless-decoupled-wordpress.md` |
 | Style guide, design system, design tokens, custom theme, or child theme | `style-guide-theme-translation.md` | `block-theme-architecture.md`, `visual-parity-regression.md` |
 | Design to custom FSE block theme | `block-theme-architecture.md` | `custom-block-theme-from-design.md`, `visual-parity-regression.md` |
+| Classic-to-block theme migration, page-builder migration, child-theme modernization, WooCommerce template cleanup | `hybrid-theme-migration-modernization.md` | `theme-and-block-editor.md`, `technical-seo-engineering.md` |
 | Theme/block editor behavior or block implementation | `block-theme-architecture.md` | `theme-and-block-editor.md`, `validation-commands.md` |
+| Theme/frontend performance, Core Web Vitals, fonts/images/assets/CLS/INP/LCP quality gate | `theme-frontend-performance-quality-gate.md` | `performance-profiling-scale-budgets.md`, `visual-parity-regression.md` |
 | React in WordPress (admin/editor/frontend/headless) | `react-wordpress-enterprise.md` | `wordpress-design-system.md`, `standards-ci-github.md` |
 | UX discovery, product strategy, information architecture, UX writing, conversion UX, or image/pixel design QA | `ux-product-strategy-design-qa.md` | `ui-ux-pro-for-wordpress.md`, `visual-parity-regression.md` |
+| Conversion-focused website, landing page, lead funnel, CRO, checkout/booking funnel | `conversion-focused-website-engineering.md` | `ux-product-strategy-design-qa.md`, `analytics-measurement-engineering.md` |
+| Analytics, measurement, GA4/GTM/data layer, consent-aware tracking, funnel events | `analytics-measurement-engineering.md` | `privacy-consent-data-governance.md`, `conversion-focused-website-engineering.md` |
 | UI/UX implementation, premium feel, or admin UX | `ui-ux-pro-for-wordpress.md` | `ux-product-strategy-design-qa.md`, `admin-ux-and-ui.md` |
 | WordPress Design System implementation | `wordpress-design-system.md` | `admin-ux-and-ui.md`, `ui-ux-pro-for-wordpress.md` |
 | Performance/security quick triage | `performance-and-security.md` | `performance-profiling-scale-budgets.md`, `security-threat-modeling-review.md` |
@@ -42,8 +49,10 @@ Use this map to choose references with low context cost.
 | Security threat model, sensitive endpoint review, REST/admin/upload/webhook/OAuth/MCP risk | `security-threat-modeling-review.md` | `security-operations-compliance.md`, `privacy-consent-data-governance.md` |
 | Privacy, consent, telemetry, PII, data retention, exporter/eraser support | `privacy-consent-data-governance.md` | `security-operations-compliance.md`, `plugin-guidelines-review.md` |
 | VIP/high-scale architecture decisions | `vip-scale-playbook.md` | `edge-caching-cdn-architecture.md`, `load-testing-capacity-planning.md` |
+| VIP/enterprise launch readiness, go/no-go review, launch matrix, post-launch checks | `vip-enterprise-launch-readiness.md` | `deployment-release-resilience.md`, `observability-incident-response.md` |
 | Advanced multisite, network activation, domain mapping, cross-site data, tenant governance | `advanced-multisite-network-engineering.md` | `enterprise-architecture.md`, `content-migration-editorial-scale.md` |
 | Incident, reliability, production debugging | `troubleshooting-operations.md` | `observability-incident-response.md`, `performance-and-security.md` |
+| Advanced troubleshooting decision tree, conflict isolation, cache/CDN debugging, production triage | `advanced-troubleshooting-decision-tree.md` | `troubleshooting-operations.md`, `validation-commands.md` |
 | Disaster recovery, business continuity, backups, restore drill, RPO/RTO, release backout | `disaster-recovery-business-continuity.md` | `deployment-release-resilience.md`, `observability-incident-response.md` |
 | CI/CD, linting, standards, GitHub workflows | `standards-ci-github.md` | `build-tooling.md`, `validation-commands.md` |
 | Monorepo structure and multi-package release flow | `monorepo-engineering.md` | `build-tooling.md`, `standards-ci-github.md` |
