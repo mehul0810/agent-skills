@@ -17,6 +17,7 @@ Use these lightweight scenarios to verify that `wp-expert` routes to the right r
 | Missing test coverage | "Review this PR and tell me if it is missing test coverage." | `test-coverage-discipline.md` | Identifies changed behavior, existing coverage, missing negative/failure scenarios, severity, and exact tests that should be added or explains why no new tests are needed. |
 | Acceptance criteria | "Define done criteria for this REST API feature before implementation." | `enterprise-acceptance-criteria-templates.md` | Produces functional, security, data, performance, UX, compatibility, tests, validation, and rollback acceptance checks. |
 | Exact CSS value | "Set the hero margin-top to 24px in the theme CSS. I will visually review it." | `planning-drift-control.md` | Applies exact value, confirms diff, avoids browser QA claim. |
+| Brainstorming without overengineering | "Brainstorm implementation approaches for this feature, but keep it enterprise-grade and do not overengineer it." | `thinking-brainstorming-engineering-discipline.md` | Provides no more than 3 options, recommends one, rejects weaker paths, names validation/next step, and avoids broad reference loading unless a named risk requires it. |
 | Plugin product architecture | "Design this plugin so add-ons can extend it safely without breaking upgrades." | `plugin-product-architecture.md` | Inventories public contracts, hooks/filters, add-on boundaries, feature flags, dependency detection, diagnostics, and upgrade rules. |
 | Plugin supportability | "Add enterprise support diagnostics and safe recovery tools to this plugin." | `plugin-debuggability-supportability.md` | Covers Site Health, redacted support export, log levels, correlation IDs, recovery controls, permissions, and tests. |
 | WooCommerce HPOS | "Review this WooCommerce extension for HPOS and Checkout Block readiness." | `woocommerce-commerce-engineering.md` | Checks CRUD usage, HPOS modes, Store API/block checkout, payments, refunds, and order data. |
@@ -46,6 +47,8 @@ Use these lightweight scenarios to verify that `wp-expert` routes to the right r
 - Did the agent rehydrate repo context in new chats and avoid creating PRs against `main`/`trunk` unless that base was proven correct?
 - Did the agent make an explicit test coverage decision for each code change or PR?
 - Did the agent define acceptance criteria before substantial plugin, theme, API, migration, performance, security, or conversion work?
+- Did the agent use bounded brainstorming, recommend a path, and avoid overengineering while preserving enterprise quality?
+- Did the agent stop premium UI polish once the changed surface met agreed quality criteria and move subjective extras to backlog?
 - Did the agent account for plugin public contracts, supportability, diagnostics, and upgrade-safe extension surfaces when building product-grade plugins?
 - Did the agent flag missing coverage only when a concrete behavior/security/data/scale/editor/release regression risk exists?
 - Did the agent avoid `admin-ajax.php` for new interactive endpoints when REST fits?

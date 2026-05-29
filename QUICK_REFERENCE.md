@@ -60,6 +60,10 @@ Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR,
 - Load: `planning-drift-control.md`
 - Supporting: `delivery-excellence.md`, `validation-commands.md`
 
+**"I need brainstorming, architecture options, or premium polish without overengineering"**
+- Load: `thinking-brainstorming-engineering-discipline.md`
+- Supporting: `planning-drift-control.md`, `delivery-excellence.md`
+
 **"Should I add a custom REST endpoint?"**
 - Load: `implementation-patterns.md` (REST section)
 - Also check: `standards-ci-github.md`
@@ -334,6 +338,7 @@ Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR,
 | Enterprise acceptance criteria | enterprise-acceptance-criteria-templates.md | 6 min |
 | Test coverage decision | test-coverage-discipline.md | 8 min |
 | Planning drift control | planning-drift-control.md | 6 min |
+| Brainstorming/anti-overengineering | thinking-brainstorming-engineering-discipline.md | 6 min |
 | API integration | third-party-api-integrations.md | 10 min |
 | WooCommerce commerce | woocommerce-commerce-engineering.md | 10 min |
 | Headless WordPress | headless-decoupled-wordpress.md | 10 min |

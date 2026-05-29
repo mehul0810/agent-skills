@@ -1443,3 +1443,39 @@ Implement all identified gaps for WordPress plugin development, theme developmen
 - `QUICK_REFERENCE.md`
 - `CHANGELOG.md`
 - `skill-evals/wp-expert-scenarios.md`
+
+## Thinking And Anti-Overengineering Discipline Addition
+
+### Objective
+
+Make brainstorming convergence, planning discipline, premium/enterprise polish stopping rules, anti-overengineering gates, and token-conscious reference loading explicit without bloating `SKILL.md` or duplicating the same rules across many references.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Dedicated thinking and anti-overengineering reference | Yes | Add | It gives future agents one place to calibrate thinking effort, option count, polish depth, and abstraction decisions. |
+| Bounded brainstorming rule | Yes | Add | Forces a recommendation and next validation step instead of open-ended idea generation. |
+| Premium polish stopping rule | Yes | Add | Preserves premium/enterprise feel while preventing subjective polish from expanding the current task. |
+| Reference-loading exception by named risk | Yes | Add | Keeps the default token budget small while allowing deeper loading only when a concrete acceptance risk requires it. |
+| Acceptance criteria calibration | Yes | Add | Prevents template-completion theater and keeps done criteria proportional to the risk. |
+| Put more rules directly in `SKILL.md` | No | Reject | The skill should remain a compact router; the deeper behavior belongs in a selectively loaded reference. |
+
+### Added Artifact
+
+- `wp-expert/references/thinking-brainstorming-engineering-discipline.md`
+
+### Updated Artifacts
+
+- `wp-expert/SKILL.md`
+- `wp-expert/references/reference-routing-map.md`
+- `wp-expert/references/delivery-excellence.md`
+- `wp-expert/references/enterprise-acceptance-criteria-templates.md`
+- `wp-expert/references/ux-product-strategy-design-qa.md`
+- `wp-expert/references/planning-drift-control.md`
+- `wp-expert/references/conversion-focused-website-engineering.md`
+- `wp-expert/references/plugin-product-architecture.md`
+- `README.md`
+- `QUICK_REFERENCE.md`
+- `CHANGELOG.md`
+- `skill-evals/wp-expert-scenarios.md`

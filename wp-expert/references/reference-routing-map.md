@@ -6,6 +6,7 @@ Use this map to choose references with low context cost.
 
 - Choose one primary reference that matches the core deliverable.
 - Add at most two supporting references for cross-cutting risk.
+- Exceed that budget only when a named acceptance risk cannot be handled safely with the current set.
 - Stop loading more references when you already have enough to implement or review safely.
 
 ## Task To Reference Map
@@ -16,6 +17,7 @@ Use this map to choose references with low context cost.
 | PRD, SOW, estimates, milestones, mobile-first planning | `delivery-excellence.md` | `review-checklists.md`, `runtime-toolchain-version-policy.md` |
 | Enterprise acceptance criteria or definition of done for plugin/theme/API/migration/security/performance/conversion work | `enterprise-acceptance-criteria-templates.md` | `test-coverage-discipline.md`, `validation-commands.md` |
 | Planning drift control, scope guard, exact CSS/value change, calibrated validation | `planning-drift-control.md` | `delivery-excellence.md`, `validation-commands.md` |
+| Brainstorming convergence, anti-overengineering, premium polish stopping rule, thinking/token budget | `thinking-brainstorming-engineering-discipline.md` | `planning-drift-control.md`, `delivery-excellence.md` |
 | Code creation/review quality gate, enterprise/WPVIP engineering bar | `enterprise-code-quality-gate.md` | `review-checklists.md`, `validation-commands.md` |
 | Test coverage decision, missing coverage review, PR/change test plan | `test-coverage-discipline.md` | `validation-commands.md`, `review-checklists.md` |
 | Plugin architecture, new feature, refactor, service boundaries | `plugin-architecture.md` | `implementation-patterns.md`, `enterprise-code-quality-gate.md` |

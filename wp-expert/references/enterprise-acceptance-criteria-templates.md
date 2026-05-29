@@ -1,6 +1,6 @@
 # Enterprise Acceptance Criteria Templates
 
-Use this to define done criteria for enterprise/WPVIP WordPress work before implementation or review. Use alongside the primary technical reference for the task plus `test-coverage-discipline.md`, `validation-commands.md`, and `vip-enterprise-launch-readiness.md`.
+Use this to define done criteria for enterprise/WPVIP WordPress work before implementation or review. Use alongside the primary technical reference for the task plus `test-coverage-discipline.md`, `validation-commands.md`, and `vip-enterprise-launch-readiness.md`. Use `thinking-brainstorming-engineering-discipline.md` when template use starts creating process overhead instead of clarity.
 
 ## Acceptance Criteria Rules
 
@@ -11,6 +11,13 @@ Good acceptance criteria are:
 - Specific about roles, states, data shapes, and validation evidence.
 - Clear about what is out of scope.
 - Matched with test/validation commands where possible.
+
+Calibration:
+
+- Fill only applicable sections; omit irrelevant rows instead of adding `N/A` boilerplate.
+- Keep criteria proportional to the change. Small direct edits need narrow checks; security, data, public contract, migration, performance, VIP, and release work need stronger gates.
+- Every criterion should map to a behavior, risk, validation command, rollback/backout need, or explicit non-goal.
+- If the template is heavier than the risk, replace it with a short checklist using `thinking-brainstorming-engineering-discipline.md`.
 
 ## Plugin Feature Template
 

@@ -50,6 +50,7 @@ For high-converting pages:
 - Keep forms server-validated, nonce/capability appropriate, spam-protected, and privacy-aware.
 - Avoid Custom HTML and shortcode blocks for new conversion sections when a native pattern/block/theme layer can preserve editability.
 - Keep tracking code isolated, consent-aware, and documented.
+- Do not add new analytics vendors, pixels, tag managers, experiments, telemetry, or conversion events unless requested, approved by the measurement plan, or already established by repo convention.
 - Ensure landing page templates preserve canonical, schema, headings, and crawlable content.
 
 ## WooCommerce And Checkout

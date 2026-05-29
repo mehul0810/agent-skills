@@ -2,7 +2,7 @@
 
 Use this when WordPress work needs more than component placement: UX discovery, product strategy, information architecture, UX writing, conversion flows, design critique, usability testing, enterprise/premium design QA, or pixel-faithful implementation from an image, screenshot, mockup, Figma frame, or visual reference.
 
-Use alongside `ui-ux-pro-for-wordpress.md` for UI implementation, `conversion-focused-website-engineering.md` for landing pages and funnels, `analytics-measurement-engineering.md` for measurement, `wordpress-design-system.md` for wp-admin/editor components, `style-guide-theme-translation.md` for tokens and theme translation, and `visual-parity-regression.md` for screenshot evidence.
+Use alongside `ui-ux-pro-for-wordpress.md` for UI implementation, `conversion-focused-website-engineering.md` for landing pages and funnels, `analytics-measurement-engineering.md` for measurement, `wordpress-design-system.md` for wp-admin/editor components, `style-guide-theme-translation.md` for tokens and theme translation, and `visual-parity-regression.md` for screenshot evidence. Use `thinking-brainstorming-engineering-discipline.md` for brainstorming convergence, anti-overengineering, and the premium polish stopping rule.
 
 ## Non-Negotiables
 
@@ -73,6 +73,12 @@ Score every serious design or UI implementation against these dimensions:
 - Engineering fit: tokenized, scoped, performant, accessible, maintainable, and not dependent on fragile one-off CSS.
 
 If any dimension is weak, either fix it or report the gap instead of claiming the design is complete.
+
+Stopping rule:
+
+- Continue polishing only while a visible changed-surface issue remains in hierarchy, spacing, typography, alignment, color, interaction states, accessibility, responsiveness, WordPress editability, or brand fidelity.
+- Stop when the changed surface meets the premium rubric and further work is subjective, outside scope, or better handled as design backlog.
+- For exact user-fed visual values, apply the value and confirm the diff unless cascade risk requires visual validation.
 
 ## Image, Screenshot, And Mockup Matching
 

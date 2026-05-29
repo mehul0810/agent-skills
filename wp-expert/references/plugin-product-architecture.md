@@ -17,7 +17,14 @@ A mature WordPress plugin should be:
 
 ## Public Contract Inventory
 
-Before adding or changing plugin behavior, inventory:
+Before adding or changing plugin behavior, choose the smallest inventory scope that matches the risk:
+
+- Touched contract: one hook, route, block, option, asset handle, class, or schema.
+- Feature contract: multiple related surfaces for one feature.
+- Release contract: public behavior, add-ons/pro boundaries, migrations, or compatibility across a release.
+- Full audit: marketplace readiness, enterprise onboarding, public API redesign, major version, acquisition/due-diligence, or repeated regression pattern.
+
+Within the selected scope, inventory:
 
 - Hooks and filters, including argument order, data shapes, and return expectations.
 - Public PHP classes, functions, constants, interfaces, traits, and service IDs.

@@ -1,16 +1,18 @@
 # Delivery Excellence And Estimation
 
-Use this for client requirement review, PRDs, scope of work, estimates, milestones, implementation plans, GitHub issue/PR discipline, mobile-first responsive architecture, token-efficient execution, confirmation gates, testing strategy, and maintainable onboarding-friendly code. Use `enterprise-acceptance-criteria-templates.md` for concrete definition-of-done and acceptance checks by work type. Use `planning-drift-control.md` when a task needs explicit scope guardrails or risk-calibrated validation.
+Use this for client requirement review, PRDs, scope of work, estimates, milestones, implementation plans, GitHub issue/PR discipline, mobile-first responsive architecture, token-efficient execution, confirmation gates, testing strategy, and maintainable onboarding-friendly code. Use `enterprise-acceptance-criteria-templates.md` for concrete definition-of-done and acceptance checks by work type. Use `planning-drift-control.md` when a task needs explicit scope guardrails or risk-calibrated validation. Use `thinking-brainstorming-engineering-discipline.md` when planning, brainstorming, premium polish, or implementation choices risk becoming over-explored or over-engineered.
 
 ## Delivery Defaults
 
 - Treat every task as enterprise work unless the user explicitly asks for a prototype or throwaway experiment.
+- Enterprise work requires the smallest sufficient discipline, not maximum ceremony.
 - Prefer the implementation path that is performant, scalable, secure, maintainable, and easy for admins, editors, and visitors.
 - When multiple valid approaches exist, choose the one with the best long-term operating profile, not the one that is shortest to type.
 - Plan enough to finish in one pass, then implement narrowly.
 - Confirm with evidence before saying work is done.
 - Calibrate validation to risk. Exact user-fed values or units can be confirmed by diff without visual verification when the change is direct and not cascade-sensitive.
 - Keep token usage low by reading only the files and references needed for the current decision.
+- When brainstorming, converge to no more than 3 options, recommend one, reject the weaker paths, and define the next concrete validation or implementation step.
 
 ## Requirements Intake
 

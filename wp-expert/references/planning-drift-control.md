@@ -1,10 +1,12 @@
 # Planning Drift Control
 
-Use this when a task needs enough planning to prevent implementation drift, or when validation should be calibrated to risk instead of treated as all-or-nothing.
+Use this when a task needs enough planning to prevent implementation drift, or when validation should be calibrated to risk instead of treated as all-or-nothing. Use `thinking-brainstorming-engineering-discipline.md` when the risk is over-planning, over-polishing, broad brainstorming, or overengineering.
 
 ## Principle
 
 Plan enough to protect scope, then execute narrowly. Validation should prove the risk that actually changed; do not spend tokens or time visually proving an exact user-supplied value change unless the change is cascade-sensitive or the user requested verification.
+
+Do not use planning as a substitute for decision-making. If multiple paths are plausible, compare up to 3 options, choose one, and proceed unless the wrong choice would be costly.
 
 ## Drift-Resistant Plan Contract
 
