@@ -27,11 +27,13 @@ Options:
   --links     Check for broken references only
   --files     Check that referenced files exist
   --routing   Validate reference routing map
+  --tokens    Check skill token budgets
   --help      Show this message
 
 Examples:
   bash scripts/validate-references.sh
   bash scripts/validate-references.sh --links
+  bash scripts/validate-references.sh --tokens
 USAGE
 }
 
@@ -47,12 +49,12 @@ find_skill_dirs() {
 
 log_error() {
   echo -e "${RED}✗ ERROR: $1${NC}" >&2
-  ((errors++))
+  errors=$((errors + 1))
 }
 
 log_warning() {
   echo -e "${YELLOW}⚠ WARNING: $1${NC}" >&2
-  ((warnings++))
+  warnings=$((warnings + 1))
 }
 
 log_success() {
@@ -311,6 +313,17 @@ validate_metadata() {
   done
 }
 
+validate_token_budgets() {
+  echo ""
+  echo "=== Validating skill token budgets ==="
+
+  if bash "$repo_root/scripts/skill-token-audit.sh"; then
+    log_success "Skill token budgets are within limits"
+  else
+    log_error "Skill token budget audit failed"
+  fi
+}
+
 # Summary
 print_summary() {
   echo ""
@@ -338,7 +351,9 @@ main() {
     exit 0
   fi
 
-  if [ "$check_type" = "--all" ] || [ "$check_type" = "all" ]; then
+  check_type="${check_type#--}"
+
+  if [ "$check_type" = "all" ]; then
     check_all=1
   fi
 
@@ -362,6 +377,9 @@ main() {
     validate_reference_sizes
     validate_scripts
     validate_metadata
+    validate_token_budgets
+  elif [ "$check_type" = "tokens" ]; then
+    validate_token_budgets
   fi
 
   print_summary

@@ -1479,3 +1479,42 @@ Make brainstorming convergence, planning discipline, premium/enterprise polish s
 - `QUICK_REFERENCE.md`
 - `CHANGELOG.md`
 - `skill-evals/wp-expert-scenarios.md`
+
+## Skill Token Budget Optimization
+
+### Objective
+
+Reduce baseline token usage after recent skill expansions by shrinking always-loaded skill metadata, keeping `SKILL.md` hot paths concise, and adding an automated guard so future improvements do not quietly increase profile-level context cost.
+
+### Findings
+
+- `wp-expert` frontmatter had grown into a capability catalog, which increases skill-selection context even before the skill body is loaded.
+- `wp-expert/SKILL.md` had enough embedded routing detail that every WordPress invocation paid for capabilities that should live in the routed reference map.
+- Agent `default_prompt` values repeated the same long capability catalog and created another easy-to-grow surface.
+- No validation script enforced metadata or hot-path body budgets, so useful skill additions could accidentally regress token efficiency.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Short frontmatter descriptions | Yes | Add | Frontmatter is the highest-leverage place to save baseline tokens while preserving skill trigger intent. |
+| Shorter `wp-expert` router body | Yes | Add | The detailed task matrix already lives in `reference-routing-map.md`; duplicating it in `SKILL.md` wastes every invocation. |
+| Short agent default prompts | Yes | Add | UI/default prompts should guide invocation, not mirror full coverage. |
+| Automated token budget audit | Yes | Add | Prevents future expansions from silently pushing baseline token usage back up. |
+| Delete routed references | No | Reject | References are only loaded when needed and are the right place for deep expertise. |
+
+### Added Artifact
+
+- `scripts/skill-token-audit.sh`
+
+### Updated Artifacts
+
+- `wp-expert/SKILL.md`
+- `wp-contributor/SKILL.md`
+- `content-writer/SKILL.md`
+- `wp-expert/agents/openai.yaml`
+- `wp-contributor/agents/openai.yaml`
+- `scripts/validate-references.sh`
+- `README.md`
+- `QUICK_REFERENCE.md`
+- `CHANGELOG.md`

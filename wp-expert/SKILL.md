@@ -1,6 +1,6 @@
 ---
 name: wp-expert
-description: Principal-level WordPress engineering skill for plugins, plugin product architecture, themes, hybrid theme migration, blocks/FSE, frontend performance, WooCommerce, conversion websites, analytics/measurement, headless/decoupled, multisite, technical SEO, privacy/consent, content modeling, database table architecture, disaster recovery, AI/LLM products, marketplace readiness, React, APIs, runtime versions, changelogs, release contracts, UX product strategy, admin/WPDS/premium UX, pixel-parity design QA, VIP/enterprise scale, launch readiness, monorepos, build tooling, production dependency hygiene, WordPress.org releases, CI/CD, GitHub, PR/base-branch discipline, WP-CLI, test coverage discipline, performance profiling, scale budgets, threat modeling, security review, observability, migrations, accessibility, i18n, advanced troubleshooting, plugin supportability, planning drift control, thinking/brainstorming discipline, anti-overengineering, enterprise acceptance criteria, enterprise code quality, and token-efficient research. Use for WordPress PRD/SOW, estimates, implementation, review, tests, validation, refactoring, debugging, releases, and enterprise decisions.
+description: Principal WordPress engineering for plugins, themes, blocks/FSE, WooCommerce, headless, multisite, admin/UX, performance/security, WPVIP/enterprise, CI/CD, releases, troubleshooting, reviews, estimates, and implementation. Use for WordPress architecture, delivery, validation, and production decisions.
 ---
 
 # WP Expert
@@ -52,88 +52,58 @@ Use this skill to operate like a principal WordPress engineer: find the real run
 
 ## Reference Router
 
-Read the smallest relevant set:
+Use `references/reference-routing-map.md` only when the primary reference is not obvious. Otherwise load the single relevant reference named by the task and add supporting references only for confirmed risks.
 
-- `references/reference-routing-map.md`: deterministic task-to-reference selection matrix for choosing primary and supporting references.
-- `../shared/references/research-token-discipline.md`: token-efficient reasoning, repo exploration, web search, source selection, validation, and output discipline.
-- `../shared/references/session-continuity-pr-discipline.md`: new-chat context rehydration, branch creation discipline, release-branch detection, explicit PR base selection, and post-create PR verification.
-- `../shared/references/production-dependency-discipline.md`: Composer/npm production artifact hygiene, `require-dev`/`devDependencies` boundaries, production installs, and release ZIP/deploy checks.
-- `../shared/references/enterprise-code-quality-gate.md`: enterprise/WPVIP-grade code creation and review gate for modularity, performance, security, maintainability, observability, and rare-scenario tests.
-- `references/delivery-excellence.md`, `references/enterprise-acceptance-criteria-templates.md`, `references/planning-drift-control.md`, `references/thinking-brainstorming-engineering-discipline.md`, `references/test-coverage-discipline.md`, `references/changelog-release-notes.md`, `references/release-contract-compatibility.md`: requirements, PRD/SOW, estimates, milestones, enterprise acceptance criteria, scope drift control, brainstorming convergence, anti-overengineering, premium polish stopping rules, risk-calibrated validation, test coverage discipline, changelog discipline, release contracts, and compatibility policy.
-- `references/plugin-architecture.md`, `references/plugin-product-architecture.md`, `references/plugin-debuggability-supportability.md`, `references/third-party-api-integrations.md`, `references/implementation-patterns.md`: plugin architecture, product-grade extension contracts, supportability, API integrations, and safe implementation patterns.
-- `references/block-theme-architecture.md`, `references/style-guide-theme-translation.md`, `references/custom-block-theme-from-design.md`, `references/hybrid-theme-migration-modernization.md`, `references/theme-and-block-editor.md`, `references/theme-frontend-performance-quality-gate.md`, `references/react-wordpress-enterprise.md`: block/FSE architecture decisions, style guide/token translation, design-to-theme workflow, hybrid theme migration, editor implementation, frontend performance quality, and React integration patterns.
-- `references/woocommerce-commerce-engineering.md`, `references/headless-decoupled-wordpress.md`, `references/content-modeling-information-architecture.md`, `references/database-table-architecture-review.md`, `references/technical-seo-engineering.md`, `references/ai-llm-wordpress-product-engineering.md`, `references/marketplace-product-readiness.md`: commerce, decoupled frontends, content architecture, database table architecture, technical SEO, AI product engineering, and public product readiness.
-- `references/ux-product-strategy-design-qa.md`, `references/conversion-focused-website-engineering.md`, `references/analytics-measurement-engineering.md`, `references/ui-ux-pro-for-wordpress.md`, `references/wordpress-design-system.md`, `references/admin-ux-and-ui.md`, `references/visual-parity-regression.md`: UX discovery, product strategy, IA, content design, conversion website engineering, analytics/measurement, WPDS usage, premium/enterprise quality, image/pixel-parity design QA, admin UX patterns, and visual parity workflow.
-- `references/performance-and-security.md`, `references/performance-profiling-scale-budgets.md`, `references/security-threat-modeling-review.md`, `references/enterprise-architecture.md`, `references/advanced-multisite-network-engineering.md`, `references/vip-scale-playbook.md`, `references/vip-enterprise-launch-readiness.md`, `references/observability-incident-response.md`, `references/disaster-recovery-business-continuity.md`, `references/edge-caching-cdn-architecture.md`, `references/load-testing-capacity-planning.md`, `references/enterprise-search-content-scale.md`, `references/security-operations-compliance.md`, `references/privacy-consent-data-governance.md`: enterprise scale, launch readiness, threat modeling, performance profiling, multisite, reliability, recovery, privacy, security, and traffic-readiness playbooks.
-- `references/wordpress-org-release-operations.md`, `references/plugin-guidelines-review.md`, `references/deployment-release-resilience.md`, `references/runtime-toolchain-version-policy.md`, `references/standards-ci-github.md`, `references/build-tooling.md`, `references/monorepo-engineering.md`, `references/wp-cli-automation.md`, `references/content-migration-editorial-scale.md`: release operations, governance, CI/CD, tooling, monorepo ops, CLI automation, and migration execution.
-- `references/review-checklists.md`, `references/duplicate-code-modularity-review.md`, `references/troubleshooting-operations.md`, `references/advanced-troubleshooting-decision-tree.md`, `references/local-https-testing.md`, `references/accessibility-i18n-global-readiness.md`, `references/validation-commands.md`, `references/ollie-block-theme.md`, `references/blocksy-theme.md`: review rigor, modularity checks, advanced troubleshooting, local HTTPS browser workarounds, accessibility/i18n readiness, validation commands, and theme-specific expertise.
+Hot-path shortcuts:
 
-Use scripts when helpful:
+- Planning and delivery: `references/delivery-excellence.md`, `references/planning-drift-control.md`, `references/thinking-brainstorming-engineering-discipline.md`.
+- Code quality, tests, packaging, and PR safety: `../shared/references/enterprise-code-quality-gate.md`, `references/test-coverage-discipline.md`, `../shared/references/production-dependency-discipline.md`, `../shared/references/session-continuity-pr-discipline.md`.
+- Reviews: `references/review-checklists.md`, then route by the concrete risk found.
+- UI/UX and design parity: `references/ux-product-strategy-design-qa.md`, then `references/ui-ux-pro-for-wordpress.md`, `references/wordpress-design-system.md`, or `references/visual-parity-regression.md` only when needed.
+- Theme/block/FSE: `references/block-theme-architecture.md`; add design, performance, Ollie, or Blocksy references only for those specific surfaces.
+- Performance, security, VIP, troubleshooting, release, API, monorepo, database, WooCommerce, headless, SEO, privacy, migration, and content-scale tasks: use `references/reference-routing-map.md` to choose the narrow playbook.
 
-```bash
-bash /path/to/wp-expert/scripts/wp-context.sh /path/to/repo
-bash /path/to/wp-expert/scripts/wp-validate.sh /path/to/repo
-bash /path/to/wp-expert/scripts/fse-design-map.sh /path/to/design-map.md
-bash /path/to/wp-expert/scripts/wp-local-https-check.sh https://example.test/ /tmp/example-home.png
-bash /path/to/wp-expert/scripts/wporg-release-verify.sh /path/to/svn-checkout 1.2.3
-```
+Use helper scripts when useful: `wp-context.sh`, `wp-validate.sh`, `fse-design-map.sh`, `wp-local-https-check.sh`, and `wporg-release-verify.sh`.
 
 ## Review Mode
 
-- Findings first, ordered by severity. Include file/line references and the concrete failure mode.
-- Prefer high-confidence findings with real impact over long speculative lists.
-- Tie every issue to user impact: exploit path, data loss, broken checkout, cache stampede, slow admin, migration failure, layout regression, accessibility failure, or BC break.
-- Apply the enterprise code-quality gate: modularity, performance, security, maintainability, testability, rare/failure scenarios, and VIP-style scale assumptions are review criteria, not optional polish.
+- Findings first, ordered by severity with file/line references and concrete failure mode.
+- Prefer high-confidence findings tied to real impact: exploit path, data loss, checkout break, cache stampede, slow admin, migration failure, layout regression, accessibility failure, or BC break.
+- Apply the enterprise code-quality gate: modularity, performance, security, maintainability, testability, rare/failure scenarios, and VIP-style scale assumptions.
 - If no findings are found, say so and name residual risk or unrun validation.
 - Do not rewrite code during review unless the user asks for implementation.
 
-Severity guide:
-
-- P0: exploitable security issue, data corruption/loss, fatal production outage.
-- P1: likely production bug, privilege bypass, major performance failure, migration/activation break.
-- P2: correctness, scale, maintainability, accessibility, or UX issue with plausible user impact.
-- P3: cleanup, consistency, low-risk hardening, documentation gaps.
-
 ## Implementation Mode
 
-- Keep bootstraps thin. Move non-trivial behavior into namespaced modules/classes with clear ownership.
-- Code must be modular, performant, secure, maintainable, and testable by design; do not generate happy-path-only implementations.
-- Prefer WordPress-native APIs and extension points, but do not force them when a lower-level approach is measurably safer or faster.
-- Register public contracts deliberately: hooks, filters, REST routes, WP-CLI commands, blocks, shortcodes, cron hooks, assets, options, schema versions.
-- Use REST API for new interactive endpoints by default. Do not add new `admin-ajax.php` handlers when a REST route can satisfy the same use case.
-- Make background work idempotent, retryable, bounded, and observable. Never put secrets or PII in scheduled args, logs, cache keys, URLs, markup, or client JS.
-- Preserve block attributes, frontend markup contracts, Query Loop layout, and theme template hierarchy unless the task explicitly targets them.
-- Place editor UI in the right surface: classic editor post fields belong in meta boxes; block editor document-level settings belong in document/sidebar panels; block-specific settings belong in inspector/block panels. Do not show newly implemented meta boxes in the block editor unless preserving an intentional legacy compatibility surface.
-- Load assets only on screens, routes, blocks, or templates that need them.
-- Favor existing repo workflows for Composer/npm/build/release. Do not add tooling churn without a clear payoff.
-- Keep Git history useful: stage only intended files, commit validated scopes separately, avoid unrelated churn, and push the current branch after task completion when a remote is configured.
-- Remove harmful duplication when it improves reliability, tests, and maintainability, but avoid abstractions that hide domain differences or preserve unreleased draft shapes.
-- Add concise comments/docblocks for non-obvious hooks, data contracts, compatibility shims, migrations, cache invalidation, and security-sensitive decisions.
-- Add or update tests for the changed behavior, including relevant rare scenarios such as permission denial, malformed input, deleted dependencies, retries, concurrency, multisite scope, cache hit/miss, external API failures, migration boundaries, editor reloads, and accessibility-sensitive UI states.
-- If tests are omitted for a code change, document why the change does not need new automated coverage and what validation proves the risk instead.
+- Keep bootstraps thin; move behavior into small owned modules/classes.
+- Prefer WordPress-native APIs and extension points, but choose lower-level code when measurably safer or faster.
+- Register public contracts deliberately: hooks, filters, REST routes, WP-CLI, blocks, shortcodes, cron, assets, options, and schema versions.
+- Use REST for new interactive endpoints by default; avoid new `admin-ajax.php` when REST fits.
+- Keep background work idempotent, bounded, retryable, observable, and free of secrets/PII in args, logs, cache keys, URLs, markup, or JS.
+- Preserve block attributes, frontend markup contracts, Query Loop layout, and theme hierarchy unless explicitly targeted.
+- Put classic editor fields in meta boxes; block editor document settings in document/sidebar panels; block settings in inspector panels. Do not show new meta boxes in the block editor unless preserving legacy compatibility.
+- Scope assets to the screens, routes, blocks, or templates that need them.
+- Follow repo Composer/npm/build/release workflows; avoid tooling churn without payoff.
+- Stage only intended files, commit validated scopes separately, and push after task completion when a remote is configured.
+- Remove harmful duplication when it improves reliability and tests; avoid abstractions that hide domain differences or unreleased draft shapes.
+- Add concise comments/docblocks for non-obvious hooks, contracts, migrations, cache invalidation, and security decisions.
+- Add/update tests for changed behavior and realistic failure cases; if omitted, state why and what validation covers the risk.
 
 ## Universal WordPress Hard Rules
 
-- Capability checks authorize actions. Nonces reduce CSRF; they are not authorization.
-- Sanitize and validate input on ingress. Escape output at the final output boundary.
-- Use `$wpdb->prepare()` for dynamic SQL values and whitelist identifiers/order clauses manually.
-- Give every REST route a meaningful `permission_callback`.
-- Avoid `admin-ajax.php` for new work unless there is a concrete legacy compatibility reason that REST cannot meet.
-- Avoid large or volatile autoloaded options and repeated writes to hot autoloaded options.
-- Avoid unbounded queries. Use pagination, `fields => 'ids'`, `no_found_rows`, indexed lookups, and explicit cache strategy when appropriate.
+- Capability checks authorize actions; nonces only reduce CSRF.
+- Validate/sanitize input on ingress and escape output at the final boundary.
+- Use `$wpdb->prepare()` for dynamic SQL values and whitelist identifiers/order clauses.
+- Every REST route needs a meaningful `permission_callback`; avoid `admin-ajax.php` for new REST-fit work.
+- Avoid large/volatile autoloaded options, repeated hot option writes, and unbounded queries.
 - Preserve backward compatibility for launched/public contracts and real production/client data; do not add shims for abandoned intermediate shapes of unreleased work.
-- When choosing minimum PHP, Node, npm, Composer, database, CI image, or tool versions, use the lowest stable actively maintained non-EOL version that satisfies WordPress, host/VIP, dependency, and deployment constraints.
-- Do not assume local filesystem persistence on cloud/VIP-style environments. Use uploads APIs for media and temp APIs for temporary files.
+- Use the lowest stable actively maintained non-EOL runtime/tool versions that satisfy WordPress, host/VIP, dependency, and deployment constraints.
+- Do not assume filesystem persistence on cloud/VIP-style environments.
 - Never expose secret keys, API tokens, private salts, customer PII, or sensitive payloads in public surfaces.
 
 ## Validation Ladder
 
-- Syntax: `php -l`, `node --check` for plain JS, `composer validate`, package manager checks.
-- Standards/static analysis: PHPCS/WPCS/VIPCS, PHPStan/Psalm, ESLint, TypeScript, WordPress scripts checks.
-- Runtime: plugin activation, `wp eval`, `wp option`, REST route probes, admin page load, block editor load, frontend smoke checks.
-- Tests: PHPUnit, Brain Monkey, WP test suite, Jest/Vitest, Playwright/Cypress.
-- CI/CD: GitHub Actions workflow syntax, matrix jobs, artifacts, release packaging, deployment dry runs.
-- Scale: query count, object-cache behavior, edge cache hit rate, origin miss cost, slow logs, New Relic/Query Monitor, cron/action queue behavior, search index health, migration throughput.
+Choose the cheapest reliable gate for the risk: syntax/config, standards/static analysis, runtime probes, unit/integration/E2E tests, CI/CD artifact checks, and scale measurements.
 
 When a tool is missing, use the best available lower-level check and say what was not run.
 

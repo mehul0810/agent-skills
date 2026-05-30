@@ -34,10 +34,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 - **Planning Drift Control**: wp-expert now includes scope guardrails, risk-calibrated validation levels, and exact user-fed CSS/value-change rules that use diff confirmation without unnecessary visual verification.
 - **Enterprise WordPress Domain Playbooks**: Added wp-expert references for WooCommerce/commerce, headless/decoupled WordPress, advanced multisite, technical SEO, privacy/data governance, content modeling, disaster recovery, AI/LLM WordPress products, and marketplace/product readiness.
 - **Skill Evaluation Scenarios**: Added lightweight wp-expert scenario prompts to verify routing and behavior across exact CSS edits, WooCommerce, headless, multisite, technical SEO, privacy, content modeling, disaster recovery, AI products, and marketplace readiness.
+- **Skill Token Budget Audit**: Added a validation guard for frontmatter descriptions, `SKILL.md` bodies, agent default prompts, and reference word budgets.
 - **WordPress AI Contribution Guidelines**: wp-contributor now includes Make WordPress AI handbook guidance for AI-assisted contributions, disclosure, GPL compatibility, no-AI-slop quality, tests, documentation, issues, and maintainer expectations.
 
 ### Changed
 
+- Shortened skill frontmatter descriptions, agent default prompts, and the `wp-expert` hot-path router to reduce always-loaded token usage.
 - Validation tooling now discovers top-level skill directories dynamically so new skills are covered by reference and script checks.
 
 ## [1.0.0] - 2026-05-25

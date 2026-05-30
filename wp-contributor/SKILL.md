@@ -1,6 +1,6 @@
 ---
 name: wp-contributor
-description: WordPress contribution skill for Core, Meta, Gutenberg, wordpress-develop, WordPress.org and WordCamp.org code, Make teams, Trac, GitHub PRs, PR/base-branch discipline, SVN/Git patches, testing, coding standards, inline docs, commit messages, props, AI contribution guidelines, triage, bug reports, release/backport work, production dependency hygiene, enterprise code-quality gates, accessibility, performance, i18n, security disclosure, contributor-day workflows, and token-efficient research/web search. Use when Codex works on official WordPress project contributions, tickets, patches, PRs, reviews, validation, or contributor communication.
+description: WordPress contribution workflows for Core, Meta, Gutenberg, Trac, GitHub PRs, patches, tests, docs, triage, releases, backports, security disclosure, and contributor communication. Use for official WordPress project work.
 ---
 
 # WP Contributor

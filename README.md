@@ -201,6 +201,7 @@ The skills are intentionally token-efficient:
 
 - Each `SKILL.md` contains the core operating workflow and reference router.
 - Each `references/` directory contains deeper playbooks loaded only when relevant.
+- Skill frontmatter descriptions and default prompts are intentionally short because they affect baseline skill-selection context.
 - The shared `research-token-discipline.md` reference keeps web/research behavior explicit without duplicating guidance across skills.
 - The shared `session-continuity-pr-discipline.md` reference keeps new-chat context recovery and PR base-branch safety explicit across code-oriented skills.
 - The shared `production-dependency-discipline.md` reference keeps Composer/npm production-artifact hygiene consistent across both skills.
@@ -209,6 +210,7 @@ The skills are intentionally token-efficient:
 - The `wp-expert/references/ux-product-strategy-design-qa.md` reference keeps premium UI/UX strategy, image parity, and design QA explicit without bloating the core skill.
 - Focused `wp-expert/references/` playbooks keep plugin product architecture, troubleshooting, conversion engineering, frontend performance, launch readiness, hybrid migration, supportability, analytics, and acceptance criteria loadable only when needed.
 - Each `scripts/` directory contains lightweight discovery, validation, and workflow helpers.
+- `scripts/skill-token-audit.sh` guards frontmatter, `SKILL.md`, prompt, and reference word budgets so future improvements do not quietly increase token usage.
 - `skill-evals/wp-expert-scenarios.md` contains lightweight scenario prompts for checking routing and behavior after skill changes.
 
 See `PLANNING_REPORT.md` for the planning rationale and validation history.

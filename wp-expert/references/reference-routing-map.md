@@ -55,10 +55,12 @@ Use this map to choose references with low context cost.
 | Advanced multisite, network activation, domain mapping, cross-site data, tenant governance | `advanced-multisite-network-engineering.md` | `enterprise-architecture.md`, `content-migration-editorial-scale.md` |
 | Incident, reliability, production debugging | `troubleshooting-operations.md` | `observability-incident-response.md`, `performance-and-security.md` |
 | Advanced troubleshooting decision tree, conflict isolation, cache/CDN debugging, production triage | `advanced-troubleshooting-decision-tree.md` | `troubleshooting-operations.md`, `validation-commands.md` |
+| Duplicate code, modularity, maintainability, shared behavior extraction | `duplicate-code-modularity-review.md` | `implementation-patterns.md`, `test-coverage-discipline.md` |
 | Disaster recovery, business continuity, backups, restore drill, RPO/RTO, release backout | `disaster-recovery-business-continuity.md` | `deployment-release-resilience.md`, `observability-incident-response.md` |
 | CI/CD, linting, standards, GitHub workflows | `standards-ci-github.md` | `build-tooling.md`, `validation-commands.md` |
 | Monorepo structure and multi-package release flow | `monorepo-engineering.md` | `build-tooling.md`, `standards-ci-github.md` |
 | Build tooling choices (webpack/composer/npm) | `build-tooling.md` | `runtime-toolchain-version-policy.md`, `production-dependency-discipline.md` |
+| WP-CLI automation, runtime probes, scripted admin/data operations | `wp-cli-automation.md` | `validation-commands.md`, `troubleshooting-operations.md` |
 | Migrations and editorial-scale launches | `content-migration-editorial-scale.md` | `deployment-release-resilience.md`, `enterprise-search-content-scale.md` |
 | Accessibility, i18n, global readiness | `accessibility-i18n-global-readiness.md` | `ui-ux-pro-for-wordpress.md`, `validation-commands.md` |
 | Local HTTPS domain blocked in browser | `local-https-testing.md` | `validation-commands.md`, `troubleshooting-operations.md` |

@@ -405,6 +405,9 @@ bash wp-expert/scripts/wp-local-https-check.sh https://example.test/ /tmp/exampl
 
 # Discover contribution repo structure
 bash wp-contributor/scripts/wp-contrib-context.sh /path/to/wordpress-develop
+
+# Check skill metadata/body/reference token budgets
+bash scripts/skill-token-audit.sh
 ```
 
 ---

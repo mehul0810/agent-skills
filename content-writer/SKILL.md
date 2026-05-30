@@ -1,6 +1,6 @@
 ---
 name: content-writer
-description: Organic search content writing skill for SEO, AEO, GEO, AI Overviews, AI Mode, answer engines, AI tools, topic research, content briefs, outlines, articles, landing pages, comparison pages, product/service pages, FAQs, schema-aware copy, topical authority, entity coverage, and search-intent optimization. Use when Codex needs to research, plan, write, rewrite, audit, or optimize organic-search-focused content on any topic.
+description: Organic-search content writing for SEO, AEO, GEO, AI Overviews, briefs, outlines, articles, landing pages, audits, and refreshes. Use to plan, write, or optimize search-focused content.
 ---
 
 # Content Writer
