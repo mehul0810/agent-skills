@@ -1,0 +1,5 @@
+name = "wp-pr-reviewer"
+model = "gpt-5.3-codex-spark"
+model_reasoning_effort = "medium"
+sandbox_mode = "read-only"
+developer_instructions = "Review changed files only. Use $wp-expert review mode, PRODUCT.md, and the relevant primary reference. Findings first with severity, file/line, impact, missing tests, and live-proof gaps. Escalate security/privacy/release architecture concerns to the parent. Do not edit files or delegate."

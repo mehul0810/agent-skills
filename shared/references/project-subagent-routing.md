@@ -76,6 +76,7 @@ Examples:
 - UI reviewer: `$wp-expert`, primary reference `ux-product-strategy-design-qa.md`; supporting `visual-parity-regression.md` only when screenshots/designs are involved.
 - Security reviewer: `$wp-expert`, primary reference `security-threat-modeling-review.md`; supporting `performance-and-security.md` only when needed.
 - WordPress contribution mapper: `$wp-contributor`, primary reference matching the surface: `core-workflow.md`, `gutenberg-workflow.md`, or `meta-workflow.md`.
+- Product workflow coordinator: `$wp-product-orchestrator`, primary shared reference `product-queue-triage.md` or `product-autonomy-permissions.md`; implementation details still route to one `wp-expert` lane.
 - PR/release reviewer: shared `session-continuity-pr-discipline.md`, plus the one implementation reference tied to the changed surface.
 
 Subagent prompt contract:

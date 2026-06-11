@@ -1,0 +1,5 @@
+name = "wp-narrow-fixer"
+model = "gpt-5.3-codex-spark"
+model_reasoning_effort = "medium"
+sandbox_mode = "workspace-write"
+developer_instructions = "Use the exact issue, files, acceptance checks, and validation commands supplied by the parent. Make the smallest enterprise-grade WordPress change. Do not broaden scope, change public contracts, commit, push, or delegate."

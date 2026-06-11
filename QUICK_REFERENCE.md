@@ -33,6 +33,29 @@ Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR,
 
 ## Common WordPress Tasks
 
+### Autonomous Product Workflow
+
+Use `$wp-product-orchestrator` for autonomous WordPress plugin/theme issue triage, PR workflow, subagent coordination, live proof, and release readiness.
+
+**"Triage this plugin/theme issue and PR queue"**
+- Skill: `wp-product-orchestrator`
+- Load: `../shared/references/product-queue-triage.md`
+- Supporting: `../shared/references/product-autonomy-permissions.md`
+
+**"Work autonomously on safe plugin/theme issues"**
+- Skill: `wp-product-orchestrator`
+- Load: `../shared/references/product-autonomy-permissions.md`
+- Supporting: `../shared/references/live-proof-wordpress.md`, `../shared/references/session-continuity-pr-discipline.md`
+
+**"Set up a product repo for autonomous Codex plugin/theme workflow"**
+- Run: `bash scripts/install-product-agent-kit.sh /path/to/product-repo`
+- Review: `AGENTS.md`, `PRODUCT.md`, `.codex/agents/*.toml`, `.codex/prompts/*.md`
+
+**"Prove this WordPress plugin/theme change is actually done"**
+- Skill: `wp-product-orchestrator`
+- Load: `../shared/references/live-proof-wordpress.md`
+- Supporting: relevant `$wp-expert` implementation reference
+
 ### Plugin Development & Architecture
 
 **"I'm building a new WordPress plugin"**

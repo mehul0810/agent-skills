@@ -95,7 +95,7 @@ validate_referenced_files() {
 
     # Extract reference file paths from SKILL.md
     local ref_line
-    grep -o '`references/[a-z0-9-]*\.md`' "$skill_file" | sed 's/`//g' | while read -r ref_path; do
+    { grep -o '`references/[a-z0-9-]*\.md`' "$skill_file" 2>/dev/null || true; } | sed 's/`//g' | while read -r ref_path; do
       local full_path="$(dirname "$skill_file")/$ref_path"
 
       if [ ! -f "$full_path" ]; then
@@ -109,7 +109,7 @@ validate_referenced_files() {
   # Also check shared references - resolve relative paths from each skill directory
   local skill_dir
   while IFS= read -r skill_dir; do
-    grep -o '\.\./shared/references/[a-z0-9-]*\.md' "$skill_dir/SKILL.md" 2>/dev/null | sort -u | while read -r ref_path; do
+    { grep -o '\.\./shared/references/[a-z0-9-]*\.md' "$skill_dir/SKILL.md" 2>/dev/null || true; } | sort -u | while read -r ref_path; do
       # Resolve relative to the skill directory
       local full_path="$skill_dir/$ref_path"
 

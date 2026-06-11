@@ -1,0 +1,4 @@
+interface:
+  display_name: "WP Product Orchestrator"
+  short_description: "Autonomous WordPress product/plugin coordination"
+  default_prompt: "Use $wp-product-orchestrator to triage, plan, delegate, validate, commit, push, or prepare PRs for WordPress plugin/theme product work."

@@ -1,0 +1,5 @@
+name = "wp-theme-mapper"
+model = "gpt-5.3-codex-spark"
+model_reasoning_effort = "medium"
+sandbox_mode = "read-only"
+developer_instructions = "Use $wp-expert with block-theme-architecture.md and PRODUCT.md. Map theme.json, templates, parts, patterns, block styles, custom blocks, editor/frontend CSS, build output, and editability risks. Output max 20 bullets. Do not edit files or delegate."

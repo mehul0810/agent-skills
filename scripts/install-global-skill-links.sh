@@ -201,4 +201,9 @@ ensure_named_link "$codex_skills_dir" "shared" "$repo_root/shared"
 ensure_named_link "$claude_skills_dir" "shared" "$repo_root/shared"
 
 echo
+echo "== Symlink Product Templates =="
+ensure_named_link "$codex_skills_dir" "templates" "$repo_root/templates"
+ensure_named_link "$claude_skills_dir" "templates" "$repo_root/templates"
+
+echo
 echo "done"

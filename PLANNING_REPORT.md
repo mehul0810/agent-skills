@@ -1554,3 +1554,48 @@ Improve skill-level routing so large WordPress and contribution projects can use
 - Codex subagents: https://developers.openai.com/codex/subagents
 - Codex skills: https://developers.openai.com/codex/skills
 - Codex hooks: https://developers.openai.com/codex/hooks
+
+## WP Product Orchestrator And Product Autonomy Kit
+
+### Objective
+
+Add an autonomous control-plane workflow for WordPress plugin and theme products without turning `wp-expert` into a monolithic orchestrator. The new layer should make safe product work easier: queue triage, one-issue-at-a-time implementation, subagent coordination, milestone-aware PR bases, WordPress live proof, and decision-ready owner escalation.
+
+### Standout Decision Review
+
+| Addition | Will it stand out? | Decision | Reason |
+| --- | --- | --- | --- |
+| Separate `wp-product-orchestrator` skill | Yes | Add | Keeps product autonomy, issue/PR workflow, and subagent coordination out of the `wp-expert` hot path while making autonomous product work explicit. |
+| Shared autonomy permission reference | Yes | Add | Prevents accidental merge/release/security/product decisions by separating inspect, implement, commit, push, PR, merge, and release permissions. |
+| Shared queue triage reference | Yes | Add | Converts plugin/theme issue queues into autonomous candidates, owner decisions, release blockers, and deferrals with URLs and validation needs. |
+| Shared WordPress live-proof reference | Yes | Add | Ensures plugin/theme work is not marked done without checking the changed runtime, editor, frontend, REST, WP-CLI, external, or release boundary. |
+| Product repo starter kit | Yes | Add | Simplifies adoption across product/plugin/theme repos with `AGENTS.md`, `PRODUCT.md`, `.codex/agents`, and workflow prompts. |
+| Copy steipete's personal tooling directly | No | Reject | The useful pattern is control-plane plus scripts/templates; Peter-specific tools, names, and broad assumptions do not fit WordPress product repos. |
+| Hooks as autonomy engine | No | Reject | Hooks should enforce deterministic project checks only; autonomy, product decisions, and model routing belong in skills, prompts, and project agents. |
+
+### Added Artifacts
+
+- `wp-product-orchestrator/SKILL.md`
+- `wp-product-orchestrator/agents/openai.yaml`
+- `shared/references/product-autonomy-permissions.md`
+- `shared/references/product-queue-triage.md`
+- `shared/references/live-proof-wordpress.md`
+- `templates/product-repo/AGENTS.md`
+- `templates/product-repo/PRODUCT.md`
+- `templates/product-repo/.codex/config.toml`
+- `templates/product-repo/.codex/agents/*.toml`
+- `templates/product-repo/.codex/prompts/*.md`
+- `scripts/install-product-agent-kit.sh`
+- `skill-evals/wp-product-orchestrator-scenarios.md`
+
+### Updated Artifacts
+
+- `README.md`: documented the new skill, shared references, starter kit, install paths, and invocation.
+- `QUICK_REFERENCE.md`: added autonomous product workflow routing.
+- `CHANGELOG.md`: added the new skill, references, templates, and installer behavior.
+- `scripts/install-global-skill-links.sh`: now symlinks `templates/` into Codex and Claude skill roots.
+- `shared/references/project-subagent-routing.md`: added `wp-product-orchestrator` as the product workflow coordinator.
+
+### Source Pattern Reviewed
+
+- `steipete/agent-scripts`: control-plane skill, short skill descriptions, shared hard rules, helper scripts, hooks for deterministic validation, slash-command prompt docs, and repo-owned symlinked skills.
