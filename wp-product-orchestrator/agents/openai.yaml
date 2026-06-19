@@ -1,4 +1,4 @@
 interface:
   display_name: "WP Product Orchestrator"
-  short_description: "Autonomous WordPress product/plugin coordination"
-  default_prompt: "Use $wp-product-orchestrator to triage, plan, delegate, validate, commit, push, or prepare PRs for WordPress plugin/theme product work."
+  short_description: "CTO control-plane for WordPress product workflow"
+  default_prompt: "Use $wp-product-orchestrator to plan, intake issues, delegate, validate, communicate, and prepare CTO readiness decisions for WordPress product work."

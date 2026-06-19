@@ -29,6 +29,8 @@ Options:
   --routing   Validate reference routing map
   --tokens    Check skill token budgets
   --behavior  Check critical agent behavior guardrails
+  --orchestration
+              Check product orchestrator CTO behavior guardrails
   --help      Show this message
 
 Examples:
@@ -333,6 +335,17 @@ validate_behavior_rules() {
   fi
 }
 
+validate_orchestration_rules() {
+  echo ""
+  echo "=== Validating product orchestrator guardrails ==="
+
+  if bash "$repo_root/scripts/orchestration-behavior-audit.sh"; then
+    log_success "Product orchestrator guardrails are present"
+  else
+    log_error "Product orchestrator guardrail audit failed"
+  fi
+}
+
 # Summary
 print_summary() {
   echo ""
@@ -388,10 +401,13 @@ main() {
     validate_metadata
     validate_token_budgets
     validate_behavior_rules
+    validate_orchestration_rules
   elif [ "$check_type" = "tokens" ]; then
     validate_token_budgets
   elif [ "$check_type" = "behavior" ]; then
     validate_behavior_rules
+  elif [ "$check_type" = "orchestration" ]; then
+    validate_orchestration_rules
   fi
 
   print_summary
