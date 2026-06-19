@@ -10,6 +10,8 @@ Example: if `0.6.0` is not production-released, do not create `0.6.1-beta-*`. Ne
 
 Never infer prerelease readiness from milestone closure alone.
 
+`main` is production release space only. Release branches merge to `main` only after explicit owner release approval and owner testing confirmation. `develop` remains normal development integration; milestone work should target `release/<milestone-number>` when that branch exists.
+
 ## Required Release Checks
 
 Before any beta, prerelease, or stable action, verify:
@@ -19,6 +21,7 @@ Before any beta, prerelease, or stable action, verify:
 - Current target release train.
 - Whether the previous milestone has a production release.
 - Whether the owner explicitly authorized prerelease/release creation in the current context.
+- Whether owner testing confirmation exists for production readiness.
 
 Use the source of truth hierarchy from `cto-orchestration-operating-model.md`: GitHub production releases/tags first, then prereleases/tags, then milestones/issues/PRs, then repo docs, then local state, then memory/chat.
 

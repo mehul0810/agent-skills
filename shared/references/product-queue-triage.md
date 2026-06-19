@@ -42,6 +42,19 @@ gh pr view <number-or-url> --json number,title,state,author,body,comments,review
 gh pr diff <number-or-url> --patch
 ```
 
+## Issue Intake
+
+User requests become GitHub issues first unless the user explicitly says not to. Product-idea issues require web research before filing. Competitor names may inform private research, but do not put competitor names in public GitHub issue titles or bodies.
+
+Before creating an issue:
+
+- Search open issues, recently closed issues, open PRs, milestones, roadmap docs, product docs, and release docs.
+- Avoid broad umbrella issues; prefer one issue per PR.
+- Assign to `@mehul0810`.
+- Reuse existing labels and milestones when evidence supports them.
+- Include acceptance criteria, non-goals, branch/base plan, validation expectations, risk, and owner decisions.
+- Use `develop` for normal development integration; use `release/<milestone-number>` as the PR base when milestone evidence and a release branch exist.
+
 ## Classification
 
 Classify each item:

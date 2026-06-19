@@ -2,6 +2,14 @@
 
 Use this reference before committing, pushing, opening a PR, updating a PR body, or handing off product work.
 
+## Branch Discipline
+
+- `main` is production release space only. Never push development work directly to `main`.
+- `develop` is the normal development integration branch.
+- For milestone-based work, create or use `release/<milestone-number>` branches and target issue PRs into the release branch when one exists.
+- Release branches merge to `main` only after explicit owner release approval.
+- Never rely on GitHub's default base; prove and set the PR base explicitly.
+
 ## Commit Convention
 
 Use this commit format:
@@ -26,6 +34,7 @@ Rules:
 - Commit only intended files.
 - Avoid generated noise unless required.
 - Do not push unless repo policy or the parent CTO thread authorizes it.
+- Do not push to `main` for development work.
 
 ## PR Requirements
 
@@ -47,8 +56,13 @@ Every PR must include:
 PRs must not:
 
 - Rely on GitHub's default base.
+- Target `main` for development or milestone work unless the owner explicitly approved a production release merge.
 - Close issues accidentally when targeting a branch that will not auto-close them.
 - Claim release readiness without release-train verification.
 - Merge themselves unless explicitly authorized.
 
 Use closing keywords only when the PR fully resolves the linked issue and targets a branch where closure behavior is intended.
+
+## Worker PR Rule
+
+Every issue implementation should be done by a worker using `wp-expert`, a Codex-created worktree, one issue, one branch, and one PR. Workers must not perform release actions, push directly to `main`, close issues, merge PRs, retarget milestones, or subdelegate.

@@ -35,6 +35,8 @@ Use concrete labels:
 - Delegation before strategy.
 - Missing delegation after strategy.
 - Portfolio coverage drift.
+- Portfolio execution drift.
+- Product thread topology drift.
 - Scope creep or over-engineering.
 - Missing owner approval.
 - Release train violation.

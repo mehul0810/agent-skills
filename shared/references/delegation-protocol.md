@@ -1,6 +1,6 @@
 # Delegation Protocol
 
-Use this reference before creating Codex chat threads, worktrees, or subagent prompts for WordPress product work.
+Use this reference before creating product-orchestrator threads, Codex worker threads, worktrees, or subagent prompts for WordPress product work.
 
 ## Plan Before Delegation
 
@@ -17,9 +17,15 @@ Plan before delegation. No delegated agent or thread should start until the CTO 
 
 Each issue should normally get one PR. Split issues when scope crosses independent release, product, or validation boundaries.
 
+## Thread Boundary
+
+Portfolio control threads should not do product-level work by default. Route product execution to the relevant long-lived product-orchestrator thread.
+
+Product-orchestrator threads are user-visible control threads for one plugin and must not be archived unless the owner explicitly asks. Only Codex-created implementation/evidence worker threads may be archived after PR/task reconciliation.
+
 ## Direct Execution Boundary
 
-The CTO thread may directly handle only the smallest orchestration actions:
+The portfolio or product control thread may directly handle only the smallest orchestration actions:
 
 - Source-of-truth rehydration.
 - Duplicate-screened issue intake.
@@ -41,7 +47,7 @@ Use `Direct` only when the task is smaller than the delegation overhead, the env
 
 ## Delegation Ownership Boundary
 
-The CTO thread owns final plan, branch/base choice, PR body, GitHub comments, validation synthesis, commits, push authorization, owner decisions, issue closure decisions, and release readiness.
+The portfolio or product control thread owns final plan, branch/base choice, PR body, GitHub comments, validation synthesis, commits, push authorization, owner decisions, issue closure decisions, and release readiness.
 
 Delegated workers own bounded implementation, mapping, review, CI/test triage, dependency resolution, workflow investigation, or evidence collection. They must not merge, release, close issues, retarget milestones, make owner decisions, or subdelegate.
 
@@ -56,12 +62,13 @@ Every delegated thread prompt must include:
 - GitHub issue URL.
 - Target milestone.
 - Branch/base evidence.
+- Issue branch name and PR base; never direct `main` for development work.
 - Allowed scope.
 - Forbidden actions.
 - Expected files or areas to inspect.
 - Expected validation commands.
 - Output format.
-- Explicit instruction: do not merge, release, close issues, retarget milestones, or make product decisions.
+- Explicit instruction: do not merge, release, close issues, retarget milestones, push to `main`, archive protected product/control threads, or make product decisions.
 - Explicit instruction: no subdelegation unless the parent CTO thread asks.
 
 Use worktrees when parallel implementation or CI repair would otherwise risk branch drift. Prefer read-only delegated workers for mapping, evidence, and review. Use narrow fixer workers only after the CTO thread has isolated files, behavior, and acceptance checks.

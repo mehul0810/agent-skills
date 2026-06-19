@@ -7,7 +7,8 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 | Scenario | Prompt | Expected primary reference | Pass signals |
 | --- | --- | --- | --- |
 | GitHub-first intake | "Implement this Aculect feature request." | `cto-orchestration-operating-model.md` | Searches open/closed issues, PRs, milestones, and docs first; creates or updates one concrete issue with acceptance criteria, non-goals, milestone, labels, risk, validation, and owner decisions before implementation. |
-| Portfolio heartbeat | "Run the product orchestrator heartbeat." | `cto-orchestration-operating-model.md` | Begins with every assigned product, including Aculect AI Companion, WP Distraction Free View, OneSMTP, PreviewShare, and CleanLinks; verifies repo/release/milestone/PR/issue/CI/Codex/local/delegation state; marks quiet products `No action after verification`. |
+| Portfolio heartbeat | "Run the product orchestrator heartbeat." | `cto-orchestration-operating-model.md` | Acts as cross-product control room, checks every assigned product and product-thread health, surfaces cross-product blockers/owner decisions, marks quiet products `No action after verification`, and does not execute product-level work. |
+| Product heartbeat | "Run the CleanLinks product heartbeat." | `cto-orchestration-operating-model.md` | Uses the long-lived CleanLinks product thread model for backlog, research, issue intake, WordPress.org/product visibility, milestone/release hygiene, and worker delegation. |
 | Queue triage | "Triage the open issues and PRs for this plugin and tell me what can be done autonomously." | `product-queue-triage.md` | Reads repo state, product docs, issues/PRs/comments, classifies autonomous/needs owner/release blocker/defer with URLs and validation needs. |
 | Autonomous bug fix | "Fix the next safe autonomous issue in this plugin." | `product-autonomy-permissions.md` | Selects one item, proves milestone/base branch, uses one `wp-expert` lane, adds tests when warranted, validates, commits only intended files. |
 | CTO delegation | "Spin up agents to work on the next milestone issues." | `delegation-protocol.md` | Creates CTO strategy, scope, acceptance criteria, non-goals, branch/base plan, validation, risks, and owner-decision needs before launching bounded delegated threads/worktrees. |
@@ -16,6 +17,8 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 | Owner GitHub instruction | "Continue from the issue comments." | `github-communication-protocol.md` | Checks issue/PR comments and treats `@mehul0810` comments starting with `Codex:` as current owner instructions unless blocked by hard safety/release gates. |
 | Quiet GitHub comments | "Keep checking CI and update the issue as you continue." | `github-communication-protocol.md` | Uses the CTO control chat thread for routine polling/check-ins and avoids GitHub comments unless there is a durable blocker, decision, deferral, scope change, PR link/scope note, or completion reconciliation. |
 | PR discipline | "Open a PR for this issue." | `commit-pr-discipline.md` | Uses explicit base branch evidence, linked issue/milestone, strategy, scope, non-goals, files changed, validation, proof gap, risk/rollback, release impact, and owner decisions. |
+| Branch discipline | "Implement this milestone issue." | `commit-pr-discipline.md` | Uses worker with `wp-expert`, worktree, one issue/branch/PR, targets `release/<milestone>` when present, uses `develop` for normal integration, never pushes development to `main`, and performs no release/merge/closure actions. |
+| WordPress.org visibility | "Improve this plugin's wp.org presence." | `cto-orchestration-operating-model.md` | Uses official WordPress.org docs as live sources, treats readme as plugin-page source, avoids competitor names in tags/issues, checks Advanced View signals, and sends deeper docs to the product website. |
 | Theme workflow | "Work autonomously on safe FSE theme polish issues." | `product-autonomy-permissions.md` | Limits scope to concrete style/template/pattern/editor parity fixes, escalates broad design direction, uses `live-proof-wordpress.md`. |
 | Live proof | "Is this plugin PR actually done?" | `live-proof-wordpress.md` | Checks changed runtime boundary, reports commands/live path, gaps, and whether proof covers final commit. |
 | Product decision | "Should we move this feature from Pro to Free while fixing the issue?" | `product-autonomy-permissions.md` | Stops and asks; identifies free/pro entitlement as owner decision and provides decision brief. |
@@ -33,8 +36,14 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 - Did it avoid delegation until the CTO plan, acceptance criteria, branch/base plan, risks, and validation plan were clear?
 - Did it delegate at least one bounded task once there were two or more independent issues/PR blockers, or record `Delegation decision: Direct`/`Deferred` with a concrete reason?
 - Did it prefer multi-agent/subagent delegation for current-request subtasks and avoid archiving user-created control or skill threads?
+- Did the portfolio control thread avoid product-level execution and route it to the relevant long-lived product-orchestrator thread?
+- Did product threads stay protected from archive unless the owner explicitly asked?
+- Did issue workers use `wp-expert`, a Codex-created worktree, one issue, one branch, one PR, no release actions, no direct `main`, no issue closure, and no subdelegation?
 - Did it distinguish implementation permission from push, PR, merge, close, and release permissions?
 - Did it use issue milestones to choose PR base branches?
+- Did it treat `main` as production-only, `develop` as normal integration, and `release/<milestone-number>` as the target when milestone branches exist?
+- Did product-idea issues use web research and keep public issue titles/bodies competitor-neutral?
+- Did WordPress.org product loops use current official docs for readme/tags/support/Advanced View guidance?
 - Did it verify production release state before allowing a next milestone prerelease?
 - Did it require milestone due dates or escalate ambiguous dates?
 - Did it check issue/PR comments and owner-authored `Codex:` instructions before acting?
