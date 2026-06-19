@@ -6,7 +6,7 @@ Use this reference before committing, pushing, opening a PR, updating a PR body,
 
 - `main` is production release space only. Never push development work directly to `main`.
 - `develop` is the normal development integration branch.
-- For milestone-based work, create or use `release/<milestone-number>` branches and target issue PRs into the release branch when one exists.
+- For milestone-based work, create or use `release/<milestone-number>` branches from the verified development base and target issue PRs into the release branch when the repo has adopted that workflow and repo docs or owner comments do not contradict it.
 - Release branches merge to `main` only after explicit owner release approval.
 - Never rely on GitHub's default base; prove and set the PR base explicitly.
 

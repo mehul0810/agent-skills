@@ -53,7 +53,10 @@ Before creating an issue:
 - Assign to `@mehul0810`.
 - Reuse existing labels and milestones when evidence supports them.
 - Include acceptance criteria, non-goals, branch/base plan, validation expectations, risk, and owner decisions.
-- Use `develop` for normal development integration; use `release/<milestone-number>` as the PR base when milestone evidence and a release branch exist.
+- Use `develop` for normal development integration; create or use `release/<milestone-number>` from the verified development base when the repo has adopted that workflow and milestone evidence supports it.
+- Missing milestone due dates require an owner decision brief, but they are not by themselves blockers to implementation delegation for existing issues with clear scope and safe branch/base evidence.
+- Dirty or behind primary checkouts block direct edits, not fresh scoped worktree delegation from a clean upstream branch.
+- If delegation is deferred, report the exact blocker: issue number, missing branch/base, missing owner decision, missing tool/project, or unsafe checkout state.
 
 ## Classification
 

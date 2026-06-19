@@ -45,6 +45,14 @@ Delegation decision: Delegated|Direct|Deferred - <short reason>
 
 Use `Direct` only when the task is smaller than the delegation overhead, the environment cannot safely delegate, or the owner explicitly asked the CTO thread to execute directly. Use `Deferred` when the plan is not yet clear enough to delegate or a blocker prevents safe delegation.
 
+Before declaring delegation unavailable, use tool discovery for project/thread/worktree/subagent surfaces. Look for `list_projects`, `create_thread`, `fork_thread`, `send_message_to_thread`, and available worktree or subagent tools when they are not already loaded.
+
+Missing milestone due dates are owner decisions, not blanket implementation blockers. If an existing issue has clear scope plus safe milestone/branch/base evidence, delegate implementation and prepare a separate due-date decision brief.
+
+Dirty or behind primary checkouts block direct edits in that checkout. They do not block a fresh scoped Codex worktree worker from a clean upstream branch when branch/base evidence is safe.
+
+When delegation is deferred, report the exact hard blocker: issue number, missing branch/base, missing owner decision, missing tool/project, or unsafe checkout state. For an explicit branch-model blocker such as OneSMTP #73, prepare an owner decision brief instead of passive polling.
+
 ## Delegation Ownership Boundary
 
 The portfolio or product control thread owns final plan, branch/base choice, PR body, GitHub comments, validation synthesis, commits, push authorization, owner decisions, issue closure decisions, and release readiness.

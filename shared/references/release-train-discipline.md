@@ -32,6 +32,9 @@ Milestones need due dates. If a milestone lacks a due date:
 - Set or recommend one only after checking the current release train and existing milestone sequence.
 - Ask the owner if the date is ambiguous.
 - Do not invent dates that conflict with repo policy or production release order.
+- Do not treat the missing due date alone as a blocker to implementation delegation for an existing issue when scope, milestone evidence, and branch/base are otherwise safe.
+
+If the owner has adopted a `release/<milestone>` workflow, product threads may create or use `release/<milestone>` from the verified development base for existing milestone work unless repo docs or owner comments contradict it. Do not retarget ambiguous milestones or change due dates without approval.
 
 ## Release Stop Conditions
 

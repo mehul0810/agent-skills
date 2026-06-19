@@ -34,6 +34,8 @@ Use concrete labels:
 - Missing branch/base proof.
 - Delegation before strategy.
 - Missing delegation after strategy.
+- Delegation unavailable without tool discovery.
+- Blanket blocker from due date, release branch, or dirty primary checkout.
 - Portfolio coverage drift.
 - Portfolio execution drift.
 - Product thread topology drift.
