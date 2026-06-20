@@ -45,7 +45,7 @@ Delegation decision: Delegated|Direct|Deferred - <short reason>
 
 Use `Direct` only when the task is smaller than the delegation overhead, the environment cannot safely delegate, or the owner explicitly asked the CTO thread to execute directly. Use `Deferred` when the plan is not yet clear enough to delegate or a blocker prevents safe delegation.
 
-Before declaring delegation unavailable, use tool discovery for project/thread/worktree/subagent surfaces. Look for `list_projects`, `create_thread`, `fork_thread`, `send_message_to_thread`, and available worktree or subagent tools when they are not already loaded.
+Before declaring delegation unavailable, use tool discovery for project/thread/worktree/subagent surfaces. Look for `list_projects`, `create_thread`, `fork_thread`, `send_message_to_thread`, available worktree or subagent tools, and shell/manual git worktree capability when safe.
 
 ## Worktree Creation Guard
 
@@ -66,7 +66,22 @@ When using app-managed worktrees, pass an explicit verified base branch through 
 
 If a pending worktree does not materialize, or it lands detached/wrong-base, classify it as `unusable worktree` and stop retrying the same creation path until the repo-root/project/base problem is fixed.
 
-Setup-blocked cooldown: when exact project setup is missing, product heartbeats must avoid repeated full rehydration and must not retry worker creation. Return concise `DONT_NOTIFY/setup-blocked` with the missing exact repo-root project and next owner action unless a new owner/product source-of-truth signal appeared.
+## Unblock-First Recovery Ladder
+
+`Setup-blocked` is not a stop condition by itself. It is an internal classification that starts recovery.
+
+Choose the recovery path by work type:
+
+- Research, GitHub issue intake, support/forum triage, Advanced View checks, docs planning, and PR/status synthesis: do directly in the product thread. No worktree required.
+- Read-only code mapping or evidence: use available subagent/explorer tools, or same-thread read-only inspection when safe.
+- Code changes: first try exact saved repo-root Codex project worktree. If missing, try another safe route: manual `git worktree` from the exact plugin repo root with verified clean base, or a bounded worker/subagent operating on that explicit worktree/path, subject to sandbox and approval rules.
+
+If a repo setup problem can be solved safely through commands or an allowed escalation request, attempt recovery instead of reporting a blocker. Notify the owner only when the remaining action is owner-only: adding a saved Codex project in the app UI, approving recovery/replacement of a user-created stale product thread, branch-model changes, or privileged/destructive/release-sensitive actions.
+
+Final status must not stop at "blocked because X". Use either:
+
+- `Recovered by doing Y; next work is Z`.
+- `Owner action required: approve/perform Y; meanwhile I completed A/B/C that did not need Y`.
 
 Stale active turn handling: if a product orchestrator has an older active/inProgress turn, or a pending worktree did not materialize, classify `Product thread topology drift`, escalate to the portfolio thread, and do not launch more work or queue follow-ups into the stuck thread.
 
