@@ -55,7 +55,7 @@ Before creating an app-managed worker worktree, verify the saved project path or
 git rev-parse --show-toplevel
 ```
 
-If the product thread is rooted in a broader WordPress folder such as `wp-content` or `wp-content/plugins`, do not call `create_thread` or `fork_thread` with a worktree environment from that thread. App-managed worktree setup can fail or land on the wrong repository/base. Use an exact plugin repo-root saved project when available; otherwise report `missing exact repo project` as the hard blocker and prepare a tooling/setup decision brief.
+Exact-project preflight: the saved Codex project path must exactly equal the plugin repo root returned by `git rev-parse --show-toplevel`. If the product thread is rooted in a broader WordPress folder such as `wp-content` or `wp-content/plugins`, do not call `create_thread` or `fork_thread` with a worktree environment from that thread. App-managed worktree setup can fail or land on the wrong repository/base. Use an exact plugin repo-root saved project when available; otherwise report `setup-blocked: missing exact repo project` as the hard blocker and prepare a tooling/setup decision brief.
 
 When using app-managed worktrees, pass an explicit verified base branch through the worktree starting state when the tool supports it. After the worker materializes, verify:
 
@@ -65,6 +65,10 @@ When using app-managed worktrees, pass an explicit verified base branch through 
 - The worktree is not detached or on production `main` for implementation work.
 
 If a pending worktree does not materialize, or it lands detached/wrong-base, classify it as `unusable worktree` and stop retrying the same creation path until the repo-root/project/base problem is fixed.
+
+Setup-blocked cooldown: when exact project setup is missing, product heartbeats must avoid repeated full rehydration and must not retry worker creation. Return concise `DONT_NOTIFY/setup-blocked` with the missing exact repo-root project and next owner action unless a new owner/product source-of-truth signal appeared.
+
+Stale active turn handling: if a product orchestrator has an older active/inProgress turn, or a pending worktree did not materialize, classify `Product thread topology drift`, escalate to the portfolio thread, and do not launch more work or queue follow-ups into the stuck thread.
 
 Missing milestone due dates are owner decisions, not blanket implementation blockers. If an existing issue has clear scope plus safe milestone/branch/base evidence, delegate implementation and prepare a separate due-date decision brief.
 

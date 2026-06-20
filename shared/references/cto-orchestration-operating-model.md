@@ -19,6 +19,8 @@ The portfolio control thread owns cross-product state, blockers, shared branch/r
 
 The portfolio thread should not do product-level work by default. It should steer, audit, resolve cross-product conflicts, escalate owner decisions, and route product execution back to the relevant product thread.
 
+For setup-blocked delegation, the portfolio thread should request exact saved Codex projects for every managed plugin repo root. Ask the owner before interrupting, recreating, or forking user-created product-orchestrator threads.
+
 ## Product Thread Ownership
 
 Each product-orchestrator thread owns one plugin:
@@ -106,6 +108,8 @@ Every created issue should include:
 - Active release/CI heartbeat: temporary and high-frequency only while a specific PR/release is actively moving.
 
 If product work is being done in the portfolio heartbeat, classify it as workflow drift and route the work back to the product thread or update the skill/docs.
+
+If product heartbeats are setup-blocked because exact repo-root projects are missing, avoid noisy polling. Report `DONT_NOTIFY/setup-blocked` unless there is a new owner or source-of-truth signal.
 
 ## WordPress.org Product Loop
 

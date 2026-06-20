@@ -73,6 +73,8 @@ Use concrete labels:
 - Missing delegation after strategy.
 - Delegation unavailable without tool discovery.
 - Wrong app-managed worktree root or base.
+- Setup-blocked polling loop.
+- Stale active product thread.
 - Blanket blocker from due date, release branch, or dirty primary checkout.
 - Portfolio coverage drift.
 - Portfolio execution drift.
