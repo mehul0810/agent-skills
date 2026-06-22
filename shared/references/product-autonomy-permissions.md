@@ -41,7 +41,7 @@ Common autonomous plugin/theme work:
 
 Only production or beta release actions require explicit current `@mehul0810` approval: creating production/beta releases or tags, publishing/deploying a release, or declaring a production/beta release approved.
 
-For normal product orchestration, do not stall on `owner:me` if a decision is reasonable, reversible, and non-release. Document the rationale, relabel to `owner:codex`, and proceed or delegate.
+For normal product orchestration, do not stall on `owner:me` if a decision is reasonable, reversible, and non-release. Document the rationale, relabel to `owner:codex`, and proceed or delegate. Continue issue creation, labels, branch prep, PR review/merge for good non-production PRs, dependency/tooling work, docs work, and reversible backlog prioritization when repo policy and validation support it.
 
 Escalate rather than guess when work is not reversible or crosses:
 

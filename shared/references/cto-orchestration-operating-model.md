@@ -36,6 +36,8 @@ Each product-orchestrator thread owns one plugin:
 
 Product threads own product-level strategy and action. Implementation still goes to bounded workers when delegation is useful.
 
+The primary product-thread objective is to drive the next release train to release-ready, not to poll status. Each product thread should keep selecting the highest-leverage release-readiness action until it can notify the portfolio/owner that the train is ready for explicit production/beta release approval.
+
 ## Worker Ownership
 
 Delegated workers own only bounded implementation, CI triage, dependency resolution, workflow investigation, review, or evidence gathering. They do not own product decisions, release decisions, merges, issue closure, milestone retargeting, protected thread archiving, or final readiness calls.
@@ -94,7 +96,9 @@ Avoid duplicates and vague umbrella issues. Prefer one issue per PR. If a milest
 
 For owner-mentioned intake, duplicate-screen, create or update the issue, assign `@mehul0810`, classify by type/complexity/risk, and prioritize into the nearest appropriate milestone or release train among the next three. Missing milestone due dates or branch-policy gaps are not blanket blockers; recommend the milestone/order and escalate only the missing metadata or unsafe ambiguity.
 
-If the current milestone has no ready work, continue to the next milestone's ready work. If no suitable ready issue exists, create proactive review work for scalability, modularity, performance, maintainability, dependency/tooling, UX/docs, or security hardening.
+If the current milestone has no ready work, continue to the next milestone's ready work. If no suitable ready issue exists, create proactive review work from the codebase and current ecosystem for scalability, modularity, performance, maintainability, dependency/tooling, UX/docs, WordPress.org visibility, accessibility, or sanitized hardening.
+
+Use any relevant skill or capability for product-thread evidence: `wp-expert` for implementation/review, content/SEO skills for docs and visibility, security skills internally for sanitized hardening, web search for current ecosystem/docs, WordPress.org support and Advanced View review, and repo code review. Keep public issues/comments sanitized when security-sensitive.
 
 Every created issue should include:
 
@@ -139,7 +143,9 @@ The orchestrator can flag conflicts with discipline, but the founder/owner makes
 
 Escalate before prerelease/release creation, production deploy, ambiguous milestone retargeting, pricing/licensing/free-vs-pro changes, privacy/security posture changes, database/schema migrations, public API or breaking contract changes, or broad product positioning changes.
 
-Reserve `Owner decisions needed` for production/beta release actions or non-reversible conflicts: creating production/beta releases or tags, publishing/deploying, declaring release approval, unsafe milestone inference, pricing/licensing/free-vs-pro, privacy/security posture, public API/schema/breaking contracts, destructive actions, or broad positioning.
+Reserve `Owner decisions needed` for production/beta release actions or non-reversible conflicts: creating production/beta releases or tags, publishing/deploying, declaring release approval, unsafe milestone inference, pricing/licensing/free-vs-pro, privacy/security posture, public API/schema/breaking contracts, destructive actions, or broad positioning. Normal product decisions, issue creation, labels, branch prep, PR review or merge for good non-production PRs, dependency/tooling work, docs work, and reversible backlog prioritization should continue without waiting.
+
+When a release train is ready, notify the portfolio/owner with evidence: merged PRs, remaining open issues, CI/package validation, docs/release notes/readme/WordPress.org status, risks, and the exact production/beta release approval requested.
 
 Security-sensitive findings must not become public issues and must not include exploit details, reproduction steps, or public `security issue` wording. Use sanitized hardening PRs with validation and minimal public detail.
 

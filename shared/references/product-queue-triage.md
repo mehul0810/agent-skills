@@ -6,6 +6,8 @@ Use this reference for GitHub issue/PR triage in WordPress product/plugin/theme 
 
 Convert an open queue into clear action: autonomous work, owner decisions, release blockers, deferrals, or closure candidates. Do not leave the user with opaque issue numbers or vague priorities.
 
+The product-thread objective is release readiness: keep advancing the next release train until it is ready for explicit production/beta release approval with evidence.
+
 ## Start With Repo State
 
 Run cheap checks first:
@@ -50,7 +52,7 @@ User requests become GitHub issues first unless the user explicitly says not to.
 
 Owner-mentioned work is approved intake signal, not an owner-decision blocker. When `@mehul0810` names work or says to proceed, duplicate-screen, create or update the issue, assign `@mehul0810`, classify by type/complexity/risk, and prioritize into the nearest appropriate milestone or release train among the next three.
 
-A milestone-assigned issue/PR is ready to work unless it hits a production/beta release gate. `owner:me` is not a stall for reversible non-release choices: document rationale, relabel to `owner:codex`, and proceed/delegate. If `@mehul0810` answers a question and the item is relabeled `owner:codex`, resume when answered and relabeled `owner:codex` by reviewing the body, comments, and reviews before continuing. If the current milestone has no ready work, continue to the next milestone's ready work.
+A milestone-assigned issue/PR is ready unless it hits a production/beta release gate. `owner:me` is not a stall for reversible non-release choices: document rationale, relabel to `owner:codex`, and proceed/delegate. If `@mehul0810` answers a question and the item is relabeled `owner:codex`, resume when answered and relabeled `owner:codex` by reviewing the body, comments, and reviews before continuing. If the current milestone has no ready work, continue to the next milestone's ready work.
 
 Before creating an issue:
 
@@ -65,7 +67,7 @@ Before creating an issue:
 - Dirty or behind primary checkouts block direct edits, not fresh scoped worktree delegation from a clean upstream branch.
 - If delegation is deferred, report the exact blocker: issue number, missing branch/base, missing owner decision, missing tool/project, or unsafe checkout state.
 
-If no suitable ready issue exists, create proactive review work for scalability, modularity, performance, maintainability, dependency/tooling, UX/docs, or security hardening. Keep each review issue bounded, assigned, labeled `owner:codex`, and tied to the nearest appropriate milestone when evidence supports it.
+If no suitable ready issue exists, create proactive review work from codebase and current ecosystem signals for scalability, modularity, performance, maintainability, dependency/tooling, UX/docs, WordPress.org visibility, accessibility, or sanitized hardening. Keep each review issue bounded, assigned, labeled `owner:codex`, and tied to the nearest appropriate milestone when evidence supports it.
 
 Security-sensitive findings must not become public issues and must not include exploit details, reproduction steps, or public `security issue` wording. Use sanitized hardening PRs with validation and minimal public detail.
 
@@ -124,6 +126,17 @@ Work one item at a time:
 8. Commit focused changes; push/PR only if authorized.
 9. Update PR/issue with proof when authorized.
 10. Return local repo to a clean, expected branch state before selecting the next item.
+
+## Release-Ready Notification
+
+When the train is ready for owner approval, report:
+
+- Merged PRs and included scope.
+- Remaining open issues and why they are non-blocking or deferred.
+- CI, package, build, lint, test, and live-proof validation.
+- Docs, release notes, readme, WordPress.org, support, and Advanced View status.
+- Risks, rollback notes, and unresolved proof gaps.
+- Exact approval requested: production or beta release target/version.
 
 ## Owner-Facing Triage Output
 

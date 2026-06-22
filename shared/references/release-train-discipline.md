@@ -48,4 +48,6 @@ Stop before release or prerelease creation when:
 - WordPress.org, marketplace, or deploy credentials are missing.
 - The owner did not explicitly authorize the production/beta release action.
 
-Normal product orchestration, issue intake, implementation, hardening PRs, branch creation for milestone work, and validation do not require explicit release approval when they avoid production/beta releases, tags, deploys, and public release approval claims.
+Normal product orchestration, issue intake, implementation, hardening PRs, branch creation for milestone work, good non-production PR review/merge, dependency/tooling work, docs work, and validation do not require explicit release approval when they avoid production/beta releases, tags, deploys, and public release approval claims.
+
+When the train is release-ready, request exact production/beta release approval with evidence: merged PRs, remaining open issues, CI/package validation, docs/release notes/readme/WordPress.org status, risks, rollback notes, and proof gaps.
