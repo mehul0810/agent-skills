@@ -27,13 +27,13 @@ Do not post comments just to say the orchestrator is checking, polling CI, waiti
 GitHub labels define work ownership and readiness:
 
 - `owner:codex`: ready for Codex/orchestrator/worker action.
-- `owner:me`: waiting on `@mehul0810` answer or decision; not ready for implementation/delegation.
+- `owner:me`: waiting on `@mehul0810` for true hard gates, but not a stall for reversible non-release choices.
 
-A milestone-assigned issue or PR is considered ready to work unless it has `owner:me` or hits a hard approval gate. Product orchestrators should ensure both labels exist in each managed repo and apply them to ready or waiting backlog items.
+A milestone-assigned issue or PR is considered ready to work unless it hits a production/beta release gate. Product orchestrators should ensure both labels exist in each managed repo and apply them to ready or waiting backlog items.
 
 Do not require owner comments to start with `Codex:`. Comments, PR conversations, and reviews are evidence/context to read before work, stale-PR closure, PR creation, issue closure, or rescope decisions, but labels, milestones, and hard gates determine ready state.
 
-When work has a concrete blocker/question, ask it clearly in the issue or PR and label `owner:me`. Once `@mehul0810` answers and the item is relabeled `owner:codex`, read the body plus all comments/reviews and continue the needed work without asking again.
+When work has a concrete blocker/question, ask it clearly in the issue or PR and label `owner:me`. If the choice is reversible and non-release, document the rationale, relabel `owner:codex`, and proceed/delegate. If `@mehul0810` answers and relabels `owner:codex`, read the body plus all comments/reviews and continue without asking again.
 
 ## Required Comment Checks
 

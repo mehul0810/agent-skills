@@ -76,7 +76,7 @@ Only after this sweep should the portfolio thread choose the highest-leverage go
 
 Use GitHub issue-first intake unless the user explicitly says not to create or update an issue.
 
-GitHub labels define ready state. Ensure `owner:codex` and `owner:me` exist in each managed repo. Use `owner:codex` for items ready for orchestrator/worker action and `owner:me` for items waiting on `@mehul0810`. A milestone-assigned issue/PR is ready unless it has `owner:me` or hits a hard approval gate.
+GitHub labels define ready state. Ensure `owner:codex` and `owner:me` exist in each managed repo. Use `owner:codex` for items ready for orchestrator/worker action. `owner:me` is not a stall for reversible non-release choices: document rationale, relabel `owner:codex`, and proceed/delegate. A milestone-assigned issue/PR is ready unless it hits a production/beta release gate.
 
 When `@mehul0810` explicitly names a work item or says to proceed, treat that as approved backlog/intake signal, not an owner-decision blocker. Examples include `add DESIGN.md`, dependency hygiene, stale PR cleanup, WordPress.org visibility work, support triage, and docs architecture.
 
@@ -93,6 +93,8 @@ Product-idea issues require web research first. Competitor names may inform priv
 Avoid duplicates and vague umbrella issues. Prefer one issue per PR. If a milestone is specified, use it. If not specified, assign the issue to the appropriate current milestone based on release train, labels, scope, roadmap, and repo evidence.
 
 For owner-mentioned intake, duplicate-screen, create or update the issue, assign `@mehul0810`, classify by type/complexity/risk, and prioritize into the nearest appropriate milestone or release train among the next three. Missing milestone due dates or branch-policy gaps are not blanket blockers; recommend the milestone/order and escalate only the missing metadata or unsafe ambiguity.
+
+If the current milestone has no ready work, continue to the next milestone's ready work. If no suitable ready issue exists, create proactive review work for scalability, modularity, performance, maintainability, dependency/tooling, UX/docs, or security hardening.
 
 Every created issue should include:
 
@@ -137,7 +139,9 @@ The orchestrator can flag conflicts with discipline, but the founder/owner makes
 
 Escalate before prerelease/release creation, production deploy, ambiguous milestone retargeting, pricing/licensing/free-vs-pro changes, privacy/security posture changes, database/schema migrations, public API or breaking contract changes, or broad product positioning changes.
 
-Reserve `Owner decisions needed` for true hard gates or conflicts: release/publish/merge permissions, ambiguous release-train conflicts, milestone due dates that cannot be inferred safely, pricing/licensing/free-vs-pro, privacy/security posture, public API/schema/breaking contracts, destructive actions, or broad positioning.
+Reserve `Owner decisions needed` for production/beta release actions or non-reversible conflicts: creating production/beta releases or tags, publishing/deploying, declaring release approval, unsafe milestone inference, pricing/licensing/free-vs-pro, privacy/security posture, public API/schema/breaking contracts, destructive actions, or broad positioning.
+
+Security-sensitive findings must not become public issues and must not include exploit details, reproduction steps, or public `security issue` wording. Use sanitized hardening PRs with validation and minimal public detail.
 
 Do not require owner comments to start with `Codex:`. Comments and reviews are evidence to read before work, stale-PR closure, PR creation, issue closure, or rescope decisions; labels, milestones, and hard gates determine ready state.
 

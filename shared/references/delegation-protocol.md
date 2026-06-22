@@ -85,17 +85,17 @@ Final status must not stop at "blocked because X". Use either:
 
 Stale active turn handling: if a product orchestrator has an older active/inProgress turn, or a pending worktree did not materialize, classify `Product thread topology drift`, escalate to the portfolio thread, and do not launch more work or queue follow-ups into the stuck thread.
 
-Missing milestone due dates are owner decisions, not blanket implementation blockers. If an existing issue has clear scope plus safe milestone/branch/base evidence, delegate implementation and prepare a separate due-date decision brief.
+Missing milestone due dates are metadata decisions, not blanket implementation blockers. If an existing issue has clear scope plus safe milestone/branch/base evidence, delegate implementation and document or separately brief only unsafe ambiguity.
 
 Dirty or behind primary checkouts block direct edits in that checkout. They do not block a fresh scoped Codex worktree worker from a clean upstream branch when branch/base evidence is safe.
 
-When delegation is deferred, report the exact hard blocker: issue number, missing branch/base, missing owner decision, missing tool/project, or unsafe checkout state. For an explicit branch-model blocker such as OneSMTP #73, prepare an owner decision brief instead of passive polling.
+When delegation is deferred, report the exact hard blocker: issue number, missing branch/base, production/beta release approval, missing tool/project, or unsafe checkout state. For an explicit branch-model blocker such as OneSMTP #73, prepare a decision brief instead of passive polling.
 
 ## Delegation Ownership Boundary
 
 The portfolio or product control thread owns final plan, branch/base choice, PR body, GitHub comments, validation synthesis, commits, push authorization, owner decisions, issue closure decisions, and release readiness.
 
-Delegated workers own bounded implementation, mapping, review, CI/test triage, dependency resolution, workflow investigation, or evidence collection. They must not merge, release, close issues, retarget milestones, make owner decisions, or subdelegate.
+Delegated workers own bounded implementation, mapping, review, CI/test triage, dependency resolution, workflow investigation, or evidence collection. They must not create production/beta releases, publish/deploy, close issues, retarget milestones, or subdelegate.
 
 Prefer multi-agent/subagent delegation for subtasks inside the current request. Create user-visible Codex threads only when the owner explicitly requests them or the environment supports that as the intended workflow. Never archive user-created control or skill threads.
 

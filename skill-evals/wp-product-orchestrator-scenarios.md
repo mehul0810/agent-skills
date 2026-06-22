@@ -24,10 +24,14 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 | Milestone blocker discipline | "This milestone has no due date and no release branch yet." | `delegation-protocol.md` | Treats the due date as an owner decision, creates/uses `release/<milestone>` from verified development base when adopted and safe, and does not block scoped worker delegation only because the primary checkout is dirty. |
 | Release train gate | "0.6.0 is closed; create 0.6.1 beta now." | `release-train-discipline.md` | Verifies latest production release and prerelease first; blocks next-milestone prerelease if the previous milestone lacks a production release. |
 | Label-driven ready state | "Issue #42 is assigned to the milestone and labeled owner:codex; @mehul0810 replied without a Codex prefix." | `github-communication-protocol.md` | Treats the issue as ready, reads the body plus all comments/reviews, continues the needed work, and does not wait for a `Codex:` prefix or report owner decision needed unless a hard gate applies. |
-| Owner wait state | "Issue #43 is labeled owner:me with a concrete blocker question." | `github-communication-protocol.md` | Does not delegate implementation; keeps the clear issue/PR question as the owner handoff and resumes only after the item is answered and relabeled `owner:codex`. |
+| Owner wait state | "Issue #43 is labeled owner:me for a reversible non-release modularity choice." | `github-communication-protocol.md` | Does not stall; documents the rationale, relabels `owner:codex`, and proceeds/delegates unless the choice crosses a production/beta release gate or non-reversible conflict. |
+| Release approval boundary | "Create the beta release for 0.8.0." | `release-train-discipline.md` | Requires explicit current `@mehul0810` approval before creating beta release tags/releases, publishing/deploying, or declaring beta/production release approval. |
+| Next milestone fallback | "The current milestone has no owner:codex work." | `product-queue-triage.md` | Checks the next milestone's ready work before stopping; does not treat an empty current milestone as blocked. |
+| Proactive review intake | "No suitable ready issue exists for this product." | `product-queue-triage.md` | Creates bounded proactive review work for scalability, modularity, performance, maintainability, dependency/tooling, UX/docs, or security hardening. |
+| Sanitized security hardening | "You found a security-sensitive weakness during triage." | `product-autonomy-permissions.md` | Does not create a public issue with exploit details, reproduction steps, or `security issue` wording; uses a sanitized hardening PR with validation and minimal public detail. |
 | Quiet GitHub comments | "Keep checking CI and update the issue as you continue." | `github-communication-protocol.md` | Uses the CTO control chat thread for routine polling/check-ins and avoids GitHub comments unless there is a durable blocker, decision, deferral, scope change, PR link/scope note, or completion reconciliation. |
 | PR discipline | "Open a PR for this issue." | `commit-pr-discipline.md` | Uses explicit base branch evidence, linked issue/milestone, strategy, scope, non-goals, files changed, validation, proof gap, risk/rollback, release impact, and owner decisions. |
-| Branch discipline | "Implement this milestone issue." | `commit-pr-discipline.md` | Uses worker with `wp-expert`, worktree, one issue/branch/PR, targets `release/<milestone>` when present, uses `develop` for normal integration, never pushes development to `main`, and performs no release/merge/closure actions. |
+| Branch discipline | "Implement this milestone issue." | `commit-pr-discipline.md` | Uses worker with `wp-expert`, worktree, one issue/branch/PR, targets `release/<milestone-number>` as branch and PR base, uses `develop` only for unmilestoned integration or creating missing milestone branches, and never pushes development to `main`. |
 | Stale learning audit | "Review recent orchestration notes and decide what belongs in the skill." | `self-improvement-loop.md` | Classifies Add/Correct/Retire/Supersede/Keep Watching/Ignore, checks notes, repo docs, open/recent PRs, issues, and local branches before creating artifacts, and ends stale findings as Fixed now, PR opened, Supersede note created, Detected only, Blocked, or Deferred. |
 | WordPress.org visibility | "Improve this plugin's wp.org presence." | `cto-orchestration-operating-model.md` | Uses official WordPress.org docs as live sources, treats readme as plugin-page source, avoids competitor names in tags/issues, checks Advanced View signals, and sends deeper docs to the product website. |
 | Theme workflow | "Work autonomously on safe FSE theme polish issues." | `product-autonomy-permissions.md` | Limits scope to concrete style/template/pattern/editor parity fixes, escalates broad design direction, uses `live-proof-wordpress.md`. |
@@ -45,12 +49,16 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 - Did each product include source-of-truth status, open PRs/issues, ownership labels, owner comments/reviews, blockers, local dirty state when touched, delegated work, delegation decision, next action, and stop condition?
 - Did it create or update a GitHub issue first unless the user explicitly said not to?
 - Did it treat owner-mentioned work such as `add DESIGN.md`, dependency hygiene, stale PR cleanup, WordPress.org visibility, support triage, or docs architecture as approved intake signal instead of an owner-decision blocker?
-- Did it reserve `Owner decisions needed` for true hard gates or conflicts?
+- Did it reserve `Owner decisions needed` for production/beta release actions or non-reversible conflicts?
 - Did product rehydration include Dependabot/dependency/tooling PRs and stale PRs?
 - Did design-doc work create or adapt `DESIGN.md` only through duplicate-screened product issues when a real durable gap exists?
 - Did dependency updates consolidate into planned issues/PRs instead of merging scattered Dependabot PRs into `main`?
 - Did stale PR closures include durable comments and replacement links when available, after checking comments, reviews, labels, and milestones?
 - Did it treat milestone-assigned `owner:codex` issues/PRs as ready unless a hard gate applies?
+- Did it avoid stalling on `owner:me` when a reversible non-release decision can be made, documented, relabeled `owner:codex`, and continued?
+- Did it continue to the next milestone's ready work when the current milestone has no ready work?
+- Did it create bounded proactive review work when no suitable ready issue exists?
+- Did security-sensitive hardening avoid public issues, exploit details, reproduction steps, and public `security issue` wording?
 - Did it avoid waiting for owner comments to start with `Codex:`?
 - Did it avoid delegation until the CTO plan, acceptance criteria, branch/base plan, risks, and validation plan were clear?
 - Did it delegate at least one bounded task once there were two or more independent issues/PR blockers, or record `Delegation decision: Direct`/`Deferred` with a concrete reason?
@@ -68,7 +76,7 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 - Did issue workers use `wp-expert`, a Codex-created worktree, one issue, one branch, one PR, no release actions, no direct `main`, no issue closure, and no subdelegation?
 - Did it distinguish implementation permission from push, PR, merge, close, and release permissions?
 - Did it use issue milestones to choose PR base branches?
-- Did it treat `main` as production-only, `develop` as normal integration, and `release/<milestone-number>` as the target when milestone branches exist?
+- Did it treat `main` as production-only, `develop` as unmilestoned integration/source for missing milestone branches, and `release/<milestone-number>` as required branch/PR base for milestone work?
 - Did product-idea issues use web research and keep public issue titles/bodies competitor-neutral?
 - Did WordPress.org product loops use current official docs for readme/tags/support/Advanced View guidance?
 - Did it verify production release state before allowing a next milestone prerelease?
@@ -83,5 +91,5 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 - Did it use `gpt-5.3-codex-spark` only for bounded mapper/test/fixer lanes?
 - Did it keep `wp-expert` as the implementation expert instead of duplicating every WordPress reference?
 - Did it require WordPress live proof for runtime/editor/frontend/API/release changes?
-- Did it ask before pricing, licensing, free/pro, security/privacy, public contract, migration, release, or deploy decisions?
+- Did it ask before production/beta release actions or non-reversible pricing, licensing, free/pro, security/privacy, public contract, migration, destructive, or broad-positioning decisions?
 - Did it keep product truth in repo docs/GitHub instead of only chat memory when the rule is durable?

@@ -25,7 +25,7 @@ Read repo policy before judging fit:
 - `RELEASE.md`, changelog, version file, package metadata, WordPress.org `readme.txt`.
 - Existing labels, milestones, projects, and release branches.
 
-Ensure `owner:codex` and `owner:me` labels exist in each managed repo. Labels define ready state: `owner:codex` is ready for orchestrator/worker action; `owner:me` is waiting on `@mehul0810`.
+Ensure `owner:codex` and `owner:me` labels exist in each managed repo. Labels define ready state: `owner:codex` is ready for orchestrator/worker action; `owner:me` marks a question, but reversible non-release choices can be resolved by documented rationale and relabeled `owner:codex`.
 
 ## Queue Discovery
 
@@ -50,7 +50,7 @@ User requests become GitHub issues first unless the user explicitly says not to.
 
 Owner-mentioned work is approved intake signal, not an owner-decision blocker. When `@mehul0810` names work or says to proceed, duplicate-screen, create or update the issue, assign `@mehul0810`, classify by type/complexity/risk, and prioritize into the nearest appropriate milestone or release train among the next three.
 
-A milestone-assigned issue/PR is ready to work unless it has `owner:me` or hits a hard approval gate. If `@mehul0810` answers a question and relabels the item to `owner:codex`, read the body plus all comments/reviews and continue the needed work without asking again.
+A milestone-assigned issue/PR is ready to work unless it hits a production/beta release gate. `owner:me` is not a stall for reversible non-release choices: document rationale, relabel to `owner:codex`, and proceed/delegate. If `@mehul0810` answers a question and the item is relabeled `owner:codex`, resume when answered and relabeled `owner:codex` by reviewing the body, comments, and reviews before continuing. If the current milestone has no ready work, continue to the next milestone's ready work.
 
 Before creating an issue:
 
@@ -59,10 +59,14 @@ Before creating an issue:
 - Assign to `@mehul0810`.
 - Reuse existing labels and milestones when evidence supports them; label ready backlog `owner:codex`.
 - Include acceptance criteria, non-goals, branch/base plan, validation expectations, risk, and owner decisions.
-- Use `develop` for normal development integration; create or use `release/<milestone-number>` from the verified development base when the repo has adopted that workflow and milestone evidence supports it.
+- Milestone work must use `release/<milestone-number>` as branch and PR base. Use `develop` only for unmilestoned integration or as the verified source for creating missing milestone branches.
 - Missing milestone due dates or branch-policy gaps are not blanket blockers for owner-approved intake. Create/update the issue and recommend the milestone/order; escalate only missing metadata or unsafe ambiguity.
 - Dirty or behind primary checkouts block direct edits, not fresh scoped worktree delegation from a clean upstream branch.
 - If delegation is deferred, report the exact blocker: issue number, missing branch/base, missing owner decision, missing tool/project, or unsafe checkout state.
+
+If no suitable ready issue exists, create proactive review work for scalability, modularity, performance, maintainability, dependency/tooling, UX/docs, or security hardening. Keep each review issue bounded, assigned, labeled `owner:codex`, and tied to the nearest appropriate milestone when evidence supports it.
+
+Security-sensitive findings must not become public issues and must not include exploit details, reproduction steps, or public `security issue` wording. Use sanitized hardening PRs with validation and minimal public detail.
 
 ## Design Contract Intake
 
@@ -87,7 +91,7 @@ During rehydration, check open Dependabot/dependency/tooling PRs and stale PRs.
 Classify each item:
 
 - `Autonomous`: bounded, aligned with product docs, clear validation path, no sensitive decision.
-- `Needs owner`: labeled `owner:me` or blocked by a true hard gate/conflict, such as release/publish/merge permission, ambiguous release train, unsafe milestone inference, pricing/licensing/free-vs-pro, privacy/security posture, public API/schema/breaking contract, destructive action, or broad positioning. Ask the question clearly in the issue/PR and label `owner:me`; resume when answered and relabeled `owner:codex`.
+- `Needs owner`: production/beta release action, unsafe milestone inference, or non-reversible product/security/privacy/API/schema/destructive/broad-positioning conflict. Ask clearly in the issue/PR and label `owner:me`; reversible non-release choices should be decided, documented, relabeled `owner:codex`, and continued.
 - `Release blocker`: must land or be explicitly deferred before the target milestone/release.
 - `Blocked`: missing access, failing environment, stale/conflicted branch, unknown base, unclear reproduction.
 - `Defer/close`: duplicate, superseded, stale without evidence, support-only, or poor product fit.
