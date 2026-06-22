@@ -10,6 +10,8 @@ Example: if `0.6.0` is not production-released, do not create `0.6.1-beta-*`. Ne
 
 Never infer prerelease readiness from milestone closure alone.
 
+`main` is production release space only. Release branches merge to `main` only after explicit owner release approval and owner testing confirmation. `develop` remains normal development integration; milestone work should target `release/<milestone-number>` when that branch exists.
+
 ## Required Release Checks
 
 Before any beta, prerelease, or stable action, verify:
@@ -19,6 +21,7 @@ Before any beta, prerelease, or stable action, verify:
 - Current target release train.
 - Whether the previous milestone has a production release.
 - Whether the owner explicitly authorized prerelease/release creation in the current context.
+- Whether owner testing confirmation exists for production readiness.
 
 Use the source of truth hierarchy from `cto-orchestration-operating-model.md`: GitHub production releases/tags first, then prereleases/tags, then milestones/issues/PRs, then repo docs, then local state, then memory/chat.
 
@@ -29,6 +32,9 @@ Milestones need due dates. If a milestone lacks a due date:
 - Set or recommend one only after checking the current release train and existing milestone sequence.
 - Ask the owner if the date is ambiguous.
 - Do not invent dates that conflict with repo policy or production release order.
+- Do not treat the missing due date alone as a blocker to implementation delegation for an existing issue when scope, milestone evidence, and branch/base are otherwise safe.
+
+If the owner has adopted a `release/<milestone>` workflow, product threads may create or use `release/<milestone>` from the verified development base for existing milestone work unless repo docs or owner comments contradict it. Do not retarget ambiguous milestones or change due dates without approval.
 
 ## Release Stop Conditions
 
