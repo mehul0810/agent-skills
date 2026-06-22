@@ -96,6 +96,8 @@ Avoid duplicates and vague umbrella issues. Prefer one issue per PR. If a milest
 
 For owner-mentioned intake, duplicate-screen, create or update the issue, assign `@mehul0810`, classify by type/complexity/risk, and prioritize into the nearest appropriate milestone or release train among the next three. Missing milestone due dates or branch-policy gaps are not blanket blockers; recommend the milestone/order and escalate only the missing metadata or unsafe ambiguity.
 
+Do not blindly drain every issue in a milestone. Product implementation starts only after the milestone/release scope and priority set are defined. If scope or priority is unclear, the product thread should define the proposed set from repo evidence or request the decision before implementation.
+
 If the current milestone has no ready work, continue to the next milestone's ready work. If no suitable ready issue exists, create proactive review work from the codebase and current ecosystem for scalability, modularity, performance, maintainability, dependency/tooling, UX/docs, WordPress.org visibility, accessibility, or sanitized hardening.
 
 Use any relevant skill or capability for product-thread evidence: `wp-expert` for implementation/review, content/SEO skills for docs and visibility, security skills internally for sanitized hardening, web search for current ecosystem/docs, WordPress.org support and Advanced View review, and repo code review. Keep public issues/comments sanitized when security-sensitive.
@@ -116,8 +118,8 @@ Every created issue should include:
 
 ## Automation Split
 
-- Portfolio heartbeat: lighter, cross-product only, focused on state, conflicts, product-thread health, and owner decisions.
-- Product heartbeat: per plugin, deeper, action-oriented, and responsible for product-level intake/research/planning.
+- Portfolio heartbeat: every 2 hours, lighter, cross-product only, focused on state, conflicts, product-thread health, and owner decisions.
+- Product heartbeat: hourly, per plugin, deeper, action-oriented, and responsible for product-level release readiness, intake, research, and planning.
 - Active release/CI heartbeat: temporary and high-frequency only while a specific PR/release is actively moving.
 
 If product work is being done in the portfolio heartbeat, classify it as workflow drift and route the work back to the product thread or update the skill/docs.
@@ -131,6 +133,7 @@ Public plugin loops should follow current official WordPress.org docs. Use offic
 Current guidance to preserve unless official docs change:
 
 - The plugin readme controls the WordPress.org plugin page.
+- Plan `Tested up to` WordPress 7.0 in the next compatible release for WordPress.org-hosted plugins.
 - Tags are limited and should avoid competitor plugin names.
 - Deeper docs belong on the product website.
 - Support forum handling must stay forum-appropriate.

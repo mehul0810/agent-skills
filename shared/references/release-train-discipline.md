@@ -22,6 +22,7 @@ Before any beta, prerelease, or stable action, verify:
 - Whether the previous milestone has a production release.
 - Whether the owner explicitly authorized production/beta release creation in the current context.
 - Whether owner testing confirmation exists for production readiness.
+- For WordPress.org-hosted plugins, whether the next compatible release plans `Tested up to` WordPress 7.0.
 
 Use the source of truth hierarchy from `cto-orchestration-operating-model.md`: GitHub production releases/tags first, then prereleases/tags, then milestones/issues/PRs, then repo docs, then local state, then memory/chat.
 

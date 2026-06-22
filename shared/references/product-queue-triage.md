@@ -52,6 +52,8 @@ User requests become GitHub issues first unless the user explicitly says not to.
 
 Owner-mentioned work is approved intake signal, not an owner-decision blocker. When `@mehul0810` names work or says to proceed, duplicate-screen, create or update the issue, assign `@mehul0810`, classify by type/complexity/risk, and prioritize into the nearest appropriate milestone or release train among the next three.
 
+Do not blindly drain every issue in a milestone. Before implementation, define the milestone/release scope and priority set from repo evidence, roadmap, issue labels, release blockers, customer/user impact, risk, and validation needs. If unclear, create a product-thread decision brief or request the decision before starting implementation.
+
 A milestone-assigned issue/PR is ready unless it hits a production/beta release gate. `owner:me` is not a stall for reversible non-release choices: document rationale, relabel to `owner:codex`, and proceed/delegate. If `@mehul0810` answers a question and the item is relabeled `owner:codex`, resume when answered and relabeled `owner:codex` by reviewing the body, comments, and reviews before continuing. If the current milestone has no ready work, continue to the next milestone's ready work.
 
 Before creating an issue:
@@ -108,6 +110,7 @@ Raise priority when an item affects:
 - Checkout, payments, subscriptions, lead forms, user registration, or email delivery.
 - Block editor save/render parity, template hierarchy, frontend layout, accessibility, or Core Web Vitals.
 - WordPress.org guideline compliance, release artifact contents, production dependencies, or `readme.txt` accuracy.
+- WordPress.org-hosted plugin release metadata, including planning `Tested up to` WordPress 7.0 in the next compatible release.
 - Multisite, object cache, cron/background jobs, import/export, privacy export/erase, or high-traffic paths.
 
 Lower priority when the item is cosmetic without acceptance criteria, stale without reproduction, unsupported environment, or conflicts with product direction.

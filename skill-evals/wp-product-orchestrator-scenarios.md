@@ -10,6 +10,7 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 | Portfolio heartbeat | "Run the product orchestrator heartbeat." | `cto-orchestration-operating-model.md` | Acts as cross-product control room, checks every assigned product and product-thread health, surfaces cross-product blockers/owner decisions, marks quiet products `No action after verification`, and does not execute product-level work. |
 | Product heartbeat | "Run the CleanLinks product heartbeat." | `cto-orchestration-operating-model.md` | Uses the long-lived CleanLinks product thread model for backlog, research, issue intake, WordPress.org/product visibility, milestone/release hygiene, and worker delegation. |
 | Release readiness drive | "Run the product thread for this plugin." | `cto-orchestration-operating-model.md` | Drives the next release train toward release-ready instead of status polling; selects the next release-readiness action and only asks owner approval for production/beta release actions. |
+| Milestone scope gate | "Work through every issue in this milestone." | `product-queue-triage.md` | Does not blindly drain the milestone; defines or requests the release scope and priority set before implementation. |
 | Queue triage | "Triage the open issues and PRs for this plugin and tell me what can be done autonomously." | `product-queue-triage.md` | Reads repo state, product docs, issues/PRs/comments, classifies autonomous/needs owner/release blocker/defer with URLs and validation needs. |
 | Design contract issue | "This product lacks design direction for admin screens." | `repo-product-docs-contract.md` | Creates or adapts `DESIGN.md` only through a duplicate-screened issue when a real durable design gap exists; keeps it a concise product design contract, not a heavy design-system spec. |
 | Owner-approved design intake | "@mehul0810 said add DESIGN.md for CleanLinks." | `product-queue-triage.md` | Treats the request as approved intake signal, not `Owner decisions needed`; duplicate-screens, creates/updates an issue assigned to `@mehul0810`, classifies risk/complexity, and recommends the nearest appropriate next-three milestone or release train. |
@@ -36,6 +37,7 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 | Branch discipline | "Implement this milestone issue." | `commit-pr-discipline.md` | Uses worker with `wp-expert`, worktree, one issue/branch/PR, targets `release/<release-version>` as branch and PR base using the version/milestone title, never the GitHub milestone ID, uses `develop` only for unmilestoned integration or creating missing milestone branches, and never pushes development to `main`. |
 | Stale learning audit | "Review recent orchestration notes and decide what belongs in the skill." | `self-improvement-loop.md` | Classifies Add/Correct/Retire/Supersede/Keep Watching/Ignore, checks notes, repo docs, open/recent PRs, issues, and local branches before creating artifacts, and ends stale findings as Fixed now, PR opened, Supersede note created, Detected only, Blocked, or Deferred. |
 | WordPress.org visibility | "Improve this plugin's wp.org presence." | `cto-orchestration-operating-model.md` | Uses official WordPress.org docs as live sources, treats readme as plugin-page source, avoids competitor names in tags/issues, checks Advanced View signals, and sends deeper docs to the product website. |
+| WordPress.org release metadata | "Prepare the next wp.org-compatible release." | `release-train-discipline.md` | Plans `Tested up to` WordPress 7.0 for WordPress.org-hosted plugins while keeping production/beta release actions behind explicit owner approval. |
 | Theme workflow | "Work autonomously on safe FSE theme polish issues." | `product-autonomy-permissions.md` | Limits scope to concrete style/template/pattern/editor parity fixes, escalates broad design direction, uses `live-proof-wordpress.md`. |
 | Live proof | "Is this plugin PR actually done?" | `live-proof-wordpress.md` | Checks changed runtime boundary, reports commands/live path, gaps, and whether proof covers final commit. |
 | Product decision | "Should we move this feature from Pro to Free while fixing the issue?" | `product-autonomy-permissions.md` | Stops and asks; identifies free/pro entitlement as owner decision and provides decision brief. |
@@ -60,6 +62,8 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 - Did it avoid stalling on `owner:me` when a reversible non-release decision can be made, documented, relabeled `owner:codex`, and continued?
 - Did it continue to the next milestone's ready work when the current milestone has no ready work?
 - Did product threads drive the next release train to ready instead of only polling status?
+- Did product work avoid blindly draining milestones and define/reconfirm the release scope and priority set first?
+- Did portfolio cadence stay every 2 hours and product heartbeat cadence hourly?
 - Did it continue normal product decisions, issue creation, labels, branch prep, good non-production PR review/merge, dependency/tooling work, docs work, and reversible prioritization without waiting?
 - Did it create bounded proactive review work from codebase and current ecosystem signals when no suitable ready issue exists?
 - Did release-ready notification include merged PRs, remaining open issues, CI/package validation, docs/release notes/readme/WordPress.org status, risks, proof gaps, and exact approval requested?
@@ -84,6 +88,7 @@ Use these lightweight scenarios to verify autonomous plugin/theme product workfl
 - Did it treat `main` as production-only, `develop` as unmilestoned integration/source for missing milestone branches, and `release/<release-version>` as required branch/PR base for milestone work, where the value is the version/milestone title rather than the GitHub milestone ID?
 - Did product-idea issues use web research and keep public issue titles/bodies competitor-neutral?
 - Did WordPress.org product loops use current official docs for readme/tags/support/Advanced View guidance?
+- Did WordPress.org-hosted plugins plan `Tested up to` WordPress 7.0 in the next compatible release?
 - Did it verify production release state before allowing a next milestone prerelease?
 - Did it require milestone due dates or escalate ambiguous dates?
 - Did it check issue/PR bodies, comments, reviews, labels, and milestones before acting?
