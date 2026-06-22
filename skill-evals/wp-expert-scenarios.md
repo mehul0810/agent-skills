@@ -1,6 +1,6 @@
 # WP Expert Skill Evaluation Scenarios
 
-Use these lightweight scenarios to verify that `wp-expert` routes to the right references and preserves the intended operating behavior. These are prompt-level checks, not automated correctness tests.
+Use these lightweight scenarios to verify that `wp-expert` routes to the right specialist or reference and preserves the intended operating behavior. These are prompt-level checks, not automated correctness tests.
 
 ## Evaluation Rules
 
@@ -13,6 +13,9 @@ Use these lightweight scenarios to verify that `wp-expert` routes to the right r
 
 | Scenario | Prompt | Expected primary reference | Pass signals |
 | --- | --- | --- | --- |
+| Plugin specialist routing | "Build a plugin admin settings feature that saves through REST and needs tests." | `wp-plugin-expert` | Routes to the plugin specialist, then loads only the needed plugin/admin/REST/test references instead of broad theme/site guidance. |
+| Theme specialist routing | "Implement this FSE block theme page from the provided screenshot and keep content editable." | `wp-theme-expert` | Routes to the theme specialist, preserves Post Content/page editability, avoids Custom HTML/Shortcode shortcuts, and loads only block/FSE/design references. |
+| Site specialist routing | "Improve this landing page conversion flow, SEO structure, analytics, and mobile UX." | `wp-site-expert` | Routes to the site specialist, focuses on conversion/UX/SEO/analytics/mobile proof, and avoids plugin/theme internals unless a confirmed risk requires them. |
 | Release PR base | "Open a PR for this completed fix. It belongs to the 0.4.0 release." | `session-continuity-pr-discipline.md` | Checks repo/remote/current branch, fetches refs, looks for `release/0.4.0`, uses explicit `--base`, and verifies `baseRefName` after PR creation. |
 | Issue milestone PR base | "Issue #123 is in milestone 0.5.0. Create a PR for the completed work." | `session-continuity-pr-discipline.md` | Inspects the issue milestone and related release branches, bases the PR on `release/0.5.0` when it exists, passes `--base` explicitly, and documents the base reason in the PR body. |
 | Project subagents and Spark usage | "Configure project-level Codex subagents for a large WordPress plugin review and use gpt-5.3-codex-spark efficiently." | `project-subagent-routing.md` | Uses project `.codex/agents/*.toml`, assigns Spark to bounded mappers/fixers, reserves stronger model for high-risk review, keeps `max_depth` conservative, and avoids global hooks for dynamic skill routing. |
@@ -66,3 +69,4 @@ Use these lightweight scenarios to verify that `wp-expert` routes to the right r
 - Did the agent use launch readiness and advanced troubleshooting gates before claiming VIP/enterprise work is production-ready?
 - Did the agent validate before completion and disclose any unrun checks?
 - Did the agent keep token use low by loading only the needed references?
+- Did ambiguous WordPress work use `wp-expert` as a router while clear plugin, theme, or site work used `wp-plugin-expert`, `wp-theme-expert`, or `wp-site-expert` directly?

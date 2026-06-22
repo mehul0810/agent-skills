@@ -122,6 +122,17 @@ validate_referenced_files() {
         log_success "Found shared: $ref_path"
       fi
     done
+
+    { grep -o '\.\./wp-expert/references/[a-z0-9-]*\.md' "$skill_dir/SKILL.md" 2>/dev/null || true; } | sort -u | while read -r ref_path; do
+      # Specialist router skills reuse the canonical wp-expert reference playbooks.
+      local full_path="$skill_dir/$ref_path"
+
+      if [ ! -f "$full_path" ]; then
+        log_error "Referenced but missing: $ref_path"
+      else
+        log_success "Found wp-expert reference: $ref_path"
+      fi
+    done
   done < <(find_skill_dirs)
 }
 

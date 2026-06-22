@@ -1,0 +1,4 @@
+interface:
+  display_name: "WP Plugin Expert"
+  short_description: "Enterprise WordPress plugin engineering"
+  default_prompt: "Use $wp-plugin-expert for WordPress plugin architecture, features, admin screens, REST APIs, custom tables, WordPress.org releases, Composer/npm tooling, tests, CI, security, performance, or product-grade plugin implementation."
