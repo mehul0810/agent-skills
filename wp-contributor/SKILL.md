@@ -17,6 +17,7 @@ Use this skill when working as a WordPress project contributor, not as a client-
 - Do not publicly disclose suspected security vulnerabilities. Route private reports through the current WordPress security process.
 - Never assume a GitHub PR is enough for Core. Core PRs must be associated with a Trac ticket unless current official docs say otherwise.
 - Use `../shared/references/research-token-discipline.md` for web-heavy, drift-prone, ambiguous, or broad-exploration contribution tasks to keep reasoning and source lookup token-efficient.
+- Use `../shared/references/context-window-discipline.md` when high context affects whether to compact the current contribution thread or start a fresh source-of-truth rehydration.
 - Use `../shared/references/session-continuity-pr-discipline.md` for new chats, resumed repo work, release/backport branches, GitHub issues/PRs, and any branch/PR creation. Never create a PR until the intended upstream base branch is proven and passed explicitly.
 - Use `references/ai-guidelines.md` when AI tools materially assist code, tests, documentation, issues, reviews, triage, support, assets, or communication for the WordPress project.
 - Use `references/router.md` only when choosing the exact contribution surface, validation path, or mode-specific guidance is not obvious.

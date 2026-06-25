@@ -38,6 +38,7 @@ require_file "shared/references/product-autonomy-permissions.md" "product autono
 require_file "shared/references/weekly-wordpress-intelligence.md" "weekly WordPress intelligence reference"
 require_file "shared/references/self-improvement-loop.md" "self-improvement loop reference"
 require_file "shared/references/repo-product-docs-contract.md" "repo product docs contract reference"
+require_file "shared/references/context-window-discipline.md" "context window discipline reference"
 
 require_text "wp-product-orchestrator/SKILL.md" "CTO control-plane" "orchestrator CTO control-plane language"
 require_text "wp-product-orchestrator/SKILL.md" "GitHub issue-first" "orchestrator GitHub issue-first routing"
@@ -53,6 +54,7 @@ require_text "wp-product-orchestrator/SKILL.md" "CTO control chat thread" "orche
 require_text "wp-product-orchestrator/SKILL.md" "Keep direct CTO execution limited" "orchestrator direct execution boundary"
 require_text "wp-product-orchestrator/SKILL.md" "delegate at least one bounded task" "orchestrator mandatory delegation trigger"
 require_text "wp-product-orchestrator/SKILL.md" "Delegation decision" "orchestrator delegation decision status line"
+require_text "wp-product-orchestrator/SKILL.md" "Context decision: Compact|Fresh thread|Continue" "orchestrator context decision status line"
 require_text "wp-product-orchestrator/SKILL.md" "portfolio-wide sweep across all assigned products" "orchestrator portfolio sweep"
 require_text "wp-product-orchestrator/SKILL.md" "Portfolio heartbeat cadence is 2 hours" "orchestrator portfolio cadence"
 require_text "wp-product-orchestrator/SKILL.md" "Product heartbeat is hourly" "orchestrator product cadence"
@@ -98,6 +100,9 @@ require_text "wp-product-orchestrator/SKILL.md" "../shared/references/github-com
 require_text "wp-product-orchestrator/SKILL.md" "../shared/references/commit-pr-discipline.md" "orchestrator commit/PR routing"
 require_text "wp-product-orchestrator/SKILL.md" "../shared/references/weekly-wordpress-intelligence.md" "orchestrator weekly intelligence routing"
 require_text "wp-product-orchestrator/SKILL.md" "../shared/references/self-improvement-loop.md" "orchestrator self-improvement routing"
+require_text "wp-product-orchestrator/SKILL.md" "../shared/references/context-window-discipline.md" "orchestrator context window discipline routing"
+require_text "shared/references/context-window-discipline.md" "compact the product thread when continuing the same release train" "product thread compact continuity rule"
+require_text "shared/references/context-window-discipline.md" "fresh worker/product thread" "product orchestration fresh thread rule"
 
 require_text "shared/references/cto-orchestration-operating-model.md" "Source Of Truth Hierarchy" "source-of-truth hierarchy reference section"
 require_text "shared/references/cto-orchestration-operating-model.md" "GitHub Issue-First Intake" "GitHub issue-first intake reference section"

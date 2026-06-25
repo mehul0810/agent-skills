@@ -23,7 +23,7 @@ skill_limit() {
     content-writer) echo 4 ;;
     wp-product-orchestrator) echo 15 ;;
     wp-expert) echo 8 ;;
-    wp-plugin-expert|wp-theme-expert|wp-site-expert|wp-contributor) echo 8 ;;
+    wp-plugin-expert|wp-theme-expert|wp-site-expert|wp-contributor) echo 9 ;;
     *) echo 10 ;;
   esac
 }
@@ -82,6 +82,8 @@ check_all_md_links() {
 
 check_router_discipline() {
   require_text "wp-expert/SKILL.md" "Use only when" "wp-expert narrow trigger wording"
+  require_text "shared/references/context-window-discipline.md" "Context decision: Compact|Fresh thread|Continue" "context decision status phrase"
+  require_text "wp-product-orchestrator/SKILL.md" "Context decision: Compact|Fresh thread|Continue" "orchestrator context decision line"
   require_text "wp-plugin-expert/SKILL.md" "references/router.md" "plugin router pointer"
   require_text "wp-theme-expert/SKILL.md" "references/router.md" "theme router pointer"
   require_text "wp-site-expert/SKILL.md" "references/router.md" "site router pointer"

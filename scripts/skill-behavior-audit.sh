@@ -19,6 +19,7 @@ require_text() {
 
 require_text "wp-expert/SKILL.md" "push only when explicitly asked or repo-local automation policy authorizes it" "wp-expert push authorization discipline"
 require_text "wp-expert/SKILL.md" "../shared/references/live-proof-wordpress.md" "wp-expert live proof routing"
+require_text "wp-expert/SKILL.md" "../shared/references/context-window-discipline.md" "wp-expert context window discipline routing"
 require_text "wp-expert/SKILL.md" "references/architecture-decision-gate.md" "wp-expert architecture gate routing"
 require_text "wp-expert/SKILL.md" "wp-plugin-expert" "wp-expert plugin specialist routing"
 require_text "wp-expert/SKILL.md" "wp-theme-expert" "wp-expert theme specialist routing"
@@ -29,6 +30,8 @@ require_text "wp-theme-expert/SKILL.md" "references/router.md" "wp-theme-expert 
 require_text "wp-theme-expert/references/router.md" "../../wp-expert/references/block-theme-architecture.md" "wp-theme-expert block theme routing"
 require_text "wp-site-expert/SKILL.md" "references/router.md" "wp-site-expert modular router routing"
 require_text "wp-site-expert/references/router.md" "../../wp-expert/references/conversion-focused-website-engineering.md" "wp-site-expert conversion routing"
+require_text "shared/references/context-window-discipline.md" "Continuity-sensitive task" "context discipline continuity rule"
+require_text "shared/references/context-window-discipline.md" "New or unrelated task" "context discipline fresh thread rule"
 require_text "wp-expert/references/reference-routing-map.md" "## Risk-Triggered Overlays" "risk-triggered overlay routing"
 require_text "wp-expert/references/architecture-decision-gate.md" "Source of truth" "architecture source-of-truth gate"
 require_text "wp-expert/references/agent-behavior-eval-scenarios.md" "Block theme page from screenshot" "block theme editability eval scenario"

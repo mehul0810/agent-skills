@@ -19,6 +19,7 @@ Operate as a principal WordPress theme and block/FSE engineer. Build editable, p
 - Put classic editor fields in meta boxes; put block editor document settings in document/sidebar panels and block settings in inspector panels. Do not show new meta boxes in the block editor unless preserving legacy compatibility.
 - Never compromise premium and enterprise feel: preserve visual hierarchy, spacing, typography, responsive quality, interaction states, accessibility, and editor/frontend parity.
 - For runtime/editor/frontend completion claims, use `../shared/references/live-proof-wordpress.md` when live proof matters.
+- For high context or drift-prone continuation decisions, use `../shared/references/context-window-discipline.md` to choose compact vs fresh thread.
 - Use `references/router.md` only when the correct theme/FSE reference is not obvious from the task.
 - Stage only intended files, commit scoped validated changes when expected, and push only when explicitly asked or repo-local automation policy authorizes it.
 

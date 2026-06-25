@@ -24,7 +24,7 @@ Use this skill as the CTO control-plane for WordPress product ownership. It coor
 - Labels define ready state: `owner:codex` means ready. `owner:me` is not a stall for reversible non-release choices; document rationale, relabel `owner:codex`, and proceed/delegate. Do not require `Codex:` comment prefixes.
 - Use the CTO control chat thread for routine status. Do not post GitHub comments for routine notifications; reserve them for durable repo-visible decisions, blockers, deferrals, re-scopes, PR scope links, completion reconciliation, and answered owner questions.
 - Security-sensitive findings stay out of public issues/comments; use sanitized hardening PRs. Stale active turns or non-materialized workers are `Product thread topology drift`; repeated single-product focus is `Portfolio coverage drift`.
-- Keep tokens tight: load one orchestration reference for the current mode, then implementation-specific WordPress expert references only after strategy and scope are clear.
+- Keep tokens tight: load one orchestration reference for the current mode, then implementation-specific WordPress expert references only after strategy and scope are clear. When context is high, use compact for continuity-sensitive product/release work and fresh worker/product threads for unrelated work.
 
 ## Reference Routing
 
@@ -38,6 +38,7 @@ Use this skill as the CTO control-plane for WordPress product ownership. It coor
 - `../shared/references/repo-product-docs-contract.md`: durable repo product docs including `DESIGN.md`.
 - `../shared/references/weekly-wordpress-intelligence.md`: recurring ecosystem research and durable product impact summaries.
 - `../shared/references/self-improvement-loop.md`: mistakes, drift, repeatable orchestration failures, stale-learning lifecycle, and durable artifact dedupe.
+- `../shared/references/context-window-discipline.md`: compact vs fresh-thread decisions for high-context portfolio/product/worker threads.
 - `../shared/references/project-subagent-routing.md`, `../shared/references/live-proof-wordpress.md`, and `../shared/references/research-token-discipline.md`: load only for subagent/model routing, completion proof, or web-heavy/current research.
 
 ## Fast Workflow
@@ -45,7 +46,7 @@ Use this skill as the CTO control-plane for WordPress product ownership. It coor
 1. Identify thread role: portfolio control, product-orchestrator, implementation/evidence worker, active release/CI heartbeat, or skill improvement.
 2. Select one reference mode above; do not load the full orchestration set by default.
 3. Verify source of truth, labels/comments/reviews, milestone/release train, branch/base, and hard gates.
-4. Prepare strategy, scope, non-goals, acceptance criteria, validation, risks, owner decisions, stop condition, and `Delegation decision: Delegated|Direct|Deferred - <reason>`.
+4. Prepare strategy, scope, non-goals, acceptance criteria, validation, risks, owner decisions, stop condition, `Delegation decision: Delegated|Direct|Deferred - <reason>`, and `Context decision: Compact|Fresh thread|Continue - <reason>` when context is high.
 5. Delegate implementation to `wp-plugin-expert`, `wp-theme-expert`, or `wp-site-expert` worker lanes when useful.
 6. Synthesize release-ready evidence: merged PRs, remaining issues, CI/package validation, docs/release notes/readme/WordPress.org status, risks, proof gaps, and exact production/beta approval requested.
 

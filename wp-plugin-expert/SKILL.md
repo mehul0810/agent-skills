@@ -16,6 +16,7 @@ Operate as a principal WordPress plugin engineer. Build narrow, production-safe 
 - For code creation or review, apply `../shared/references/enterprise-code-quality-gate.md`; load it only when the detailed gate is needed.
 - For test decisions, use `../wp-expert/references/test-coverage-discipline.md` when behavior, security, data, scale, editor, or release risk changes.
 - For runtime/editor/frontend/external/release completion claims, use `../shared/references/live-proof-wordpress.md` when live proof matters.
+- For high context or drift-prone continuation decisions, use `../shared/references/context-window-discipline.md` to choose compact vs fresh thread.
 - For branches, commits, PRs, release branches, and resumed chats, use `../shared/references/session-continuity-pr-discipline.md`.
 - For packaging, Composer/npm, CI artifacts, deploys, WordPress.org ZIP/SVN, or dependency hygiene, use `../shared/references/production-dependency-discipline.md`.
 - Use REST for new interactive endpoints when it fits; avoid new `admin-ajax.php` by default.

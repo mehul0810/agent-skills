@@ -16,6 +16,7 @@ Use this skill to create helpful, source-grounded, organic-search-focused conten
 - Do not promise rankings, AI Overview inclusion, rich results, or traffic outcomes. State eligibility, likelihood, and measurement assumptions instead.
 - For YMYL topics, require stronger source quality, expert review notes, risk disclaimers, and conservative wording.
 - Keep token usage low: build a short content brief first, then draft only the requested asset or section.
+- For high context or unrelated new content work, use `../shared/references/context-window-discipline.md` to choose compact vs fresh thread before continuing.
 
 ## Fast Workflow
 
@@ -33,6 +34,7 @@ Load only when needed:
 
 - `references/organic-search-content.md`: SEO/AEO/GEO/AI Overview-aware content strategy, briefs, structures, source rules, schema guidance, quality checklist, and output formats.
 - `../shared/references/research-token-discipline.md`: token-efficient web research, source selection, and validation discipline for broad or drift-prone topics.
+- `../shared/references/context-window-discipline.md`: compact vs fresh-thread decisions for long-running or unrelated content work.
 
 ## Content Quality Bar
 
