@@ -1,6 +1,6 @@
 ---
 name: wp-product-orchestrator
-description: "CTO control-plane for WordPress product strategy, GitHub issue/milestone intake, delegation, release train discipline, PR communication, validation synthesis, and owner decision briefs for plugin/theme product work."
+description: "Use for WordPress product orchestration: strategy, GitHub issue/milestone intake, delegation, release trains, PR communication, validation synthesis, owner decision briefs, product heartbeats, and plugin/theme release readiness."
 ---
 
 # WP Product Orchestrator
@@ -47,7 +47,7 @@ Use this skill as the CTO control-plane for WordPress product ownership. It coor
 2. Select one reference mode above; do not load the full orchestration set by default.
 3. Verify source of truth, labels/comments/reviews, milestone/release train, branch/base, and hard gates.
 4. Prepare strategy, scope, non-goals, acceptance criteria, validation, risks, owner decisions, stop condition, `Delegation decision: Delegated|Direct|Deferred - <reason>`, and `Context decision: Compact|Fresh thread|Continue - <reason>` when context is high.
-5. Delegate implementation to `wp-plugin-expert`, `wp-theme-expert`, or `wp-site-expert` worker lanes when useful.
+5. Auto-route workers by changed artifact: plugin code -> `wp-plugin-expert`, theme/FSE -> `wp-theme-expert`, site/CRO -> `wp-site-expert`, organic copy -> `content-writer`, upstream contribution -> `wp-contributor`; use `wp-expert` only when ambiguous.
 6. Synthesize release-ready evidence: merged PRs, remaining issues, CI/package validation, design-change screenshots or proof gaps, docs/release notes/readme/WordPress.org status, risks, and exact production/beta approval requested.
 
 ## Status Modes

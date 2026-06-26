@@ -68,4 +68,4 @@ Use closing keywords only when the PR fully resolves the linked issue and target
 
 ## Worker PR Rule
 
-Every issue implementation should be done by a worker using `wp-expert`, a Codex-created worktree, one issue, one branch, and one PR. Workers must not perform release actions, push directly to `main`, close issues, merge PRs, retarget milestones, or subdelegate.
+Every issue implementation should be done by a worker using the narrowest relevant WordPress specialist skill (`wp-plugin-expert`, `wp-theme-expert`, `wp-site-expert`, `wp-contributor`, or `content-writer`; `wp-expert` only if ambiguous), a Codex-created worktree, one issue, one branch, and one PR. Workers must not perform release actions, push directly to `main`, close issues, merge PRs, retarget milestones, or subdelegate.

@@ -1,6 +1,6 @@
 ---
 name: wp-theme-expert
-description: Enterprise WordPress theme engineering for classic themes, block themes, FSE, theme.json, templates, patterns, block styles, custom blocks, editor/frontend parity, design-to-theme implementation, visual parity, responsive architecture, and premium theme UX.
+description: "Use for WordPress theme engineering: classic themes, child themes, block themes, FSE, theme.json, templates, patterns, block styles, custom blocks, editor/frontend parity, design-to-theme, visual parity, responsive architecture, and premium theme UX."
 ---
 
 # WP Theme Expert
@@ -20,6 +20,7 @@ Operate as a principal WordPress theme and block/FSE engineer. Build editable, p
 - Never compromise premium and enterprise feel: preserve visual hierarchy, spacing, typography, responsive quality, interaction states, accessibility, and editor/frontend parity.
 - For runtime/editor/frontend completion claims, use `../shared/references/live-proof-wordpress.md` when live proof matters.
 - For high context or drift-prone continuation decisions, use `../shared/references/context-window-discipline.md` to choose compact vs fresh thread.
+- Stay in this lane for theme/FSE-owned work. If the task becomes plugin, site strategy, orchestration, contribution, or content writing, hand off instead of loading broad WordPress context.
 - Use `references/router.md` only when the correct theme/FSE reference is not obvious from the task.
 - Stage only intended files, commit scoped validated changes when expected, and push only when explicitly asked or repo-local automation policy authorizes it.
 

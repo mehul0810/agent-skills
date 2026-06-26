@@ -1,6 +1,6 @@
 ---
 name: wp-contributor
-description: WordPress contribution router for official WordPress Core, Meta, Gutenberg, Trac, GitHub PRs, patches, tests, docs, triage, releases, backports, security disclosure, and contributor communication.
+description: "Use for official WordPress contribution: Core, Meta, Gutenberg, Trac, GitHub PRs, patches, tests, docs, triage, releases, backports, security disclosure, and contributor communication."
 ---
 
 # WP Contributor

@@ -109,7 +109,7 @@ The detailed playbooks remain in `wp-expert/references/` and `shared/references/
 
 - Autonomous plugin/theme product workflow control plane: issue triage, PR repair, subagent coordination, validation, owner decisions, and release readiness.
 - Product-aware autonomy boundaries: classify work as autonomous, needs owner, blocked, release blocker, or defer based on `PRODUCT.md`, milestones, release branches, and risk.
-- Simplified plugin development workflow: one-issue-at-a-time root cause, implementation, tests, live proof, focused commit, and PR preparation using `wp-expert` for implementation lanes.
+- Simplified plugin development workflow: one-issue-at-a-time root cause, implementation, tests, live proof, focused commit, and PR preparation using the narrowest specialist lane.
 - Simplified theme/FSE workflow: concrete design-token, pattern, template, responsive, visual parity, editor/frontend parity, and premium polish work with clear escalation for broad design decisions.
 - Project-level subagent orchestration: use `gpt-5.3-codex-spark` for bounded plugin/theme mappers, CI/test summarizers, and narrow fixers while reserving stronger models for final review/security/release decisions.
 - WordPress live-proof gates: plugin activation, admin/settings, REST, WP-CLI, block editor, Site Editor, frontend, WooCommerce, external APIs, local HTTPS, package, and WordPress.org release proof.
@@ -162,7 +162,7 @@ Use $wp-theme-expert to build, review, debug, or improve a WordPress theme, cust
 
 Use $wp-site-expert to plan, build, review, or improve a WordPress website, landing page, conversion flow, UX/IA, content model, SEO/AEO/GEO surface, analytics/tracking setup, accessibility, performance, responsive polish, or premium enterprise site experience.
 
-Use $wp-expert with `shared/references/project-subagent-routing.md` when a WordPress app project needs Codex subagent profiles, skill-level routing, or efficient `gpt-5.3-codex-spark` usage.
+Use the relevant specialist skill with `shared/references/project-subagent-routing.md` when a WordPress app project needs Codex subagent profiles, skill-level routing, or efficient `gpt-5.3-codex-spark` usage; use $wp-expert only if the lane is ambiguous.
 
 Use $wp-product-orchestrator to triage, plan, delegate, validate, commit, push, or prepare PRs for autonomous WordPress plugin/theme product work.
 
@@ -277,6 +277,7 @@ The skills are intentionally token-efficient:
 
 - Each `SKILL.md` contains the core operating workflow and reference router.
 - Each `references/` directory contains deeper playbooks loaded only when relevant.
+- Clear plugin, theme, site, product, contribution, and content tasks should trigger the specialist directly; `wp-expert` is only the ambiguous-task router.
 - Skill frontmatter descriptions and default prompts are intentionally short because they affect baseline skill-selection context.
 - The shared `research-token-discipline.md` reference keeps web/research behavior explicit without duplicating guidance across skills.
 - The shared `session-continuity-pr-discipline.md` reference keeps new-chat context recovery and PR base-branch safety explicit across code-oriented skills.

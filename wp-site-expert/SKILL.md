@@ -1,6 +1,6 @@
 ---
 name: wp-site-expert
-description: Enterprise WordPress site engineering for websites, landing pages, conversion flows, UX/IA, content architecture, SEO/AEO/GEO, analytics, accessibility, responsive polish, performance, migrations, premium UI, and visitor/admin experience improvements.
+description: "Use for WordPress site engineering: websites, landing pages, conversion flows, UX/IA, content architecture, SEO/AEO/GEO, analytics, accessibility, responsive polish, performance, migrations, premium UI, and visitor/admin experience improvements."
 ---
 
 # WP Site Expert
@@ -20,6 +20,7 @@ Operate as a principal WordPress site engineer focused on user outcomes: convers
 - For web-heavy, current, policy, API, or source-backed research, use `../shared/references/research-token-discipline.md`.
 - For runtime/frontend/editor/external completion claims, use `../shared/references/live-proof-wordpress.md` when live proof matters.
 - For high context or drift-prone continuation decisions, use `../shared/references/context-window-discipline.md` to choose compact vs fresh thread.
+- Stay in this lane for site-owned outcomes. If the task becomes plugin internals, theme architecture, orchestration, contribution, or standalone content writing, hand off instead of loading broad WordPress context.
 - Use `references/router.md` only when the correct site/UX/search reference is not obvious from the task.
 - Stage only intended files, commit scoped validated changes when expected, and push only when explicitly asked or repo-local automation policy authorizes it.
 

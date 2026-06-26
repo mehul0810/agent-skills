@@ -55,6 +55,7 @@ require_text "wp-product-orchestrator/SKILL.md" "Keep direct CTO execution limit
 require_text "wp-product-orchestrator/SKILL.md" "delegate at least one bounded task" "orchestrator mandatory delegation trigger"
 require_text "wp-product-orchestrator/SKILL.md" "Delegation decision" "orchestrator delegation decision status line"
 require_text "wp-product-orchestrator/SKILL.md" "Context decision: Compact|Fresh thread|Continue" "orchestrator context decision status line"
+require_text "wp-product-orchestrator/SKILL.md" "Auto-route workers by changed artifact" "orchestrator worker auto routing"
 require_text "wp-product-orchestrator/SKILL.md" "portfolio-wide sweep across all assigned products" "orchestrator portfolio sweep"
 require_text "wp-product-orchestrator/SKILL.md" "Portfolio heartbeat cadence is 2 hours" "orchestrator portfolio cadence"
 require_text "wp-product-orchestrator/SKILL.md" "Product heartbeat is hourly" "orchestrator product cadence"
@@ -102,6 +103,7 @@ require_text "wp-product-orchestrator/SKILL.md" "../shared/references/commit-pr-
 require_text "wp-product-orchestrator/SKILL.md" "../shared/references/weekly-wordpress-intelligence.md" "orchestrator weekly intelligence routing"
 require_text "wp-product-orchestrator/SKILL.md" "../shared/references/self-improvement-loop.md" "orchestrator self-improvement routing"
 require_text "wp-product-orchestrator/SKILL.md" "../shared/references/context-window-discipline.md" "orchestrator context window discipline routing"
+require_text "shared/references/project-subagent-routing.md" "Auto-select the narrowest skill from the artifact" "project subagent auto skill selection"
 require_text "shared/references/context-window-discipline.md" "compact the product thread when continuing the same release train" "product thread compact continuity rule"
 require_text "shared/references/context-window-discipline.md" "fresh worker/product thread" "product orchestration fresh thread rule"
 

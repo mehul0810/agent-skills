@@ -67,17 +67,17 @@ If a configured model is unavailable in the current environment, do not silently
 
 ## Skill-Level Routing For Subagents
 
-The parent agent should classify the task and assign one lane per subagent. Do not tell every subagent to load all of `wp-expert` or `wp-contributor`.
+The parent agent should classify the task and assign one lane per subagent. Auto-select the narrowest skill from the artifact being inspected or changed; do not tell every subagent to load `wp-expert` or every WordPress reference.
 
 Examples:
 
-- Plugin mapper: `$wp-expert`, primary reference `plugin-architecture.md`; supporting `enterprise-code-quality-gate.md` only if reviewing code quality.
-- Block/FSE mapper: `$wp-expert`, primary reference `block-theme-architecture.md`; supporting `custom-block-theme-from-design.md` only for design-to-theme work.
-- UI reviewer: `$wp-expert`, primary reference `ux-product-strategy-design-qa.md`; supporting `visual-parity-regression.md` only when screenshots/designs are involved.
-- Security reviewer: `$wp-expert`, primary reference `security-threat-modeling-review.md`; supporting `performance-and-security.md` only when needed.
+- Plugin mapper: `$wp-plugin-expert`, primary route `plugin-architecture.md`; supporting `enterprise-code-quality-gate.md` only if reviewing code quality.
+- Block/FSE mapper: `$wp-theme-expert`, primary route `block-theme-architecture.md`; supporting `custom-block-theme-from-design.md` only for design-to-theme work.
+- UI reviewer: `$wp-site-expert` for site UX or `$wp-theme-expert` for editor/theme UX; supporting `visual-parity-regression.md` only when screenshots/designs are involved.
+- Security reviewer: `$wp-plugin-expert`, `$wp-theme-expert`, or `$wp-site-expert` based on the changed artifact; primary route `security-threat-modeling-review.md` only when the risk is concrete.
 - WordPress contribution mapper: `$wp-contributor`, primary reference matching the surface: `core-workflow.md`, `gutenberg-workflow.md`, or `meta-workflow.md`.
-- Product workflow coordinator: `$wp-product-orchestrator`, primary shared reference `product-queue-triage.md` or `product-autonomy-permissions.md`; implementation details still route to one `wp-expert` lane.
-- PR/release reviewer: shared `session-continuity-pr-discipline.md`, plus the one implementation reference tied to the changed surface.
+- Product workflow coordinator: `$wp-product-orchestrator`, primary shared reference `product-queue-triage.md` or `product-autonomy-permissions.md`; implementation details still route to one specialist lane.
+- PR/release reviewer: shared `session-continuity-pr-discipline.md`, plus the specialist skill and one implementation reference tied to the changed surface.
 
 Subagent prompt contract:
 
@@ -97,7 +97,7 @@ name = "wp-plugin-mapper"
 model = "gpt-5.3-codex-spark"
 model_reasoning_effort = "medium"
 sandbox_mode = "read-only"
-developer_instructions = "Use $wp-expert with plugin-architecture.md only. Map entry points, hooks, REST routes, assets, tests, and risk hotspots. Output max 20 bullets with file paths. Do not edit files."
+developer_instructions = "Use $wp-plugin-expert with plugin-architecture.md only. Map entry points, hooks, REST routes, assets, tests, and risk hotspots. Output max 20 bullets with file paths. Do not edit files."
 ```
 
 Read-only theme/block mapper:
@@ -107,7 +107,7 @@ name = "wp-theme-mapper"
 model = "gpt-5.3-codex-spark"
 model_reasoning_effort = "medium"
 sandbox_mode = "read-only"
-developer_instructions = "Use $wp-expert with block-theme-architecture.md only. Map theme.json, templates, parts, patterns, blocks, editor/frontend CSS, build output, and editability risks. Output max 20 bullets. Do not edit files."
+developer_instructions = "Use $wp-theme-expert with block-theme-architecture.md only. Map theme.json, templates, parts, patterns, blocks, editor/frontend CSS, build output, and editability risks. Output max 20 bullets. Do not edit files."
 ```
 
 Narrow fixer after the parent isolates scope:
@@ -127,7 +127,7 @@ name = "wp-pr-reviewer"
 model = "gpt-5.4"
 model_reasoning_effort = "high"
 sandbox_mode = "read-only"
-developer_instructions = "Review changed files only. Use $wp-expert review mode plus the relevant primary reference. Findings first with severity, file/line, impact, and missing tests. Do not edit files."
+developer_instructions = "Review changed files only. Use the narrowest WordPress specialist skill plus the relevant primary reference. Findings first with severity, file/line, impact, and missing tests. Do not edit files."
 ```
 
 ## Hooks Boundary

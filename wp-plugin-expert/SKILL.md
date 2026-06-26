@@ -1,6 +1,6 @@
 ---
 name: wp-plugin-expert
-description: Enterprise WordPress plugin engineering for plugin features, architecture, admin screens, REST APIs, custom tables, WordPress.org releases, Composer/npm tooling, tests, CI, security, performance, troubleshooting, and product-grade implementation.
+description: "Use for WordPress plugin/product engineering: plugin features, architecture, admin screens, REST APIs, custom tables, WordPress.org releases, Composer/npm tooling, tests, CI, security, performance, troubleshooting, and product-grade implementation."
 ---
 
 # WP Plugin Expert
@@ -21,6 +21,7 @@ Operate as a principal WordPress plugin engineer. Build narrow, production-safe 
 - For packaging, Composer/npm, CI artifacts, deploys, WordPress.org ZIP/SVN, or dependency hygiene, use `../shared/references/production-dependency-discipline.md`.
 - Use REST for new interactive endpoints when it fits; avoid new `admin-ajax.php` by default.
 - Keep bootstraps thin; place behavior in small owned modules/classes with explicit contracts.
+- Stay in this lane for plugin-owned work. If the task becomes theme, site, orchestration, contribution, or content writing, hand off instead of loading broad WordPress context.
 - Use `references/router.md` only when the correct plugin reference is not obvious from the task.
 - Stage only intended files, commit scoped validated changes when expected, and push only when explicitly asked or repo-local automation policy authorizes it.
 

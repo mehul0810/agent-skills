@@ -123,7 +123,7 @@ Work one item at a time:
 2. Reproduce or establish root cause where feasible.
 3. Choose the smallest enterprise-grade fix that preserves launched contracts.
 4. Create/update branch from the correct release/default base.
-5. Implement with `wp-expert` lane-specific guidance.
+5. Implement with the narrowest specialist lane: `wp-plugin-expert`, `wp-theme-expert`, `wp-site-expert`, `content-writer`, or `wp-contributor`; use `wp-expert` only when ambiguous.
 6. Add/update tests when behavior risk warrants it.
 7. Validate with syntax/lint/static/runtime/live proof appropriate to risk.
 8. Commit focused changes; push/PR only if authorized.

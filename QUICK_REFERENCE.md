@@ -54,7 +54,7 @@ Use `$wp-product-orchestrator` for autonomous WordPress plugin/theme issue triag
 **"Prove this WordPress plugin/theme change is actually done"**
 - Skill: `wp-product-orchestrator`
 - Load: `../shared/references/live-proof-wordpress.md`
-- Supporting: relevant `$wp-expert` implementation reference
+- Supporting: relevant specialist implementation reference
 
 ### Plugin Development & Architecture
 
@@ -274,7 +274,7 @@ Use `$wp-product-orchestrator` for autonomous WordPress plugin/theme issue triag
 
 **"I want project-level Codex subagents for WordPress work or better `gpt-5.3-codex-spark` usage"**
 - Load: `../shared/references/project-subagent-routing.md`
-- Supporting: `references/reference-routing-map.md`, then the one lane-specific reference needed by each subagent
+- Supporting: the narrowest specialist skill, then one lane-specific reference per subagent; use `references/reference-routing-map.md` only if the lane is ambiguous
 
 **"Open a PR for issue work tied to a milestone or release branch"**
 - Load: `../shared/references/session-continuity-pr-discipline.md`
@@ -492,7 +492,7 @@ Use these for **any** task:
 
 ## Pro Tips
 
-1. **Start with the reference routing map** if you're not sure which reference to load
+1. **Start with the specialist skill** when the task clearly names plugin, theme, site, product, contribution, or content work; use the reference routing map only when unsure
 2. **Load one primary reference first**, then add supporting references if gaps remain
 3. **Use helper scripts** before loading references for quick repo discovery
 4. **Check theme overlays** if you're working with Ollie or Blocksy
