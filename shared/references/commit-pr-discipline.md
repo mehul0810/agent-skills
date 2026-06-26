@@ -66,6 +66,10 @@ PRs must not:
 
 Use closing keywords only when the PR fully resolves the linked issue and targets a branch where closure behavior is intended.
 
+## Non-Production Merge Rule
+
+Product orchestrators may review and merge scoped, non-draft, green PRs into `develop` or `release/<release-version>` when the base is correct, validation is current, and no explicit current owner stop exists on that exact PR. If branch protection, review rules, permissions, or tooling blocks the merge, report the exact blocker instead of treating it as an owner decision.
+
 ## Worker PR Rule
 
 Every issue implementation should be done by a worker using the narrowest relevant WordPress specialist skill (`wp-plugin-expert`, `wp-theme-expert`, `wp-site-expert`, `wp-contributor`, or `content-writer`; `wp-expert` only if ambiguous), a Codex-created worktree, one issue, one branch, and one PR. Workers must not perform release actions, push directly to `main`, close issues, merge PRs, retarget milestones, or subdelegate.

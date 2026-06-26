@@ -137,6 +137,7 @@ When the train is ready for owner approval, report:
 - Merged PRs and included scope.
 - Remaining open issues and why they are non-blocking or deferred.
 - CI, package, build, lint, test, and live-proof validation.
+- Release metadata match for target version: plugin header, readme stable tag/changelog, package metadata, release notes, and current Plugin Check.
 - Docs, release notes, readme, WordPress.org, support, and Advanced View status.
 - Risks, rollback notes, and unresolved proof gaps.
 - Exact approval requested: production or beta release target/version.

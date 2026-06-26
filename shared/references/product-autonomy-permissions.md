@@ -43,6 +43,8 @@ Only production or beta release actions require explicit current `@mehul0810` ap
 
 For normal product orchestration, do not stall on `owner:me` if a decision is reasonable, reversible, and non-release. Document the rationale, relabel to `owner:codex`, and proceed or delegate. Continue issue creation, labels, branch prep, PR review/merge for good non-production PRs, dependency/tooling work, docs work, and reversible backlog prioritization when repo policy and validation support it.
 
+Review and merge safe non-production PRs when they target `develop` or a release branch, are correctly based, scoped, non-draft, green, and have no explicit current owner stop on that exact PR. If the merge UI/tool/API blocks the action, report the exact tooling or approval-layer blocker; do not convert that into an owner-decision blocker.
+
 Escalate rather than guess when work is not reversible or crosses:
 
 - Product positioning, roadmap, pricing, licensing, free/pro entitlement, upsell, or telemetry.
