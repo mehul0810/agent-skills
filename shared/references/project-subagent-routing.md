@@ -45,25 +45,18 @@ max_depth = 1
 
 Raise concurrency only after the repo workflow is proven. Keep `max_depth = 1` unless a project has a deliberate multi-agent review process.
 
-## Model Routing
+## Model And Reasoning Routing
 
-Use `gpt-5.3-codex-spark` where a smaller, faster agent can produce bounded output:
+Use the cheapest model/reasoning combination that can safely produce the needed evidence. Escalate only when ambiguity, irreversible decisions, release impact, security/privacy, migrations, or architecture risk is real.
 
-- Read-only repo mapper for plugin, theme, block, or test surfaces.
-- Log, CI, and test failure summarizer.
-- Narrow fixer after the parent provides the exact files, behavior, and acceptance checks.
-- Browser/UI evidence collector when the test path is explicit.
-- Documentation or changelog draft reviewer with a fixed source set.
+- Portfolio heartbeat/sweep: compact source-of-truth sweep; low or medium reasoning. Use high only for release conflict resolution, owner decision briefs, protected-thread recovery, or cross-product governance changes.
+- Product hourly heartbeat: medium reasoning by default. Use high only for release-ready synthesis, ambiguous milestone scope, risky PR merge/release decisions, security/privacy posture, schema/data migration, or product thread topology drift.
+- Worker implementation: match the specialist skill and artifact. Use `gpt-5.3-codex-spark` or another approved fast/lower-cost model for bounded mapping, issue intake, docs, test evidence, simple CI triage, narrow fixes with exact files, and explicit validation commands.
+- Stronger worker/reviewer model: use for architecture, security, privacy, public API contracts, data migrations, VIP/high-scale performance, release blockers, final PR review, base-branch decisions, or unclear implementation paths.
+- Screenshots/design proof: use a fast model for explicit screenshot capture or visual proof. Escalate only when visual regression judgment, UX tradeoffs, accessibility impact, or design-system interpretation is complex.
+- Web/current research: keep bounded, prefer official/primary sources, summarize only decision-relevant changes, and use high reasoning only when the result is cross-product, release-blocking, security-sensitive, or architecture-shaping.
 
-Use a stronger model for:
-
-- Cross-system architecture decisions.
-- Security, privacy, payment, migration, and data-loss risk.
-- VIP/high-scale performance decisions.
-- Final PR review, release readiness, and base-branch decisions.
-- Ambiguous requirements where the implementation path is not yet clear.
-
-If a configured model is unavailable in the current environment, do not silently substitute. Report the missing model and use the nearest approved project fallback.
+If a configured model is unavailable in the current environment, do not silently substitute. Report the missing model and use the nearest approved project fallback. Do not spend a stronger model on routine polling, broad rereads, or evidence the source of truth can answer cheaply.
 
 ## Skill-Level Routing For Subagents
 
@@ -148,6 +141,7 @@ Before launching subagents:
 
 - Define the acceptance criteria and stop condition.
 - Assign each subagent one lane, one expected output format, and a token/output budget.
+- Set model/reasoning from the matrix above; do not default every worker to the strongest model.
 - Prefer read-only mode unless a narrow fixer has exact scope.
 - Avoid duplicate exploration across agents.
 - Tell subagents whether web access is allowed and which official docs to prefer.

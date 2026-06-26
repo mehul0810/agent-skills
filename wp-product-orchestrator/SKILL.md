@@ -36,7 +36,7 @@ Use this skill as the long-lived product-orchestrator thread for one WordPress p
 - `../shared/references/commit-pr-discipline.md`: branch creation, commits, pushes, PR creation, PR body, and worker handoffs.
 - `../shared/references/repo-product-docs-contract.md`: durable repo product docs including `DESIGN.md`.
 - `../shared/references/cto-orchestration-operating-model.md`: load only for thread topology, owner authority, or source-of-truth hierarchy that is not clear locally.
-- `../shared/references/context-window-discipline.md`, `../shared/references/project-subagent-routing.md`, and `../shared/references/live-proof-wordpress.md`: load only for high context, subagent/model routing, or completion proof.
+- `../shared/references/context-window-discipline.md`, `../shared/references/project-subagent-routing.md`, and `../shared/references/live-proof-wordpress.md`: load only for high context, model/reasoning and subagent routing, or completion proof.
 
 ## Fast Workflow
 

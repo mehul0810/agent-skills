@@ -21,7 +21,7 @@ reference_mentions() {
 skill_limit() {
   case "$1" in
     content-writer) echo 4 ;;
-    wp-portfolio-cto) echo 7 ;;
+    wp-portfolio-cto) echo 8 ;;
     wp-product-orchestrator) echo 11 ;;
     wp-expert) echo 8 ;;
     wp-plugin-expert|wp-theme-expert|wp-site-expert|wp-contributor) echo 9 ;;
@@ -100,6 +100,8 @@ check_router_discipline() {
   require_text "wp-site-expert/SKILL.md" "references/router.md" "site router pointer"
   require_text "wp-contributor/SKILL.md" "references/router.md" "contributor router pointer"
   require_text "shared/references/project-subagent-routing.md" "Auto-select the narrowest skill from the artifact" "subagent narrow skill selection"
+  require_text "shared/references/project-subagent-routing.md" "Model And Reasoning Routing" "subagent model reasoning routing"
+  require_text "shared/references/project-subagent-routing.md" "do not default every worker to the strongest model" "subagent strongest-model guard"
   require_text "shared/references/project-subagent-routing.md" 'Use $wp-plugin-expert with plugin-architecture.md only' "subagent plugin specialist profile"
   require_text "shared/references/project-subagent-routing.md" 'Use $wp-theme-expert with block-theme-architecture.md only' "subagent theme specialist profile"
   require_text "wp-plugin-expert/references/router.md" "plugin-product-architecture.md" "plugin expertise preserved in router"

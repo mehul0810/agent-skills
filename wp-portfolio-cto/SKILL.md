@@ -19,7 +19,7 @@ Use this skill as the cross-product WordPress portfolio control room. It governs
 - Ask before interrupting, recreating, or forking user-created product threads. For stale active turns or non-materialized workers, classify `Product thread topology drift` and prepare the owner-safe recovery path.
 - Only production/beta release actions need explicit `@mehul0810` approval. Keep pricing/licensing/free-vs-pro, privacy/security posture, public API/schema/breaking contracts, destructive actions, and broad positioning behind explicit approval.
 - Use the CTO control chat thread for routine status. GitHub comments are for durable repo-visible decisions, blockers, deferrals, re-scopes, PR scope links, completion reconciliation, and answered owner questions.
-- Keep tokens tight: load one portfolio reference mode, ask for compact on continuity-sensitive high-context portfolio work, and use fresh product/worker threads for unrelated product execution.
+- Keep tokens tight: load one portfolio reference mode, use `project-subagent-routing.md` for model/reasoning selection, ask for compact on continuity-sensitive high-context portfolio work, and use fresh product/worker threads for unrelated product execution.
 
 ## Reference Routing
 
@@ -29,6 +29,7 @@ Use this skill as the cross-product WordPress portfolio control room. It governs
 - `../shared/references/github-communication-protocol.md`: quiet GitHub write discipline, comments/reviews as evidence, owner labels, blocker questions, and reconciliation.
 - `../shared/references/self-improvement-loop.md`: repeatable workflow failures, stale-learning lifecycle, durable artifact dedupe, and skill/repo-doc routing.
 - `../shared/references/weekly-wordpress-intelligence.md`: weekly ecosystem intelligence and durable cross-product impact summaries.
+- `../shared/references/project-subagent-routing.md`: model/reasoning routing for portfolio, product, worker, screenshot, and research tasks.
 - `../shared/references/context-window-discipline.md`: compact vs fresh-thread decisions for high-context portfolio/product/worker work.
 
 ## Fast Workflow
