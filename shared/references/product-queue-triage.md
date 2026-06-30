@@ -38,6 +38,8 @@ gh issue list --state open --limit 100 --json number,title,author,labels,milesto
 gh pr list --state open --limit 100 --json number,title,author,isDraft,reviewDecision,mergeStateStatus,baseRefName,headRefName,labels,milestone,updatedAt,url
 ```
 
+Batch GitHub reads. For routine heartbeats, retry once for the missing signal, then report `live check unavailable` and use local remote-tracking and repo evidence only for non-mutating summary. Do not create issues, relabel, merge, delegate, or decide readiness when owner labels/comments, milestones, PR state, or CI are not live-verified.
+
 Inspect details before recommending action:
 
 ```bash

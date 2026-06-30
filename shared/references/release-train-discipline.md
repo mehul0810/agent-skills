@@ -31,6 +31,8 @@ Before any beta, prerelease, or stable action, verify:
 
 Use the source of truth hierarchy from `cto-orchestration-operating-model.md`: GitHub production releases/tags first, then prereleases/tags, then milestones/issues/PRs, then repo docs, then local state, then memory/chat.
 
+Release-ready recommendations and owner approval requests require fresh live verification. If GitHub releases/tags, milestones, issues, PRs, labels/comments, CI, package state, or WordPress.org state cannot be verified live, stop with `live check unavailable` plus the exact missing signal and fallback evidence; do not request beta/production approval.
+
 ## Milestone Discipline
 
 Milestones need due dates. If a milestone lacks a due date:

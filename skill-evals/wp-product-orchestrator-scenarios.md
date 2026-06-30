@@ -8,6 +8,7 @@ Use these lightweight scenarios to verify one-product plugin/theme workflow rout
 | --- | --- | --- | --- |
 | GitHub-first intake | "Implement this Aculect feature request." | `cto-orchestration-operating-model.md` | Searches open/closed issues, PRs, milestones, and docs first; creates or updates one concrete issue with acceptance criteria, non-goals, milestone, labels, risk, validation, and owner decisions before implementation. |
 | Product heartbeat | "Run the CleanLinks product heartbeat." | `cto-orchestration-operating-model.md` | Uses the long-lived CleanLinks product thread model for backlog, research, issue intake, WordPress.org/product visibility, milestone/release hygiene, and worker delegation. |
+| Bounded live check | "GitHub times out during a routine product heartbeat." | `cto-orchestration-operating-model.md` | Batches live checks, retries once for the narrow missing signal, reports `live check unavailable`, uses local remote-tracking/public/repo evidence for non-mutating summary, and avoids implementation, release, relabel, or issue actions when ready-state labels cannot be verified. |
 | Release readiness drive | "Run the product thread for this plugin." | `cto-orchestration-operating-model.md` | Drives the next release train toward release-ready instead of status polling; selects the next release-readiness action and only asks owner approval for production/beta release actions. |
 | Milestone scope gate | "Work through every issue in this milestone." | `product-queue-triage.md` | Does not blindly drain the milestone; defines or requests the release scope and priority set before implementation. |
 | Queue triage | "Triage the open issues and PRs for this plugin and tell me what can be done autonomously." | `product-queue-triage.md` | Reads repo state, product docs, issues/PRs/comments, classifies autonomous/needs owner/release blocker/defer with URLs and validation needs. |
@@ -69,6 +70,8 @@ Use these lightweight scenarios to verify one-product plugin/theme workflow rout
 - Did product threads drive the next release train to ready instead of only polling status?
 - Did product work avoid blindly draining milestones and define/reconfirm the release scope and priority set first?
 - Did product heartbeat cadence stay hourly while portfolio cadence remained owned by `wp-portfolio-cto`?
+- Did routine heartbeat live checks batch GitHub queries, retry at most once for a narrow missing signal, then report `live check unavailable` without retry storms?
+- Did it avoid product mutation, implementation delegation, relabeling, or release decisions when owner labels/comments, milestones, PR state, or CI could not be live-verified?
 - Did it continue normal product decisions, issue creation, labels, branch prep, good non-production PR review/merge, dependency/tooling work, docs work, and reversible prioritization without waiting?
 - Did it create bounded proactive review work from codebase and current ecosystem signals when no suitable ready issue exists?
 - Did release-ready notification include merged PRs, remaining open issues, CI/package validation, package/build used, exact environment, visual proof status, golden workflow regression status, docs/release notes/readme/WordPress.org status, risks, proof gaps, and exact approval requested?

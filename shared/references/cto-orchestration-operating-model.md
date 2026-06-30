@@ -55,6 +55,14 @@ Use this source of truth hierarchy for release, milestone, branch, planning, and
 
 Live-verify current GitHub state before release, milestone, branch, or planning decisions. Treat memory and prior chat as hints only.
 
+## Bounded Live Check Policy
+
+For routine non-release portfolio/product heartbeats, batch GitHub live checks where possible. If GitHub/network access times out, retry at most once for a narrow missing signal, then report `live check unavailable` and use local remote-tracking, public, and repo evidence as fallback. Do not start implementation, merge, relabel, create issues, or make release/ready-state decisions when owner labels, comments, milestones, or PR state could not be live-verified.
+
+For owner-gated beta/prerelease/production readiness, fresh live verification is required. If releases, tags, milestones, issues, PRs, labels, comments, CI, or package state cannot be verified live, fail closed with a concise owner-visible blocker instead of retry loops.
+
+Keep retry failures token-light: no repeated commentary per timed-out check, no broad rereads, and one compact final state with the missing live signal, fallback evidence used, and stop condition.
+
 ## Portfolio Sweep Discipline
 
 Every portfolio heartbeat/check-in must begin with a portfolio-wide sweep across all assigned products before governance action. Current managed products include Aculect AI Companion, WP Distraction Free View, OneSMTP, PreviewShare, and CleanLinks, but the rule is generic and should follow the assigned product list as it changes.
