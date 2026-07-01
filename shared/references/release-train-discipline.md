@@ -40,7 +40,11 @@ An active release train is quiet only when there is no eligible execution left: 
 
 Do not return routine `DONT_NOTIFY` status solely because a clean PR queue is unchanged. A clean/green, correctly based, non-production PR in the active release scope is executable work: review it, merge it when governance allows, or record the concrete blocker. Wrong-base PRs are also active drift: retarget, recreate, supersede, or defer them with evidence instead of leaving them open without a recovery path.
 
+Each active-train check should compare the previous `Next action` with the current state. If the same executable action repeats, the product thread must attempt the action, delegate it, or return the exact blocker/tool failure. Repeated monitoring without action is release-train drift.
+
 Each active-train check should maintain a compact burn-down: implementation-ready, merge-ready, owner-gated, wrong-base/recovery, blocked, and deferrable. Move to release-ready evidence only after the burn-down has no eligible non-production execution remaining.
+
+Escalate to the portfolio CTO when executable release-train work remains unchanged for two heartbeats, or after one heartbeat when a clean/green, correctly based non-production PR remains unreviewed/unmerged without a concrete blocker.
 
 ## Milestone Discipline
 

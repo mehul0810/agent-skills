@@ -4,9 +4,19 @@ Use this reference for GitHub issue/PR triage in WordPress product/plugin/theme 
 
 ## Goal
 
-Convert an open queue into clear action: autonomous work, owner decisions, release blockers, deferrals, or closure candidates. Do not leave the user with opaque issue numbers or vague priorities.
+Convert an open queue into clear action: autonomous work, owner decisions, release blockers, or deferrals.
 
 The product-thread objective is release readiness: keep advancing the next release train until it is ready for explicit production/beta release approval with evidence.
+
+## Product Heartbeat Execution Contract
+
+Every product heartbeat compares previous `Next action` with current queue state. Repeated executable work is not quiet state: execute it, delegate it, or return the exact blocker/tool failure.
+
+`DONT_NOTIFY` is valid only when no eligible execution remains, or every remaining issue/PR is owner-gated, blocked, failing, draft, wrong-base with recovery, or deliberately deferred.
+
+Active-train burn-down buckets: `implementation-ready`, `merge-ready`, `owner-gated`, `wrong-base/recovery`, `blocked`, `deferrable`.
+
+Escalate to portfolio CTO when executable work is unchanged for two heartbeats, or one heartbeat for clean/green merge-ready non-production PRs.
 
 ## Start With Repo State
 
@@ -20,22 +30,17 @@ git branch -a --list '*release*' '*hotfix*' '*support*' '*maintenance*' '*develo
 gh repo view --json nameWithOwner,defaultBranchRef,url
 ```
 
-Read repo policy before judging fit:
+Read repo policy before judging fit: `AGENTS.md`, `README.md`, `CONTRIBUTING.md`, `PRODUCT.md`, roadmap/support docs, `RELEASE.md`, changelog, version/package metadata, WordPress.org `readme.txt`, labels, milestones, projects, and release branches.
 
-- `AGENTS.md`, `CLAUDE.md`, `README.md`, `CONTRIBUTING.md`.
-- `PRODUCT.md`, `VISION.md`, roadmap docs, support docs.
-- `RELEASE.md`, changelog, version file, package metadata, WordPress.org `readme.txt`.
-- Existing labels, milestones, projects, and release branches.
-
-Ensure `owner:codex` and `owner:me` labels exist in each managed repo. Labels define ready state: `owner:codex` is ready for orchestrator/worker action; `owner:me` marks a question, but reversible non-release choices can be resolved by documented rationale and relabeled `owner:codex`.
+Ensure `owner:codex` and `owner:me` labels exist in each managed repo. Labels define ready state: `owner:codex` is ready for orchestrator/worker action; `owner:me` marks a question, but reversible non-release choices can be resolved and relabeled `owner:codex`.
 
 ## Queue Discovery
 
 For the current repo:
 
 ```bash
-gh issue list --state open --limit 100 --json number,title,author,labels,milestone,updatedAt,url
-gh pr list --state open --limit 100 --json number,title,author,isDraft,reviewDecision,mergeStateStatus,baseRefName,headRefName,labels,milestone,updatedAt,url
+gh issue list --state open --limit 100 --json number,title,labels,milestone,url
+gh pr list --state open --limit 100 --json number,title,isDraft,mergeStateStatus,baseRefName,headRefName,labels,milestone,url
 ```
 
 Batch GitHub reads. For routine heartbeats, retry once for the missing signal, then report `live check unavailable` and use local remote-tracking and repo evidence only for non-mutating summary. Do not create issues, relabel, merge, delegate, or decide readiness when owner labels/comments, milestones, PR state, or CI are not live-verified.
@@ -43,9 +48,8 @@ Batch GitHub reads. For routine heartbeats, retry once for the missing signal, t
 Inspect details before recommending action:
 
 ```bash
-gh issue view <number-or-url> --json number,title,state,author,body,comments,labels,milestone,url
-gh pr view <number-or-url> --json number,title,state,author,body,comments,reviews,files,commits,statusCheckRollup,mergeStateStatus,baseRefName,headRefName,isDraft,url
-gh pr diff <number-or-url> --patch
+gh issue view <number-or-url> --json number,title,body,comments,labels,milestone,url
+gh pr view <number-or-url> --json number,title,body,comments,reviews,files,statusCheckRollup,mergeStateStatus,baseRefName,headRefName,isDraft,url
 ```
 
 ## Issue Intake
@@ -79,8 +83,6 @@ Security-sensitive findings must not become public issues and must not include e
 
 Create focused GitHub issues to add or adapt `DESIGN.md` when a real durable product design gap exists. Duplicate-screen first, assign to `@mehul0810`, reuse labels/milestones when supported, and include acceptance criteria, non-goals, validation, and branch/base plan. Do not create generic design-doc churn.
 
-Priority order: CleanLinks and Aculect high priority; OneSMTP early enough to shape UI; PreviewShare and WP Distraction Free View lightweight unless the product surface grows.
-
 ## Dependency And Stale PR Triage
 
 During rehydration, check open Dependabot/dependency/tooling PRs and stale PRs.
@@ -105,15 +107,7 @@ Classify each item:
 
 ## WordPress Product Signals
 
-Raise priority when an item affects:
-
-- Activation/deactivation, upgrade, uninstall, migrations, or rollback.
-- Admin lockout, capability checks, nonces, REST permissions, or data integrity.
-- Checkout, payments, subscriptions, lead forms, user registration, or email delivery.
-- Block editor save/render parity, template hierarchy, frontend layout, accessibility, or Core Web Vitals.
-- WordPress.org guideline compliance, release artifact contents, production dependencies, or `readme.txt` accuracy.
-- WordPress.org-hosted plugin release metadata, including planning `Tested up to` WordPress 7.0 in the next compatible release.
-- Multisite, object cache, cron/background jobs, import/export, privacy export/erase, or high-traffic paths.
+Raise priority for activation/upgrade/uninstall/rollback; admin lockout, capabilities, nonces, REST, data integrity; checkout/forms/registration/email delivery; editor/frontend/accessibility/Core Web Vitals; WordPress.org compliance, release contents, dependencies, `readme.txt`, and WordPress.org-hosted plugin metadata including planning `Tested up to` WordPress 7.0 in the next compatible release; multisite, object cache, cron/background jobs, import/export, privacy export/erase, and high-traffic paths.
 
 Lower priority when the item is cosmetic without acceptance criteria, stale without reproduction, unsupported environment, or conflicts with product direction.
 
@@ -130,7 +124,8 @@ Work one item at a time:
 7. Validate with syntax/lint/static/runtime/live proof appropriate to risk.
 8. Commit focused changes; push/PR only if authorized.
 9. Update PR/issue with proof when authorized.
-10. Return local repo to a clean, expected branch state before selecting the next item.
+10. Reconcile worker output, issue/PR state, screenshot/proof gaps, stale worktrees, and temporary heartbeats.
+11. Return local repo to a clean, expected branch state before selecting the next item.
 
 ## Release-Ready Notification
 

@@ -1,6 +1,6 @@
 # Delegation Protocol
 
-Use this reference before creating product-orchestrator threads, Codex worker threads, worktrees, or subagent prompts for WordPress product work. `wp-portfolio-cto` owns cross-product control; `wp-product-orchestrator` owns one product's execution plan.
+Use before creating product-orchestrator threads, Codex worker threads, worktrees, or subagent prompts. `wp-portfolio-cto` owns cross-product control; `wp-product-orchestrator` owns one product's execution plan.
 
 ## Plan Before Delegation
 
@@ -43,7 +43,7 @@ Every CTO heartbeat/check-in must include:
 Delegation decision: Delegated|Direct|Deferred - <short reason>
 ```
 
-Use `Direct` only when the task is smaller than the delegation overhead, the environment cannot safely delegate, or the owner explicitly asked the CTO thread to execute directly. Use `Deferred` when the plan is not yet clear enough to delegate or a blocker prevents safe delegation.
+Use `Direct` only when work is smaller than delegation overhead, the environment cannot delegate, or the owner asked for direct execution. Use `Deferred` when plan or blocker prevents safe delegation.
 
 Before declaring delegation unavailable, use tool discovery for project/thread/worktree/subagent surfaces. Look for `list_projects`, `create_thread`, `fork_thread`, `send_message_to_thread`, available worktree or subagent tools, and shell/manual git worktree capability when safe.
 
@@ -55,7 +55,7 @@ Before creating an app-managed worker worktree, verify the saved project path or
 git rev-parse --show-toplevel
 ```
 
-Exact-project preflight: the saved Codex project path must exactly equal the plugin repo root returned by `git rev-parse --show-toplevel`. If the product thread is rooted in a broader WordPress folder such as `wp-content` or `wp-content/plugins`, do not call `create_thread` or `fork_thread` with a worktree environment from that thread. App-managed worktree setup can fail or land on the wrong repository/base. Use an exact plugin repo-root saved project when available; otherwise report `setup-blocked: missing exact repo project` as the hard blocker and prepare a tooling/setup decision brief.
+Exact-project preflight: saved Codex project path must equal the plugin repo root from `git rev-parse --show-toplevel`. If the product thread is rooted in `wp-content` or `wp-content/plugins`, do not create app worktrees from it; use an exact repo-root project or report `setup-blocked: missing exact repo project` and prepare a tooling/setup decision brief.
 
 When using app-managed worktrees, pass an explicit verified base branch through the worktree starting state when the tool supports it. After the worker materializes, verify:
 
@@ -136,6 +136,18 @@ Use worktrees when parallel implementation or CI repair would otherwise risk bra
 
 ## Delegated Thread Lifecycle
 
-Before delegation, document the strategy in the parent portfolio/product control thread and only write GitHub comments when the state transition is durable. After delegated work returns, that control thread must inspect the diff/evidence, confirm screenshot proof for design-visible changes or record the proof gap, run or confirm validation, update the PR/issue when needed, and make the final recommendation.
+Before delegation, document strategy in the parent thread and write GitHub comments only for durable state transitions. After worker return, inspect diff/evidence, confirm screenshot proof or proof gap, confirm validation, update PR/issue when needed, and make the final recommendation.
+
+## Worker Reconciliation Checklist
+
+After worker output, PR merge/closure, or abandoned delegation, reconcile before unrelated work:
+
+- Inspect diff/evidence, target issue, branch/base, and PR state.
+- Confirm validation, CI, screenshots/browser proof, package proof, or exact proof gap.
+- Update GitHub only for state transitions, blockers, deferrals, or owner questions.
+- Classify remaining scope: implementation-ready, merge-ready, owner-gated, wrong-base/recovery, blocked, or deferrable.
+- Remove/document safe stale-clean worktrees and prunable metadata; never remove dirty, unknown, owner-owned, or active worktrees without approval.
+- Stop/update temporary release/CI heartbeats.
+- Select the next train item or produce release-ready evidence.
 
 If the CTO catches itself doing repeated direct implementation during a heartbeat, classify it under the self-improvement loop as `Missing delegation after strategy`, correct course by delegating the next bounded task when possible, and route the learning into the skill/reference or repo docs rather than only chat memory.
