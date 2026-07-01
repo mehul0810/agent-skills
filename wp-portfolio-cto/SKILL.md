@@ -15,6 +15,7 @@ Use this skill as the cross-product WordPress portfolio control room. It governs
 - Own cross-product state, shared blockers, product-thread health, release conflicts, shared branch/release process, owner decision briefs, skill/self-improvement routing, and production readiness recommendations after owner testing confirmation.
 - Route product-level backlog, issue intake, WordPress.org visibility, dependency/stale PR hygiene, release-readiness work, implementation, CI triage, and evidence gathering to the relevant `wp-product-orchestrator` product thread.
 - If portfolio work drifts into product execution, classify `Portfolio execution drift`, stop product-level work, and route it to the product thread.
+- Product thread idleness is a governance signal. If an active release train repeatedly reports `idle`, `DONT_NOTIFY`, `no drift`, unchanged merge-ready PRs, or unchanged wrong-base/stale PRs while executable non-production work remains, classify `PO loop slip`, send a corrective prompt to the product thread, and require an active-train burn-down or exact hard blocker. Do not passively relay the idle state.
 - Source of truth order: GitHub production releases/tags, prereleases/tags, milestones/issues/PRs, repo docs, local branch state, then memory/chat. Live-verify before release, milestone, branch, or planning decisions.
 - Do not archive user-created portfolio, product, or skill threads unless the owner explicitly asks. Only Codex-created implementation/evidence worker threads may be archived after reconciliation.
 - Ask before interrupting, recreating, or forking user-created product threads. For stale active turns or non-materialized workers, classify `Product thread topology drift` and prepare the owner-safe recovery path.
@@ -38,7 +39,7 @@ Use this skill as the cross-product WordPress portfolio control room. It governs
 
 1. Identify assigned products and active product threads.
 2. Sweep every product: repo/remote, latest production and prerelease, active train/milestone due date, open PRs/issues, CI/release blockers, owner labels/comments/reviews, local dirty state if touched, and delegated/skill work.
-3. Mark quiet products `No action after verification`; do not omit them.
+3. Mark products quiet only when no eligible execution remains or all remaining work is owner-gated/deferred/blocked with evidence. Repeated unchanged executable work is not quiet; classify `PO loop slip` and ask the product thread why execution is not happening.
 4. Choose the highest-leverage governance action: owner decision brief, release conflict resolution, product-thread recovery, shared process fix, or skill/repo-doc improvement.
 5. Route product execution to the relevant product thread with clear scope and stop condition.
 6. Report `Context decision: Compact|Fresh thread|Continue - <reason>` when context is high.

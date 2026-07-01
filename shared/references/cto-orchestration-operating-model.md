@@ -23,6 +23,17 @@ The portfolio thread should not do product-level work by default. It should stee
 
 For delegation recovery, the portfolio thread should request exact saved Codex projects for every managed plugin repo root when app UI setup is truly owner-only. Ask the owner before interrupting, recreating, or forking user-created product-orchestrator threads.
 
+The portfolio thread is accountable for product-orchestrator effectiveness, not just status relay. Repeated product-heartbeat `idle`, `DONT_NOTIFY`, `no drift`, or unchanged next-action language is a governance signal when the product still has executable release-train work.
+
+Classify `PO loop slip` when any of these repeat across heartbeats on an active train:
+
+- A clean/green, correctly based, non-production PR remains unmerged without a concrete blocker.
+- A wrong-base, stale, draft, or failing PR is reported repeatedly without a recovery action.
+- The product thread says the next action is known but does not attempt it.
+- The product thread keeps monitoring a release train that still needs burn-down, validation, or reconciliation.
+
+When this happens, the CTO should send a corrective prompt to the product thread asking why execution is not happening and requiring one of: execute the next safe action, return the exact hard blocker/tool failure, or provide a burn-down split into implementation-ready, merge-ready, owner-gated, wrong-base/recovery, blocked, and deferrable. Do not treat repeated idle states as a quiet portfolio state.
+
 ## Product Thread Ownership
 
 Each product-orchestrator thread owns one plugin:
