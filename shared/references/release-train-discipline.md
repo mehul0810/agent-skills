@@ -34,6 +34,14 @@ Use the source of truth hierarchy from `cto-orchestration-operating-model.md`: G
 
 Release-ready recommendations and owner approval requests require fresh live verification. If GitHub releases/tags, milestones, issues, PRs, labels/comments, CI, package state, or WordPress.org state cannot be verified live, stop with `live check unavailable` plus the exact missing signal and fallback evidence; do not request beta/production approval.
 
+## Active Release Train Execution
+
+An active release train is quiet only when there is no eligible execution left: all scoped non-production PRs are merged, or each remaining PR/issue is explicitly classified as owner-gated, failing, draft, wrong-base with recovery action, blocked, or deliberately deferred with rationale.
+
+Do not return routine `DONT_NOTIFY` status solely because a clean PR queue is unchanged. A clean/green, correctly based, non-production PR in the active release scope is executable work: review it, merge it when governance allows, or record the concrete blocker. Wrong-base PRs are also active drift: retarget, recreate, supersede, or defer them with evidence instead of leaving them open without a recovery path.
+
+Each active-train check should maintain a compact burn-down: implementation-ready, merge-ready, owner-gated, wrong-base/recovery, blocked, and deferrable. Move to release-ready evidence only after the burn-down has no eligible non-production execution remaining.
+
 ## Milestone Discipline
 
 Milestones need due dates. If a milestone lacks a due date:
