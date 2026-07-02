@@ -20,14 +20,14 @@ Before any beta, prerelease, or stable action, verify:
 - Latest prerelease.
 - Current target release train.
 - Whether the previous milestone has a production release.
-- Whether the owner explicitly authorized production/beta release creation in the current context.
+- Whether the owner explicitly authorized production/beta release creation in context.
 - Whether owner testing confirmation exists for production readiness.
 - For WordPress.org-hosted plugins, whether the next compatible release plans `Tested up to` WordPress 7.0.
 - Whether release metadata matches the target version: plugin header/version file, `readme.txt` stable tag and changelog, package metadata, and release notes.
 - Whether `readme.txt` and changelog/release notes are release-current: stable tag/version, `Tested up to`, Requires WP/PHP if present, changelog section, upgrade notice when applicable, feature descriptions, FAQ/screenshots/tags where relevant, and no overclaiming unmerged future milestone work.
 - Whether any admin UI, frontend UI, consent/setup flow, editor surface, or visual output has release-candidate visual proof from the packaged ZIP/build or release branch build.
 - Whether the product's golden workflow regression matrix has been smoke-tested against the release candidate package/build.
-- Whether package/readme/Plugin Check validation is current after release metadata changes.
+- Whether package/readme/Plugin Check validation is current after metadata changes.
 - Whether the compact quality gate matrix below is complete, with every gate marked pass/fail/risk or `Not applicable - reason`.
 
 Use the source of truth hierarchy from `cto-orchestration-operating-model.md`: GitHub production releases/tags first, then prereleases/tags, then milestones/issues/PRs, then repo docs, then local state, then memory/chat.
@@ -80,6 +80,8 @@ Normal product orchestration, issue intake, implementation, hardening PRs, branc
 
 Every release-ready brief must include a compact quality gate matrix. Keep pass cases to one short line each. Expand only failed or risky gates. Do not omit a gate; use `Not applicable - reason` when the product/change shape justifies exclusion.
 
+Before a worker PR is treated as merge-ready or counted in release-ready evidence, confirm the implementation also satisfies `enterprise-code-quality-gate.md` or state the exact exception and residual risk.
+
 - Security/privacy: capabilities, nonces/auth, sanitization/escaping, secrets, data handling, dependency/vulnerability signals, and no public exploitable detail.
 - Performance: admin/frontend load, queries, assets/enqueues, package footprint, cache/async behavior, and realistic regression risk for the product.
 - Modularity/architecture: boundaries, excessive coupling, public API/schema/contracts, and migration/rollback notes when relevant.
@@ -89,7 +91,7 @@ Every release-ready brief must include a compact quality gate matrix. Keep pass 
 - Commented-code/dead-code hygiene: commented-out code, debug helpers, stray `var_dump`/`console.log`, stale TODOs, unused paths, and dead compatibility shims that should not ship.
 - Compatibility: launched backwards-compatibility commitments, supported WordPress/PHP/browser/runtime versions, editor/classic behavior when relevant, and integration contract compatibility.
 - Packaging/version metadata: plugin header/version file, package metadata, runtime-only Composer/npm payload, release ZIP/build contents, and target-version alignment across release surfaces.
-- UI/browser proof: required when admin, editor, frontend, consent/setup, or customer-facing UI changes. Use packaged/release-candidate screenshots or Playwright/browser evidence and cover constrained widths when relevant.
+- UI/browser proof: required when admin, editor, frontend, consent/setup, or user-facing UI changes. Use packaged/release-candidate screenshots or Playwright/browser evidence, cover constrained widths when relevant, add design audit evidence when workflow/onboarding/settings quality changed materially, and keep the default path simple.
 
 When the train is release-ready, request exact production/beta release approval with evidence: merged PRs, remaining open issues, compact quality gate matrix, CI/package validation, package/build used, exact environment, visual proof status, golden workflow regression status, readme/changelog audit status, docs/release notes/readme/WordPress.org status, risks, rollback notes, failed or skipped proof gaps, and whether skipped proof is acceptable for release.
 

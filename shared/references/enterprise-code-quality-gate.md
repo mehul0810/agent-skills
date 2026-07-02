@@ -6,6 +6,18 @@ Use this for WordPress code creation, refactoring, and review when the output sh
 
 Treat every generated or reviewed code path as production code for a high-traffic, security-sensitive WordPress environment unless the user explicitly accepts a lower bar. Prefer the simplest design that is modular, performant, secure, maintainable, observable, and testable under realistic failure modes.
 
+Every implementation should explicitly consider these quality dimensions before being called done, merge-ready, or release-ready:
+
+- Scalability.
+- Modularity and ownership boundaries.
+- Maintainability and duplication pressure.
+- Meaningful comments only where comments add value.
+- Test coverage proportional to risk.
+- Performance on realistic hot paths.
+- Security and privacy hardening.
+
+Do not force a new abstraction or exhaustive test suite when the risk does not justify it. If a dimension is not materially relevant, state `Not applicable - reason` instead of silently skipping it.
+
 ## Before Writing Code
 
 - Define the contract: hooks, filters, REST routes, block attributes, options, meta keys, schema versions, CLI commands, queue hooks, assets, templates, and public APIs.
@@ -20,6 +32,7 @@ Treat every generated or reviewed code path as production code for a high-traffi
 - Keep bootstraps thin and composition explicit; move behavior into named modules/classes/functions with one clear reason to change.
 - Pass dependencies where practical; avoid hidden globals except at WordPress integration boundaries.
 - Make data contracts explicit through schemas, DTO-like arrays, typed methods where supported, and documented option/meta/table shapes.
+- Prefer plug-and-play defaults and avoid adding settings unless they unlock real value, safety, or developer flexibility.
 - Bound every query, loop, migration, remote call, queue batch, cache payload, and rendered collection.
 - Sanitize and validate on ingress; escape at the output boundary; authorize with capabilities and object ownership before mutation or disclosure.
 - Make side effects idempotent, retry-safe, race-aware, and observable with redacted logs/status where appropriate.
@@ -27,6 +40,7 @@ Treat every generated or reviewed code path as production code for a high-traffi
 - Keep admin/editor/frontend assets scoped to the screens, blocks, templates, or routes that need them.
 - Preserve backward compatibility for launched contracts and real data; remove or reshape unreleased draft code instead of adding unnecessary shims.
 - Add concise comments only for non-obvious security, compatibility, cache, migration, concurrency, or platform decisions.
+- Keep comments useful for the next engineer; remove stale debug comments, commented-out code, and narrative that restates obvious code.
 
 ## Test Expectations
 
@@ -52,6 +66,10 @@ Cover rare and failure scenarios when relevant:
 - Activation, upgrade, rollback/backout, uninstall, and production artifact boundaries.
 
 When tests are not feasible locally, provide the strongest available evidence and explicitly name the untested risk.
+
+## Merge And Release Expectation
+
+Before opening, recommending, merging, or counting an implementation PR toward release readiness, confirm the changed code meets this contract or record the exact exception and residual risk.
 
 ## Review Gate
 

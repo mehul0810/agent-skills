@@ -37,8 +37,8 @@ Use this skill as the cross-product WordPress portfolio control room. It governs
 - `../shared/references/release-train-discipline.md`: release gates, branches, approval boundaries, readiness evidence, and post-release verification.
 - `../shared/references/delegation-protocol.md`: product-thread topology drift, protected-thread boundaries, worktree recovery, and delegation health.
 - `../shared/references/github-communication-protocol.md`: quiet GitHub write discipline, comments/reviews as evidence, owner labels, blocker questions, and reconciliation.
+- `../shared/references/rolling-milestone-triage.md`: dynamic current/next/horizon/patch train planning and milestone health signals.
 - `../shared/references/self-improvement-loop.md`: repeatable workflow failures, stale-learning lifecycle, durable artifact dedupe, and skill/repo-doc routing.
-- `../shared/references/weekly-wordpress-intelligence.md`: weekly ecosystem intelligence and durable cross-product impact summaries.
 - `../shared/references/project-subagent-routing.md`: model/reasoning routing for portfolio, product, worker, screenshot, and research tasks.
 - `../shared/references/context-window-discipline.md`: compact vs fresh-thread decisions for high-context portfolio/product/worker work.
 

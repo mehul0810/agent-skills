@@ -1,20 +1,20 @@
 # Product Queue Triage
 
-Use this reference for GitHub issue/PR triage in WordPress product/plugin/theme repositories.
+Use this reference for GitHub issue/PR triage in WordPress repositories.
 
 ## Goal
 
-Convert an open queue into clear action: autonomous work, owner decisions, release blockers, or deferrals.
+Convert queue state into action: autonomous work, owner decisions, release blockers, or deferrals.
 
-The product-thread objective is release readiness: keep advancing the next release train until it is ready for explicit production/beta release approval with evidence.
+The product-thread objective is release readiness: keep advancing the next release train until it is ready for production/beta release approval with evidence.
 
 ## Product Heartbeat Execution Contract
 
-Every product heartbeat compares previous `Next action` with current queue state. Repeated executable work is not quiet state: execute it, delegate it, or return the exact blocker/tool failure.
+Every product heartbeat compares previous `Next action` with queue state. Repeated executable work is not quiet state: execute it, delegate it, or return the exact blocker/tool failure.
 
-`DONT_NOTIFY` is valid only when no eligible execution remains, or every remaining issue/PR is owner-gated, blocked, failing, draft, wrong-base with recovery, or deliberately deferred.
+`DONT_NOTIFY` is valid only when no eligible execution remains, or every issue/PR is owner-gated, blocked, failing, draft, wrong-base with recovery, or deliberately deferred.
 
-Active-train burn-down buckets: `implementation-ready`, `merge-ready`, `owner-gated`, `wrong-base/recovery`, `blocked`, `deferrable`.
+Burn-down buckets: `implementation-ready`, `merge-ready`, `owner-gated`, `wrong-base/recovery`, `blocked`, `deferrable`.
 
 Escalate to portfolio CTO when executable work is unchanged for two heartbeats, or one heartbeat for clean/green merge-ready non-production PRs.
 
@@ -30,7 +30,7 @@ git branch -a --list '*release*' '*hotfix*' '*support*' '*maintenance*' '*develo
 gh repo view --json nameWithOwner,defaultBranchRef,url
 ```
 
-Read repo policy before judging fit: `AGENTS.md`, `README.md`, `CONTRIBUTING.md`, `PRODUCT.md`, roadmap/support docs, `RELEASE.md`, changelog, version/package metadata, WordPress.org `readme.txt`, labels, milestones, projects, and release branches.
+Read repo policy: `AGENTS.md`, `PRODUCT.md`, `RELEASE.md`, changelog, version metadata, WordPress.org `readme.txt`, labels, milestones, and release branches.
 
 Ensure `owner:codex` and `owner:me` labels exist in each managed repo. Labels define ready state: `owner:codex` is ready for orchestrator/worker action; `owner:me` marks a question, but reversible non-release choices can be resolved and relabeled `owner:codex`.
 
@@ -54,11 +54,13 @@ gh pr view <number-or-url> --json number,title,body,comments,reviews,files,statu
 
 ## Issue Intake
 
-User requests become GitHub issues first unless the user explicitly says not to. Product-idea issues require web research before filing. Competitor names may inform private research, but do not put competitor names in public GitHub issue titles or bodies.
+User requests become GitHub issues first unless explicitly told not to. Product-idea issues require web research before filing. Competitor names may inform private research, but keep them out of public issue titles and bodies.
 
 Owner-mentioned work is approved intake signal, not an owner-decision blocker. When `@mehul0810` names work or says to proceed, duplicate-screen, create/update the issue, assign `@mehul0810`, classify it, and prioritize into the nearest appropriate milestone or release train among the next three.
 
-Do not blindly drain every issue in a milestone. Before implementation, define the milestone/release scope and priority set from evidence, roadmap, labels, release blockers, impact, risk, and validation needs. If unclear, create a decision brief or ask before implementation.
+For UX, admin, onboarding, defaults, and settings issues, use `product-experience-principles.md` as the lens.
+
+Do not blindly drain every issue in a milestone. Before implementation, define the milestone/release scope and priority set from evidence, roadmap, labels, blockers, impact, risk, and validation needs. Use `rolling-milestone-triage.md` for current/next/horizon/patch train planning. If unclear, create a decision brief or ask before implementation.
 
 A milestone-assigned issue/PR is ready unless it hits a production/beta release gate. `owner:me` is not a stall for reversible non-release choices: document rationale, relabel to `owner:codex`, and proceed/delegate. If `@mehul0810` answers a question and the item is relabeled `owner:codex`, resume when answered and relabeled `owner:codex` by reviewing the body, comments, and reviews before continuing. If the current milestone has no ready work, continue to the next milestone's ready work.
 
@@ -75,31 +77,35 @@ Before creating an issue:
 - Dirty or behind primary checkouts block direct edits, not fresh scoped worktree delegation from a clean upstream branch.
 - If delegation is deferred, report the exact blocker: issue number, missing branch/base, missing owner decision, missing tool/project, or unsafe checkout state.
 
-If no suitable ready issue exists, create proactive review work from codebase and ecosystem signals for scalability, modularity, performance, maintainability, dependency/tooling, UX/docs, WordPress.org visibility, accessibility, or sanitized hardening. Also identify actionable bugs, UX friction, docs/readme gaps, listing opportunities, support signals, release-readiness gaps, ecosystem changes, and opportunities. Keep each issue bounded, assigned, labeled `owner:codex`, tied to the nearest milestone when supported, and classified as one of: actionable release blocker, near-term improvement, research-needed idea, or owner-gated strategic choice.
+If no suitable ready issue exists, create proactive review work from code and ecosystem signals for scalability, modularity, performance, maintainability, dependency/tooling, UX/docs, WordPress.org visibility, accessibility, or sanitized hardening. Also identify bugs, UX friction, docs/readme gaps, support signals, and ecosystem changes. Keep each issue bounded, assigned, labeled `owner:codex`, tied to the nearest milestone when supported, and classified as one of: actionable release blocker, near-term improvement, research-needed idea, or owner-gated strategic choice.
 
 Security-sensitive findings must not become public issues and must not include exploit details, reproduction steps, or public `security issue` wording. Use sanitized hardening PRs with validation and minimal public detail.
 
 ## Design Contract Intake
 
-Create focused GitHub issues to add or adapt `DESIGN.md` when a product design gap exists. Duplicate-screen, assign to `@mehul0810`, reuse labels/milestones when supported, and include acceptance criteria, validation, and branch/base plan. Do not create generic churn.
+Create focused GitHub issues to add or adapt `DESIGN.md` when a design gap exists. Duplicate-screen, assign to `@mehul0810`, reuse labels/milestones when supported, and include validation plus branch/base plan.
 
 ## Dependency And Stale PR Triage
 
-Check dependency/tooling PRs and stale PRs.
+Check dependency/tooling and stale PRs.
 
 - Do not merge Dependabot or dependency PRs directly into `main`.
-- Consolidate relevant dependency/tooling updates into one duplicate-screened GitHub issue assigned to `@mehul0810` with labels/milestone where supported, acceptance criteria, validation, and branch/base plan.
+- Consolidate relevant dependency/tooling updates into one duplicate-screened GitHub issue assigned to `@mehul0810` with labels/milestone where supported, validation, and branch/base plan.
 - Prefer one planned tooling/dependency update issue/PR over scattered Dependabot PRs.
 - Dependabot PRs should target the active development/release branch when supported; never accept GitHub default `main` without explicit release approval.
 - For stale, superseded, wrong-base, abandoned, or release-misaligned PRs, close with a durable GitHub comment explaining why and link the replacement issue/PR when available.
 - Do not close active owner-directed, release-critical, or ambiguous PRs without checking comments, reviews, labels, and milestones first.
 - Routine status stays in chat; stale-PR closure comments are durable transitions.
 
+## Adjacent Finding Triage
+
+Use `adjacent-finding-protocol.md`. Do not blindly expand the current PR; duplicate-screen the finding and route it to issue, defer, or owner-gated triage.
+
 ## Classification
 
 Classify each item:
 
-- `Autonomous`: bounded, aligned with product docs, clear validation path, no sensitive decision.
+- `Autonomous`: bounded, aligned with product docs, validation path, no sensitive decision.
 - `Needs owner`: production/beta release action, unsafe milestone inference, or non-reversible product/security/privacy/API/schema/destructive/broad-positioning conflict. Ask clearly in the issue/PR and label `owner:me`; reversible non-release choices should be decided, documented, relabeled `owner:codex`, and continued.
 - `Release blocker`: must land or be explicitly deferred before the target milestone/release.
 - `Blocked`: missing access, failing environment, stale/conflicted branch, unknown base, unclear reproduction.
@@ -107,9 +113,9 @@ Classify each item:
 
 ## WordPress Product Signals
 
-Raise priority for activation/upgrade/uninstall/rollback; admin lockout, capabilities, nonces, REST, data integrity; forms/email delivery; editor/frontend/accessibility/Core Web Vitals; WordPress.org compliance, release contents, dependencies, `readme.txt`, and hosted-plugin metadata including planning `Tested up to` WordPress 7.0; multisite, object cache, cron/background jobs, import/export, privacy export/erase, and high-traffic paths.
+Raise priority for activation/upgrade/uninstall/rollback; admin lockout, capabilities, nonces, REST, data integrity; forms/email delivery; editor/frontend/accessibility/Core Web Vitals; WordPress.org compliance, release contents, dependencies, `readme.txt`, and hosted-plugin metadata including planning `Tested up to` WordPress 7.0; multisite, object cache, cron/background jobs, import/export, privacy export/erase, and hot paths.
 
-Lower priority when the item is cosmetic without acceptance criteria, stale without reproduction, unsupported, or conflicts with product direction.
+Lower priority when the item is cosmetic without acceptance criteria, stale without reproduction, unsupported, or off-direction.
 
 ## Autonomous Work Loop
 
@@ -124,7 +130,7 @@ Work one item at a time:
 7. Validate with syntax/lint/static/runtime/live proof appropriate to risk.
 8. Commit focused changes; push/PR only if authorized.
 9. Update PR/issue with proof when authorized.
-10. Reconcile worker output, issue/PR state, screenshot/proof gaps, stale worktrees, and temporary heartbeats.
+10. Reconcile worker output, issue/PR state, screenshot/proof gaps, stale worktrees, temporary heartbeats, and adjacent findings.
 11. Return local repo to a clean, expected branch state before selecting the next item.
 
 ## Release-Ready Notification
@@ -142,7 +148,7 @@ When the train is ready for owner approval, report:
 
 ## Owner-Facing Triage Output
 
-Use this compact format:
+Use this format:
 
 ```text
 Autonomous candidates
@@ -158,4 +164,4 @@ Defer/close
 - <url> <title>: duplicate/superseded/stale reason; suggested action.
 ```
 
-For implementation-ready items, include the intended base branch and whether a release branch was found from the milestone. Never surface only `#123`; include canonical URLs.
+For implementation-ready items, include the intended base branch and whether a release branch was found from the milestone. Include canonical URLs.

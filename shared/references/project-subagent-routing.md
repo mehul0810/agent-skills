@@ -55,6 +55,7 @@ Use the cheapest model/reasoning combination that can safely produce the needed 
 - Stronger worker/reviewer model: use for architecture, security, privacy, public API contracts, data migrations, VIP/high-scale performance, release blockers, final PR review, base-branch decisions, or unclear implementation paths.
 - Screenshots/design proof: use a fast model for explicit screenshot capture or visual proof. Escalate only when visual regression judgment, UX tradeoffs, accessibility impact, or design-system interpretation is complex.
 - Web/current research: keep bounded, prefer official/primary sources, summarize only decision-relevant changes, and use high reasoning only when the result is cross-product, release-blocking, security-sensitive, or architecture-shaping.
+- For material UI/workflow risk, route through `design-intelligence-routing.md` and then the narrowest Product Design skill instead of improvising broad design critique.
 
 If a configured model is unavailable in the current environment, do not silently substitute. Report the missing model and use the nearest approved project fallback. Do not spend a stronger model on routine polling, broad rereads, or evidence the source of truth can answer cheaply.
 
@@ -64,8 +65,10 @@ The parent agent should classify the task and assign one lane per subagent. Auto
 
 Examples:
 
-- Plugin mapper: `$wp-plugin-expert`, primary route `plugin-architecture.md`; supporting `enterprise-code-quality-gate.md` only if reviewing code quality.
+- Plugin mapper: `$wp-plugin-expert`, primary route `plugin-architecture.md`; supporting `enterprise-code-quality-gate.md` for implementation/review quality gates.
 - Block/FSE mapper: `$wp-theme-expert`, primary route `block-theme-architecture.md`; supporting `custom-block-theme-from-design.md` only for design-to-theme work.
+- Theme/site implementer or reviewer: add `enterprise-code-quality-gate.md` when code is being changed or approved.
+- Design audit or redesign planner: use `design-intelligence-routing.md`, then `product-design:audit`, `product-design:get-context` + `product-design:ideate`, or `product-design:image-to-code` based on whether the task is critique, direction-finding, or implementation from a chosen visual target.
 - UI reviewer: `$wp-site-expert` for site UX or `$wp-theme-expert` for editor/theme UX; supporting `visual-parity-regression.md` only when screenshots/designs are involved.
 - Security reviewer: `$wp-plugin-expert`, `$wp-theme-expert`, or `$wp-site-expert` based on the changed artifact; primary route `security-threat-modeling-review.md` only when the risk is concrete.
 - WordPress contribution mapper: `$wp-contributor`, primary reference matching the surface: `core-workflow.md`, `gutenberg-workflow.md`, or `meta-workflow.md`.
@@ -78,6 +81,8 @@ Subagent prompt contract:
 ```text
 Use only the named skill/reference lane unless you find a concrete blocker.
 Return: findings, files touched or inspected, confidence, validation evidence, and open risks.
+Report adjacent findings separately and preserve scoped task boundaries unless immediate escalation is required.
+Turn Product Design feedback into acceptance criteria, design QA checks, or adjacent findings instead of vague taste commentary.
 Do not modify files unless explicitly assigned as a narrow fixer.
 Keep output under the requested line or bullet limit.
 ```

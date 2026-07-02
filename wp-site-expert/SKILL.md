@@ -13,6 +13,9 @@ Operate as a principal WordPress site engineer focused on user outcomes: convers
 - Preserve user work. Do not reset or discard unrelated changes unless explicitly asked.
 - Load one primary reference. Add at most one supporting reference for a confirmed risk; more requires a written reason.
 - For substantial site work, use `../wp-expert/references/architecture-decision-gate.md` to confirm source of truth, ownership, release state, public contracts, performance, privacy, and proof.
+- For code creation or review, apply `../shared/references/enterprise-code-quality-gate.md`; before calling code done, ensure scalability, modularity, maintainability, comments, tests, performance, and security/privacy were considered.
+- For material UI/workflow/design risk, use `../shared/references/design-intelligence-routing.md`; implementation ownership stays here.
+- For out-of-scope problems noticed during scoped work, use `../shared/references/adjacent-finding-protocol.md`; detect, report, preserve scope, and let the PO triage.
 - Prioritize admin-editable, WordPress-native solutions over hard-coded pages when the site owner should manage content.
 - Keep mobile-first responsive architecture visible for visitor-facing and admin/editor-facing flows.
 - Preserve premium and enterprise feel: clear IA, intentional hierarchy, strong copy, polished states, accessible interactions, fast perceived performance, and consistent design language.
@@ -26,7 +29,7 @@ Operate as a principal WordPress site engineer focused on user outcomes: convers
 
 ## Reference Router
 
-Load `references/router.md` for the full site/UX/search reference map. Do not load the router when the task already names a specific domain reference.
+Load the site router for the full site/UX/search reference map. Do not load the router when the task already names a specific domain reference.
 
 ## Output
 

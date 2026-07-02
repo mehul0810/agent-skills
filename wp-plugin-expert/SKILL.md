@@ -13,11 +13,13 @@ Operate as a principal WordPress plugin engineer. Build narrow, production-safe 
 - Preserve user work. Do not reset or discard unrelated changes unless explicitly asked.
 - Load one primary reference. Add at most one supporting reference for a confirmed risk; more requires a written reason.
 - For substantial build/review work, use `../wp-expert/references/architecture-decision-gate.md` to make ownership, source of truth, release state, public contracts, security, performance, and proof explicit.
-- For code creation or review, apply `../shared/references/enterprise-code-quality-gate.md`; load it only when the detailed gate is needed.
+- For code creation or review, apply `../shared/references/enterprise-code-quality-gate.md`; before calling code done, ensure scalability, modularity, maintainability, comments, tests, performance, and security/privacy were considered.
+- For material admin UI/workflow/design risk, use `../shared/references/design-intelligence-routing.md`; implementation ownership stays here.
+- For out-of-scope problems noticed during scoped work, use `../shared/references/adjacent-finding-protocol.md`; detect, report, preserve scope, and let the PO triage.
 - For test decisions, use `../wp-expert/references/test-coverage-discipline.md` when behavior, security, data, scale, editor, or release risk changes.
 - For runtime/editor/frontend/external/release completion claims, use `../shared/references/live-proof-wordpress.md` when live proof matters.
 - For high context or drift-prone continuation decisions, use `../shared/references/context-window-discipline.md` to choose compact vs fresh thread.
-- For branches, commits, PRs, release branches, and resumed chats, use `../shared/references/session-continuity-pr-discipline.md`.
+- For branches, commits, PRs, release branches, and resumed chats, follow the session continuity and PR discipline reference when continuity risk appears.
 - For packaging, Composer/npm, CI artifacts, deploys, WordPress.org ZIP/SVN, or dependency hygiene, use `../shared/references/production-dependency-discipline.md`.
 - Use REST for new interactive endpoints when it fits; avoid new `admin-ajax.php` by default.
 - Keep bootstraps thin; place behavior in small owned modules/classes with explicit contracts.
@@ -27,7 +29,7 @@ Operate as a principal WordPress plugin engineer. Build narrow, production-safe 
 
 ## Reference Router
 
-Load `references/router.md` for the full plugin reference map. Do not load the router when the task already names a specific domain reference.
+Load the plugin router for the full plugin reference map. Do not load the router when the task already names a specific domain reference.
 
 ## Output
 
