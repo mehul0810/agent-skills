@@ -17,13 +17,13 @@ Use thread IDs, not aliases, for sensitive actions such as archive, pin, release
 
 ## Portfolio Thread Ownership
 
-The portfolio thread owns cross-product state, blockers, shared branch/release process, release conflicts, owner briefs, skill/self-improvement routing, product-thread health, and production readiness recommendations after owner testing confirmation.
+The portfolio thread owns cross-product state, blockers, release conflicts, owner briefs, skill/self-improvement routing, and production readiness recommendations after owner testing.
 
 The portfolio thread should not do product-level work by default. It should steer, audit, resolve cross-product conflicts, escalate owner decisions, and route product execution back to the relevant product thread.
 
-For delegation recovery, the portfolio thread should request exact saved Codex projects for every managed plugin repo root when app UI setup is owner-only. Ask the owner before interrupting, recreating, or forking user-created product-orchestrator threads.
+For delegation recovery, request exact saved Codex projects for managed plugin repo roots when app UI setup is owner-only. Ask the owner before interrupting, recreating, or forking user-created product-orchestrator threads.
 
-The portfolio thread is accountable for product-orchestrator effectiveness, not just status relay. Compare the previous product `Next action` with current state. Repeated `idle`, `DONT_NOTIFY`, `no drift`, or unchanged executable next-action language is a governance signal.
+The portfolio thread is accountable for product-orchestrator effectiveness, not just status relay. Compare the previous product `Next action` with current state. Repeated `idle`, `DONT_NOTIFY`, `no drift`, or unchanged next-action language is a governance signal.
 
 Classify `PO loop slip` when any of these repeat across heartbeats on an active train:
 
@@ -34,6 +34,8 @@ Classify `PO loop slip` when any of these repeat across heartbeats on an active 
 
 Threshold: one heartbeat for untouched clean/green merge-ready non-production PRs; two unchanged idle/no-drift or repeated-next-action heartbeats for other executable work. Require execution, an exact blocker/tool failure, or burn-down split. Repeated idle is not quiet state.
 
+When a PO output is unclear, log-like, contradictory, passive, repeated, stalled, missing an expected action, or misaligned with the owner-approved objective, CTO must intervene without waiting for owner prompting. Ask why it is happening, what blocks it, and what will change before the next heartbeat, then choose one of: correct the PO, reduce/pause cadence, demand the exact blocker, recover/fork the product thread with owner approval, or route a skill/process patch.
+
 ## Product Thread Ownership
 
 Each product-orchestrator thread owns one plugin:
@@ -41,17 +43,17 @@ Each product-orchestrator thread owns one plugin:
 - Backlog strategy and GitHub issue intake.
 - Web research and product-idea generation.
 - WordPress.org support/forum triage.
-- WordPress.org Advanced View tracking: installs, downloads, tested version, ratings, support status, last updated, and key version/download signals.
+- WordPress.org Advanced View tracking: installs, downloads, tested version, ratings, support status, last updated, and version/download signals.
 - Plugin-page visibility: readme, tags, FAQ, screenshots, banners/icons, changelog, Playground/preview, and docs.
 - Website/docs visibility: landing page, docs, troubleshooting, release notes, and future MCP workflow-ready content architecture without claiming unshipped features.
 - Milestone planning and release-train hygiene.
 - Delegation strategy for implementation/evidence workers.
 
-The primary product-thread objective is to drive the next release train to release-ready, not to poll status. Each product thread should keep selecting the highest-leverage release-readiness action until it can notify the portfolio/owner that the train is ready for explicit production/beta release approval.
+The primary product-thread objective is to drive the next release train to release-ready, not to poll status. Keep selecting the highest-leverage release-readiness action until the train is ready for production/beta release approval.
 
 ## Source Of Truth Hierarchy
 
-Use this source of truth hierarchy for release, milestone, branch, planning, and readiness decisions:
+Use this source of truth hierarchy for release, milestone, branch, planning, and readiness:
 
 1. GitHub production releases and tags.
 2. GitHub prereleases and tags.
@@ -70,9 +72,9 @@ For owner-gated beta/prerelease/production readiness, fresh live verification is
 
 ## Portfolio Sweep Discipline
 
-Every portfolio heartbeat/check-in must begin with a portfolio-wide sweep across all assigned products before governance action. Current managed products include Aculect AI Companion, WP Distraction Free View, OneSMTP, PreviewShare, CleanLinks, Perform, and OneCaptcha, but the rule is generic and should follow the assigned list.
+Every portfolio heartbeat/check-in must begin with a portfolio-wide sweep across assigned products before governance action. Managed products include Aculect AI Companion, WP Distraction Free View, OneSMTP, PreviewShare, CleanLinks, Perform, and OneCaptcha, but the rule is generic.
 
-For each product, verify/report minimum source-of-truth state:
+For each product, verify/report minimum state:
 
 - Repo path and remote.
 - Latest production release.
@@ -85,22 +87,21 @@ For each product, verify/report minimum source-of-truth state:
 - Ownership labels and owner comments/reviews.
 - Local dirty state when the repo is touched.
 - Cross-product stale-worktree pressure or prunable worktree metadata.
-- Automation health when relevant: stale, paused, untitled, wrong-cadence, obsolete, or wrong-skill automations.
 - Product-thread and delegated/skill work.
 
 Only after this sweep should the portfolio thread choose the highest-leverage governance action. If one product consumes owner attention, the final report still needs every product's verified status and next action/stop condition. Quiet products must be included with `No action after verification`.
 Exception reports should still surface Open PRs/issues and CI/release blockers for non-quiet products.
 
-Portfolio heartbeats report stale-worktree accumulation as governance drift and route repo-specific cleanup to product threads. Product threads own worktree inventory, safe `git worktree remove <path>` cleanup, and `git worktree prune` after worker PR/task reconciliation.
+Portfolio heartbeats report stale-worktree accumulation as governance drift and route repo-specific cleanup to product threads.
 
-Portfolio heartbeats report stale automation inventory as governance drift. The CTO owns updating or deleting obsolete portfolio/product automations when tools are available.
+Portfolio heartbeats report stale automation inventory as governance drift. CTO owns updating or deleting obsolete portfolio/product automations when tools are available.
 
 ## Dynamic Heartbeat Scaling
 
-Heartbeat cadence is dynamic and should be justified by useful signal, not habit.
+Heartbeat cadence is dynamic and should be justified by signal, not habit.
 
 - Use 15-minute product cadence for active release trains, active PR/CI movement, executable `owner:codex` work, or short-window recovery.
-- Use 30-60 minute product cadence for owner-gated, blocked, monitoring-only, or quiet queues with limited expected change.
+- Use 30-60 minute product cadence for owner-gated, blocked, monitoring-only, or quiet queues.
 - Pause or delete product heartbeats when there is no active train and no useful discovery, support, regression, or release signal.
 - Reactivate product cadence when owner scope changes, public regressions appear, support signals rise, release approval is pending, or a proactive discovery lane is active.
 - Portfolio CTO should challenge stale high-frequency heartbeats that only return quiet status and either reduce cadence, pause/delete the loop, or redirect it to a discovery task.
@@ -110,7 +111,7 @@ Current acceleration defaults:
 - Portfolio heartbeat: every 30 minutes.
 - Product heartbeat: every 15 minutes.
 
-These defaults are owner-configurable and should not override stronger repo- or situation-specific evidence.
+These defaults are owner-configurable and should not override stronger repo or situation evidence.
 
 ## Product Priority And Discovery Intensity
 
@@ -121,11 +122,11 @@ Higher-priority products should get earlier sweeps, faster cadence reactivation,
 
 ## GitHub Issue-First Intake
 
-Use GitHub issue-first intake unless the user explicitly says not to create or update an issue.
+Use GitHub issue-first intake unless the user explicitly says not to.
 
 GitHub labels define ready state. Ensure `owner:codex` and `owner:me` exist in each managed repo. Use `owner:codex` for items ready for orchestrator/worker action. `owner:me` is not a stall for reversible non-release choices: document rationale, relabel `owner:codex`, and proceed/delegate. A milestone-assigned issue/PR is ready unless it hits a production/beta release gate.
 
-When `@mehul0810` explicitly names a work item or says to proceed, treat that as approved backlog/intake signal, not an owner-decision blocker.
+When `@mehul0810` explicitly names a work item or says to proceed, treat that as an approved backlog/intake signal, not an owner-decision blocker.
 
 Before creating an issue, search open issues, recently closed issues, open PRs, milestones, roadmap docs, and product/release docs.
 
@@ -139,7 +140,7 @@ Do not blindly drain every issue in a milestone. Product implementation starts o
 
 If the current milestone has no ready work, continue to the next milestone's ready work. If no suitable ready issue exists, create proactive review work from the codebase and ecosystem for scalability, modularity, performance, maintainability, dependency/tooling, UX/docs, WordPress.org visibility, accessibility, or sanitized hardening.
 
-During product sweeps, do not wait only for owner-provided ideas. Identify actionable bugs, UX friction, docs/readme gaps, listing opportunities, support signals, release-readiness gaps, ecosystem changes, and web- or competitor-researched feature opportunities. Create duplicate-screened, PR-sized GitHub issues when evidence supports them.
+During product sweeps, do not wait only for owner-provided ideas. Identify actionable bugs, UX friction, docs/readme gaps, listing opportunities, support signals, release-readiness gaps, ecosystem changes, and researched feature opportunities. Create duplicate-screened, PR-sized GitHub issues when evidence supports them.
 
 Keep discovery disciplined:
 
@@ -158,8 +159,8 @@ Every created issue should include problem/context, expected outcome, acceptance
 
 ## Automation Split
 
-- Portfolio heartbeat: owner-configurable. Current acceleration default is every 30 minutes, lighter, cross-product only, and focused on state, conflicts, product-thread health, and owner decisions.
-- Product heartbeat: owner-configurable. Current acceleration default is every 15 minutes, per plugin, deeper, action-oriented, and responsible for release readiness, intake, research, and planning.
+- Portfolio heartbeat: owner-configurable. Current acceleration default is every 30 minutes, cross-product only, and focused on state, conflicts, product-thread health, and owner decisions.
+- Product heartbeat: owner-configurable. Current acceleration default is every 15 minutes, per plugin, and responsible for release readiness, intake, research, and planning.
 - Active release/CI heartbeat: temporary and high-frequency only while a specific PR/release is actively moving.
 
 If product work is being done in the portfolio heartbeat, classify it as workflow drift and route the work back to the product thread or update the skill/docs.
@@ -179,7 +180,7 @@ After owner-approved beta, production release, deploy, or WordPress.org publish,
 - Next release train/milestone is started, confirmed, or deliberately left unstarted with rationale.
 - Worker worktrees, temporary release branches, and release/CI heartbeats are reconciled or documented.
 
-If any post-release proof fails, route recovery before unrelated release work.
+If post-release proof fails, route recovery before unrelated release work.
 
 ## WordPress.org Product Loop
 
@@ -210,4 +211,4 @@ When the owner calls out a process miss, a product repeats a failure, or CTO det
 
 ## CTO Check-In Format
 
-Use `heartbeat-checkin-discipline.md` for delta-first CTO and PO check-ins. Default to exception reporting plus a compact quiet-coverage line instead of repeating full unchanged product lists.
+Use `heartbeat-checkin-discipline.md` for delta-first CTO and PO check-ins. Default to exception reporting plus a compact quiet-coverage line instead of repeating full unchanged product lists, and translate PO outputs into owner-facing portfolio language rather than forwarding raw worker-style status.
