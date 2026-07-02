@@ -18,9 +18,29 @@ Reserve GitHub comments for durable repo-visible state transitions or decisions 
 - Completion reconciliation before closing an issue or intentionally leaving it open.
 - Owner decisions that future maintainers need to understand.
 
+For contributor/community closures, comments should be owner-readable and explicit about why the item is closing, what shipped or replaced it, and any canonical PR/issue/release link.
+
 When opening a PR, comment on the linked issue with the PR link and scope only when it adds useful durable context beyond automatic linking. When a PR is merged, reconcile the issue with a completion comment before closing it or leaving it open. If work is deferred or moved to another milestone, explain why in the issue.
 
 Do not post comments just to say the orchestrator is checking, polling CI, waiting, continuing, delegating internally, or preparing another update. Keep that status in the CTO control chat thread.
+
+## Contributor And Community Courtesy
+
+- Thank external contributors and reporters when closing or rerouting their PR/issue.
+- If a contributor PR is replaced, link the maintainer replacement PR and preserve credit where appropriate.
+- If meaningful contributor code is reused, preserve credit with co-author attribution or explicit credit where appropriate.
+- If only the idea is reused, thank/reference the contributor in the replacement PR or close comment.
+- For duplicates, close only with a clear canonical issue/PR link and thanks.
+- For fixes that shipped, close with the release/version reference and any verification steps.
+- For security/privacy reports, move the conversation to the private/security process and never request secrets publicly.
+
+## Playground Preview Comments
+
+- WordPress Playground preview comments are durable repo-visible proof, not chatty status.
+- Update the existing Playground preview comment when refreshing the link; do not spam a new comment on every run.
+- Include the preview link, relevant route, and only safe test credentials or setup notes.
+- If the repo cannot generate a useful Playground preview because packaged assets/vendor/build output are missing, say so clearly and route it to a focused tooling issue.
+- Never expose secrets, private tokens, production credentials, or deploy/publish actions in Playground comments.
 
 ## Label-Driven Ready State
 

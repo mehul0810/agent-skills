@@ -77,6 +77,9 @@ Codex-owned next actions
 PO active work/delegations
 - <product>: objective; active PR/issues; worker/delegation state.
 
+Community queues
+- <product>: human contributor PRs, human-created issues, bot/dependency PRs, and owner/automation-created issues; only mention material deltas or blockers.
+
 Quiet products with evidence
 - Verified quiet: <product list> - <compact reason such as no new PR/issue/CI/release/label drift>.
 
@@ -98,6 +101,8 @@ Trigger intervention without owner prompting when any of these happen:
 - The thread stays in progress/stale without material output.
 - The PO reports raw logs instead of owner-readable decisions.
 - Evidence-backed findings do not become issues.
+- Open human contributor PRs or new human-created issues are ignored in quiet-state reporting.
+- A UI/user-workflow PR is treated as ready without Playground or equivalent visual/browser proof.
 - Executable non-hard-gated work is deferred as an owner decision without explicit approval needed.
 - Heartbeat cadence no longer matches product urgency.
 
@@ -128,7 +133,7 @@ Current objective
 - <active release/train objective or bounded goal>.
 
 Active PR/issues
-- <issue/PR links or identifiers>; current state.
+- <release PRs>; <human contributor PR queue>; <bot/dependency PR queue>; <owner-created issues>; <human-created issue queue>; <automation-created issues>.
 
 Evidence
 - <compact CI/proof/package/research evidence or exact proof gap>.

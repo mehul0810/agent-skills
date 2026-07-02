@@ -14,13 +14,11 @@ Every product heartbeat compares previous `Next action` with queue state. Repeat
 
 `DONT_NOTIFY` is valid only when no eligible execution remains, or every issue/PR is owner-gated, blocked, failing, draft, wrong-base with recovery, or deliberately deferred.
 
-Burn-down buckets: `implementation-ready`, `merge-ready`, `owner-gated`, `wrong-base/recovery`, `blocked`, `deferrable`.
-
-Escalate to portfolio CTO when executable work is unchanged for two heartbeats, or one heartbeat for clean/green merge-ready non-production PRs.
+Escalate to portfolio CTO when executable work stays unchanged for two heartbeats, or one heartbeat for merge-ready PRs.
 
 ## Start With Repo State
 
-Run cheap checks first:
+Run checks:
 
 ```bash
 git status --short --branch
@@ -30,7 +28,7 @@ git branch -a --list '*release*' '*hotfix*' '*support*' '*maintenance*' '*develo
 gh repo view --json nameWithOwner,defaultBranchRef,url
 ```
 
-Read repo policy: `AGENTS.md`, `PRODUCT.md`, `RELEASE.md`, changelog, version metadata, WordPress.org `readme.txt`, labels, milestones, and release branches.
+Read repo policy: `AGENTS.md`, `PRODUCT.md`, `RELEASE.md`, changelog, `readme.txt`, labels, and milestones.
 
 Ensure `owner:codex` and `owner:me` labels exist in each managed repo. Labels define ready state: `owner:codex` is ready for orchestrator/worker action; `owner:me` marks a question, but reversible non-release choices can be resolved and relabeled `owner:codex`.
 
@@ -52,17 +50,24 @@ gh issue view <number-or-url> --json number,title,body,comments,labels,milestone
 gh pr view <number-or-url> --json number,title,body,comments,reviews,files,statusCheckRollup,mergeStateStatus,baseRefName,headRefName,isDraft,url
 ```
 
+Treat these as separate intake lanes:
+
+- human contributor PRs,
+- human-created issues,
+- owner-created backlog issues,
+- automation-created issues,
+- bot/dependency PRs,
+- release-train PRs.
+
 ## Issue Intake
 
 User requests become GitHub issues first unless explicitly told not to. Product-idea issues require web research before filing. Competitor names may inform private research, but keep them out of public issue titles and bodies.
 
 Owner-mentioned work is approved intake signal, not an owner-decision blocker. When `@mehul0810` names work or says to proceed, duplicate-screen, create/update the issue, assign `@mehul0810`, classify it, and prioritize into the nearest appropriate milestone or release train among the next three.
 
-For UX, admin, onboarding, defaults, and settings issues, use `product-experience-principles.md` as the lens.
+Do not blindly drain every issue in a milestone. Before implementation, define the milestone/release scope and priority set from evidence, roadmap, labels, blockers, impact, risk, and validation needs. Use `rolling-milestone-triage.md`. If unclear, create a decision brief or ask before implementation.
 
-Do not blindly drain every issue in a milestone. Before implementation, define the milestone/release scope and priority set from evidence, roadmap, labels, blockers, impact, risk, and validation needs. Use `rolling-milestone-triage.md` for current/next/horizon/patch train planning. If unclear, create a decision brief or ask before implementation.
-
-A milestone-assigned issue/PR is ready unless it hits a production/beta release gate. `owner:me` is not a stall for reversible non-release choices: document rationale, relabel to `owner:codex`, and proceed/delegate. If `@mehul0810` answers a question and the item is relabeled `owner:codex`, resume when answered and relabeled `owner:codex` by reviewing the body, comments, and reviews before continuing. If the current milestone has no ready work, continue to the next milestone's ready work.
+A milestone-assigned issue/PR is ready unless it hits a production/beta release gate. `owner:me` is not a stall for reversible non-release choices: document rationale, relabel to `owner:codex`, and proceed/delegate. If `@mehul0810` answers a question and the item is relabeled `owner:codex`, resume when answered and relabeled `owner:codex` after reviewing the body, comments, and reviews. If the current milestone has no ready work, continue to the next milestone's ready work.
 
 Before creating an issue:
 
@@ -77,9 +82,11 @@ Before creating an issue:
 - Dirty or behind primary checkouts block direct edits, not fresh scoped worktree delegation from a clean upstream branch.
 - If delegation is deferred, report the exact blocker: issue number, missing branch/base, missing owner decision, missing tool/project, or unsafe checkout state.
 
-If no suitable ready issue exists, create proactive review work from code and ecosystem signals for scalability, modularity, performance, maintainability, dependency/tooling, UX/docs, WordPress.org visibility, accessibility, or sanitized hardening. Also identify bugs, UX friction, docs/readme gaps, support signals, and ecosystem changes. Keep each issue bounded, assigned, labeled `owner:codex`, tied to the nearest milestone when supported, and classified as one of: actionable release blocker, near-term improvement, research-needed idea, or owner-gated strategic choice.
+If no suitable ready issue exists, create proactive review work from code and ecosystem signals for scalability, modularity, performance, maintainability, dependency/tooling, UX/docs, WordPress.org visibility, accessibility, or sanitized hardening. Also identify bugs, UX friction, docs/readme gaps, and ecosystem changes. Keep each issue bounded, assigned, labeled `owner:codex`, tied to the nearest milestone when supported, and classified as: actionable release blocker, near-term improvement, research-needed idea, or owner-gated strategic choice.
 
 Security-sensitive findings must not become public issues and must not include exploit details, reproduction steps, or public `security issue` wording. Use sanitized hardening PRs with validation and minimal public detail.
+
+For contributor/community PR courtesy, external issue courtesy, AI-friendly templates, and Playground preview hygiene, use `community-intake-hygiene.md`.
 
 ## Design Contract Intake
 
