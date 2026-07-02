@@ -38,14 +38,14 @@ When a PO output is unclear, log-like, contradictory, passive, repeated, stalled
 
 ## Product Thread Ownership
 
-Each product-orchestrator thread owns one plugin:
+Each product-orchestrator thread owns a plugin:
 
 - Backlog strategy and GitHub issue intake.
 - Web research and product-idea generation.
-- WordPress.org support/forum triage.
+- WordPress.org support triage.
 - WordPress.org Advanced View tracking: installs, downloads, tested version, ratings, support status, last updated, and version/download signals.
 - Plugin-page visibility: readme, tags, FAQ, screenshots, banners/icons, changelog, Playground/preview, and docs.
-- Website/docs visibility: landing page, docs, troubleshooting, release notes, and future MCP workflow-ready content architecture without claiming unshipped features.
+- Website/docs visibility: landing page, docs, troubleshooting, release notes, and future workflow-ready content without claiming unshipped features.
 - Milestone planning and release-train hygiene.
 - Delegation strategy for implementation/evidence workers.
 
@@ -72,7 +72,7 @@ For owner-gated beta/prerelease/production readiness, fresh live verification is
 
 ## Portfolio Sweep Discipline
 
-Every portfolio heartbeat/check-in must begin with a portfolio-wide sweep across assigned products before governance action. Managed products include Aculect AI Companion, WP Distraction Free View, OneSMTP, PreviewShare, CleanLinks, Perform, and OneCaptcha, but the rule is generic.
+Every portfolio heartbeat/check-in must begin with a portfolio-wide sweep across assigned products before governance action. Managed products include Aculect AI Companion, WP Distraction Free View, OneSMTP, PreviewShare, CleanLinks, Perform, and OneCaptcha.
 
 For each product, verify/report minimum state:
 
@@ -83,7 +83,7 @@ For each product, verify/report minimum state:
 - Open PRs and issues.
 - Dependabot/dependency/tooling PRs and stale PRs.
 - CI or release blockers.
-- Ready-state label health: `owner:codex`, `owner:me`, missing labels, and milestone-assigned items that are ready by policy.
+- Ready-state label health: `owner:codex`, `owner:me`, missing labels, and milestone-assigned items ready by policy.
 - Ownership labels and owner comments/reviews.
 - Local dirty state when the repo is touched.
 - Cross-product stale-worktree pressure or prunable worktree metadata.
@@ -93,8 +93,6 @@ Only after this sweep should the portfolio thread choose the highest-leverage go
 Exception reports should still surface Open PRs/issues and CI/release blockers for non-quiet products.
 
 Portfolio heartbeats report stale-worktree accumulation as governance drift and route repo-specific cleanup to product threads.
-
-Portfolio heartbeats report stale automation inventory as governance drift. CTO owns updating or deleting obsolete portfolio/product automations when tools are available.
 
 ## Dynamic Heartbeat Scaling
 
@@ -118,11 +116,7 @@ These defaults are owner-configurable and should not override stronger repo or s
 - Most active products: Aculect AI Companion and Perform.
 - Premium-priority products: OneCaptcha and ThemeRouter.
 
-Higher-priority products should get earlier sweeps, faster cadence reactivation, and stronger expectations for proactive issue discovery when evidence exists.
-
 ## GitHub Issue-First Intake
-
-Use GitHub issue-first intake unless the user explicitly says not to.
 
 GitHub labels define ready state. Ensure `owner:codex` and `owner:me` exist in each managed repo. Use `owner:codex` for items ready for orchestrator/worker action. `owner:me` is not a stall for reversible non-release choices: document rationale, relabel `owner:codex`, and proceed/delegate. A milestone-assigned issue/PR is ready unless it hits a production/beta release gate.
 
@@ -130,9 +124,11 @@ When `@mehul0810` explicitly names a work item or says to proceed, treat that as
 
 Before creating an issue, search open issues, recently closed issues, open PRs, milestones, roadmap docs, and product/release docs.
 
+When the owner provides an exact issue, PR, release URL, or number, inspect that exact entity first before broad queue scans or inference. If a broad scan excludes the referenced entity because it is closed, merged, or not open, report that finding instead of switching to other open items. If an earlier answer used the wrong entity, say so plainly before correcting course.
+
 Product-idea issues require web research first. Competitor names may inform private research but not public issue titles/bodies.
 
-Avoid duplicates and vague umbrella issues. Prefer one issue per PR. If a milestone is specified, use it. Otherwise assign the issue to the appropriate current milestone from release train, labels, scope, roadmap, and repo evidence.
+Avoid duplicates and umbrella issues. Prefer one issue per PR. If a milestone is specified, use it. Otherwise assign the issue to the appropriate current milestone from release train, labels, scope, roadmap, and repo evidence.
 
 For owner-mentioned intake, duplicate-screen, create or update the issue, assign `@mehul0810`, classify it, and prioritize into the nearest appropriate milestone or release train among the next three. Missing milestone due dates or branch-policy gaps are not blanket blockers; recommend the milestone/order and escalate only unsafe ambiguity or missing metadata.
 
@@ -140,12 +136,12 @@ Do not blindly drain every issue in a milestone. Product implementation starts o
 
 If the current milestone has no ready work, continue to the next milestone's ready work. If no suitable ready issue exists, create proactive review work from the codebase and ecosystem for scalability, modularity, performance, maintainability, dependency/tooling, UX/docs, WordPress.org visibility, accessibility, or sanitized hardening.
 
-During product sweeps, do not wait only for owner-provided ideas. Identify actionable bugs, UX friction, docs/readme gaps, listing opportunities, support signals, release-readiness gaps, ecosystem changes, and researched feature opportunities. Create duplicate-screened, PR-sized GitHub issues when evidence supports them.
+During product sweeps, do not wait only for owner-provided ideas. Identify actionable bugs, UX friction, docs/readme gaps, listing opportunities, support signals, release-readiness gaps, ecosystem changes, and feature opportunities. Create duplicate-screened, PR-sized GitHub issues when evidence supports them.
 
 Keep discovery disciplined:
 
 - Actionable release blockers: issues that must land or defer for the active train.
-- Near-term improvements: bounded improvements with clear value and validation path.
+- Near-term improvements: bounded improvements with clear value.
 - Research-needed ideas: evidence-backed ideas needing more validation.
 - Owner-gated strategic choices: pricing, packaging, positioning, or other higher-order changes.
 
@@ -153,21 +149,21 @@ Web or competitor research may inform private reasoning, but public issue wordin
 
 If a product repeatedly completes evidence-rich sweeps yet creates no issues, surface the discovery gap as a process issue in the portfolio thread.
 
-Use the narrowest relevant skill or capability for product-thread evidence: `wp-plugin-expert`, `wp-theme-expert`, or `wp-site-expert` for implementation/review; `content-writer` for docs and visibility; security skills internally for sanitized hardening; web search for current ecosystem/docs; WordPress.org support and Advanced View review; and repo code review.
+Use the narrowest relevant skill or capability for product-thread evidence: `wp-plugin-expert`, `wp-theme-expert`, or `wp-site-expert` for implementation/review; `content-writer` for docs and visibility; security skills for sanitized hardening; web search for current ecosystem/docs; WordPress.org review; and repo code review.
 
 Every created issue should include problem/context, expected outcome, acceptance criteria, non-goals, suggested milestone, labels, Assignee: `@mehul0810`, branch/base plan, risk, validation, and owner decisions if any.
 
 ## Automation Split
 
 - Portfolio heartbeat: owner-configurable. Current acceleration default is every 30 minutes, cross-product only, and focused on state, conflicts, product-thread health, and owner decisions.
-- Product heartbeat: owner-configurable. Current acceleration default is every 15 minutes, per plugin, and responsible for release readiness, intake, research, and planning.
+- Product heartbeat: owner-configurable. Current acceleration default is every 15 minutes, per plugin, and focused on release readiness, intake, research, and planning.
 - Active release/CI heartbeat: temporary and high-frequency only while a specific PR/release is actively moving.
 
 If product work is being done in the portfolio heartbeat, classify it as workflow drift and route the work back to the product thread or update the skill/docs.
 
 If product heartbeats hit setup-blocked delegation, recover first: complete direct non-code work, use read-only mapping paths, and try safe manual worktree routes before owner notification.
 
-Automation hygiene is CTO governance. During cadence/process changes, remove or update paused, stale, generic/untitled, deprecated-skill, duplicate, or wrong-cadence tasks. If tools are unavailable, report exact automation IDs/names that need cleanup.
+Automation hygiene is CTO governance. During cadence/process changes, remove or update paused, stale, generic/untitled, deprecated-skill, duplicate, or wrong-cadence tasks. If tools are unavailable, report exact automation IDs needing cleanup.
 
 ## Post-Release Follow-Through
 
