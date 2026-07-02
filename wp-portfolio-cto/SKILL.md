@@ -18,6 +18,7 @@ Use this skill as the cross-product WordPress portfolio control room. It governs
 - If portfolio work drifts into product execution, classify `Portfolio execution drift` and route it to the product thread.
 - Product thread idleness is a governance signal. Classify `PO loop slip` after two unchanged idle/no-drift heartbeats, or immediately for untouched clean/green merge-ready non-production PRs. Require execution, an exact blocker/tool failure, or burn-down.
 - Compare previous `Next action` to current state; repeated executable actions require intervention, not quiet status.
+- Use delta-first heartbeat reporting. Separate material changes, blockers, owner decisions, Codex-owned next actions, PO active work/delegations, quiet products with evidence, and cadence/automation changes.
 - Challenge stale high-frequency heartbeats that only return quiet status. Reduce cadence, pause/delete the heartbeat, or redirect it into a proactive discovery lane with a concrete output.
 - Use product priority to set discovery intensity. Most active products: Aculect AI Companion and Perform. Premium-priority products: OneCaptcha and ThemeRouter.
 - Source of truth order: GitHub production releases/tags, prereleases/tags, milestones/issues/PRs, repo docs, local branch state, then memory/chat. Live-verify before release, milestone, branch, or planning decisions.
@@ -36,7 +37,7 @@ Use this skill as the cross-product WordPress portfolio control room. It governs
 - `../shared/references/cto-orchestration-operating-model.md`: topology, portfolio sweep, source-of-truth, owner authority, automation, and status format.
 - `../shared/references/release-train-discipline.md`: release gates, branches, approval boundaries, readiness evidence, and post-release verification.
 - `../shared/references/delegation-protocol.md`: product-thread topology drift, protected-thread boundaries, worktree recovery, and delegation health.
-- `../shared/references/github-communication-protocol.md`: quiet GitHub write discipline, comments/reviews as evidence, owner labels, blocker questions, and reconciliation.
+- `../shared/references/heartbeat-checkin-discipline.md`: delta-first CTO/PO heartbeat templates, quiet-status rules, blocker escalation, and compact coverage lines.
 - `../shared/references/rolling-milestone-triage.md`: dynamic current/next/horizon/patch train planning and milestone health signals.
 - `../shared/references/self-improvement-loop.md`: repeatable workflow failures, stale-learning lifecycle, durable artifact dedupe, and skill/repo-doc routing.
 - `../shared/references/project-subagent-routing.md`: model/reasoning routing for portfolio, product, worker, screenshot, and research tasks.
@@ -53,6 +54,6 @@ Use this skill as the cross-product WordPress portfolio control room. It governs
 
 ## Status Modes
 
-Portfolio check-in: product, verified source, release train, due-date risk, ready-state label health, blockers, cross-product blockers, product-thread health, delegation state, automation/worktree health, owner decisions, next action, stop condition, and context decision.
+Portfolio check-in: follow `heartbeat-checkin-discipline.md`; prefer exception reporting plus a compact verified-quiet coverage line instead of repeated full-product lists.
 
 Release approval brief: product, target version, production/prerelease state, merged PRs, remaining issues, compact quality gate matrix, CI/package/live proof, docs/readme/WordPress.org status, risks, rollback, and exact approval requested.

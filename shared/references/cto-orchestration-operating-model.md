@@ -89,6 +89,7 @@ For each product, verify/report minimum source-of-truth state:
 - Product-thread and delegated/skill work.
 
 Only after this sweep should the portfolio thread choose the highest-leverage governance action. If one product consumes owner attention, the final report still needs every product's verified status and next action/stop condition. Quiet products must be included with `No action after verification`.
+Exception reports should still surface Open PRs/issues and CI/release blockers for non-quiet products.
 
 Portfolio heartbeats report stale-worktree accumulation as governance drift and route repo-specific cleanup to product threads. Product threads own worktree inventory, safe `git worktree remove <path>` cleanup, and `git worktree prune` after worker PR/task reconciliation.
 
@@ -209,18 +210,4 @@ When the owner calls out a process miss, a product repeats a failure, or CTO det
 
 ## CTO Check-In Format
 
-```text
-Product:
-Verified source of truth:
-Active milestone, due date, and due-date risk:
-Open PRs/issues and CI/release blockers:
-Ready-state label health:
-Cross-product blockers:
-Delegation decision:
-Issues created/updated:
-PR status:
-Risks:
-Owner decisions needed:
-Next action:
-Stop condition:
-```
+Use `heartbeat-checkin-discipline.md` for delta-first CTO and PO check-ins. Default to exception reporting plus a compact quiet-coverage line instead of repeating full unchanged product lists.
