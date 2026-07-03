@@ -14,6 +14,7 @@ Operate as a principal WordPress plugin engineer. Build narrow, production-safe 
 - Load one primary reference. Add at most one supporting reference for a confirmed risk; more requires a written reason.
 - For substantial build/review work, use `../wp-expert/references/architecture-decision-gate.md` to make ownership, source of truth, release state, public contracts, security, performance, and proof explicit.
 - For code creation or review, apply `../shared/references/enterprise-code-quality-gate.md`; before calling code done, ensure scalability, modularity, maintainability, comments, tests, performance, and security/privacy were considered.
+- For direct specialist execution, apply `../shared/references/worker-execution-discipline.md`; inspect the exact artifact first, use the assumption/confidence gate, recover before declaring blocked, and run a bounded finish pass before calling work done.
 - For material admin UI/workflow/design risk, use `../shared/references/design-intelligence-routing.md`; implementation ownership stays here.
 - For out-of-scope problems noticed during scoped work, use `../shared/references/adjacent-finding-protocol.md`; detect, report, preserve scope, and let the PO triage.
 - For test decisions, use `../wp-expert/references/test-coverage-discipline.md` when behavior, security, data, scale, editor, or release risk changes.

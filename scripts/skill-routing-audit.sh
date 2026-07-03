@@ -24,7 +24,7 @@ skill_limit() {
     wp-portfolio-cto) echo 8 ;;
     wp-product-orchestrator) echo 11 ;;
     wp-expert) echo 8 ;;
-    wp-plugin-expert|wp-theme-expert|wp-site-expert|wp-contributor) echo 9 ;;
+    wp-plugin-expert|wp-theme-expert|wp-site-expert|wp-contributor) echo 10 ;;
     *) echo 10 ;;
   esac
 }

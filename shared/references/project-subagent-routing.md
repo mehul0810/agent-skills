@@ -68,6 +68,7 @@ Examples:
 - Plugin mapper: `$wp-plugin-expert`, primary route `plugin-architecture.md`; supporting `enterprise-code-quality-gate.md` for implementation/review quality gates.
 - Block/FSE mapper: `$wp-theme-expert`, primary route `block-theme-architecture.md`; supporting `custom-block-theme-from-design.md` only for design-to-theme work.
 - Theme/site implementer or reviewer: add `enterprise-code-quality-gate.md` when code is being changed or approved.
+- Direct fixer or reviewer with implementation responsibility: add `worker-execution-discipline.md` so exact-entity-first inspection, blocker recovery, assumption control, and finish-pass behavior stay consistent.
 - Design audit or redesign planner: use `design-intelligence-routing.md`, then `product-design:audit`, `product-design:get-context` + `product-design:ideate`, or `product-design:image-to-code` based on whether the task is critique, direction-finding, or implementation from a chosen visual target.
 - UI reviewer: `$wp-site-expert` for site UX or `$wp-theme-expert` for editor/theme UX; supporting `visual-parity-regression.md` only when screenshots/designs are involved.
 - Security reviewer: `$wp-plugin-expert`, `$wp-theme-expert`, or `$wp-site-expert` based on the changed artifact; primary route `security-threat-modeling-review.md` only when the risk is concrete.
@@ -83,6 +84,7 @@ Use only the named skill/reference lane unless you find a concrete blocker.
 Return: findings, files touched or inspected, confidence, validation evidence, and open risks.
 Report adjacent findings separately and preserve scoped task boundaries unless immediate escalation is required.
 Turn Product Design feedback into acceptance criteria, design QA checks, or adjacent findings instead of vague taste commentary.
+Inspect the exact referenced artifact first, and if blocked, report attempted recovery plus the remaining proof gap instead of a generic tool failure.
 Do not modify files unless explicitly assigned as a narrow fixer.
 Keep output under the requested line or bullet limit.
 ```
