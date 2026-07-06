@@ -27,6 +27,7 @@ Options:
   --links     Check for broken references only
   --files     Check that referenced files exist
   --routing   Validate reference routing map
+  --fanout    Check skill routing fan-out and modular router discipline
   --tokens    Check skill token budgets
   --behavior  Check critical agent behavior guardrails
   --orchestration
@@ -122,6 +123,17 @@ validate_referenced_files() {
         log_success "Found shared: $ref_path"
       fi
     done
+
+    { grep -o '\.\./wp-expert/references/[a-z0-9-]*\.md' "$skill_dir/SKILL.md" 2>/dev/null || true; } | sort -u | while read -r ref_path; do
+      # Specialist router skills reuse the canonical wp-expert reference playbooks.
+      local full_path="$skill_dir/$ref_path"
+
+      if [ ! -f "$full_path" ]; then
+        log_error "Referenced but missing: $ref_path"
+      else
+        log_success "Found wp-expert reference: $ref_path"
+      fi
+    done
   done < <(find_skill_dirs)
 }
 
@@ -181,9 +193,9 @@ validate_unreferenced_files() {
         continue
       fi
 
-      # Check if referenced in SKILL.md or routing map
+      # Check if referenced in SKILL.md or any first-level reference router/map.
       if ! grep -q "$ref_file" "$skill_dir/SKILL.md" 2>/dev/null && \
-         ! grep -q "$ref_file" "$skill_dir/references/reference-routing-map.md" 2>/dev/null; then
+         ! grep -Rq "$ref_file" "$skill_dir/references" 2>/dev/null; then
         log_warning "[$skill_name] Unreferenced file: $ref_file"
       else
         log_success "[$skill_name] Referenced: $ref_file"
@@ -346,6 +358,17 @@ validate_orchestration_rules() {
   fi
 }
 
+validate_routing_fanout() {
+  echo ""
+  echo "=== Validating skill routing fan-out ==="
+
+  if bash "$repo_root/scripts/skill-routing-audit.sh"; then
+    log_success "Skill routing fan-out is controlled"
+  else
+    log_error "Skill routing fan-out audit failed"
+  fi
+}
+
 # Summary
 print_summary() {
   echo ""
@@ -400,10 +423,13 @@ main() {
     validate_scripts
     validate_metadata
     validate_token_budgets
+    validate_routing_fanout
     validate_behavior_rules
     validate_orchestration_rules
   elif [ "$check_type" = "tokens" ]; then
     validate_token_budgets
+  elif [ "$check_type" = "fanout" ]; then
+    validate_routing_fanout
   elif [ "$check_type" = "behavior" ]; then
     validate_behavior_rules
   elif [ "$check_type" = "orchestration" ]; then

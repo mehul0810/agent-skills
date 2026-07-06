@@ -1,6 +1,6 @@
 # WP Expert Skill Evaluation Scenarios
 
-Use these lightweight scenarios to verify that `wp-expert` routes to the right references and preserves the intended operating behavior. These are prompt-level checks, not automated correctness tests.
+Use these lightweight scenarios to verify that `wp-expert` routes to the right specialist or reference and preserves the intended operating behavior. These are prompt-level checks, not automated correctness tests.
 
 ## Evaluation Rules
 
@@ -13,12 +13,20 @@ Use these lightweight scenarios to verify that `wp-expert` routes to the right r
 
 | Scenario | Prompt | Expected primary reference | Pass signals |
 | --- | --- | --- | --- |
+| Plugin specialist routing | "Build a plugin admin settings feature that saves through REST and needs tests." | `wp-plugin-expert` | Routes to the plugin specialist, then loads only the needed plugin/admin/REST/test references instead of broad theme/site guidance. |
+| Theme specialist routing | "Implement this FSE block theme page from the provided screenshot and keep content editable." | `wp-theme-expert` | Routes to the theme specialist, preserves Post Content/page editability, avoids Custom HTML/Shortcode shortcuts, and loads only block/FSE/design references. |
+| Site specialist routing | "Improve this landing page conversion flow, SEO structure, analytics, and mobile UX." | `wp-site-expert` | Routes to the site specialist, focuses on conversion/UX/SEO/analytics/mobile proof, and avoids plugin/theme internals unless a confirmed risk requires them. |
+| Automatic specialist selection | "This is a plugin REST settings bug; fix it and add coverage." | `wp-plugin-expert` | Selects the plugin specialist directly from the task signal, does not load `wp-expert` broad references or `reference-routing-map.md`, and uses at most one supporting reference for a confirmed risk. |
 | Release PR base | "Open a PR for this completed fix. It belongs to the 0.4.0 release." | `session-continuity-pr-discipline.md` | Checks repo/remote/current branch, fetches refs, looks for `release/0.4.0`, uses explicit `--base`, and verifies `baseRefName` after PR creation. |
 | Issue milestone PR base | "Issue #123 is in milestone 0.5.0. Create a PR for the completed work." | `session-continuity-pr-discipline.md` | Inspects the issue milestone and related release branches, bases the PR on `release/0.5.0` when it exists, passes `--base` explicitly, and documents the base reason in the PR body. |
 | Project subagents and Spark usage | "Configure project-level Codex subagents for a large WordPress plugin review and use gpt-5.3-codex-spark efficiently." | `project-subagent-routing.md` | Uses project `.codex/agents/*.toml`, assigns Spark to bounded mappers/fixers, reserves stronger model for high-risk review, keeps `max_depth` conservative, and avoids global hooks for dynamic skill routing. |
 | Missing test coverage | "Review this PR and tell me if it is missing test coverage." | `test-coverage-discipline.md` | Identifies changed behavior, existing coverage, missing negative/failure scenarios, severity, and exact tests that should be added or explains why no new tests are needed. |
 | Acceptance criteria | "Define done criteria for this REST API feature before implementation." | `enterprise-acceptance-criteria-templates.md` | Produces functional, security, data, performance, UX, compatibility, tests, validation, and rollback acceptance checks. |
 | Exact CSS value | "Set the hero margin-top to 24px in the theme CSS. I will visually review it." | `planning-drift-control.md` | Applies exact value, confirms diff, avoids browser QA claim. |
+| Exact artifact first | "Review PR #149 and tell me if it is merge-ready." | `worker-execution-discipline.md` | Inspects the exact referenced PR first, does not switch to unrelated open PRs, and reports if the referenced entity is closed/merged/not-open. |
+| Blocked worker recovery | "The browser proof path failed for this admin UI change. Continue safely." | `worker-execution-discipline.md` | Rechecks the exact changed boundary, downgrades to the cheapest safe proof or fallback evidence, reports the remaining proof gap, and does not stop at a generic tool failure. |
+| Assumption gate | "Implement whichever content ownership model seems best for this FSE page." | `worker-execution-discipline.md` | Stops to surface the contract choice when two materially different editability or ownership models would change the result. |
+| Finish pass | "The scoped bug fix is done. Anything else?" | `worker-execution-discipline.md` | Runs a narrow finish pass over tests, docs/release metadata, dead/duplicate code, UI proof drift, and adjacent findings without broadening the PR. |
 | Brainstorming without overengineering | "Brainstorm implementation approaches for this feature, but keep it enterprise-grade and do not overengineer it." | `thinking-brainstorming-engineering-discipline.md` | Provides no more than 3 options, recommends one, rejects weaker paths, names validation/next step, and avoids broad reference loading unless a named risk requires it. |
 | Plugin product architecture | "Design this plugin so add-ons can extend it safely without breaking upgrades." | `plugin-product-architecture.md` | Inventories public contracts, hooks/filters, add-on boundaries, feature flags, dependency detection, diagnostics, and upgrade rules. |
 | Plugin supportability | "Add enterprise support diagnostics and safe recovery tools to this plugin." | `plugin-debuggability-supportability.md` | Covers Site Health, redacted support export, log levels, correlation IDs, recovery controls, permissions, and tests. |
@@ -52,6 +60,10 @@ Use these lightweight scenarios to verify that `wp-expert` routes to the right r
 - Did the agent make an explicit test coverage decision for each code change or PR?
 - Did the agent define acceptance criteria before substantial plugin, theme, API, migration, performance, security, or conversion work?
 - Did the agent use bounded brainstorming, recommend a path, and avoid overengineering while preserving enterprise quality?
+- Did the agent inspect the exact referenced artifact first before broad scans or inference?
+- Did the agent recover from blocked proof/tool paths with the cheapest safe fallback before declaring failure?
+- Did the agent surface contract-shaping assumptions instead of guessing between materially different implementations?
+- Did the agent run a bounded finish pass around the changed boundary instead of stopping at the first passing diff or expanding scope?
 - Did the agent stop premium UI polish once the changed surface met agreed quality criteria and move subjective extras to backlog?
 - Did the agent account for plugin public contracts, supportability, diagnostics, and upgrade-safe extension surfaces when building product-grade plugins?
 - Did the agent flag missing coverage only when a concrete behavior/security/data/scale/editor/release regression risk exists?
@@ -66,3 +78,5 @@ Use these lightweight scenarios to verify that `wp-expert` routes to the right r
 - Did the agent use launch readiness and advanced troubleshooting gates before claiming VIP/enterprise work is production-ready?
 - Did the agent validate before completion and disclose any unrun checks?
 - Did the agent keep token use low by loading only the needed references?
+- Did clear plugin, theme, site, contribution, content, or product-orchestration work trigger the narrow specialist directly instead of broad `wp-expert`?
+- Did ambiguous WordPress work use `wp-expert` as a router while clear plugin, theme, or site work used `wp-plugin-expert`, `wp-theme-expert`, or `wp-site-expert` directly?

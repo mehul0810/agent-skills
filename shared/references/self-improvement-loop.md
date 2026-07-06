@@ -18,7 +18,8 @@ When a mistake is identified:
 
 Place durable lessons where they can be enforced:
 
-- `wp-product-orchestrator` skill: cross-product orchestration behavior.
+- `wp-portfolio-cto` skill: cross-product portfolio governance, product-thread health, release conflicts, and owner portfolio briefs.
+- `wp-product-orchestrator` skill: one-product backlog, release-readiness, issue/PR intake, and delegation behavior.
 - Shared reference: reusable protocol across skills or products.
 - Repo `AGENTS.md`: repo-specific agent workflow, branch rules, validation gates.
 - Repo `PRODUCT.md`, `ROADMAP.md`, or `RELEASE.md`: product truth, roadmap intent, release process.
@@ -73,6 +74,8 @@ Use concrete labels:
 - Missing delegation after strategy.
 - Delegation unavailable without tool discovery.
 - Wrong app-managed worktree root or base.
+- Setup-blocked polling loop.
+- Stale active product thread.
 - Blanket blocker from due date, release branch, or dirty primary checkout.
 - Portfolio coverage drift.
 - Portfolio execution drift.

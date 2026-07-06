@@ -16,6 +16,6 @@ Each scenario should produce the expected behavior without requiring extra remin
 
 ## Passing Standard
 
-- The agent chooses one primary reference plus mandatory overlays instead of loading every reference.
+- The agent chooses one primary reference plus risk-triggered overlays instead of loading every reference.
 - The response names ownership, source of truth, release state, validation proof, and remaining risk for substantial work.
 - The agent commits only intended files when commits are expected and pushes only with explicit user or repo automation authorization.

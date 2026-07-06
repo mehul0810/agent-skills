@@ -1,0 +1,4 @@
+interface:
+  display_name: "WP Site Expert"
+  short_description: "Enterprise WordPress site, UX, CRO, and SEO engineering"
+  default_prompt: "Use $wp-site-expert for WordPress websites, landing pages, conversion flows, UX/IA, content architecture, SEO/AEO/GEO, analytics, performance, accessibility, responsive polish, and premium enterprise site improvements."

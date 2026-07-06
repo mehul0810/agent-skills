@@ -1,4 +1,4 @@
 interface:
   display_name: "WP Product Orchestrator"
-  short_description: "CTO control-plane for WordPress product workflow"
-  default_prompt: "Use $wp-product-orchestrator to plan, intake issues, delegate, validate, communicate, and prepare CTO readiness decisions for WordPress product work."
+  short_description: "Single-product WordPress release-readiness workflow"
+  default_prompt: "Use $wp-product-orchestrator for one WordPress plugin/theme product thread: issue intake, milestone scope, release readiness, delegation, validation, and PR workflow."

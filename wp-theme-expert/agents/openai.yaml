@@ -1,0 +1,4 @@
+interface:
+  display_name: "WP Theme Expert"
+  short_description: "Enterprise WordPress theme and block/FSE engineering"
+  default_prompt: "Use $wp-theme-expert for WordPress themes, block themes, FSE, theme.json, templates, patterns, block editor compatibility, custom blocks, design-to-theme builds, visual parity, and premium responsive theme implementation."

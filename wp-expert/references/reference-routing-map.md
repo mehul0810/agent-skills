@@ -5,19 +5,19 @@ Use this map to choose references with low context cost.
 ## Loading Discipline
 
 - Choose one primary reference that matches the core deliverable.
-- Add at most two supporting references for cross-cutting risk.
+- Add at most one supporting reference for confirmed cross-cutting risk.
 - Exceed that budget only when a named acceptance risk cannot be handled safely with the current set.
 - Stop loading more references when you already have enough to implement or review safely.
 
-## Mandatory Overlays
+## Risk-Triggered Overlays
 
-- Substantial implementation/review: `architecture-decision-gate.md`, then the primary technical reference.
-- Any code change: `enterprise-code-quality-gate.md` plus a `test-coverage-discipline.md` decision.
-- Any completion claim for WordPress runtime/editor/frontend/external/release behavior: `live-proof-wordpress.md`.
-- Any branch, issue, PR, release branch, or resumed-session work: `session-continuity-pr-discipline.md`.
-- Any package, deploy, release ZIP/SVN, Composer, npm, or CI artifact work: `production-dependency-discipline.md`.
-- Any web-heavy, drift-prone, broad, or current-policy lookup: `research-token-discipline.md`.
-- Any UI/theme/FSE/design work: keep premium/enterprise UX and editor ownership proof visible.
+- Substantial implementation/review: load `architecture-decision-gate.md` when ownership, source of truth, public contract, release state, performance, security, or proof is unclear.
+- Code change: apply enterprise and test principles from the active skill; load `enterprise-code-quality-gate.md` or `test-coverage-discipline.md` only when risk is non-trivial, ambiguous, or review-critical.
+- Completion claim: load `live-proof-wordpress.md` only when runtime, editor, frontend, external integration, or release proof is material.
+- Branch/PR/resumed-session work: load `session-continuity-pr-discipline.md` when branch base or PR target can drift.
+- Package/deploy/artifact work: load `production-dependency-discipline.md` when Composer, npm, release ZIP/SVN, deploy, or production dependency boundaries matter.
+- Web-heavy or current-policy lookup: load `research-token-discipline.md` when source selection or freshness can affect the answer.
+- UI/theme/FSE/design work: keep premium/enterprise UX and editor ownership proof visible; load deeper design references only when the visual/editing contract is not obvious.
 
 ## Task To Reference Map
 

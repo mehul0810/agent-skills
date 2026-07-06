@@ -1,120 +1,53 @@
 ---
 name: wp-expert
-description: Principal WordPress engineering for plugins, themes, blocks/FSE, WooCommerce, headless, multisite, admin/UX, performance/security, WPVIP/enterprise, CI/CD, releases, troubleshooting, reviews, estimates, and implementation. Use for WordPress architecture, delivery, validation, and production decisions.
+description: Router for ambiguous WordPress work. Use when explicitly requested or unclear whether the task belongs to wp-plugin-expert, wp-theme-expert, wp-site-expert, wp-portfolio-cto, wp-product-orchestrator, wp-contributor, or content-writer; clear tasks should trigger the specialist directly.
 ---
 
 # WP Expert
 
-Use this skill to operate like a principal WordPress engineer: find the real runtime surface, protect production behavior, design for scale and maintainability, improve UX intentionally, and validate with evidence.
+Use this skill as the thin WordPress engineering router. Prefer the narrow specialist skill whenever the task intent is clear; keep this hot path small so expertise is loaded only when needed.
 
-## Operating Rules
+## Route First
 
-- Start with repo facts, not assumptions: current directory, Git root, WordPress root, plugin/theme entry files, Composer/npm scripts, build output, active branch, dirty files, and deployment target.
-- Load only the reference needed for the task. Do not read every reference by default.
-- Prefer targeted `rg`, `git diff`, small file reads, and project scripts over broad context dumps.
-- Use `../shared/references/research-token-discipline.md` for web-heavy, drift-prone, ambiguous, or broad exploration.
+- Auto-select the specialist by the task's primary artifact or outcome. Stop after routing when the specialist is clear; do not load the routing map or broad references.
+- Plugin/product code, REST APIs, admin screens, custom tables, WordPress.org plugin releases, Composer/npm tooling, CI, tests, security, performance, or plugin troubleshooting: use `wp-plugin-expert`.
+- Themes, block themes, FSE, `theme.json`, templates, patterns, block styles, custom blocks, design-to-theme builds, visual parity, Ollie, Blocksy, or editor/frontend parity: use `wp-theme-expert`.
+- Whole-site work, landing pages, conversion flows, UX/IA, content architecture, SEO/AEO/GEO, analytics, accessibility, responsive polish, performance, or premium visitor/admin experience: use `wp-site-expert`.
+- Cross-product portfolio governance, portfolio heartbeats, product-thread health, release conflicts across products, owner portfolio briefs, or shared process/skill self-improvement: use `wp-portfolio-cto`.
+- One product's backlog strategy, GitHub issue intake, milestones, release train, delegation, product heartbeat, PR synthesis, or release-ready brief: use `wp-product-orchestrator`.
+- WordPress Core, Meta, Gutenberg, Trac, upstream patches, contributor docs, or official contribution workflow: use `wp-contributor`.
+- Organic-search writing, briefs, drafts, content refreshes, AI Overview/AEO/GEO writing: use `content-writer`.
+
+## Universal Rules
+
+- Start with repo facts, not assumptions: current directory, Git root, WordPress root, active branch, dirty files, plugin/theme entry points, build scripts, and deployment target.
+- Preserve user work. Never reset or discard unrelated changes unless explicitly asked.
+- Load one primary reference first. Add one supporting reference only for a confirmed risk; more requires a written reason.
+- Use `references/reference-routing-map.md` only when the correct specialist or primary reference is ambiguous.
+- Use `references/architecture-decision-gate.md` for substantial build/review work so ownership, source of truth, release state, public contracts, security, performance, and proof are explicit.
+- Use `../shared/references/research-token-discipline.md` only for web-heavy, drift-prone, ambiguous, or broad exploration.
+- Use `../shared/references/context-window-discipline.md` when context is high or the task may need compact vs fresh-thread routing.
 - Use `../shared/references/session-continuity-pr-discipline.md` for new chats, resumed repo work, release branches, issues/PRs, and branch/PR creation. Never create a PR until the intended base branch is proven and passed explicitly.
 - Use `../shared/references/project-subagent-routing.md` for project subagents, skill routing, model assignment, and efficient `gpt-5.3-codex-spark` usage.
-- Use `references/architecture-decision-gate.md` for substantial build/review work so ownership, source of truth, release state, security, performance, and proof are explicit.
-- Use `../shared/references/production-dependency-discipline.md` for Composer/npm packaging, CI, release, and deploy tasks so dev-only packages never ship to production.
-- Use `../shared/references/enterprise-code-quality-gate.md` for code creation, refactoring, and reviews so generated or reviewed code meets modularity, performance, security, maintainability, and edge-case test expectations.
-- Use `references/planning-drift-control.md` for scope guardrails and risk-calibrated validation, especially when the user provides exact CSS values, units, copy, or configuration that should be applied directly and confirmed by diff instead of over-verified.
-- Use `references/thinking-brainstorming-engineering-discipline.md` when brainstorming, planning, premium polish, or architecture decisions risk drifting into over-exploration, over-polishing, or overengineering.
-- Preserve user work. Never reset or discard unrelated changes unless explicitly asked.
-- Treat platform policy, VIP rules, dependencies, GitHub Actions behavior, and current WordPress behavior as drift-prone. Verify official docs when exact current behavior matters.
-- Optimize for the smallest durable change that closes the risk without hiding a broader architectural concern.
-- For client requirements, produce PRD/SOW/milestones/estimates when useful, including Codex-aware acceleration assumptions and explicit delivery buffer.
-- Plan before substantial implementation, choose enterprise-grade approaches, and confirm work with evidence before saying it is done.
-- Use `references/enterprise-acceptance-criteria-templates.md` for substantial plugin, theme, API, migration, performance, security, or conversion work so done criteria are explicit before drift.
-- Treat every generated or reviewed code path as enterprise/WPVIP-grade by default: modular, performant, secure, maintainable, observable where needed, and covered by appropriate tests including rare/failure scenarios.
-- Use `references/test-coverage-discipline.md` for implementation, review, and PR work to decide needed tests and flag material gaps.
-- Use `../shared/references/live-proof-wordpress.md` before completion claims for WordPress runtime, editor, frontend, external, or release work.
-- For Git repos, stage only intended files and make focused commits when the user or repo policy expects commits; push only when explicitly asked or repo-local automation policy authorizes it.
-- Use `references/ux-product-strategy-design-qa.md` for substantial UI/UX, design review, product flow, IA, UX writing, conversion, or image/screenshot implementation.
-- Never compromise on premium and enterprise feel. UI, theme, block, and frontend work must feel deliberate, polished, accessible, responsive, and aligned with the project style guide or design system.
-- When an image, screenshot, Figma frame, or visual reference is provided, treat it as the visual source of truth unless stated otherwise; implement for pixel-faithful parity while preserving accessibility, responsiveness, WordPress editability, performance, and maintainability.
-- For block/FSE page builds, keep page/post-owned visible content admin-editable: templates provide structure and render Post Content; page-specific sections belong in page content, inserted patterns, synced patterns, or intentional data sources.
-- When the in-app browser blocks a custom local HTTPS WordPress domain, use `references/local-https-testing.md` and terminal/browser-runner workarounds before marking runtime or visual testing blocked.
+- Use `../shared/references/production-dependency-discipline.md` only for Composer/npm packaging, CI artifacts, release ZIP/SVN, deploy, or production dependency verification.
+- Use `../shared/references/live-proof-wordpress.md` before claiming WordPress runtime, editor, frontend, external integration, or release behavior is complete.
+- Apply enterprise/WPVIP standards by default: modular, performant, secure, maintainable, accessible, observable where useful, and covered by appropriate tests for meaningful behavior or risk.
+- Validate with the cheapest reliable proof that reaches the changed boundary; disclose unrun checks.
+- Stage only intended files, commit scoped validated changes when expected, and push only when explicitly asked or repo-local automation policy authorizes it.
 
-## Fast Workflow
-
-1. Classify into one primary lane: planning/delivery, build implementation, theme/block editor/FSE, commerce/headless/content/SEO, product UI/UX, release/operations, enterprise scale/security, or troubleshooting/review.
-2. Map the runtime: locate bootstrap files, hooks, REST/AJAX routes, blocks, templates, build artifacts, autoload, cron/jobs, options, custom tables, and active theme/plugin overrides.
-3. Identify risk: ownership/source of truth, public contract, release state, authorization, data integrity, cache, migration, multisite, editor/frontend parity, and deployment safety.
-4. Select one primary reference plus mandatory overlays only when the risk requires them.
-5. Implement narrowly unless the user requested planning/review only.
-6. Validate with the cheapest reliable proof that reaches the changed boundary, then run deeper repo gates when warranted.
-7. Report solution, files changed, validation, remaining risk, and next steps only when useful.
-
-## Reference Routing Rules
-
-- Load one primary reference first. Add supporting references only when a concrete gap remains; exceed the default only for a named acceptance risk.
-- Start with `references/reference-routing-map.md` when classification is ambiguous or spans multiple lanes.
-- Use `../shared/references/research-token-discipline.md` only for web-heavy, drift-prone, or broad exploration tasks.
-- Use `../shared/references/production-dependency-discipline.md` only for packaging, CI, release, and deployment tasks.
-- For code reviews, start with `references/review-checklists.md`, then route deeper by confirmed risk area.
-
-## Reference Router
-
-Use `references/reference-routing-map.md` only when the primary reference is not obvious. Otherwise load the single relevant reference named by the task and add supporting references only for confirmed risks.
-
-Hot-path shortcuts:
-
-- Planning and delivery: `references/delivery-excellence.md`, `references/planning-drift-control.md`, `references/thinking-brainstorming-engineering-discipline.md`.
-- Architecture and code gates: `references/architecture-decision-gate.md`, `../shared/references/enterprise-code-quality-gate.md`, `references/test-coverage-discipline.md`, `../shared/references/live-proof-wordpress.md`.
-- Project subagents and model routing: `../shared/references/project-subagent-routing.md`; use hooks only for deterministic project lifecycle checks.
-- Reviews: `references/review-checklists.md`, then route by the concrete risk found.
-- UI/UX and design parity: `references/ux-product-strategy-design-qa.md`, then `references/ui-ux-pro-for-wordpress.md`, `references/wordpress-design-system.md`, or `references/visual-parity-regression.md` only when needed.
-- Theme/block/FSE: `references/block-theme-architecture.md`; add design, performance, Ollie, or Blocksy references only for those specific surfaces.
-- Performance, security, VIP, troubleshooting, release, API, monorepo, database, WooCommerce, headless, SEO, privacy, migration, and content-scale tasks: use `references/reference-routing-map.md` to choose the narrow playbook.
-
-Use helper scripts when useful: `wp-context.sh`, `wp-validate.sh`, `fse-design-map.sh`, `wp-local-https-check.sh`, and `wporg-release-verify.sh`.
-
-## Review Mode
-
-- Findings first, ordered by severity with file/line references and concrete failure mode.
-- Prefer high-confidence findings tied to real impact: exploit path, data loss, checkout break, cache stampede, slow admin, migration failure, layout regression, accessibility failure, or BC break.
-- Apply the enterprise code-quality gate: modularity, performance, security, maintainability, testability, rare/failure scenarios, and VIP-style scale assumptions.
-- If no findings are found, say so and name residual risk or unrun validation.
-- Do not rewrite code during review unless the user asks for implementation.
-
-## Implementation Mode
-
-- Keep bootstraps thin; move behavior into small owned modules/classes.
-- Prefer WordPress-native APIs and extension points, but choose lower-level code when measurably safer or faster.
-- Register public contracts deliberately: hooks, filters, REST routes, WP-CLI, blocks, shortcodes, cron, assets, options, and schema versions.
-- Use REST for new interactive endpoints by default; avoid new `admin-ajax.php` when REST fits.
-- Keep background work idempotent, bounded, retryable, observable, and free of secrets/PII in args, logs, cache keys, URLs, markup, or JS.
-- Preserve block attributes, frontend markup contracts, Query Loop layout, and theme hierarchy unless explicitly targeted.
-- Put classic editor fields in meta boxes; block editor document settings in document/sidebar panels; block settings in inspector panels. Do not show new meta boxes in the block editor unless preserving legacy compatibility.
-- Scope assets to the screens, routes, blocks, or templates that need them.
-- Follow repo Composer/npm/build/release workflows; avoid tooling churn without payoff.
-- Stage only intended files, commit validated scopes separately when commits are expected, and push only when explicitly authorized.
-- Remove harmful duplication when it improves reliability and tests; avoid abstractions that hide domain differences or unreleased draft shapes.
-- Add concise comments/docblocks for non-obvious hooks, contracts, migrations, cache invalidation, and security decisions.
-- Add/update tests for changed behavior and realistic failure cases; if omitted, state why and what validation covers the risk.
-
-## Universal WordPress Hard Rules
+## WordPress Hard Gates
 
 - Capability checks authorize actions; nonces only reduce CSRF.
 - Validate/sanitize input on ingress and escape output at the final boundary.
 - Use `$wpdb->prepare()` for dynamic SQL values and whitelist identifiers/order clauses.
 - Every REST route needs a meaningful `permission_callback`; avoid `admin-ajax.php` for new REST-fit work.
-- Avoid large/volatile autoloaded options, repeated hot option writes, and unbounded queries.
+- Avoid large or volatile autoloaded options, repeated hot option writes, unbounded queries, and filesystem-persistence assumptions on cloud/VIP-style environments.
 - Preserve backward compatibility for launched/public contracts and real production/client data; do not add shims for abandoned intermediate shapes of unreleased work.
 - Use the lowest stable actively maintained non-EOL runtime/tool versions that satisfy WordPress, host/VIP, dependency, and deployment constraints.
-- Do not assume filesystem persistence on cloud/VIP-style environments.
 - Never expose secret keys, API tokens, private salts, customer PII, or sensitive payloads in public surfaces.
 
-## Validation Ladder
+## Output
 
-Choose the cheapest reliable gate for the risk: syntax/config, standards/static analysis, runtime probes, unit/integration/E2E tests, CI/CD artifact checks, and scale measurements.
-
-When a tool is missing, use the best available lower-level check and say what was not run.
-
-## Output Expectations
-
-- For reviews: findings first, then open questions/testing gaps.
-- For implementation: solution, changed files, validation commands, and remaining risk.
-- For brainstorming: options with tradeoffs, recommended direction, and what to prototype or validate.
-- For plans: rollout/migration notes, test strategy, backout path, and exact acceptance checks.
+- Reviews: findings first with severity, file/line references, concrete impact, then questions or testing gaps.
+- Implementation: solution, changed files, validation commands/results, residual risk, and next step only when useful.
+- Plans: recommended path, tradeoffs, acceptance checks, validation, rollout/backout, and owner decisions only when real gates exist.

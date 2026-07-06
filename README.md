@@ -2,8 +2,12 @@
 
 This repository contains WordPress and organic-search-focused Codex skills:
 
-- `wp-expert`: principal-grade WordPress engineering for client, product, enterprise, VIP, plugin, theme, block editor, performance, security, and delivery work.
-- `wp-product-orchestrator`: autonomous WordPress product maintainer for plugin/theme issue triage, PR workflow, subagent coordination, live proof, and release readiness.
+- `wp-expert`: thin umbrella router for ambiguous WordPress engineering that points to the narrow specialist skill.
+- `wp-plugin-expert`: enterprise WordPress plugin engineering for plugin architecture, admin screens, REST APIs, custom tables, WordPress.org releases, Composer/npm, tests, CI, security, performance, and troubleshooting.
+- `wp-theme-expert`: enterprise WordPress theme, block theme, FSE, `theme.json`, custom block, design-to-theme, visual parity, and premium responsive theme engineering.
+- `wp-site-expert`: enterprise WordPress site, UX, CRO, SEO/AEO/GEO, analytics, accessibility, content architecture, performance, and premium visitor/admin experience engineering.
+- `wp-portfolio-cto`: cross-product WordPress portfolio control room for portfolio heartbeats, product-thread health, release conflicts, owner decision briefs, and shared workflow governance.
+- `wp-product-orchestrator`: one-product WordPress plugin/theme orchestrator for issue intake, milestone scope, release-readiness drive, worker delegation, validation synthesis, and PR workflow.
 - `wp-contributor`: official WordPress project contribution workflows for Core, Meta, Gutenberg, Trac, GitHub PRs, patches, testing, docs, triage, releases, and contributor communication.
 - `content-writer`: organic search content writing for SEO, AEO, GEO, AI Overviews, AI Mode, answer engines, AI tools, briefs, outlines, drafts, audits, and content refreshes.
 - `shared/references/research-token-discipline.md`: reusable token-efficient reasoning, repo exploration, web search, validation, and output discipline used by both skills.
@@ -15,7 +19,19 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - `shared/references/production-dependency-discipline.md`: reusable Composer/npm production dependency hygiene used by both skills.
 - `shared/references/enterprise-code-quality-gate.md`: reusable enterprise/WPVIP-grade code creation and review gate for modularity, performance, security, maintainability, observability, and rare-scenario tests.
 
-## wp-expert Coverage
+## Modular WordPress Expert Coverage
+
+`wp-expert` is intentionally a router. Use the specialist skills directly when the task intent is clear:
+
+- `wp-plugin-expert` for plugin/product implementation, review, debugging, release, and hardening work.
+- `wp-theme-expert` for theme, FSE, block editor, design-to-theme, visual parity, and editor/frontend parity work.
+- `wp-site-expert` for whole-site, landing page, UX, CRO, SEO/content, analytics, accessibility, and premium site polish work.
+- `wp-portfolio-cto` for cross-product portfolio governance, product-thread health, release conflicts, and owner portfolio briefs.
+- `wp-product-orchestrator` for one plugin/theme product's backlog, release train, GitHub issue/PR queue, and delegated implementation workflow.
+
+The detailed playbooks remain in `wp-expert/references/` and `shared/references/`; specialist skills load those references only when needed.
+
+## WordPress Expertise Coverage
 
 - Plugin development and refactoring.
 - Plugin product architecture: add-ons/pro boundaries, public hooks/filters, extension contracts, feature flags, dependency detection, diagnostics contracts, and upgrade-safe public APIs.
@@ -92,11 +108,17 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - Webpack, Composer, npm, dependency extraction, lockfiles, build scripts, and release artifact packaging.
 - Small focused commits for separable validated changes, followed by pushing all task commits after completion when a remote is configured.
 
+## wp-portfolio-cto Coverage
+
+- Cross-product WordPress portfolio control room: portfolio heartbeat, assigned-product sweep, quiet product reporting, product-thread health, and owner decision briefs.
+- Cross-product release governance: release conflicts, shared branch/release process, production/beta approval readiness, and owner testing confirmation.
+- Workflow governance: route product execution back to product threads, detect portfolio execution drift, protect user-created product/control threads, and route repeatable failures into skills or repo docs.
+
 ## wp-product-orchestrator Coverage
 
-- Autonomous plugin/theme product workflow control plane: issue triage, PR repair, subagent coordination, validation, owner decisions, and release readiness.
+- One-product plugin/theme workflow: issue triage, PR repair, subagent coordination, validation, owner decisions, and release readiness.
 - Product-aware autonomy boundaries: classify work as autonomous, needs owner, blocked, release blocker, or defer based on `PRODUCT.md`, milestones, release branches, and risk.
-- Simplified plugin development workflow: one-issue-at-a-time root cause, implementation, tests, live proof, focused commit, and PR preparation using `wp-expert` for implementation lanes.
+- Simplified plugin development workflow: one-issue-at-a-time root cause, implementation, tests, live proof, focused commit, and PR preparation using the narrowest specialist lane.
 - Simplified theme/FSE workflow: concrete design-token, pattern, template, responsive, visual parity, editor/frontend parity, and premium polish work with clear escalation for broad design decisions.
 - Project-level subagent orchestration: use `gpt-5.3-codex-spark` for bounded plugin/theme mappers, CI/test summarizers, and narrow fixers while reserving stronger models for final review/security/release decisions.
 - WordPress live-proof gates: plugin activation, admin/settings, REST, WP-CLI, block editor, Site Editor, frontend, WooCommerce, external APIs, local HTTPS, package, and WordPress.org release proof.
@@ -130,6 +152,10 @@ Install or reference the skill folders:
 
 ```text
 wp-expert/
+wp-plugin-expert/
+wp-theme-expert/
+wp-site-expert/
+wp-portfolio-cto/
 wp-product-orchestrator/
 wp-contributor/
 content-writer/
@@ -138,11 +164,19 @@ content-writer/
 Default invocations:
 
 ```text
-Use $wp-expert to review, implement, debug, harden, or improve a WordPress plugin, plugin product architecture, plugin supportability, WooCommerce store, headless/decoupled frontend, multisite network, technical SEO surface, privacy/data-governance flow, analytics/measurement plan, content model, database table architecture, disaster recovery plan, AI/LLM WordPress product, marketplace/freemium product, custom block/FSE theme from design, style guide/design-token translation, custom theme, custom child theme, hybrid theme migration, frontend performance quality gate, conversion-focused website, UX product strategy, information architecture, UX writing, conversion flow, brainstorming/planning decision, anti-overengineering review, image/screenshot pixel-parity implementation, premium enterprise design QA, VIP/enterprise launch readiness, local HTTPS testing issue, planning drift-control issue, enterprise acceptance criteria, test coverage decision, missing test coverage review, enterprise code-quality gate, duplicate-code/modularity issue, changelog/release notes, release compatibility policy, third-party API integration, threat model, performance profile, scale budget, theme, Ollie block theme/Ollie Pro site, Blocksy theme/Blocksy Pro site, React/admin app, block editor, admin UX, advanced troubleshooting issue, CI/CD workflow, or enterprise/VIP codebase.
+Use $wp-expert when the WordPress task is ambiguous and needs routing to the right specialist.
 
-Use $wp-expert with `shared/references/project-subagent-routing.md` when a WordPress app project needs Codex subagent profiles, skill-level routing, or efficient `gpt-5.3-codex-spark` usage.
+Use $wp-plugin-expert to review, implement, debug, harden, refactor, test, package, or release a WordPress plugin, plugin product architecture, REST/admin feature, custom table, third-party API integration, WooCommerce extension, WordPress.org plugin, or enterprise/VIP plugin codebase.
 
-Use $wp-product-orchestrator to triage, plan, delegate, validate, commit, push, or prepare PRs for autonomous WordPress plugin/theme product work.
+Use $wp-theme-expert to build, review, debug, or improve a WordPress theme, custom child theme, block/FSE theme, `theme.json`, templates, patterns, block styles, custom block, design-to-theme implementation, Ollie/Blocksy site, visual parity task, or editor/frontend parity issue.
+
+Use $wp-site-expert to plan, build, review, or improve a WordPress website, landing page, conversion flow, UX/IA, content model, SEO/AEO/GEO surface, analytics/tracking setup, accessibility, performance, responsive polish, or premium enterprise site experience.
+
+Use the relevant specialist skill with `shared/references/project-subagent-routing.md` when a WordPress app project needs Codex subagent profiles, skill-level routing, or efficient `gpt-5.3-codex-spark` usage; use $wp-expert only if the lane is ambiguous.
+
+Use $wp-portfolio-cto for cross-product WordPress portfolio governance, portfolio heartbeats, product-thread health, release conflicts, owner decision briefs, and shared workflow improvements.
+
+Use $wp-product-orchestrator to triage, plan, delegate, validate, commit, push, or prepare PRs for one WordPress plugin/theme product thread.
 
 Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-develop, WordPress.org, WordCamp.org, Trac tickets, GitHub PRs, patches, tests, docs, standards, AI-assisted contribution guidelines, enterprise code-quality gates, triage, release/backport work, or contributor communication.
 
@@ -169,6 +203,10 @@ This symlinks the skills into `~/.claude/skills/`, where Claude Code discovers p
 
 ```text
 ~/.claude/skills/wp-expert/SKILL.md
+~/.claude/skills/wp-plugin-expert/SKILL.md
+~/.claude/skills/wp-theme-expert/SKILL.md
+~/.claude/skills/wp-site-expert/SKILL.md
+~/.claude/skills/wp-portfolio-cto/SKILL.md
 ~/.claude/skills/wp-product-orchestrator/SKILL.md
 ~/.claude/skills/wp-contributor/SKILL.md
 ~/.claude/skills/content-writer/SKILL.md
@@ -180,7 +218,8 @@ Install selected skills only:
 
 ```bash
 bash scripts/install-global-skill-links.sh wp-expert
-bash scripts/install-global-skill-links.sh wp-expert wp-contributor
+bash scripts/install-global-skill-links.sh wp-plugin-expert wp-theme-expert wp-site-expert
+bash scripts/install-global-skill-links.sh wp-expert wp-plugin-expert wp-theme-expert wp-site-expert wp-portfolio-cto wp-product-orchestrator wp-contributor
 bash scripts/install-global-skill-links.sh content-writer
 ```
 
@@ -195,12 +234,16 @@ Verify Claude can see the skill files on disk:
 ```bash
 ls -la ~/.claude/skills
 test -f ~/.claude/skills/wp-expert/SKILL.md && echo "wp-expert installed"
+test -f ~/.claude/skills/wp-plugin-expert/SKILL.md && echo "wp-plugin-expert installed"
+test -f ~/.claude/skills/wp-theme-expert/SKILL.md && echo "wp-theme-expert installed"
+test -f ~/.claude/skills/wp-site-expert/SKILL.md && echo "wp-site-expert installed"
+test -f ~/.claude/skills/wp-portfolio-cto/SKILL.md && echo "wp-portfolio-cto installed"
 test -f ~/.claude/skills/wp-product-orchestrator/SKILL.md && echo "wp-product-orchestrator installed"
 test -f ~/.claude/skills/wp-contributor/SKILL.md && echo "wp-contributor installed"
 test -f ~/.claude/skills/content-writer/SKILL.md && echo "content-writer installed"
 ```
 
-After first install, fully restart Claude Code if the skills do not appear immediately. Then run `/help` or explicitly ask Claude Code to use `wp-expert`, `wp-contributor`, or `content-writer`.
+After first install, fully restart Claude Code if the skills do not appear immediately. Then run `/help` or explicitly ask Claude Code to use `wp-expert`, `wp-plugin-expert`, `wp-theme-expert`, `wp-site-expert`, `wp-portfolio-cto`, `wp-product-orchestrator`, `wp-contributor`, or `content-writer`.
 
 ### Install Globally For Codex
 
@@ -208,6 +251,10 @@ The same installer also symlinks skills into Codex's global skills directory:
 
 ```text
 ~/.codex/skills/wp-expert/SKILL.md
+~/.codex/skills/wp-plugin-expert/SKILL.md
+~/.codex/skills/wp-theme-expert/SKILL.md
+~/.codex/skills/wp-site-expert/SKILL.md
+~/.codex/skills/wp-portfolio-cto/SKILL.md
 ~/.codex/skills/wp-product-orchestrator/SKILL.md
 ~/.codex/skills/wp-contributor/SKILL.md
 ~/.codex/skills/content-writer/SKILL.md
@@ -245,6 +292,7 @@ The skills are intentionally token-efficient:
 
 - Each `SKILL.md` contains the core operating workflow and reference router.
 - Each `references/` directory contains deeper playbooks loaded only when relevant.
+- Clear plugin, theme, site, product, contribution, and content tasks should trigger the specialist directly; `wp-expert` is only the ambiguous-task router.
 - Skill frontmatter descriptions and default prompts are intentionally short because they affect baseline skill-selection context.
 - The shared `research-token-discipline.md` reference keeps web/research behavior explicit without duplicating guidance across skills.
 - The shared `session-continuity-pr-discipline.md` reference keeps new-chat context recovery and PR base-branch safety explicit across code-oriented skills.

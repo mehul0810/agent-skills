@@ -5,14 +5,15 @@ script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 repo_root="$(cd "$script_dir/.." && pwd)"
 
 max_description_words="${SKILL_DESCRIPTION_MAX_WORDS:-45}"
-max_body_words="${SKILL_BODY_MAX_WORDS:-1500}"
+max_body_words="${SKILL_BODY_MAX_WORDS:-1000}"
 max_agent_prompt_words="${AGENT_PROMPT_MAX_WORDS:-45}"
-max_reference_words="${REFERENCE_MAX_WORDS:-2200}"
+max_reference_words="${REFERENCE_MAX_WORDS:-1500}"
 verbose=0
 errors=0
 ref_count=0
 largest_ref_words=0
 largest_ref_path=""
+largest_ref_limit=0
 
 if [ "${1:-}" = "--verbose" ]; then
   verbose=1
@@ -86,6 +87,37 @@ check_limit() {
   fi
 }
 
+skill_body_limit() {
+  local skill_name="$1"
+  case "$skill_name" in
+    wp-portfolio-cto) echo "${WP_PORTFOLIO_CTO_BODY_MAX_WORDS:-850}" ;;
+    wp-product-orchestrator) echo "${WP_PRODUCT_ORCHESTRATOR_BODY_MAX_WORDS:-850}" ;;
+    wp-contributor) echo "${WP_CONTRIBUTOR_BODY_MAX_WORDS:-1300}" ;;
+    wp-expert) echo "${WP_EXPERT_BODY_MAX_WORDS:-900}" ;;
+    wp-plugin-expert|wp-theme-expert|wp-site-expert) echo "${WP_SPECIALIST_BODY_MAX_WORDS:-700}" ;;
+    content-writer) echo "${CONTENT_WRITER_BODY_MAX_WORDS:-800}" ;;
+    *) echo "$max_body_words" ;;
+  esac
+}
+
+reference_limit() {
+  local rel_path="$1"
+  case "$rel_path" in
+    wp-expert/references/custom-block-theme-from-design.md|\
+    wp-expert/references/blocksy-theme.md|\
+    wp-expert/references/ux-product-strategy-design-qa.md|\
+    wp-expert/references/ollie-block-theme.md|\
+    wp-expert/references/database-table-architecture-review.md|\
+    wp-expert/references/delivery-excellence.md|\
+    shared/references/cto-orchestration-operating-model.md)
+      echo "${LARGE_REFERENCE_MAX_WORDS:-2200}"
+      ;;
+    *)
+      echo "$max_reference_words"
+      ;;
+  esac
+}
+
 echo "Skill token budget audit"
 echo "========================"
 
@@ -98,10 +130,12 @@ while IFS= read -r skill_dir; do
   prompt_words="$(agent_prompt_words "$agent_file")"
 
   check_limit "$skill_name description" "$desc_words" "$max_description_words"
-  check_limit "$skill_name SKILL body" "$skill_body_words" "$max_body_words"
+  body_limit="$(skill_body_limit "$skill_name")"
+
+  check_limit "$skill_name SKILL body" "$skill_body_words" "$body_limit"
   check_limit "$skill_name agent default_prompt" "$prompt_words" "$max_agent_prompt_words"
 
-  echo "$skill_name: description ${desc_words}/${max_description_words}, body ${skill_body_words}/${max_body_words}, prompt ${prompt_words}/${max_agent_prompt_words} words"
+  echo "$skill_name: description ${desc_words}/${max_description_words}, body ${skill_body_words}/${body_limit}, prompt ${prompt_words}/${max_agent_prompt_words} words"
 done < <(find_skill_dirs)
 
 while IFS= read -r ref_file; do
@@ -112,12 +146,14 @@ while IFS= read -r ref_file; do
   if [ "$words" -gt "$largest_ref_words" ]; then
     largest_ref_words="$words"
     largest_ref_path="$rel_path"
+    largest_ref_limit="$(reference_limit "$rel_path")"
   fi
 
-  check_limit "$rel_path reference" "$words" "$max_reference_words"
+  ref_limit="$(reference_limit "$rel_path")"
+  check_limit "$rel_path reference" "$words" "$ref_limit"
 done < <(find "$repo_root" -path '*/references/*.md' -type f | sort)
 
-echo "References: checked $ref_count files; largest ${largest_ref_path:-none} ${largest_ref_words}/${max_reference_words} words"
+echo "References: checked $ref_count files; largest ${largest_ref_path:-none} ${largest_ref_words}/${largest_ref_limit:-$max_reference_words} words"
 
 if [ "$errors" -gt 0 ]; then
   echo "Token budget audit failed with $errors issue(s)." >&2

@@ -1,4 +1,4 @@
 interface:
   display_name: "WP Expert"
-  short_description: "Principal WordPress engineering workflows"
-  default_prompt: "Use $wp-expert for WordPress plugin, theme, block/FSE, WooCommerce, headless, multisite, admin UX, performance, security, WPVIP/enterprise, CI/CD, release, troubleshooting, architecture, estimate, review, or implementation work."
+  short_description: "Thin router for ambiguous WordPress work"
+  default_prompt: "Use $wp-expert only when WordPress work is ambiguous; otherwise use the plugin, theme, site, portfolio, product, contributor, or content specialist."
