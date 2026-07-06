@@ -96,6 +96,10 @@ Acceptable fallback evidence:
 - Browser runner with certificate errors ignored for local-only domains.
 - Screenshot from an available real browser if visual proof is required.
 
+## Design-Visible Issue Screenshot Rule
+
+When creating a GitHub issue for a design-visible problem, attach or link the current-state screenshot that shows the problem. This applies to admin UI, editor UI, frontend UI, styling, layout, UX, screenshots/assets, banners/icons, onboarding screens, and other visible output. If screenshot capture is blocked, put the exact blocker and closest safe evidence in the issue body instead of creating a screenshot-free design issue.
+
 ## Design-Visible PR Screenshot Rule
 
 If a PR changes admin, editor, frontend, style, layout, UX, or other design-visible output, include screenshot evidence in the PR body or linked artifacts. If screenshots cannot be captured, state the exact blocker and the closest available proof.

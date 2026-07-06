@@ -1,6 +1,6 @@
 # CTO Orchestration Operating Model
 
-Use this when `wp-portfolio-cto` manages cross-product governance or `wp-product-orchestrator` needs topology, intake, delegation, or readiness rules.
+Use this when `wp-portfolio-cto` manages cross-product governance or `wp-product-orchestrator` needs topology, intake, delegation, or readiness.
 
 ## Thread Topology
 
@@ -17,11 +17,11 @@ Use thread IDs, not aliases, for sensitive actions such as archive, pin, release
 
 ## Portfolio Thread Ownership
 
-The portfolio thread owns cross-product state, blockers, release conflicts, owner briefs, skill/self-improvement routing, and readiness recommendations after testing.
+The portfolio thread owns state, blockers, release conflicts, owner briefs, skill/self-improvement routing, and readiness recommendations.
 
-The portfolio thread should not do product-level work by default. It should steer, resolve cross-product conflicts, escalate owner decisions, and route product execution back to the relevant product thread.
+The portfolio thread should not do product-level work by default. It should steer, resolve cross-product conflicts, escalate owner decisions, and route product execution back to the relevant product thread. Only bypass a PO for super-critical work it still cannot do with GPT-5.5 and xhigh/max reasoning.
 
-For delegation recovery, request exact saved Codex projects for managed plugin repo roots when app UI setup is owner-only. Ask before interrupting, recreating, or forking user-created product-orchestrator threads.
+For delegation recovery, request exact saved Codex projects for managed plugin repo roots when app UI setup is owner-only. Ask before interrupting, recreating, or forking user-created product-orchestrator threads. Route substantive skill updates through a Skill PO lane/thread unless the fix is emergency coordination.
 
 The portfolio thread is accountable for product-orchestrator effectiveness, not just status relay. Compare the previous product `Next action` with current state. Repeated `idle`, `DONT_NOTIFY`, or unchanged next-action language is a governance signal.
 
@@ -34,7 +34,7 @@ Classify `PO loop slip` when any of these repeat across heartbeats on an active 
 
 Threshold: one heartbeat for untouched clean/green merge-ready non-production PRs; two unchanged idle/no-drift or repeated-next-action heartbeats for other executable work. Require execution, an exact blocker/tool failure, or burn-down split. Repeated idle is not quiet state.
 
-When a PO output is unclear, log-like, contradictory, passive, repeated, stalled, missing an expected action, or misaligned with the owner-approved objective, CTO must intervene without waiting for owner prompting. Ask why it is happening, what blocks it, and what will change before the next heartbeat, then choose one of: correct the PO, reduce/pause cadence, demand the exact blocker, recover/fork the product thread with owner approval, or route a skill/process patch.
+When a PO output is unclear, log-like, contradictory, passive, repeated, stalled, missing an expected action, or misaligned with the owner-approved objective, CTO must intervene without waiting for owner prompting. Ask why, what blocks it, and what changes before the next heartbeat, then correct the PO, reduce/pause cadence, demand the exact blocker, recover/fork with approval, or route a skill/process patch.
 
 ## Product Thread Ownership
 
@@ -43,13 +43,13 @@ Each product-orchestrator thread owns a plugin:
 - Backlog strategy and GitHub issue intake.
 - Web research and product-idea generation.
 - WordPress.org support triage.
-- WordPress.org Advanced View tracking: installs, downloads, tested version, ratings, support status, last updated, and download signals.
-- Plugin-page visibility: readme, tags, screenshots, banners/icons, changelog, Playground/preview, and docs.
-- Website/docs visibility: troubleshooting, release notes, and workflow-ready content without claiming unshipped features.
+- WordPress.org Advanced View tracking: installs, downloads, ratings, support, last updated, and signals.
+- Plugin-page visibility: readme, tags, screenshots, banners/icons, changelog, Playground, and docs.
+- Website/docs visibility: troubleshooting, release notes, and content without claiming unshipped features.
 - Milestone planning and release-train hygiene.
 - Delegation strategy for implementation/evidence workers.
 
-The primary product-thread objective is to drive the next release train to release-ready, not poll status. Keep selecting the highest-leverage release-readiness action until the train is ready for release approval.
+The primary product-thread objective is to drive the next release train to release-ready, not poll status. Keep selecting the highest-leverage action until the train is ready for release approval.
 
 ## Source Of Truth Hierarchy
 
@@ -66,7 +66,7 @@ Live-verify current GitHub state before release, milestone, branch, or planning 
 
 ## Bounded Live Check Policy
 
-For routine non-release portfolio/product heartbeats, batch GitHub live checks where possible. If GitHub/network access times out, retry at most once for a narrow missing signal, then report `live check unavailable` and use local remote-tracking, public, and repo evidence as fallback. Do not start implementation, merge, relabel, create issues, or make release/ready-state decisions when owner labels, comments, milestones, or PR state could not be live-verified.
+For routine non-release portfolio/product heartbeats, batch GitHub live checks where possible. If GitHub/network access times out, retry at most once for a narrow missing signal, then report `live check unavailable` and use local/public/repo evidence as fallback. Do not start implementation, merge, relabel, create issues, or make release/ready-state decisions when owner labels, comments, milestones, or PR state could not be live-verified.
 
 Routine product heartbeats must return promptly. If a quiet or post-intervention heartbeat cannot finish live checks quickly, return a partial owner-readable result with verified evidence, blocked checks, owner-decision change/no-change, and next retry/cadence instead of leaving the thread in progress.
 
@@ -120,7 +120,7 @@ These defaults are owner-configurable and should not override stronger signals.
 
 ## GitHub Issue-First Intake
 
-GitHub labels define ready state. Ensure `owner:codex` and `owner:me` exist in each managed repo. Use `owner:codex` for items ready for orchestrator/worker action. `owner:me` is not a stall for reversible non-release choices: document rationale, relabel `owner:codex`, and proceed/delegate. A milestone-assigned issue/PR is ready unless it hits a production/beta release gate.
+GitHub labels define ready state. Ensure `owner:codex` and `owner:me` exist in each managed repo. Use `owner:codex` for items ready. `owner:me` is not a stall for reversible non-release choices: document rationale, relabel `owner:codex`, and proceed/delegate. A milestone-assigned issue/PR is ready unless it hits a production/beta release gate.
 
 When `@mehul0810` explicitly names a work item or says to proceed, treat that as an approved backlog/intake signal, not an owner-decision blocker.
 
@@ -130,13 +130,15 @@ When the owner provides an exact issue, PR, release URL, or number, inspect that
 
 Product-idea issues require web research first. Competitor names may inform private research but not public issue titles/bodies.
 
+Design-visible issues need current screenshot/link. If blocked, state blocker plus route, environment, repro, or artifact path.
+
 Avoid duplicates and umbrella issues. Prefer one issue per PR. If a milestone is specified, use it. Otherwise assign the issue to the appropriate current milestone from release train, labels, scope, roadmap, and repo evidence.
 
-For owner-mentioned intake, duplicate-screen, create or update the issue, assign `@mehul0810`, classify it, and prioritize into the nearest appropriate milestone or release train among the next three. Missing milestone due dates or branch-policy gaps are not blanket blockers; recommend the milestone/order and escalate only unsafe ambiguity or missing metadata.
+For owner-mentioned intake, duplicate-screen, create/update the issue, assign `@mehul0810`, classify it, and prioritize into the nearest milestone or release train among the next three. Missing due dates or branch-policy gaps are not blanket blockers; recommend order and escalate unsafe ambiguity.
 
 Do not blindly drain every issue in a milestone. Product implementation starts only after the milestone/release scope and priority set are defined. If scope or priority is unclear, define the proposed set from repo evidence or request the decision before implementation.
 
-If the current milestone has no ready work, continue to the next milestone's ready work. If no suitable ready issue exists, create proactive review work from the codebase and ecosystem for scalability, modularity, performance, maintainability, dependency/tooling, UX/docs, WordPress.org visibility, accessibility, or sanitized hardening.
+If the current milestone has no ready work, continue to the next milestone's ready work. If none exists, create proactive review work for scale, modularity, performance, maintainability, dependency/tooling, UX/docs, WordPress.org visibility, accessibility, or sanitized hardening.
 
 During product sweeps, do not wait only for owner-provided ideas. Identify actionable bugs, UX friction, docs/readme gaps, listing opportunities, support signals, release-readiness gaps, ecosystem changes, and feature opportunities. Create duplicate-screened, PR-sized GitHub issues when evidence supports them.
 
@@ -153,7 +155,7 @@ If a product repeatedly completes evidence-rich sweeps yet creates no issues, su
 
 Use the narrowest relevant skill or capability for product-thread evidence: `wp-plugin-expert`, `wp-theme-expert`, or `wp-site-expert` for implementation/review; `content-writer` for docs/visibility; security skills for sanitized hardening; web search for current ecosystem/docs; WordPress.org review; and repo code review.
 
-Every created issue should include problem/context, expected outcome, acceptance criteria, non-goals, suggested milestone, labels, Assignee: `@mehul0810`, branch/base plan, risk, validation, and owner decisions if any.
+Every created issue should include problem/context, expected outcome, acceptance criteria, non-goals, milestone, labels, Assignee: `@mehul0810`, branch/base, risk, validation, proof needs when relevant, and owner decisions if any. Add model/reasoning only when it cuts worker planning waste.
 
 ## Automation Split
 
@@ -197,11 +199,11 @@ Escalate before prerelease/release creation, production deploy, ambiguous milest
 
 Reserve `Owner decisions needed` for production/beta release actions or non-reversible conflicts: creating production/beta releases or tags, publishing/deploying, declaring release approval, unsafe milestone inference, pricing/licensing/free-vs-pro, privacy/security posture, public API/schema/breaking contracts, destructive actions, or broad positioning. Normal product decisions, labels, branch prep, PR review or merge for good non-production PRs, dependency/tooling work, docs work, and reversible backlog prioritization should continue without waiting.
 
-When a release train is ready, notify the portfolio/owner with evidence: merged PRs, remaining open issues, CI/package validation, docs/release notes/readme/WordPress.org status, risks, and the exact production/beta release approval requested.
+When a release train is ready, notify the owner with evidence: merged PRs, remaining open issues, CI/package validation, docs/release notes/readme/WordPress.org status, risks, and the release approval requested.
 
 Security-sensitive findings must not become public issues and must not include exploit details, reproduction steps, or public `security issue` wording. Use sanitized hardening PRs with validation and minimal public detail.
 
-Do not require owner comments to start with `Codex:`. Comments and reviews are evidence to read before work, stale-PR closure, PR creation, issue closure, or rescope decisions; labels, milestones, and hard gates determine ready state.
+Do not require owner comments to start with `Codex:`. Read comments/reviews before work or rescope; labels, milestones, and hard gates determine ready state.
 
 ## Self-Improvement Trigger
 

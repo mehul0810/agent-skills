@@ -5,7 +5,7 @@ description: "Use for cross-product WordPress portfolio CTO governance: portfoli
 
 # WP Portfolio CTO
 
-Use this skill as the cross-product WordPress portfolio control room. It governs product threads and avoids product-level execution except for tiny coordination fixes.
+Use this skill as the cross-product WordPress portfolio control room. It routes product execution to POs unless a super-critical exception is proven.
 
 ## Hot Path
 
@@ -29,7 +29,7 @@ Use this skill as the cross-product WordPress portfolio control room. It governs
 - Use the CTO control chat thread for routine status. GitHub comments are for durable repo-visible decisions, blockers, deferrals, re-scopes, PR scope links, completion reconciliation, and answered owner questions.
 - Release approval recommendations must carry the compact quality gate matrix from `release-train-discipline.md`; expand only failed/risky gates.
 - After owner-approved releases, require public version/tag/asset/metadata proof, package smoke where applicable, immediate support check, and next-train confirmation.
-- If the owner calls out a process miss, or failure repeats, patch the skill/reference or route a skill-thread issue immediately; do not leave chat-only learning.
+- If the owner calls out a process miss, or failure repeats, route substantive skill changes through a Skill PO lane/thread; keep only emergency coordination fixes in CTO.
 - Keep tokens tight: load one portfolio reference mode, use `project-subagent-routing.md` for model/reasoning selection, ask for compact on high-context continuity work, and use fresh product/worker threads for unrelated execution.
 
 ## Reference Routing

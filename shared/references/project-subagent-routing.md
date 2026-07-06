@@ -47,11 +47,11 @@ Raise concurrency only after the repo workflow is proven. Keep `max_depth = 1` u
 
 ## Model And Reasoning Routing
 
-Use the cheapest model/reasoning combination that can safely produce the needed evidence. Escalate only when ambiguity, irreversible decisions, release impact, security/privacy, migrations, or architecture risk is real.
+Use the lowest suitable available model and reasoning level that can safely produce the needed evidence. Treat this as dynamic model and reasoning allocation. Escalate only when ambiguity, irreversible decisions, release impact, security/privacy, migrations, or architecture risk is real.
 
 - Portfolio heartbeat/sweep: compact source-of-truth sweep; low or medium reasoning. The active acceleration default is every 30 minutes, but lower cadence is preferred when the sweep is mostly quiet. Use high only for release conflict resolution, owner decision briefs, protected-thread recovery, or cross-product governance changes.
 - Product hourly heartbeat or 15-minute acceleration heartbeat: medium reasoning by default. Prefer 15-minute cadence only for active release trains/PRs/CI/executable `owner:codex` work; otherwise 30-60 minutes or pause. Use high only for release-ready synthesis, ambiguous milestone scope, risky PR merge/release decisions, security/privacy posture, schema/data migration, or product thread topology drift.
-- Worker implementation: match the specialist skill and artifact. Use `gpt-5.3-codex-spark` or another approved fast/lower-cost model for bounded mapping, issue intake, docs, test evidence, simple CI triage, narrow fixes with exact files, and explicit validation commands.
+- Worker implementation: match the specialist skill and artifact. Product POs should start subagents/worktrees on the lowest suitable available model and reasoning level. Use `gpt-5.3-codex-spark` or another approved fast/lower-cost model for bounded mapping, issue intake, docs, test evidence, simple CI triage, narrow fixes with exact files, and explicit validation commands.
 - Stronger worker/reviewer model: use for architecture, security, privacy, public API contracts, data migrations, VIP/high-scale performance, release blockers, final PR review, base-branch decisions, or unclear implementation paths.
 - Screenshots/design proof: use a fast model for explicit screenshot capture or visual proof. Escalate only when visual regression judgment, UX tradeoffs, accessibility impact, or design-system interpretation is complex.
 - Web/current research: keep bounded, prefer official/primary sources, summarize only decision-relevant changes, and use high reasoning only when the result is cross-product, release-blocking, security-sensitive, or architecture-shaping.

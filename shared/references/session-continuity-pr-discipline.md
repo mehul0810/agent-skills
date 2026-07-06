@@ -113,6 +113,7 @@ In the PR body, include:
 - Base branch and why it was chosen.
 - Linked issue/milestone/release target.
 - Scope summary and intentionally excluded work.
+- After-fix screenshot or linked artifact when the PR changes visible admin, editor, frontend, style, layout, UX, screenshots/assets, banners/icons, or onboarding output; if unavailable, include the exact proof blocker.
 - Validation commands actually run.
 - Release, migration, rollback, and deployment notes when relevant.
 

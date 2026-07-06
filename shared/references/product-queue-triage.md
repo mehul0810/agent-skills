@@ -65,7 +65,7 @@ User requests become GitHub issues first unless explicitly told not to. Product-
 
 Owner-mentioned work is approved intake signal, not an owner-decision blocker. When `@mehul0810` names work or says to proceed, duplicate-screen, create/update the issue, assign `@mehul0810`, classify it, and prioritize into the nearest appropriate milestone or release train among the next three.
 
-Do not blindly drain every issue in a milestone. Before implementation, define the milestone/release scope and priority set from evidence, roadmap, labels, blockers, impact, risk, and validation needs. Use `rolling-milestone-triage.md`. If unclear, create a decision brief or ask before implementation.
+Do not blindly drain every issue in a milestone. Before implementation, define the milestone/release scope and priority set from evidence, roadmap, labels, blockers, impact, and risk. Use `rolling-milestone-triage.md`. If unclear, create a decision brief or ask before implementation.
 
 A milestone-assigned issue/PR is ready unless it hits a production/beta release gate. `owner:me` is not a stall for reversible non-release choices: document rationale, relabel to `owner:codex`, and proceed/delegate. If `@mehul0810` answers a question and the item is relabeled `owner:codex`, resume when answered and relabeled `owner:codex` after reviewing the body, comments, and reviews. If the current milestone has no ready work, continue to the next milestone's ready work.
 
@@ -75,7 +75,7 @@ Before creating an issue:
 - Avoid broad umbrella issues; prefer one issue per PR.
 - Assign to `@mehul0810`.
 - Reuse existing labels and milestones when evidence supports them; label ready backlog `owner:codex`.
-- Include acceptance criteria, non-goals, branch/base plan, validation, risk, and owner decisions.
+- Include acceptance criteria, non-goals, branch/base, validation, proof needs, risk, model/reasoning, and owner decisions.
 - Milestone work must use `release/<release-version>` as branch and PR base, where `<release-version>` is the version/milestone title, not the GitHub milestone ID or sequence number. If the milestone title is not a release version, infer only from repo release policy/source-of-truth evidence; otherwise ask or create a product-thread decision brief. Do not create `release/3` unless the documented release version is literally `3`. Use `develop` only for unmilestoned integration or as the verified source for creating missing milestone branches.
 - If a wrong milestone-ID branch was created, preserve commits by replaying or reconciling them into the correct `release/<release-version>` branch, retarget open PRs, and do not delete the wrong branch without explicit owner approval.
 - Missing milestone due dates or branch-policy gaps are not blanket blockers for owner-approved intake. Create/update the issue and recommend the milestone/order; escalate only missing metadata or unsafe ambiguity.

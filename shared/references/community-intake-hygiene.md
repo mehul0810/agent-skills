@@ -34,6 +34,7 @@ Use this reference for external contributor/community PRs and issues, plus repo 
 - Prefer GitHub Issue Forms YAML for structured issue intake where practical.
 - Issue forms should separate bug report, feature request, docs/support gap, release/readiness task, and security/private guidance where appropriate.
 - Include fields that help both humans and AI tools: problem, user impact, reproduction steps, expected/actual behavior, environment, screenshots/logs, product/version, acceptance criteria, non-goals, validation expectations, owner decisions, sensitivity, and suggested milestone/type.
+- Design issue forms should require a current-state screenshot or an explicit reason screenshots are unavailable; PR templates should require an after-fix screenshot for design-visible work.
 - PR templates should require summary, linked issue, scope, implementation notes, screenshots/UI proof, validation run, risk/rollback, data/privacy/security impact, release/milestone target, follow-up issues, and contributor credit/co-author notes when applicable.
 
 ## WordPress Playground PR Preview
