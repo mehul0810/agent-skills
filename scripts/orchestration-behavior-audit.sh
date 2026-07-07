@@ -287,7 +287,7 @@ require_text "shared/references/delegation-protocol.md" "unusable worktree" "del
 require_text "shared/references/delegation-protocol.md" "Worktree Hygiene" "delegation worktree hygiene section"
 require_text "shared/references/repo-product-docs-contract.md" '`TESTING.md`' "repo docs testing doc support"
 require_text "shared/references/repo-product-docs-contract.md" '`PLAYGROUND.md`' "repo docs playground doc support"
-require_text "shared/references/repo-product-docs-contract.md" "audit repo-local docs during rehydration" "repo docs audit rule"
+require_text "shared/references/repo-product-docs-contract.md" "audit active products for missing, weak, or stale" "repo docs audit rule"
 require_text "shared/references/repo-product-docs-contract.md" "cross-product orchestration rules belong in the WP Expert skills" "repo docs boundary rule"
 require_text "shared/references/repo-product-docs-contract.md" "before screenshots" "repo docs issue screenshot rule"
 require_text "shared/references/self-improvement-loop.md" 'Empty completed or `systemError` turn.' "self-improvement empty turn class"
@@ -503,6 +503,10 @@ require_text "shared/references/repo-product-docs-contract.md" '`DESIGN.md`: con
 require_text "shared/references/repo-product-docs-contract.md" "not a heavy design-system spec" "repo DESIGN.md not heavy spec"
 require_text "shared/references/repo-product-docs-contract.md" "duplicate-screened product issues" "repo DESIGN.md duplicate-screened issue rule"
 require_text "shared/references/repo-product-docs-contract.md" "CleanLinks and Aculect first" "repo DESIGN.md product priority"
+require_text "shared/references/repo-product-docs-contract.md" "WordPress Design System" "repo design-system baseline"
+require_text "shared/references/repo-product-docs-contract.md" "brand colors" "repo brand-color layering rule"
+require_text "shared/references/repo-product-docs-contract.md" 'audit active products for missing, weak, or stale `AGENTS.md`, `DESIGN.md`, `TESTING.md`, and `RELEASE.md` guidance' "repo active-product doc audit rule"
+require_text "shared/references/repo-product-docs-contract.md" "Create focused GitHub issues instead of relying on chat instructions" "repo docs issue-not-chat rule"
 
 if [ "$errors" -gt 0 ]; then
   echo "orchestration behavior audit failed: $errors missing guardrail(s)" >&2
