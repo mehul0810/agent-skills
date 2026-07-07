@@ -45,6 +45,8 @@ For normal product orchestration, do not stall on `owner:me` if a decision is re
 
 Review and merge safe non-production PRs when they target `develop` or a release branch, are correctly based, scoped, non-draft, green, and have no explicit current owner stop on that exact PR. If the merge UI/tool/API blocks the action, report the exact tooling or approval-layer blocker; do not convert that into an owner-decision blocker.
 
+If the owner is unavailable and the blocker is non-destructive, local, reversible, and outside the hard-gate list, do not stop at wait-state language. Question the assumption, verify the repo/product reality, search current docs or web sources when needed, choose the safest viable unblock path, act, and then report the action plus residual risk.
+
 Escalate rather than guess when work is not reversible or crosses:
 
 - Product positioning, roadmap, pricing, licensing, free/pro entitlement, upsell, or telemetry.
@@ -72,6 +74,8 @@ Stop immediately and report exact next action when:
 - Validation fails outside the scoped change and cannot be safely fixed.
 - The best implementation requires a broader architecture/product decision.
 - A destructive command, migration, or production/beta release action would be needed.
+
+Proof-environment blockers, stale product-thread topology, local reversible config adjustments, repeated validation surprises, or weak workflow defaults are not stop conditions by themselves. Try the best safe local unblock or recovery path first, then escalate only the remaining owner-only action.
 
 ## Decision Brief Format
 

@@ -61,13 +61,13 @@ Treat these as separate intake lanes:
 
 ## Issue Intake
 
-User requests become GitHub issues first unless explicitly told not to. Product-idea issues require web research before filing. Competitor names may inform private research, but keep them out of public issue titles and bodies.
+User requests become GitHub issues first unless explicitly told not to. Product-idea issues require web research first. Competitor names may inform private research, but keep them out of public issue titles and bodies.
 
-Owner-mentioned work is approved intake signal, not an owner-decision blocker. When `@mehul0810` names work or says to proceed, duplicate-screen, create/update the issue, assign `@mehul0810`, classify it, and prioritize into the nearest appropriate milestone or release train among the next three.
+Owner-mentioned work is approved intake signal, not an owner-decision blocker. When `@mehul0810` names work or says to proceed, duplicate-screen, create/update the issue, assign `@mehul0810`, and prioritize it into the nearest appropriate milestone or release train among the next three.
 
-Do not blindly drain every issue in a milestone. Before implementation, define the milestone/release scope and priority set from evidence, roadmap, labels, blockers, impact, and risk. Use `rolling-milestone-triage.md`. If unclear, create a decision brief or ask before implementation.
+Do not blindly drain every issue in a milestone. Before implementation, define the milestone/release scope and priority set from evidence, labels, blockers, impact, and risk. Use `rolling-milestone-triage.md`. If unclear, create a decision brief or ask.
 
-A milestone-assigned issue/PR is ready unless it hits a production/beta release gate. `owner:me` is not a stall for reversible non-release choices: document rationale, relabel to `owner:codex`, and proceed/delegate. If `@mehul0810` answers a question and the item is relabeled `owner:codex`, resume when answered and relabeled `owner:codex` after reviewing the body, comments, and reviews. If the current milestone has no ready work, continue to the next milestone's ready work.
+A milestone-assigned issue/PR is ready unless it hits a production/beta release gate. `owner:me` is not a stall for reversible non-release choices: document rationale, relabel to `owner:codex`, and proceed/delegate. If `@mehul0810` answers, resume when answered and relabeled `owner:codex` after reviewing body/comments/reviews. If the current milestone has no ready work, continue to the next milestone's ready work.
 
 Before creating an issue:
 
@@ -76,21 +76,23 @@ Before creating an issue:
 - Assign to `@mehul0810`.
 - Reuse existing labels and milestones when evidence supports them; label ready backlog `owner:codex`.
 - Include acceptance criteria, non-goals, branch/base, validation, proof needs, risk, model/reasoning, and owner decisions.
-- Milestone work must use `release/<release-version>` as branch and PR base, where `<release-version>` is the version/milestone title, not the GitHub milestone ID or sequence number. If the milestone title is not a release version, infer only from repo release policy/source-of-truth evidence; otherwise ask or create a product-thread decision brief. Do not create `release/3` unless the documented release version is literally `3`. Use `develop` only for unmilestoned integration or as the verified source for creating missing milestone branches.
+- Milestone work must use `release/<release-version>` as branch and PR base, where `<release-version>` is the version/milestone title, not the GitHub milestone ID or sequence number. If the title is not a release version, infer from repo policy/source-of-truth evidence or ask. Use `develop` only for unmilestoned integration or creating missing milestone branches.
 - If a wrong milestone-ID branch was created, preserve commits by replaying or reconciling them into the correct `release/<release-version>` branch, retarget open PRs, and do not delete the wrong branch without explicit owner approval.
 - Missing milestone due dates or branch-policy gaps are not blanket blockers for owner-approved intake. Create/update the issue and recommend the milestone/order; escalate only missing metadata or unsafe ambiguity.
 - Dirty or behind primary checkouts block direct edits, not fresh scoped worktree delegation from a clean upstream branch.
 - If delegation is deferred, report the exact blocker: issue number, missing branch/base, missing owner decision, missing tool/project, or unsafe checkout state.
 
-If no ready issue exists, create proactive review work from code/ecosystem signals for scalability, modularity, performance, maintainability, dependency/tooling, UX/docs, WordPress.org visibility, accessibility, sanitized hardening, or authority/growth. Also identify bugs, UX friction, docs gaps, ecosystem changes. Keep each issue bounded, assigned, labeled `owner:codex`, tied to the nearest milestone when supported, and classified as: blocker, near-term improvement, research-needed idea, or owner-gated strategic choice.
+If no ready issue exists, create proactive review work from code/ecosystem signals for scalability, modularity, performance, maintainability, dependency/tooling, UX/docs, WordPress.org visibility, accessibility, sanitized hardening, or authority/growth. Keep each issue bounded and classified as: blocker, near-term improvement, research-needed idea, or owner-gated strategic choice.
+
+Convert real discoveries into issues unless they are safely fixed inside the current PR scope. Duplicate-screen first, then create a focused issue with observed symptom, why it matters, suspected source, affected files/surfaces, acceptance criteria, validation/proof expectation, risk, and whether docs need updating.
 
 Security-sensitive findings must not become public issues and must not include exploit details, reproduction steps, or public `security issue` wording. Use sanitized hardening PRs with validation and minimal public detail.
 
-For contributor/community PR courtesy, external issue courtesy, AI-friendly templates, and Playground preview hygiene, use `community-intake-hygiene.md`.
+Use `community-intake-hygiene.md` for contributor PR courtesy, external issue courtesy, AI-friendly templates, and Playground hygiene.
 
 ## Design Contract Intake
 
-Create focused GitHub issues to add or adapt `DESIGN.md` when a design gap exists. Duplicate-screen, assign to `@mehul0810`, reuse labels/milestones when supported, and include validation plus branch/base plan.
+Create focused GitHub issues to add or adapt `DESIGN.md` when a design gap exists. Duplicate-screen, assign to `@mehul0810`, reuse labels/milestones, and include validation plus branch/base.
 
 ## Dependency And Stale PR Triage
 
@@ -106,7 +108,7 @@ Check dependency/tooling and stale PRs.
 
 ## Adjacent Finding Triage
 
-Use `adjacent-finding-protocol.md`. Do not blindly expand the current PR; duplicate-screen the finding and route it to issue, defer, or owner-gated triage.
+Use `adjacent-finding-protocol.md`. Do not blindly expand the current PR; duplicate-screen the finding and route it to issue, existing issue, defer, or owner-gated triage. If fixed safely inside scope, mention it in PR summary/validation and update product docs only when it teaches a reusable repo-specific rule.
 
 ## Classification
 

@@ -1,6 +1,6 @@
 # CTO Orchestration Operating Model
 
-Use this when `wp-portfolio-cto` manages cross-product governance or `wp-product-orchestrator` needs topology, intake, delegation, or readiness.
+Use this when `wp-portfolio-cto` manages governance or `wp-product-orchestrator` needs topology, intake, delegation, or readiness.
 
 ## Thread Topology
 
@@ -91,10 +91,10 @@ For each product, verify/report minimum state:
 - Cross-product stale-worktree pressure or prunable worktree metadata.
 - Product-thread and delegated/skill work.
 
-Only after this sweep should the portfolio thread choose the highest-leverage governance action. If one product consumes owner attention, the final report still needs every product's verified status and next action/stop. Quiet products still use `No action after verification`.
+After this sweep, choose the highest-leverage governance action. If one product consumes owner attention, the final report still needs every product's verified status and next action/stop. Quiet products still use `No action after verification`.
 Exception reports should surface Open PRs/issues and CI/release blockers for non-quiet products.
 
-Portfolio heartbeats report stale-worktree accumulation as governance drift and route repo-specific cleanup to product threads.
+Portfolio heartbeats report stale-worktree accumulation as governance drift and route repo cleanup to product threads.
 
 ## Dynamic Heartbeat Scaling
 
@@ -159,8 +159,8 @@ Every created issue should include problem/context, expected outcome, acceptance
 
 ## Automation Split
 
-- Portfolio heartbeat: owner-configurable. Current acceleration default is every 30 minutes, cross-product only, focused on state, conflicts, product-thread health, and owner decisions.
-- Product heartbeat: owner-configurable. Current acceleration default is every 15 minutes, per plugin, focused on release readiness, intake, and planning.
+- Portfolio heartbeat: Current acceleration default is every 30 minutes; cross-product only.
+- Product heartbeat: Current acceleration default is every 15 minutes; per plugin.
 - Active release/CI heartbeat: temporary and high-frequency only while a specific PR/release is actively moving.
 
 If product work is being done in the portfolio heartbeat, classify it as workflow drift and route the work back to the product thread or update the skill/docs.
@@ -193,13 +193,15 @@ Follow official WordPress.org docs.
 
 ## Owner Decision Authority
 
-The orchestrator can flag conflicts with discipline, but the founder/owner makes final product decisions. If the owner overrides a recommendation, document the decision and proceed within guardrails.
+Owner overrides control final product decisions. Document the override and continue within guardrails.
 
-Escalate before prerelease/release creation, production deploy, ambiguous milestone retargeting, pricing/licensing/free-vs-pro changes, privacy/security posture changes, database/schema migrations, public API or breaking contract changes, or broad product positioning changes.
+Escalate before prerelease/release creation, production deploy, ambiguous milestone retargeting, pricing/licensing/free-vs-pro changes, privacy/security posture changes, database/schema migrations, public API or breaking contract changes, or broad positioning changes.
 
-Reserve `Owner decisions needed` for production/beta release actions or non-reversible conflicts: creating production/beta releases or tags, publishing/deploying, declaring release approval, unsafe milestone inference, pricing/licensing/free-vs-pro, privacy/security posture, public API/schema/breaking contracts, destructive actions, or broad positioning. Normal product decisions, labels, branch prep, PR review or merge for good non-production PRs, dependency/tooling work, docs work, and reversible backlog prioritization should continue without waiting.
+Reserve `Owner decisions needed` for production/beta release actions or non-reversible conflicts: production/beta releases or tags, publishing/deploying, release approval, unsafe milestone inference, pricing/licensing/free-vs-pro, privacy/security posture, public API/schema/breaking contracts, destructive actions, or broad positioning. Normal product decisions, labels, branch prep, PR review or merge for good non-production PRs, dependency/tooling, docs, and reversible prioritization should continue.
 
-When a release train is ready, notify the owner with evidence: merged PRs, remaining open issues, CI/package validation, docs/release notes/readme/WordPress.org status, risks, and the approval requested.
+Do not stop work merely because the owner is unavailable for blocker decisions. For non-destructive, local, reversible, non-hard-gated blockers, question assumptions, verify state, check current docs or official sources when needed, choose the best unblock path, act, and then report the residual risk or owner-only follow-up.
+
+When a release train is ready, notify the owner with evidence: merged PRs, remaining open issues, CI/package validation, docs/readme/WordPress.org status, risks, and the requested approval.
 
 Security-sensitive findings must not become public issues and must not include exploit details, reproduction steps, or public `security issue` wording. Use sanitized hardening PRs with validation and minimal public detail.
 

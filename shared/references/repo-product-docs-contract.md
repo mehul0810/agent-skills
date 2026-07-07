@@ -23,6 +23,8 @@ Do not create these files automatically for every repo. Recommend or create them
 
 Portfolio CTO and product POs should audit active products for missing, weak, or stale `AGENTS.md`, `DESIGN.md`, `TESTING.md`, and `RELEASE.md` guidance. Create focused GitHub issues instead of relying on chat instructions unless a tiny owner-approved docs fix is safer. Repo-specific workflow rules belong here; cross-product orchestration rules belong in the WP Expert skills and shared references.
 
+Treat product docs as self-improving, not one-time setup. When a finding changes how future workers should behave, add or queue a concise repo-specific rule in `AGENTS.md`, `DESIGN.md`, `TESTING.md`, `RELEASE.md`, architecture docs, or relevant README/docs instead of leaving it only in chat memory.
+
 ## When To Update Docs
 
 Update or recommend docs when:
@@ -34,5 +36,6 @@ Update or recommend docs when:
 - GitHub issue comments alone would hide important long-term context.
 - An active product still depends on chat-only instructions for workflow, design, testing, or release behavior.
 - A design-visible issue lacks before screenshots, or a design-visible PR lacks after screenshots.
+- Unexpected behavior, maintainability debt, weak non-obvious comments, missing test coverage, repeated validation/tooling surprises, or workflow friction teaches a reusable product-specific rule.
 
 Keep docs concise and repo-specific. Do not duplicate broad `wp-expert` or `wp-product-orchestrator` guidance in every product repo.

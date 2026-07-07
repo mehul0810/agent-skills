@@ -158,6 +158,7 @@ Trigger intervention without owner prompting when any of these happen:
 - The PO or worker ends with an empty completed turn or `systemError`.
 - The PO reports raw logs instead of owner-readable decisions.
 - Evidence-backed findings do not become issues.
+- Unexpected behavior, maintainability debt, weak non-obvious comments, missing test coverage, repeated validation/tooling surprises, or workflow friction are reported without creating or linking a focused issue.
 - Open human contributor PRs or new human-created issues are ignored in quiet-state reporting.
 - A UI/user-workflow PR is treated as ready without Playground or equivalent visual/browser proof.
 - Executable non-hard-gated work is deferred as an owner decision without explicit approval needed.
