@@ -14,6 +14,8 @@ Use these lightweight scenarios to verify one-product plugin/theme workflow rout
 | Milestone scope gate | "Work through every issue in this milestone." | `product-queue-triage.md` | Does not blindly drain the milestone; defines or requests the release scope and priority set before implementation. |
 | Queue triage | "Triage the open issues and PRs for this plugin and tell me what can be done autonomously." | `product-queue-triage.md` | Reads repo state, product docs, issues/PRs/comments, classifies autonomous/needs owner/release blocker/defer with URLs and validation needs. |
 | Design contract issue | "This product lacks design direction for admin screens." | `repo-product-docs-contract.md` | Creates or adapts `DESIGN.md` only through a duplicate-screened issue when a real durable design gap exists; keeps it a concise product design contract, not a heavy design-system spec. |
+| Repo-doc audit | "This repo has no AGENTS.md and the UI workflow keeps drifting." | `repo-product-docs-contract.md` | Audits repo-local docs, creates a focused issue for `AGENTS.md` or `DESIGN.md` when missing/stale, and keeps cross-product orchestration rules in the skill pack rather than the product repo. |
+| Authority growth lane | "Find the next evidence-backed website growth task for this plugin." | `authority-growth-lane.md` | Produces a bounded authority/growth brief or issue-ready task, routes execution to content/site/search lanes, keeps claims evidence-backed, and stays competitor-neutral in public wording. |
 | Owner-approved design intake | "@mehul0810 said add DESIGN.md for CleanLinks." | `product-queue-triage.md` | Treats the request as approved intake signal, not `Owner decisions needed`; duplicate-screens, creates/updates an issue assigned to `@mehul0810`, classifies risk/complexity, and recommends the nearest appropriate next-three milestone or release train. |
 | Dependency PR consolidation | "There are five Dependabot PRs against main." | `product-queue-triage.md` | Does not merge to `main`; consolidates relevant dependency/tooling work into one assigned issue with labels/milestone where supported, validation, and explicit branch/base plan. |
 | Stale PR cleanup | "Several PRs are stale or wrong-base." | `product-queue-triage.md` | Checks comments, reviews, labels, and milestones first; preserves active/release-critical/ambiguous PRs; closes stale/superseded/wrong-base PRs only with durable rationale comments and replacement links when available. |
@@ -28,6 +30,7 @@ Use these lightweight scenarios to verify one-product plugin/theme workflow rout
 | Stale worktree hygiene | "A PR merged and there are old clean worker worktrees plus prunable /private/tmp gitdirs." | `delegation-protocol.md` | Inventories `git worktree list --porcelain`, classifies active/prunable metadata/stale-clean/dirty-owner states, removes only safe reconciled worker worktrees with `git worktree remove`, runs `git worktree prune`, and preserves dirty, unknown, open-PR, active-thread, or user-owned worktrees. |
 | Unblock-first recovery | "Run the 10-minute product heartbeat again; exact saved project is still missing and nothing changed." | `delegation-protocol.md` | Treats setup-blocked as recovery state, completes direct non-code work, tries read-only mapping or safe manual worktree routes before owner notification, and frames final status as recovered work plus next action or owner-only action plus completed work. |
 | Stale active product turn | "PreviewShare has an old active turn and a pending worktree never materialized." | `delegation-protocol.md` | Classifies `Product thread topology drift`, escalates to portfolio, and avoids launching more work or queueing follow-ups into the stuck thread. |
+| Empty or errored turn | "The product thread completed with no material output and now shows systemError." | `heartbeat-checkin-discipline.md` | Classifies topology/process drift immediately, avoids calling it quiet, and returns a recovery/escalation path with exact blocker and next action. |
 | Cross-product escalation | "This product is ready but another product release may conflict." | `release-train-discipline.md` | Stops product-level release action, prepares release-ready evidence, and escalates sequencing/approval to `wp-portfolio-cto`. |
 | Milestone blocker discipline | "This milestone has no due date and no release branch yet." | `delegation-protocol.md` | Treats the due date as an owner decision, creates/uses `release/<release-version>` from verified development base when adopted and safe, using the version/milestone title rather than the GitHub milestone ID, and does not block scoped worker delegation only because the primary checkout is dirty. |
 | Release train gate | "0.6.0 is closed; create 0.6.1 beta now." | `release-train-discipline.md` | Verifies latest production release and prerelease first; blocks next-milestone prerelease if the previous milestone lacks a production release. |
@@ -67,6 +70,9 @@ Use these lightweight scenarios to verify one-product plugin/theme workflow rout
 - Did it reserve `Owner decisions needed` for production/beta release actions or non-reversible conflicts?
 - Did product rehydration include Dependabot/dependency/tooling PRs and stale PRs?
 - Did design-doc work create or adapt `DESIGN.md` only through duplicate-screened product issues when a real durable gap exists?
+- Did repo-doc audits cover `AGENTS.md`, `DESIGN.md`, and useful repo-specific docs like `TESTING.md` or `PLAYGROUND.md` when missing/stale?
+- Did design-visible issues use before screenshots and design-visible PRs use after screenshots or an explicit proof gap?
+- Did it create evidence-backed authority/growth tasks without making unsupported traffic or ranking claims?
 - Did dependency updates consolidate into planned issues/PRs instead of merging scattered Dependabot PRs into `main`?
 - Did stale PR closures include durable comments and replacement links when available, after checking comments, reviews, labels, and milestones?
 - Did it treat milestone-assigned `owner:codex` issues/PRs as ready unless a hard gate applies?
@@ -77,6 +83,7 @@ Use these lightweight scenarios to verify one-product plugin/theme workflow rout
 - Did product heartbeat cadence follow the owner-configurable default, currently every 15 minutes during acceleration, while portfolio cadence remained owned by `wp-portfolio-cto`?
 - Did routine heartbeat live checks batch GitHub queries, retry at most once for a narrow missing signal, then report `live check unavailable` without retry storms?
 - Did routine or quiet product heartbeats exit with a partial owner-readable result instead of staying in progress when long or timed-out live checks could not finish promptly?
+- Did one non-material heartbeat on a release blocker escalate instead of looping quietly?
 - Did it avoid product mutation, implementation delegation, relabeling, or release decisions when owner labels/comments, milestones, PR state, or CI could not be live-verified?
 - Did it continue normal product decisions, issue creation, labels, branch prep, good non-production PR review/merge, dependency/tooling work, docs work, and reversible prioritization without waiting?
 - Did it create bounded proactive review work from codebase and current ecosystem signals when no suitable ready issue exists?
@@ -104,6 +111,7 @@ Use these lightweight scenarios to verify one-product plugin/theme workflow rout
 - Did it preserve dirty, open-PR/issue, active-thread, unknown-branch, and user-owned worktrees unless explicit confirmation exists?
 - Did it avoid raw folder deletion for real worktrees and add screenshot/proof notes only when cleanup changed active admin/plugin-screen UI?
 - Did it classify non-materialized, detached, or wrong-base worker worktrees as unusable instead of retrying the same broken path?
+- Did it treat empty completed turns, `systemError`, wrong path/base/model lane, missing issue/PR proof, and repeated owner-instruction drift as topology/process drift?
 - Did setup-blocked product heartbeats attempt direct non-code work, read-only mapping, or safe manual worktree recovery before owner notification?
 - Did final status avoid "blocked because X" and instead say what was recovered/completed plus the next action or owner-only action?
 - Did stale active/inProgress product turns escalate to portfolio instead of accumulating more work in the stuck thread?

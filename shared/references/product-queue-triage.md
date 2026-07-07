@@ -14,7 +14,7 @@ Every product heartbeat compares previous `Next action` with queue state. Repeat
 
 `DONT_NOTIFY` is valid only when no eligible execution remains, or every issue/PR is owner-gated, blocked, failing, draft, wrong-base with recovery, or deliberately deferred.
 
-Escalate to portfolio CTO when executable work stays unchanged for two heartbeats, or one heartbeat for merge-ready PRs.
+Escalate to portfolio CTO when executable work stays unchanged for two heartbeats, or one heartbeat for merge-ready PRs or release blockers.
 
 ## Start With Repo State
 
@@ -28,7 +28,7 @@ git branch -a --list '*release*' '*hotfix*' '*support*' '*maintenance*' '*develo
 gh repo view --json nameWithOwner,defaultBranchRef,url
 ```
 
-Read repo policy: `AGENTS.md`, `PRODUCT.md`, `RELEASE.md`, changelog, `readme.txt`, labels, and milestones.
+Read policy: `AGENTS.md`, `PRODUCT.md`, `RELEASE.md`, `DESIGN.md`, optional `TESTING.md`/`PLAYGROUND.md`, changelog, `readme.txt`, labels, milestone data.
 
 Ensure `owner:codex` and `owner:me` labels exist in each managed repo. Labels define ready state: `owner:codex` is ready for orchestrator/worker action; `owner:me` marks a question, but reversible non-release choices can be resolved and relabeled `owner:codex`.
 
@@ -82,7 +82,7 @@ Before creating an issue:
 - Dirty or behind primary checkouts block direct edits, not fresh scoped worktree delegation from a clean upstream branch.
 - If delegation is deferred, report the exact blocker: issue number, missing branch/base, missing owner decision, missing tool/project, or unsafe checkout state.
 
-If no suitable ready issue exists, create proactive review work from code and ecosystem signals for scalability, modularity, performance, maintainability, dependency/tooling, UX/docs, WordPress.org visibility, accessibility, or sanitized hardening. Also identify bugs, UX friction, docs/readme gaps, and ecosystem changes. Keep each issue bounded, assigned, labeled `owner:codex`, tied to the nearest milestone when supported, and classified as: actionable release blocker, near-term improvement, research-needed idea, or owner-gated strategic choice.
+If no ready issue exists, create proactive review work from code/ecosystem signals for scalability, modularity, performance, maintainability, dependency/tooling, UX/docs, WordPress.org visibility, accessibility, sanitized hardening, or authority/growth. Also identify bugs, UX friction, docs gaps, ecosystem changes. Keep each issue bounded, assigned, labeled `owner:codex`, tied to the nearest milestone when supported, and classified as: blocker, near-term improvement, research-needed idea, or owner-gated strategic choice.
 
 Security-sensitive findings must not become public issues and must not include exploit details, reproduction steps, or public `security issue` wording. Use sanitized hardening PRs with validation and minimal public detail.
 

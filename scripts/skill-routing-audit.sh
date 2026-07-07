@@ -94,7 +94,7 @@ check_router_discipline() {
   require_text "shared/references/context-window-discipline.md" "Context decision: Compact|Fresh thread|Continue" "context decision status phrase"
   require_text "wp-product-orchestrator/SKILL.md" "Context decision: Compact|Fresh thread|Continue" "orchestrator context decision line"
   require_text "wp-product-orchestrator/SKILL.md" "Auto-route workers by changed artifact" "orchestrator worker auto routing"
-  require_text "wp-portfolio-cto/SKILL.md" "Route product-level backlog" "portfolio routes product execution"
+  require_text "wp-portfolio-cto/SKILL.md" "Route product backlog" "portfolio routes product execution"
   require_text "wp-plugin-expert/SKILL.md" "references/router.md" "plugin router pointer"
   require_text "wp-theme-expert/SKILL.md" "references/router.md" "theme router pointer"
   require_text "wp-site-expert/SKILL.md" "references/router.md" "site router pointer"

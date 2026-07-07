@@ -5,20 +5,20 @@ description: "Use for one WordPress plugin/theme product thread: product backlog
 
 # WP Product Orchestrator
 
-Use this as the long-lived product-orchestrator thread for one WordPress plugin/theme product. Cross-product portfolio governance and owner briefs go to `wp-portfolio-cto`.
+Use this for one long-lived plugin/theme product thread. Cross-product governance goes to `wp-portfolio-cto`.
 
 ## Hot Path Gates
 
-- Product heartbeat cadence is dynamic. Use 15 minutes for release trains/PRs/CI/executable `owner:codex` work, 30-60 minutes for quiet or owner-gated monitoring, and pause/delete when no useful signal exists. Reactivate on owner scope, regression, support, or release approval. Product threads drive the next release train to ready.
-- Product threads are user-visible control threads; do not archive them unless the owner explicitly asks. Alias: `<Product Name> PO`.
-- Start from the source of truth hierarchy and live-verify decisions.
-- Use GitHub issue-first intake unless told not to. Product-idea issues require web research first. Duplicate-screen issues/PRs, keep public text competitor-neutral, assign `@mehul0810`, and treat owner-mentioned work as approved intake signal. Design-visible issues need screenshot/blocker.
-- Do proactive discovery during product sweeps. Identify bugs, UX friction, docs/readme gaps, support, release gaps, ecosystem changes, and feature opportunities. Create duplicate-screened, PR-sized issues when evidence supports them.
-- Own backlog, design gaps, dependency/stale-PR hygiene, and WordPress.org/support visibility. Design-change PRs need screenshot proof showing fix or proof gap.
+- Product heartbeat cadence is dynamic. Use 15 minutes for release trains/PRs/CI/executable `owner:codex` work, 30-60 minutes for quiet or owner-gated monitoring, and pause/delete when no useful signal exists. Reactivate on owner scope, regression, or release approval. Product threads drive the next release train to ready.
+- Product threads are user-visible; do not archive unless the owner explicitly asks. Alias: `<Product Name> PO`.
+- Start from the source of truth hierarchy and live-verify.
+- Use GitHub issue-first intake unless told not to. Product-idea issues require web research first. Duplicate-screen issues/PRs, keep public text competitor-neutral, assign `@mehul0810`, and treat owner-mentioned work as approved intake signal. Design-visible issues need before screenshot/blocker.
+- Do proactive discovery during product sweeps. Identify bugs, UX friction, docs/readme gaps, release gaps, ecosystem changes, feature opportunities, and authority/growth tasks. Create duplicate-screened, PR-sized issues when evidence supports them.
+- Own backlog, repo-doc audits, design gaps, dependency/stale-PR hygiene, and WordPress.org visibility. Design-change PRs need screenshot proof or an explicit proof gap.
 - Do not blindly drain milestones. Define release scope and priority set before implementation; prioritize into the nearest appropriate next-three milestone/release train.
 - Avoid idea spam. Separate actionable release blockers, near-term improvements, research-needed ideas, and owner-gated strategic choices.
 - Active release trains must execute, not monitor. Compare previous `Next action`; execute/delegate repeated executable work or return the exact blocker. `DONT_NOTIFY` is valid only when no eligible execution remains.
-- Use delta-first product reporting. Include objective, PR/issues, blockers, evidence, next action, and stop; keep quiet status to one sentence.
+- Use delta-first reporting. Include objective, PR/issues, blockers, evidence, next action, and stop; keep quiet status to one sentence.
 - If routine checks time out, return a partial verified result plus blocked checks and next retry/cadence; do not stay in progress.
 - Plan before delegation. Direct execution is limited to rehydration, issue intake, owner briefs, PR/body/status synthesis, tiny fixes. With 2+ bounded blockers, delegate at least one bounded task or record why direct execution is better.
 - Delegated workers execute mapping, implementation, review, CI/test triage, dependency resolution, investigation, or evidence. They must not merge, release, close issues, retarget milestones, push to `main`, archive protected threads, subdelegate, or decide scope. Reconcile proof gaps, PR/issue state, stale worktrees, and heartbeats.
@@ -28,9 +28,9 @@ Use this as the long-lived product-orchestrator thread for one WordPress plugin/
 - Do not create a next milestone prerelease until the previous milestone has a production release. Milestones need due dates. Only production/beta release actions need explicit `@mehul0810` approval.
 - Labels define ready state: `owner:codex` means ready. `owner:me` is not a stall for reversible non-release choices; document, relabel, and proceed. Do not require `Codex:` comment prefixes.
 - Use the CTO control chat thread for status. Do not post GitHub comments for routine notifications; reserve them for durable decisions, blockers, deferrals, PR scope links, reconciliation, and questions.
-- Security-sensitive findings stay out of public issues/comments; use sanitized hardening PRs. Stale turns, missing workers, repeated blockers, wrong-cadence automations, or no action after two heartbeats are `Product thread topology drift`.
+- Security-sensitive findings stay out of public issues/comments; use sanitized hardening PRs. Empty done turns, `systemError`, stuck actives, missing workers/proof, wrong path/base/model, repeated owner-instruction drift, release blockers with one non-material heartbeat, or no action after two heartbeats are `Product thread topology drift`.
 - Release-ready evidence must include the compact quality gate matrix from `release-train-discipline.md`. If a gate does not apply, say `Not applicable - reason`. Expand only risky gates.
-- Prefer `wp-proof` for readiness, screenshots, package validation, and workflow proof. Use Studio for parity or local data.
+- Prefer `wp-proof` for readiness, screenshots, package validation, and workflow proof. Use Studio for parity or data.
 - Priority products: Aculect AI Companion and Perform. Premium-priority products: OneCaptcha and ThemeRouter.
 
 ## Reference Routing

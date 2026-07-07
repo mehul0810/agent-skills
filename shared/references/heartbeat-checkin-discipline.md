@@ -93,6 +93,23 @@ Cadence/automation changes
 
 For routine quiet monitoring, partial results should usually end with either a reduced retry cadence or `DONT_NOTIFY` on the next heartbeat if no new signal appears.
 
+## Thread Health And Drift
+
+Treat these as topology/process drift, not quiet status:
+
+- empty completed turns,
+- active turns with no material output,
+- `systemError` thread state,
+- worker non-materialization,
+- wrong path/base execution,
+- claimed issue/PR execution without proof,
+- wrong model/reasoning lane causing retries or weak evidence,
+- repeated quiet status while executable work exists.
+
+For release blockers, one non-material PO heartbeat is enough to escalate.
+
+Corrective action must be explicit: recover the worker/path, narrow the blocker, reduce/pause cadence, route a bounded worker, or escalate owner approval for protected-thread recovery.
+
 ## Portfolio CTO Template
 
 Use exception reporting plus a compact coverage line for quiet products. Do not repeat a long full-product list unless it materially helps. Translate PO outputs into owner-facing portfolio language instead of copying raw PO XML/messages.
@@ -135,14 +152,17 @@ CTO must not merely relay PO output. If a PO report is unclear, log-like, contra
 Trigger intervention without owner prompting when any of these happen:
 
 - The same quiet state appears twice while active work or a release train still exists.
+- A release blocker gets one non-material heartbeat.
 - The PO says ready but does not execute an approved beta or non-production action.
 - The thread stays in progress/stale without material output.
+- The PO or worker ends with an empty completed turn or `systemError`.
 - The PO reports raw logs instead of owner-readable decisions.
 - Evidence-backed findings do not become issues.
 - Open human contributor PRs or new human-created issues are ignored in quiet-state reporting.
 - A UI/user-workflow PR is treated as ready without Playground or equivalent visual/browser proof.
 - Executable non-hard-gated work is deferred as an owner decision without explicit approval needed.
 - Heartbeat cadence no longer matches product urgency.
+- Issue/PR work is reported without proof, or the worker used the wrong path/base/model lane.
 
 CTO response should be one of: correct the PO, reduce/pause cadence, request the exact blocker, recover/fork the product thread with owner approval when needed, or route a skill/process patch.
 

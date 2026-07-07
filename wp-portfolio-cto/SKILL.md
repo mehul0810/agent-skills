@@ -10,27 +10,27 @@ Use this skill as the cross-product WordPress portfolio control room. It routes 
 ## Hot Path
 
 - Portfolio heartbeat cadence is dynamic and owner-configurable. Use 15 minutes only when active releases/PRs/CI/executable `owner:codex` work justify it, 30-60 minutes for quiet or owner-gated monitoring, and pause/delete when there is no useful signal. The current portfolio acceleration default is every 30 minutes. Begin with a portfolio-wide sweep across every assigned product; include quiet products with `No action after verification`.
-- Current managed examples: Aculect AI Companion, WP Distraction Free View, OneSMTP, PreviewShare, and CleanLinks, plus Perform, OneCaptcha, and ThemeRouter.
-- Treat `CTO` as the owner-approved portfolio thread alias and `<Product Name> PO` as the product-thread alias, but use thread IDs for archive, pin, delegation, release, or destructive actions.
-- Own cross-product state, shared blockers, product-thread health, release conflicts, shared branch/release process, automation hygiene, owner decision briefs, skill/self-improvement routing, and production readiness recommendations after owner testing confirmation.
-- Route product-level backlog, issue intake, WordPress.org visibility, dependency/stale PR hygiene, release-readiness work, implementation, CI triage, and evidence gathering to the relevant `wp-product-orchestrator` product thread.
+- Examples: Aculect AI Companion, WP Distraction Free View, OneSMTP, PreviewShare, CleanLinks, Perform, OneCaptcha, and ThemeRouter.
+- Use `CTO` and `<Product Name> PO` as aliases, but use thread IDs for archive, pin, delegation, release, or destructive actions.
+- Own cross-product state, blockers, product-thread health, release conflicts, branch/release process, automation hygiene, owner decision briefs, skill/self-improvement routing, and production readiness after owner testing confirmation.
+- Route product backlog, issue intake, WordPress.org visibility, dependency/stale PR hygiene, release-readiness work, repo-doc audits, authority/growth tasks, implementation, CI triage, and evidence gathering to the relevant `wp-product-orchestrator` product thread.
 - Expect POs to create evidence-backed issues, not only execute owner-provided ones. Repeated evidence-rich sweeps with no resulting issues are a process signal to surface.
 - If portfolio work drifts into product execution, classify `Portfolio execution drift` and route it to the product thread.
-- Product thread idleness is a governance signal. Classify `PO loop slip` after two unchanged idle/no-drift heartbeats, or immediately for untouched clean/green merge-ready non-production PRs. Require execution, an exact blocker/tool failure, or burn-down.
-- Compare previous `Next action` to current state; repeated executable actions require intervention, not quiet status.
+- Product thread idleness is a governance signal. Classify `PO loop slip` after two unchanged idle/no-drift heartbeats, immediately for untouched clean/green merge-ready PRs, or after one non-material heartbeat on a release blocker. Require execution, an exact blocker/tool failure, or burn-down.
+- Compare previous `Next action` to state; repeated executable actions require intervention, not quiet status.
 - Use delta-first heartbeat reporting. Separate material changes, blockers, owner decisions, Codex-owned next actions, PO active work/delegations, quiet products with evidence, and cadence/automation changes.
 - Challenge stale high-frequency heartbeats that only return quiet status. Reduce cadence, pause/delete the heartbeat, or redirect it into a proactive discovery lane with a concrete output.
-- Use product priority to set discovery intensity. Most active products: Aculect AI Companion and Perform. Premium-priority products: OneCaptcha and ThemeRouter.
+- Set discovery intensity by product priority. Most active products: Aculect AI Companion and Perform. Premium-priority products: OneCaptcha and ThemeRouter.
 - Source of truth order: GitHub production releases/tags, prereleases/tags, milestones/issues/PRs, repo docs, local branch state, then memory/chat. Live-verify before release, milestone, branch, or planning decisions.
 - Do not archive user-created portfolio, product, or skill threads unless the owner explicitly asks. Only Codex-created implementation/evidence worker threads may be archived after reconciliation.
-- Ask before interrupting, recreating, or forking user-created product threads. For stale active turns or non-materialized workers, classify `Product thread topology drift` and prepare a recovery path.
+- Ask before interrupting, recreating, or forking user-created product threads. For empty completed turns, stuck actives, `systemError`, or non-materialized workers, classify `Product thread topology drift` and recover.
 - Treat stale worktrees and stale/paused/untitled/wrong-cadence automations as hygiene signals. Route repo cleanup to product threads; own obsolete automation correction/deletion.
-- Only production/beta release actions need explicit `@mehul0810` approval. Keep pricing/licensing/free-vs-pro, privacy/security posture, public API/schema/breaking contracts, destructive actions, and broad positioning behind approval.
+- Only production/beta release actions need explicit `@mehul0810` approval. Keep pricing/licensing, privacy/security posture, public API/schema changes, destructive actions, and broad positioning behind approval.
 - Use the CTO control chat thread for routine status. GitHub comments are for durable repo-visible decisions, blockers, deferrals, re-scopes, PR scope links, completion reconciliation, and answered owner questions.
-- Release approval recommendations must carry the compact quality gate matrix from `release-train-discipline.md`; expand only failed/risky gates.
+- Release approval briefs must carry the compact quality gate matrix from `release-train-discipline.md`; expand only failed/risky gates.
 - After owner-approved releases, require public version/tag/asset/metadata proof, package smoke where applicable, immediate support check, and next-train confirmation.
-- If the owner calls out a process miss, or failure repeats, route substantive skill changes through a Skill PO lane/thread; keep only emergency coordination fixes in CTO.
-- Keep tokens tight: load one portfolio reference mode, use `project-subagent-routing.md` for model/reasoning selection, ask for compact on high-context continuity work, and use fresh product/worker threads for unrelated execution.
+- If the owner calls out a process miss, or failure repeats, route substantive skill changes through a Skill PO lane/thread; direct-main publication is only for explicit CTO/owner approval after validation, otherwise use a PR.
+- Keep tokens tight: load one portfolio reference mode, use `project-subagent-routing.md` for model/reasoning selection, ask for compact on high-context continuity work, and use fresh threads for unrelated execution.
 
 ## Reference Routing
 

@@ -80,6 +80,10 @@ Use concrete labels:
 - Portfolio coverage drift.
 - Portfolio execution drift.
 - Product thread topology drift.
+- Empty completed or `systemError` turn.
+- Wrong model or reasoning allocation.
+- Missing issue or PR proof.
+- Repeated owner-instruction drift.
 - Scope creep or over-engineering.
 - Missing owner approval.
 - Release train violation.

@@ -17,11 +17,11 @@ Use thread IDs, not aliases, for sensitive actions such as archive, pin, release
 
 ## Portfolio Thread Ownership
 
-The portfolio thread owns state, blockers, release conflicts, owner briefs, skill/self-improvement routing, and readiness recommendations.
+The portfolio thread owns blockers, release conflicts, owner briefs, skill routing, and readiness.
 
 The portfolio thread should not do product-level work by default. It should steer, resolve cross-product conflicts, escalate owner decisions, and route product execution back to the relevant product thread. Only bypass a PO for super-critical work it still cannot do with GPT-5.5 and xhigh/max reasoning.
 
-For delegation recovery, request exact saved Codex projects for managed plugin repo roots when app UI setup is owner-only. Ask before interrupting, recreating, or forking user-created product-orchestrator threads. Route substantive skill updates through a Skill PO lane/thread unless the fix is emergency coordination.
+For delegation recovery, request exact saved Codex projects for managed plugin repo roots when app UI setup is owner-only. Ask before interrupting, recreating, or forking user-created product-orchestrator threads. Route substantive skill updates through a Skill PO lane/thread unless the fix is emergency coordination; direct-main Skill PO publication needs explicit CTO/owner approval.
 
 The portfolio thread is accountable for product-orchestrator effectiveness, not just status relay. Compare the previous product `Next action` with current state. Repeated `idle`, `DONT_NOTIFY`, or unchanged next-action language is a governance signal.
 
@@ -32,7 +32,7 @@ Classify `PO loop slip` when any of these repeat across heartbeats on an active 
 - The product thread says the next action is known but does not attempt it.
 - The product thread keeps monitoring a release train that still needs burn-down, validation, or reconciliation.
 
-Threshold: one heartbeat for untouched clean/green merge-ready non-production PRs; two unchanged idle/no-drift or repeated-next-action heartbeats for other executable work. Require execution, an exact blocker/tool failure, or burn-down split. Repeated idle is not quiet state.
+Threshold: one heartbeat for untouched clean/green merge-ready non-production PRs or release blockers; two unchanged idle/no-drift or repeated-next-action heartbeats for other executable work. Require execution, an exact blocker/tool failure, or burn-down split. Repeated idle is not quiet state.
 
 When a PO output is unclear, log-like, contradictory, passive, repeated, stalled, missing an expected action, or misaligned with the owner-approved objective, CTO must intervene without waiting for owner prompting. Ask why, what blocks it, and what changes before the next heartbeat, then correct the PO, reduce/pause cadence, demand the exact blocker, recover/fork with approval, or route a skill/process patch.
 
@@ -45,11 +45,11 @@ Each product-orchestrator thread owns a plugin:
 - WordPress.org support triage.
 - WordPress.org Advanced View tracking: installs, downloads, ratings, support, last updated, and signals.
 - Plugin-page visibility: readme, tags, screenshots, banners/icons, changelog, Playground, and docs.
-- Website/docs visibility: troubleshooting, release notes, and content without claiming unshipped features.
+- Website/docs visibility: troubleshooting, release notes, authority/growth content without claiming unshipped features.
 - Milestone planning and release-train hygiene.
 - Delegation strategy for implementation/evidence workers.
 
-The primary product-thread objective is to drive the next release train to release-ready, not poll status. Keep selecting the highest-leverage action until the train is ready for release approval.
+The primary product-thread objective is release-ready progress, not status polling. Keep selecting the highest-leverage action until the train is ready for release approval.
 
 ## Source Of Truth Hierarchy
 
@@ -58,7 +58,7 @@ Use this source of truth hierarchy for release, milestone, branch, planning, and
 1. GitHub production releases and tags.
 2. GitHub prereleases and tags.
 3. GitHub milestones, issues, and PRs.
-4. Repo docs: `AGENTS.md`, `PRODUCT.md`, `ROADMAP.md`, `RELEASE.md`.
+4. Repo docs: `AGENTS.md`, `PRODUCT.md`, `ROADMAP.md`, `RELEASE.md`, `DESIGN.md`, optional `TESTING.md`/`PLAYGROUND.md`.
 5. Local branch state.
 6. Memory and chat history.
 
@@ -74,7 +74,7 @@ For owner-gated beta/prerelease/production readiness, fresh live verification is
 
 ## Portfolio Sweep Discipline
 
-Every portfolio heartbeat/check-in must begin with a portfolio-wide sweep across assigned products before governance action. Managed products include Aculect AI Companion, WP Distraction Free View, OneSMTP, PreviewShare, CleanLinks, Perform, and OneCaptcha.
+Every portfolio heartbeat/check-in starts with a sweep across assigned products before governance action. Managed products include Aculect AI Companion, WP Distraction Free View, OneSMTP, PreviewShare, CleanLinks, Perform, and OneCaptcha.
 
 For each product, verify/report minimum state:
 
@@ -91,7 +91,7 @@ For each product, verify/report minimum state:
 - Cross-product stale-worktree pressure or prunable worktree metadata.
 - Product-thread and delegated/skill work.
 
-Only after this sweep should the portfolio thread choose the highest-leverage governance action. If one product consumes owner attention, the final report still needs every product's verified status and next action/stop condition. Quiet products must be included with `No action after verification`.
+Only after this sweep should the portfolio thread choose the highest-leverage governance action. If one product consumes owner attention, the final report still needs every product's verified status and next action/stop. Quiet products still use `No action after verification`.
 Exception reports should surface Open PRs/issues and CI/release blockers for non-quiet products.
 
 Portfolio heartbeats report stale-worktree accumulation as governance drift and route repo-specific cleanup to product threads.
@@ -128,9 +128,9 @@ Before creating an issue, search open issues, recently closed issues, open PRs, 
 
 When the owner provides an exact issue, PR, release URL, or number, inspect that exact entity first before broad queue scans or inference. If a broad scan excludes the referenced entity because it is closed, merged, or not open, report that finding instead of switching to other open items. If an earlier answer used the wrong entity, say so plainly before correcting course.
 
-Product-idea issues require web research first. Competitor names may inform private research but not public issue titles/bodies.
+Product-idea issues require web research first. Competitor names may inform private research but not public titles/bodies.
 
-Design-visible issues need current screenshot/link. If blocked, state blocker plus route, environment, repro, or artifact path.
+Design-visible issues need a before screenshot/link. If blocked, state blocker plus route, repro, or artifact path.
 
 Avoid duplicates and umbrella issues. Prefer one issue per PR. If a milestone is specified, use it. Otherwise assign the issue to the appropriate current milestone from release train, labels, scope, roadmap, and repo evidence.
 
@@ -140,7 +140,7 @@ Do not blindly drain every issue in a milestone. Product implementation starts o
 
 If the current milestone has no ready work, continue to the next milestone's ready work. If none exists, create proactive review work for scale, modularity, performance, maintainability, dependency/tooling, UX/docs, WordPress.org visibility, accessibility, or sanitized hardening.
 
-During product sweeps, do not wait only for owner-provided ideas. Identify actionable bugs, UX friction, docs/readme gaps, listing opportunities, support signals, release-readiness gaps, ecosystem changes, and feature opportunities. Create duplicate-screened, PR-sized GitHub issues when evidence supports them.
+During product sweeps, do not wait only for owner-provided ideas. Identify actionable bugs, UX friction, docs/readme gaps, listing opportunities, support signals, release-readiness gaps, ecosystem changes, feature opportunities, and authority/growth tasks. Create duplicate-screened, PR-sized GitHub issues when evidence supports them.
 
 Keep discovery disciplined:
 
@@ -199,7 +199,7 @@ Escalate before prerelease/release creation, production deploy, ambiguous milest
 
 Reserve `Owner decisions needed` for production/beta release actions or non-reversible conflicts: creating production/beta releases or tags, publishing/deploying, declaring release approval, unsafe milestone inference, pricing/licensing/free-vs-pro, privacy/security posture, public API/schema/breaking contracts, destructive actions, or broad positioning. Normal product decisions, labels, branch prep, PR review or merge for good non-production PRs, dependency/tooling work, docs work, and reversible backlog prioritization should continue without waiting.
 
-When a release train is ready, notify the owner with evidence: merged PRs, remaining open issues, CI/package validation, docs/release notes/readme/WordPress.org status, risks, and the release approval requested.
+When a release train is ready, notify the owner with evidence: merged PRs, remaining open issues, CI/package validation, docs/release notes/readme/WordPress.org status, risks, and the approval requested.
 
 Security-sensitive findings must not become public issues and must not include exploit details, reproduction steps, or public `security issue` wording. Use sanitized hardening PRs with validation and minimal public detail.
 

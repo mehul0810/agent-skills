@@ -45,9 +45,9 @@ Every CTO heartbeat/check-in must include:
 Delegation decision: Delegated|Direct|Deferred - <short reason>
 ```
 
-Use `Direct` only when work is smaller than delegation overhead, the environment cannot delegate, or the owner asked for it. Use `Deferred` when plan or blocker prevents safe delegation.
+Use `Direct` only when work is smaller than delegation overhead, delegation is unavailable, or the owner asked. Use `Deferred` when plan/blocker prevents delegation.
 
-Before declaring delegation unavailable, use tool discovery for project/thread/worktree/subagent surfaces. Look for `list_projects`, `create_thread`, `fork_thread`, `send_message_to_thread`, worktree/subagent tools, and shell/manual git worktree capability.
+Before declaring delegation unavailable, use tool discovery for project/thread/worktree/subagent tools. Look for `list_projects`, `create_thread`, `fork_thread`, `send_message_to_thread`, worktree/subagent tools, and shell/manual git worktree capability.
 
 ## Worktree Creation Guard
 
@@ -68,7 +68,7 @@ When using app-managed worktrees, pass an explicit verified base branch when the
 - The worktree is on the intended branch/base.
 - The worktree is not detached or on production `main` for implementation work.
 
-If a pending worktree does not materialize, or it lands detached/wrong-base, classify it as `unusable worktree` and stop retrying the same path until the repo-root/project/base problem is fixed.
+If a pending worktree does not materialize, or it lands detached/wrong-base, classify it as `unusable worktree` and stop retrying that path until the root/base problem is fixed.
 
 ## Worktree Hygiene
 
@@ -84,7 +84,7 @@ After a PR is merged/closed or delegated worker output is reconciled, remove saf
 
 Never remove a worktree that is dirty, tied to an open PR/issue, tied to an active Codex thread, on an unknown branch, or under a user-owned primary checkout without explicit confirmation.
 
-If visible plugin-folder cleanup affects active WordPress admin/plugin screens, include screenshot/proof notes only for the UI-visible state change. Skip screenshot/proof overhead for filesystem-only cleanup.
+If visible plugin-folder cleanup affects active WordPress admin/plugin screens, include screenshot/proof notes only for the UI-visible state change. Skip proof overhead for filesystem-only cleanup.
 
 ## Unblock-First Recovery Ladder
 
@@ -96,18 +96,18 @@ Choose the recovery path by work type:
 - Read-only code mapping or evidence: use subagent/explorer tools, or same-thread read-only inspection when safe.
 - Code changes: first try exact saved repo-root Codex project worktree. If missing, try another safe route: manual `git worktree` from the exact plugin repo root with a clean base, or a bounded worker/subagent operating on that explicit worktree/path, subject to sandbox and approval rules.
 
-If a repo setup problem can be solved safely through commands or an allowed escalation request, attempt recovery instead of reporting a blocker. Notify the owner only when the remaining action is owner-only: adding a saved Codex project in the app UI, approving recovery of a stale user-created product thread, branch-model changes, or privileged/release-sensitive actions.
+If a repo setup problem can be solved safely through commands or an allowed escalation request, attempt recovery instead of reporting a blocker. Notify the owner only when the remaining action is owner-only: adding a saved Codex project in the app UI, approving recovery of a stale user-created product thread, branch-model changes, or release-sensitive actions.
 
 Final status must not stop at "blocked because X". Use either:
 
 - `Recovered by doing Y; next work is Z`.
 - `Owner action required: approve/perform Y; meanwhile I completed A/B/C that did not need Y`.
 
-Stale active turn handling: if a product orchestrator has an older active/inProgress turn, or a pending worktree did not materialize, classify `Product thread topology drift`, escalate to the portfolio thread, and do not queue more work into the stuck thread.
+Stale active turn handling: if a product orchestrator has an older active/inProgress turn, an empty completed turn, `systemError`, missing proof, wrong path/base/model lane, repeated owner-instruction drift, or a pending worktree did not materialize, classify `Product thread topology drift`, escalate, and do not queue more work into that thread.
 
 Missing milestone due dates are metadata decisions, not blanket implementation blockers. If an issue has clear scope plus safe milestone/branch/base evidence, delegate implementation and brief only unsafe ambiguity.
 
-Dirty or behind primary checkouts block direct edits in that checkout. They do not block a fresh scoped Codex worktree worker from a clean upstream branch when branch/base evidence is safe.
+Dirty or behind primary checkouts block direct edits there. They do not block a fresh scoped Codex worktree worker from a clean upstream branch when branch/base evidence is safe.
 
 When delegation is deferred, report the exact hard blocker: issue number, missing branch/base, production/beta release approval, missing tool/project, or unsafe checkout state. For an explicit branch-model blocker such as OneSMTP #73, prepare a decision brief instead of passive polling.
 

@@ -75,6 +75,7 @@ Examples:
 - WordPress contribution mapper: `$wp-contributor`, primary reference matching the surface: `core-workflow.md`, `gutenberg-workflow.md`, or `meta-workflow.md`.
 - Portfolio governance: `$wp-portfolio-cto`, primary shared reference `cto-orchestration-operating-model.md`; route product execution to product threads.
 - Product workflow coordinator: `$wp-product-orchestrator`, primary shared reference `product-queue-triage.md` or `product-autonomy-permissions.md`; implementation details still route to one specialist lane.
+- Authority/growth strategist: `authority-growth-lane.md`, then `content-writer`, `seo-positioning-optimizer`, or `$wp-site-expert` based on whether the output is growth brief, search/content task, or website implementation.
 - PR/release reviewer: shared `session-continuity-pr-discipline.md`, plus the specialist skill and one implementation reference tied to the changed surface.
 
 Subagent prompt contract:
@@ -85,6 +86,7 @@ Return: findings, files touched or inspected, confidence, validation evidence, a
 Report adjacent findings separately and preserve scoped task boundaries unless immediate escalation is required.
 Turn Product Design feedback into acceptance criteria, design QA checks, or adjacent findings instead of vague taste commentary.
 Inspect the exact referenced artifact first, and if blocked, report attempted recovery plus the remaining proof gap instead of a generic tool failure.
+If the assigned model/reasoning lane cannot produce adequate proof, stop and report wrong model/reasoning allocation instead of brute-force retrying.
 Do not modify files unless explicitly assigned as a narrow fixer.
 Keep output under the requested line or bullet limit.
 ```
