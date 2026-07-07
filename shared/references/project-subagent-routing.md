@@ -57,7 +57,7 @@ Use the lowest suitable available model and reasoning level that can safely prod
 - Web/current research: keep bounded, prefer official/primary sources, summarize only decision-relevant changes, and use high reasoning only when the result is cross-product, release-blocking, security-sensitive, or architecture-shaping.
 - For material UI/workflow risk, route through `design-intelligence-routing.md` and then the narrowest Product Design skill instead of improvising broad design critique.
 
-If a configured model is unavailable in the current environment, do not silently substitute. Report the missing model and use the nearest approved project fallback. Do not spend a stronger model on routine polling, broad rereads, or evidence the source of truth can answer cheaply.
+If a configured model is unavailable in the current environment, do not silently substitute. Report the missing model and use the nearest approved project fallback. Do not spend a stronger model on routine polling, broad rereads, or evidence the source of truth can answer cheaply. When prompt/context is already large, do not batch broad parallel thread reads, full PR diffs, oversized issue bodies, or accumulated automation history. Read one product/thread/PR at a time with low limits, no diffs unless needed, and compressed summaries.
 
 ## Skill-Level Routing For Subagents
 
@@ -154,6 +154,7 @@ Before launching subagents:
 - Prefer read-only mode unless a narrow fixer has exact scope.
 - Avoid duplicate exploration across agents.
 - Tell subagents whether web access is allowed and which official docs to prefer.
+- Create issues one at a time with concise bodies after narrow duplicate-screening. Keep automation prompt updates as compressed summaries, not accumulated historical state.
 
 After subagents return:
 

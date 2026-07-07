@@ -16,11 +16,12 @@ Use this reference for CTO and PO heartbeat reporting. Check-ins must be delta-f
 
 ## Readability Rules
 
-- Use plain English section titles and short declarative sentences.
+- Use plain English section titles and short sentences.
 - Avoid long SHAs, raw API/XML shapes, or dense verification clauses unless identity proof is the point.
 - Put raw proof details only under `Evidence`, and keep them compact.
-- Translate workflow status into owner meaning: what changed, what is blocked, what needs a decision, and what Codex will do next.
+- Translate status into owner meaning: what changed, what is blocked, what needs a decision, and what Codex will do next.
 - If a checkout is dirty/stale, say whether it blocks current work and what would unblock it.
+- Do not paste long heartbeat XML, PR bodies, diffs, screenshot lists, or raw tool output into follow-up prompts. Use URLs, short deltas, and exact blocker summaries.
 
 ## `DONT_NOTIFY` Rule
 
@@ -66,6 +67,7 @@ Use a partial `NOTIFY` result for routine product heartbeats, quiet monitoring l
 - State whether owner decisions changed or stayed unchanged.
 - State the next retry point or cadence adjustment.
 - Keep the message owner-readable; do not dump retry logs.
+- If a connector returns `Bad Request`, retry once with a strictly smaller payload and report the payload-reduction rule instead of repeating the same call shape.
 
 Use this shape:
 

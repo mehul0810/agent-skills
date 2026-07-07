@@ -29,6 +29,7 @@ Use this reference when the active conversation is large, the task may drift bec
 - For product heartbeats, compact the product thread when continuing the same release train and context is high; create or use bounded worker threads for implementation/evidence work.
 - For small stateful execution that should not live in CTO or a product PO thread, prefer a disposable `Worker Threads` execution room with a clear stop condition, then reconcile and archive/delete it.
 - For a new product or unrelated product initiative, prefer a fresh worker/product thread and rehydrate from the source-of-truth hierarchy.
+- When prompt/context is already large, do not batch broad thread/GitHub reads. Read one product/thread/PR at a time with compact options: no outputs, no diffs unless needed, low limits, and URLs plus short deltas instead of pasted state.
 - Before asking the owner to compact, complete cheap source-of-truth checks that do not depend on old chat history; then state why compact is better than a fresh thread.
 - Stop high-context recurring product heartbeats after source-of-truth verification, one highest-leverage action/delegation, and a concise next stop condition. Do not keep polling stale history when there is no new issue, PR, CI, release, owner label, or repo signal.
 
