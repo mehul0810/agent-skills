@@ -23,6 +23,8 @@ Portfolio control threads should not do product-level work. Route product execut
 
 `Worker Threads` is the project for execution rooms. Create `CTO Worker <Task Name>` for small stateful execution. These workers are execution rooms, not control rooms: no roadmap authority, no direct product-thread contact except through CTO reconciliation, and no release/publish/merge/pricing/licensing/privacy/security/public-contract decisions.
 
+Worker lifecycle owner is the creator. If CTO creates a worker thread, CTO owns scope, verification, reconciliation, and archive/delete. If a PO creates a worker thread, that PO owns scope, verification, reconciliation, and archive/delete. POs report to CTO only for blockers, release-readiness changes, cross-product/process concerns, or owner decisions.
+
 ## Direct Execution Boundary
 
 The portfolio or product control thread may directly handle only the smallest orchestration actions: source-of-truth rehydration, duplicate-screened issue intake, owner decision briefs, PR/body/status synthesis, and very small fixes where delegation overhead is higher than execution.
@@ -116,30 +118,28 @@ Every delegated thread prompt must include:
 - Or explicit no-edit boundary when read-only.
 - GitHub issue URL plus milestone and branch/base evidence.
 - Issue branch name and PR base; never direct `main` for development work.
-- Allowed/forbidden scope plus files to inspect.
-- Expected validation commands.
-- Screenshot requirement when admin, editor, frontend, style, layout, UX, or other design-visible output changes; include screenshot evidence in the PR or state the exact proof gap.
-- Suggested model/reasoning when useful for token or risk control.
-- Explicit instruction: do not merge, release, close issues, retarget milestones, push to `main`, archive protected product/control threads, or make product decisions.
-- Explicit instruction: no subdelegation unless the parent CTO thread asks.
-- Stop condition and final-summary requirements.
+- Allowed/forbidden scope, files, and validation commands.
+- Screenshot requirement when admin, editor, frontend, style, layout, UX, or other design-visible output changes; include evidence or exact proof gap.
+- Suggested model/reasoning when useful.
+- Hard gates: no merge, release, issue close, milestone retarget, push to `main`, protected archive, product decision, or subdelegation unless the parent CTO thread asks.
+- Stop condition and summary requirements.
 
-Use worktrees when parallel implementation or CI repair would otherwise risk branch drift. Prefer read-only workers for mapping or evidence. Use narrow fixers only after the CTO thread has isolated files/checks.
+Use worktrees when parallel implementation or CI repair risks branch drift. Prefer read-only workers for mapping/evidence.
 
 ## Delegated Thread Lifecycle
 
-Before delegation, document strategy in the parent thread and write GitHub comments only for durable transitions. After worker return, inspect diff/evidence, confirm proof and validation, update PR/issue when needed, reconcile with the product PO/thread if product state changed, and archive/delete the disposable worker.
+Before delegation, document strategy in the parent thread and write GitHub comments only for durable transitions. After worker return, the worker creator inspects diff/evidence, confirms proof and validation, updates PR/issue when needed, reconciles product state, extracts durable lessons into issues/docs/skill updates, and archive/delete the disposable worker.
 
 ## Worker Reconciliation Checklist
 
-After worker output, PR merge/closure, or abandoned delegation, reconcile before unrelated work:
+After worker output, PR merge/closure, or abandonment:
 
 - Inspect diff/evidence, target issue, branch/base, and PR state.
-- Confirm validation and proof or the exact gap.
+- Confirm validation/proof or the exact gap.
 - Update GitHub only for state transitions, blockers, deferrals, or owner questions.
-- Classify remaining scope and remove/document safe stale-clean worktrees or prunable metadata.
+- Remove/document safe stale-clean worktrees or prunable metadata.
 - Stop/update temporary release/CI heartbeats.
-- Select the next train item or produce release-ready evidence.
-- Final worker summary must cover work done, files/issues/PRs touched, validation/proof, blockers, risks, and handoff needs.
+- Select the next train item or release-ready evidence.
+- Final worker summary covers work done, files/issues/PRs touched, validation/proof, blockers, risks, and handoff needs.
 
 If the CTO catches itself doing repeated direct implementation during a heartbeat, classify it under the self-improvement loop as `Missing delegation after strategy`, correct course by delegating the next bounded task when possible, and route the learning into the skill/reference or repo docs rather than chat memory.

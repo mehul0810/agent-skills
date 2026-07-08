@@ -6,6 +6,8 @@ Use this for direct specialist work in `wp-plugin-expert`, `wp-theme-expert`, an
 
 Make direct worker turns behave predictably: inspect the right thing first, choose the right proof level, recover from common blockers, avoid hidden assumptions, and finish with a bounded quality sweep instead of either scope creep or shallow completion claims.
 
+Workers operate inside the task loop. They execute one bounded spec from the parent CTO or PO, gather validation/proof, and return a final summary. They do not own roadmap, milestone, release, pricing, licensing, privacy/security posture, public contract, merge, publish, issue-closure, or thread-cleanup decisions unless the parent explicitly granted a safe non-hard-gated action.
+
 ## Direct Task Decision Contract
 
 Before implementing, reviewing, or answering:

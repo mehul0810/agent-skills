@@ -9,19 +9,20 @@ Use this skill as the cross-product WordPress portfolio control room. It routes 
 
 ## Hot Path
 
-- Portfolio heartbeat cadence is dynamic and owner-configurable. Use 15 minutes only when active releases/PRs/CI/executable `owner:codex` work justify it, 30-60 minutes for quiet or owner-gated monitoring, and pause/delete when there is no useful signal. The current portfolio acceleration default is every 30 minutes. Begin with a portfolio-wide sweep across every assigned product; include quiet products with `No action after verification`.
+- Portfolio heartbeat cadence is dynamic. Use 15 minutes only for active releases/PRs/CI/executable `owner:codex`, 30-60 minutes for quiet or owner-gated monitoring, and pause/delete when quiet. Default is every 30 minutes. Begin with a portfolio-wide sweep across every assigned product; include quiet products with `No action after verification`.
 - Examples: Aculect AI Companion, WP Distraction Free View, OneSMTP, PreviewShare, CleanLinks, Perform, OneCaptcha, and ThemeRouter.
 - Use `CTO` and `<Product Name> PO` as aliases, but use thread IDs for archive, pin, delegation, release, or destructive actions.
-- Own cross-product state, blockers, product-thread health, release conflicts, branch/release process, automation hygiene, owner decision briefs, skill/self-improvement routing, and production readiness after owner testing confirmation.
-- Route product backlog, issue intake, WordPress.org visibility, dependency/stale PR hygiene, release-readiness work, repo-doc audits, authority/growth tasks, implementation, CI triage, and evidence gathering to the relevant `wp-product-orchestrator` product thread.
+- Own cross-product state, blockers, thread health, release conflicts, branch/release process, automation hygiene, owner briefs, skill routing, and readiness after owner testing.
+- Route product backlog, issue intake, WordPress.org visibility, dependency/stale PR hygiene, release-readiness, repo-doc audits, authority/growth tasks, implementation, CI, and evidence to the relevant `wp-product-orchestrator`.
+- Use the loop-stack model: CTO oversight, skill/repo-doc system memory, PO product loops, worker task execution.
 - Expect POs to create evidence-backed issues, not only execute owner-provided ones. Repeated evidence-rich sweeps with no resulting issues are a process signal to surface.
 - If portfolio work drifts into product execution, classify `Portfolio execution drift` and route it to the product thread.
-- Product thread idleness is a governance signal. Classify `PO loop slip` after two unchanged idle/no-drift heartbeats, immediately for untouched clean/green merge-ready PRs, or after one non-material heartbeat on a release blocker. Require execution, an exact blocker/tool failure, or burn-down.
+- Product thread idleness is a governance signal. Classify `PO loop slip` after two unchanged idle/no-drift heartbeats, immediately for untouched clean/green merge-ready PRs, or after one non-material heartbeat on a release blocker. Require action or exact blocker.
 - Compare previous `Next action` to state; repeated executable actions require intervention, not quiet status.
-- Use delta-first heartbeat reporting. Separate material changes, blockers, owner decisions, Codex-owned next actions, PO active work/delegations, quiet products with evidence, and cadence/automation changes.
-- Challenge stale high-frequency heartbeats that only return quiet status. Reduce cadence, pause/delete the heartbeat, or redirect it into a proactive discovery lane with a concrete output.
+- Use delta-first heartbeat reporting: material changes, blockers, owner decisions, Codex-owned next actions, PO active work/delegations, quiet evidence, and cadence changes.
+- Challenge stale high-frequency heartbeats that only return quiet status. Reduce cadence, pause/delete, or redirect to discovery with output.
 - Set discovery intensity by product priority. Most active products: Aculect AI Companion and Perform. Premium-priority products: OneCaptcha and ThemeRouter.
-- Source of truth order: GitHub production releases/tags, prereleases/tags, milestones/issues/PRs, repo docs, local branch state, then memory/chat. Live-verify before release, milestone, branch, or planning decisions.
+- Source of truth order: GitHub production releases/tags, prereleases/tags, milestones/issues/PRs, repo docs, local branch, then memory/chat. Live-verify release, milestone, branch, and planning decisions.
 - Do not archive user-created portfolio, product, or skill threads unless the owner explicitly asks. Only Codex-created implementation/evidence worker threads may be archived after reconciliation.
 - Ask before interrupting, recreating, or forking user-created product threads. For empty completed turns, stuck actives, `systemError`, or non-materialized workers, classify `Product thread topology drift` and recover.
 - Treat stale worktrees and stale/paused/untitled/wrong-cadence automations as hygiene signals. Route repo cleanup to product threads; own obsolete automation correction/deletion.
