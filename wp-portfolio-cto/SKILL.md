@@ -9,7 +9,7 @@ Use this skill as the cross-product WordPress portfolio control room. It routes 
 
 ## Hot Path
 
-- Portfolio heartbeat cadence is dynamic. Use 15 minutes only for active releases/PRs/CI/executable `owner:codex`, 30-60 minutes for quiet or owner-gated monitoring, and pause/delete when quiet. Default is every 30 minutes. Begin with a compact exception sweep: active blockers, owner decisions, moving PRs/releases, unhealthy threads/workers, and material drift. Rotate quiet products instead of rereading every product on every heartbeat. Run a full portfolio sweep only for first intake, owner-requested audits, release-readiness synthesis, cross-product drift, or after a context reset.
+- Portfolio heartbeat cadence is dynamic: 15 minutes for active release/PR/CI work, 30-60 minutes for quiet monitoring, and pause/delete when quiet. Default is every 30 minutes. Begin with a compact exception sweep. Rotate quiet products instead of rereading every product on every heartbeat; use full sweeps only for intake, audits, readiness, cross-product drift, or context reset.
 - Examples: Aculect AI Companion, WP Distraction Free View, OneSMTP, PreviewShare, CleanLinks, Perform, OneCaptcha, and ThemeRouter.
 - Use `CTO` and `<Product Name> PO` as aliases, but use thread IDs for archive, pin, delegation, release, or destructive actions.
 - Own cross-product state, blockers, thread health, release conflicts, branch/release process, automation hygiene, owner briefs, skill routing, and readiness after owner testing.
@@ -35,14 +35,14 @@ Use this skill as the cross-product WordPress portfolio control room. It routes 
 
 ## Reference Routing
 
-- `../shared/references/cto-orchestration-operating-model.md`: topology, compact exception sweeps, source-of-truth, owner authority, automation, and status format.
-- `../shared/references/release-train-discipline.md`: release gates, branches, approval boundaries, readiness evidence, and post-release verification.
-- `../shared/references/delegation-protocol.md`: product-thread topology drift, protected-thread boundaries, worktree recovery, and delegation health.
-- `../shared/references/heartbeat-checkin-discipline.md`: delta-first CTO/PO heartbeat templates, quiet-status rules, blocker escalation, and compact coverage lines.
-- `../shared/references/rolling-milestone-triage.md`: dynamic current/next/horizon/patch train planning and milestone health signals.
-- `../shared/references/self-improvement-loop.md`: repeatable workflow failures, stale-learning lifecycle, durable artifact dedupe, and skill/repo-doc routing.
-- `../shared/references/project-subagent-routing.md`: model/reasoning routing for portfolio, product, worker, screenshot, and research tasks.
-- `../shared/references/context-window-discipline.md`: compact vs fresh-thread decisions for high-context portfolio/product/worker work.
+- `../shared/references/cto-orchestration-operating-model.md`: topology, source of truth, authority, automation.
+- `../shared/references/release-train-discipline.md`: release gates and readiness.
+- `../shared/references/delegation-protocol.md`: topology drift, worktrees, delegation health.
+- `../shared/references/heartbeat-checkin-discipline.md`: delta-first templates and escalation.
+- `../shared/references/rolling-milestone-triage.md`: milestone planning.
+- `../shared/references/self-improvement-loop.md`: failure learning and dedupe.
+- `../shared/references/project-subagent-routing.md`: model/reasoning routing.
+- `../shared/references/context-window-discipline.md`: compact/fresh-thread decisions.
 
 ## Fast Workflow
 
@@ -52,9 +52,3 @@ Use this skill as the cross-product WordPress portfolio control room. It routes 
 4. Choose the highest-leverage governance action: owner brief, release conflict, product-thread recovery, post-release check, automation cleanup, or process fix.
 5. Route product execution to the relevant product thread with clear scope and stop condition.
 6. Report `Context decision: Compact|Fresh thread|Continue - <reason>` when context is high.
-
-## Status Modes
-
-Portfolio check-in: follow `heartbeat-checkin-discipline.md`; prefer exception reporting plus a compact verified-quiet coverage line instead of repeated full-product lists.
-
-Release approval brief: product, target version, production/prerelease state, merged PRs, remaining issues, compact quality gate matrix, CI/package/live proof, docs/readme/WordPress.org status, risks, rollback, and exact approval requested.

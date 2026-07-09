@@ -36,6 +36,20 @@ Assumption/risk
 - Safe path: <what can still be done now>
 ```
 
+## Claim And Evidence Gate
+
+Never invent WordPress hooks, blocks, supports, REST behavior, package APIs, CLI flags, vendor features, issue/PR state, compatibility, design values, assets, links, screenshots, or validation results.
+
+- Verify project behavior in current code, tests, configuration, or runtime evidence.
+- Verify uncertain WordPress or vendor contracts in installed source or current official documentation.
+- Label visual values as supplied, measured, or inferred.
+- Separate confirmed fact, inference, and unresolved uncertainty in plans and reports.
+- Match every completion claim to the proof actually gathered; an unrun check is a proof gap, not a pass.
+
+## Owner Correction To Learning
+
+When the owner says the result or process is wrong, fix the immediate scoped state when safe, classify the failure, and decide whether it reveals a repeatable missing gate. Route repeatable product-specific lessons to repo docs/issues and cross-product lessons through `self-improvement-loop.md`; add or update an eval. Do not add a new rule when existing guidance already covers the failure: correct routing or enforcement instead.
+
 ## Worker Recovery Ladder
 
 If a direct task is blocked, recover in this order before declaring failure:

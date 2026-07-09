@@ -2,7 +2,7 @@
 
 Use this for WordPress websites, landing pages, lead funnels, pricing pages, checkout flows, booking flows, product pages, campaign pages, and CRO improvements that must improve conversion while preserving enterprise, VIP, accessibility, SEO, privacy, and performance standards.
 
-Use alongside `ux-product-strategy-design-qa.md`, `technical-seo-engineering.md`, `privacy-consent-data-governance.md`, `performance-profiling-scale-budgets.md`, `theme-frontend-performance-quality-gate.md`, and WooCommerce guidance when commerce is involved. For enterprise buyer-facing proof, role-based IA, trust-signal quality, and governed AI/workflow framing, also read `../../shared/references/enterprise-design-judgment.md`.
+Use this as the primary conversion reference. Add only one support reference for a confirmed UX, SEO, privacy, performance, theme, commerce, or enterprise-proof risk; do not load the complete website stack by default.
 
 ## Conversion Engineering Principles
 

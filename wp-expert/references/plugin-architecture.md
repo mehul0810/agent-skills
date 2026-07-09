@@ -1,6 +1,6 @@
 # Plugin Development And Architecture
 
-Use this for plugin creation, feature implementation, refactoring, custom tables, settings, REST/AJAX, async work, releases, and long-term maintainability. For add-ons/pro architecture, public extension contracts, feature flags, diagnostics contracts, and product-grade support surfaces, also read `plugin-product-architecture.md`. For diagnostics, support exports, Site Health, and recovery controls, also read `plugin-debuggability-supportability.md`.
+Use this for plugin creation, features, refactoring, custom tables, settings, REST/AJAX, async work, releases, and maintainability. Add one product-architecture or supportability reference only when that boundary is confirmed.
 
 ## Plugin Development Workflow
 

@@ -14,6 +14,8 @@ When a mistake is identified:
 6. Add or update behavior audit coverage when the mistake is repeatable.
 7. Do not leave important workflow lessons only in chat memory.
 
+Before adding guidance, prefer tightening routing, replacing weak wording, consolidating duplicates, adding a deterministic check, or extending an eval. Add a new rule only when the behavior is missing and repeatable evidence justifies its token cost.
+
 ## Learning Placement
 
 Place durable lessons where they can be enforced:
@@ -90,6 +92,10 @@ Use concrete labels:
 - Missing validation or live proof.
 - Missing GitHub communication.
 - Token waste from loading irrelevant references.
+- Invented or unverified claim.
+- Visual source inferred without inspection.
+- Missing asset-generation or provenance contract.
+- Owner correction fixed locally but not learned.
 - Duplicate durable artifact.
 - Stale local-ref conclusion.
 - Unclassified stale learning.

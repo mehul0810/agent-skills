@@ -1,6 +1,6 @@
 # Troubleshooting And Operations
 
-Use this for debugging broken WordPress sites, plugin/theme conflicts, fatal errors, REST/AJAX issues, cron/action queues, mail, media, cache, multisite, CI failures, and production incidents. For systematic symptom-to-probe matrices, conflict isolation, cache/CDN debugging, REST/auth decision trees, and production triage, also read `advanced-troubleshooting-decision-tree.md`. For plugin diagnostics and supportability surfaces, also read `plugin-debuggability-supportability.md`.
+Use this for broken sites, conflicts, fatal errors, REST/AJAX, cron/queues, mail, media, cache, multisite, CI, and incidents. Add one advanced decision-tree or plugin-supportability reference only when the confirmed symptom requires it.
 
 ## Incident Discipline
 

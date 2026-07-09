@@ -358,6 +358,17 @@ validate_orchestration_rules() {
   fi
 }
 
+validate_visual_wordpress_rules() {
+  echo ""
+  echo "=== Validating visual WordPress guardrails ==="
+
+  if bash "$repo_root/scripts/visual-wordpress-behavior-audit.sh"; then
+    log_success "Visual WordPress guardrails are present"
+  else
+    log_error "Visual WordPress guardrail audit failed"
+  fi
+}
+
 validate_routing_fanout() {
   echo ""
   echo "=== Validating skill routing fan-out ==="
@@ -426,6 +437,7 @@ main() {
     validate_routing_fanout
     validate_behavior_rules
     validate_orchestration_rules
+    validate_visual_wordpress_rules
   elif [ "$check_type" = "tokens" ]; then
     validate_token_budgets
   elif [ "$check_type" = "fanout" ]; then
@@ -434,6 +446,8 @@ main() {
     validate_behavior_rules
   elif [ "$check_type" = "orchestration" ]; then
     validate_orchestration_rules
+  elif [ "$check_type" = "visual" ]; then
+    validate_visual_wordpress_rules
   fi
 
   print_summary

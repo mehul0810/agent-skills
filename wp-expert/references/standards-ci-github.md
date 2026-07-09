@@ -1,6 +1,6 @@
 # Coding Standards, Linting, CI/CD, And GitHub Workflows
 
-Use this for standards setup, linting, static analysis, tests, GitHub Actions, PR workflows, release pipelines, and CI troubleshooting. For new chats, branch creation, release branch selection, and PR base safety, first apply `../shared/references/session-continuity-pr-discipline.md`. For test coverage decisions and missing-coverage review, read `test-coverage-discipline.md`. For duplicate-code and modularity checks, read `duplicate-code-modularity-review.md`. For changelogs and release notes, read `changelog-release-notes.md`. For runtime and tool minimums, also read `runtime-toolchain-version-policy.md`. For issue triage, PR descriptions, labels, estimates, milestones, and enterprise delivery workflow, also read `delivery-excellence.md`.
+Use this for standards, linting, static analysis, tests, GitHub Actions, PR workflows, release pipelines, and CI troubleshooting. Add only one supporting reference for the confirmed risk: session continuity/PR base, test coverage, duplicate code, changelog, tool versions, or delivery planning.
 
 ## Official Anchors
 

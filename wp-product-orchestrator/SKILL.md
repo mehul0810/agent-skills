@@ -31,6 +31,7 @@ Use this for one long-lived plugin/theme product thread. Cross-product governanc
 - Labels define ready state: `owner:codex` means ready. `owner:me` is not a stall for reversible non-release choices; document, relabel, and proceed. Do not require `Codex:` comment prefixes.
 - Use the CTO control chat thread for status. Do not post GitHub comments for routine notifications; reserve them for durable decisions, blockers, deferrals, PR scope links, reconciliation, and questions.
 - Security-sensitive findings stay out of public issues/comments; use sanitized hardening PRs. Empty done turns, `systemError`, stuck actives, missing workers/proof, wrong path/base/model, repeated owner-instruction drift, release blockers with one non-material heartbeat, or no action after two heartbeats are `Product thread topology drift`.
+- On repeatable failure, invoke the self-improvement loop; correct, dedupe, and add behavior coverage.
 - Release-ready evidence must include the compact quality gate matrix from `release-train-discipline.md`; say `Not applicable - reason` when a gate does not apply.
 - Prefer `wp-proof` for readiness, screenshots, package validation, and workflow proof.
 - Priority products: Aculect AI Companion and Perform. Premium-priority products: OneCaptcha and ThemeRouter.
@@ -38,7 +39,7 @@ Use this for one long-lived plugin/theme product thread. Cross-product governanc
 ## Reference Routing
 
 - Flow refs: `../shared/references/product-queue-triage.md`, `../shared/references/product-autonomy-permissions.md`, `../shared/references/release-train-discipline.md`, `../shared/references/github-communication-protocol.md`, `../shared/references/commit-pr-discipline.md`, `../shared/references/heartbeat-checkin-discipline.md`.
-- Delegation/proof/context refs: `../shared/references/delegation-protocol.md`, `../shared/references/context-window-discipline.md`, `../shared/references/project-subagent-routing.md`, `../shared/references/live-proof-wordpress.md`.
+- Delegation/proof/context refs: `../shared/references/delegation-protocol.md`, `../shared/references/context-window-discipline.md`, `../shared/references/project-subagent-routing.md`; release proof stays in `release-train-discipline.md`.
 - Load `../shared/references/cto-orchestration-operating-model.md` for topology or owner authority.
 
 ## Fast Workflow
@@ -51,9 +52,3 @@ Use this for one long-lived plugin/theme product thread. Cross-product governanc
 6. Reconcile PR/issue state, proof gaps, stale worktrees, and heartbeats.
 7. Synthesize release-ready evidence: merged PRs, remaining issues, quality gate matrix, CI/package validation, proof gaps, docs/readme/WordPress.org status, risks, exact approval.
 8. Escalate cross-product release conflicts, topology drift, repeated inactivity, or owner briefs to `wp-portfolio-cto`.
-
-## Status Modes
-
-Product check-in: follow `heartbeat-checkin-discipline.md`; report delta-first with objective, active PR/issues, blockers, owner-gated items, validation evidence, and next action.
-
-Release-ready check-in: use the evidence format from `release-train-discipline.md`, summarize the quality gate matrix, and ask only for approval.

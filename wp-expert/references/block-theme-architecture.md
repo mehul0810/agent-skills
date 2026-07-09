@@ -1,6 +1,6 @@
 # Block Theme And Block Architecture
 
-Use this before building or refactoring blocks, block editor features, or a block-based FSE theme. The goal is to choose the right WordPress-native layer before writing code. For style guides, design tokens, custom themes, or child themes on top of an existing theme, also read `style-guide-theme-translation.md`. For UX discovery, information architecture, premium/enterprise design QA, or pixel-faithful implementation from an image/screenshot/mockup, also read `ux-product-strategy-design-qa.md`.
+Use this before building or refactoring blocks, block editor features, or a block-based FSE theme. Choose the right WordPress-native layer before code. For a supplied visual target, use `../../shared/references/visual-to-wordpress-implementation.md` as primary and load this only for confirmed block/FSE architecture risk; do not chain generic design references by default.
 
 ## Official Anchors
 

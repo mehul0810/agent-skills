@@ -6,6 +6,8 @@ Use this when a WordPress task has material user-facing design or workflow risk.
 
 Use this for admin UI, onboarding, settings screens, dashboards, docs/website UX, redesigns, visual regressions, release UI proof, and owner screenshot feedback.
 
+For implementation from a screenshot, image, Figma frame, mockup, or chosen visual direction, use `visual-to-wordpress-implementation.md` as the single primary execution contract.
+
 Do not use this for low-risk backend fixes, release metadata, CI-only work, tiny copy/docs edits, or provider internals unless there is real user-facing UX risk.
 
 ## Router Rule
@@ -13,8 +15,11 @@ Do not use this for low-risk backend fixes, release metadata, CI-only work, tiny
 Use `product-design:index` as the router only. Then pick the narrowest Product Design skill for the need:
 
 - `product-design:audit`: audit, review, critique, or compare an existing product experience, screenshot, or rendered implementation.
-- `product-design:get-context` then `product-design:ideate`: explore directions when a redesign is needed and no chosen visual direction exists.
+- `product-design:ideate`: explore directions when a redesign is needed and no chosen visual direction exists; first prepare a compact context brief from inspected product evidence.
 - `product-design:image-to-code`: only after a source visual direction is selected.
+- `imagegen`: generate or edit production raster assets after an asset brief exists; it does not replace WordPress implementation or visual QA.
+
+Discover the named capability before relying on it. If unavailable, recover in order: inspect evidence and write the compact brief; perform a manual heuristic audit or text direction set; let the owning WordPress specialist implement the chosen direction; for missing raster assets use `imagegen`, licensed/supplied media, or an explicit placeholder. Do not invent a tool or stop without a safe fallback.
 
 Use design QA only after a prototype/build has both a source visual and a rendered implementation.
 

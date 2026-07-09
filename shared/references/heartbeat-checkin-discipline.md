@@ -35,12 +35,6 @@ Use this reference for CTO and PO heartbeat reporting. Check-ins must be delta-f
 
 The `DONT_NOTIFY` message must be one sentence with the product name, strongest quiet reason, and whether any owner decision exists.
 
-Example:
-
-```text
-DONT_NOTIFY - CleanLinks is quiet after verification because there is no new PR, CI, or release drift, and no owner decision is needed.
-```
-
 ## `NOTIFY` Structure
 
 Every `NOTIFY` check-in should separate these sections:
@@ -54,8 +48,6 @@ Evidence
 Quiet products with evidence
 Cadence/automation changes
 ```
-
-Omit empty sections only when the omission is obvious and reduces noise.
 
 ## Partial Result Rule
 
@@ -92,8 +84,6 @@ Evidence
 Cadence/automation changes
 - <next retry window, reduced cadence, or pause reason>.
 ```
-
-For routine quiet monitoring, partial results should usually end with either a reduced retry cadence or `DONT_NOTIFY` on the next heartbeat if no new signal appears.
 
 ## Thread Health And Drift
 
@@ -144,8 +134,7 @@ Cadence/automation changes
 - <heartbeat/product>: <reduced, increased, paused, resumed, or topology follow-up>; why.
 ```
 
-If a product remains blocked across repeated heartbeats, escalate the blocker instead of restating it passively. For stale product-thread topology, keep surfacing the exact owner decision needed until resolved or cadence is reduced/paused.
-Repeated quiet status should trigger cadence reduction/pause or a proactive discovery lane, not the same long quiet message.
+Escalate repeated blockers. For stale topology, surface the exact decision until resolved or cadence changes. Repeated quiet status should trigger cadence reduction/pause or a proactive discovery lane.
 
 ## CTO Intervention Trigger
 
@@ -172,8 +161,6 @@ CTO response should be one of: correct the PO, reduce/pause cadence, request the
 Portfolio 'NOTIFY' check-ins should include 'CTO intervention' when this happens so the owner sees what was corrected and why.
 
 ## Product PO Template
-
-Product reports should stay concrete:
 
 ```text
 NOTIFY - <product>
@@ -208,7 +195,7 @@ Stop condition
 
 ## Quiet Evidence
 
-Quiet/no-action claims should cite the best available evidence:
+Quiet/no-action claims cite the best evidence:
 
 - no new PR/issue/CI/release delta,
 - no executable `owner:codex` item,

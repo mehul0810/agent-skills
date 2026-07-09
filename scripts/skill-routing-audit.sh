@@ -81,6 +81,17 @@ check_all_md_links() {
   done < <(find "$repo_root" \( -path '*/SKILL.md' -o -path '*/references/router.md' \) -type f | sort)
 }
 
+check_reference_chain_discipline() {
+  local matches
+  matches="$(rg -n 'also read|Use it alongside|use .* alongside' "$repo_root/wp-expert/references" "$repo_root/shared/references" 2>/dev/null || true)"
+  if [ -n "$matches" ]; then
+    error "references contain broad read-chaining directives"
+    printf '%s\n' "$matches" >&2
+  else
+    ok "reference introductions avoid broad read chaining"
+  fi
+}
+
 check_router_discipline() {
   require_text "wp-expert/SKILL.md" "clear tasks should trigger the specialist directly" "wp-expert narrow trigger wording"
   require_text "wp-expert/SKILL.md" "Auto-select the specialist by the task's primary artifact or outcome" "wp-expert auto specialist selection"
@@ -113,6 +124,7 @@ check_router_discipline() {
 check_skill_fanout
 check_router_discipline
 check_all_md_links
+check_reference_chain_discipline
 
 if [ "$errors" -gt 0 ]; then
   echo "routing audit failed: $errors issue(s)" >&2

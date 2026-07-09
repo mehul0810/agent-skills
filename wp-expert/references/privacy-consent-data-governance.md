@@ -1,6 +1,6 @@
 # Privacy, Consent, And Data Governance
 
-Use this for GDPR/CCPA-style requirements, cookie consent, telemetry, data retention, export/erase support, audit logs, PII handling, third-party data sharing, and privacy reviews. For analytics, conversion tracking, data layer events, and consent-aware measurement, also read `analytics-measurement-engineering.md`.
+Use this for GDPR/CCPA-style requirements, consent, telemetry, retention, export/erase support, audit logs, PII, third-party sharing, and privacy reviews. Add `analytics-measurement-engineering.md` only when a confirmed measurement implementation risk requires it.
 
 ## Current Official Anchors
 

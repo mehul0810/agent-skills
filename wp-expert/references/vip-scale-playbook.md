@@ -1,6 +1,6 @@
 # WordPress VIP And Enterprise Scale Playbook
 
-Use this for VIP readiness, high-traffic performance, cache behavior, filesystem assumptions, PHPCS/VIPCS, and enterprise deployment risk. For go/no-go checks, launch matrices, launch windows, and post-launch checks, also read `vip-enterprise-launch-readiness.md`. Verify current official VIP documentation when exact platform policy matters.
+Use this for VIP readiness, high-traffic performance, cache behavior, filesystem assumptions, PHPCS/VIPCS, and deployment risk. Add `vip-enterprise-launch-readiness.md` only for a confirmed launch/go-no-go risk. Verify current official VIP docs when exact policy matters.
 
 ## Current Official Anchors
 
