@@ -32,6 +32,8 @@ Options:
   --behavior  Check critical agent behavior guardrails
   --orchestration
               Check product orchestrator CTO behavior guardrails
+  --visual    Check visual-to-WordPress behavior guardrails
+  --models    Check availability-first model routing
   --help      Show this message
 
 Examples:
@@ -369,6 +371,17 @@ validate_visual_wordpress_rules() {
   fi
 }
 
+validate_model_routing_rules() {
+  echo ""
+  echo "=== Validating availability-first model routing ==="
+
+  if bash "$repo_root/scripts/model-routing-audit.sh"; then
+    log_success "Availability-first model routing is valid"
+  else
+    log_error "Availability-first model routing audit failed"
+  fi
+}
+
 validate_routing_fanout() {
   echo ""
   echo "=== Validating skill routing fan-out ==="
@@ -438,6 +451,7 @@ main() {
     validate_behavior_rules
     validate_orchestration_rules
     validate_visual_wordpress_rules
+    validate_model_routing_rules
   elif [ "$check_type" = "tokens" ]; then
     validate_token_budgets
   elif [ "$check_type" = "fanout" ]; then
@@ -448,6 +462,8 @@ main() {
     validate_orchestration_rules
   elif [ "$check_type" = "visual" ]; then
     validate_visual_wordpress_rules
+  elif [ "$check_type" = "models" ]; then
+    validate_model_routing_rules
   fi
 
   print_summary

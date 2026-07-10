@@ -28,7 +28,7 @@ Use this skill as the thin WordPress engineering router. Prefer the narrow speci
 - Use `../shared/references/research-token-discipline.md` only for web-heavy, drift-prone, ambiguous, or broad exploration.
 - Use `../shared/references/context-window-discipline.md` when context is high or the task may need compact vs fresh-thread routing.
 - Use `../shared/references/session-continuity-pr-discipline.md` for new chats, resumed repo work, release branches, issues/PRs, and branch/PR creation. Never create a PR until the intended base branch is proven and passed explicitly.
-- Use `../shared/references/project-subagent-routing.md` for project subagents, skill routing, model assignment, and efficient `gpt-5.3-codex-spark` usage.
+- Use `../shared/references/project-subagent-routing.md` for project subagents, skill routing, and availability-first model/reasoning allocation.
 - Use `../shared/references/production-dependency-discipline.md` only for Composer/npm packaging, CI artifacts, release ZIP/SVN, deploy, or production dependency verification.
 - Use `../shared/references/live-proof-wordpress.md` before claiming WordPress runtime, editor, frontend, external integration, or release behavior is complete.
 - Apply enterprise/WPVIP standards by default: modular, performant, secure, maintainable, accessible, observable where useful, and covered by appropriate tests for meaningful behavior or risk.

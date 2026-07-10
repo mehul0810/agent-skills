@@ -284,7 +284,7 @@ Use `$wp-product-orchestrator` for one WordPress plugin/theme product's issue tr
 
 ### Code Standards & CI/CD
 
-**"I want project-level Codex subagents for WordPress work or better `gpt-5.3-codex-spark` usage"**
+**"I want project-level Codex subagents with efficient model/reasoning allocation"**
 - Load: `../shared/references/project-subagent-routing.md`
 - Supporting: the narrowest specialist skill, then one lane-specific reference per subagent; use `references/reference-routing-map.md` only if the lane is ambiguous
 
