@@ -35,6 +35,15 @@ require_text "skill-evals/visual-wordpress-scenarios.md" "Skills loaded" "eval c
 require_text "skill-evals/visual-wordpress-scenarios.md" "Unavailable Design Capability" "unavailable capability scenario"
 require_text "skill-evals/visual-wordpress-scenarios.md" "Hallucinated WordPress Contract" "hallucination scenario"
 require_text "skill-evals/visual-wordpress-scenarios.md" "Owner Correction Learning" "learning scenario"
+require_text "shared/references/core-first-site-theme-workflow.md" "get_all_registered()" "live block registry verification"
+require_text "shared/references/core-first-site-theme-workflow.md" 'Treat `core/tabs`, `core/table-of-contents`, `core/form`' "runtime-dependent documented blocks"
+require_text "shared/references/core-first-site-theme-workflow.md" 'prefer `core/icon`, `core/breadcrumbs`, `core/accordion`' "core-first block mapping"
+require_text "shared/references/core-first-site-theme-workflow.md" "parse_blocks()" "saved block structure proof"
+require_text "shared/references/core-first-site-theme-workflow.md" "do_blocks()" "saved block render proof"
+require_text "shared/references/core-first-site-theme-workflow.md" '`wp_template` or `wp_template_part` records' "Site Editor override precedence"
+require_text "skill-evals/core-first-site-theme-scenarios.md" "Documented block absent" "runtime block availability scenario"
+require_text "wp-site-expert/references/router.md" "core-first-site-theme-workflow.md" "site core-first routing"
+require_text "wp-theme-expert/references/router.md" "core-first-site-theme-workflow.md" "theme core-first routing"
 
 if [ "$errors" -gt 0 ]; then
   echo "visual WordPress behavior audit failed: $errors issue(s)" >&2

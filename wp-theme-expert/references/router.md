@@ -5,6 +5,7 @@ Use this router only after `wp-theme-expert` is selected. Load one primary refer
 ## Primary Routes
 
 - Block themes, FSE architecture, `theme.json`, templates, parts, patterns: `../../wp-expert/references/block-theme-architecture.md`.
+- Runtime block inventory, core-first composition, editable render proof, and Site Editor override precedence: `../../shared/references/core-first-site-theme-workflow.md`.
 - Screenshot/Figma/image/mockup to editable WordPress implementation: `../../shared/references/visual-to-wordpress-implementation.md`.
 - Detailed custom block-theme/FSE architecture after a confirmed ownership or block-mapping risk: `../../wp-expert/references/custom-block-theme-from-design.md`.
 - Classic themes, child themes, block editor compatibility: `../../wp-expert/references/theme-and-block-editor.md`.

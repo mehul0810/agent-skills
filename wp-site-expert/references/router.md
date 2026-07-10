@@ -10,6 +10,7 @@ Use this router only after `wp-site-expert` is selected. Load one primary refere
 - Technical SEO, canonicals, redirects, sitemaps, schema, crawl risk: `../../wp-expert/references/technical-seo-engineering.md`.
 - Analytics, GA4/GTM/data layer, consent-aware tracking: `../../wp-expert/references/analytics-measurement-engineering.md`.
 - Content modeling, CPT/taxonomy/meta/block/custom-table decisions: `../../wp-expert/references/content-modeling-information-architecture.md`.
+- Runtime block inventory, core-first page composition, editable render proof, and Site Editor override precedence: `../../shared/references/core-first-site-theme-workflow.md`.
 - Content migration, editorial scale, redirects, launch cutovers: `../../wp-expert/references/content-migration-editorial-scale.md`.
 - Accessibility, i18n, RTL, multilingual readiness: `../../wp-expert/references/accessibility-i18n-global-readiness.md`.
 - Performance profiling and Core Web Vitals: `../../wp-expert/references/performance-profiling-scale-budgets.md`.
