@@ -192,8 +192,8 @@ Use $content-writer to research, brief, draft, rewrite, audit, or refresh organi
 Clone this repo and run the installer from the repo root:
 
 ```bash
-git clone https://github.com/mehul0810/wp-expert-codex-skill.git
-cd wp-expert-codex-skill
+git clone https://github.com/mehul0810/agent-skills.git
+cd agent-skills
 
 # Install all skills globally.
 bash scripts/install-global-skill-links.sh
@@ -281,7 +281,7 @@ What it does:
 Install the starter kit into a WordPress plugin/theme repo:
 
 ```bash
-bash /path/to/wp-expert-codex-skill/scripts/install-product-agent-kit.sh /path/to/product-repo
+bash /path/to/agent-skills/scripts/install-product-agent-kit.sh /path/to/product-repo
 ```
 
 This copies `AGENTS.md`, `PRODUCT.md`, `.codex/config.toml`, `.codex/agents/*.toml`, and `.codex/prompts/*.md`. Existing files are skipped unless `--force` is passed.

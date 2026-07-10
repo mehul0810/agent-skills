@@ -48,7 +48,7 @@ cat /path/to/skill-repo/VERSION
 #### Option 1: Update via Git (Recommended)
 
 ```bash
-cd /path/to/wp-expert-codex-skill
+cd /path/to/agent-skills
 git pull origin main
 bash scripts/install-global-skill-links.sh
 ```
@@ -57,12 +57,12 @@ bash scripts/install-global-skill-links.sh
 
 ```bash
 # If you cloned the repo:
-cd /path/to/wp-expert-codex-skill
+cd /path/to/agent-skills
 git pull origin main
 bash scripts/install-global-skill-links.sh --force
 
 # If you downloaded a ZIP:
-cd wp-expert-codex-skill-main
+cd agent-skills-main
 bash scripts/install-global-skill-links.sh --force
 ```
 
@@ -155,14 +155,14 @@ If you prefer not to use Git:
 
 ### Step 1: Download Latest Version
 
-Visit [GitHub Releases](https://github.com/mehul0810/wp-expert-codex-skill/releases) and download the latest ZIP.
+Visit [GitHub Releases](https://github.com/mehul0810/agent-skills/releases) and download the latest ZIP.
 
 ### Step 2: Extract and Install
 
 ```bash
 # Extract the ZIP
-unzip wp-expert-codex-skill-main.zip
-cd wp-expert-codex-skill-main
+unzip agent-skills-main.zip
+cd agent-skills-main
 
 # Install globally
 bash scripts/install-global-skill-links.sh --force
@@ -185,7 +185,7 @@ Keep a regular schedule to check for updates:
 
 ```bash
 # Navigate to skill repo
-cd /path/to/wp-expert-codex-skill
+cd /path/to/agent-skills
 
 # Check for updates
 git fetch origin
