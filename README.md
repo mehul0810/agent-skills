@@ -12,7 +12,7 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - `content-writer`: organic search content writing for SEO, AEO, GEO, AI Overviews, AI Mode, answer engines, AI tools, briefs, outlines, drafts, audits, and content refreshes.
 - `shared/references/research-token-discipline.md`: reusable token-efficient reasoning, repo exploration, web search, validation, and output discipline used by both skills.
 - `shared/references/session-continuity-pr-discipline.md`: reusable new-chat context rehydration, release-branch detection, explicit PR base selection, and branch/PR safety used by code-oriented skills.
-- `shared/references/project-subagent-routing.md`: reusable project-level Codex subagent routing, model assignment, bounded parallel mapping/review, and efficient `gpt-5.3-codex-spark` usage used by code-oriented skills.
+- `shared/references/project-subagent-routing.md`: reusable project-level subagent routing, availability-first model/reasoning allocation, and bounded parallel mapping/review.
 - `shared/references/product-autonomy-permissions.md`: reusable autonomy boundaries, permission levels, stop conditions, and owner-decision format for product/plugin/theme workflows.
 - `shared/references/product-queue-triage.md`: reusable issue/PR queue triage, autonomous candidate selection, release-blocker detection, and owner-facing output format.
 - `shared/references/live-proof-wordpress.md`: reusable WordPress live-proof gates for plugins, themes, FSE, REST, WP-CLI, admin, frontend, integrations, and releases.
@@ -102,7 +102,7 @@ The detailed playbooks remain in `wp-expert/references/` and `shared/references/
 - Enterprise GitHub workflows: issue triage, labels, milestones, scoped commits, PR descriptions, review response discipline.
 - New-chat and PR branch discipline: rehydrate repo context, check release/hotfix/support branches, explicitly pass PR base branches, and verify PR `baseRefName` before reporting success.
 - Issue milestone to PR base discipline: when work belongs to an issue milestone, create PRs against the matching release/hotfix/support branch instead of defaulting to `main` or `trunk`.
-- Project-level Codex subagent routing: use `.codex/agents/*.toml` profiles, skill-level reference lanes, bounded read-only mappers/reviewers, and `gpt-5.3-codex-spark` for lower-risk parallel WordPress work.
+- Project-level Codex subagent routing: use model-free `.codex/agents/*.toml` templates, skill-level lanes, bounded mappers/reviewers, and runtime capability tiers.
 - Efficient tests and maintainable code comments/docblocks for onboarding and future regression prevention.
 - Enterprise acceptance criteria templates: definition-of-done gates for plugin features, themes, REST APIs, migrations, performance fixes, security fixes, and conversion pages.
 - Webpack, Composer, npm, dependency extraction, lockfiles, build scripts, and release artifact packaging.
@@ -120,7 +120,7 @@ The detailed playbooks remain in `wp-expert/references/` and `shared/references/
 - Product-aware autonomy boundaries: classify work as autonomous, needs owner, blocked, release blocker, or defer based on `PRODUCT.md`, milestones, release branches, and risk.
 - Simplified plugin development workflow: one-issue-at-a-time root cause, implementation, tests, live proof, focused commit, and PR preparation using the narrowest specialist lane.
 - Simplified theme/FSE workflow: concrete design-token, pattern, template, responsive, visual parity, editor/frontend parity, and premium polish work with clear escalation for broad design decisions.
-- Project-level subagent orchestration: use `gpt-5.3-codex-spark` for bounded plugin/theme mappers, CI/test summarizers, and narrow fixers while reserving stronger models for final review/security/release decisions.
+- Project-level subagent orchestration: use the lowest sufficient available tier for bounded mapping/fixing and the strongest suitable reasoning-capable tier for high-risk review or decisions.
 - WordPress live-proof gates: plugin activation, admin/settings, REST, WP-CLI, block editor, Site Editor, frontend, WooCommerce, external APIs, local HTTPS, package, and WordPress.org release proof.
 - Product-repo starter kit in `templates/product-repo/` plus `scripts/install-product-agent-kit.sh` to install `AGENTS.md`, `PRODUCT.md`, `.codex/agents`, and workflow prompts into plugin/theme repositories.
 
@@ -172,7 +172,7 @@ Use $wp-theme-expert to build, review, debug, or improve a WordPress theme, cust
 
 Use $wp-site-expert to plan, build, review, or improve a WordPress website, landing page, conversion flow, UX/IA, content model, SEO/AEO/GEO surface, analytics/tracking setup, accessibility, performance, responsive polish, or premium enterprise site experience.
 
-Use the relevant specialist skill with `shared/references/project-subagent-routing.md` when a WordPress app project needs Codex subagent profiles, skill-level routing, or efficient `gpt-5.3-codex-spark` usage; use $wp-expert only if the lane is ambiguous.
+Use the relevant specialist with `shared/references/project-subagent-routing.md` when a project needs subagent profiles, skill routing, or availability-first model/reasoning allocation; use $wp-expert only if the lane is ambiguous.
 
 Use $wp-portfolio-cto for cross-product WordPress portfolio governance, portfolio heartbeats, product-thread health, release conflicts, owner decision briefs, and shared workflow improvements.
 

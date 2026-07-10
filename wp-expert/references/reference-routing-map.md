@@ -26,7 +26,7 @@ Use this map to choose references with low context cost.
 | Skill behavior audit, routing regression, eval scenarios, prompt drift after skill edits | `agent-behavior-eval-scenarios.md` | `architecture-decision-gate.md`, `reference-routing-map.md` |
 | Architecture decision gate, ownership/source-of-truth choice, public contract, release state, validation proof, project policy precedence | `architecture-decision-gate.md` | `enterprise-code-quality-gate.md`, `live-proof-wordpress.md` |
 | New chat/session continuity, branch creation, issue milestone to PR release branch, PR base selection, release branch drift | `session-continuity-pr-discipline.md` | `standards-ci-github.md`, `delivery-excellence.md` |
-| Project-level Codex subagents, skill-level routing, model assignment, efficient `gpt-5.3-codex-spark` usage | `project-subagent-routing.md` | `reference-routing-map.md`, `thinking-brainstorming-engineering-discipline.md` |
+| Project-level Codex subagents, skill routing, availability-first model/reasoning allocation | `project-subagent-routing.md` | `reference-routing-map.md`, `thinking-brainstorming-engineering-discipline.md` |
 | PRD, SOW, estimates, milestones, mobile-first planning | `delivery-excellence.md` | `review-checklists.md`, `runtime-toolchain-version-policy.md` |
 | Enterprise acceptance criteria or definition of done for plugin/theme/API/migration/security/performance/conversion work | `enterprise-acceptance-criteria-templates.md` | `test-coverage-discipline.md`, `validation-commands.md` |
 | Planning drift control, scope guard, exact CSS/value change, calibrated validation | `planning-drift-control.md` | `delivery-excellence.md`, `validation-commands.md` |

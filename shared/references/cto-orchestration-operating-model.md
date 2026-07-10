@@ -29,7 +29,9 @@ Request-payload hygiene is part of the system loop: inspect one product/thread/P
 
 ## Portfolio Thread Ownership
 
-The portfolio thread should not do product-level work by default. It should steer, resolve cross-product conflicts, escalate owner decisions, and route product execution back to the product thread. Only bypass a PO for super-critical work it still cannot do with GPT-5.5 and xhigh/max reasoning.
+The portfolio thread owns blockers, release conflicts, owner briefs, skill routing, and readiness.
+
+The portfolio thread should not do product-level work by default. It should steer, resolve cross-product conflicts, escalate owner decisions, and route product execution back to the product thread. Only bypass a PO for super-critical work it still cannot do with the strongest suitable available model and highest supported reasoning level after runtime capability verification.
 
 For delegation recovery, request exact saved Codex projects for managed plugin repo roots when app UI setup is owner-only. Ask before interrupting or recreating user-created product-orchestrator threads. Route substantive skill updates through a Skill PO lane/thread unless the fix is emergency coordination; direct-main Skill PO publication needs explicit CTO/owner approval.
 

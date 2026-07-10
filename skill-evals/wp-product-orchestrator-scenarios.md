@@ -149,7 +149,7 @@ Use these lightweight scenarios to verify one-product plugin/theme workflow rout
 - Did stale findings end with Fixed now, PR opened, Supersede note created, Detected only, Blocked, or Deferred?
 - Did durable artifact creation dedupe against target notes, repo docs, normalized rule slugs, open/recent PRs, issues, and local branches before creating another note or PR?
 - Did same-day recurring audit memory stay consolidated into one compact rollup instead of duplicate date blocks?
-- Did it use `gpt-5.3-codex-spark` only for bounded mapper/test/fixer lanes?
+- Did it inspect runtime availability and use the lowest sufficient capability tier for bounded mapper/test/fixer lanes?
 - Did it keep WordPress expertise modular through specialist lanes instead of duplicating every reference into the orchestrator?
 - Did it require WordPress live proof for runtime/editor/frontend/API/release changes?
 - Did it ask before production/beta release actions or non-reversible pricing, licensing, free/pro, security/privacy, public contract, migration, destructive, or broad-positioning decisions?
