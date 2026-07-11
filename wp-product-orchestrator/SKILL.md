@@ -34,12 +34,14 @@ Use this for one long-lived plugin/theme product thread. Cross-product governanc
 - On repeatable failure, invoke the self-improvement loop; correct, dedupe, and add behavior coverage.
 - Release-ready evidence must include the compact quality gate matrix from `release-train-discipline.md`; say `Not applicable - reason` when a gate does not apply.
 - Prefer `wp-proof` for readiness, screenshots, package validation, and workflow proof.
+- Default to non-Studio proof. Studio needs an agent manifest; all other sites are report-only.
 - Priority products: Aculect AI Companion and Perform. Premium-priority products: OneCaptcha and ThemeRouter.
 
 ## Reference Routing
 
 - Flow refs: `../shared/references/product-queue-triage.md`, `../shared/references/product-autonomy-permissions.md`, `../shared/references/release-train-discipline.md`, `../shared/references/github-communication-protocol.md`, `../shared/references/commit-pr-discipline.md`, `../shared/references/heartbeat-checkin-discipline.md`.
 - Delegation/proof/context refs: `../shared/references/delegation-protocol.md`, `../shared/references/context-window-discipline.md`, `../shared/references/project-subagent-routing.md`; release proof stays in `release-train-discipline.md`.
+- Proof-environment lifecycle: `../shared/references/disposable-proof-environment-lifecycle.md`.
 - Load `../shared/references/cto-orchestration-operating-model.md` for topology or owner authority.
 
 ## Fast Workflow

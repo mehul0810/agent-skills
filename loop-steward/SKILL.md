@@ -38,3 +38,5 @@ Maintain the control-plane repositories without turning MeGo into a PR log. Trea
 ## Reference
 
 Read `../shared/references/self-improvement-loop.md` before promoting a repeated failure or retiring stale guidance.
+
+Read `../shared/references/disposable-proof-environment-lifecycle.md` before reviewing an orphaned proof environment or a cleanup policy change. Report unmarked, owner-created, pinned, active, or ambiguous sites; do not delete them.
