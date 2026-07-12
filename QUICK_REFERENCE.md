@@ -2,6 +2,8 @@
 
 Fast lookup for common WordPress tasks and which references to use.
 
+Use `$loop-steward` for policy-gated review, bounded repair, and independent merge decisions in `agent-loop`, `agent-book`, or `agent-skills` control-plane PRs.
+
 ## Organic Search Content Tasks
 
 Use `$content-writer` for SEO, AEO, GEO, AI Overviews, answer engines, AI tools, content briefs, outlines, drafts, audits, and refreshes.
@@ -284,7 +286,7 @@ Use `$wp-product-orchestrator` for one WordPress plugin/theme product's issue tr
 
 ### Code Standards & CI/CD
 
-**"I want project-level Codex subagents for WordPress work or better `gpt-5.3-codex-spark` usage"**
+**"I want project-level Codex subagents with efficient model/reasoning allocation"**
 - Load: `../shared/references/project-subagent-routing.md`
 - Supporting: the narrowest specialist skill, then one lane-specific reference per subagent; use `references/reference-routing-map.md` only if the lane is ambiguous
 

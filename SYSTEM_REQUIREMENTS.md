@@ -74,8 +74,8 @@ To install the skills globally, you need:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/mehul0810/wp-expert-codex-skill.git
-   cd wp-expert-codex-skill
+   git clone https://github.com/mehul0810/agent-skills.git
+   cd agent-skills
    ```
 
 2. Run the installer:

@@ -26,7 +26,7 @@ Use this map to choose references with low context cost.
 | Skill behavior audit, routing regression, eval scenarios, prompt drift after skill edits | `agent-behavior-eval-scenarios.md` | `architecture-decision-gate.md`, `reference-routing-map.md` |
 | Architecture decision gate, ownership/source-of-truth choice, public contract, release state, validation proof, project policy precedence | `architecture-decision-gate.md` | `enterprise-code-quality-gate.md`, `live-proof-wordpress.md` |
 | New chat/session continuity, branch creation, issue milestone to PR release branch, PR base selection, release branch drift | `session-continuity-pr-discipline.md` | `standards-ci-github.md`, `delivery-excellence.md` |
-| Project-level Codex subagents, skill-level routing, model assignment, efficient `gpt-5.3-codex-spark` usage | `project-subagent-routing.md` | `reference-routing-map.md`, `thinking-brainstorming-engineering-discipline.md` |
+| Project-level Codex subagents, skill routing, availability-first model/reasoning allocation | `project-subagent-routing.md` | `reference-routing-map.md`, `thinking-brainstorming-engineering-discipline.md` |
 | PRD, SOW, estimates, milestones, mobile-first planning | `delivery-excellence.md` | `review-checklists.md`, `runtime-toolchain-version-policy.md` |
 | Enterprise acceptance criteria or definition of done for plugin/theme/API/migration/security/performance/conversion work | `enterprise-acceptance-criteria-templates.md` | `test-coverage-discipline.md`, `validation-commands.md` |
 | Planning drift control, scope guard, exact CSS/value change, calibrated validation | `planning-drift-control.md` | `delivery-excellence.md`, `validation-commands.md` |
@@ -49,7 +49,8 @@ Use this map to choose references with low context cost.
 | Backward compatibility and launch-state decisions | `release-contract-compatibility.md` | `changelog-release-notes.md`, `plugin-architecture.md` |
 | Technical SEO, canonicals, redirects, robots, sitemaps, structured data, crawl risk | `technical-seo-engineering.md` | `content-migration-editorial-scale.md`, `headless-decoupled-wordpress.md` |
 | Style guide, design system, design tokens, custom theme, or child theme | `style-guide-theme-translation.md` | `block-theme-architecture.md`, `visual-parity-regression.md` |
-| Design to custom FSE block theme | `block-theme-architecture.md` | `custom-block-theme-from-design.md`, `visual-parity-regression.md` |
+| Screenshot, Figma, image, mockup, or chosen visual direction to WordPress | `../../shared/references/visual-to-wordpress-implementation.md` | one confirmed architecture, conversion, accessibility, performance, or vendor risk only |
+| Custom FSE architecture without a supplied visual target | `block-theme-architecture.md` | `custom-block-theme-from-design.md` |
 | Classic-to-block theme migration, page-builder migration, child-theme modernization, WooCommerce template cleanup | `hybrid-theme-migration-modernization.md` | `theme-and-block-editor.md`, `technical-seo-engineering.md` |
 | Theme/block editor behavior or block implementation | `block-theme-architecture.md` | `theme-and-block-editor.md`, `validation-commands.md` |
 | Theme/frontend performance, Core Web Vitals, fonts/images/assets/CLS/INP/LCP quality gate | `theme-frontend-performance-quality-gate.md` | `performance-profiling-scale-budgets.md`, `visual-parity-regression.md` |

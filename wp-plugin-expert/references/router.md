@@ -14,6 +14,8 @@ Use this router only after `wp-plugin-expert` is selected. Load one primary refe
 - Performance profiling, scale budgets, object cache, query behavior: `../../wp-expert/references/performance-profiling-scale-budgets.md`.
 - Third-party APIs, SDKs, OAuth, webhooks, retries, rate limits: `../../wp-expert/references/third-party-api-integrations.md`.
 - React admin/editor apps: `../../wp-expert/references/react-wordpress-enterprise.md`.
+- Product experience defaults and onboarding lens: `../../shared/references/product-experience-principles.md`.
+- Premium/enterprise workflow accountability and proof: `../../shared/references/enterprise-design-judgment.md`.
 - WooCommerce extensions: `../../wp-expert/references/woocommerce-commerce-engineering.md`.
 - Build tooling, Composer, npm, webpack: `../../wp-expert/references/build-tooling.md`.
 - CI/CD, standards, GitHub workflows: `../../wp-expert/references/standards-ci-github.md`.

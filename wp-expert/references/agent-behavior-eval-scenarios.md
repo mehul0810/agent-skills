@@ -13,9 +13,12 @@ Each scenario should produce the expected behavior without requiring extra remin
 5. Production package/release: excludes dev-only Composer/npm packages, includes runtime vendor/build artifacts, validates generated assets, and states artifact proof.
 6. External API integration: finds official docs or asks for them, isolates provider clients, sets timeouts/retries/idempotency, avoids hot-path sync calls, and redacts credentials/PII.
 7. High-scale query/admin screen: identifies hot path, avoids unbounded meta/query/list-table work, defines cache/index strategy, and adds a regression guard.
+8. Visual-to-WordPress implementation: inspects the source, classifies fidelity, records supplied/measured/inferred values, maps ownership and blocks, handles missing assets deliberately, and produces matched parity evidence.
+9. Owner correction: fixes the immediate scoped problem, classifies a repeatable failure, dedupes durable guidance, and extends an eval rather than leaving the lesson in chat.
 
 ## Passing Standard
 
 - The agent chooses one primary reference plus risk-triggered overlays instead of loading every reference.
 - The response names ownership, source of truth, release state, validation proof, and remaining risk for substantial work.
 - The agent commits only intended files when commits are expected and pushes only with explicit user or repo automation authorization.
+- Design forward tests use `skill-evals/visual-wordpress-scenarios.md` and record loaded skills/references so route correctness and context cost can be reviewed together.

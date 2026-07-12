@@ -8,8 +8,10 @@ max_description_words="${SKILL_DESCRIPTION_MAX_WORDS:-45}"
 max_body_words="${SKILL_BODY_MAX_WORDS:-1000}"
 max_agent_prompt_words="${AGENT_PROMPT_MAX_WORDS:-45}"
 max_reference_words="${REFERENCE_MAX_WORDS:-1500}"
+warning_percent="${TOKEN_BUDGET_WARNING_PERCENT:-85}"
 verbose=0
 errors=0
+warnings=0
 ref_count=0
 largest_ref_words=0
 largest_ref_path=""
@@ -31,6 +33,12 @@ find_skill_dirs() {
 
 count_words() {
   awk '{ words += NF } END { print words + 0 }' "$1"
+}
+
+estimate_tokens() {
+  local chars
+  chars="$(wc -m < "$1" | awk '{print $1}')"
+  echo $(((chars + 3) / 4))
 }
 
 description_words() {
@@ -82,6 +90,9 @@ check_limit() {
   if [ "$actual" -gt "$max" ]; then
     echo "ERROR: $label is $actual words; max is $max" >&2
     errors=$((errors + 1))
+  elif [ $((actual * 100 / max)) -ge "$warning_percent" ]; then
+    echo "WARNING: $label is $actual/$max words ($((actual * 100 / max))%); low headroom" >&2
+    warnings=$((warnings + 1))
   elif [ "$verbose" -eq 1 ]; then
     echo "OK: $label is $actual/$max words"
   fi
@@ -128,6 +139,7 @@ while IFS= read -r skill_dir; do
   desc_words="$(description_words "$skill_file")"
   skill_body_words="$(body_words "$skill_file")"
   prompt_words="$(agent_prompt_words "$agent_file")"
+  estimated_tokens="$(estimate_tokens "$skill_file")"
 
   check_limit "$skill_name description" "$desc_words" "$max_description_words"
   body_limit="$(skill_body_limit "$skill_name")"
@@ -135,7 +147,7 @@ while IFS= read -r skill_dir; do
   check_limit "$skill_name SKILL body" "$skill_body_words" "$body_limit"
   check_limit "$skill_name agent default_prompt" "$prompt_words" "$max_agent_prompt_words"
 
-  echo "$skill_name: description ${desc_words}/${max_description_words}, body ${skill_body_words}/${body_limit}, prompt ${prompt_words}/${max_agent_prompt_words} words"
+  echo "$skill_name: description ${desc_words}/${max_description_words}, body ${skill_body_words}/${body_limit}, prompt ${prompt_words}/${max_agent_prompt_words} words, file estimate ~${estimated_tokens} tokens"
 done < <(find_skill_dirs)
 
 while IFS= read -r ref_file; do
@@ -153,7 +165,7 @@ while IFS= read -r ref_file; do
   check_limit "$rel_path reference" "$words" "$ref_limit"
 done < <(find "$repo_root" -path '*/references/*.md' -type f | sort)
 
-echo "References: checked $ref_count files; largest ${largest_ref_path:-none} ${largest_ref_words}/${largest_ref_limit:-$max_reference_words} words"
+echo "References: checked $ref_count files; largest ${largest_ref_path:-none} ${largest_ref_words}/${largest_ref_limit:-$max_reference_words} words; warnings $warnings"
 
 if [ "$errors" -gt 0 ]; then
   echo "Token budget audit failed with $errors issue(s)." >&2

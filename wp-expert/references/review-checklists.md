@@ -1,6 +1,6 @@
 # WordPress Review Checklists
 
-Use this for audits, PR review, plugin/theme review, VIP readiness review, and security/performance/modularity checks. For enterprise/WPVIP-grade code generation or review, also read `../shared/references/enterprise-code-quality-gate.md`. For acceptance criteria and definition-of-done checks, read `enterprise-acceptance-criteria-templates.md`. For duplicate-code and modularity reviews, also read `duplicate-code-modularity-review.md`. For high-risk security reviews, route to `security-threat-modeling-review.md`; for measured performance reviews, route to `performance-profiling-scale-budgets.md`; for custom table architecture reviews, route to `database-table-architecture-review.md`; for missing or omitted tests, route to `test-coverage-discipline.md`.
+Use this for audits and PR/plugin/theme/VIP reviews. Select one primary specialist reference for the dominant quality risk; add at most one support reference for a confirmed acceptance, security, performance, data, modularity, or test gap.
 
 ## Triage Map
 

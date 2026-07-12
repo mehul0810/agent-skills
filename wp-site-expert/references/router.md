@@ -7,9 +7,12 @@ Use this router only after `wp-site-expert` is selected. Load one primary refere
 - Conversion-focused landing pages, funnels, CRO-safe implementation: `../../wp-expert/references/conversion-focused-website-engineering.md`.
 - UX discovery, IA, user journeys, UX writing, design QA: `../../wp-expert/references/ux-product-strategy-design-qa.md`.
 - Premium UI implementation, states, dashboards, forms: `../../wp-expert/references/ui-ux-pro-for-wordpress.md`.
+- Plug-and-play product experience and advanced-user controls: `../../shared/references/product-experience-principles.md`.
+- Enterprise proof, accountable IA, governance, and failure behavior: `../../shared/references/enterprise-design-judgment.md`.
 - Technical SEO, canonicals, redirects, sitemaps, schema, crawl risk: `../../wp-expert/references/technical-seo-engineering.md`.
 - Analytics, GA4/GTM/data layer, consent-aware tracking: `../../wp-expert/references/analytics-measurement-engineering.md`.
 - Content modeling, CPT/taxonomy/meta/block/custom-table decisions: `../../wp-expert/references/content-modeling-information-architecture.md`.
+- Runtime block inventory, core-first page composition, editable render proof, and Site Editor override precedence: `../../shared/references/core-first-site-theme-workflow.md`.
 - Content migration, editorial scale, redirects, launch cutovers: `../../wp-expert/references/content-migration-editorial-scale.md`.
 - Accessibility, i18n, RTL, multilingual readiness: `../../wp-expert/references/accessibility-i18n-global-readiness.md`.
 - Performance profiling and Core Web Vitals: `../../wp-expert/references/performance-profiling-scale-budgets.md`.

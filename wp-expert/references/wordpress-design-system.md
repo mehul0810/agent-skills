@@ -1,6 +1,6 @@
 # WordPress Design System Support
 
-Use this for WordPress-native UI design, admin/product interfaces, block editor controls, Figma-to-code translation, component selection, design tokens, accessibility, editor consistency, and visual QA against WordPress conventions. For product UX strategy, information architecture, content design, conversion UX, image/pixel parity, and premium enterprise QA, also read `ux-product-strategy-design-qa.md`. For product UI implementation, state coverage, and visual quality review, also read `ui-ux-pro-for-wordpress.md`.
+Use this for WordPress-native admin/product UI, editor controls, component selection, tokens, accessibility, consistency, and QA. For a supplied visual target, use `../../shared/references/visual-to-wordpress-implementation.md` as primary; add this only for a confirmed WPDS/component risk and do not chain generic design references.
 
 ## Official Anchors
 

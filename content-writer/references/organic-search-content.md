@@ -16,6 +16,18 @@ Use this reference for SEO, AEO, GEO, AI Overviews, AI Mode, answer engines, and
 - Structured data helps machines understand eligible visible content, but it must match the page and does not guarantee rich results.
 - AI-assisted content is acceptable only when the result is original, useful, people-first, and not created primarily to manipulate rankings.
 
+## Product Truth Gate
+
+Before writing product, feature, comparison, release, integration, or landing-page claims:
+
+1. Verify the current production release/tag and public package/listing when applicable.
+2. Reconcile `PRODUCT.md`, `README`, public `readme.txt`, changelog/release notes, docs, and safe runtime/screenshots.
+3. Classify each material claim as `shipped`, `verified limitation`, `planned/unreleased`, or `unknown`.
+4. Use present-tense availability and schema only for shipped, evidenced behavior. Keep planned work explicitly future-facing and out of current feature/schema claims.
+5. If sources conflict, stop the disputed claim and request product-PO/owner resolution rather than choosing the most favorable wording.
+
+Keep a compact fact ledger for high-claim assets: `claim | status | source | freshness | confidence`. Do not paste it into the public draft unless citations are useful to readers.
+
 ## Search Intent Model
 
 Classify the primary intent before drafting:

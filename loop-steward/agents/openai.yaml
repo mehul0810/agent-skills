@@ -1,0 +1,4 @@
+interface:
+  display_name: "Loop Steward"
+  short_description: "Review and safely merge loop PRs"
+  default_prompt: "Use $loop-steward to review a control-plane pull request."

@@ -2,7 +2,7 @@
 
 Use this for UX strategy, UI improvement, visual QA, product flows, interaction design, responsive polish, conversion-oriented WordPress screens, admin/editor experiences, frontend feature pages, dashboards, onboarding, forms, tables, and design-to-code implementation.
 
-This reference fuses product-grade UI/UX reasoning with WordPress-native design constraints. Use it alongside `ux-product-strategy-design-qa.md` when the task involves UX discovery, product strategy, information architecture, UX writing, conversion flows, premium/enterprise design QA, or matching a provided image/screenshot/mockup. Use it alongside `wordpress-design-system.md` when the implementation should use WPDS or `@wordpress/components`. For enterprise-facing proof, buyer-specific IA, governed workflow framing, or trust-signal judgment, also read `../../shared/references/enterprise-design-judgment.md`. For style guides, design patterns, design tokens, custom themes, or child themes on top of an existing theme, also read `style-guide-theme-translation.md`. For estimates, milestones, and mobile-first delivery architecture, also read `delivery-excellence.md`.
+This reference fuses product-grade UI/UX reasoning with WordPress-native constraints. Use it as primary for UI implementation without a supplied visual target. For screenshot/Figma/image implementation, use `../../shared/references/visual-to-wordpress-implementation.md` instead. Add only one supporting reference for a confirmed WPDS, enterprise-judgment, style-system, discovery, or delivery risk; do not load the whole design stack.
 
 ## UX Triage
 

@@ -14,6 +14,8 @@ When a mistake is identified:
 6. Add or update behavior audit coverage when the mistake is repeatable.
 7. Do not leave important workflow lessons only in chat memory.
 
+Before adding guidance, prefer tightening routing, replacing weak wording, consolidating duplicates, adding a deterministic check, or extending an eval. Add a new rule only when the behavior is missing and repeatable evidence justifies its token cost.
+
 ## Learning Placement
 
 Place durable lessons where they can be enforced:
@@ -49,19 +51,23 @@ End every stale-learning audit item with an explicit outcome:
 
 ## Durable Artifact Dedupe
 
-Before creating a memory note, repo-doc PR, skill PR, or workflow prompt update, check:
+Before creating a memory note, repo-doc PR, skill PR, workflow prompt update, or recurring automation, check:
 
 - Target note or existing supersede note.
 - Target repo docs and current policy branch.
 - Normalized rule slug or distinctive phrase.
+- Normalized automation name, prompt intent, schedule, cwd/target, and active status.
 - Open PRs and issues.
 - Recently merged PRs and closed issues.
 - Local branches that may contain unpublished docs work.
 - Automation memory for same-day rollups or already-classified stale findings.
+- Active automation definitions with the same normalized job, cadence, target, or prompt.
 
 If a merged repo-doc PR already owns the behavior, report the older note as superseded or fixed instead of opening another PR. If a local checkout disagrees with live PR or branch evidence, fetch or treat live GitHub state as authoritative before concluding that docs are missing.
 
 For recurring audits, keep one compact rollup per date and replace the current day block instead of appending duplicate same-day summaries.
+
+For recurring automations, do not treat every active task with the same name as independent signal. Dedupe by normalized job purpose, schedule, target, prompt hash or distinctive prompt clauses, and memory path. If duplicates are active, run only the current task, avoid writing duplicate memory or PRs, and report the duplicate automation IDs for cleanup or use automation-management tools when the owner has authorized cleanup.
 
 ## Failure Classification
 
@@ -90,6 +96,11 @@ Use concrete labels:
 - Missing validation or live proof.
 - Missing GitHub communication.
 - Token waste from loading irrelevant references.
+- Invented or unverified claim.
+- Visual source inferred without inspection.
+- Missing asset-generation or provenance contract.
+- Owner correction fixed locally but not learned.
 - Duplicate durable artifact.
+- Duplicate recurring automation.
 - Stale local-ref conclusion.
 - Unclassified stale learning.

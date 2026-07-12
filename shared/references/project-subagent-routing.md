@@ -1,41 +1,124 @@
 # Project Subagent Routing Discipline
 
-Use this reference when a WordPress or WordPress-contribution project should use Codex subagents, custom project agents, or model routing. Keep this project-level. Do not bloat global skills or use hooks to simulate dynamic skill loading.
+Use this for WordPress project subagents, custom project agents, and model/reasoning allocation. Keep routing at project/runtime level; do not use global hooks or permanent model IDs to simulate dynamic selection.
 
 ## Goal
 
-Use subagents to reduce wall time and isolate risk without increasing total token waste. The parent agent owns the plan, final decisions, implementation boundaries, validation evidence, commits, pushes, and PRs. Subagents provide bounded research, mapping, review, or narrow implementation assistance.
+Reduce wall time and token cost without weakening evidence. The parent owns strategy, boundaries, final decisions, validation synthesis, commits, pushes, and PRs. Subagents own bounded mapping, review, evidence, or narrow implementation.
 
-## When To Use Subagents
+## Delegation Gate
 
-Use project subagents when one of these is true:
+Use subagents when parallel mapping saves time, independent plugin/theme/test/docs/security lanes exist, a second review materially reduces risk, or browser/CI evidence can be gathered independently.
 
-- The repo is large enough that parallel read-only mapping will save time.
-- The task has independent lanes: plugin PHP, block/editor JS, theme/FSE, tests, docs, release, security, or performance.
-- A second review pass materially reduces risk before commit or PR.
-- Browser/UI evidence, logs, or CI output can be summarized independently.
-- You want to route lower-risk work to `gpt-5.3-codex-spark` while reserving stronger models for architecture, security, release, or final review.
+Do not delegate small obvious edits, work without acceptance criteria, broad mutation without a bounded handoff, or attempts to bypass trust, sandbox, approval, or review controls.
 
-Do not use subagents for:
+## Availability-First Routing Contract
 
-- Small single-file edits, exact CSS/value changes, copy edits, or obvious config changes.
-- Tasks where the parent has not defined the acceptance criteria.
-- Work requiring broad repo mutation without a narrow handoff.
-- Attempts to bypass project trust, sandbox, permissions, or review requirements.
+Before assigning or overriding a model or reasoning level:
 
-## Project Configuration Pattern
+1. Inspect the model/reasoning combinations exposed by the current host or tool.
+2. Honor an explicit owner-specified combination when it is available and allowed.
+3. Classify ambiguity, implementation completeness, risk, reversibility, evidence burden, context size, and latency/cost need.
+4. Select the lowest sufficient available capability tier and supported reasoning level.
+5. Omit overrides when inherited model/reasoning already fits.
 
-Create subagents in the app project, not in this skill repository, unless you are adding reusable templates. Recommended project files:
+Never assume a model ID or that `high`, `xhigh`, `max`, or another reasoning label exists. Capability-check both fields at runtime.
+
+### Capability Tiers
+
+- Fast/economical: routine mapping, issue intake, deterministic docs/tests, evidence capture, simple CI triage, screenshot capture, and exact narrow fixes with complete files, acceptance criteria, and validation.
+- Balanced implementation: bounded implementation with some codebase discovery, ordinary PR review, or moderate integration reasoning.
+- Strongest suitable reasoning-capable: ambiguous architecture, security/privacy, migrations, public contracts, high-scale performance, release blockers/decisions, cross-product conflicts, and final high-risk review.
+
+When a 5.6 Sol-class model is exposed, prefer that class with `high` or `xhigh` for complex/high-risk lanes when those reasoning levels are supported. This is a current availability example, not a required or permanent model ID. Use reasoning above `xhigh` only when the owner explicitly requests it or concrete failed proof shows `xhigh` is insufficient.
+
+For final high-risk review, keep the strongest suitable lane as reviewer. Do not downgrade the final reviewer merely for model diversity; add an independent second pass only when variance reduction materially justifies its cost.
+
+Portfolio sweeps normally use low/medium reasoning; escalate for cross-product conflicts, protected-thread recovery, or owner decision briefs. Product heartbeats normally use medium; escalate for release-ready synthesis, ambiguous scope, risky merge/release judgment, migrations, or topology drift. Keep screenshot capture and bounded official-source research on a fast tier unless judgment is complex.
+
+### Escalation And De-Escalation
+
+Escalate only after concrete ambiguity, failed proof, inadequate implementation, or confirmed risk exceeds the current tier. Do not brute-force retries with an underpowered lane. De-escalate after planning, exact-file mapping, acceptance criteria, or deterministic validation removes uncertainty.
+
+Classify repeated retries or weak evidence caused by the assigned lane as `wrong model/reasoning allocation`, then reassess availability and tier.
+
+If the requested/configured combination is unavailable, do not silently substitute. Preserve owner constraints and the requested capability tier before considering an upgrade: replace a fast/economical request with the nearest available fast/economical tier that supports the requested reasoning, not automatically the strongest model. Upgrade tiers only when the task risk requires it or no same-tier option can produce the evidence. Report:
 
 ```text
-.codex/config.toml
-.codex/agents/wp-plugin-mapper.toml
-.codex/agents/wp-theme-mapper.toml
-.codex/agents/wp-pr-reviewer.toml
-.codex/agents/wp-narrow-fixer.toml
+Requested: <model/reasoning>
+Available constraint: <missing model or unsupported reasoning>
+Fallback: <selected capability tier and supported reasoning>
+Impact: <none or evidence/risk difference>
 ```
 
-Start conservative:
+## Planning Before Allocation
+
+Front-load scope into the issue and delegation prompt so execution does not spend tokens rediscovering the plan:
+
+- exact repo/path and issue,
+- branch/base and allowed files,
+- acceptance criteria and non-goals,
+- validation and screenshot/live-proof needs,
+- risks, hard gates, output format, and stop condition.
+
+Fully planned bounded work should use the lowest sufficient tier. Incomplete or decision-shaping work stays with the parent or moves to the strongest suitable tier before implementation.
+
+## Skill Routing
+
+Assign one lane and the narrowest skill/reference:
+
+- Plugin: `$wp-plugin-expert` plus one plugin reference.
+- Theme/FSE: `$wp-theme-expert` plus one theme reference.
+- Site/UX/search: `$wp-site-expert` plus one site reference.
+- Contribution: `$wp-contributor` plus the Core, Gutenberg, or Meta reference.
+- Design: `design-intelligence-routing.md`, then the narrow Product Design capability.
+- Portfolio: `$wp-portfolio-cto`; product execution remains in PO/worker lanes.
+- Product workflow: `$wp-product-orchestrator`; implementation routes to a specialist.
+- Content/growth: `content-writer`, `seo-positioning-optimizer`, or `$wp-site-expert` by artifact.
+
+Subagent prompt contract:
+
+```text
+Use only the named skill/reference lane unless a concrete blocker appears.
+Inspect the exact artifact first. Stay inside scope and do not subdelegate.
+Return findings, files touched/inspected, confidence, validation, risks, and adjacent findings.
+Convert Product Design feedback into acceptance criteria, design QA checks, or adjacent findings.
+If blocked, report recovery attempted and the exact proof gap.
+Do not modify files unless assigned as a narrow fixer.
+Keep output within the requested limit.
+```
+
+## Reusable Project Profiles
+
+Reusable `.codex/agents/*.toml` templates must not pin transient model IDs or reasoning labels. Omit those fields and inherit the parent by default. If a project needs explicit allocation, materialize the fields at runtime from the verified availability inventory rather than committing a stale ID.
+
+Read-only mapper:
+
+```toml
+name = "wp-mapper"
+sandbox_mode = "read-only"
+developer_instructions = "Use the named specialist and one reference. Map entry points, tests, and risks in at most 20 bullets. Do not edit files."
+```
+
+Narrow fixer:
+
+```toml
+name = "wp-narrow-fixer"
+sandbox_mode = "workspace-write"
+developer_instructions = "Use supplied files, acceptance checks, and validation. Make the smallest safe change. Do not broaden scope or commit."
+```
+
+Reviewer:
+
+```toml
+name = "wp-pr-reviewer"
+sandbox_mode = "read-only"
+developer_instructions = "Review changed files only. Findings first with severity, file/line, impact, and missing tests. Do not edit files."
+```
+
+## Project Configuration
+
+Keep concurrency conservative:
 
 ```toml
 [agents]
@@ -43,122 +126,16 @@ max_threads = 3
 max_depth = 1
 ```
 
-Raise concurrency only after the repo workflow is proven. Keep `max_depth = 1` unless a project has a deliberate multi-agent review process.
-
-## Model And Reasoning Routing
-
-Use the lowest suitable available model and reasoning level that can safely produce the needed evidence. Treat this as dynamic model and reasoning allocation. Escalate only when ambiguity, irreversible decisions, release impact, security/privacy, migrations, or architecture risk is real.
-
-- Portfolio heartbeat/sweep: compact source-of-truth sweep; low or medium reasoning. The active acceleration default is every 30 minutes, but lower cadence is preferred when the sweep is mostly quiet. Use high only for release conflict resolution, owner decision briefs, protected-thread recovery, or cross-product governance changes.
-- Product hourly heartbeat or 15-minute acceleration heartbeat: medium reasoning by default. Prefer 15-minute cadence only for active release trains/PRs/CI/executable `owner:codex` work; otherwise 30-60 minutes or pause. Use high only for release-ready synthesis, ambiguous milestone scope, risky PR merge/release decisions, security/privacy posture, schema/data migration, or product thread topology drift.
-- Worker implementation: match the specialist skill and artifact. Product POs should start subagents/worktrees on the lowest suitable available model and reasoning level. Use `gpt-5.3-codex-spark` or another approved fast/lower-cost model for bounded mapping, issue intake, docs, test evidence, simple CI triage, narrow fixes with exact files, and explicit validation commands.
-- Stronger worker/reviewer model: use for architecture, security, privacy, public API contracts, data migrations, VIP/high-scale performance, release blockers, final PR review, base-branch decisions, or unclear implementation paths.
-- Screenshots/design proof: use a fast model for explicit screenshot capture or visual proof. Escalate only when visual regression judgment, UX tradeoffs, accessibility impact, or design-system interpretation is complex.
-- Web/current research: keep bounded, prefer official/primary sources, summarize only decision-relevant changes, and use high reasoning only when the result is cross-product, release-blocking, security-sensitive, or architecture-shaping.
-- For material UI/workflow risk, route through `design-intelligence-routing.md` and then the narrowest Product Design skill instead of improvising broad design critique.
-
-If a configured model is unavailable in the current environment, do not silently substitute. Report the missing model and use the nearest approved project fallback. Do not spend a stronger model on routine polling, broad rereads, or evidence the source of truth can answer cheaply. When prompt/context is already large, do not batch broad parallel thread reads, full PR diffs, oversized issue bodies, or accumulated automation history. Read one product/thread/PR at a time with low limits, no diffs unless needed, and compressed summaries.
-
-## Skill-Level Routing For Subagents
-
-The parent agent should classify the task and assign one lane per subagent. Auto-select the narrowest skill from the artifact being inspected or changed; do not tell every subagent to load `wp-expert` or every WordPress reference.
-
-Examples:
-
-- Plugin mapper: `$wp-plugin-expert`, primary route `plugin-architecture.md`; supporting `enterprise-code-quality-gate.md` for implementation/review quality gates.
-- Block/FSE mapper: `$wp-theme-expert`, primary route `block-theme-architecture.md`; supporting `custom-block-theme-from-design.md` only for design-to-theme work.
-- Theme/site implementer or reviewer: add `enterprise-code-quality-gate.md` when code is being changed or approved.
-- Direct fixer or reviewer with implementation responsibility: add `worker-execution-discipline.md` so exact-entity-first inspection, blocker recovery, assumption control, and finish-pass behavior stay consistent.
-- Design audit or redesign planner: use `design-intelligence-routing.md`, then `product-design:audit`, `product-design:get-context` + `product-design:ideate`, or `product-design:image-to-code` based on whether the task is critique, direction-finding, or implementation from a chosen visual target.
-- UI reviewer: `$wp-site-expert` for site UX or `$wp-theme-expert` for editor/theme UX; supporting `visual-parity-regression.md` only when screenshots/designs are involved.
-- Security reviewer: `$wp-plugin-expert`, `$wp-theme-expert`, or `$wp-site-expert` based on the changed artifact; primary route `security-threat-modeling-review.md` only when the risk is concrete.
-- WordPress contribution mapper: `$wp-contributor`, primary reference matching the surface: `core-workflow.md`, `gutenberg-workflow.md`, or `meta-workflow.md`.
-- Portfolio governance: `$wp-portfolio-cto`, primary shared reference `cto-orchestration-operating-model.md`; route product execution to product threads.
-- Product workflow coordinator: `$wp-product-orchestrator`, primary shared reference `product-queue-triage.md` or `product-autonomy-permissions.md`; implementation details still route to one specialist lane.
-- Authority/growth strategist: `authority-growth-lane.md`, then `content-writer`, `seo-positioning-optimizer`, or `$wp-site-expert` based on whether the output is growth brief, search/content task, or website implementation.
-- PR/release reviewer: shared `session-continuity-pr-discipline.md`, plus the specialist skill and one implementation reference tied to the changed surface.
-
-Subagent prompt contract:
-
-```text
-Use only the named skill/reference lane unless you find a concrete blocker.
-Return: findings, files touched or inspected, confidence, validation evidence, and open risks.
-Report adjacent findings separately and preserve scoped task boundaries unless immediate escalation is required.
-Turn Product Design feedback into acceptance criteria, design QA checks, or adjacent findings instead of vague taste commentary.
-Inspect the exact referenced artifact first, and if blocked, report attempted recovery plus the remaining proof gap instead of a generic tool failure.
-If the assigned model/reasoning lane cannot produce adequate proof, stop and report wrong model/reasoning allocation instead of brute-force retrying.
-Do not modify files unless explicitly assigned as a narrow fixer.
-Keep output under the requested line or bullet limit.
-```
-
-## Suggested Agent Profiles
-
-Read-only plugin mapper:
-
-```toml
-name = "wp-plugin-mapper"
-model = "gpt-5.3-codex-spark"
-model_reasoning_effort = "medium"
-sandbox_mode = "read-only"
-developer_instructions = "Use $wp-plugin-expert with plugin-architecture.md only. Map entry points, hooks, REST routes, assets, tests, and risk hotspots. Output max 20 bullets with file paths. Do not edit files."
-```
-
-Read-only theme/block mapper:
-
-```toml
-name = "wp-theme-mapper"
-model = "gpt-5.3-codex-spark"
-model_reasoning_effort = "medium"
-sandbox_mode = "read-only"
-developer_instructions = "Use $wp-theme-expert with block-theme-architecture.md only. Map theme.json, templates, parts, patterns, blocks, editor/frontend CSS, build output, and editability risks. Output max 20 bullets. Do not edit files."
-```
-
-Narrow fixer after the parent isolates scope:
-
-```toml
-name = "wp-narrow-fixer"
-model = "gpt-5.3-codex-spark"
-model_reasoning_effort = "medium"
-sandbox_mode = "workspace-write"
-developer_instructions = "Use the exact files, acceptance checks, and validation commands supplied by the parent. Make the smallest safe change. Do not broaden scope or commit."
-```
-
-High-confidence reviewer:
-
-```toml
-name = "wp-pr-reviewer"
-model = "gpt-5.4"
-model_reasoning_effort = "high"
-sandbox_mode = "read-only"
-developer_instructions = "Review changed files only. Use the narrowest WordPress specialist skill plus the relevant primary reference. Findings first with severity, file/line, impact, and missing tests. Do not edit files."
-```
+Raise concurrency only after the workflow is proven. Keep depth at one unless the repo deliberately supports nested review.
 
 ## Hooks Boundary
 
-Use hooks for deterministic lifecycle enforcement in a specific trusted project, such as:
+Use hooks for deterministic project lifecycle checks such as generated artifacts, formatting, explicit PR base, or validation metadata. Do not use hooks for expertise selection, broad research, or dynamic model assignment.
 
-- Rejecting commits with dirty generated artifacts.
-- Running formatting or lint checks after edits.
-- Blocking PR creation when the base branch is not explicit.
-- Capturing logs or environment metadata before validation.
+## Parent Checklist
 
-Do not rely on hooks for dynamic WordPress expertise selection, broad research, or model assignment. Those decisions belong in the parent plan and project subagent profiles.
+Before delegation: verify availability, choose the capability tier, front-load the plan, set one lane/output budget, prefer read-only unless exact fixing is assigned, and avoid duplicate exploration.
 
-## Parent Agent Checklist
+Keep payloads compact: do not batch broad parallel thread reads, full PR diffs, oversized issue bodies, or accumulated automation history. Create issues one at a time with concise bodies after narrow duplicate-screening.
 
-Before launching subagents:
-
-- Define the acceptance criteria and stop condition.
-- Assign each subagent one lane, one expected output format, and a token/output budget.
-- Set model/reasoning from the matrix above; do not default every worker to the strongest model.
-- Prefer read-only mode unless a narrow fixer has exact scope.
-- Avoid duplicate exploration across agents.
-- Tell subagents whether web access is allowed and which official docs to prefer.
-- Create issues one at a time with concise bodies after narrow duplicate-screening. Keep automation prompt updates as compressed summaries, not accumulated historical state.
-
-After subagents return:
-
-- Merge findings into one plan; do not paste every subagent transcript.
-- Verify any high-risk claim before implementing or reporting completion.
-- Keep commits and PRs owned by the parent agent.
-- For issue-driven PRs, use `session-continuity-pr-discipline.md` to prove the milestone/release base branch before creating the PR.
+After return: merge findings rather than transcripts, verify high-risk claims, reassess whether escalation/de-escalation is warranted, and keep commits/PRs parent-owned.

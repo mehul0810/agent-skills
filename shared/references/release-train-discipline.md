@@ -22,7 +22,7 @@ Before any beta, prerelease, or stable action, verify:
 - Whether the previous milestone has a production release.
 - Whether the owner explicitly authorized production/beta release creation in context.
 - Whether owner testing confirmation exists for production readiness.
-- For WordPress.org-hosted plugins, whether the next compatible release plans `Tested up to` WordPress 7.0.
+- For WordPress.org plugins, whether `Tested up to` matches the live-verified release target.
 - Whether release metadata matches the target version: plugin header/version file, `readme.txt` stable tag and changelog, package metadata, and release notes.
 - Whether `readme.txt` and changelog/release notes are release-current: stable tag/version, `Tested up to`, Requires WP/PHP if present, changelog section, upgrade notice when applicable, feature descriptions, FAQ/screenshots/tags where relevant, and no overclaiming unmerged future milestone work.
 - Whether any admin UI, frontend UI, consent/setup flow, editor surface, or visual output has release-candidate visual proof from the packaged ZIP/build or release branch build.

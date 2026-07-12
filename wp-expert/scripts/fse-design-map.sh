@@ -25,6 +25,24 @@ cat > "$output_path" <<'TEMPLATE'
 - Design source:
 - Date:
 - Prepared by:
+- Source classification (exact, directional, inspiration):
+- Source dimensions and intended viewport:
+- Source/candidate screenshot paths:
+
+## Evidence Confidence
+
+- Supplied facts:
+- Measured values:
+- Inferred values:
+- Decisions or unresolved uncertainty:
+
+## Visual Region Measurements
+
+- Region/hierarchy map:
+- Widths, gaps, alignment, and layering:
+- Typography and font-loading evidence:
+- Colors, borders, radii, and shadows:
+- Desktop-to-mobile behavior (supplied/inferred/decision needed):
 
 ## Templates
 
@@ -77,6 +95,15 @@ cat > "$output_path" <<'TEMPLATE'
 - Global reusable content:
 - Query-driven sections:
 
+## Asset Inventory
+
+- Supplied/reused assets:
+- Missing assets:
+- Generate/source/license/placeholder decisions:
+- Asset briefs and approval state:
+- Crops, focal points, aspect ratios, responsive variants:
+- Provenance, alt-text intent, formats, dimensions, optimization:
+
 ## Block Mapping Ladder
 
 - Solved with content model/data contract:
@@ -120,6 +147,10 @@ cat > "$output_path" <<'TEMPLATE'
 - Editor/frontend parity targets:
 - Accessibility checks:
 - Performance checks:
+- Matched viewport/zoom/content/font/data state:
+- Overlay or perceptual-diff method:
+- Region-level parity tolerance:
+- Accepted, constrained, and unresolved deviations:
 
 ## Open Risks
 

@@ -19,7 +19,7 @@ Recommended repo docs:
 
 Do not create these files automatically for every repo. Recommend or create them only when a real durable gap exists and the user or repo workflow supports it.
 
-`DESIGN.md` is not a heavy design-system spec. Product orchestrators should create or adapt it only through duplicate-screened product issues, not blind docs churn. Prioritize CleanLinks and Aculect first, add OneSMTP early enough to shape UI, and keep PreviewShare/WP Distraction Free View lightweight unless the surface grows.
+`DESIGN.md` is not a heavy design-system spec. Product orchestrators should create or adapt it only through duplicate-screened product issues, not blind docs churn. Prioritize products with active UI drift, onboarding risk, or an upcoming design-heavy train; keep it lightweight when the product surface is small.
 
 Portfolio CTO and product POs should audit active products for missing, weak, or stale `AGENTS.md`, `DESIGN.md`, `TESTING.md`, and `RELEASE.md` guidance. Create focused GitHub issues instead of relying on chat instructions unless a tiny owner-approved docs fix is safer. Repo-specific workflow rules belong here; cross-product orchestration rules belong in the WP Expert skills and shared references.
 

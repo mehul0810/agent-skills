@@ -1,6 +1,6 @@
 # Visual Parity Regression
 
-Use this when UI/UX, block editor, theme, or FSE work must match design intent across editor and frontend. If the user provides an image, screenshot, Figma frame, or approved mockup as the source of truth, also read `ux-product-strategy-design-qa.md` and treat screenshot comparison as required evidence unless the user explicitly says they will perform visual review.
+Use this as supporting visual-regression detail when UI, block editor, theme, or FSE work must match across editor and frontend. For a supplied visual target, use `../../shared/references/visual-to-wordpress-implementation.md` as primary and load this only when deeper regression coverage is justified.
 
 ## Goals
 

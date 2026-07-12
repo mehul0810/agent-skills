@@ -1,6 +1,6 @@
 ---
 name: content-writer
-description: Organic-search content writing for SEO, AEO, GEO, AI Overviews, briefs, outlines, articles, landing pages, audits, and refreshes. Use to plan, write, or optimize search-focused content.
+description: Organic-search writing deliverables for SEO, AEO, GEO, AI Overviews, briefs, articles, landing-page copy, audits, and refreshes. Use for content creation or optimization, not WordPress site implementation.
 ---
 
 # Content Writer
@@ -12,6 +12,7 @@ Use this skill to create helpful, source-grounded, organic-search-focused conten
 - Write for people first. SEO, AEO, and GEO tactics must support usefulness, clarity, originality, and trust.
 - Treat search behavior, AI Overviews, AI Mode, snippets, schema eligibility, and ranking guidance as drift-prone. Verify current official docs when exact claims matter.
 - Never invent facts, quotes, statistics, product capabilities, awards, authors, citations, prices, reviews, dates, medical/legal/financial guidance, or source attributions.
+- For product content, verify shipped claims from current releases/tags, repo product docs, public readme/changelog, and runtime evidence; label planned work and never present it as available.
 - Use web research for current, factual, competitive, regulated, or high-stakes topics. Prefer primary sources, official documentation, original research, expert sources, and first-party data.
 - Do not promise rankings, AI Overview inclusion, rich results, or traffic outcomes. State eligibility, likelihood, and measurement assumptions instead.
 - For YMYL topics, require stronger source quality, expert review notes, risk disclaimers, and conservative wording.

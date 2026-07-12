@@ -166,8 +166,8 @@ For README, UPGRADE, or other docs:
 ### Setting Up
 ```bash
 # Clone the repo
-git clone https://github.com/mehul0810/wp-expert-codex-skill.git
-cd wp-expert-codex-skill
+git clone https://github.com/mehul0810/agent-skills.git
+cd agent-skills
 
 # Install globally for local testing
 bash scripts/install-global-skill-links.sh --force

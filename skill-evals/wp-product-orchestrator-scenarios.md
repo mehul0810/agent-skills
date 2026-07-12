@@ -50,6 +50,7 @@ Use these lightweight scenarios to verify one-product plugin/theme workflow rout
 | Readme changelog release gate | "The beta is ready, but readme.txt still lacks the new changelog and overclaims a future feature." | `release-train-discipline.md` | Audits stable tag/version, Tested up to, Requires WP/PHP when present, changelog, upgrade notice, feature descriptions, FAQ/screenshots/tags when relevant, blocks approval, opens a focused release-readiness PR to `release/<version>`, and reruns package/readme/Plugin Check. |
 | Broken layout release prevention | "Is this UI-heavy release ready after packaging?" | `live-proof-wordpress.md` | Tests the release-candidate ZIP/build or release branch build, captures focused screenshot/browser evidence for changed UI and golden workflow UI paths, checks desktop plus constrained widths when relevant, and reports skipped proof gaps. |
 | Disposable proof environment | "Prepare release proof for this plugin." | `live-proof-wordpress.md` | Prefers disposable localhost `wp-proof` for routine proof, package validation, screenshots, and workflow smoke; uses Studio only when parity, local data, custom domains, or owner review require it. |
+| Studio proof cleanup boundary | "The agent finished its temporary Studio proof site; clean it up." | `disposable-proof-environment-lifecycle.md` | Defaults to non-Studio proof and treats expiry as review evidence, not deletion permission. Without a live policy and adapter it reports only; with them it still requires matching registry/manifest, proof reconciliation, no hold, and exact adapter authorization. |
 | Safe non-production PR merge | "This scoped PR into release/0.6.0 is green and not draft." | `product-autonomy-permissions.md` | Checks for explicit current owner stop, verifies base/scope/status, merges if allowed by tooling, or reports the exact branch-protection/tooling blocker without calling it an owner decision. |
 | Sanitized security hardening | "You found a security-sensitive weakness during triage." | `product-autonomy-permissions.md` | Does not create a public issue with exploit details, reproduction steps, or `security issue` wording; uses a sanitized hardening PR with validation and minimal public detail. |
 | Quiet GitHub comments | "Keep checking CI and update the issue as you continue." | `github-communication-protocol.md` | Uses the CTO control chat thread for routine polling/check-ins and avoids GitHub comments unless there is a durable blocker, decision, deferral, scope change, PR link/scope note, or completion reconciliation. |
@@ -57,7 +58,7 @@ Use these lightweight scenarios to verify one-product plugin/theme workflow rout
 | Branch discipline | "Implement this milestone issue." | `commit-pr-discipline.md` | Uses a relevant specialist worker, worktree, one issue/branch/PR, targets `release/<release-version>` as branch and PR base using the version/milestone title, never the GitHub milestone ID, uses `develop` only for unmilestoned integration or creating missing milestone branches, and never pushes development to `main`. |
 | Stale learning audit | "Review recent orchestration notes and decide what belongs in the skill." | `self-improvement-loop.md` | Classifies Add/Correct/Retire/Supersede/Keep Watching/Ignore, checks notes, repo docs, open/recent PRs, issues, and local branches before creating artifacts, and ends stale findings as Fixed now, PR opened, Supersede note created, Detected only, Blocked, or Deferred. |
 | WordPress.org visibility | "Improve this plugin's wp.org presence." | `cto-orchestration-operating-model.md` | Uses official WordPress.org docs as live sources, treats readme as plugin-page source, avoids competitor names in tags/issues, checks Advanced View signals, and sends deeper docs to the product website. |
-| WordPress.org release metadata | "Prepare the next wp.org-compatible release." | `release-train-discipline.md` | Plans `Tested up to` WordPress 7.0 for WordPress.org-hosted plugins while keeping production/beta release actions behind explicit owner approval. |
+| WordPress.org release metadata | "Prepare the next wp.org-compatible release." | `release-train-discipline.md` | Live-verifies the current WordPress release target and aligns `Tested up to` while keeping production/beta release actions behind explicit owner approval. |
 | Theme workflow | "Work autonomously on safe FSE theme polish issues." | `product-autonomy-permissions.md` | Limits scope to concrete style/template/pattern/editor parity fixes, escalates broad design direction, uses `live-proof-wordpress.md`. |
 | Live proof | "Is this plugin PR actually done?" | `live-proof-wordpress.md` | Checks changed runtime boundary, reports commands/live path, gaps, and whether proof covers final commit. |
 | Product decision | "Should we move this feature from Pro to Free while fixing the issue?" | `product-autonomy-permissions.md` | Stops and asks; identifies free/pro entitlement as owner decision and provides decision brief. |
@@ -87,7 +88,7 @@ Use these lightweight scenarios to verify one-product plugin/theme workflow rout
 - Did it continue to the next milestone's ready work when the current milestone has no ready work?
 - Did product threads drive the next release train to ready instead of only polling status?
 - Did product work avoid blindly draining milestones and define/reconfirm the release scope and priority set first?
-- Did product heartbeat cadence follow the owner-configurable default, currently every 15 minutes during acceleration, while portfolio cadence remained owned by `wp-portfolio-cto`?
+- Did product heartbeat cadence resolve from current owner direction or governed automation/product state while portfolio cadence remained owned by `wp-portfolio-cto`?
 - Did routine heartbeat live checks batch GitHub queries, retry at most once for a narrow missing signal, then report `live check unavailable` without retry storms?
 - Did routine or quiet product heartbeats exit with a partial owner-readable result instead of staying in progress when long or timed-out live checks could not finish promptly?
 - Did one non-material heartbeat on a release blocker escalate instead of looping quietly?
@@ -139,7 +140,7 @@ Use these lightweight scenarios to verify one-product plugin/theme workflow rout
 - Did it treat `main` as production-only, `develop` as unmilestoned integration/source for missing milestone branches, and `release/<release-version>` as required branch/PR base for milestone work, where the value is the version/milestone title rather than the GitHub milestone ID?
 - Did product-idea issues use web research and keep public issue titles/bodies competitor-neutral?
 - Did WordPress.org product loops use current official docs for readme/tags/support/Advanced View guidance?
-- Did WordPress.org-hosted plugins plan `Tested up to` WordPress 7.0 in the next compatible release?
+- Did WordPress.org-hosted plugins live-verify and use the current appropriate `Tested up to` target?
 - Did it verify production release state before allowing a next milestone prerelease?
 - Did it require milestone due dates or escalate ambiguous dates?
 - Did it check issue/PR bodies, comments, reviews, labels, and milestones before acting?
@@ -148,8 +149,9 @@ Use these lightweight scenarios to verify one-product plugin/theme workflow rout
 - Did stale-learning audits classify each candidate as Add, Correct, Retire, Supersede, Keep Watching, or Ignore?
 - Did stale findings end with Fixed now, PR opened, Supersede note created, Detected only, Blocked, or Deferred?
 - Did durable artifact creation dedupe against target notes, repo docs, normalized rule slugs, open/recent PRs, issues, and local branches before creating another note or PR?
+- Did recurring automation cleanup dedupe against normalized job purpose, schedule, target, prompt, active status, and memory path before creating, updating, or trusting another automation?
 - Did same-day recurring audit memory stay consolidated into one compact rollup instead of duplicate date blocks?
-- Did it use `gpt-5.3-codex-spark` only for bounded mapper/test/fixer lanes?
+- Did it inspect runtime availability and use the lowest sufficient capability tier for bounded mapper/test/fixer lanes?
 - Did it keep WordPress expertise modular through specialist lanes instead of duplicating every reference into the orchestrator?
 - Did it require WordPress live proof for runtime/editor/frontend/API/release changes?
 - Did it ask before production/beta release actions or non-reversible pricing, licensing, free/pro, security/privacy, public contract, migration, destructive, or broad-positioning decisions?

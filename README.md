@@ -8,11 +8,12 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - `wp-site-expert`: enterprise WordPress site, UX, CRO, SEO/AEO/GEO, analytics, accessibility, content architecture, performance, and premium visitor/admin experience engineering.
 - `wp-portfolio-cto`: cross-product WordPress portfolio control room for portfolio heartbeats, product-thread health, release conflicts, owner decision briefs, and shared workflow governance.
 - `wp-product-orchestrator`: one-product WordPress plugin/theme orchestrator for issue intake, milestone scope, release-readiness drive, worker delegation, validation synthesis, and PR workflow.
+- `loop-steward`: independent control-plane PR review, bounded revision, validation, and policy-gated merge decisions for `agent-loop`, `agent-book`, and `agent-skills`.
 - `wp-contributor`: official WordPress project contribution workflows for Core, Meta, Gutenberg, Trac, GitHub PRs, patches, testing, docs, triage, releases, and contributor communication.
 - `content-writer`: organic search content writing for SEO, AEO, GEO, AI Overviews, AI Mode, answer engines, AI tools, briefs, outlines, drafts, audits, and content refreshes.
 - `shared/references/research-token-discipline.md`: reusable token-efficient reasoning, repo exploration, web search, validation, and output discipline used by both skills.
 - `shared/references/session-continuity-pr-discipline.md`: reusable new-chat context rehydration, release-branch detection, explicit PR base selection, and branch/PR safety used by code-oriented skills.
-- `shared/references/project-subagent-routing.md`: reusable project-level Codex subagent routing, model assignment, bounded parallel mapping/review, and efficient `gpt-5.3-codex-spark` usage used by code-oriented skills.
+- `shared/references/project-subagent-routing.md`: reusable project-level subagent routing, availability-first model/reasoning allocation, and bounded parallel mapping/review.
 - `shared/references/product-autonomy-permissions.md`: reusable autonomy boundaries, permission levels, stop conditions, and owner-decision format for product/plugin/theme workflows.
 - `shared/references/product-queue-triage.md`: reusable issue/PR queue triage, autonomous candidate selection, release-blocker detection, and owner-facing output format.
 - `shared/references/live-proof-wordpress.md`: reusable WordPress live-proof gates for plugins, themes, FSE, REST, WP-CLI, admin, frontend, integrations, and releases.
@@ -28,6 +29,7 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - `wp-site-expert` for whole-site, landing page, UX, CRO, SEO/content, analytics, accessibility, and premium site polish work.
 - `wp-portfolio-cto` for cross-product portfolio governance, product-thread health, release conflicts, and owner portfolio briefs.
 - `wp-product-orchestrator` for one plugin/theme product's backlog, release train, GitHub issue/PR queue, and delegated implementation workflow.
+- `loop-steward` for active control-plane PRs that need independent review, bounded repair, or a policy-gated merge decision.
 
 The detailed playbooks remain in `wp-expert/references/` and `shared/references/`; specialist skills load those references only when needed.
 
@@ -102,7 +104,7 @@ The detailed playbooks remain in `wp-expert/references/` and `shared/references/
 - Enterprise GitHub workflows: issue triage, labels, milestones, scoped commits, PR descriptions, review response discipline.
 - New-chat and PR branch discipline: rehydrate repo context, check release/hotfix/support branches, explicitly pass PR base branches, and verify PR `baseRefName` before reporting success.
 - Issue milestone to PR base discipline: when work belongs to an issue milestone, create PRs against the matching release/hotfix/support branch instead of defaulting to `main` or `trunk`.
-- Project-level Codex subagent routing: use `.codex/agents/*.toml` profiles, skill-level reference lanes, bounded read-only mappers/reviewers, and `gpt-5.3-codex-spark` for lower-risk parallel WordPress work.
+- Project-level Codex subagent routing: use model-free `.codex/agents/*.toml` templates, skill-level lanes, bounded mappers/reviewers, and runtime capability tiers.
 - Efficient tests and maintainable code comments/docblocks for onboarding and future regression prevention.
 - Enterprise acceptance criteria templates: definition-of-done gates for plugin features, themes, REST APIs, migrations, performance fixes, security fixes, and conversion pages.
 - Webpack, Composer, npm, dependency extraction, lockfiles, build scripts, and release artifact packaging.
@@ -120,7 +122,7 @@ The detailed playbooks remain in `wp-expert/references/` and `shared/references/
 - Product-aware autonomy boundaries: classify work as autonomous, needs owner, blocked, release blocker, or defer based on `PRODUCT.md`, milestones, release branches, and risk.
 - Simplified plugin development workflow: one-issue-at-a-time root cause, implementation, tests, live proof, focused commit, and PR preparation using the narrowest specialist lane.
 - Simplified theme/FSE workflow: concrete design-token, pattern, template, responsive, visual parity, editor/frontend parity, and premium polish work with clear escalation for broad design decisions.
-- Project-level subagent orchestration: use `gpt-5.3-codex-spark` for bounded plugin/theme mappers, CI/test summarizers, and narrow fixers while reserving stronger models for final review/security/release decisions.
+- Project-level subagent orchestration: use the lowest sufficient available tier for bounded mapping/fixing and the strongest suitable reasoning-capable tier for high-risk review or decisions.
 - WordPress live-proof gates: plugin activation, admin/settings, REST, WP-CLI, block editor, Site Editor, frontend, WooCommerce, external APIs, local HTTPS, package, and WordPress.org release proof.
 - Product-repo starter kit in `templates/product-repo/` plus `scripts/install-product-agent-kit.sh` to install `AGENTS.md`, `PRODUCT.md`, `.codex/agents`, and workflow prompts into plugin/theme repositories.
 
@@ -157,6 +159,7 @@ wp-theme-expert/
 wp-site-expert/
 wp-portfolio-cto/
 wp-product-orchestrator/
+loop-steward/
 wp-contributor/
 content-writer/
 ```
@@ -172,11 +175,13 @@ Use $wp-theme-expert to build, review, debug, or improve a WordPress theme, cust
 
 Use $wp-site-expert to plan, build, review, or improve a WordPress website, landing page, conversion flow, UX/IA, content model, SEO/AEO/GEO surface, analytics/tracking setup, accessibility, performance, responsive polish, or premium enterprise site experience.
 
-Use the relevant specialist skill with `shared/references/project-subagent-routing.md` when a WordPress app project needs Codex subagent profiles, skill-level routing, or efficient `gpt-5.3-codex-spark` usage; use $wp-expert only if the lane is ambiguous.
+Use the relevant specialist with `shared/references/project-subagent-routing.md` when a project needs subagent profiles, skill routing, or availability-first model/reasoning allocation; use $wp-expert only if the lane is ambiguous.
 
 Use $wp-portfolio-cto for cross-product WordPress portfolio governance, portfolio heartbeats, product-thread health, release conflicts, owner decision briefs, and shared workflow improvements.
 
 Use $wp-product-orchestrator to triage, plan, delegate, validate, commit, push, or prepare PRs for one WordPress plugin/theme product thread.
+
+Use $loop-steward to review, repair, validate, and policy-gate a pull request in agent-loop, agent-book, or agent-skills.
 
 Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-develop, WordPress.org, WordCamp.org, Trac tickets, GitHub PRs, patches, tests, docs, standards, AI-assisted contribution guidelines, enterprise code-quality gates, triage, release/backport work, or contributor communication.
 
@@ -192,8 +197,8 @@ Use $content-writer to research, brief, draft, rewrite, audit, or refresh organi
 Clone this repo and run the installer from the repo root:
 
 ```bash
-git clone https://github.com/mehul0810/wp-expert-codex-skill.git
-cd wp-expert-codex-skill
+git clone https://github.com/mehul0810/agent-skills.git
+cd agent-skills
 
 # Install all skills globally.
 bash scripts/install-global-skill-links.sh
@@ -208,6 +213,7 @@ This symlinks the skills into `~/.claude/skills/`, where Claude Code discovers p
 ~/.claude/skills/wp-site-expert/SKILL.md
 ~/.claude/skills/wp-portfolio-cto/SKILL.md
 ~/.claude/skills/wp-product-orchestrator/SKILL.md
+~/.claude/skills/loop-steward/SKILL.md
 ~/.claude/skills/wp-contributor/SKILL.md
 ~/.claude/skills/content-writer/SKILL.md
 ~/.claude/skills/shared/references/*.md
@@ -220,6 +226,7 @@ Install selected skills only:
 bash scripts/install-global-skill-links.sh wp-expert
 bash scripts/install-global-skill-links.sh wp-plugin-expert wp-theme-expert wp-site-expert
 bash scripts/install-global-skill-links.sh wp-expert wp-plugin-expert wp-theme-expert wp-site-expert wp-portfolio-cto wp-product-orchestrator wp-contributor
+bash scripts/install-global-skill-links.sh loop-steward
 bash scripts/install-global-skill-links.sh content-writer
 ```
 
@@ -239,11 +246,12 @@ test -f ~/.claude/skills/wp-theme-expert/SKILL.md && echo "wp-theme-expert insta
 test -f ~/.claude/skills/wp-site-expert/SKILL.md && echo "wp-site-expert installed"
 test -f ~/.claude/skills/wp-portfolio-cto/SKILL.md && echo "wp-portfolio-cto installed"
 test -f ~/.claude/skills/wp-product-orchestrator/SKILL.md && echo "wp-product-orchestrator installed"
+test -f ~/.claude/skills/loop-steward/SKILL.md && echo "loop-steward installed"
 test -f ~/.claude/skills/wp-contributor/SKILL.md && echo "wp-contributor installed"
 test -f ~/.claude/skills/content-writer/SKILL.md && echo "content-writer installed"
 ```
 
-After first install, fully restart Claude Code if the skills do not appear immediately. Then run `/help` or explicitly ask Claude Code to use `wp-expert`, `wp-plugin-expert`, `wp-theme-expert`, `wp-site-expert`, `wp-portfolio-cto`, `wp-product-orchestrator`, `wp-contributor`, or `content-writer`.
+After first install, fully restart Claude Code if the skills do not appear immediately. Then run `/help` or explicitly ask Claude Code to use `wp-expert`, `wp-plugin-expert`, `wp-theme-expert`, `wp-site-expert`, `wp-portfolio-cto`, `wp-product-orchestrator`, `loop-steward`, `wp-contributor`, or `content-writer`.
 
 ### Install Globally For Codex
 
@@ -256,6 +264,7 @@ The same installer also symlinks skills into Codex's global skills directory:
 ~/.codex/skills/wp-site-expert/SKILL.md
 ~/.codex/skills/wp-portfolio-cto/SKILL.md
 ~/.codex/skills/wp-product-orchestrator/SKILL.md
+~/.codex/skills/loop-steward/SKILL.md
 ~/.codex/skills/wp-contributor/SKILL.md
 ~/.codex/skills/content-writer/SKILL.md
 ~/.codex/skills/shared/references/*.md
@@ -281,7 +290,7 @@ What it does:
 Install the starter kit into a WordPress plugin/theme repo:
 
 ```bash
-bash /path/to/wp-expert-codex-skill/scripts/install-product-agent-kit.sh /path/to/product-repo
+bash /path/to/agent-skills/scripts/install-product-agent-kit.sh /path/to/product-repo
 ```
 
 This copies `AGENTS.md`, `PRODUCT.md`, `.codex/config.toml`, `.codex/agents/*.toml`, and `.codex/prompts/*.md`. Existing files are skipped unless `--force` is passed.
@@ -305,6 +314,8 @@ The skills are intentionally token-efficient:
 - Focused `wp-expert/references/` playbooks keep plugin product architecture, troubleshooting, conversion engineering, frontend performance, launch readiness, hybrid migration, supportability, analytics, and acceptance criteria loadable only when needed.
 - Each `scripts/` directory contains lightweight discovery, validation, and workflow helpers.
 - `scripts/skill-token-audit.sh` guards frontmatter, `SKILL.md`, prompt, and reference word budgets so future improvements do not quietly increase token usage.
+- `scripts/route-budget-audit.sh` guards representative cumulative skill/router/reference paths rather than only individual files.
+- `skill-evals/README.md` defines the fresh-agent behavior gate; structural audits never substitute for scenario execution.
 - `skill-evals/wp-expert-scenarios.md` contains lightweight scenario prompts for checking routing and behavior after skill changes.
 
 See `PLANNING_REPORT.md` for the planning rationale and validation history.

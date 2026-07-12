@@ -1,6 +1,6 @@
 # Theme Development And Block Editor
 
-Use this for classic themes, block themes, child themes, `theme.json`, block editor compatible code generation, dynamic/static blocks, patterns, Query Loop behavior, and editor/frontend visual parity. For style guides, design tokens, custom themes, or child themes on top of an existing theme, read `style-guide-theme-translation.md`. For block/FSE architecture decisions, read `block-theme-architecture.md` first. For converting a provided design into a custom editable FSE/block theme, also read `custom-block-theme-from-design.md`. For classic-to-block migration, page-builder migration, child-theme modernization, or WooCommerce template cleanup, read `hybrid-theme-migration-modernization.md`. For Core Web Vitals, fonts, images, assets, CLS, INP, LCP, and frontend quality gates, read `theme-frontend-performance-quality-gate.md`. For Ollie block theme or Ollie Pro work, also read `ollie-block-theme.md`. For Blocksy theme or Blocksy Pro work, also read `blocksy-theme.md`.
+Use this for classic/child themes and block-editor compatibility. Use the theme router for block/FSE architecture, supplied visuals, migration, performance, Ollie, or Blocksy work; load only the selected primary plus one confirmed-risk support reference.
 
 ## Official Anchors
 

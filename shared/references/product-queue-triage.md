@@ -124,7 +124,7 @@ Classify each item:
 
 ## WordPress Product Signals
 
-Raise priority for activation/upgrade/uninstall/rollback; admin lockout, capabilities, nonces, REST, data integrity; forms/email delivery; editor/frontend/accessibility/Core Web Vitals; WordPress.org compliance, release contents, dependencies, `readme.txt`, and hosted-plugin metadata including planning `Tested up to` WordPress 7.0; multisite, object cache, cron/background jobs, import/export, privacy export/erase, and hot paths.
+Raise priority for activation/upgrade/uninstall/rollback; admin lockout, capabilities, nonces, REST, data integrity; forms/email delivery; editor/frontend/accessibility/Core Web Vitals; WordPress.org compliance, release contents, dependencies, `readme.txt`, and a live-verified `Tested up to` target; multisite, object cache, cron/background jobs, import/export, privacy export/erase, and hot paths.
 
 Lower priority when the item is cosmetic without acceptance criteria, stale without reproduction, unsupported, or off-direction.
 

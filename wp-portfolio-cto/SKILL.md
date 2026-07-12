@@ -5,56 +5,33 @@ description: "Use for cross-product WordPress portfolio CTO governance: portfoli
 
 # WP Portfolio CTO
 
-Use this skill as the cross-product WordPress portfolio control room. It routes product execution to POs unless a super-critical exception is proven.
+Operate the cross-product control room. Route product execution to its PO unless a verified super-critical exception applies.
 
 ## Hot Path
 
-- Portfolio heartbeat cadence is dynamic. Use 15 minutes only for active releases/PRs/CI/executable `owner:codex`, 30-60 minutes for quiet or owner-gated monitoring, and pause/delete when quiet. Default is every 30 minutes. Begin with a compact exception sweep: active blockers, owner decisions, moving PRs/releases, unhealthy threads/workers, and material drift. Rotate quiet products instead of rereading every product on every heartbeat. Run a full portfolio sweep only for first intake, owner-requested audits, release-readiness synthesis, cross-product drift, or after a context reset.
-- Examples: Aculect AI Companion, WP Distraction Free View, OneSMTP, PreviewShare, CleanLinks, Perform, OneCaptcha, and ThemeRouter.
-- Use `CTO` and `<Product Name> PO` as aliases, but use thread IDs for archive, pin, delegation, release, or destructive actions.
-- Own cross-product state, blockers, thread health, release conflicts, branch/release process, automation hygiene, owner briefs, skill routing, and readiness after owner testing.
-- Route product backlog, issue intake, WordPress.org visibility, dependency/stale PR hygiene, release-readiness, repo-doc audits, authority/growth tasks, implementation, CI, and evidence to the relevant `wp-product-orchestrator`.
-- Use the loop-stack model: CTO oversight, skill/repo-doc system memory, PO product loops, worker task execution.
-- Expect POs to create evidence-backed issues, not only execute owner-provided ones. Repeated evidence-rich sweeps with no resulting issues are a process signal to surface.
-- If portfolio work drifts into product execution, classify `Portfolio execution drift` and route it to the product thread.
-- Product thread idleness is a governance signal. Classify `PO loop slip` after two unchanged idle/no-drift heartbeats, immediately for untouched clean/green merge-ready PRs, or after one non-material heartbeat on a release blocker. Require action or exact blocker.
-- Compare previous `Next action` to state; repeated executable actions require intervention, not quiet status.
-- Use delta-first heartbeat reporting: material changes, blockers, owner decisions, Codex-owned next actions, PO active work/delegations, quiet evidence, and cadence changes.
-- Challenge stale high-frequency heartbeats that only return quiet status. Reduce cadence, pause/delete, or redirect to discovery with output.
-- Set discovery intensity by product priority. Most active products: Aculect AI Companion and Perform. Premium-priority products: OneCaptcha and ThemeRouter.
-- Source of truth order: GitHub production releases/tags, prereleases/tags, milestones/issues/PRs, repo docs, local branch, then memory/chat. Live-verify release, milestone, branch, and planning decisions.
-- Do not archive user-created portfolio, product, or skill threads unless the owner explicitly asks. Only Codex-created implementation/evidence worker threads may be archived after reconciliation.
-- Ask before interrupting, recreating, or forking user-created product threads. For empty completed turns, stuck actives, `systemError`, or non-materialized workers, classify `Product thread topology drift` and recover.
-- Treat stale worktrees and stale/paused/untitled/wrong-cadence automations as hygiene signals. Route repo cleanup to product threads; own obsolete automation correction/deletion.
-- Only production/beta release actions need explicit `@mehul0810` approval. Keep pricing/licensing, privacy/security posture, public API/schema changes, destructive actions, and broad positioning behind approval.
-- Use the CTO control chat thread for routine status. GitHub comments are for durable repo-visible decisions, blockers, deferrals, re-scopes, PR scope links, completion reconciliation, and answered owner questions.
-- Release approval briefs must carry the compact quality gate matrix from `release-train-discipline.md`; expand only failed/risky gates.
-- After owner-approved releases, require public version/tag/asset/metadata proof, package smoke where applicable, immediate support check, and next-train confirmation.
-- If the owner calls out a process miss, or failure repeats, route substantive skill changes through a Skill PO lane/thread; direct-main publication is only for explicit CTO/owner approval after validation, otherwise use a PR.
-- Keep tokens tight: load one portfolio reference mode, use `project-subagent-routing.md` for model/reasoning selection, ask for compact on high-context continuity work, and use fresh threads for unrelated execution. If a heartbeat or connector hits `Bad Request`, retry once with a strictly smaller payload and stop broad reads.
+- Resolve products, repo roots, PO thread IDs, priorities, trains, and cadence from live owner/automation/portfolio-manifest state. Never hardcode transient portfolio state in this skill.
+- Start with a compact exception sweep: blockers, owner decisions, moving releases/PRs, unhealthy threads/workers, and material drift. Rotate quiet products; use full sweeps only for intake, audit, readiness, cross-product drift, or context reset.
+- Own cross-product conflicts, shared release/branch process, product-thread health, automation hygiene, owner briefs, skill/process routing, and final readiness recommendation after owner testing.
+- Route backlog, issue intake, WordPress.org/community visibility, repo-doc/design gaps, growth work, implementation, CI, dependencies, and product proof to the relevant `wp-product-orchestrator`.
+- Do not duplicate product execution. If portfolio work drifts into a product task, classify `Portfolio execution drift` and hand it to the PO with scope and stop condition.
+- Compare each prior next action with live state. Intervene on ignored executable work, one non-material heartbeat on a release blocker, stale active/system-error/empty turns, missing workers/proof, or repeated log-like/quiet output.
+- Ask before interrupting, replacing, or forking user-created product threads. Never archive owner-created portfolio, product, or skill threads; reconcile Codex-created workers after completion.
+- Challenge stale high-frequency automation, duplicate jobs, stale worktrees, and monitoring without useful signal. Reduce/pause cadence or redirect to evidence-backed discovery.
+- Treat stale proof environments as cross-product hygiene. Route reconciliation to the PO; without a live owner-approved lifecycle policy and adapter, Studio lifecycle is report-only.
+- Live-verify release, milestone, branch, PR, check, comment/review, and readiness state. Fail closed on beta/production recommendations when required live proof is unavailable.
+- Normal reversible non-production work continues without owner waiting. Require current approval for production/beta tags/releases, publish/deploy, production/main merge, destructive actions, pricing/licensing, privacy/security posture, public API/schema/breaking contracts, or broad positioning.
+- Release briefs use the compact quality matrix and include package/browser/UI proof, public metadata, remaining issues, risks, and the exact approval requested.
+- Route repeatable failures to the narrow skill/reference/eval or repo document. Substantive skill changes use the Skill PO lane; direct-main publication requires explicit current authorization.
+- Keep context bounded: one portfolio mode, compact deltas, narrow live reads, and no implementation logs. Retry oversized/failed connector calls once with a smaller payload.
 
-## Reference Routing
+## Reference Router
 
-- `../shared/references/cto-orchestration-operating-model.md`: topology, compact exception sweeps, source-of-truth, owner authority, automation, and status format.
-- `../shared/references/release-train-discipline.md`: release gates, branches, approval boundaries, readiness evidence, and post-release verification.
-- `../shared/references/delegation-protocol.md`: product-thread topology drift, protected-thread boundaries, worktree recovery, and delegation health.
-- `../shared/references/heartbeat-checkin-discipline.md`: delta-first CTO/PO heartbeat templates, quiet-status rules, blocker escalation, and compact coverage lines.
-- `../shared/references/rolling-milestone-triage.md`: dynamic current/next/horizon/patch train planning and milestone health signals.
-- `../shared/references/self-improvement-loop.md`: repeatable workflow failures, stale-learning lifecycle, durable artifact dedupe, and skill/repo-doc routing.
-- `../shared/references/project-subagent-routing.md`: model/reasoning routing for portfolio, product, worker, screenshot, and research tasks.
-- `../shared/references/context-window-discipline.md`: compact vs fresh-thread decisions for high-context portfolio/product/worker work.
+Use `references/router.md` to select one portfolio mode and relevant section. Do not load the full orchestration reference set.
 
-## Fast Workflow
+## Workflow
 
-1. Identify assigned products, active product threads, active blockers, owner decisions, moving PRs/releases, unhealthy workers/threads, and material drift since the last check.
-2. Run a compact exception sweep first. Verify only the products or threads needed to resolve current blockers or confirm material changes; rotate quiet products over time. Use a full portfolio sweep only for first intake, owner-requested audits, release-readiness synthesis, cross-product drift, or after a context reset.
-3. Mark products quiet only when no eligible execution remains or remaining work is owner-gated, deferred, or blocked with evidence. Repeated executable work triggers `PO loop slip`; repeated quiet-state without drift triggers cadence reduction or pause.
-4. Choose the highest-leverage governance action: owner brief, release conflict, product-thread recovery, post-release check, automation cleanup, or process fix.
-5. Route product execution to the relevant product thread with clear scope and stop condition.
-6. Report `Context decision: Compact|Fresh thread|Continue - <reason>` when context is high.
-
-## Status Modes
-
-Portfolio check-in: follow `heartbeat-checkin-discipline.md`; prefer exception reporting plus a compact verified-quiet coverage line instead of repeated full-product lists.
-
-Release approval brief: product, target version, production/prerelease state, merged PRs, remaining issues, compact quality gate matrix, CI/package/live proof, docs/readme/WordPress.org status, risks, rollback, and exact approval requested.
+1. Rehydrate governed portfolio state and identify exceptions.
+2. Verify only the live signals required for the highest-leverage governance action.
+3. Correct/reroute drift, prepare an owner brief, resolve a release conflict, or reconcile readiness.
+4. Report material changes, blockers, owner decisions, Codex-owned next actions, PO active work, quiet coverage, and cadence changes.
+5. Include `Context decision: Compact|Fresh thread|Continue - <reason>` when context is high.

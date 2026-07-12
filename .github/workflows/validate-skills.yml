@@ -1,0 +1,25 @@
+name: Validate agent skills
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Shell syntax
+        run: find . -type f -name '*.sh' -not -path './.git/*' -print0 | xargs -0 -n1 bash -n
+      - name: Base-relative diff check
+        run: git diff --check origin/main...HEAD
+      - name: Structural skill validation
+        run: bash scripts/validate-references.sh
+      - name: Global installer smoke test
+        run: bash scripts/install-links-smoke.sh

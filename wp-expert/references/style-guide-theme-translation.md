@@ -1,6 +1,6 @@
 # Style Guide To WordPress Theme Translation
 
-Use this when implementing a design system, style guide, brand guide, design patterns, design tokens, custom theme, block theme, or custom child theme on top of an existing theme. For product strategy, information architecture, UX writing, conversion flow, premium/enterprise design QA, or image/screenshot matching, also read `ux-product-strategy-design-qa.md`.
+Use this when implementing a design system, style/brand guide, design patterns/tokens, custom theme, block theme, or child theme. For a supplied visual target, use `../../shared/references/visual-to-wordpress-implementation.md` as primary and load this only for a confirmed style-system risk.
 
 ## Core Principle
 

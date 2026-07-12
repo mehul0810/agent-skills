@@ -100,7 +100,7 @@ Missing milestone due dates are metadata decisions, not blanket implementation b
 
 Dirty or behind primary checkouts block direct edits there. They do not block a fresh scoped Codex worktree worker from a clean upstream branch when branch/base evidence is safe.
 
-When delegation is deferred, report the exact hard blocker: issue number, missing branch/base, production/beta release approval, missing tool/project, or unsafe checkout state. For an explicit branch-model blocker such as OneSMTP #73, prepare a decision brief instead of passive polling.
+When delegation is deferred, report the exact hard blocker: issue number, missing branch/base, production/beta release approval, missing tool/project, or unsafe checkout state. For an explicit branch-model conflict, prepare a decision brief instead of passive polling.
 
 ## Delegation Ownership Boundary
 
