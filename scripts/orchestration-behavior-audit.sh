@@ -17,6 +17,19 @@ require_text() {
   fi
 }
 
+require_absent() {
+  local file="$1"
+  local text="$2"
+  local label="$3"
+
+  if grep -Fq "$text" "$repo_root/$file"; then
+    echo "unexpected: $label ($file)" >&2
+    errors=$((errors + 1))
+  else
+    echo "ok: $label"
+  fi
+}
+
 require_file() {
   local file="$1"
   local label="$2"
@@ -37,6 +50,7 @@ require_file "shared/references/commit-pr-discipline.md" "commit and PR discipli
 require_file "shared/references/product-autonomy-permissions.md" "product autonomy permissions reference"
 require_file "shared/references/weekly-wordpress-intelligence.md" "weekly WordPress intelligence reference"
 require_file "shared/references/self-improvement-loop.md" "self-improvement loop reference"
+require_file "shared/references/disposable-proof-environment-lifecycle.md" "disposable proof-environment lifecycle reference"
 require_file "shared/references/repo-product-docs-contract.md" "repo product docs contract reference"
 require_file "shared/references/context-window-discipline.md" "context window discipline reference"
 require_file "shared/references/project-subagent-routing.md" "project subagent routing reference"
@@ -76,6 +90,8 @@ require_text "wp-portfolio-cto/SKILL.md" "repo-doc audits" "portfolio repo-doc a
 require_text "wp-portfolio-cto/SKILL.md" "authority/growth tasks" "portfolio authority growth routing"
 require_text "wp-portfolio-cto/SKILL.md" "one non-material heartbeat on a release blocker" "portfolio release-blocker escalation"
 require_text "wp-portfolio-cto/SKILL.md" 'empty completed turns, stuck actives, `systemError`' "portfolio topology drift failure modes"
+require_text "wp-portfolio-cto/SKILL.md" "stale disposable proof environments" "portfolio proof-environment hygiene"
+require_text "wp-portfolio-cto/SKILL.md" "report all Studio sites; never delete them" "portfolio proof-environment fail-closed protection"
 require_text "wp-product-orchestrator/SKILL.md" "one long-lived plugin/theme product thread" "orchestrator one-product language"
 require_text "wp-product-orchestrator/SKILL.md" 'Cross-product governance goes to `wp-portfolio-cto`' "orchestrator portfolio handoff"
 require_text "wp-product-orchestrator/SKILL.md" "Use the loop-stack model" "orchestrator loop-stack model"
@@ -107,6 +123,8 @@ require_text "wp-product-orchestrator/SKILL.md" "Product threads drive the next 
 require_text "wp-product-orchestrator/SKILL.md" "Release-ready evidence must include the compact quality gate matrix" "orchestrator quality gate matrix rule"
 require_text "wp-product-orchestrator/SKILL.md" '`Not applicable - reason`' "orchestrator non-applicable gate reason"
 require_text "wp-product-orchestrator/SKILL.md" '`wp-proof`' "orchestrator wp-proof preference"
+require_text "wp-product-orchestrator/SKILL.md" "Default to non-Studio proof." "orchestrator proof-environment default"
+require_text "wp-product-orchestrator/SKILL.md" "Studio lifecycle is report-only without" "orchestrator proof-environment ownership guard"
 require_text "wp-product-orchestrator/SKILL.md" "Do proactive discovery:" "orchestrator proactive discovery rule"
 require_text "wp-product-orchestrator/SKILL.md" "Avoid idea spam" "orchestrator anti idea spam rule"
 require_text "wp-product-orchestrator/SKILL.md" "Use delta-first reporting" "orchestrator delta-first reporting rule"
@@ -536,6 +554,13 @@ require_text "shared/references/self-improvement-loop.md" "Open PRs and issues" 
 require_text "shared/references/self-improvement-loop.md" "Recently merged PRs and closed issues" "self-improvement merged PR/closed issue dedupe"
 require_text "shared/references/self-improvement-loop.md" "one compact rollup per date" "self-improvement same-day rollup dedupe"
 require_text "shared/references/self-improvement-loop.md" "report the duplicate automation IDs for cleanup" "self-improvement duplicate automation cleanup reporting"
+require_text "shared/references/disposable-proof-environment-lifecycle.md" "Never delete a Studio site based on its name" "proof-environment no-name deletion guard"
+require_text "shared/references/disposable-proof-environment-lifecycle.md" "Without a live owner-approved lifecycle policy and policy-gated adapter, do not create or delete" "proof-environment live policy gate"
+require_text "shared/references/disposable-proof-environment-lifecycle.md" "Expiry is a stale-resource review trigger, not deletion permission" "proof-environment expiry semantics"
+require_text "shared/references/disposable-proof-environment-lifecycle.md" "registry and on-disk manifest disagree" "proof-environment manifest match guard"
+require_text "shared/references/disposable-proof-environment-lifecycle.md" "Loop Steward reports lifecycle drift but does not delete product proof sites." "proof-environment stewardship boundary"
+require_absent "shared/references/disposable-proof-environment-lifecycle.md" "proof-environment-policy.json" "proof-environment reference has no nonexistent policy path"
+require_text "skill-evals/wp-product-orchestrator-scenarios.md" "expiry as review evidence, not deletion permission" "proof-environment expiry eval"
 require_text "shared/references/repo-product-docs-contract.md" "Product Truth Does Not Live Only In The Skill" "repo product docs contract"
 require_text "shared/references/repo-product-docs-contract.md" '`DESIGN.md`: concise product design contract' "repo DESIGN.md product design contract"
 require_text "shared/references/repo-product-docs-contract.md" "not a heavy design-system spec" "repo DESIGN.md not heavy spec"

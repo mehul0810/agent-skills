@@ -26,6 +26,7 @@ Use this skill as the cross-product WordPress portfolio control room. It routes 
 - Do not archive user-created portfolio, product, or skill threads unless the owner explicitly asks. Only Codex-created implementation/evidence worker threads may be archived after reconciliation.
 - Ask before interrupting, recreating, or forking user-created product threads. For empty completed turns, stuck actives, `systemError`, or non-materialized workers, classify `Product thread topology drift` and recover.
 - Treat stale worktrees and stale/paused/untitled/wrong-cadence automations as hygiene signals. Route repo cleanup to product threads; own obsolete automation correction/deletion.
+- Treat stale disposable proof environments as a hygiene signal. Without a live owner-approved lifecycle policy and adapter, route evidence to the PO and report all Studio sites; never delete them.
 - Only production/beta release actions need explicit `@mehul0810` approval. Keep pricing/licensing, privacy/security posture, public API/schema changes, destructive actions, and broad positioning behind approval.
 - Use the CTO control chat thread for routine status. GitHub comments are for durable repo-visible decisions, blockers, deferrals, re-scopes, PR scope links, completion reconciliation, and answered owner questions.
 - Release approval briefs must carry the compact quality gate matrix from `release-train-discipline.md`; expand only failed/risky gates.
