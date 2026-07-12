@@ -148,6 +148,7 @@ Use these lightweight scenarios to verify one-product plugin/theme workflow rout
 - Did stale-learning audits classify each candidate as Add, Correct, Retire, Supersede, Keep Watching, or Ignore?
 - Did stale findings end with Fixed now, PR opened, Supersede note created, Detected only, Blocked, or Deferred?
 - Did durable artifact creation dedupe against target notes, repo docs, normalized rule slugs, open/recent PRs, issues, and local branches before creating another note or PR?
+- Did recurring automation cleanup dedupe against normalized job purpose, schedule, target, prompt, active status, and memory path before creating, updating, or trusting another automation?
 - Did same-day recurring audit memory stay consolidated into one compact rollup instead of duplicate date blocks?
 - Did it inspect runtime availability and use the lowest sufficient capability tier for bounded mapper/test/fixer lanes?
 - Did it keep WordPress expertise modular through specialist lanes instead of duplicating every reference into the orchestrator?
