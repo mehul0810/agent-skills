@@ -7,6 +7,8 @@ description: "Review, repair, and merge policy-eligible pull requests across age
 
 Maintain the control-plane repositories without turning MeGo into a PR log. Treat the live, validated `agent-loop/policies/loop-steward-policy.json` as the authority for activation, validation, merge classification, and escalation.
 
+For owner-managed `agent-*` repositories, the standing publication path is validated direct-to-`main`: do not create a branch or PR unless MeGo explicitly requests review or live repository protection requires it. If a legacy/open PR exists, review and reconcile it normally; do not create another PR merely to publish the fix.
+
 ## Policy Preflight
 
 - Resolve the exact `agent-loop` repo root, policy path, current policy commit, and queue source before acting. Do not use a pasted or remembered policy snapshot.

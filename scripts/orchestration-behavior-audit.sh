@@ -73,7 +73,7 @@ require_text "wp-portfolio-cto/SKILL.md" "one non-material heartbeat on a releas
 require_text "wp-portfolio-cto/SKILL.md" "Never archive owner-created portfolio, product, or skill threads" "portfolio protected thread gate"
 require_text "wp-portfolio-cto/SKILL.md" "compact quality matrix" "portfolio release quality summary"
 require_text "wp-portfolio-cto/SKILL.md" "Skill PO lane" "portfolio skill routing"
-require_text "wp-portfolio-cto/SKILL.md" "direct-main publication" "portfolio publication gate"
+require_text "wp-portfolio-cto/SKILL.md" "standing validated direct-main publication policy" "portfolio agent publication rule"
 require_text "wp-portfolio-cto/SKILL.md" "references/router.md" "portfolio focused router"
 require_text "wp-portfolio-cto/SKILL.md" "Context decision: Compact|Fresh thread|Continue" "portfolio context decision"
 require_text "wp-portfolio-cto/SKILL.md" "Retry oversized/failed connector calls once with a smaller payload" "portfolio bounded payload retry"
@@ -134,7 +134,9 @@ require_text "shared/references/cto-orchestration-operating-model.md" "Require e
 require_text "shared/references/cto-orchestration-operating-model.md" "Sensitive security details stay private" "CTO security disclosure boundary"
 require_text "shared/references/cto-orchestration-operating-model.md" "strongest suitable available model" "CTO dynamic capability escalation"
 require_text "shared/references/cto-orchestration-operating-model.md" "Skill PO lane" "CTO skill lane"
-require_text "shared/references/cto-orchestration-operating-model.md" "Direct-main skill publication" "CTO direct-main gate"
+require_text "shared/references/commit-pr-discipline.md" 'validated changes commit and push directly to `main` by default' "agent control-plane direct-main default"
+require_text "AGENTS.md" "Do not create feature branches or PRs" "agent-skills no-branch default"
+require_text "skill-evals/wp-portfolio-cto-scenarios.md" "does not create a branch or PR" "agent control-plane publication eval"
 require_text "shared/references/cto-orchestration-operating-model.md" "Focused Routing" "CTO focused routing"
 
 # Regression guards: live portfolio state belongs in manifests/automation, not normative skills.
@@ -302,7 +304,7 @@ require_text "shared/references/github-communication-protocol.md" "CTO control c
 require_text "shared/references/commit-pr-discipline.md" "type(scope): concise action" "commit convention"
 require_text "shared/references/commit-pr-discipline.md" "Every PR must include" "PR template requirements"
 require_text "shared/references/commit-pr-discipline.md" "Screenshot evidence for admin, editor, frontend, style, layout, UX" "PR screenshot evidence requirement"
-require_text "shared/references/commit-pr-discipline.md" '`main` is production release space only' "commit-pr main production-only rule"
+require_text "shared/references/commit-pr-discipline.md" 'Product repositories keep `main` as production release space' "commit-pr main production-only rule"
 require_text "shared/references/commit-pr-discipline.md" "Worker PR Rule" "worker one issue one PR rule"
 require_text "shared/references/commit-pr-discipline.md" "verified development base" "commit-pr verified development base"
 require_text "shared/references/commit-pr-discipline.md" 'Milestone-based work must create or use `release/<release-version>`' "commit-pr release-version branch required"

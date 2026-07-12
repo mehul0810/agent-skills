@@ -13,7 +13,7 @@ Use these lightweight scenarios to verify cross-product portfolio governance wit
 | Product thread topology drift | "PreviewShare product thread has a stale active turn and a worker did not materialize." | `delegation-protocol.md` | Classifies `Product thread topology drift`, avoids launching more work into the stuck thread, and asks before interrupting/recreating/forking user-created threads. |
 | Skill improvement routing | "The product orchestration workflow drifted again." | `self-improvement-loop.md` | Classifies the failure, dedupes existing durable artifacts, routes cross-product behavior to `wp-portfolio-cto` or shared references, and adds audit coverage when repeatable. |
 | Skill PO routing | "Patch the skill pack from the portfolio heartbeat." | `cto-orchestration-operating-model.md` | Routes substantive skill updates to a Skill PO lane/thread instead of having portfolio CTO patch skills directly, except for tiny emergency coordination fixes. |
-| Direct-main skill update | "CTO approved this skill-process fix for direct push to main." | `commit-pr-discipline.md` | Uses Skill PO routing, validates the skill repo, and allows direct commit/push to `main` only because owner/CTO explicitly authorized direct-main publication. |
+| Agent control-plane publication | "Apply this skill-process fix in agent-skills." | `commit-pr-discipline.md` | Uses Skill PO routing, validates the repository, commits and pushes directly to `main`, and does not create a branch or PR unless the owner explicitly requests review or repository protection requires it. |
 | Release-blocker slip | "The product PO returned another non-material heartbeat while a release blocker is still open." | `heartbeat-checkin-discipline.md` | Escalates immediately, classifies PO/process drift, and requires an execution or blocker-recovery path instead of another quiet loop. |
 
 ## Regression Questions
@@ -25,7 +25,7 @@ Use these lightweight scenarios to verify cross-product portfolio governance wit
 - Did it keep production/beta release actions behind explicit owner approval?
 - Did it route product execution to `wp-product-orchestrator` and implementation to specialist workers?
 - Did it route substantive skill-pack changes through a Skill PO lane/thread instead of patching skills from the portfolio heartbeat?
-- Did direct-main skill publication happen only when CTO or owner explicitly allowed it?
+- Did `agent-*` control-plane work publish directly to `main` without creating a branch or PR, unless an explicit exception applied?
 - Did one non-material heartbeat on a release blocker trigger CTO intervention?
 - Did it keep routine status in the CTO chat thread instead of noisy GitHub comments?
 - Did it resolve cadence from current owner direction or governed automation/portfolio state instead of embedding a transient interval?

@@ -21,7 +21,7 @@ Operate the cross-product control room. Route product execution to its PO unless
 - Live-verify release, milestone, branch, PR, check, comment/review, and readiness state. Fail closed on beta/production recommendations when required live proof is unavailable.
 - Normal reversible non-production work continues without owner waiting. Require current approval for production/beta tags/releases, publish/deploy, production/main merge, destructive actions, pricing/licensing, privacy/security posture, public API/schema/breaking contracts, or broad positioning.
 - Release briefs use the compact quality matrix and include package/browser/UI proof, public metadata, remaining issues, risks, and the exact approval requested.
-- Route repeatable failures to the narrow skill/reference/eval or repo document. Substantive skill changes use the Skill PO lane; direct-main publication requires explicit current authorization.
+- Route repeatable failures to the narrow skill/reference/eval or repo document. Substantive skill changes use the Skill PO lane; owner-managed `agent-*` repositories use the standing validated direct-main publication policy unless the owner requests review or protection requires a PR.
 - Keep context bounded: one portfolio mode, compact deltas, narrow live reads, and no implementation logs. Retry oversized/failed connector calls once with a smaller payload.
 
 ## Reference Router
