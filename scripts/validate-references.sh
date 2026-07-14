@@ -29,8 +29,8 @@ Options:
   --routing   Validate reference routing map
   --fanout    Check skill routing fan-out and modular router discipline
   --tokens    Check skill token budgets
-  --routes    Check representative cumulative route budgets
-  --evals     Check skill scenario inventory
+  --routes    Check shared route-budget and scenario contracts
+  --evals     Check shared route-budget and scenario contracts
   --behavior  Check critical agent behavior guardrails
   --orchestration
               Check product orchestrator CTO behavior guardrails
@@ -343,25 +343,15 @@ validate_token_budgets() {
   fi
 }
 
-validate_route_budgets() {
+validate_harness_contracts() {
   echo ""
-  echo "=== Validating cumulative route budgets ==="
+  echo "=== Validating shared harness contracts ==="
 
-  if bash "$repo_root/scripts/route-budget-audit.sh"; then
-    log_success "Representative route budgets are controlled"
+  local node_bin="${NODE_BIN:-node}"
+  if "$node_bin" "$repo_root/node_modules/@mehul0810/agent-harness/bin/agent-harness.js" validate --config "$repo_root/agent-harness.config.json"; then
+    log_success "Route budgets and skill eval inventory are controlled"
   else
-    log_error "Route budget audit failed"
-  fi
-}
-
-validate_skill_evals() {
-  echo ""
-  echo "=== Validating skill eval inventory ==="
-
-  if bash "$repo_root/scripts/skill-eval-audit.sh"; then
-    log_success "Skill eval inventory is complete"
-  else
-    log_error "Skill eval inventory audit failed"
+    log_error "Shared harness contract validation failed"
   fi
 }
 
@@ -485,9 +475,8 @@ main() {
     validate_scripts
     validate_metadata
     validate_token_budgets
-    validate_route_budgets
+    validate_harness_contracts
     validate_routing_fanout
-    validate_skill_evals
     validate_behavior_rules
     validate_orchestration_rules
     validate_visual_wordpress_rules
@@ -496,9 +485,9 @@ main() {
   elif [ "$check_type" = "tokens" ]; then
     validate_token_budgets
   elif [ "$check_type" = "routes" ]; then
-    validate_route_budgets
+    validate_harness_contracts
   elif [ "$check_type" = "evals" ]; then
-    validate_skill_evals
+    validate_harness_contracts
   elif [ "$check_type" = "fanout" ]; then
     validate_routing_fanout
   elif [ "$check_type" = "behavior" ]; then

@@ -1,0 +1,14 @@
+{
+  "name": "@mehul0810/agent-skills",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "harness": "agent-harness validate --config agent-harness.config.json",
+    "test": "npm run harness"
+  },
+  "devDependencies": {
+    "@mehul0810/agent-harness": "https://github.com/mehul0810/agent-harness/archive/f6b5e2009f710d963cf6728853012691ec39b16e.tar.gz"
+  }
+}

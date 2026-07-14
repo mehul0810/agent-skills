@@ -12,6 +12,7 @@ This repository owns reusable Agent Skills, shared references, eval specificatio
 - Keep `SKILL.md` as the compact execution kernel. Put mode detail in one-level routers/references and avoid second-level hidden expertise.
 - Before adding a rule, duplicate-screen skills, references, evals, open/recent PRs, and local unpublished branches.
 - Update behavior/eval coverage for repeatable owner corrections. Structural string checks do not replace fresh-agent forward tests.
+- Keep generic route-budget and scenario-inventory contracts in `agent-harness.config.json`, backed by the exact `agent-harness` commit pinned in `package-lock.json`. Keep WordPress skill-specific section and routing policy in local audits.
 - Commit scoped validated changes and push `main` after validation. The owner has established direct-to-`main` as the standing publication policy for `agent-*` repositories; branch or PR creation now requires an explicit exception.
 
 ## Required Validation

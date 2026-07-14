@@ -5,11 +5,13 @@
 ```bash
 git diff --check origin/main...HEAD
 bash -n scripts/*.sh
+npm ci
+npm run harness
 bash scripts/skill-token-audit.sh
-bash scripts/route-budget-audit.sh
 bash scripts/skill-routing-audit.sh
-bash scripts/skill-eval-audit.sh
 ```
+
+The shared `agent-harness` owns generic route-budget and scenario-inventory validation. Repository-specific skill frontmatter/body limits and routing contracts remain in the local shell audits.
 
 ## Full Gate
 

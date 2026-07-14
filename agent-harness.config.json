@@ -1,0 +1,141 @@
+{
+  "$schema": "./node_modules/@mehul0810/agent-harness/schemas/config.schema.json",
+  "schemaVersion": 1,
+  "projectRoot": ".",
+  "requiredFiles": [
+    "skill-evals/README.md"
+  ],
+  "requiredPhrases": [
+    {
+      "file": "skill-evals/README.md",
+      "phrases": ["fresh agent"]
+    }
+  ],
+  "routeBudgets": [
+    {
+      "name": "PO topology",
+      "maxWords": 3500,
+      "warningPercent": 85,
+      "files": [
+        "wp-product-orchestrator/SKILL.md",
+        "wp-product-orchestrator/references/router.md",
+        "shared/references/cto-orchestration-operating-model.md",
+        "shared/references/delegation-protocol.md"
+      ]
+    },
+    {
+      "name": "PO release",
+      "maxWords": 3900,
+      "warningPercent": 85,
+      "files": [
+        "wp-product-orchestrator/SKILL.md",
+        "wp-product-orchestrator/references/router.md",
+        "shared/references/release-train-discipline.md",
+        "shared/references/live-proof-wordpress.md"
+      ]
+    },
+    {
+      "name": "CTO heartbeat",
+      "maxWords": 3300,
+      "warningPercent": 85,
+      "files": [
+        "wp-portfolio-cto/SKILL.md",
+        "wp-portfolio-cto/references/router.md",
+        "shared/references/cto-orchestration-operating-model.md",
+        "shared/references/heartbeat-checkin-discipline.md"
+      ]
+    },
+    {
+      "name": "Theme visual",
+      "maxWords": 3900,
+      "warningPercent": 85,
+      "files": [
+        "wp-theme-expert/SKILL.md",
+        "shared/references/visual-to-wordpress-implementation.md",
+        "wp-expert/references/custom-block-theme-from-design.md"
+      ]
+    },
+    {
+      "name": "Plugin architecture",
+      "maxWords": 2700,
+      "warningPercent": 85,
+      "files": [
+        "wp-plugin-expert/SKILL.md",
+        "wp-expert/references/plugin-product-architecture.md",
+        "shared/references/enterprise-code-quality-gate.md"
+      ]
+    },
+    {
+      "name": "Content research",
+      "maxWords": 2700,
+      "warningPercent": 85,
+      "files": [
+        "content-writer/SKILL.md",
+        "content-writer/references/organic-search-content.md",
+        "shared/references/research-token-discipline.md"
+      ]
+    },
+    {
+      "name": "Contributor Gutenberg",
+      "maxWords": 3100,
+      "warningPercent": 85,
+      "files": [
+        "wp-contributor/SKILL.md",
+        "wp-contributor/references/gutenberg-workflow.md",
+        "shared/references/session-continuity-pr-discipline.md"
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "WP Expert",
+      "file": "skill-evals/wp-expert-scenarios.md",
+      "requiredPhrases": ["# WP Expert Skill Evaluation Scenarios"]
+    },
+    {
+      "name": "WP Portfolio CTO",
+      "file": "skill-evals/wp-portfolio-cto-scenarios.md",
+      "requiredPhrases": ["# WP Portfolio CTO Evaluation Scenarios"]
+    },
+    {
+      "name": "WP Product Orchestrator",
+      "file": "skill-evals/wp-product-orchestrator-scenarios.md",
+      "requiredPhrases": ["# WP Product Orchestrator Evaluation Scenarios"]
+    },
+    {
+      "name": "Visual WordPress",
+      "file": "skill-evals/visual-wordpress-scenarios.md",
+      "requiredPhrases": ["# Visual To WordPress Forward-Test Scenarios"]
+    },
+    {
+      "name": "Core-first site theme",
+      "file": "skill-evals/core-first-site-theme-scenarios.md",
+      "requiredPhrases": ["# Core-First Site And Theme Scenarios"]
+    },
+    {
+      "name": "Model routing",
+      "file": "skill-evals/model-routing-scenarios.md",
+      "requiredPhrases": ["# Availability-First Model Routing Scenarios"]
+    },
+    {
+      "name": "Loop Steward",
+      "file": "skill-evals/loop-steward-scenarios.md",
+      "requiredPhrases": ["# Loop Steward Scenarios", "Structural audits only prove"]
+    },
+    {
+      "name": "Content Writer",
+      "file": "skill-evals/content-writer-scenarios.md",
+      "requiredPhrases": ["# Content Writer Scenarios"]
+    },
+    {
+      "name": "WP Contributor",
+      "file": "skill-evals/wp-contributor-scenarios.md",
+      "requiredPhrases": ["# WP Contributor Scenarios"]
+    },
+    {
+      "name": "Routing collisions",
+      "file": "skill-evals/routing-collision-scenarios.md",
+      "requiredPhrases": ["# Routing Collision Scenarios", "Site vs content", "Loop Steward vs CTO"]
+    }
+  ]
+}
