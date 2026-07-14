@@ -8,6 +8,8 @@ Make direct worker turns behave predictably: inspect the right thing first, choo
 
 Workers operate inside the task loop. They execute one bounded spec from the parent CTO or PO, gather validation/proof, and return a final summary. They do not own roadmap, milestone, release, pricing, licensing, privacy/security posture, public contract, merge, publish, issue-closure, or thread-cleanup decisions unless the parent explicitly granted a safe non-hard-gated action.
 
+Before command or CI mutation, use `command-ci-approval-boundary.md`. Run safe inspection and quality checks without needless owner blocking, but treat runtime allowlists as capability only and preserve stricter parent/repository authority.
+
 ## Direct Task Decision Contract
 
 Before implementing, reviewing, or answering:

@@ -136,6 +136,11 @@
       "name": "Routing collisions",
       "file": "skill-evals/routing-collision-scenarios.md",
       "requiredPhrases": ["# Routing Collision Scenarios", "Site vs content", "Loop Steward vs CTO"]
+    },
+    {
+      "name": "Command and CI approval",
+      "file": "skill-evals/command-ci-approval-scenarios.md",
+      "requiredPhrases": ["# Command And CI Approval Scenarios", "Safe non-production rerun", "Deploy-capable dispatch", "Protected-data transfer"]
     }
   ]
 }
