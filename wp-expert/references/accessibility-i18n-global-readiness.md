@@ -9,6 +9,8 @@ Use this for WCAG/accessibility review, keyboard/screen-reader support, WordPres
 - WordPress theme internationalization: https://developer.wordpress.org/themes/advanced-topics/internationalization/
 - Block Editor components: https://developer.wordpress.org/block-editor/reference-guides/components/
 - WordPress Design Handbook: https://make.wordpress.org/design/handbook/
+- WCAG 2.2: https://www.w3.org/TR/WCAG22/
+- WCAG 2.2 additions: https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/
 
 ## Accessibility Standard
 
@@ -22,6 +24,14 @@ Design and code for:
 - Color contrast, motion reduction, zoom/reflow, touch targets, and responsive layouts.
 - Accessible media: alt text, captions/transcripts, decorative image handling, and meaningful link text.
 - Admin/editor parity: components must work inside WordPress admin, block editor sidebars, modals, notices, and list tables.
+
+Operationalize WCAG 2.2 AA where applicable:
+
+- Keep focused controls at least partially visible when sticky headers, cookie banners, drawers, toolbars, or admin bars are present (`2.4.11 Focus Not Obscured`).
+- Provide a single-pointer alternative for custom dragging interactions (`2.5.7 Dragging Movements`).
+- Keep pointer targets at least `24x24` CSS pixels or satisfy the spacing/equivalent-control exceptions (`2.5.8 Target Size`).
+- Do not require memory, transcription, or puzzle-only steps for authentication when an accessible alternative is possible (`3.3.8 Accessible Authentication`).
+- Treat these as acceptance checks, not wording-only compliance claims.
 
 ## WordPress UI Guidance
 
@@ -58,4 +68,7 @@ Design and code for:
 - Automated checks: axe/Playwright, pa11y, eslint-jsx-a11y, or project equivalent where available.
 - WordPress checks: PHPCS accessibility rules when configured, WPCS escaping/i18n sniffs, JS i18n extraction.
 - RTL and translation smoke: enable RTL locale, long strings, plural forms, and non-Latin content.
-- Responsive checks: mobile, tablet, desktop, zoom at 200%, and reduced motion.
+- Responsive checks: 200% text resize, reflow at 320 CSS pixels without two-dimensional scrolling except essential content, orientation changes, and no keyboard obstruction.
+- Input checks: keyboard, touch/coarse pointer, no-hover operation, dragging alternative, target size, and visible unobscured focus.
+- Visual adaptation: reduced motion, forced-colors/high-contrast mode, user color/spacing overrides where relevant, and no information conveyed by color alone.
+- Manual assistive-technology smoke remains required for critical journeys; automated tools cannot prove task usability.

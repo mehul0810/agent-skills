@@ -1,137 +1,90 @@
 # Block Theme And Block Architecture
 
-Use this before building or refactoring blocks, block editor features, or a block-based FSE theme. Choose the right WordPress-native layer before code. For a supplied visual target, use `../../shared/references/visual-to-wordpress-implementation.md` as primary and load this only for confirmed block/FSE architecture risk; do not chain generic design references by default.
+Use this before building or refactoring blocks, block editor features, or block/FSE architecture. For supplied visuals, keep `../../shared/references/visual-to-wordpress-implementation.md` primary and load this only for a confirmed ownership, distribution, editing, or block-contract risk.
 
 ## Official Anchors
 
 - Theme Handbook: `https://developer.wordpress.org/themes/`
+- Theme release requirements: `https://developer.wordpress.org/themes/releasing-your-theme/`
 - Global Settings and Styles: `https://developer.wordpress.org/themes/core-concepts/global-settings-and-styles/`
-- Template Parts: `https://developer.wordpress.org/themes/templates/template-parts/`
-- Block Variations API: `https://developer.wordpress.org/block-editor/reference-guides/block-api/block-variations/`
-- InnerBlocks: `https://developer.wordpress.org/block-editor/how-to-guides/block-tutorial/nested-blocks-inner-blocks/`
-- Block Bindings API: `https://developer.wordpress.org/block-editor/reference-guides/block-api/block-bindings/`
+- Block Variations: `https://developer.wordpress.org/block-editor/reference-guides/block-api/block-variations/`
+- Block Bindings: `https://developer.wordpress.org/block-editor/reference-guides/block-api/block-bindings/`
 - Interactivity API: `https://developer.wordpress.org/block-editor/reference-guides/interactivity-api/`
 
-## Architecture First Questions
+## Architecture Questions
 
-Answer these before implementation:
+Before code, decide:
 
-- What is content, what is layout, what is design system, what is dynamic data, and what is interaction?
-- What style guide, design token system, parent theme, or child theme constraints must be respected?
-- Who should edit each part: site admin, editor, content author, developer, or data source?
-- Should this survive a theme switch? If yes, plugin or custom block ownership is likely; if no, theme patterns/templates/styles may be enough.
-- Is the section reusable as a design composition, a global region, a data-driven component, or a one-off template structure?
-- What must be locked to preserve design integrity, and what must remain editable to avoid developer dependency?
-- What are the empty, long-content, translated, missing-media, permission, and responsive states?
+- What is content, layout, design system, durable data, business behavior, and interaction?
+- Who edits each area, from which WordPress surface, with what constraints?
+- Must content or functionality survive a theme switch?
+- Is the target a WordPress.org Theme Directory theme, commercial theme, or private/client/VIP theme?
+- Which WordPress/Gutenberg versions, registered blocks/supports, browsers, and integrations are real targets?
+- What are the empty, long, translated, missing-media, permission, error, responsive, and recovery states?
 
-## Ownership Rules
+Verify runtime blocks/supports instead of inferring them from documentation.
 
-- Theme owns presentation: `theme.json`, templates, template parts, patterns, style variations, block styles, and theme-specific CSS.
-- Plugin owns durable functionality: custom post types, taxonomies, options, meta contracts, REST routes, business rules, data integrations, and blocks that should work across themes.
-- Custom blocks can live in a theme only when they are genuinely theme-specific and safe to lose on theme switch.
-- Do not put business data or irreplaceable content solely into theme files or hard-coded pattern markup.
-- For page/post-owned visible content, keep the admin edit path real: the page template should normally include `<!-- wp:post-content /-->`, while page-specific copy, media, CTAs, and sections live in the page's `post_content`, inserted patterns, synced patterns, or deliberate meta/option/CPT data sources.
-- Do not make Pages > Edit misleading by hard-coding the visible page body in a template, template part, or always-rendered pattern unless the user explicitly chooses code-owned content for that surface.
+## Distribution And Portability Gate
+
+- WordPress.org Theme Directory themes must not ship custom blocks, shortcodes, CPTs, forms, or plugin territory. Put required functionality and durable block contracts in a companion plugin; run Theme Check and directory guidance before packaging.
+- Private/client/VIP or commercial themes may own genuinely presentation-specific blocks only when the product contract permits it and losing them on theme switch is acceptable.
+- If data, content semantics, public APIs, or user workflows must survive a theme change, plugin ownership wins regardless of visual coupling.
+- Test theme switch/deactivation portability for plugin-owned content. Never leave irreplaceable content encoded only in a theme-specific block without an explicit migration/export path.
 
 ## Decision Stack
 
-Use the first layer that satisfies the requirement without making editing fragile:
+Use the first layer that preserves fidelity and safe editing:
 
-1. Content model: post content, post meta, terms, users, options, CPTs, query data, or external API data.
-2. `theme.json`: tokens, settings, styles, custom templates, template parts registration, pattern references, and block-level style constraints.
-3. Templates and template parts: page/document structure and reusable global regions.
-4. Patterns: reusable section compositions editors can insert and adapt.
-5. Core blocks: native blocks with supports, layout, typography, color, spacing, border, shadow, and alignment.
-6. Block styles: alternate visual treatment with a CSS class only.
-7. Block variations: predefined attributes or inner blocks for an existing block.
-8. Block bindings: connect supported block attributes to dynamic sources without custom editing UI.
-9. Custom block with `InnerBlocks`: structured container where editors still compose content safely.
-10. Custom dynamic block: server-rendered data, query, permissions, API, or business logic.
-11. Interactivity API: frontend interaction that should remain compatible with WordPress script modules and client-side navigation.
+1. Content/data model: post content, terms, meta, options, CPT/query data, or external data.
+2. `theme.json`: tokens, settings, styles, templates/parts registration, and block constraints.
+3. Templates and template parts: document structure and global regions.
+4. Patterns and synced patterns: reusable compositions and intentional global content.
+5. Registered core blocks and supports.
+6. Block styles or variations.
+7. Block bindings.
+8. Existing project blocks.
+9. Custom block with constrained `InnerBlocks`.
+10. Dynamic block for server data, permissions, queries, or evolving markup.
+11. Interactivity API for stateful frontend behavior.
 
-Avoid jumping to step 9 or 10 because the design looks custom.
+Do not jump to custom code because the design looks custom.
 
-## Image-To-WordPress Translation Rule
+## Editing Ownership
 
-When the task starts from a screenshot, mockup, image, or approved visual:
+- Themes own presentation; plugins own durable functionality and data contracts.
+- Page templates stay structural and render `<!-- wp:post-content /-->` when Pages > Edit owns the body.
+- Page-specific copy, media, and CTAs belong in `post_content`, inserted patterns, or intentional data sources, not hidden template/pattern markup.
+- Template parts own global chrome. Unsynced patterns are reusable starters; synced patterns own deliberately global content.
+- Use `contentOnly`, template locking, allowed blocks, and `InnerBlocks` constraints proportionally. Protect structure without making normal content changes developer-dependent.
+- Keep one source of truth per visible region; do not let template, pattern, page content, database override, and CSS compete.
 
-- Treat the image as a UI contract, not as a markup contract. First decide content ownership, editing surface, and layout ownership, then choose blocks/templates/patterns.
-- Classify each visible section before coding: page-owned content, global site chrome, reusable starter section, dynamic/query-driven content, or truly custom interactive component.
-- Default mapping:
-  - page-owned marketing or content sections -> page `post_content` plus inserted patterns,
-  - global header/footer/navigation/chrome -> template parts,
-  - reusable section starters -> theme patterns,
-  - dynamic repeated content -> Query Loop or a purpose-built dynamic block,
-  - constrained editorial composition -> custom block with `InnerBlocks`,
-  - server/data/integration-driven UI -> custom dynamic block.
-- Do not let the screenshot push implementation into template-only page bodies when Pages > Edit or the post editor is expected to control visible content.
-- Use design tokens and `theme.json` first. Use custom CSS for the remaining gap, not as the first architectural decision.
-- Keep one durable source of truth per visible area. Avoid split ownership where the template, pattern, page content, and custom CSS all compete to control the same section.
+## Existing And Custom Blocks
 
-## Pattern, Template Part, Or Custom Block
+- Preserve block comments, attributes, saved markup, transforms, and deprecations. Add migrations or use dynamic rendering when markup contracts change.
+- Validate insert, edit, save, reload, copy/paste, transform, undo/revision, and frontend render behavior.
+- Define custom blocks through `block.json`; keep attributes/data ownership explicit and inputs untrusted.
+- Use `InnerBlocks`, parent/ancestor/child relationships, allowed blocks, templates, and locking for safe composition.
+- Keep inspector controls purposeful. Prefer presets and semantic choices over exposing raw CSS knobs.
+- Scope editor/frontend/view assets precisely and load interaction code only when needed.
 
-Use a pattern when:
+## FSE Build Sequence
 
-- The section is mostly layout and content composition.
-- Editors can safely modify text, media, buttons, and nested blocks.
-- The section can be copied, inserted, and adjusted per page.
-- Page-specific patterns should be inserted into the page content when editors must manage that page from Pages > Edit; referencing a pattern only from a template makes the template control the visible content instead.
+1. Classify distribution and theme/plugin/content ownership.
+2. Verify runtime blocks/supports and establish content/component contracts.
+3. Build semantic tokens in `theme.json`.
+4. Create the minimum structural templates and global parts.
+5. Compose editable page sections with core blocks and patterns.
+6. Add styles, variations, bindings, then justified custom/dynamic blocks where policy permits.
+7. Add Interactivity API behavior only for real state.
+8. Prove editor/frontend parity, visitor/author workflows, content stress, accessibility, responsiveness, performance, portability, and packaging.
 
-Use a template part when:
+## Validation
 
-- The region is global or repeated across templates, such as header, footer, sidebar, or reusable site chrome.
-- The region should be referenced from templates through the Template Part block.
-
-Use a custom block when:
-
-- Editors need constrained structured controls that core blocks cannot provide safely.
-- The component needs repeaters, parent/child block relationships, controlled child blocks, dynamic rendering, or custom data sources.
-- The frontend interaction or accessibility semantics need purpose-built behavior.
-- Stable markup/data contracts matter more than freeform editor layout.
-
-## Existing Block Work
-
-- Do not fork or recreate a core block unless there is a clear product reason.
-- Prefer block styles for visual variants and block variations for preset attributes or inner block layouts.
-- Use `render_block` or block hooks only when the change is scoped, reversible, and tested against editor and frontend output.
-- Preserve existing block comments, attributes, saved markup, and deprecations for static blocks.
-- When changing saved markup, add deprecations/migrations or keep render dynamic to avoid invalid block warnings.
-- Validate insert, edit, save, reload, copy/paste, transform, and frontend render behavior.
-
-## Custom Block Design
-
-- Start with `block.json` metadata, supports, attributes, editor script, view script/module, style handles, and render strategy.
-- Use attributes for scalar user choices. Use post meta/options/CPT data for durable data that should not live inside post content.
-- Use `InnerBlocks`, `allowedBlocks`, `parent`, `ancestor`, templates, and locking to give editors safe composition instead of a rigid all-in-one block.
-- Prefer dynamic rendering when output depends on server data, permissions, queries, integrations, or evolving markup.
-- Prefer static rendering only when saved markup is stable and migrations are planned.
-- Keep sidebar controls purposeful. Do not expose every CSS knob when `theme.json`, supports, or design presets should constrain choices.
-- Treat attributes and external data as untrusted in dynamic render callbacks. Sanitize, validate, escape, and authorize.
-
-## FSE Theme Build Sequence
-
-1. Define theme/plugin ownership and content contracts.
-2. Build the token system in `theme.json` before composing pages.
-3. Decide which visible sections are template-owned, page-owned `post_content`, synced pattern-owned, or data-source-owned.
-4. Create the minimum template hierarchy and template parts, keeping page templates structural and including Post Content when page editors must own the body.
-5. Build section patterns from core blocks first.
-6. Add block styles and variations for repeatable design variants.
-7. Add bindings for supported dynamic fields where native editing is enough.
-8. Add custom blocks only for gaps proven by the decision stack.
-9. Add Interactivity API behavior for frontend interactions that need state.
-10. Validate in Site Editor, post editor, preview, and frontend.
-
-## Validation Checklist
-
-- No Custom HTML or Shortcode blocks are used for new design implementation.
-- Page/post-owned visible content is editable from the expected admin surface; page templates render Post Content instead of replacing it with hard-coded page body markup.
-- Page-specific strings, images, and CTAs are not trapped in theme template or pattern files when Pages > Edit is expected to control them.
-- Editor can insert, edit, save, reload, and preview without invalid block warnings.
-- Templates, parts, and patterns have clear names and appear in the expected Site Editor surfaces.
-- Locked areas protect design integrity without blocking required content edits.
-- Existing content remains valid after refactors.
-- Dynamic sources handle empty, unauthorized, missing, stale, translated, and long-content states.
-- CSS is scoped and does not fight core block markup.
-- Frontend scripts are loaded only where needed and are compatible with the chosen rendering/interactivity model.
-- Visual parity is checked across editor canvas, Site Editor preview, frontend, and responsive breakpoints.
-- Premium/enterprise feel is preserved: coherent typography, spacing, alignment, interaction states, accessibility, and brand fidelity.
+- No Custom HTML or Shortcode shortcut implements new design work.
+- Distribution rules and Theme Check apply where relevant.
+- Page-owned content is editable from the expected admin surface and survives save/reload.
+- Blocks remain valid across the supported WordPress/Gutenberg range.
+- Dynamic sources handle empty, unauthorized, stale, translated, long, and error states.
+- CSS and assets are scoped and do not fight Core or user Global Styles.
+- Theme switching preserves plugin-owned data/content or exposes the documented migration path.
+- Site Editor database overrides are reconciled through the core-first workflow.

@@ -12,6 +12,19 @@ Use alongside `theme-and-block-editor.md`, `block-theme-architecture.md`, `custo
 - Cacheability: public pages should remain edge/page-cache friendly where possible.
 - Asset scope: load CSS/JS only on templates, blocks, or routes that need them.
 
+## Measurable Budget Contract
+
+Before substantial frontend/theme work, record the affected template, representative content/data state, device/network profile, baseline, and repo-specific budget in the issue, `DESIGN.md`, or `TESTING.md`. Do not invent one global threshold for every product.
+
+Budget the changed risk using the smallest useful set:
+
+- LCP, CLS, and INP or a justified lab proxy.
+- CSS, JavaScript, font, hero-image, and total transfer size; request and third-party counts.
+- server response/cache state when theme rendering or uncached personalization changes.
+- editor load/input responsiveness when blocks, patterns, or Global Styles tooling changes.
+
+Measure the final release artifact under the same conditions as the baseline. A Lighthouse or local trace is lab evidence, not field evidence; keep RUM/Search Console/CrUX evidence separate and schedule post-release review when available.
+
 ## Theme Asset Checklist
 
 - Use `wp_enqueue_scripts` with dependencies and versions, not hardcoded tags.
@@ -65,4 +78,6 @@ Before calling frontend/theme work done:
 - Scripts/styles load only where needed.
 - Keyboard focus, contrast, headings, landmarks, labels, and reduced motion are preserved.
 - Visual parity is checked when design fidelity matters.
+- The repo-specific budget is met or the exact regression, business tradeoff, and follow-up are documented.
+- Measurements identify build/artifact, template, content state, browser/device profile, cache state, and tool version.
 - If performance tooling is unavailable, the limitation is reported and cheaper checks are run.

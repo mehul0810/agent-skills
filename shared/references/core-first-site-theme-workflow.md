@@ -26,10 +26,35 @@ Capture desktop and narrow/mobile screenshots of the frontend. When editor parit
 
 ## 5. Reconcile Site Editor Overrides
 
-File-based `/templates` and `/parts` may be shadowed by database `wp_template` or `wp_template_part` records. Before diagnosing a file change as ineffective, inspect the resolved template/part and matching database posts for the active theme stylesheet. Classify each override as intentional admin ownership, stale test data, or deployment drift.
+File-based `/templates` and `/parts` may be shadowed by database `wp_template` or `wp_template_part` records, while user-origin `wp_global_styles` data may shadow `theme.json`. Their markup may also depend on database-only `wp_navigation` entities, synced-pattern references, or attachment IDs. Before diagnosing a file change as ineffective, inspect the resolved template, part, and Global Styles origins plus matching records and referenced entities for the active theme stylesheet. Record the record type, stable ID or slug, theme association, modified time, and a content/settings fingerprint; classify each override as intentional admin ownership, stale test data, or deployment drift.
 
 Do not delete or overwrite database customizations silently. Preserve intentional owner changes; use explicit reset/migration/reconciliation only with approval and rollback evidence. Completion reports must identify whether the rendered source is a theme file or database override.
 
+## 6. Promote Intentional Editor Changes
+
+When Site Editor work is intended to become repo-owned theme design:
+
+1. Freeze and back up the approved records and referenced Navigation, synced-pattern, and media entities before transformation. Map resolved `wp_template` content to `templates/{slug}.html`, `wp_template_part` content to `parts/{slug}.html`, and default user-origin Global Styles to `theme.json`. Preserve required `templateParts` metadata; use `styles/{slug}.json` only when a selectable variation is intentional and clean-install activation is defined.
+2. Export or sync through Create Block Theme or the project's reviewed equivalent. Treat generated output as a draft, not trusted source.
+3. Review the resulting JSON, block markup, template, part, pattern, and asset diff. Resolve nonportable `ref` and numeric IDs: remove Navigation refs when the theme owns portable menu markup, or define explicit setup/migration for required `wp_navigation`, synced patterns, and media. Remove incidental settings, generated noise, and environment URLs; package or deliberately source every required asset.
+4. Build the release artifact from an identified commit and inspect that the expected files and assets are present.
+5. Install that artifact on a clean database without importing the source site's `wp_template`, `wp_template_part`, or user-origin Global Styles. Verify the resolver uses the promoted files/theme-origin data, every required Navigation/pattern/media dependency exists or migrates deliberately, and the approved frontend renders without a hidden override or missing database entity.
+6. Prove the author can locate, edit, save, reload, preview, and recover the intended template, part, and Global Styles surfaces.
+7. For existing sites, inventory local overrides and rehearse an explicit, idempotent migration or reset plus rollback. Removing or replacing an override remains owner-gated.
+
+Do not treat production database customization as source code, and do not overwrite it merely because repo files differ. The deployment contract must state whether repo files, an explicit migration, or retained user-level overrides win.
+
+## Production-Ready Evidence
+
+Do not call this done from source-site screenshots or a working-tree diff alone. Require:
+
+- the before-state record inventory and recoverable export/backup,
+- the reviewed repository diff, automated syntax/package results, commit identity, and inspected release artifact,
+- clean-install source-resolution evidence naming the active `templates/*.html`, `parts/*.html`, and `theme.json` or intentional style-variation source, with no user-origin override required for the approved design,
+- matched desktop and narrow frontend evidence plus Site Editor edit/save/reload proof,
+- an existing-site migration dry run and rollback result, or a documented reason no existing-site reconciliation applies,
+- explicit pass, fail, and skipped results with remaining visual, editing, asset, compatibility, and rollout risk.
+
 ## Output
 
-Report the verified block inventory subset, core/custom mapping, `DESIGN.md` action, saved-content/render proof, desktop/mobile evidence, and template/part source precedence. State unavailable blocks and fallbacks explicitly.
+Report the verified block inventory subset, core/custom mapping, `DESIGN.md` action, saved-content/render proof, desktop/mobile evidence, template/part/Global Styles source precedence, database-to-file promotion, release artifact identity, and migration/rollback status. State unavailable blocks and fallbacks explicitly.

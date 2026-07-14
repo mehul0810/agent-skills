@@ -71,6 +71,16 @@ Rules:
 - Convert constrained structured editing into custom blocks with `InnerBlocks` and locking.
 - Convert dynamic data or permission-aware output into dynamic blocks or plugin-rendered components.
 
+## CSS And Cascade Governance
+
+- Document precedence for Core styles, block stylesheets, `theme.json`, theme CSS, user Global Styles, plugin CSS, and intentional utilities before adding overrides.
+- Keep one owner for each token/component property. Do not solve the same gap in `theme.json`, pattern classes, block styles, and page-specific CSS simultaneously.
+- Prefer low-specificity component selectors and cascade layers when the existing browser/build policy supports them. Treat `!important` as a documented interoperability exception, not a normal strategy.
+- Use logical properties and intrinsic layout so RTL, localization, container width, and writing-mode changes do not require parallel CSS.
+- Verify style variations, editor canvas, frontend, and user Global Styles after cascade changes.
+- Run available duplicate/unused CSS and bundle analysis before release; remove stale starter-theme rules and dead variants instead of hiding conflicts with more overrides.
+- Record required browser support and fallback behavior for modern CSS features; progressive enhancement must leave content and primary actions usable.
+
 ## Premium And Enterprise Feel
 
 Never ship an interface that feels generic, inconsistent, or unfinished when the user expects a premium or enterprise result.
@@ -92,4 +102,5 @@ Never ship an interface that feels generic, inconsistent, or unfinished when the
 - Premium/enterprise visual quality is validated across responsive breakpoints.
 - Editor and frontend output remain visually aligned.
 - Accessibility states are included in the design translation.
+- CSS ownership, specificity, browser fallbacks, and Global Styles precedence are documented for material design-system work.
 - Release artifacts include built assets and exclude development-only dependencies.

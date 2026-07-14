@@ -1,83 +1,69 @@
-# Visual Parity Regression
+# Visual Parity And Enterprise Theme Proof
 
-Use this as supporting visual-regression detail when UI, block editor, theme, or FSE work must match across editor and frontend. For a supplied visual target, use `../../shared/references/visual-to-wordpress-implementation.md` as primary and load this only when deeper regression coverage is justified.
+Use this as the one supporting reference when theme, FSE, site, block, or UI work needs deterministic visual regression, browser evidence, content stress, or proven visitor/editor workflows. For a supplied visual target, keep `../../shared/references/visual-to-wordpress-implementation.md` primary.
 
-## Goals
+Official anchors: `https://developer.wordpress.org/themes/advanced-topics/testing/` and `https://developer.wordpress.org/news/2026/05/getting-started-writing-wordpress-e2e-tests-with-playwright/`.
 
-- Keep Site Editor, post editor canvas, preview, and frontend visually and behaviorally aligned.
-- Catch regression risk early: spacing drift, typography mismatch, interaction-state breakage, and responsive collapse.
-- Produce deterministic evidence that a change is done.
+## Capture Fingerprint
 
-## Surfaces To Compare
+Before baseline or candidate capture, record:
 
-- Site Editor template view for affected templates/parts.
-- Post editor canvas for affected blocks and dynamic content states.
-- Frontend render for equivalent URLs and states.
+- exact commit and packaged/build artifact,
+- WordPress, Gutenberg, active theme/child theme, PHP, and relevant plugin versions,
+- browser engine/version, operating system, device-pixel ratio, viewport, zoom, scroll position, and scrollbar behavior,
+- locale, timezone, color scheme, reduced-motion preference, permissions/role, and data fixture,
+- loaded font files/weights, image readiness, network-settle rule, and animation/caret/clock/random-data treatment.
 
-## Baseline And Candidate Workflow
+Wait for fonts and critical media. Freeze dates, randomized content, external API data, transitions, animations, carets, and other volatile inputs where possible. Never compare a development checkout against a release artifact while calling the result release proof.
 
-1. Capture baseline screenshots for each critical state before editing.
-2. Implement change.
-3. Capture candidate screenshots using the same viewport, zoom, locale, and data set.
-4. Diff baseline and candidate.
-5. Classify differences as expected design updates or regressions.
-6. Fix regressions, then re-run capture and diff.
+## Baseline Governance
 
-## Provided Design Reference Workflow
+- Capture baseline before editing when regression protection is the goal; use the approved source visual as baseline for new exact work.
+- Store deterministic names such as `{surface}-{state}-{viewport}-{engine}.png` with the related artifact or CI output.
+- A baseline update is a reviewed design decision, not a way to make CI green.
+- Record expected masks, region tolerances, and intentional platform differences.
+- Reject stale baselines from another browser profile, content fixture, or build.
 
-When a static image, screenshot, or mockup is the target:
+## Visual Comparison
 
-1. Confirm whether it is exact, directional, or inspiration-only.
-2. Match candidate viewport, zoom, content, font loading, and image assets to the reference as closely as possible.
-3. Compare layout geometry, spacing, alignment, typography, color, radii, shadows, borders, image crop, and visible state treatment.
-4. Preserve pixel-faithful parity for the visible state unless accessibility, responsive behavior, editor editability, or platform constraints require an intentional deviation.
-5. Document every meaningful deviation as intentional, constrained, or unresolved.
+Compare geometry, spacing, alignment, typography, colors, borders, shadows, stacking, asset crop, and visible state treatment. Prefer overlays or perceptual/region diffs over memory. Use semantic or DOM assertions alongside screenshots for headings, landmarks, controls, and block structure.
 
-## State Matrix
+Apply region-specific tolerance. Hard edges and alignment can be strict; text rasterization, shadows, and image decoding require perceptual tolerance. Investigate unexplained differences instead of adding viewport-specific offsets. Reject fixes that improve one screenshot while breaking intrinsic layout, accessibility, editor controls, or maintainability.
 
-Minimum states per affected component/page:
+## Golden Workflow Proof
 
-- Default state.
-- Hover/focus/active for interactive elements.
-- Validation states for forms (empty, invalid, valid, submit-in-progress, submit-failed).
-- Data states (empty, loading, long text, missing media, translated copy where relevant).
-- Permission states when admin/editor capabilities change visible controls.
+Every substantial theme/page implementation defines:
 
-## Breakpoint Matrix
+- Visitor workflow: entry, primary action, feedback, completion, and recovery/failure path.
+- Author workflow: locate the content, edit text/media/settings, reorder only allowed areas, save, reload, preview, and recover through revisions or rollback where supported.
 
-- Mobile: `360x780`.
-- Tablet: `768x1024`.
-- Desktop: `1440x900`.
-- Wide desktop: `1920x1080` when layout has wide/wrap risk.
+Use Playwright/Cypress for stable critical flows when available. Keep the suite focused; screenshots alone do not prove task success.
 
-Use the smallest matrix that still covers changed surfaces and known risk.
+## Content And Template Stress
 
-## Automation Guidance
+Use existing fixtures or WordPress Theme Unit Test Data when broad theme behavior matters. Select affected cases from:
 
-- Prefer existing repo Playwright/Cypress visual workflows.
-- If none exist, create focused temporary snapshots around changed screens instead of full-site crawls.
-- If a custom local HTTPS domain is blocked by the in-app browser, use `local-https-testing.md` and the `wp-local-https-check.sh` helper before declaring the surface untestable.
-- Freeze volatile inputs where possible: dates, randomized content, ad slots, and external API data.
-- Keep screenshot naming deterministic: `{surface}-{template-or-page}-{state}-{viewport}.png`.
+- long/short/translated titles and body copy, missing or extreme media, captions, galleries, embeds, tables, and every changed core block support,
+- query empty/loading/error/high-count states, sticky and password-protected content,
+- home, singular, page, archive, taxonomy, author, search, 404, pagination, comments, and navigation,
+- logged-out, author/editor, administrator, permission-limited, and multisite states when relevant.
 
-## Acceptance Rules
+Do not run the full matrix for a one-line scoped change. Record why omitted surfaces cannot regress.
 
-- Approve only when differences are intentional and mapped to acceptance criteria.
-- Reject if spacing rhythm, typography scale, contrast, layout stability, or interaction affordances regress.
-- Reject if editor controls/panels differ from documented surface design (document panel vs inspector vs classic metabox policy).
+## Responsive, Input, Browser, And Accessibility Matrix
 
-## Accessibility Tie-In
+- Start at the narrow supported width and target desktop, then resize continuously through the affected range to catch intermediate collapse.
+- Prefer intrinsic layout, `minmax()`, `clamp()`, flex/grid wrapping, logical properties, and container queries when component context matters; do not encode device names as architecture.
+- Test portrait/landscape, safe areas, dynamic viewport units, zoom/reflow, long localization, coarse pointer, hover absence, keyboard, reduced motion, and on-screen keyboard risk when applicable.
+- Use the documented browser support policy. Add WebKit/Firefox or a real touch device when CSS, input, sticky positioning, forms, navigation, or media behavior makes Chromium-only proof insufficient.
+- Verify WCAG 2.2 AA criteria relevant to the change, including focus not obscured, target size, pointer alternatives to dragging, labels/errors, contrast, landmarks, and accessible authentication.
 
-- Verify keyboard focus order and visible focus styles on parity-critical flows.
-- Verify heading structure and landmarks remain intact after layout changes.
-- Verify contrast changes remain WCAG-compliant after theme token or style updates.
+## Performance And Release Evidence
 
-## Output Format
+Measure against repo-specific budgets from `DESIGN.md`, `TESTING.md`, or the issue: LCP/CLS/INP risk, CSS/JS/font/image weight, request count, critical rendering, and editor responsiveness where relevant. Lab evidence is not field evidence; report RUM separately when available.
 
-Report parity evidence with:
+Before beta/production readiness, repeat critical proof against the packaged ZIP or release-branch build. Report exact environment, passed/failed/skipped workflows, visual deviations, browser gaps, performance gaps, and whether any gap is acceptable for release.
 
-- Compared surfaces.
-- States and breakpoints covered.
-- Diff summary (intentional vs regression).
-- Remaining risk and untested surfaces.
-- Whether the check used normal browser access, terminal HTTPS reachability, or a certificate-error-ignoring browser runner for local HTTPS domains.
+## Output
+
+Report capture fingerprint, baseline provenance, surfaces/states/content/browsers covered, visitor and author workflow results, diff summary, performance evidence, intentional deviations, and remaining risk.

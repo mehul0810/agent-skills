@@ -47,12 +47,22 @@
     },
     {
       "name": "Theme visual",
-      "maxWords": 3900,
+      "maxWords": 3200,
       "warningPercent": 85,
       "files": [
         "wp-theme-expert/SKILL.md",
         "shared/references/visual-to-wordpress-implementation.md",
         "wp-expert/references/custom-block-theme-from-design.md"
+      ]
+    },
+    {
+      "name": "Theme proof",
+      "maxWords": 3000,
+      "warningPercent": 85,
+      "files": [
+        "wp-theme-expert/SKILL.md",
+        "shared/references/visual-to-wordpress-implementation.md",
+        "wp-expert/references/visual-parity-regression.md"
       ]
     },
     {

@@ -28,13 +28,15 @@ cat > "$output_path" <<'TEMPLATE'
 - Source classification (exact, directional, inspiration):
 - Source dimensions and intended viewport:
 - Source/candidate screenshot paths:
+- Distribution target (WordPress.org Theme Directory, commercial, private/client/VIP):
+- Target WordPress/Gutenberg/browser policy:
 
 ## Evidence Confidence
 
 - Supplied facts:
 - Measured values:
 - Inferred values:
-- Decisions or unresolved uncertainty:
+- Ambiguity ledger (unknown, evidence, reversible inference, validation/decision):
 
 ## Visual Region Measurements
 
@@ -43,6 +45,14 @@ cat > "$output_path" <<'TEMPLATE'
 - Typography and font-loading evidence:
 - Colors, borders, radii, and shadows:
 - Desktop-to-mobile behavior (supplied/inferred/decision needed):
+
+## Component Contracts
+
+- Component/semantic role:
+- Variants and full states:
+- Content bounds and translated/long behavior:
+- Token dependencies:
+- WordPress primitive and editing surface:
 
 ## Templates
 
@@ -66,6 +76,7 @@ cat > "$output_path" <<'TEMPLATE'
 - Templates that must render Post Content:
 - Page content seeding plan (manual, WP-CLI, import, migration, none):
 - Site Editor database override policy:
+- Nonportable Navigation, synced-pattern, attachment, or other database references:
 - Locked areas vs editor-editable areas:
 
 ## Template Parts
@@ -139,6 +150,18 @@ cat > "$output_path" <<'TEMPLATE'
 - Empty/loading/error states:
 - Animation and reduced-motion behavior:
 
+## Golden Workflows
+
+- Visitor workflow (entry, action, feedback, completion, recovery):
+- Author workflow (locate, edit, reorder constraints, save/reload, preview, rollback/revision):
+
+## Content And Compatibility Stress
+
+- Affected templates and Theme Unit Test Data cases:
+- Long/translated/missing-media/query/error/permission states:
+- Continuous resize range, container context, orientation, pointer/hover, safe-area risk:
+- Browser engines and real-device proof required:
+
 ## Validation Matrix
 
 - Breakpoints:
@@ -148,9 +171,18 @@ cat > "$output_path" <<'TEMPLATE'
 - Accessibility checks:
 - Performance checks:
 - Matched viewport/zoom/content/font/data state:
+- Capture fingerprint (build, WP/Gutenberg/theme, browser/OS/DPR, locale/timezone, color scheme, font/media readiness, volatile-input policy):
 - Overlay or perceptual-diff method:
 - Region-level parity tolerance:
 - Accepted, constrained, and unresolved deviations:
+- WCAG 2.2 checks, including reflow/focus/target/dragging where applicable:
+- Repo-specific performance baseline and budget:
+- Site Editor source inventory (`wp_template`, `wp_template_part`, `wp_global_styles`; IDs/slugs/theme association/fingerprints):
+- Navigation/synced-pattern/media reference resolution or migration:
+- Promoted repository files/assets and reviewed diff:
+- Commit/package identity and clean-install resolved-source proof, including promoted database dependencies:
+- Matched frontend and Site Editor edit/save/reload proof:
+- Existing-site migration dry run and rollback evidence:
 
 ## Open Risks
 
