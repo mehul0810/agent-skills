@@ -34,6 +34,7 @@ require_text "wp-portfolio-cto/SKILL.md" "command-ci-approval-boundary.md" "CTO 
 require_text "wp-product-orchestrator/SKILL.md" "command-ci-approval-boundary.md" "PO command authority route"
 require_text "shared/references/worker-execution-discipline.md" "command-ci-approval-boundary.md" "worker command authority route"
 require_text "shared/references/product-autonomy-permissions.md" "critical, destructive, transfer, uncertain-side-effect, and approval-bypass actions" "autonomy cannot weaken command policy"
+require_text "shared/references/product-autonomy-permissions.md" "Protected/production merge" "autonomy merge authority boundary"
 
 if [ "$errors" -gt 0 ]; then
   echo "command and CI approval audit failed: $errors issue(s)" >&2
