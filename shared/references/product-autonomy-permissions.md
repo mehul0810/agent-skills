@@ -8,14 +8,14 @@ Treat each level as separate. Permission for one level does not imply the next.
 
 | Level | Allowed work | Requires explicit current permission |
 | --- | --- | --- |
-| Inspect | Read repo, issues, PRs, docs, CI, logs, and local runtime state | No mutation |
-| Plan | Produce PRD, scope, estimates, acceptance criteria, or implementation plan | No mutation |
-| Implement local | Edit files and run local validation | Push, PR, merge, release |
-| Commit | Stage and commit intended files | Push, PR, merge, release |
-| Push | Push current branch/commits | PR creation, merge, release |
-| PR | Create/update PR body/comments | Merge, close, release |
-| CI repair | Rerun/fix CI after push | Workflow/security changes unless in scope |
-| Merge/close | Merge PR or close issue/PR | Production/beta release/deploy/publish |
+| Inspect | Read repo, issues, PRs, docs, CI, logs, and local runtime state | None; remain read-only |
+| Plan | Produce PRD, scope, estimates, acceptance criteria, or implementation plan | None; remain read-only |
+| Implement local | Edit files and run local validation within assigned scope | Any critical, destructive, transfer, or uncertain-side-effect action |
+| Commit | Stage and commit intended files when role/repo policy permits | Protected-branch mutation or broader unauthorized scope |
+| Push | Push a scoped non-protected branch when role/repo policy permits | Protected-branch direct push or unauthorized repository scope |
+| PR | Create/update PR body/comments when role/repo policy permits | Protected mutation, release, or action outside role authority |
+| CI repair | Inspect or rerun proven-safe non-production CI and fix scoped failures | Deploy/release-capable or otherwise gated workflow action |
+| Merge/close | Merge safe non-production PRs or close items when role/repo policy permits | Protected/production merge, release/deploy/publish, or ambiguous authority |
 | Release | Version bump, tag, GitHub Release, wp.org SVN, package upload | Must be explicit for target/version |
 
 ## Autonomous By Default
@@ -39,7 +39,7 @@ Common autonomous plugin/theme work:
 
 ## Owner Approval Boundary
 
-Only production or beta release actions require explicit current `@mehul0810` approval: creating production/beta releases or tags, publishing/deploying a release, or declaring a production/beta release approved.
+Production or beta release actions always require explicit current `@mehul0810` approval: creating production/beta releases or tags, publishing/deploying a release, or declaring a production/beta release approved. Other command and CI actions follow `command-ci-approval-boundary.md`: critical, destructive, transfer, uncertain-side-effect, and approval-bypass actions are also owner-gated even when technically allowlisted.
 
 For normal product orchestration, do not stall on `owner:me` if a decision is reasonable, reversible, and non-release. Document the rationale, relabel to `owner:codex`, and proceed or delegate. Continue issue creation, labels, branch prep, PR review/merge for good non-production PRs, dependency/tooling work, docs work, and reversible backlog prioritization when repo policy and validation support it.
 

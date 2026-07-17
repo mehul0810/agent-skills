@@ -375,6 +375,12 @@ validate_orchestration_rules() {
   else
     log_error "Product orchestrator guardrail audit failed"
   fi
+
+  if bash "$repo_root/scripts/command-ci-approval-audit.sh"; then
+    log_success "Command and CI approval guardrails are present"
+  else
+    log_error "Command and CI approval guardrail audit failed"
+  fi
 }
 
 validate_visual_wordpress_rules() {

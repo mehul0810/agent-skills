@@ -158,6 +158,11 @@
       "requiredPhrases": ["# Routing Collision Scenarios", "Site vs content", "Implementation vs independent proof", "Loop Steward vs CTO"]
     },
     {
+      "name": "Command and CI approval",
+      "file": "skill-evals/command-ci-approval-scenarios.md",
+      "requiredPhrases": ["# Command And CI Approval Scenarios", "Safe non-production rerun", "Deploy-capable dispatch", "Protected-data transfer"]
+    },
+    {
       "name": "Behavior Validator",
       "file": "skill-evals/behavior-validator-scenarios.md",
       "requiredPhrases": ["# Behavior Validator Scenarios", "Contaminated validator", "Static-only change"]
