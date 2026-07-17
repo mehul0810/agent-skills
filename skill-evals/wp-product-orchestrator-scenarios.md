@@ -115,7 +115,7 @@ Use these lightweight scenarios to verify one-product plugin/theme workflow rout
 - Did it avoid waiting for owner comments to start with `Codex:`?
 - Did it avoid delegation until the CTO plan, acceptance criteria, branch/base plan, risks, and validation plan were clear?
 - Did issues and delegated prompts front-load scope, acceptance criteria, validation, screenshot/proof needs, risks, non-goals, branch/base, and suggested model/reasoning when useful?
-- Did product POs assign subagents/worktrees the lowest suitable available model and reasoning level before escalating?
+- Did product POs use Terra-class with medium reasoning as the default execution lane when exposed, route deterministic evidence to Luna-class, reserve Sol-class for high-risk work, and still select the lowest sufficient available class before escalating?
 - Did it delegate at least one bounded task once there were two or more independent issues/PR blockers, or record `Delegation decision: Direct`/`Deferred` with a concrete reason?
 - Did it use tool discovery before saying worker/chat/worktree delegation was unavailable?
 - Did app-managed worktree creation verify the exact Git repo root and explicit base instead of using broad `wp-content` or `wp-content/plugins` saved projects?

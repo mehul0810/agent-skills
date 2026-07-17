@@ -26,11 +26,19 @@ Never assume a model ID or that `high`, `xhigh`, `max`, or another reasoning lab
 
 ### Capability Tiers
 
-- Fast/economical: routine mapping, issue intake, deterministic docs/tests, evidence capture, simple CI triage, screenshot capture, and exact narrow fixes with complete files, acceptance criteria, and validation.
-- Balanced implementation: bounded implementation with some codebase discovery, ordinary PR review, or moderate integration reasoning.
+- Fast/economical: routine mapping, issue intake, deterministic docs/tests, evidence capture, simple CI triage, and screenshot capture when product behavior does not change.
+- Balanced implementation: the default for bounded product/code changes, ordinary PR review, CI repair, or moderate integration reasoning.
 - Strongest suitable reasoning-capable: ambiguous architecture, security/privacy, migrations, public contracts, high-scale performance, release blockers/decisions, cross-product conflicts, and final high-risk review.
 
-When a 5.6 Sol-class model is exposed, prefer that class with `high` or `xhigh` for complex/high-risk lanes when those reasoning levels are supported. This is a current availability example, not a required or permanent model ID. Use reasoning above `xhigh` only when the owner explicitly requests it or concrete failed proof shows `xhigh` is insufficient.
+When the current host exposes the 5.6 capability family, map its runtime classes after inventory:
+
+- Luna-class: monitoring, read-only mapping, deterministic evidence, screenshots, narrow docs/tests, and simple CI triage; use `low`, or `medium` when synthesis needs it.
+- Terra-class: default PO execution, bounded implementation, ordinary PR review, CI repair, integration work, and evidence synthesis; use `medium`, or `high` for ambiguous integration.
+- Sol-class: release readiness, critical/release PR review, security/privacy, architecture, migrations, public contracts, major regressions, cross-product conflicts, topology recovery, and ambiguous owner decisions; use `high` or `xhigh` when supported.
+
+These are current capability-class aliases, not permanent model IDs or reusable configuration values. If the host exposes different names, preserve the same risk/cost tiers. Use reasoning above `xhigh` only when the owner explicitly requests it or concrete failed proof shows `xhigh` is insufficient.
+
+Allocation changes capability, not authority. A Sol-class assignment for topology recovery or release judgment still inherits protected-thread, mutation, and owner-approval gates from the governing role.
 
 For final high-risk review, keep the strongest suitable lane as reviewer. Do not downgrade the final reviewer merely for model diversity; add an independent second pass only when variance reduction materially justifies its cost.
 
@@ -42,7 +50,7 @@ Escalate only after concrete ambiguity, failed proof, inadequate implementation,
 
 Classify repeated retries or weak evidence caused by the assigned lane as `wrong model/reasoning allocation`, then reassess availability and tier.
 
-If the requested/configured combination is unavailable, do not silently substitute. Preserve owner constraints and the requested capability tier before considering an upgrade: replace a fast/economical request with the nearest available fast/economical tier that supports the requested reasoning, not automatically the strongest model. Upgrade tiers only when the task risk requires it or no same-tier option can produce the evidence. Report:
+If the requested/configured combination is unavailable, do not silently substitute. Preserve the task-required risk tier first, then choose the nearest available class in that tier and its highest sufficient supported reasoning. Never downgrade a high-risk decision to preserve a reasoning label. Cross tiers only when no same-tier class can produce the evidence; report the evidence or cost impact. A fast/economical request should use the nearest available fast/economical class, not automatically the strongest model. Report:
 
 ```text
 Requested: <model/reasoning>
