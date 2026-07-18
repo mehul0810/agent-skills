@@ -1,9 +1,7 @@
 name: Validate agent skills
 
 on:
-  pull_request:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -12,12 +10,12 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: lts/*
+          node-version-file: .nvmrc
           cache: npm
       - name: Install harness
         run: npm ci
@@ -25,8 +23,8 @@ jobs:
         run: npm run harness
       - name: Shell syntax
         run: find . -type f -name '*.sh' -not -path './.git/*' -print0 | xargs -0 -n1 bash -n
-      - name: Base-relative diff check
-        run: git diff --check origin/main...HEAD
+      - name: Commit diff check
+        run: git show --check --oneline --no-renames HEAD
       - name: Structural skill validation
         run: bash scripts/validate-references.sh
       - name: Global installer smoke test

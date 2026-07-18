@@ -1,0 +1,29 @@
+{
+  "$schema": "../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "wp-skill-example-001",
+  "scenario": "fresh-agent-routing",
+  "result": "succeeded",
+  "startedAt": "2026-07-17T00:00:00.000Z",
+  "durationMs": 1000,
+  "checks": [
+    {
+      "name": "correct-skill-route",
+      "result": "pass"
+    },
+    {
+      "name": "evidence-backed-output",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "input_tokens": 100,
+    "output_tokens": 50,
+    "tool_calls": 1,
+    "retry_count": 0,
+    "checks_passed": 2
+  },
+  "tags": [
+    "sanitized-example"
+  ]
+}

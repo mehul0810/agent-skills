@@ -3,7 +3,8 @@
   "schemaVersion": 1,
   "projectRoot": ".",
   "requiredFiles": [
-    "skill-evals/README.md"
+    "skill-evals/README.md",
+    "skill-evals/run-record.example.json"
   ],
   "requiredPhrases": [
     {

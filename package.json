@@ -2,13 +2,14 @@
   "name": "@mehul0810/agent-skills",
   "private": true,
   "engines": {
-    "node": ">=20"
+    "node": ">=24 <25"
   },
   "scripts": {
     "harness": "agent-harness validate --config agent-harness.config.json",
-    "test": "npm run harness"
+    "run-record:example": "agent-harness validate-run --file skill-evals/run-record.example.json",
+    "test": "npm run harness && npm run run-record:example"
   },
   "devDependencies": {
-    "@mehul0810/agent-harness": "https://github.com/mehul0810/agent-harness/archive/f6b5e2009f710d963cf6728853012691ec39b16e.tar.gz"
+    "@mehul0810/agent-harness": "https://github.com/mehul0810/agent-harness/archive/8bb6f7ffbd4d479f7c3eb4e786749292764f2a9c.tar.gz"
   }
 }

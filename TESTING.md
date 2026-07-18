@@ -3,7 +3,8 @@
 ## Fast Gate
 
 ```bash
-git diff --check origin/main...HEAD
+git diff --check
+git show --check --oneline --no-renames HEAD
 bash -n scripts/*.sh
 npm ci
 npm run harness
@@ -11,7 +12,7 @@ bash scripts/skill-token-audit.sh
 bash scripts/skill-routing-audit.sh
 ```
 
-The shared `agent-harness` owns generic route-budget and scenario-inventory validation. Repository-specific skill frontmatter/body limits and routing contracts remain in the local shell audits.
+The shared `agent-harness` owns generic route-budget, scenario-inventory, and sanitized run-record validation. Repository-specific skill frontmatter/body limits and routing contracts remain in the local shell audits. Routine validation is local-first; the hosted workflow is manual and supplemental.
 
 ## Full Gate
 
