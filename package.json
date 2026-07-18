@@ -10,6 +10,6 @@
     "test": "npm run harness && npm run run-record:example"
   },
   "devDependencies": {
-    "@mehul0810/agent-harness": "https://github.com/mehul0810/agent-harness/archive/8bb6f7ffbd4d479f7c3eb4e786749292764f2a9c.tar.gz"
+    "@mehul0810/agent-harness": "https://github.com/mehul0810/agent-harness/archive/24ffe6e5481aebe33f403df9b72f0de7214f019a.tar.gz"
   }
 }

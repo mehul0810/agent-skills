@@ -10,7 +10,7 @@ Use one primary mode. Open only the named reference and relevant `##` section; a
 - Rolling train and milestone health: `../../shared/references/rolling-milestone-triage.md`.
 - Model/reasoning allocation and bounded workers: `../../shared/references/project-subagent-routing.md`.
 - Context compaction, fresh-thread decision, payload discipline: `../../shared/references/context-window-discipline.md`.
-- Repeatable process failure or stale guidance: `../../shared/references/self-improvement-loop.md`.
+- Repeatable process failure, cross-product pattern, stale guidance, or outcome review: `../../shared/references/self-improvement-loop.md`.
 - Weekly current WordPress ecosystem intelligence: `../../shared/references/weekly-wordpress-intelligence.md`.
 - Cross-product repo-document health: `../../shared/references/repo-product-docs-contract.md`.
 - Authority, organic visibility, AI citations, conversion, and measurement governance: `../../shared/references/authority-growth-lane.md`.

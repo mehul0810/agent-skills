@@ -23,6 +23,19 @@
     "retry_count": 0,
     "checks_passed": 2
   },
+  "lineage": {
+    "observationId": "obs-routing-001",
+    "decisionId": "decision-2026-07-18-feedback-outcome-lineage",
+    "actionId": "agent-skills-main-change",
+    "verificationId": "wp-skill-example-001",
+    "artifactPointer": "shared/references/self-improvement-loop.md"
+  },
+  "measurement": {
+    "status": "pending",
+    "windowEndsAt": "2026-07-25T00:00:00.000Z",
+    "metricNames": ["retry_count"],
+    "summary": "Verify that repeat corrections decline after the contract is adopted."
+  },
   "tags": [
     "sanitized-example"
   ]

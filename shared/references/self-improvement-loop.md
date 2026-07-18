@@ -29,6 +29,21 @@ Place durable lessons where they can be enforced:
 - GitHub issue: actionable product/engineering work.
 - Automation memory: recurring audit/check-in learning that should be reused by automation.
 
+## Closed Feedback And Outcome Lineage
+
+For a repeatable correction or evidence-backed proactive pattern, preserve one compact chain:
+
+`observation -> evidence -> decision -> action -> verification -> outcome -> durable artifact`
+
+- Assign a stable pattern key that describes the failure or opportunity without copying product payloads.
+- Keep source pointers, trust/privacy class, confidence, affected scope, and risk; aggregate the same pattern across products before adding another rule.
+- Route ambiguous owner corrections and security/privacy findings to review instead of guessing the durable destination.
+- An accepted learning needs decision, action, verifier, and artifact pointers plus a verification window. Issue creation, merge, release, or passing checks are delivery evidence, not outcome proof.
+- Close the result as `met`, `missed`, `inconclusive`, or `not applicable`; keep it `pending` until the window can be evaluated.
+- Promote product-specific learning to product docs/issues and cross-product learning to the owning shared skill, contract, runtime, harness, or private decision record. Never mutate a repository merely because a candidate was classified.
+
+When the governed Agent Loop runtime is available, emit its compact learning-event contract and use the review-only candidate ledger. Otherwise preserve the same fields in the issue, PR, run record, or audit handoff; do not invent a parallel memory format.
+
 ## Stale Learning Lifecycle
 
 When a prior learning, prompt line, memory note, repo-doc rule, or skill rule looks outdated, classify it before creating a new durable artifact:
