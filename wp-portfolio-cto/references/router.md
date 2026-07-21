@@ -5,7 +5,7 @@ Use one primary mode. Open only the named reference and relevant `##` section; a
 - Topology, role authority, source hierarchy, protected threads, live-check fallback: `../../shared/references/cto-orchestration-operating-model.md`.
 - Delta-first heartbeat, quiet evidence, partial exits, CTO intervention: `../../shared/references/heartbeat-checkin-discipline.md`.
 - Cross-product release conflict, hosted-CI economy, or readiness: `../../shared/references/release-train-discipline.md`.
-- Worker/worktree/thread topology and recovery: `../../shared/references/delegation-protocol.md`.
+- Worker/worktree/thread topology and recovery: `../../shared/references/delegation-protocol.md`; for cross-product storage pressure use `../../shared/references/worktree-storage-lifecycle.md`.
 - Cross-product temporary proof-environment hygiene: `../../shared/references/disposable-proof-environment-lifecycle.md`.
 - Rolling train and milestone health: `../../shared/references/rolling-milestone-triage.md`.
 - Model/reasoning allocation and bounded workers: `../../shared/references/project-subagent-routing.md`.

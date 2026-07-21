@@ -106,7 +106,7 @@ After beta/production release, deploy, or WordPress.org publish, keep the train 
 - Installed-package golden workflow passes or its proof gap is accepted.
 - Support/error signals and rollback notes are checked.
 - Every issue is reconciled as `Fixed now`, `Implemented-proof-gap`, `Deferred`, or `Blocked`; close only fully accepted work. Release-branch merges may not auto-close issues, so reconcile them manually.
-- Next train, temporary automation, workers/worktrees, and evidence threads are reconciled or deliberately retained.
+- Next train and temporary automation are reconciled; merged worker worktrees are removed under the approved storage lifecycle or retained with a reason and review trigger.
 
 If any post-release proof fails, stop normal release closure and route recovery to the product thread or prepare an owner decision brief.
 

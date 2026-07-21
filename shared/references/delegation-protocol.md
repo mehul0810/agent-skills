@@ -61,21 +61,9 @@ When using app-managed worktrees, pass an explicit verified base branch when the
 
 If a pending worktree does not materialize, or it lands detached/wrong-base, classify it as `unusable worktree` and stop retrying that path until the root/base problem is fixed.
 
-## Worktree Hygiene
+## Worktree Lifecycle Route
 
-Before creating any new worker worktree, run `git worktree list --porcelain` and classify worktrees:
-
-- `active`: tied to an open PR/issue, active Codex thread, release/CI work, or owner task.
-- `prunable metadata`: broken entry that `git worktree prune` can clear.
-- `stale-clean`: clean and reconciled.
-- `dirty/needs-review`: uncommitted, detached, unknown, or unclear.
-- `owner/user-owned`: primary checkout or user-owned path.
-
-After a PR is merged/closed or delegated worker output is reconciled, remove safe `stale-clean` worker worktrees or state why they remain active. Prefer `git worktree remove <path>` and `git worktree prune` from the owning repo. Avoid raw folder deletion unless Git cleanup confirms broken metadata.
-
-Never remove a worktree that is dirty, tied to an open PR/issue, tied to an active Codex thread, on an unknown branch, or under a user-owned primary checkout without explicit confirmation.
-
-If visible plugin-folder cleanup affects active WordPress admin/plugin screens, include screenshot/proof notes only for the UI-visible state change. Skip proof overhead for filesystem-only cleanup.
+Before creating a worktree and after worker/PR reconciliation, apply `worktree-storage-lifecycle.md`: inventory and classify entries, prove remote reachability plus clean disposable ownership, then remove or explicitly retain eligible work. Never let merged work accumulate silently on limited local storage. UI proof is needed only when cleanup changes an active WordPress screen.
 
 ## Unblock-First Recovery Ladder
 
@@ -137,7 +125,7 @@ After worker output, PR merge/closure, or abandonment:
 - Inspect diff/evidence, target issue, branch/base, and PR state.
 - Confirm validation/proof or the exact gap.
 - Update GitHub only for state transitions, blockers, deferrals, or owner questions.
-- Remove/document safe stale-clean worktrees or prunable metadata.
+- Apply the storage lifecycle: remove approved cleanup-eligible worktrees or record the exact retention reason and review trigger.
 - Stop/update temporary release/CI heartbeats.
 - Select the next train item or release-ready evidence.
 - Final worker summary covers work done, files/issues/PRs touched, validation/proof, blockers, risks, and handoff needs.
