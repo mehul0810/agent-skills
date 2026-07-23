@@ -87,6 +87,15 @@
       ]
     },
     {
+      "name": "Content edit",
+      "maxWords": 1600,
+      "warningPercent": 85,
+      "files": [
+        "content-writer/SKILL.md",
+        "content-writer/references/human-writing-quality-gate.md"
+      ]
+    },
+    {
       "name": "Contributor Gutenberg",
       "maxWords": 3100,
       "warningPercent": 85,
