@@ -37,6 +37,7 @@ Options:
   --visual    Check visual-to-WordPress behavior guardrails
   --models    Check availability-first model routing
   --steward   Check Loop Steward authority guardrails
+  --video     Check product video production guardrails
   --help      Show this message
 
 Examples:
@@ -416,6 +417,17 @@ validate_loop_steward_rules() {
   fi
 }
 
+validate_video_production_rules() {
+  echo ""
+  echo "=== Validating product video production guardrails ==="
+
+  if bash "$repo_root/scripts/video-production-behavior-audit.sh"; then
+    log_success "Product video production guardrails are present"
+  else
+    log_error "Product video production guardrail audit failed"
+  fi
+}
+
 validate_routing_fanout() {
   echo ""
   echo "=== Validating skill routing fan-out ==="
@@ -488,6 +500,7 @@ main() {
     validate_visual_wordpress_rules
     validate_model_routing_rules
     validate_loop_steward_rules
+    validate_video_production_rules
   elif [ "$check_type" = "tokens" ]; then
     validate_token_budgets
   elif [ "$check_type" = "routes" ]; then
@@ -506,6 +519,8 @@ main() {
     validate_model_routing_rules
   elif [ "$check_type" = "steward" ]; then
     validate_loop_steward_rules
+  elif [ "$check_type" = "video" ]; then
+    validate_video_production_rules
   fi
 
   print_summary

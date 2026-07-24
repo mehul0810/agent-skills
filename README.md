@@ -12,6 +12,7 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - `behavior-validator`: independent source-blind validation of observable WordPress runtime, editor, UI, API, packaged-build, and generated-artifact behavior against an explicit contract.
 - `wp-contributor`: official WordPress project contribution workflows for Core, Meta, Gutenberg, Trac, GitHub PRs, patches, testing, docs, triage, releases, and contributor communication.
 - `content-writer`: organic search content writing for SEO, AEO, GEO, AI Overviews, AI Mode, answer engines, AI tools, briefs, outlines, drafts, audits, and content refreshes.
+- `product-video-producer`: premium enterprise product and brand video workflow for reference analysis, storyboards, governed assets, deterministic 1080p/4K renders, review packages, and critique-driven revision.
 - `shared/references/research-token-discipline.md`: reusable token-efficient reasoning, repo exploration, web search, validation, and output discipline used by both skills.
 - `shared/references/session-continuity-pr-discipline.md`: reusable new-chat context rehydration, release-branch detection, explicit PR base selection, and branch/PR safety used by code-oriented skills.
 - `shared/references/project-subagent-routing.md`: reusable project-level subagent routing, availability-first model/reasoning allocation, and bounded parallel mapping/review.
@@ -32,6 +33,7 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - `wp-product-orchestrator` for one plugin/theme product's backlog, release train, GitHub issue/PR queue, and delegated implementation workflow.
 - `loop-steward` for active control-plane PRs that need independent review, bounded repair, or a policy-gated merge decision.
 - `behavior-validator` for black-box proof that a WordPress UI, editor flow, API side effect, packaged candidate, or generated artifact behaves as promised without implementation context.
+- `product-video-producer` for product/brand films, explainers, teasers, storyboard review, motion direction, deterministic renders, and video critique.
 
 The detailed playbooks remain in `wp-expert/references/` and `shared/references/`; specialist skills load those references only when needed.
 

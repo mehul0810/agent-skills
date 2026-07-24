@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "project": "",
+  "product": "",
+  "storyboard": {
+    "path": "",
+    "version": ""
+  },
+  "source": {
+    "repository": "",
+    "revision": ""
+  },
+  "render": {
+    "toolchain": [],
+    "command_or_project": "",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "duration_seconds": 0,
+    "color_profile": "Rec.709 SDR",
+    "audio_hz": 48000
+  },
+  "assets": [],
+  "claims": [],
+  "outputs": {
+    "review_video": {
+      "path": "",
+      "sha256": ""
+    },
+    "poster": {
+      "path": "",
+      "sha256": ""
+    },
+    "master": {
+      "path": "",
+      "sha256": ""
+    }
+  },
+  "validation": {
+    "technical": [],
+    "content": [],
+    "accessibility": [],
+    "known_gaps": []
+  }
+}

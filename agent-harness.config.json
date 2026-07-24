@@ -126,6 +126,16 @@
         "behavior-validator/references/wordpress-behavior-contract.md",
         "shared/references/live-proof-wordpress.md"
       ]
+    },
+    {
+      "name": "Product video",
+      "maxWords": 2200,
+      "warningPercent": 85,
+      "files": [
+        "product-video-producer/SKILL.md",
+        "product-video-producer/references/reference-to-storyboard.md",
+        "product-video-producer/references/render-review-iteration.md"
+      ]
     }
   ],
   "scenarios": [
@@ -188,6 +198,11 @@
       "name": "Behavior Validator",
       "file": "skill-evals/behavior-validator-scenarios.md",
       "requiredPhrases": ["# Behavior Validator Scenarios", "Contaminated validator", "Static-only change"]
+    },
+    {
+      "name": "Product Video Producer",
+      "file": "skill-evals/product-video-producer-scenarios.md",
+      "requiredPhrases": ["# Product Video Producer Scenarios", "Logo matte defect", "Deterministic 4K", "Exact critique"]
     }
   ]
 }
