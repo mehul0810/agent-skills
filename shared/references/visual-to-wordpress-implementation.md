@@ -39,7 +39,7 @@ Use `wp-expert/scripts/fse-design-map.sh` for theme/FSE work. Keep the manifest 
 - Plugin admin/editor product surfaces belong to `wp-plugin-expert`.
 - For mixed site/theme work, produce one site outcome brief, then let theme implementation consume it; do not load both full specialist contexts unless one worker owns both boundaries.
 
-For block themes, map in this order: `theme.json`, core blocks, block supports/styles, patterns, template parts/templates, block variations, block bindings, custom blocks, then Interactivity API. Templates remain structural and render Post Content when Pages > Edit owns the visible body. Do not use Custom HTML or Shortcode blocks as shortcuts. Before placing custom functionality in a theme, apply the distribution and portability gate in `../../wp-expert/references/block-theme-architecture.md`.
+For block themes, map in this order: `theme.json`, verified Core/plugin blocks, block supports/styles, patterns, template parts/templates, block variations, block bindings, custom blocks, then Interactivity API. Templates remain structural and render Post Content when Pages > Edit owns the visible body. Build the actual saved page/post composition; do not stop at a pattern file or simulate missing hierarchy with frontend-only CSS. Do not use Custom HTML or Shortcode blocks as shortcuts. Before placing custom functionality in a theme, apply the distribution and portability gate in `../../wp-expert/references/block-theme-architecture.md`.
 
 ## 4. Handle Image Assets Deliberately
 
@@ -80,6 +80,7 @@ Completion requires:
 
 - intended content is editable from the documented WordPress surface and survives save/reload,
 - the visitor completes the primary task and the author completes the primary editing task,
+- the intended non-technical author can create or insert the composition, recognize its hierarchy in the editor, and change representative copy, media, links, and allowed layout choices without CSS or code,
 - no invented design facts, APIs, blocks, assets, behavior, or proof,
 - source/candidate evidence exists for changed visual surfaces,
 - generated assets pass the approved rubric and target-crop inspection,

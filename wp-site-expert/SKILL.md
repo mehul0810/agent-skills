@@ -13,12 +13,13 @@ Operate as a principal WordPress site engineer focused on user outcomes: convers
 - Preserve user work. Do not reset or discard unrelated changes unless explicitly asked.
 - Load one primary reference. Add at most one supporting reference for a confirmed risk; more requires a written reason.
 - Treat this hot path as the standing execution kernel. References below are conditional overlays, not mandatory loads; load one only when its named risk is unresolved.
-- Use `../wp-expert/references/architecture-decision-gate.md` for unresolved source-of-truth, ownership, public-contract, release, performance, privacy, or proof decisions.
+- For unresolved source-of-truth, ownership, public-contract, release, performance, privacy, or proof decisions, use the router's architecture route.
 - Use `../shared/references/enterprise-code-quality-gate.md` for review-critical quality ambiguity; always consider scalability, modularity, maintainability, useful comments, tests, performance, and security/privacy.
 - Use `../shared/references/worker-execution-discipline.md` for assumption, recovery, hallucination, owner-correction, or completion-claim risk.
 - For material UI/workflow/design risk, use `../shared/references/design-intelligence-routing.md`; implementation ownership stays here.
+- For an editor-managed page/post layout, use `../shared/references/block-editor-page-composition.md` as primary and require the complete saved block composition plus non-technical author proof, not a frontend-only CSS result.
 - For out-of-scope problems noticed during scoped work, use `../shared/references/adjacent-finding-protocol.md`; detect, report, preserve scope, and let the PO triage.
-- Prioritize admin-editable, WordPress-native solutions over hard-coded pages when the site owner should manage content.
+- Prioritize admin-editable, WordPress-native solutions over hard-coded pages when the site owner should manage content. Use discovered Core/plugin blocks, patterns, styles, variations, and justified custom blocks to create the actual page/post body.
 - Keep mobile-first responsive architecture visible for visitor-facing and admin/editor-facing flows.
 - Preserve premium and enterprise feel: clear IA, intentional hierarchy, strong copy, polished states, accessible interactions, fast perceived performance, and consistent design language.
 - For exact user-provided CSS values, copy, or config, use `../wp-expert/references/planning-drift-control.md`; apply directly and confirm by diff unless runtime risk requires more.

@@ -13,13 +13,15 @@ Operate as a principal WordPress theme and block/FSE engineer. Build editable, p
 - Preserve user work. Do not reset or discard unrelated changes unless explicitly asked.
 - Load one primary reference. Add at most one supporting reference for a confirmed risk; more requires a written reason.
 - This hot path is the execution kernel. References are conditional overlays; load only for a named unresolved risk.
-- Use `../wp-expert/references/architecture-decision-gate.md` for unresolved theme/plugin/content ownership, public-contract, release, performance, or proof decisions.
+- For unresolved theme/plugin/content ownership, public-contract, release, performance, or proof decisions, use the router's architecture route.
 - Use `../shared/references/enterprise-code-quality-gate.md` for quality ambiguity across scalability, modularity, maintainability, comments, tests, performance, and security/privacy.
 - Use `../shared/references/worker-execution-discipline.md` for assumption, recovery, hallucination, owner-correction, or completion-claim risk.
 - For design audit/ideation without a selected target, use `../shared/references/design-intelligence-routing.md`; implementation ownership stays here.
 - For a source visual, use `../shared/references/visual-to-wordpress-implementation.md` as primary. Its deterministic proof route must prove visitor and author tasks; do not stack generic UI/FSE references.
+- For page/post composition without a source visual, use `../shared/references/block-editor-page-composition.md`; with a visual source, load it only as the single support reference when authoring architecture is the confirmed risk.
 - For out-of-scope problems noticed during scoped work, use `../shared/references/adjacent-finding-protocol.md`; detect, report, preserve scope, and let the PO triage.
 - Preserve editability: structural templates render Post Content; page-specific content belongs in page content, patterns, bindings, or intentional data sources.
+- Choose the native layout by relationship before writing layout CSS: Columns for explicit peer columns, Grid for repeated responsive peers, Row for horizontal clusters, and Stack for vertical sequences. Keep a default Group for semantic containment or a layout Core cannot express, such as unequal matrix tracks; compose Row plus Stack when axes differ. Do not nest default Groups and recreate an available layout variation in CSS.
 - Treat Site Editor overrides as migration input: promote theme-owned changes to reviewed files and prove the package on a clean database.
 - Never use Custom HTML or Shortcode blocks as design shortcuts.
 - Create custom blocks only after native layers fail and distribution/portability policy permits; WordPress.org directory blocks belong in a companion plugin.

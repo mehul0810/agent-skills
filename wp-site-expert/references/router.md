@@ -4,6 +4,7 @@ Use this router only after `wp-site-expert` is selected. Load one primary refere
 
 ## Primary Routes
 
+- Source-of-truth, ownership, public-contract, release, performance, privacy, or proof decisions: `../../wp-expert/references/architecture-decision-gate.md`.
 - Conversion-focused landing pages, funnels, CRO-safe implementation: `../../wp-expert/references/conversion-focused-website-engineering.md`.
 - UX discovery, IA, user journeys, UX writing, design QA: `../../wp-expert/references/ux-product-strategy-design-qa.md`.
 - Premium UI implementation, states, dashboards, forms: `../../wp-expert/references/ui-ux-pro-for-wordpress.md`.
@@ -12,6 +13,7 @@ Use this router only after `wp-site-expert` is selected. Load one primary refere
 - Technical SEO, canonicals, redirects, sitemaps, schema, crawl risk: `../../wp-expert/references/technical-seo-engineering.md`.
 - Analytics, GA4/GTM/data layer, consent-aware tracking: `../../wp-expert/references/analytics-measurement-engineering.md`.
 - Content modeling, CPT/taxonomy/meta/block/custom-table decisions: `../../wp-expert/references/content-modeling-information-architecture.md`.
+- Block Editor page/post structure, Core/plugin block selection, patterns/styles/variations, author usability, CSS governance, and WYSIWYG proof: `../../shared/references/block-editor-page-composition.md`.
 - Runtime block inventory, core-first page composition, editable render proof, and Site Editor override precedence: `../../shared/references/core-first-site-theme-workflow.md`.
 - Content migration, editorial scale, redirects, launch cutovers: `../../wp-expert/references/content-migration-editorial-scale.md`.
 - Accessibility, i18n, RTL, multilingual readiness: `../../wp-expert/references/accessibility-i18n-global-readiness.md`.
@@ -25,6 +27,7 @@ Use this router only after `wp-site-expert` is selected. Load one primary refere
 ## Always Keep Visible
 
 - Prioritize admin-editable, WordPress-native solutions over hard-coded pages when the site owner should manage content.
+- A block-managed page/post is incomplete until the intended non-technical author can create or insert its structure, edit representative content/media/links, save/reopen, and preview it without CSS or code.
 - Keep mobile-first responsive architecture visible for visitor-facing and admin/editor-facing flows.
 - Preserve premium and enterprise feel: clear IA, intentional hierarchy, strong copy, polished states, accessible interactions, fast perceived performance, and consistent design language.
 - For exact user-provided CSS values, copy, or config, apply directly and confirm by diff unless runtime risk requires more.

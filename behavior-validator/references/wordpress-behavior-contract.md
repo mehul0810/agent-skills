@@ -30,7 +30,7 @@ Choose probes that can disprove a false success claim:
 - Package/install: install the release ZIP on a clean disposable WordPress instance; activate, deactivate/reactivate, and confirm the reported version/build rather than testing only a source checkout.
 - Settings/admin: save a distinctive non-secret value, reload or start a new session, verify persistence, then try empty, invalid, and boundary input plus an unauthorized role.
 - REST/API/WP-CLI: vary inputs and fixture state; verify response/status/output changes, permission failure, malformed input handling, and that a success response corresponds to persisted or rendered state.
-- Block editor/FSE: insert or edit content, save, close/reopen, and verify both editor state and frontend rendering. Confirm page-owned content remains editable from its intended admin surface.
+- Block editor/FSE: with the intended non-technical role, create or insert the documented composition, edit representative copy/media/link content, save, close/reopen, and verify editor state plus frontend rendering. Confirm page-owned content remains editable from its intended admin surface, the block tree stays valid, and no CSS/code knowledge is required for the promised workflow.
 - Frontend/UI: exercise empty, loading, error, success, disabled, keyboard/focus, narrow/mobile, and long-content states only when relevant to the changed workflow.
 - Data/integration: mutate fixture data, retry/reconnect, and verify idempotency or failure recovery through observable state; mocks do not prove a live provider contract.
 - Generated artifact: change the allowed input fixture and confirm output changes; inspect the final file/package rather than trusting a success notice.

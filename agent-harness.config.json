@@ -67,6 +67,15 @@
       ]
     },
     {
+      "name": "Block editor page composition",
+      "maxWords": 2600,
+      "warningPercent": 85,
+      "files": [
+        "wp-site-expert/SKILL.md",
+        "shared/references/block-editor-page-composition.md"
+      ]
+    },
+    {
       "name": "Plugin architecture",
       "maxWords": 2700,
       "warningPercent": 85,
@@ -163,6 +172,11 @@
       "name": "Core-first site theme",
       "file": "skill-evals/core-first-site-theme-scenarios.md",
       "requiredPhrases": ["# Core-First Site And Theme Scenarios"]
+    },
+    {
+      "name": "Block editor page composition",
+      "file": "skill-evals/block-editor-page-composition-scenarios.md",
+      "requiredPhrases": ["# Block Editor Page Composition Scenarios", "Plugin block inventory", "Repeated proof cards", "WYSIWYG proof"]
     },
     {
       "name": "Model routing",

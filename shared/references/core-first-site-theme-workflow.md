@@ -4,7 +4,7 @@ Use this for block-based site/theme implementation when block availability, edit
 
 ## 1. Verify Runtime Block Availability
 
-Inspect the target WordPress runtime before choosing blocks. Query `WP_Block_Type_Registry::get_instance()->get_all_registered()` through WP-CLI or a scoped runtime probe; use the authenticated block-types REST endpoint when appropriate. Record the registered names relevant to the design.
+Inspect the target WordPress runtime before choosing blocks. Query `WP_Block_Type_Registry::get_instance()->get_all_registered()` through WP-CLI or a scoped runtime probe; use the authenticated block-types REST endpoint when appropriate. Record relevant Core/plugin namespaces and sources, supports, styles, variations, patterns, transforms, dynamic behavior, activation/license requirements, and actual inserter/editor availability.
 
 Do not infer availability from WordPress version, documentation, Gutenberg source, experimental status, or another environment. A documented block may be absent because of Core/Gutenberg version, feature flags, registration timing, or site policy. If a requested block is unavailable, use the nearest registered core composition, an existing project block, or a justified custom block; report the fallback.
 
@@ -22,7 +22,7 @@ Inspect repo-local `DESIGN.md`. If absent or stale and the gap is durable, creat
 
 For editor-managed pages, inspect saved `post_content` with `parse_blocks()` and verify expected block names, hierarchy, attributes, and absence of unintended `core/html` or `core/shortcode`. Render the saved content with `do_blocks()` in the correct WordPress context and verify the result rather than validating only a pattern/template source file.
 
-Capture desktop and narrow/mobile screenshots of the frontend. When editor parity or editing ownership changed, also prove the relevant editor surface. Confirm that Pages > Edit, Site Editor, or the documented data source controls the visible content.
+Capture desktop and narrow/mobile screenshots of the frontend. When editor parity or editing ownership changed, also prove the relevant editor surface. Confirm that Pages > Edit, Site Editor, or the documented data source controls the visible content. Have the intended non-technical role edit representative copy/media/link content, save/reopen, and create or insert the documented page/pattern structure without CSS or code.
 
 ## 5. Reconcile Site Editor Overrides
 

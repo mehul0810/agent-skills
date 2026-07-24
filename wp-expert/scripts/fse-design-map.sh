@@ -78,6 +78,15 @@ cat > "$output_path" <<'TEMPLATE'
 - Site Editor database override policy:
 - Nonportable Navigation, synced-pattern, attachment, or other database references:
 - Locked areas vs editor-editable areas:
+- Intended non-technical role and author tasks (create/insert/edit/media/link/reorder/save/revise):
+
+## Runtime Editor Capability Inventory
+
+- Registered Core/plugin blocks and source namespaces:
+- Supports, styles, variations, transforms, and dynamic behavior:
+- Available theme/plugin/site patterns and categories:
+- Plugin activation/license/version/portability dependencies:
+- Allowed-block and inserter curation policy:
 
 ## Template Parts
 
@@ -90,6 +99,8 @@ cat > "$output_path" <<'TEMPLATE'
 - Core section patterns:
 - Synced patterns:
 - Unsynced patterns:
+- Pattern names, descriptions, categories, keywords, viewport widths, and post types:
+- Synced-pattern override support and fallback:
 
 ## Tokens (`theme.json`)
 
@@ -127,6 +138,7 @@ cat > "$output_path" <<'TEMPLATE'
 - Requires custom block with InnerBlocks (justify each):
 - Requires custom dynamic block (justify each):
 - Requires Interactivity API behavior:
+- CSS/layout exceptions after native-layer review:
 
 ## Custom Block Decisions
 
@@ -154,6 +166,7 @@ cat > "$output_path" <<'TEMPLATE'
 
 - Visitor workflow (entry, action, feedback, completion, recovery):
 - Author workflow (locate, edit, reorder constraints, save/reload, preview, rollback/revision):
+- New page/post workflow (insert pattern/start structure, replace content/media/links, publish/preview):
 
 ## Content And Compatibility Stress
 
@@ -168,6 +181,8 @@ cat > "$output_path" <<'TEMPLATE'
 - Pages > Edit controls visible page-owned content:
 - Site Editor controls only intended template/part/global content:
 - Editor/frontend parity targets:
+- List View hierarchy and pattern/style/variation discoverability:
+- No frontend-only structural CSS or block-validation warnings:
 - Accessibility checks:
 - Performance checks:
 - Matched viewport/zoom/content/font/data state:

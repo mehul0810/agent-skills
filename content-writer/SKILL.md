@@ -49,6 +49,7 @@ Load only when needed:
 
 - For briefs: audience, intent, angle, outline, entities, source plan, schema candidates, internal links, and acceptance criteria.
 - For drafts: publish-ready content with title, meta description, headings, body copy, FAQs, source notes, and revision assumptions.
+- For WordPress page/post handoff: add a block-ready section brief covering hierarchy, copy/media/CTA intent, reusable/global intent, and dynamic states; do not fabricate serialized blocks or frontend CSS. `wp-site-expert` owns implementation.
 - For edits: the revised draft plus a short change summary; omit unrequested draft metadata.
 - For detection: quoted evidence, effect, and short fix; no rewriting, scoring, or authorship claims.
 - For audits: findings first, then missing intent coverage, content gaps, trust gaps, technical/content schema issues, and prioritized fixes.
