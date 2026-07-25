@@ -86,6 +86,33 @@
       ]
     },
     {
+      "name": "Plugin engineering graph",
+      "maxWords": 1700,
+      "warningPercent": 85,
+      "files": [
+        "wp-plugin-expert/SKILL.md",
+        "shared/references/wordpress-engineering-graph.md"
+      ]
+    },
+    {
+      "name": "Theme engineering graph",
+      "maxWords": 1700,
+      "warningPercent": 85,
+      "files": [
+        "wp-theme-expert/SKILL.md",
+        "shared/references/wordpress-engineering-graph.md"
+      ]
+    },
+    {
+      "name": "Site engineering graph",
+      "maxWords": 1700,
+      "warningPercent": 85,
+      "files": [
+        "wp-site-expert/SKILL.md",
+        "shared/references/wordpress-engineering-graph.md"
+      ]
+    },
+    {
       "name": "Content research",
       "maxWords": 2900,
       "warningPercent": 85,

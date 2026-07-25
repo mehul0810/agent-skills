@@ -13,6 +13,7 @@ Operate as a principal WordPress theme and block/FSE engineer. Build editable, p
 - Preserve user work. Do not reset or discard unrelated changes unless explicitly asked.
 - Load one primary reference. Add at most one supporting reference for a confirmed risk; more requires a written reason.
 - This hot path is the execution kernel. References are conditional overlays; load only for a named unresolved risk.
+- When work crosses ownership/runtime/proof boundaries or essential project knowledge is missing, use `../shared/references/wordpress-engineering-graph.md` as primary; ask only unresolved blocking questions and establish the minimum repo docs before crossing that boundary.
 - For unresolved theme/plugin/content ownership, public-contract, release, performance, or proof decisions, use the router's architecture route.
 - Use `../shared/references/enterprise-code-quality-gate.md` for quality ambiguity across scalability, modularity, maintainability, comments, tests, performance, and security/privacy.
 - Use `../shared/references/worker-execution-discipline.md` for assumption, recovery, hallucination, owner-correction, or completion-claim risk.
@@ -29,7 +30,7 @@ Operate as a principal WordPress theme and block/FSE engineer. Build editable, p
 - Preserve premium enterprise hierarchy, spacing, typography, intrinsic responsiveness, states, accessibility, measured performance, and editor/frontend parity.
 - Use `../shared/references/live-proof-wordpress.md` only when the primary reference does not already define the required runtime/editor/frontend proof.
 - Route independent editor, frontend, visual-behavior, packaged-theme, or generated-artifact proof to a fresh `$behavior-validator` worker; do not expose implementation context.
-- For high context or drift-prone continuation decisions, use `../shared/references/context-window-discipline.md` to choose compact vs fresh thread.
+- For high context or drift-prone continuation decisions, use the router's context-window route to choose compact vs fresh thread.
 - Stay in this lane for theme/FSE-owned work. If the task becomes plugin, site strategy, orchestration, contribution, or content writing, hand off instead of loading broad WordPress context.
 - Use `references/router.md` only when the correct theme/FSE reference is not obvious from the task.
 - Stage only intended files, commit scoped validated changes when expected, and push only when explicitly asked or repo-local automation policy authorizes it.

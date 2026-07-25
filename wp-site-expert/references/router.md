@@ -4,6 +4,7 @@ Use this router only after `wp-site-expert` is selected. Load one primary refere
 
 ## Primary Routes
 
+- Cross-boundary engineering graph, missing project knowledge/docs, graph closure, and durable failure learning: `../../shared/references/wordpress-engineering-graph.md`.
 - Source-of-truth, ownership, public-contract, release, performance, privacy, or proof decisions: `../../wp-expert/references/architecture-decision-gate.md`.
 - Conversion-focused landing pages, funnels, CRO-safe implementation: `../../wp-expert/references/conversion-focused-website-engineering.md`.
 - UX discovery, IA, user journeys, UX writing, design QA: `../../wp-expert/references/ux-product-strategy-design-qa.md`.
@@ -22,6 +23,7 @@ Use this router only after `wp-site-expert` is selected. Load one primary refere
 - Edge caching/CDN and personalization: `../../wp-expert/references/edge-caching-cdn-architecture.md`.
 - Headless/decoupled site architecture: `../../wp-expert/references/headless-decoupled-wordpress.md`.
 - Local HTTPS/browser testing blockers: `../../wp-expert/references/local-https-testing.md`.
+- Web-heavy, current-policy, API, or source-backed research: `../../shared/references/research-token-discipline.md`.
 - Ambiguous or cross-lane work: `../../wp-expert/references/reference-routing-map.md`.
 
 ## Always Keep Visible

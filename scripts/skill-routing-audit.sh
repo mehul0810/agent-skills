@@ -138,8 +138,11 @@ check_router_discipline() {
   require_text "shared/references/project-subagent-routing.md" 'Plugin: `$wp-plugin-expert`' "subagent plugin specialist profile"
   require_text "shared/references/project-subagent-routing.md" 'Theme/FSE: `$wp-theme-expert`' "subagent theme specialist profile"
   require_text "wp-plugin-expert/references/router.md" "plugin-product-architecture.md" "plugin expertise preserved in router"
+  require_text "wp-plugin-expert/references/router.md" "wordpress-engineering-graph.md" "plugin graph route"
   require_text "wp-theme-expert/references/router.md" "custom-block-theme-from-design.md" "theme design-to-FSE expertise preserved in router"
+  require_text "wp-theme-expert/references/router.md" "wordpress-engineering-graph.md" "theme graph route"
   require_text "wp-site-expert/references/router.md" "conversion-focused-website-engineering.md" "site conversion expertise preserved in router"
+  require_text "wp-site-expert/references/router.md" "wordpress-engineering-graph.md" "site graph route"
   require_text "wp-contributor/references/router.md" "gutenberg-workflow.md" "contributor Gutenberg expertise preserved in router"
 }
 

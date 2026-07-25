@@ -10,7 +10,9 @@ Recommended repo docs:
 
 - `AGENTS.md`: repo-specific agent workflow, branch rules, local validation gates, PR rules, hosted-CI exceptions, and automation constraints.
 - `PRODUCT.md`: product positioning, target users/customers, product principles, free/pro boundaries, and non-goals.
+- `ARCHITECTURE.md`: durable system owners, dependency/state boundaries, data and public contracts, failure behavior, migrations, and rollback when a compact set of ADRs is not enough.
 - `DESIGN.md`: concise product design contract for admin UI patterns, screen hierarchy, components/controls, empty/loading/error/success states, accessibility, responsive behavior, WordPress.org/website assets, copy/tone, visual non-goals, and the default UI baseline. Use the [WordPress Design System](https://www.figma.com/community/file/1436359662053949167/wordpress-design-system) as the starting point, then layer each product's brand colors and product-specific identity on top of it.
+- `CONTENT.md`: site information architecture, page purpose, editorial ownership, blocks/patterns, claim evidence, SEO/AEO/GEO, internal links, and publishing workflow when content operations are material.
 - `TESTING.md`: canonical local fast/full/package commands, prerequisites, fixtures, environments, expected evidence, and any justified hosted-only checks.
 - `ROADMAP.md`: milestone sequence, release intent, current priorities, and deferred work.
 - `RELEASE.md`: beta/stable process, release/prerelease GitHub Actions boundary, canonical validation command reuse, packaging, main-first production merge/tag/release sequence, post-release ancestry and forward-sync checks, WordPress.org or marketplace steps, rollback notes.
@@ -18,6 +20,8 @@ Recommended repo docs:
 - `docs/decisions/ADR-xxxx.md`: material architecture or product decisions.
 
 Do not create these files automatically for every repo. Recommend or create them only when a real durable gap exists and the user or repo workflow supports it.
+
+For plugin, theme, or site implementation where missing project truth changes the architecture, use `wordpress-engineering-graph.md`. Inspect discoverable evidence first, ask only the unresolved blocking questions, and create or update the minimum necessary docs before crossing the affected ownership, design, data, proof, or release boundary. Do not fill policy files with guessed placeholders.
 
 `DESIGN.md` is not a heavy design-system spec. Product orchestrators should create or adapt it only through duplicate-screened product issues, not blind docs churn. Prioritize products with active UI drift, onboarding risk, or an upcoming design-heavy train; keep it lightweight when the product surface is small.
 

@@ -4,6 +4,7 @@ Use this router only after `wp-theme-expert` is selected. Load one primary refer
 
 ## Primary Routes
 
+- Cross-boundary engineering graph, missing project knowledge/docs, graph closure, and durable failure learning: `../../shared/references/wordpress-engineering-graph.md`.
 - Theme/plugin/content ownership, public-contract, release, performance, or proof decisions: `../../wp-expert/references/architecture-decision-gate.md`.
 - Block themes, FSE architecture, `theme.json`, templates, parts, patterns: `../../wp-expert/references/block-theme-architecture.md`.
 - Runtime block inventory, core-first composition, editable render proof, and Site Editor override promotion/precedence: `../../shared/references/core-first-site-theme-workflow.md`.
@@ -23,6 +24,7 @@ Use this router only after `wp-theme-expert` is selected. Load one primary refer
 - Blocksy/Blocksy Pro: `../../wp-expert/references/blocksy-theme.md`.
 - Hybrid theme/page-builder migration: `../../wp-expert/references/hybrid-theme-migration-modernization.md`.
 - Local HTTPS/browser testing blockers: `../../wp-expert/references/local-https-testing.md`.
+- High-context continuation or compact/fresh-thread decision: `../../shared/references/context-window-discipline.md`.
 - Ambiguous or cross-lane work: `../../wp-expert/references/reference-routing-map.md`.
 
 ## Always Keep Visible

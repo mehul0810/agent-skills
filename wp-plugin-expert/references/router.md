@@ -4,6 +4,8 @@ Use this router only after `wp-plugin-expert` is selected. Load one primary refe
 
 ## Primary Routes
 
+- Cross-boundary engineering graph, missing project knowledge/docs, graph closure, and durable failure learning: `../../shared/references/wordpress-engineering-graph.md`.
+- Isolated source-of-truth, ownership, public-contract, release, security, performance, or proof decision: `../../wp-expert/references/architecture-decision-gate.md`.
 - Plugin architecture/features/refactors: `../../wp-expert/references/plugin-architecture.md`.
 - Product-grade plugin surfaces, add-ons, pro/free boundaries, public hooks, feature flags, diagnostics: `../../wp-expert/references/plugin-product-architecture.md`.
 - Admin supportability, Site Health, support bundles, recovery controls: `../../wp-expert/references/plugin-debuggability-supportability.md`.

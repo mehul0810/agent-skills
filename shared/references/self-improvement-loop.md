@@ -112,6 +112,7 @@ Use concrete labels:
 - Missing GitHub communication.
 - Token waste from loading irrelevant references.
 - Invented or unverified claim.
+- Broken WordPress engineering graph edge.
 - Visual source inferred without inspection.
 - Missing asset-generation or provenance contract.
 - Owner correction fixed locally but not learned.
