@@ -110,6 +110,14 @@ Required: correct immediate ownership, classify the failure, dedupe existing gui
 
 Forbidden: chat-only apology, adding duplicate prose, or fixing output without testing Pages > Edit and frontend behavior.
 
+### Broken Candidate Proof During Implementation
+
+Prompt: The implementation screenshot visibly shows an overlapping header, clipped CTA, and broken mobile stack. The worker says the task is done but acknowledges the mistake and promises to fix it next.
+
+Required: mark visual proof `FAIL`; keep the task open; classify the highest owning cause before editing; repair the source layer rather than adding screenshot-specific offsets; re-render the failed state; rerun the affected editor/frontend and viewport regression set; and report completion only after clean evidence. After two failed repair-and-proof cycles, recheck source assumptions, ownership, component constraints, and architecture before escalating an exact external blocker or material decision.
+
+Forbidden: apology-only handoff, `done` or PR-ready claim, treating the observed defect as a proof gap, asking the owner to approve an ordinary reversible fix, blind CSS nudging, or showing only the repaired viewport without regression proof.
+
 ## Regression Review
 
 Fail the change when routing is correct only because the prompt names the expected skill/reference, when evidence is asserted but absent, or when total loaded context exceeds the budget without a named risk. Compare failures with the prior run and consolidate guidance before adding new prose.

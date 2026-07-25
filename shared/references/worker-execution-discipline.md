@@ -77,6 +77,12 @@ Before calling direct worker work done, run a bounded finish pass around touched
 
 The finish pass is a narrow check around the changed boundary, not an excuse to broaden scope.
 
+## Failed Visual Evidence Recovery
+
+When screenshot, browser, or editor proof exposes an in-scope broken layout or workflow, mark the proof `FAIL` and continue the scoped task. Classify the highest owning root cause, repair it there, rerun the same proof, and check the smallest affected viewport/workflow regression set. Do not hand back "I made a mistake; I will fix it" when the worker can safely perform that recovery now, and do not relabel an observed failure as a proof gap.
+
+After two repair-and-proof cycles without convergence, stop cosmetic tweaking and recheck assumptions, ownership, component constraints, and architecture. Escalate only the exact external dependency, unsafe contract decision, or inaccessible environment that prevents recovery; include failed evidence, attempts, and the recommended next path.
+
 ## Review Convergence Gate
 
 Before applying review-triggered edits, freeze the requested behavior, owner boundary, intended files, and proof level. Classify each accepted finding as an in-scope blocker, adjacent follow-up, or contract/owner decision. After two review-triggered edit cycles without clean convergence, stop and reclassify every remaining finding. Continue only for bounded in-scope blockers with a clear proof path; route follow-ups through `adjacent-finding-protocol.md` and escalate contract changes instead of chasing the reviewer or silently expanding the task.

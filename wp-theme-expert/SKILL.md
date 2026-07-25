@@ -17,7 +17,7 @@ Operate as a principal WordPress theme and block/FSE engineer. Build editable, p
 - Use `../shared/references/enterprise-code-quality-gate.md` for quality ambiguity across scalability, modularity, maintainability, comments, tests, performance, and security/privacy.
 - Use `../shared/references/worker-execution-discipline.md` for assumption, recovery, hallucination, owner-correction, or completion-claim risk.
 - For design audit/ideation without a selected target, use `../shared/references/design-intelligence-routing.md`; implementation ownership stays here.
-- For a source visual, use `../shared/references/visual-to-wordpress-implementation.md` as primary. Its deterministic proof route must prove visitor and author tasks; do not stack generic UI/FSE references.
+- With a source visual, use `../shared/references/visual-to-wordpress-implementation.md` as primary; prove visitor/author tasks; observed defects are `FAIL` and reopen implementation. Do not stack UI/FSE references.
 - For page/post composition without a source visual, use `../shared/references/block-editor-page-composition.md`; with a visual source, load it only as the single support reference when authoring architecture is the confirmed risk.
 - For out-of-scope problems noticed during scoped work, use `../shared/references/adjacent-finding-protocol.md`; detect, report, preserve scope, and let the PO triage.
 - Preserve editability: structural templates render Post Content; page-specific content belongs in page content, patterns, bindings, or intentional data sources.

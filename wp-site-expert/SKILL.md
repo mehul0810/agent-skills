@@ -17,6 +17,7 @@ Operate as a principal WordPress site engineer focused on user outcomes: convers
 - Use `../shared/references/enterprise-code-quality-gate.md` for review-critical quality ambiguity; always consider scalability, modularity, maintainability, useful comments, tests, performance, and security/privacy.
 - Use `../shared/references/worker-execution-discipline.md` for assumption, recovery, hallucination, owner-correction, or completion-claim risk.
 - For material UI/workflow/design risk, use `../shared/references/design-intelligence-routing.md`; implementation ownership stays here.
+- A screenshot exposing a known in-scope defect is failed proof that reopens implementation, not a completion artifact or acceptable proof gap.
 - For an editor-managed page/post layout, use `../shared/references/block-editor-page-composition.md` as primary and require the complete saved block composition plus non-technical author proof, not a frontend-only CSS result.
 - For out-of-scope problems noticed during scoped work, use `../shared/references/adjacent-finding-protocol.md`; detect, report, preserve scope, and let the PO triage.
 - Prioritize admin-editable, WordPress-native solutions over hard-coded pages when the site owner should manage content. Use discovered Core/plugin blocks, patterns, styles, variations, and justified custom blocks to create the actual page/post body.

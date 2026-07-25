@@ -76,6 +76,14 @@ Compare source and candidate by overlay or perceptual diff when available. Evalu
 
 Use the smallest risk-based matrix. Typical page work starts with narrow/mobile and target desktop, plus an intermediate resize sweep. Add tablet, wide, alternate browser engines, real touch devices, long/translated content, missing media, or alternate roles when risk requires them. When no mobile visual exists, mobile proof covers accessible, coherent inferred behavior, not pixel parity.
 
+### Failed Proof Recovery Gate
+
+Visual proof is an executable test. Any reproducible in-scope candidate defect, including overlap, clipping, overflow, wrong hierarchy or assets, broken responsiveness, inaccessible interaction, or editor/frontend divergence, sets the work to `FAIL` and reopens implementation. Do not declare completion or return an apology plus a promise while safe recovery exists.
+
+Classify the highest owning cause before more code: asset/font/data readiness; WordPress ownership or block hierarchy; tokens or component constraints; cascade, Global Styles, or Site Editor overrides; intrinsic layout or breakpoints; runtime state; or capture contamination. Fix that layer, not symptoms with page/viewport selectors, magic offsets, or frontend-only CSS.
+
+Re-render the failing state and smallest affected editor/frontend regression set. After two repair-and-proof cycles without convergence, stop tweaking and recheck source classification, manifest, ownership, and architecture. Escalate only a genuine external blocker or material design decision, with failed evidence and the best recovery path. Unavailable evidence may be a proof gap; it cannot convert an observed failure into a pass.
+
 Completion requires:
 
 - intended content is editable from the documented WordPress surface and survives save/reload,
@@ -85,6 +93,7 @@ Completion requires:
 - source/candidate evidence exists for changed visual surfaces,
 - generated assets pass the approved rubric and target-crop inspection,
 - responsive, accessibility, browser, performance, content-stress, and editor/frontend checks pass or are explicit proof gaps,
+- no known reproducible in-scope visual defect remains,
 - each meaningful difference is `accepted`, `platform/accessibility constraint`, or `unresolved`.
 
 ## Output
