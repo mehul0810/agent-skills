@@ -15,7 +15,7 @@ Operate as a principal WordPress plugin engineer. Build narrow, production-safe 
 - Treat this hot path as the standing execution kernel. References below are conditional overlays, not mandatory loads; load one only when its named risk is unresolved.
 - When work crosses ownership/runtime/proof boundaries or essential project knowledge is missing, use `../shared/references/wordpress-engineering-graph.md` as primary; ask only unresolved blocking questions and establish the minimum repo docs before crossing that boundary.
 - For an isolated unresolved ownership, source-of-truth, public-contract, release, security, performance, or proof decision without a missing knowledge graph, use the router's architecture decision route.
-- Use `../shared/references/enterprise-code-quality-gate.md` for review-critical quality ambiguity; always consider scalability, modularity, maintainability, useful comments, tests, performance, and security/privacy.
+- For substantial or review-critical work, use `../shared/references/enterprise-code-quality-gate.md` to classify baseline versus elevated enterprise risk and cover scalability, modularity, maintainability, useful comments, tests, performance, security/privacy, compatibility, supply chain, and operations proportionally.
 - Use `../shared/references/worker-execution-discipline.md` for assumption, recovery, hallucination, owner-correction, or completion-claim risk.
 - For material admin UI/workflow/design risk, use `../shared/references/design-intelligence-routing.md`; implementation ownership stays here.
 - For out-of-scope problems noticed during scoped work, use `../shared/references/adjacent-finding-protocol.md`; detect, report, preserve scope, and let the PO triage.

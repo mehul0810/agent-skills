@@ -1,0 +1,62 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "site-visual-routing-2026-07-25",
+  "scenario": "site-screenshot-to-editable-wordpress",
+  "result": "succeeded",
+  "startedAt": "2026-07-25T05:28:14.000Z",
+  "durationMs": 38000,
+  "checks": [
+    {
+      "name": "missing-source-not-hallucinated",
+      "result": "pass"
+    },
+    {
+      "name": "runtime-block-and-theme-inventory",
+      "result": "pass"
+    },
+    {
+      "name": "editable-page-content-ownership",
+      "result": "pass"
+    },
+    {
+      "name": "visitor-and-author-proof",
+      "result": "pass"
+    },
+    {
+      "name": "responsive-accessibility-visual-proof",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "input_tokens": 58181,
+    "cached_input_tokens": 35328,
+    "output_tokens": 1113,
+    "reasoning_output_tokens": 157,
+    "tool_calls": 2,
+    "retry_count": 0,
+    "checks_passed": 5
+  },
+  "lineage": {
+    "observationId": "site-visual-routing-gap",
+    "actionId": "agent-skills-enterprise-quality-pass",
+    "verificationId": "site-visual-routing-2026-07-25",
+    "artifactPointer": "wp-site-expert/SKILL.md"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-07-25T05:28:52.000Z",
+    "metricNames": [
+      "checks_passed",
+      "input_tokens",
+      "output_tokens"
+    ],
+    "summary": "Fresh read-only agent refused to invent missing visual data and required editable saved blocks plus visitor, author, responsive and accessibility proof."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "site",
+    "visual"
+  ]
+}

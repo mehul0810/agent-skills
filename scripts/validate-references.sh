@@ -308,6 +308,28 @@ validate_scripts() {
   done < <(find_skill_dirs)
 }
 
+validate_engineering_graph() {
+  echo ""
+  echo "=== Validating engineering graph contract ==="
+
+  if node "$repo_root/wp-expert/scripts/validate-engineering-graph.mjs" --self-test; then
+    log_success "Engineering graph validator rejects incomplete critical proof"
+  else
+    log_error "Engineering graph validator self-test failed"
+  fi
+}
+
+validate_behavior_evidence() {
+  echo ""
+  echo "=== Validating fresh-agent behavior evidence ==="
+
+  if node "$repo_root/scripts/behavior-evidence-audit.mjs"; then
+    log_success "Fresh-agent evidence matches the current behavior sources"
+  else
+    log_error "Fresh-agent behavior evidence is stale or incomplete"
+  fi
+}
+
 # Check metadata files
 validate_metadata() {
   echo ""
@@ -491,6 +513,8 @@ main() {
     validate_skill_format
     validate_reference_sizes
     validate_scripts
+    validate_engineering_graph
+    validate_behavior_evidence
     validate_metadata
     validate_token_budgets
     validate_harness_contracts

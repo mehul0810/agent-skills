@@ -8,19 +8,11 @@ Reduce wall time and token cost without weakening evidence. The parent owns stra
 
 ## Delegation Gate
 
-Use subagents when parallel mapping saves time, independent plugin/theme/test/docs/security lanes exist, a second review materially reduces risk, or browser/CI evidence can be gathered independently.
-
-Do not delegate small obvious edits, work without acceptance criteria, broad mutation without a bounded handoff, or attempts to bypass trust, sandbox, approval, or review controls.
+Delegate when parallel mapping, independent lanes, second review, or browser/CI evidence saves time or risk. Keep small edits inline; never delegate unplanned broad mutation or bypass trust/approval controls.
 
 ## Availability-First Routing Contract
 
-At each delegation, before assigning or overriding a model or reasoning level:
-
-1. Re-check the model/reasoning combinations exposed by the active host or tool; do not rely on an earlier inventory.
-2. Treat an owner-named model/reasoning combination as a preference: use it when available and suitable, not as a permanent runtime requirement.
-3. Classify ambiguity, implementation completeness, risk, reversibility, evidence burden, context size, and latency/cost need.
-4. Select the lowest sufficient available capability tier and supported reasoning level.
-5. Omit overrides when inherited model/reasoning already fits.
+At each delegation: re-check host model/reasoning availability; treat owner choices as preferences; classify ambiguity, completeness, risk, reversibility, evidence/context, latency/cost; select the lowest sufficient available capability tier; omit fitting overrides.
 
 Never assume a model ID or that `high`, `xhigh`, `max`, or another reasoning label exists. Capability-check both fields at runtime.
 
@@ -28,23 +20,22 @@ Never assume a model ID or that `high`, `xhigh`, `max`, or another reasoning lab
 
 On the owner's first CTO interaction of their local calendar day, ask once: `Should I plan delegated work around conservative capacity, or do you expect to use available capacity today or this week?`
 
-- Do not block work or repeat the question that day. Missing or unclear answers mean conservative capacity: start with one delegated worker at a time.
-- Never claim visibility into, control over, or a guarantee of account quota, reset timing, or future capacity.
-- Use the answer only after task risk and runtime availability are classified: choose the lowest sufficient tier, reasoning, concurrency, and duration. Capacity never lowers a risk tier or expands authority.
+- Ask once, never block/repeat. Missing answer means one worker at a time. Never claim quota/reset visibility or control.
+- After risk/availability classification, use it only for tier, reasoning, concurrency, and duration; never lower risk or expand authority.
 - Reserve optional higher-cost or long-running parallel work for stated capacity; high-risk work still receives the strongest suitable lane even under conservative capacity.
 - Keep the signal in the current CTO control context. Do not create a recurring automation or durable account-usage record unless the owner explicitly requests it.
 
 ### Capability Tiers
 
-- Fast/economical: routine mapping, issue intake, deterministic docs/tests, evidence capture, simple CI triage, and screenshot capture when product behavior does not change.
-- Balanced implementation: the default for bounded product/code changes, ordinary PR review, CI repair, or moderate integration reasoning.
-- Strongest suitable reasoning-capable: ambiguous architecture, security/privacy, migrations, public contracts, high-scale performance, release blockers/decisions, cross-product conflicts, and final high-risk review.
+- Fast/economical: mapping, intake, deterministic docs/tests/evidence/screenshots, simple CI.
+- Balanced: bounded implementation, normal review, CI repair, moderate integration.
+- Strongest reasoning-capable: ambiguous architecture, security/privacy, migration/public contracts, high-scale/release/cross-product decisions, final high-risk review.
 
 When the current host exposes the 5.6 capability family, map its runtime classes after inventory:
 
-- Luna-class: monitoring, read-only mapping, deterministic evidence, screenshots, narrow docs/tests, and simple CI triage; use `low`, or `medium` when synthesis needs it.
-- Terra-class: default PO execution, bounded implementation, ordinary PR review, CI repair, integration work, and evidence synthesis; use `medium`, or `high` for ambiguous integration.
-- Sol-class: release readiness, critical/release PR review, security/privacy, architecture, migrations, public contracts, major regressions, cross-product conflicts, topology recovery, and ambiguous owner decisions; use `high` or `xhigh` when supported.
+- Luna-class: monitoring/mapping/deterministic evidence/screenshots/docs/tests/simple CI; `low` or synthesis `medium`.
+- Terra-class: PO execution/bounded implementation/ordinary review/CI/integration; `medium` or ambiguous `high`.
+- Sol-class: release/critical review/security/architecture/migrations/contracts/regressions/conflicts/topology/owner decisions; supported `high`/`xhigh`.
 
 These are current capability-class aliases, not permanent model IDs or reusable configuration values. If the host exposes different names, preserve the same risk/cost tiers. Use reasoning above `xhigh` only when the owner explicitly requests it or concrete failed proof shows `xhigh` is insufficient.
 
@@ -52,15 +43,15 @@ Allocation changes capability, not authority. A Sol-class assignment for topolog
 
 For final high-risk review, keep the strongest suitable lane as reviewer. Do not downgrade the final reviewer merely for model diversity; add an independent second pass only when variance reduction materially justifies its cost.
 
-Portfolio sweeps normally use low/medium reasoning; escalate for cross-product conflicts, protected-thread recovery, or owner decision briefs. Product heartbeats normally use medium; escalate for release-ready synthesis, ambiguous scope, risky merge/release judgment, migrations, or topology drift. Keep screenshot capture and bounded official-source research on a fast tier unless judgment is complex.
+Portfolio sweeps use low/medium; product heartbeats medium. Escalate only for listed risk. Screenshots and bounded official research stay fast unless judgment is complex.
 
 ### Escalation And De-Escalation
 
-Escalate only after concrete ambiguity, failed proof, inadequate implementation, or confirmed risk exceeds the current tier. Do not brute-force retries with an underpowered lane. De-escalate after planning, exact-file mapping, acceptance criteria, or deterministic validation removes uncertainty.
+Escalate after concrete ambiguity, failed proof, inadequate implementation, or higher risk; do not brute-force an underpowered lane. De-escalate after planning or deterministic proof removes uncertainty.
 
 Classify repeated retries or weak evidence caused by the assigned lane as `wrong model/reasoning allocation`, then reassess availability and tier.
 
-If the preferred/configured combination is unavailable, reassess it against the live inventory. Preserve the task-required risk tier first, then choose the nearest available class in that tier and its highest sufficient supported reasoning. Never downgrade a high-risk decision to preserve a model name or reasoning label. Cross tiers only when no same-tier class can produce the evidence. A fast/economical preference should use the nearest available fast/economical class, not automatically the strongest model. Keep capability-equivalent substitutions quiet; report only a meaningful capability, evidence, latency, cost, or risk change:
+If unavailable, preserve risk tier and choose its nearest class/reasoning. Never downgrade high-risk judgment for a name; cross tiers only when necessary. Keep equivalent substitutions quiet; report meaningful change:
 
 ```text
 Requested: <model/reasoning>
@@ -81,7 +72,7 @@ Front-load scope into the issue and delegation prompt so execution does not spen
 - validation and screenshot/live-proof needs,
 - risks, hard gates, output format, and stop condition.
 
-Fully planned bounded work should use the lowest sufficient tier. Incomplete or decision-shaping work stays with the parent or moves to the strongest suitable tier before implementation.
+Fully planned bounded work uses the lowest sufficient tier; decision-shaping work stays with parent or a stronger tier.
 
 ## Skill Routing
 
@@ -110,7 +101,7 @@ Keep output within the requested limit.
 
 ## Reusable Project Profiles
 
-Reusable `.codex/agents/*.toml` templates must not pin transient model IDs or reasoning labels. Omit those fields and inherit the parent by default. If a project needs explicit allocation, materialize the fields at runtime from the verified availability inventory rather than committing a stale ID.
+Reusable `.codex/agents/*.toml` must not pin transient models/reasoning. Inherit by default or materialize from live inventory.
 
 Read-only mapper:
 
@@ -146,7 +137,7 @@ max_threads = 3
 max_depth = 1
 ```
 
-Raise concurrency only after the workflow is proven. Keep depth at one unless the repo deliberately supports nested review.
+Raise concurrency only after proof; keep depth one unless nested review is deliberate.
 
 ## Hooks Boundary
 

@@ -7,7 +7,10 @@
   "scripts": {
     "harness": "agent-harness validate --config agent-harness.config.json",
     "run-record:example": "agent-harness validate-run --file skill-evals/run-record.example.json",
-    "test": "npm run harness && npm run run-record:example"
+    "run-record:behavior": "agent-harness validate-run --file skill-evals/run-records/enterprise-runtime-assurance-2026-07-25.json && agent-harness validate-run --file skill-evals/run-records/site-visual-routing-2026-07-25.json && agent-harness validate-run --file skill-evals/run-records/engineering-graph-2026-07-25.json",
+    "validate:behavior-evidence": "node scripts/behavior-evidence-audit.mjs",
+    "validate:graph": "node wp-expert/scripts/validate-engineering-graph.mjs --self-test",
+    "test": "npm run harness && npm run run-record:example && npm run run-record:behavior && npm run validate:behavior-evidence && npm run validate:graph"
   },
   "devDependencies": {
     "@mehul0810/agent-harness": "https://github.com/mehul0810/agent-harness/archive/24ffe6e5481aebe33f403df9b72f0de7214f019a.tar.gz"

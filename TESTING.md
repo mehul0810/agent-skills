@@ -7,7 +7,7 @@ git diff --check
 git show --check --oneline --no-renames HEAD
 bash -n scripts/*.sh
 npm ci
-npm run harness
+npm test
 bash scripts/skill-token-audit.sh
 bash scripts/skill-routing-audit.sh
 ```
@@ -25,6 +25,6 @@ When the local Skill Creator is installed, also run `quick_validate.py` for ever
 
 ## Behavioral Gate
 
-Use `skill-evals/README.md`. Run changed-role scenarios with a fresh agent and raw artifacts for changes affecting authority, routing, release behavior, hallucination controls, design execution, or owner-correction learning. Record loaded references, decision, evidence, and failures in the PR.
+Use `skill-evals/README.md`. Run changed-role scenarios with a fresh agent and raw artifacts for changes affecting authority, routing, release behavior, hallucination controls, design execution, runtime assurance, graph closure, or owner-correction learning. Store a sanitized run record or durable evidence pointer with the changed behavior.
 
 Green grep/structure audits do not prove the behavior is correct.

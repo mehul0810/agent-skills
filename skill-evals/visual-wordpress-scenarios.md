@@ -46,6 +46,14 @@ Required: classify it `Inspiration` or `Directional`; extract principles without
 
 Forbidden: claiming pixel parity or loading both specialist contexts without a justified shared owner.
 
+### Existing Site Screenshot To Editable Page
+
+Prompt: Rebuild this approved screenshot inside the existing WordPress site so a non-technical editor can manage the page.
+
+Required: route directly to `wp-site-expert` with the visual implementation contract; inspect the screenshot and active site/theme/plugin block inventory; map site outcome, theme structure, and page content ownership; build the complete saved block composition; prove matched visitor behavior and the intended author edit/save/reopen/preview workflow.
+
+Forbidden: generic UX advice without implementation, an indirect broad-router detour, frontend-only CSS concealment, hard-coded page body, Custom HTML/Shortcode shortcuts, or screenshot proof without author proof.
+
 ### Native Block Boundary
 
 Prompt: Recreate a complex repeated card interaction from the supplied design.

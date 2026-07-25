@@ -20,13 +20,11 @@ Do not optimize by intuition when the path can be measured. For enterprise WordP
 
 ## Profiling Workflow
 
-1. Define the path: public page, cache miss, REST endpoint, admin screen, block editor load, checkout/form, search, import, cron/job, webhook, or CLI command.
-2. Define the user and traffic model: anonymous, logged-in, editor, admin, customer, integration, multisite tenant, peak RPS, cache hit rate, data volume, and concurrency.
-3. Capture a baseline: query count, slow queries, TTFB/server time, REST latency, object-cache operations, memory, remote calls, bundle size, Core Web Vitals, job duration, and error rate where relevant.
-4. Set a budget before changing code.
-5. Make the smallest structural fix: query shape, cache, async, pagination, bundle split, asset loading, or data model.
-6. Re-measure the same path with comparable data and cache state.
-7. Add tests or guardrails for the failure mode, not only the happy path.
+1. Define path, role, traffic/cache/data/concurrency model.
+2. Capture relevant query, latency, cache, memory, remote, bundle, Core Web Vitals, job, and error baseline.
+3. Set a budget before code.
+4. Make the smallest structural query/cache/async/pagination/bundle/asset/data fix.
+5. Re-measure comparable state and guard the failure mode.
 
 If a tool is unavailable, use the closest lower-level evidence and state the gap.
 
@@ -57,60 +55,45 @@ Search for these risk patterns:
 rg -n "posts_per_page\\s*=>\\s*-1|get_posts\\(|new WP_Query|get_users\\(|get_terms\\(|meta_query|orderby.*meta|admin_init|init|wp_remote_|set_transient|get_option\\(|update_option\\(|wp_schedule|ActionScheduler|register_rest_route|enqueue" .
 ```
 
-Review recurring WordPress hotspots:
-
-- Plugin/theme bootstrap on every request.
-- `admin_init`, `init`, `plugins_loaded`, `current_screen`, dashboard widgets, plugin list, Site Health, and update checks.
-- Block editor preload, REST route registration, document panels, metabox compatibility, block render callbacks, and Query Loop variations.
-- Search, archive, reports, analytics, WooCommerce order/customer queries, large taxonomy trees, and media libraries.
-- Imports, exports, sync jobs, webhooks, and queue workers.
-- `get_plugins()`, theme directory scans, active plugin resolution, list-table counts, and broad filesystem scans.
+Review bootstrap/hooks/admin/update checks; editor preload/REST/panels/metabox/render; search/archive/reports/commerce/taxonomy/media; imports/webhooks/queues; plugin/theme scans and list-table counts.
 
 ## Database And Query Engineering
 
-- Use `EXPLAIN` for custom SQL and slow `WP_Query` equivalents when possible.
-- Avoid leading wildcard `LIKE`, serialized meta search, unindexed `meta_value` sorting, and broad OR meta queries on large tables.
+- Use `EXPLAIN` for custom SQL/slow query equivalents; avoid leading wildcard, serialized meta, unindexed sorting, and broad OR meta at scale.
 - Prefer exact indexed filters, taxonomy tables, lookup tables, custom tables, or search indexes when meta queries become operational data.
 - Use `fields => 'ids'`, `no_found_rows => true`, pagination, and explicit `posts_per_page` limits.
-- Prime caches intentionally when object hydration is needed; do not let templates create N+1 meta/term/user loads.
+- Prime object caches intentionally; prevent template N+1 loads.
 - Add composite indexes to custom tables based on real query predicates and sort order.
-- Keep write amplification visible: every save hook, status transition, import row, webhook, and queue item can invalidate caches or update options.
+- Track write amplification across saves, imports, webhooks, queues, and invalidation.
 
 ## Cache And Stampede Engineering
 
-- Define cache owner, key dimensions, invalidation event, TTL, and stale behavior.
-- Include blog ID, locale, user segment, role/capability boundary, feature flag, provider account, and schema/version dimensions when output varies.
+- Define owner, key dimensions, invalidation, TTL, stale behavior; include site/locale/user/role/flag/provider/schema dimensions when output varies.
 - Store IDs or compact DTOs instead of full objects where possible.
-- Prevent hot-miss stampedes with short locks, stale fallback, jittered TTL, request coalescing, or async warming.
+- Prevent stampedes with locks, stale fallback, jitter, coalescing, or warming.
 - Avoid global cache purges for narrow content changes.
 - Do not cache private data under public keys or user-specific data without the user/site dimension.
 
 ## Admin And Editor Performance
 
-- Do not run expensive scans or remote calls on every admin request.
-- Load admin assets only on the screen that needs them.
-- Keep block editor data preloads targeted to the current post/site context.
+- Avoid per-admin scans/remotes; scope assets and editor preloads.
 - Move heavy classic editor metabox calculations behind explicit user action or async fetches where possible.
 - For block editor document/sidebar panels, fetch only required data, debounce writes, and keep REST responses compact.
 - Avoid registering large pattern/style/variation payloads dynamically on every editor load if they can be static or cached.
 
 ## Frontend And Core Web Vitals
 
-- Protect LCP: optimized hero media, explicit dimensions, responsive image sizes, no unnecessary render-blocking assets, and no late server-generated layout shifts.
-- Protect INP: avoid global heavy JS, long tasks, unnecessary hydration, and broad event listeners.
-- Protect CLS: reserve media/ad/embed space and avoid late injected notices/toolbars in public layouts.
+- Protect LCP with optimized/dimensioned responsive media; INP without global heavy JS/long tasks/hydration; CLS with reserved space and no late injection.
 - Use hashed/versioned assets and long-lived cache headers where the platform supports it.
 - Keep block/theme CSS scoped and avoid shipping editor-only styles to public pages.
 - Test mobile-first. Desktop-only performance is not enough.
 
 ## Async And Backpressure
 
-- Queue work that is slow, retryable, external, or not required for the user's immediate response.
-- Make jobs idempotent with stable item keys and processed markers.
-- Use bounded batches and resume cursors.
+- Queue non-immediate slow/retryable/external work; use idempotent keys, bounded batches, and cursors.
 - Add retry limits, exponential backoff where appropriate, dead-letter/error visibility, and admin/operator status.
 - Avoid putting PII/secrets or large payloads in scheduled args. Store opaque IDs and load private payloads server-side.
-- Watch queue depth, oldest pending age, failure rate, and per-job runtime.
+- Observe depth, age, failures, and runtime.
 
 ## Measurement Recipes
 

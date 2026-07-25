@@ -9,35 +9,33 @@ Operate as a principal WordPress theme and block/FSE engineer. Build editable, p
 
 ## Hot Path
 
-- Start with repo facts: Git root, active theme, parent/child theme, `theme.json`, templates, parts, patterns, blocks, assets, build scripts, active branch, and dirty files.
-- Preserve user work. Do not reset or discard unrelated changes unless explicitly asked.
-- Load one primary reference. Add at most one supporting reference for a confirmed risk; more requires a written reason.
-- This hot path is the execution kernel. References are conditional overlays; load only for a named unresolved risk.
+- Start with repo facts: root, active/parent theme, `theme.json`, templates/parts/patterns/blocks/assets/build, branch, and dirty files. Preserve unrelated work.
+- Load one primary reference plus at most one support for confirmed risk; more needs a written reason.
 - When work crosses ownership/runtime/proof boundaries or essential project knowledge is missing, use `../shared/references/wordpress-engineering-graph.md` as primary; ask only unresolved blocking questions and establish the minimum repo docs before crossing that boundary.
-- For unresolved theme/plugin/content ownership, public-contract, release, performance, or proof decisions, use the router's architecture route.
-- Use `../shared/references/enterprise-code-quality-gate.md` for quality ambiguity across scalability, modularity, maintainability, comments, tests, performance, and security/privacy.
+- For unresolved ownership, public-contract, release, performance, or proof decisions, use the architecture route.
+- For substantial or review-critical work, use `../shared/references/enterprise-code-quality-gate.md` to classify baseline versus elevated enterprise risk and apply code, compatibility, supply-chain, operations, and proof controls proportionally.
 - Use `../shared/references/worker-execution-discipline.md` for assumption, recovery, hallucination, owner-correction, or completion-claim risk.
-- For design audit/ideation without a selected target, use `../shared/references/design-intelligence-routing.md`; implementation ownership stays here.
+- For audit/ideation without a selected target, use `../shared/references/design-intelligence-routing.md`; implementation stays here.
 - With a source visual, use `../shared/references/visual-to-wordpress-implementation.md` as primary; prove visitor/author tasks; observed defects are `FAIL` and reopen implementation. Do not stack UI/FSE references.
 - For page/post composition without a source visual, use `../shared/references/block-editor-page-composition.md`; with a visual source, load it only as the single support reference when authoring architecture is the confirmed risk.
 - For out-of-scope problems noticed during scoped work, use `../shared/references/adjacent-finding-protocol.md`; detect, report, preserve scope, and let the PO triage.
 - Preserve editability: structural templates render Post Content; page-specific content belongs in page content, patterns, bindings, or intentional data sources.
-- Choose the native layout by relationship before writing layout CSS: Columns for explicit peer columns, Grid for repeated responsive peers, Row for horizontal clusters, and Stack for vertical sequences. Keep a default Group for semantic containment or a layout Core cannot express, such as unequal matrix tracks; compose Row plus Stack when axes differ. Do not nest default Groups and recreate an available layout variation in CSS.
+- Choose native layout by relationship before CSS: Columns for explicit peers, Grid for repeated responsive peers, Row for horizontal clusters, Stack for vertical sequences, and Group for semantic containment or unsupported layout. Compose axes; do not recreate available variations with nested Groups and CSS.
 - Treat Site Editor overrides as migration input: promote theme-owned changes to reviewed files and prove the package on a clean database.
 - Never use Custom HTML or Shortcode blocks as design shortcuts.
 - Create custom blocks only after native layers fail and distribution/portability policy permits; WordPress.org directory blocks belong in a companion plugin.
-- Put classic fields in meta boxes, block-editor document settings in document/sidebar panels, and block settings in inspector panels. Hide new meta boxes from the block editor unless preserving legacy compatibility.
+- Put classic fields in meta boxes, block-editor document settings in its sidebar, and block settings in inspector panels. Hide new meta boxes in the block editor unless preserving legacy compatibility.
 - Preserve premium enterprise hierarchy, spacing, typography, intrinsic responsiveness, states, accessibility, measured performance, and editor/frontend parity.
 - Use `../shared/references/live-proof-wordpress.md` only when the primary reference does not already define the required runtime/editor/frontend proof.
-- Route independent editor, frontend, visual-behavior, packaged-theme, or generated-artifact proof to a fresh `$behavior-validator` worker; do not expose implementation context.
+- Route independent editor/frontend/visual/package proof to a fresh `$behavior-validator` without implementation context.
 - For high context or drift-prone continuation decisions, use the router's context-window route to choose compact vs fresh thread.
 - Stay in this lane for theme/FSE-owned work. If the task becomes plugin, site strategy, orchestration, contribution, or content writing, hand off instead of loading broad WordPress context.
 - Use `references/router.md` only when the correct theme/FSE reference is not obvious from the task.
-- Stage only intended files, commit scoped validated changes when expected, and push only when explicitly asked or repo-local automation policy authorizes it.
+- Stage only intended files; commit when expected; push only when asked or repo policy authorizes it.
 
 ## Reference Router
 
-Load `references/router.md` for the full theme/FSE reference map. Do not load the router when the task already names a specific domain reference.
+Load the router for the full theme/FSE map only when the task does not already name the domain.
 
 ## Output
 

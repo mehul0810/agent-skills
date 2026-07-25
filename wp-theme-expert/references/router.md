@@ -5,6 +5,7 @@ Use this router only after `wp-theme-expert` is selected. Load one primary refer
 ## Primary Routes
 
 - Cross-boundary engineering graph, missing project knowledge/docs, graph closure, and durable failure learning: `../../shared/references/wordpress-engineering-graph.md`.
+- Compatibility, supply chain, production observation, recovery, and adaptive enterprise contracts: `../../shared/references/enterprise-runtime-assurance.md`.
 - Theme/plugin/content ownership, public-contract, release, performance, or proof decisions: `../../wp-expert/references/architecture-decision-gate.md`.
 - Block themes, FSE architecture, `theme.json`, templates, parts, patterns: `../../wp-expert/references/block-theme-architecture.md`.
 - Runtime block inventory, core-first composition, editable render proof, and Site Editor override promotion/precedence: `../../shared/references/core-first-site-theme-workflow.md`.
@@ -15,6 +16,8 @@ Use this router only after `wp-theme-expert` is selected. Load one primary refer
 - Style guides, design tokens, custom themes, child-theme translation: `../../wp-expert/references/style-guide-theme-translation.md`.
 - Deterministic visual parity, visitor/author workflows, content stress, responsive/browser evidence, and release proof: `../../wp-expert/references/visual-parity-regression.md`.
 - Theme/frontend performance, Core Web Vitals, fonts/images/assets: `../../wp-expert/references/theme-frontend-performance-quality-gate.md`.
+- Accessibility, i18n, RTL, multilingual, browser, and input-mode readiness: `../../wp-expert/references/accessibility-i18n-global-readiness.md`.
+- Enterprise launch, rollback, observability, or continuity: `../../wp-expert/references/vip-enterprise-launch-readiness.md`, `../../wp-expert/references/observability-incident-response.md`, or `../../wp-expert/references/disaster-recovery-business-continuity.md`.
 - Local-first validation, standards, GitHub Actions, and release automation: `../../wp-expert/references/standards-ci-github.md`.
 - WordPress Design System and block editor components: `../../wp-expert/references/wordpress-design-system.md`.
 - Premium UI implementation and admin/editor UX: `../../wp-expert/references/ui-ux-pro-for-wordpress.md`.

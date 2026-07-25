@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mehul0810/agent-skills/shared/schemas/wordpress-engineering-graph.schema.json",
+  "title": "WordPress Engineering Graph",
+  "type": "object",
+  "required": ["schemaVersion", "task", "nodes"],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "task": {
+      "type": "string",
+      "minLength": 1
+    },
+    "assuranceLevel": {
+      "enum": ["baseline", "elevated"]
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "owner", "state", "critical", "dependsOn", "evidence"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9._-]*$"
+          },
+          "type": {
+            "enum": ["intent", "owner", "artifact", "runtime", "proof", "outcome", "learning"]
+          },
+          "owner": {
+            "type": "string",
+            "minLength": 1
+          },
+          "state": {
+            "enum": ["verified", "provisional", "unknown", "failed", "not_applicable"]
+          },
+          "critical": {
+            "type": "boolean"
+          },
+          "dependsOn": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "notApplicableReason": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["kind", "pointer"],
+              "properties": {
+                "kind": {
+                  "enum": ["repo", "git", "github", "runtime", "test", "browser", "editor", "package", "public", "owner"]
+                },
+                "pointer": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "identity": {
+                  "type": "object",
+                  "minProperties": 1
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

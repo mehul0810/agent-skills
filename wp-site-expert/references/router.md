@@ -5,10 +5,12 @@ Use this router only after `wp-site-expert` is selected. Load one primary refere
 ## Primary Routes
 
 - Cross-boundary engineering graph, missing project knowledge/docs, graph closure, and durable failure learning: `../../shared/references/wordpress-engineering-graph.md`.
+- Compatibility, supply chain, production observation, recovery, and adaptive enterprise contracts: `../../shared/references/enterprise-runtime-assurance.md`.
 - Source-of-truth, ownership, public-contract, release, performance, privacy, or proof decisions: `../../wp-expert/references/architecture-decision-gate.md`.
 - Conversion-focused landing pages, funnels, CRO-safe implementation: `../../wp-expert/references/conversion-focused-website-engineering.md`.
 - UX discovery, IA, user journeys, UX writing, design QA: `../../wp-expert/references/ux-product-strategy-design-qa.md`.
 - Premium UI implementation, states, dashboards, forms: `../../wp-expert/references/ui-ux-pro-for-wordpress.md`.
+- Direct visual-to-WordPress implementation from screenshot/Figma/image/mockup to an editable site/page: `../../shared/references/visual-to-wordpress-implementation.md`.
 - Plug-and-play product experience and advanced-user controls: `../../shared/references/product-experience-principles.md`.
 - Enterprise proof, accountable IA, governance, and failure behavior: `../../shared/references/enterprise-design-judgment.md`.
 - Technical SEO, canonicals, redirects, sitemaps, schema, crawl risk: `../../wp-expert/references/technical-seo-engineering.md`.
@@ -23,6 +25,8 @@ Use this router only after `wp-site-expert` is selected. Load one primary refere
 - Edge caching/CDN and personalization: `../../wp-expert/references/edge-caching-cdn-architecture.md`.
 - Headless/decoupled site architecture: `../../wp-expert/references/headless-decoupled-wordpress.md`.
 - Local HTTPS/browser testing blockers: `../../wp-expert/references/local-https-testing.md`.
+- Exact owner-provided values and calibrated proof: `../../wp-expert/references/planning-drift-control.md`.
+- Enterprise launch, rollback, observability, or continuity: `../../wp-expert/references/vip-enterprise-launch-readiness.md`, `../../wp-expert/references/observability-incident-response.md`, or `../../wp-expert/references/disaster-recovery-business-continuity.md`.
 - Web-heavy, current-policy, API, or source-backed research: `../../shared/references/research-token-discipline.md`.
 - Ambiguous or cross-lane work: `../../wp-expert/references/reference-routing-map.md`.
 

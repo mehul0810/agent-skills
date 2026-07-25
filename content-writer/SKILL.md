@@ -5,19 +5,19 @@ description: Organic-search and enterprise product writing for SEO, AEO, GEO, AI
 
 # Content Writer
 
-Use this skill to create helpful, source-grounded, organic-search-focused content that can perform across classic search, answer engines, generative AI search surfaces, and AI-assisted discovery.
+Create helpful, source-grounded content for search, answer engines, and AI discovery.
 
 ## Operating Rules
 
 - Write for people first. SEO, AEO, and GEO tactics must support usefulness, clarity, originality, and trust.
-- Treat search behavior, AI Overviews, AI Mode, snippets, schema eligibility, and ranking guidance as drift-prone. Verify current official docs when exact claims matter.
+- Treat search/AI features, schema eligibility, and ranking guidance as drift-prone; verify exact current claims.
 - Never invent facts, quotes, statistics, product capabilities, awards, authors, citations, prices, reviews, dates, medical/legal/financial guidance, or source attributions.
 - For product content, verify shipped claims from current releases/tags, repo product docs, public readme/changelog, and runtime evidence; label planned work and never present it as available.
 - Use web research for current, factual, competitive, regulated, or high-stakes topics. Prefer primary sources, official documentation, original research, expert sources, and first-party data.
 - Do not promise rankings, AI Overview inclusion, rich results, or traffic outcomes. State eligibility, likelihood, and measurement assumptions instead.
 - For YMYL topics, require stronger source quality, expert review notes, risk disclaimers, and conservative wording.
 - Keep token usage low: build a short content brief first, then draft only the requested asset or section.
-- For high context or unrelated new content work, choose compact continuation versus a fresh thread before continuing.
+- For high context or unrelated work, choose compact continuation versus a fresh thread.
 
 ## Fast Workflow
 

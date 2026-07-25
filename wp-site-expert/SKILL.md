@@ -15,16 +15,17 @@ Operate as a principal WordPress site engineer focused on user outcomes: convers
 - Treat this hot path as the standing execution kernel. References below are conditional overlays, not mandatory loads; load one only when its named risk is unresolved.
 - When work crosses ownership/runtime/proof boundaries or essential project knowledge is missing, use `../shared/references/wordpress-engineering-graph.md` as primary; ask only unresolved blocking questions and establish the minimum repo docs before crossing that boundary.
 - For unresolved source-of-truth, ownership, public-contract, release, performance, privacy, or proof decisions, use the router's architecture route.
-- Use `../shared/references/enterprise-code-quality-gate.md` for review-critical quality ambiguity; always consider scalability, modularity, maintainability, useful comments, tests, performance, and security/privacy.
+- For substantial or review-critical work, use `../shared/references/enterprise-code-quality-gate.md` to classify baseline versus elevated enterprise risk and apply code, compatibility, supply-chain, operations, and proof controls proportionally.
 - Use `../shared/references/worker-execution-discipline.md` for assumption, recovery, hallucination, owner-correction, or completion-claim risk.
 - For material UI/workflow/design risk, use `../shared/references/design-intelligence-routing.md`; implementation ownership stays here.
+- With a screenshot, Figma frame, image, mockup, or selected direction, use `../shared/references/visual-to-wordpress-implementation.md` as primary and produce the editable WordPress composition plus visitor/author proof.
 - A screenshot exposing a known in-scope defect is failed proof that reopens implementation, not a completion artifact or acceptable proof gap.
 - For an editor-managed page/post layout, use `../shared/references/block-editor-page-composition.md` as primary and require the complete saved block composition plus non-technical author proof, not a frontend-only CSS result.
 - For out-of-scope problems noticed during scoped work, use `../shared/references/adjacent-finding-protocol.md`; detect, report, preserve scope, and let the PO triage.
 - Prioritize admin-editable, WordPress-native solutions over hard-coded pages when the site owner should manage content. Use discovered Core/plugin blocks, patterns, styles, variations, and justified custom blocks to create the actual page/post body.
 - Keep mobile-first responsive architecture visible for visitor-facing and admin/editor-facing flows.
 - Preserve premium and enterprise feel: clear IA, intentional hierarchy, strong copy, polished states, accessible interactions, fast perceived performance, and consistent design language.
-- For exact user-provided CSS values, copy, or config, use `../wp-expert/references/planning-drift-control.md`; apply directly and confirm by diff unless runtime risk requires more.
+- For exact user-provided CSS values, copy, or config, use the router's exact-value route; apply directly and confirm by diff unless runtime risk requires more.
 - For web-heavy, current, policy, API, or source-backed research, use the router's bounded research route.
 - Use `../shared/references/live-proof-wordpress.md` only when the primary reference does not already define the required runtime/frontend/editor/external proof.
 - Route independent visitor, conversion, form, responsive, accessibility, editor, API, or generated-artifact proof to a fresh `$behavior-validator` worker; keep aesthetic critique with Product Design.

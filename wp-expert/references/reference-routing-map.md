@@ -13,6 +13,7 @@ Use this map to choose references with low context cost.
 
 - Substantial implementation/review: load `architecture-decision-gate.md` when ownership, source of truth, public contract, release state, performance, security, or proof is unclear.
 - Code change: apply enterprise and test principles from the active skill; load `enterprise-code-quality-gate.md` or `test-coverage-discipline.md` only when risk is non-trivial, ambiguous, or review-critical.
+- Public, commercial, VIP, data-sensitive, migration, dependency-heavy, or operationally critical work: let the quality gate classify baseline versus elevated assurance; load `enterprise-runtime-assurance.md` only when compatibility, supply-chain, monitoring, or recovery evidence is material.
 - Completion claim: load `live-proof-wordpress.md` only when runtime, editor, frontend, external integration, or release proof is material.
 - Branch/PR/resumed-session work: load `session-continuity-pr-discipline.md` when branch base or PR target can drift.
 - Package/deploy/artifact work: load `production-dependency-discipline.md` when Composer, npm, release ZIP/SVN, deploy, or production dependency boundaries matter.
@@ -32,6 +33,7 @@ Use this map to choose references with low context cost.
 | Planning drift control, scope guard, exact CSS/value change, calibrated validation | `planning-drift-control.md` | `delivery-excellence.md`, `validation-commands.md` |
 | Brainstorming convergence, anti-overengineering, premium polish stopping rule, thinking/token budget | `thinking-brainstorming-engineering-discipline.md` | `planning-drift-control.md`, `delivery-excellence.md` |
 | Code creation/review quality gate, enterprise/WPVIP engineering bar | `enterprise-code-quality-gate.md` | `review-checklists.md`, `validation-commands.md` |
+| Compatibility matrix, SBOM/provenance, dependency/license assurance, post-release signals, RPO/RTO, operational recovery | `enterprise-runtime-assurance.md` | `enterprise-code-quality-gate.md`, `production-dependency-discipline.md` |
 | Test coverage decision, missing coverage review, PR/change test plan | `test-coverage-discipline.md` | `validation-commands.md`, `review-checklists.md` |
 | Plugin architecture, new feature, refactor, service boundaries | `plugin-architecture.md` | `implementation-patterns.md`, `enterprise-code-quality-gate.md` |
 | Plugin product architecture, add-ons/pro, public hooks/filters, feature flags, diagnostics contracts | `plugin-product-architecture.md` | `plugin-architecture.md`, `release-contract-compatibility.md` |
@@ -91,4 +93,5 @@ Use this map to choose references with low context cost.
 - Use `../shared/references/project-subagent-routing.md` for project-level Codex subagents, skill-level routing, bounded parallel mapping/review, and model routing.
 - Use `../shared/references/production-dependency-discipline.md` for packaging, CI artifacts, release ZIP/SVN, and production dependency verification.
 - Use `../shared/references/enterprise-code-quality-gate.md` for implementation, refactoring, and review tasks where generated or reviewed code must meet enterprise/WPVIP-grade engineering expectations.
+- Use `../shared/references/enterprise-runtime-assurance.md` only after material compatibility, supply-chain, operations, or recovery risk is confirmed.
 - Use `../shared/references/live-proof-wordpress.md` before claiming WordPress runtime, editor, frontend, external, or release work is complete.

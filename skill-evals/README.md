@@ -12,6 +12,8 @@ For any change that alters authority, routing, release behavior, hallucination c
 
 Prefer small representative scenario sets over repeatedly loading every skill. Add a regression scenario when an owner correction reveals repeatable behavior.
 
+For behavior covered by `behavior-baselines.json`, a source fingerprint mismatch means the prior run is stale. Re-run the named fresh-agent scenario, update only its sanitized run record, then replace the fingerprint with `node scripts/behavior-evidence-audit.mjs --print`.
+
 ## Sanitized Run Records
 
 Use the `agent-harness` run-record schema for comparable fresh-agent results. Record only host-reported numeric metrics such as `input_tokens`, `cached_input_tokens`, `output_tokens`, `context_tokens_peak`, `tool_calls`, `retry_count`, and `checks_passed`; omit unavailable metrics rather than estimating them.

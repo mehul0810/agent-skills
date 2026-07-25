@@ -4,66 +4,49 @@ Use this for WordPress code creation, refactoring, and review when the output sh
 
 ## Principle
 
-Treat every generated or reviewed code path as production code for a high-traffic, security-sensitive WordPress environment unless the user explicitly accepts a lower bar. Prefer the simplest design that is modular, performant, secure, maintainable, observable, and testable under realistic failure modes.
+Treat generated or reviewed paths as production code unless the user accepts a lower bar. Prefer the simplest modular, performant, secure, maintainable, observable, and testable design.
 
-Every implementation should explicitly consider these quality dimensions before being called done, merge-ready, or release-ready:
-
-- Scalability.
-- Modularity and ownership boundaries.
-- Maintainability and duplication pressure.
-- Meaningful comments only where comments add value.
-- Test coverage proportional to risk.
-- Performance on realistic hot paths.
-- Security and privacy hardening.
+Every implementation should explicitly consider these quality dimensions before being called done, merge-ready, or release-ready: scalability; ownership/modularity; maintainability/duplication; meaningful comments; risk-proportional tests; hot-path performance; and security/privacy.
 
 Do not force a new abstraction or exhaustive test suite when the risk does not justify it. If a dimension is not materially relevant, state `Not applicable - reason` instead of silently skipping it.
 
+## Enterprise Risk Profile
+
+Classify runtime assurance before substantial work:
+
+- `baseline`: ordinary maintained WordPress behavior with reversible scope and no material distribution, data, scale, compatibility, or operational exposure.
+- `elevated`: public/commercial/VIP distribution; sensitive or regulated data; custom storage/migrations; authentication, payments, uploads, webhooks, public APIs, external providers, queues, multisite, high traffic, or release-critical workflows.
+
+For elevated work, use `enterprise-runtime-assurance.md` to define the applicable compatibility matrix, supply-chain evidence, post-release observation, rollback signals, and adaptive repo contracts. Do not impose elevated artifacts on a low-risk change without a named reason.
+
 ## Before Writing Code
 
-- Define the contract: hooks, filters, REST routes, block attributes, options, meta keys, schema versions, CLI commands, queue hooks, assets, templates, and public APIs.
-- Define ownership: theme vs plugin, bootstrap vs module, domain logic vs persistence, admin/editor UI vs frontend rendering, provider adapter vs core service.
-- Identify trust boundaries: request input, REST/AJAX, webhooks, uploads, imports, cron/action queues, external APIs, editor attributes, and saved content.
-- Identify hot paths: page render, REST/editor load, checkout/forms, search, admin bootstrap, list tables, cron, migrations, and cache misses.
-- Decide validation: unit, integration, WP test suite, JS tests, e2e, visual, accessibility, static analysis, runtime smoke, or manual evidence.
+- Define contracts and ownership: hooks/routes/attributes/storage/schema/CLI/queues/assets/templates/APIs; theme vs plugin; domain vs persistence; admin/editor vs frontend; adapter vs core.
+- Identify trust boundaries and hot paths: requests, webhooks, uploads, imports, queues, external APIs, saved content, render, editor/admin load, checkout/forms, search, migrations, and cache misses.
+- Choose risk-matched unit, integration, WordPress, JS, e2e, visual, accessibility, static, runtime, or manual proof.
+- Identify supported environment cells and the exact commit/package/runtime identity needed for proof.
 - Avoid premature abstraction, but do not duplicate rules that can drift across entry points, providers, migrations, or tests.
 
 ## Implementation Bar
 
-- Keep bootstraps thin and composition explicit; move behavior into named modules/classes/functions with one clear reason to change.
-- Pass dependencies where practical; avoid hidden globals except at WordPress integration boundaries.
-- Make data contracts explicit through schemas, DTO-like arrays, typed methods where supported, and documented option/meta/table shapes.
+- Keep bootstraps thin, composition explicit, dependencies visible, and modules/functions focused. Limit globals to WordPress boundaries.
+- Make data contracts explicit with schemas, typed methods where supported, and documented option/meta/table shapes.
 - Prefer plug-and-play defaults and avoid adding settings unless they unlock real value, safety, or developer flexibility.
-- Bound every query, loop, migration, remote call, queue batch, cache payload, and rendered collection.
-- Sanitize and validate on ingress; escape at the output boundary; authorize with capabilities and object ownership before mutation or disclosure.
-- Make side effects idempotent, retry-safe, race-aware, and observable with redacted logs/status where appropriate.
+- Bound queries, loops, migrations, remote calls, queue batches, cache payloads, and rendered collections.
+- Validate/sanitize ingress, escape output, and authorize capabilities plus object ownership before mutation/disclosure.
+- Make side effects idempotent, retry-safe, race-aware, and observable with redacted signals.
 - Use deterministic cache keys with the right dimensions and invalidation near the data owner.
 - Keep admin/editor/frontend assets scoped to the screens, blocks, templates, or routes that need them.
-- Preserve backward compatibility for launched contracts and real data; remove or reshape unreleased draft code instead of adding unnecessary shims.
-- Add concise comments only for non-obvious security, compatibility, cache, migration, concurrency, or platform decisions.
-- Keep comments useful for the next engineer; remove stale debug comments, commented-out code, and narrative that restates obvious code.
+- Preserve launched contracts/data; reshape unreleased drafts rather than adding shims. Comment only non-obvious security, compatibility, cache, migration, concurrency, or platform decisions; remove stale/debug/commented-out code.
 
 ## Test Expectations
 
-Tests should prove behavior, not just line coverage. Choose the smallest reliable set that covers the changed risk.
+Tests prove behavior, not line coverage. Use the smallest reliable set covering:
 
-Cover common paths:
-
-- Successful authorized operation.
-- Validation failure and user-facing error shape.
-- Permission denied or unauthenticated access.
-- Persistence read/write, cache hit/miss, and invalidation when relevant.
-- Rendered output, REST response, block save/render, or admin/editor UI behavior.
-
-Cover rare and failure scenarios when relevant:
-
-- Empty, missing, malformed, oversized, translated, RTL, long-string, and special-character inputs.
-- Deleted/missing referenced posts, terms, users, files, options, jobs, or remote records.
-- Duplicate submissions, retries, concurrent runners, stale cache, expired tokens, and partial migrations.
-- Multisite blog/network scope, switched blog restoration, role/capability variations, and object ownership.
-- External API timeout, 429/rate limit, 5xx, invalid JSON/XML, auth failure, webhook replay, and idempotency conflict.
-- Large data volume, pagination boundaries, indexed lookup paths, and no-result states.
-- Editor reload, invalid block avoidance, frontend parity, keyboard navigation, focus, contrast, and reduced-motion behavior.
-- Activation, upgrade, rollback/backout, uninstall, and production artifact boundaries.
+- Authorized success; validation/error shape; unauthenticated/unauthorized access; persistence/cache; rendered, REST, block, admin, or editor behavior.
+- Applicable edge states: empty/malformed/oversized/translated/RTL input; missing records; retries/concurrency/stale cache/partial migrations; role, ownership, multisite, and switched-blog restoration.
+- Applicable integrations/scale: timeouts, 429/5xx, invalid payload/auth/replay/idempotency; volume, pagination, indexed lookup, queues, and no-result states.
+- Applicable UX/lifecycle: editor reload/frontend parity; keyboard/focus/contrast/reduced motion; activation, upgrade, rollback, uninstall, and packaged artifact.
 
 When tests are not feasible locally, provide the strongest available evidence and explicitly name the untested risk.
 

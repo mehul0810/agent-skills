@@ -5,6 +5,7 @@ Use this router only after `wp-plugin-expert` is selected. Load one primary refe
 ## Primary Routes
 
 - Cross-boundary engineering graph, missing project knowledge/docs, graph closure, and durable failure learning: `../../shared/references/wordpress-engineering-graph.md`.
+- Compatibility, supply chain, production observation, recovery, and adaptive enterprise contracts: `../../shared/references/enterprise-runtime-assurance.md`.
 - Isolated source-of-truth, ownership, public-contract, release, security, performance, or proof decision: `../../wp-expert/references/architecture-decision-gate.md`.
 - Plugin architecture/features/refactors: `../../wp-expert/references/plugin-architecture.md`.
 - Product-grade plugin surfaces, add-ons, pro/free boundaries, public hooks, feature flags, diagnostics: `../../wp-expert/references/plugin-product-architecture.md`.
@@ -14,6 +15,10 @@ Use this router only after `wp-plugin-expert` is selected. Load one primary refe
 - Custom tables/schema/indexes/migrations: `../../wp-expert/references/database-table-architecture-review.md`.
 - REST/webhook/OAuth/uploads/security-sensitive endpoints: `../../wp-expert/references/security-threat-modeling-review.md`.
 - Performance profiling, scale budgets, object cache, query behavior: `../../wp-expert/references/performance-profiling-scale-budgets.md`.
+- Privacy, consent, telemetry, retention, exporter/eraser support: `../../wp-expert/references/privacy-consent-data-governance.md`.
+- Multisite/network activation, tenant scope, and large-fleet operations: `../../wp-expert/references/advanced-multisite-network-engineering.md`.
+- Incidents, SLOs, monitoring, logs, and operational recovery: `../../wp-expert/references/observability-incident-response.md`.
+- VIP/enterprise launch readiness and disaster recovery: `../../wp-expert/references/vip-enterprise-launch-readiness.md` or `../../wp-expert/references/disaster-recovery-business-continuity.md`.
 - Third-party APIs, SDKs, OAuth, webhooks, retries, rate limits: `../../wp-expert/references/third-party-api-integrations.md`.
 - React admin/editor apps: `../../wp-expert/references/react-wordpress-enterprise.md`.
 - Product experience defaults and onboarding lens: `../../shared/references/product-experience-principles.md`.

@@ -28,11 +28,7 @@ States are `verified`, `provisional`, `unknown`, `failed`, or `not applicable - 
 - Proof: static, unit, integration, editor, browser, accessibility, performance, security, package, or public verification.
 - Outcome: shipped behavior, documentation, supportability, public claim, measurement, rollback, and owner acceptance.
 
-Specialists extend the same graph:
-
-- Plugin: bootstrap/hooks, service boundaries, REST/CLI/admin/editor surfaces, data contracts, dependencies, compatibility, and upgrade paths.
-- Theme: design tokens, templates, parts, patterns, blocks, editor ownership, Global Styles/Site Editor precedence, responsive states, and frontend output.
-- Site: journeys, pages, content sources, active theme/plugins, available blocks, forms, analytics/SEO, publishing workflow, environment, and conversion outcome.
+Specialists extend it with plugin hooks/services/surfaces/data/upgrades; theme tokens/templates/patterns/blocks/editor precedence/responsive output; or site journeys/content/theme/plugins/forms/analytics/publishing/conversion.
 
 ## Project Knowledge Gate
 
@@ -41,32 +37,37 @@ Before substantial implementation, inspect existing repo docs, code, Git/GitHub 
 | Missing knowledge | Decision it changes | Existing evidence | Required doc/equivalent | Blocking question |
 |---|---|---|---|---|
 
-Use an existing equivalent document instead of enforcing filenames. Create or update only the minimum durable contracts justified by the project:
+Use equivalent existing documents instead of enforcing filenames. Create only justified contracts:
 
-- `AGENTS.md`: workflow, branch/base, authority, local environment, validation, and contribution rules.
-- `PRODUCT.md`: users, outcomes, principles, boundaries, supported claims, and non-goals.
-- `ARCHITECTURE.md` or ADRs: owners, dependencies, data/public contracts, state transitions, failure behavior, migrations, and rollback.
-- `DESIGN.md`: design tokens, components, states, responsive/accessibility rules, editor experience, brand, screenshots, and visual non-goals.
-- `CONTENT.md`: site IA, page purpose, editorial ownership, blocks/patterns, claims, SEO/AEO/GEO, links, and publishing workflow.
-- `TESTING.md`: fast/full/package commands, fixtures, environments, golden workflows, evidence, and proof gaps.
-- `RELEASE.md`: version/branch/package process, approval gates, metadata, deployment, rollback, and reconciliation.
+- `AGENTS.md`: workflow, authority, environment, validation; `PRODUCT.md`: users, outcomes, principles, claims, non-goals.
+- `ARCHITECTURE.md`/ADRs: owners, dependencies, contracts, states, failure/migration/rollback.
+- `DESIGN.md`: tokens, components/states, responsive/accessibility/editor/brand rules; `CONTENT.md`: IA, page purpose, ownership, blocks, claims, search, links, publishing.
+- `TESTING.md`: commands, fixtures, environments, golden proof/gaps; `RELEASE.md`: version/branch/package/approval/deploy/rollback/reconciliation.
+- `COMPATIBILITY.md`: material runtime/editor/integration matrix; `SECURITY.md`: disclosure, supported versions, sensitive handling, trust boundaries; `OPERATIONS.md`/`RUNBOOK.md`: critical signals, thresholds, observation, recovery, ownership.
 
-Do not generate placeholder policy from guesses. Ask only the unanswered questions that can materially change implementation, with at most three grouped questions per batch. Prefer repository or runtime evidence over asking the owner to repeat discoverable facts. If an unanswered item changes ownership, public contracts, data/security/privacy, release behavior, editing surface, design direction, or acceptance proof, pause implementation at that boundary while continuing safe discovery. After answers, create or update the required docs through the repo's approved issue/PR/direct-change workflow, reconcile the graph, then proceed.
+Do not generate placeholder policy from guesses. Prefer repository or runtime evidence over asking the owner to repeat discoverable facts. Use one decision brief with at most three unanswered questions, and include the recommended answer, implementation impact, and safe default for each. Ask a second round only when the answer or new evidence exposes a new hard boundary.
+
+Pause only at unanswered ownership, public contract, data/security/privacy, release, editing, design, or proof boundaries; continue safe discovery. After answers, update required docs through the approved workflow, reconcile, and proceed. Volatile compatibility/security/operations contracts need owner, evidence, and last-verified condition; supersede stale rules.
 
 Tiny changes do not require documentation churn when existing evidence already closes the affected graph.
 
+## Deterministic Manifest
+
+For substantial cross-boundary, migration, release-critical, or repeatedly failing work, materialize the compact graph as JSON using the bundled `shared/schemas/wordpress-engineering-graph.schema.json` and run from the agent-skills root:
+
+```bash
+node wp-expert/scripts/validate-engineering-graph.mjs <graph.json>
+```
+
+The validator rejects orphaned nodes, missing dependencies, critical unresolved states, verified critical nodes without evidence, proof without identity, and outcomes without upstream proof. Keep the manifest in the issue/PR evidence path or a governed temporary artifact; do not commit one for every tiny change.
+
 ## Closure Gate
 
-Work is not complete when:
-
-- a changed node has no upstream intent or downstream proof;
-- two mutable sources claim the same visible behavior or decision;
-- a critical edge is `unknown`, `provisional`, or `failed`;
-- proof came from the wrong commit, package, environment, role, viewport, or data state;
-- diagnostics, documentation, or public claims describe behavior different from the runtime result;
-- a visual or editor failure was hidden with frontend-only CSS instead of repairing its owning node.
+Work is not complete when a node lacks intent/proof; mutable owners conflict; a critical edge is unresolved; proof uses the wrong commit/package/environment/role/viewport/data; docs/claims disagree with runtime; or frontend-only CSS hides an owning visual/editor failure.
 
 Every acceptance criterion must map to proof. Re-run affected downstream proof after changing an upstream node.
+
+When `enterprise-code-quality-gate.md` classifies runtime assurance as material, reconcile the graph with `enterprise-runtime-assurance.md` before closure.
 
 ## Learning Loop
 

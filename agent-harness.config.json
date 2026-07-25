@@ -4,7 +4,13 @@
   "projectRoot": ".",
   "requiredFiles": [
     "skill-evals/README.md",
-    "skill-evals/run-record.example.json"
+    "skill-evals/run-record.example.json",
+    "skill-evals/behavior-baselines.json",
+    "skill-evals/run-records/enterprise-runtime-assurance-2026-07-25.json",
+    "skill-evals/run-records/site-visual-routing-2026-07-25.json",
+    "skill-evals/run-records/engineering-graph-2026-07-25.json",
+    "scripts/behavior-evidence-audit.mjs",
+    "shared/schemas/wordpress-engineering-graph.schema.json"
   ],
   "requiredPhrases": [
     {
@@ -110,6 +116,26 @@
       "files": [
         "wp-site-expert/SKILL.md",
         "shared/references/wordpress-engineering-graph.md"
+      ]
+    },
+    {
+      "name": "Site visual implementation",
+      "maxWords": 2800,
+      "warningPercent": 85,
+      "files": [
+        "wp-site-expert/SKILL.md",
+        "wp-site-expert/references/router.md",
+        "shared/references/visual-to-wordpress-implementation.md"
+      ]
+    },
+    {
+      "name": "Enterprise runtime assurance",
+      "maxWords": 2700,
+      "warningPercent": 85,
+      "files": [
+        "wp-plugin-expert/SKILL.md",
+        "shared/references/enterprise-code-quality-gate.md",
+        "shared/references/enterprise-runtime-assurance.md"
       ]
     },
     {

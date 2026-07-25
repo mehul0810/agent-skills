@@ -6,13 +6,7 @@ This reference fuses product-grade UI/UX reasoning with WordPress-native constra
 
 ## UX Triage
 
-Before designing or changing UI, answer:
-
-- Who is the user: site owner, editor, shop manager, developer, customer, subscriber, anonymous visitor, network admin?
-- What is the task: configure, publish, recover, compare, buy, submit, filter, diagnose, approve, import, export, or monitor?
-- How often: first-run, daily workflow, emergency-only, onboarding-only, one-time migration?
-- What is at risk: data loss, privacy, money, SEO, deliverability, production downtime, accessibility, user trust?
-- Where does it live: wp-admin, block editor sidebar/canvas, site editor, frontend, WooCommerce checkout, REST-powered app, mobile viewport?
+Before changing UI, identify user, task, frequency, risk, and WordPress surface.
 
 Do not start with decoration. Start with task success, clarity, and safe recovery.
 
@@ -52,15 +46,15 @@ Apply priorities in this order:
 
 ### Frontend experiences
 
-- Start mobile-first for customer-facing flows, then progressively enhance tablet and desktop layouts.
+- Start mobile-first for customer flows; enhance larger layouts.
 - Preserve theme design language unless the task is to redesign.
 - Improve content hierarchy, states, spacing, and conversion clarity before adding visual effects.
 - Avoid layout shifts, excessive animation, and heavy component libraries.
-- Validate logged-in/logged-out, empty content, missing images, long strings, translated strings, and mobile navigation.
+- Validate auth states, empty/missing/long/translated content, and mobile navigation.
 
 ## Design Brief Template
 
-For new or substantial UI work, build this brief first:
+For substantial UI work, build:
 
 ```text
 User:
@@ -84,14 +78,14 @@ If the request is exploratory, return 2-3 design directions with tradeoffs and a
 - Map to WordPress components first: `@wordpress/components`, `@wordpress/icons`, editor SlotFills, block supports, `theme.json`, admin styles.
 - Use a three-layer token model when custom design is needed: primitive values, semantic aliases, component tokens.
 - Prefer semantic tokens such as `--color-surface`, `--color-text-muted`, `--color-danger`, `--space-control-gap` over raw values in components.
-- Translate style-guide and design-system decisions into WordPress-native tokens, patterns, template parts, block styles, variations, or scoped component tokens before adding broad CSS overrides.
-- When working on top of an existing parent theme, preserve the parent theme's durable extension points and token model unless it actively blocks the design system or enterprise quality bar.
+- Translate design decisions into native tokens, patterns, parts, block styles/variations, or scoped tokens before broad CSS.
+- Preserve parent-theme extension points/tokens unless they block the required system.
 - Do not introduce Tailwind/shadcn/Radix or another UI stack into WordPress admin/editor unless the project already uses it or there is a clear isolated app surface.
 - Avoid bundling duplicate React, WordPress packages, or large UI libraries into admin/editor assets.
 
 ## State Coverage Checklist
 
-Every serious UI should cover:
+Cover applicable states:
 
 - Empty: no records, no settings, no connected account, no search results.
 - Loading: initial load, partial refresh, button-level async, long-running jobs.

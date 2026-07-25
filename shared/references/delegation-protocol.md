@@ -4,34 +4,25 @@ Use before creating worker threads, worktrees, or subagent prompts. `wp-portfoli
 
 ## Plan Before Delegation
 
-Plan before delegation. No worker should start until the parent control thread has prepared:
-
-- Strategy.
-- Scope.
-- Acceptance criteria.
-- Non-goals.
-- Branch/base plan.
-- Validation plan.
-- Risks.
-- Owner decision needs.
+Plan before delegation. No worker starts without strategy, scope, acceptance criteria, non-goals, branch/base, validation, risks, and owner decision needs.
 
 Use one PR per issue unless scope crosses release or validation boundaries. Push planning into the issue body and delegated prompt so workers replan less.
 
 ## Thread Boundary
 
-Portfolio control threads should not do product-level work. Route product execution to the product-orchestrator thread. Product-orchestrator threads are user-visible control threads and must not be archived unless the owner explicitly asks. Only Codex-created workers may be archived after reconciliation.
+Portfolio control routes product execution to the product PO. User-visible product control threads must not be archived unless the owner asks; only reconciled Codex-created workers may be archived.
 
 `Worker Threads` is the project for execution rooms. Create `CTO Worker <Task Name>` for small stateful execution. These workers are execution rooms, not control rooms: no roadmap authority, no direct product-thread contact except through CTO reconciliation, and no release/publish/merge/pricing/licensing/privacy/security/public-contract decisions.
 
-Worker lifecycle owner is the creator. If CTO creates a worker thread, CTO owns scope, verification, reconciliation, and archive/delete. If a PO creates a worker thread, that PO owns scope, verification, reconciliation, and archive/delete. POs report to CTO only for blockers, release-readiness changes, cross-product/process concerns, or owner decisions.
+Worker lifecycle owner is the creator. CTO- or PO-created workers remain that creator's responsibility for scope, proof, reconciliation, and archive/delete. POs report only blockers, release-readiness changes, cross-product/process concerns, or owner decisions.
 
 ## Direct Execution Boundary
 
-The portfolio or product control thread may directly handle only the smallest orchestration actions: source-of-truth rehydration, duplicate-screened issue intake, owner decision briefs, PR/body/status synthesis, and very small fixes where delegation overhead is higher than execution.
+Control threads directly handle only rehydration, duplicate-screened intake, decision briefs, status synthesis, and fixes smaller than delegation overhead.
 
 Once there are two or more independent bounded issues/PR blockers, or one issue needs parallel implementation/evidence work, the CTO must delegate at least one bounded task unless it writes why direct execution is better.
 
-After an issue has clear strategy, scope, acceptance criteria, non-goals, branch/base, validation, risks, and owner decision needs, default to delegation for implementation, CI triage, dependency resolution, workflow investigation, or evidence gathering.
+Once the plan is clear, delegate implementation, CI/dependency/workflow investigation, or evidence gathering.
 
 Every CTO heartbeat/check-in must include:
 
@@ -41,29 +32,29 @@ Delegation decision: Delegated|Direct|Deferred - <short reason>
 
 Use `Direct` only when work is smaller than delegation overhead, delegation is unavailable, or the owner asked. Use `Deferred` when a plan/blocker prevents delegation.
 
-Use a `Worker Threads` execution room for narrow, stateful work such as fixes, audits, cleanup, draft docs, investigations, or validation. Use product PO threads for product direction, release scope, backlog priority, customer-facing decisions or product context. Keep checks and actions inline in CTO.
+Use a `Worker Threads` execution room for narrow stateful fixes/audits/cleanup/docs/investigation/validation; keep direction, release scope, priority, customer decisions, and product context in the PO.
 
 Before declaring delegation unavailable, use tool discovery for project/thread/worktree/subagent tools. Look for `list_projects`, `create_thread`, `fork_thread`, `send_message_to_thread`, worktree/subagent tools, and shell/manual git worktree capability.
 
 ## Worktree Creation Guard
 
-Before creating an app-managed worker worktree, verify the saved project path or source thread `cwd` is the actual plugin repo root:
+Before an app-managed worktree, verify the saved project/source `cwd` is the plugin repo root:
 
 ```bash
 git rev-parse --show-toplevel
 ```
 
-Exact-project preflight: saved Codex project path must equal the plugin repo root from `git rev-parse --show-toplevel`. If the product thread is rooted in `wp-content` or `wp-content/plugins`, do not create app worktrees from it; use an exact repo-root project or report `setup-blocked: missing exact repo project`.
+Exact-project preflight: the saved project path must equal `git rev-parse --show-toplevel`. Broad `wp-content` roots are unusable; choose an exact project or report `setup-blocked: missing exact repo project`.
 
-Do not create issue/worktree checkouts directly as visible plugin folders under `wp-content/plugins`. Prefer exact repo-root Codex worktrees outside the install unless the task explicitly requires an installable local plugin path. If runtime proof needs `wp-content/plugins`, keep exactly one visible canonical plugin folder per product per instance and put extra worktrees or proof copies in hidden or non-scanned paths.
+Do not create issue/worktree checkouts directly as visible plugin folders under `wp-content/plugins`. Keep worktrees outside the install. Runtime proof may keep exactly one visible canonical plugin folder per product per instance; extra worktrees/copies stay non-scanned.
 
-When using app-managed worktrees, pass an explicit verified base branch when the tool supports it. After the worker materializes, verify the child is readable, the path appears in `git worktree list`, the branch/base is intended, and the worktree is not detached or on production `main`.
+Pass an explicit verified base when supported. After materialization, verify readability, `git worktree list`, intended branch/base, and not detached/production `main`.
 
 If a pending worktree does not materialize, or it lands detached/wrong-base, classify it as `unusable worktree` and stop retrying that path until the root/base problem is fixed.
 
 ## Worktree Lifecycle Route
 
-Before creating a worktree and after worker/PR reconciliation, apply `worktree-storage-lifecycle.md`: inventory and classify entries, prove remote reachability plus clean disposable ownership, then remove or explicitly retain eligible work. Never let merged work accumulate silently on limited local storage. UI proof is needed only when cleanup changes an active WordPress screen.
+Before creation and after reconciliation, apply `worktree-storage-lifecycle.md`: classify entries, prove remote reachability and clean disposable ownership, then remove or retain with reason. UI proof is needed only when cleanup changes an active WordPress screen.
 
 ## Unblock-First Recovery Ladder
 
@@ -75,7 +66,7 @@ Choose the recovery path by work type:
 - Read-only code mapping or evidence: use subagent/explorer tools or same-thread read-only inspection.
 - Code changes: first try exact saved repo-root Codex project worktree. If missing, try manual `git worktree` from the exact plugin repo root with a clean base, or a bounded worker/subagent on that path.
 
-If a repo setup problem can be solved safely through commands or an allowed escalation request, attempt recovery instead of reporting a blocker. Notify the owner only when the remaining action is owner-only: app UI project setup, stale user-created product-thread recovery, branch-model changes, or release-sensitive actions.
+Recover safe setup problems through commands/allowed escalation. Notify the owner only when the remaining action is owner-only: app setup, user-thread recovery, branch-model change, or release-sensitive action.
 
 Final status must not stop at "blocked because X". Use either:
 
@@ -92,9 +83,9 @@ When delegation is deferred, report the exact hard blocker: issue number, missin
 
 ## Delegation Ownership Boundary
 
-The portfolio or product control thread owns final plan, branch/base choice, PR body, GitHub comments, validation synthesis, commits, push authorization, owner decisions, issue closure, and release readiness.
+Control owns final plan, branch/base, PR/GitHub state, proof synthesis, push authorization, decisions, issue closure, and release readiness.
 
-Delegated workers own bounded implementation, mapping, review, CI/test triage, dependency resolution, workflow investigation, or evidence collection. They must not create releases, publish/deploy, close issues, retarget milestones, or subdelegate.
+Workers own bounded implementation/mapping/review/triage/investigation/evidence. No release, publish/deploy, issue close, milestone retarget, or subdelegation.
 
 Prefer multi-agent/subagent delegation for subtasks inside the current request. Create user-visible Codex threads only when the owner explicitly requests them or the environment requires it. Never archive user-created control or skill threads.
 
@@ -116,7 +107,7 @@ Use worktrees when parallel implementation or CI repair risks branch drift. Pref
 
 ## Delegated Thread Lifecycle
 
-Before delegation, document strategy in the parent thread and write GitHub comments only for durable transitions. After worker return, the worker creator inspects diff/evidence, confirms proof and validation, updates PR/issue when needed, reconciles product state, extracts durable lessons into issues/docs/skill updates, and archive/delete the disposable worker.
+Document strategy before delegation; use GitHub comments only for durable transitions. On return, the creator verifies diff/proof, reconciles PR/issue/product state and lessons, then archive/delete the disposable worker.
 
 ## Worker Reconciliation Checklist
 

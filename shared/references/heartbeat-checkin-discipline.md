@@ -4,34 +4,23 @@ Use this reference for CTO and PO heartbeat reporting. Check-ins must be delta-f
 
 ## Core Rules
 
-- Lead with change. Start from what changed since the last check-in, not from a full restatement.
-- Separate signal by ownership: blocked, owner-needed, Codex-owned, and quiet.
-- Write for owner consumption: owner-readable, not as a raw tool log, XML payload, or verification dump.
-- Treat repeated blockers as escalation material. Do not silently restate the same blocker heartbeat after heartbeat.
-- Justify quiet status with evidence, not absence of effort.
+- Lead with change, separated as blocked, owner-needed, Codex-owned, and quiet.
+- Write for the owner, not as raw logs/XML/verification dumps; escalate repeated blockers.
+- Justify quiet with evidence.
 - Use `NOTIFY` only when there is a material change, blocker, owner decision, executable work, release/proof drift, topology/process concern, or cadence change worth surfacing.
 - Use `DONT_NOTIFY` only when no owner decision, blocker, executable work, material drift, or process concern exists.
-- Prefer plain decision language over workflow jargon. Replace vague terms like `owner-gated` with the exact decision needed.
-- Heartbeats must exit cleanly. If a routine product heartbeat cannot finish current live checks quickly, return a partial owner-readable result instead of staying in progress.
+- Replace `owner-gated` jargon with the exact decision. If checks cannot finish quickly, return a partial owner-readable result instead of staying in progress.
 
 ## Readability Rules
 
-- Use plain English section titles and short sentences.
-- Avoid long SHAs, raw API/XML shapes, or dense verification clauses unless identity proof is the point.
-- Put raw proof details only under `Evidence`, and keep them compact.
-- Translate status into owner meaning: what changed, what is blocked, what needs a decision, and what Codex will do next.
+- Use plain headings and short sentences. Avoid long SHAs/API/XML unless identity matters; keep raw proof compact under `Evidence`.
+- Translate status into change, blocker, decision, and next action.
 - If a checkout is dirty/stale, say whether it blocks current work and what would unblock it.
 - Do not paste long heartbeat XML, PR bodies, diffs, screenshot lists, or raw tool output into follow-up prompts. Also do not paste full skill bodies or repeated history into follow-up prompts. Use URLs, short deltas, and exact blocker summaries.
 
 ## `DONT_NOTIFY` Rule
 
-`DONT_NOTIFY` is valid only when all of the following are true:
-
-- No new blocker or repeated blocker escalation.
-- No owner decision is needed now.
-- No executable `owner:codex` work is being skipped.
-- No material release, PR, CI, topology, automation, or process drift exists.
-- Quiet/no-action status is backed by current evidence.
+`DONT_NOTIFY` requires current quiet evidence, no blocker/escalation, owner decision, skipped executable `owner:codex` work, or material release/PR/CI/topology/automation/process drift.
 
 The `DONT_NOTIFY` message must be one sentence with the product name, strongest quiet reason, and whether any owner decision exists.
 
@@ -53,12 +42,7 @@ Cadence/automation changes
 
 Use a partial `NOTIFY` result for routine product heartbeats, quiet monitoring loops, or post-intervention checks when live checks time out, public checks run long, or one narrow verification path cannot finish promptly.
 
-- Do not leave the heartbeat in progress for hours waiting on routine live checks.
-- Return what is already verified.
-- Name the exact blocked or incomplete checks.
-- State whether owner decisions changed or stayed unchanged.
-- State the next retry point or cadence adjustment.
-- Keep the message owner-readable; do not dump retry logs.
+- Return verified evidence instead of waiting hours; name incomplete checks, owner-decision impact, and next retry/cadence without retry logs.
 - If a connector returns `Bad Request`, retry once with a strictly smaller payload and report the payload-reduction rule instead of repeating the same call shape. If the retry fails, stop broad reads, do not paste more context, and switch to one narrow source-of-truth check or a fresh worker/product thread.
 
 Use this shape:
@@ -87,16 +71,7 @@ Cadence/automation changes
 
 ## Thread Health And Drift
 
-Treat these as topology/process drift, not quiet status:
-
-- empty completed turns,
-- active turns with no material output,
-- `systemError` thread state,
-- worker non-materialization,
-- wrong path/base execution,
-- claimed issue/PR execution without proof,
-- wrong model/reasoning lane causing retries or weak evidence,
-- repeated quiet status while executable work exists.
+Topology/process drift includes empty completions, active turns without output, `systemError`, non-materialized workers, wrong path/base/model lane, issue/PR claims without proof, and repeated quiet while work is executable.
 
 For release blockers, one non-material PO heartbeat is enough to escalate.
 
@@ -104,7 +79,7 @@ Corrective action must be explicit: recover the worker/path, narrow the blocker,
 
 ## Portfolio CTO Template
 
-Use exception reporting plus a compact coverage line for quiet products. Do not repeat a long full-product list unless it materially helps. Translate PO outputs into owner-facing portfolio language instead of copying raw PO XML/messages.
+Use exceptions plus one quiet-product coverage line. Translate PO output instead of copying raw XML/messages.
 
 ```text
 NOTIFY
@@ -140,21 +115,11 @@ Escalate repeated blockers. For stale topology, surface the exact decision until
 
 CTO must not merely relay PO output. If a PO report is unclear, log-like, contradictory, passive, repeated, stalled, missing an expected action, or misaligned with the owner-approved objective, intervene immediately: ask why it is happening, what the blocker is, and what will change before the next heartbeat.
 
-Trigger intervention without owner prompting when any of these happen:
+Intervene without prompting when:
 
-- The same quiet state appears twice while active work or a release train still exists.
-- A release blocker gets one non-material heartbeat.
-- The PO says ready but does not execute an approved beta or non-production action.
-- The thread stays in progress/stale without material output.
-- The PO or worker ends with an empty completed turn or `systemError`.
-- The PO reports raw logs instead of owner-readable decisions.
-- Evidence-backed findings do not become issues.
-- Unexpected behavior, maintainability debt, weak non-obvious comments, missing test coverage, repeated validation/tooling surprises, or workflow friction are reported without creating or linking a focused issue.
-- Open human contributor PRs or new human-created issues are ignored in quiet-state reporting.
-- A UI/user-workflow PR is treated as ready without Playground or equivalent visual/browser proof.
-- Executable non-hard-gated work is deferred as an owner decision without explicit approval needed.
-- Heartbeat cadence no longer matches product urgency.
-- Issue/PR work is reported without proof, or the worker used the wrong path/base/model lane.
+- Quiet repeats twice during active work; a release blocker gets one non-material heartbeat; approved beta/non-production action is not executed; or a thread stalls/ends empty/`systemError`.
+- Raw logs replace decisions; evidence-backed or unexpected behavior, maintainability/comments/tests/validation/workflow findings lack a focused issue.
+- Community PR/issues are ignored; UI work lacks Playground/equivalent proof; executable work is falsely owner-gated; cadence mismatches urgency; or work lacks proof/uses the wrong lane.
 
 CTO response should be one of: correct the PO, reduce/pause cadence, request the exact blocker, recover/fork the product thread with owner approval when needed, or route a skill/process patch.
 
@@ -195,13 +160,7 @@ Stop condition
 
 ## Quiet Evidence
 
-Quiet/no-action claims cite the best evidence:
-
-- no new PR/issue/CI/release delta,
-- no executable `owner:codex` item,
-- only already-known explicit owner decisions remain,
-- no new topology/worktree/automation drift,
-- no release-readiness regression since the last report.
+Quiet claims cite no PR/issue/CI/release delta, executable `owner:codex` item, new topology/worktree/automation drift, or release regression; only known owner decisions may remain.
 
 Avoid phrases like `no update`, `nothing new`, or `still monitoring` without evidence.
 
