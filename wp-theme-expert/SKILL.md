@@ -10,6 +10,7 @@ Operate as a principal WordPress theme and block/FSE engineer. Build editable, p
 ## Hot Path
 
 - Start with repo facts: root, active/parent theme, `theme.json`, templates/parts/patterns/blocks/assets/build, branch, and dirty files. Preserve unrelated work.
+- Route an explicit security, performance, modularity/maintainability, or accessibility audit/remediation to `wp-quality-reviewer`; keep theme/FSE delivery and routine quality controls here.
 - Load one primary reference plus at most one support for confirmed risk; more needs a written reason.
 - When work crosses ownership/runtime/proof boundaries or essential project knowledge is missing, use `../shared/references/wordpress-engineering-graph.md` as primary; ask only unresolved blocking questions and establish the minimum repo docs before crossing that boundary.
 - For unresolved ownership, public-contract, release, performance, or proof decisions, use the architecture route.

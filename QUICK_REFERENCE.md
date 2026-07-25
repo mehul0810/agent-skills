@@ -95,8 +95,8 @@ Use `$wp-product-orchestrator` for one WordPress plugin/theme product's issue tr
 - Supporting: `performance-and-security.md`, `privacy-consent-data-governance.md`
 
 **"I need to refactor a plugin to reduce code duplication"**
-- Load: `duplicate-code-modularity-review.md`
-- Then: `implementation-patterns.md`
+- Skill: `wp-quality-reviewer`
+- Load: `references/modularity-review-fix.md`
 
 **"I need generated code or a review to meet enterprise/WPVIP standards"**
 - Load: `../shared/references/enterprise-code-quality-gate.md`
@@ -175,13 +175,12 @@ Use `$wp-product-orchestrator` for one WordPress plugin/theme product's issue tr
 ### Performance & Security
 
 **"My site is slow. Where do I start?"**
-- Load: `performance-and-security.md`
-- Then: `enterprise-architecture.md` (caching/architecture sections)
-- If VIP: `vip-scale-playbook.md`
+- Skill: `wp-quality-reviewer`
+- Load: `references/performance-review-fix.md`
 
 **"I need to harden a WordPress installation"**
-- Load: `performance-and-security.md`
-- Also: `security-operations-compliance.md`
+- Skill: `wp-quality-reviewer`
+- Load: `references/security-review-fix.md`
 
 **"We're dealing with a production incident"**
 - Load: `troubleshooting-operations.md`
@@ -340,12 +339,12 @@ Use `$wp-product-orchestrator` for one WordPress plugin/theme product's issue tr
 - Supporting: `deployment-release-resilience.md`, `observability-incident-response.md`
 
 **"Threat model this REST/admin/upload/webhook feature"**
-- Load: `security-threat-modeling-review.md`
-- Supporting: `security-operations-compliance.md`
+- Skill: `wp-quality-reviewer`
+- Load: `references/security-review-fix.md`
 
 **"Profile this hot path and set performance budgets"**
-- Load: `performance-profiling-scale-budgets.md`
-- Supporting: `edge-caching-cdn-architecture.md`, `load-testing-capacity-planning.md`
+- Skill: `wp-quality-reviewer`
+- Load: `references/performance-review-fix.md`
 
 **"Review this custom database table architecture"**
 - Load: `database-table-architecture-review.md`
@@ -402,7 +401,7 @@ Use `$wp-product-orchestrator` for one WordPress plugin/theme product's issue tr
 | Database table architecture | database-table-architecture-review.md | 10 min |
 | AI/LLM product | ai-llm-wordpress-product-engineering.md | 10 min |
 | Marketplace readiness | marketplace-product-readiness.md | 8 min |
-| Refactor code | duplicate-code-modularity-review.md | 8 min |
+| Refactor/code quality review | wp-quality-reviewer/references/modularity-review-fix.md | 8 min |
 | Style guide/tokens | style-guide-theme-translation.md | 8 min |
 | Design to FSE | custom-block-theme-from-design.md | 12 min |
 | Hybrid theme migration | hybrid-theme-migration-modernization.md | 12 min |
@@ -412,16 +411,15 @@ Use `$wp-product-orchestrator` for one WordPress plugin/theme product's issue tr
 | Analytics/measurement | analytics-measurement-engineering.md | 8 min |
 | Custom block | theme-and-block-editor.md | 10 min |
 | React component | react-wordpress-enterprise.md | 12 min |
-| Performance | performance-and-security.md | 10 min |
-| Performance profiling/budgets | performance-profiling-scale-budgets.md | 10 min |
-| Security threat model | security-threat-modeling-review.md | 10 min |
+| Performance review/fix | wp-quality-reviewer/references/performance-review-fix.md | 10 min |
+| Security review/fix | wp-quality-reviewer/references/security-review-fix.md | 10 min |
 | Incident response | troubleshooting-operations.md | 8 min |
 | Advanced troubleshooting | advanced-troubleshooting-decision-tree.md | 8 min |
 | PR base/release branch safety | session-continuity-pr-discipline.md | 5 min |
 | Release plugin | wordpress-org-release-operations.md | 10 min |
 | Release notes | changelog-release-notes.md | 8 min |
 | Admin UI | admin-ux-and-ui.md | 8 min |
-| Accessibility | accessibility-i18n-global-readiness.md | 10 min |
+| Accessibility review/fix | wp-quality-reviewer/references/accessibility-review-fix.md | 10 min |
 | VIP scale | vip-scale-playbook.md | 12 min |
 | Launch readiness | vip-enterprise-launch-readiness.md | 10 min |
 | Advanced multisite | advanced-multisite-network-engineering.md | 10 min |

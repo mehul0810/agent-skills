@@ -1,6 +1,6 @@
 ---
 name: wp-expert
-description: Router for ambiguous WordPress work. Use when explicitly requested or unclear whether the task belongs to wp-plugin-expert, wp-theme-expert, wp-site-expert, behavior-validator, wp-portfolio-cto, wp-product-orchestrator, wp-contributor, or content-writer; clear tasks should trigger the specialist directly.
+description: Router for ambiguous WordPress work. Use when explicitly requested or unclear whether the task belongs to wp-plugin-expert, wp-theme-expert, wp-site-expert, wp-quality-reviewer, behavior-validator, wp-portfolio-cto, wp-product-orchestrator, wp-contributor, or content-writer; clear tasks should trigger the specialist directly.
 ---
 
 # WP Expert
@@ -10,7 +10,8 @@ Use this skill as the thin WordPress engineering router. Prefer the narrow speci
 ## Route First
 
 - Auto-select the specialist by the task's primary artifact or outcome. Stop after routing when the specialist is clear; do not load the routing map or broad references.
-- Plugin/product code, REST APIs, admin screens, custom tables, WordPress.org plugin releases, Composer/npm tooling, CI, tests, security, performance, or plugin troubleshooting: use `wp-plugin-expert`.
+- Focused security, performance, modularity/maintainability, or accessibility review, hardening, profiling, remediation, or independent reassessment: use `wp-quality-reviewer`.
+- Plugin/product feature code, REST APIs, admin screens, custom tables, WordPress.org plugin releases, Composer/npm tooling, CI, tests, or plugin troubleshooting: use `wp-plugin-expert`.
 - Themes, block themes, FSE, `theme.json`, templates, patterns, block styles, custom blocks, design-to-theme builds, visual parity, Ollie, Blocksy, or editor/frontend parity: use `wp-theme-expert`.
 - Whole-site work, landing pages, conversion flows, UX/IA, content architecture, SEO/AEO/GEO, analytics, accessibility, responsive polish, performance, or premium visitor/admin experience: use `wp-site-expert`.
 - Independent source-blind proof of observable runtime, admin/editor/frontend, API, packaged-build, or generated-artifact behavior: use `behavior-validator`; implementation remains with the owning specialist.

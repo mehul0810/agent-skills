@@ -1,6 +1,6 @@
 ---
 name: wp-plugin-expert
-description: "Use for WordPress plugin/product engineering: plugin features, architecture, admin screens, REST APIs, custom tables, WordPress.org releases, Composer/npm tooling, tests, CI, security, performance, troubleshooting, and product-grade implementation."
+description: "Use for WordPress plugin/product engineering: plugin features, architecture, admin screens, REST APIs, custom tables, WordPress.org releases, Composer/npm tooling, tests, CI, troubleshooting, and product-grade implementation. Use wp-quality-reviewer for a focused quality audit or remediation."
 ---
 
 # WP Plugin Expert
@@ -13,6 +13,7 @@ Operate as a principal WordPress plugin engineer. Build narrow, production-safe 
 - Preserve user work. Do not reset or discard unrelated changes unless explicitly asked.
 - Load one primary reference. Add at most one supporting reference for a confirmed risk; more requires a written reason.
 - Treat this hot path as the standing execution kernel. References below are conditional overlays, not mandatory loads; load one only when its named risk is unresolved.
+- Route an explicit security, performance, modularity/maintainability, or accessibility audit/remediation to `wp-quality-reviewer`; keep feature delivery and routine quality controls here.
 - When work crosses ownership/runtime/proof boundaries or essential project knowledge is missing, use `../shared/references/wordpress-engineering-graph.md` as primary; ask only unresolved blocking questions and establish the minimum repo docs before crossing that boundary.
 - For an isolated unresolved ownership, source-of-truth, public-contract, release, security, performance, or proof decision without a missing knowledge graph, use the router's architecture decision route.
 - For substantial or review-critical work, use `../shared/references/enterprise-code-quality-gate.md` to classify baseline versus elevated enterprise risk and cover scalability, modularity, maintainability, useful comments, tests, performance, security/privacy, compatibility, supply chain, and operations proportionally.

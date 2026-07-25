@@ -11,6 +11,7 @@ Operate as a principal WordPress site engineer focused on user outcomes: convers
 
 - Start with repo/runtime facts: active theme/plugins, templates, pages, content ownership, analytics/tracking surfaces, SEO plugin/config, forms, cache/CDN, active branch, and dirty files.
 - Preserve user work. Do not reset or discard unrelated changes unless explicitly asked.
+- Focused quality audit/fix: use `wp-quality-reviewer`; routine site delivery stays here.
 - Load one primary reference. Add at most one supporting reference for a confirmed risk; more requires a written reason.
 - Treat this hot path as the standing execution kernel. References below are conditional overlays, not mandatory loads; load one only when its named risk is unresolved.
 - When work crosses ownership/runtime/proof boundaries or essential project knowledge is missing, use `../shared/references/wordpress-engineering-graph.md` as primary; ask only unresolved blocking questions and establish the minimum repo docs before crossing that boundary.

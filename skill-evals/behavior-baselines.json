@@ -11,7 +11,7 @@
         "wp-plugin-expert/references/router.md",
         "skill-evals/wp-expert-scenarios.md"
       ],
-      "sha256": "94f6cada2b01d3deb016c7f594fd8fdfb91d6e38705311e96d385daa2551004e",
+      "sha256": "913f44e8e871bcc46276de62c77118a8a87e5522c2dbcc4a96c0e8f62f47e83b",
       "runRecords": [
         "skill-evals/run-records/enterprise-runtime-assurance-2026-07-25.json"
       ]
@@ -24,7 +24,7 @@
         "shared/references/visual-to-wordpress-implementation.md",
         "skill-evals/visual-wordpress-scenarios.md"
       ],
-      "sha256": "4f8786a1decdb7d809b3829c617ae73eeea9e57664f58d6226fd1ffe8a100e8c",
+      "sha256": "126b9ae38109f37184b7d48297b790f8b4c0aec116ce6c56668bd3f1eb28f408",
       "runRecords": [
         "skill-evals/run-records/site-visual-routing-2026-07-25.json"
       ]
@@ -40,6 +40,24 @@
       "sha256": "4ef094b6983d5c53d0c7e553cb7870f94df742d9940d834939670b58a2c122e7",
       "runRecords": [
         "skill-evals/run-records/engineering-graph-2026-07-25.json"
+      ]
+    },
+    {
+      "name": "wp-quality-reviewer",
+      "files": [
+        "wp-quality-reviewer/SKILL.md",
+        "wp-quality-reviewer/references/security-review-fix.md",
+        "wp-quality-reviewer/references/performance-review-fix.md",
+        "wp-quality-reviewer/references/modularity-review-fix.md",
+        "wp-quality-reviewer/references/accessibility-review-fix.md",
+        "wp-quality-reviewer/references/multi-domain-release-review.md",
+        "shared/schemas/wp-quality-review.schema.json",
+        "wp-quality-reviewer/scripts/validate-review-report.mjs",
+        "skill-evals/wp-quality-reviewer-scenarios.md"
+      ],
+      "sha256": "28717bbbca73ca4ed5dd67c5476ec4ada3f0784c7c426f0a7eee9e7334fda5e3",
+      "runRecords": [
+        "skill-evals/run-records/wp-quality-reviewer-2026-07-25.json"
       ]
     }
   ]

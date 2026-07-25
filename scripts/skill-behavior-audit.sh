@@ -38,6 +38,7 @@ require_text "wp-expert/SKILL.md" "Stop after routing when the specialist is cle
 require_text "wp-expert/SKILL.md" "wp-plugin-expert" "wp-expert plugin specialist routing"
 require_text "wp-expert/SKILL.md" "wp-theme-expert" "wp-expert theme specialist routing"
 require_text "wp-expert/SKILL.md" "wp-site-expert" "wp-expert site specialist routing"
+require_text "wp-expert/SKILL.md" 'use `wp-quality-reviewer`' "wp-expert focused quality routing"
 require_text "wp-expert/SKILL.md" 'use `behavior-validator`' "wp-expert behavior validator routing"
 require_text "wp-expert/SKILL.md" "wp-portfolio-cto" "wp-expert portfolio specialist routing"
 require_text "wp-plugin-expert/SKILL.md" "references/router.md" "wp-plugin-expert modular router routing"

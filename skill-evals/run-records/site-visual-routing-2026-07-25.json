@@ -29,10 +29,10 @@
     }
   ],
   "metrics": {
-    "input_tokens": 58181,
-    "cached_input_tokens": 35328,
-    "output_tokens": 1113,
-    "reasoning_output_tokens": 157,
+    "input_tokens": 74745,
+    "cached_input_tokens": 47104,
+    "output_tokens": 1072,
+    "reasoning_output_tokens": 210,
     "tool_calls": 2,
     "retry_count": 0,
     "checks_passed": 5

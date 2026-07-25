@@ -11,6 +11,7 @@ Use this map to choose references with low context cost.
 
 ## Risk-Triggered Overlays
 
+- Focused security, performance, modularity/maintainability, or accessibility audit/remediation: route directly to `wp-quality-reviewer`; its mode reference is the primary contract.
 - Substantial implementation/review: load `architecture-decision-gate.md` when ownership, source of truth, public contract, release state, performance, security, or proof is unclear.
 - Code change: apply enterprise and test principles from the active skill; load `enterprise-code-quality-gate.md` or `test-coverage-discipline.md` only when risk is non-trivial, ambiguous, or review-critical.
 - Public, commercial, VIP, data-sensitive, migration, dependency-heavy, or operationally critical work: let the quality gate classify baseline versus elevated assurance; load `enterprise-runtime-assurance.md` only when compatibility, supply-chain, monitoring, or recovery evidence is material.

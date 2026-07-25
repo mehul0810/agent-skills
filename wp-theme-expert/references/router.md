@@ -4,6 +4,7 @@ Use this router only after `wp-theme-expert` is selected. Load one primary refer
 
 ## Primary Routes
 
+- Focused security, performance, modularity/maintainability, or accessibility review/fix: route to `wp-quality-reviewer`; do not load a broad theme reference as a substitute.
 - Cross-boundary engineering graph, missing project knowledge/docs, graph closure, and durable failure learning: `../../shared/references/wordpress-engineering-graph.md`.
 - Compatibility, supply chain, production observation, recovery, and adaptive enterprise contracts: `../../shared/references/enterprise-runtime-assurance.md`.
 - Theme/plugin/content ownership, public-contract, release, performance, or proof decisions: `../../wp-expert/references/architecture-decision-gate.md`.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "WP Quality Reviewer"
+  short_description: "Review and fix WordPress quality risks"
+  default_prompt: "Use $wp-quality-reviewer to review and fix WordPress security, performance, modularity, maintainability, or accessibility issues with evidence-backed enterprise validation."

@@ -9,8 +9,11 @@
     "skill-evals/run-records/enterprise-runtime-assurance-2026-07-25.json",
     "skill-evals/run-records/site-visual-routing-2026-07-25.json",
     "skill-evals/run-records/engineering-graph-2026-07-25.json",
+    "skill-evals/run-records/wp-quality-reviewer-2026-07-25.json",
     "scripts/behavior-evidence-audit.mjs",
-    "shared/schemas/wordpress-engineering-graph.schema.json"
+    "shared/schemas/wordpress-engineering-graph.schema.json",
+    "shared/schemas/wp-quality-review.schema.json",
+    "wp-quality-reviewer/scripts/validate-review-report.mjs"
   ],
   "requiredPhrases": [
     {
@@ -139,6 +142,51 @@
       ]
     },
     {
+      "name": "Quality security review",
+      "maxWords": 2400,
+      "warningPercent": 85,
+      "files": [
+        "wp-quality-reviewer/SKILL.md",
+        "wp-quality-reviewer/references/security-review-fix.md"
+      ]
+    },
+    {
+      "name": "Quality performance review",
+      "maxWords": 2300,
+      "warningPercent": 85,
+      "files": [
+        "wp-quality-reviewer/SKILL.md",
+        "wp-quality-reviewer/references/performance-review-fix.md"
+      ]
+    },
+    {
+      "name": "Quality modularity review",
+      "maxWords": 2300,
+      "warningPercent": 85,
+      "files": [
+        "wp-quality-reviewer/SKILL.md",
+        "wp-quality-reviewer/references/modularity-review-fix.md"
+      ]
+    },
+    {
+      "name": "Quality accessibility review",
+      "maxWords": 2300,
+      "warningPercent": 85,
+      "files": [
+        "wp-quality-reviewer/SKILL.md",
+        "wp-quality-reviewer/references/accessibility-review-fix.md"
+      ]
+    },
+    {
+      "name": "Quality multi-domain review",
+      "maxWords": 1900,
+      "warningPercent": 85,
+      "files": [
+        "wp-quality-reviewer/SKILL.md",
+        "wp-quality-reviewer/references/multi-domain-release-review.md"
+      ]
+    },
+    {
       "name": "Content research",
       "maxWords": 2900,
       "warningPercent": 85,
@@ -255,6 +303,11 @@
       "name": "Routing collisions",
       "file": "skill-evals/routing-collision-scenarios.md",
       "requiredPhrases": ["# Routing Collision Scenarios", "Site vs content", "Implementation vs independent proof", "Loop Steward vs CTO"]
+    },
+    {
+      "name": "WP Quality Reviewer",
+      "file": "skill-evals/wp-quality-reviewer-scenarios.md",
+      "requiredPhrases": ["# WP Quality Reviewer Scenarios", "Security review and fix", "Performance review and fix", "Contradicted pass", "Formal report validation"]
     },
     {
       "name": "Command and CI approval",

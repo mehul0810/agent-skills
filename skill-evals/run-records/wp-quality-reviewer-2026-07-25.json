@@ -1,0 +1,77 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "wp-quality-reviewer-2026-07-25",
+  "scenario": "multi-domain-release-quality-review",
+  "result": "succeeded",
+  "startedAt": "2026-07-25T18:00:00.000Z",
+  "durationMs": 90000,
+  "checks": [
+    {
+      "name": "compact-multi-domain-route",
+      "result": "pass"
+    },
+    {
+      "name": "evidence-backed-severity-findings",
+      "result": "pass"
+    },
+    {
+      "name": "security-negative-proof",
+      "result": "pass"
+    },
+    {
+      "name": "performance-comparable-delta",
+      "result": "pass"
+    },
+    {
+      "name": "modularity-behavior-proof",
+      "result": "pass"
+    },
+    {
+      "name": "accessibility-manual-proof",
+      "result": "pass"
+    },
+    {
+      "name": "unresolved-critical-blocks-pass",
+      "result": "pass"
+    },
+    {
+      "name": "formal-report-validation",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "input_tokens": 82301,
+    "cached_input_tokens": 51200,
+    "output_tokens": 2889,
+    "reasoning_output_tokens": 446,
+    "tool_calls": 2,
+    "retry_count": 0,
+    "checks_passed": 8
+  },
+  "lineage": {
+    "observationId": "quality-review-plugin-dependence-and-drift-gap",
+    "actionId": "agent-skills-wp-quality-reviewer",
+    "verificationId": "wp-quality-reviewer-2026-07-25",
+    "artifactPointer": "wp-quality-reviewer/SKILL.md"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-07-25T18:01:30.000Z",
+    "metricNames": [
+      "checks_passed",
+      "input_tokens",
+      "output_tokens"
+    ],
+    "summary": "Fresh read-only agent used the compact multi-domain route plus one security deep-dive for a confirmed P1, found all four supplied quality risks, rejected unsupported pass claims, and produced a validator-compatible report."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "quality",
+    "security",
+    "performance",
+    "modularity",
+    "accessibility"
+  ]
+}

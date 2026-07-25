@@ -41,6 +41,8 @@ require_text "wp-expert/references/block-theme-architecture.md" "WordPress.org T
 require_text "wp-expert/references/block-theme-architecture.md" "theme switch/deactivation portability" "theme portability proof"
 require_text "wp-expert/references/accessibility-i18n-global-readiness.md" "Focus Not Obscured" "WCAG 2.2 focus criterion"
 require_text "wp-expert/references/accessibility-i18n-global-readiness.md" "24x24" "WCAG 2.2 target size criterion"
+require_text "wp-quality-reviewer/references/accessibility-review-fix.md" "no automated tool alone determines accessibility" "accessibility human evaluation gate"
+require_text "wp-quality-reviewer/references/accessibility-review-fix.md" "authoring experience" "WordPress author accessibility proof"
 require_text "wp-expert/references/theme-frontend-performance-quality-gate.md" "Measurable Budget Contract" "theme performance budget contract"
 require_text "wp-expert/references/style-guide-theme-translation.md" "CSS And Cascade Governance" "enterprise CSS cascade contract"
 require_text "wp-expert/references/style-guide-theme-translation.md" "user Global Styles" "Global Styles precedence"

@@ -6,6 +6,7 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - `wp-plugin-expert`: enterprise WordPress plugin engineering for plugin architecture, admin screens, REST APIs, custom tables, WordPress.org releases, Composer/npm, tests, CI, security, performance, and troubleshooting.
 - `wp-theme-expert`: enterprise WordPress theme, block theme, FSE, `theme.json`, custom block, design-to-theme, visual parity, and premium responsive theme engineering.
 - `wp-site-expert`: enterprise WordPress site, UX, CRO, SEO/AEO/GEO, analytics, accessibility, content architecture, performance, and premium visitor/admin experience engineering.
+- `wp-quality-reviewer`: focused WordPress security, performance, modularity/maintainability, and accessibility review-and-fix workflows with evidence-backed enterprise proof.
 - `wp-portfolio-cto`: cross-product WordPress portfolio control room for portfolio heartbeats, product-thread health, release conflicts, owner decision briefs, and shared workflow governance.
 - `wp-product-orchestrator`: one-product WordPress plugin/theme orchestrator for issue intake, milestone scope, release-readiness drive, worker delegation, validation synthesis, and PR workflow.
 - `loop-steward`: independent control-plane PR review, bounded revision, validation, and policy-gated merge decisions for `agent-loop`, `agent-book`, and `agent-skills`.
@@ -29,6 +30,7 @@ This repository contains WordPress and organic-search-focused Codex skills:
 - `wp-plugin-expert` for plugin/product implementation, review, debugging, release, and hardening work.
 - `wp-theme-expert` for theme, FSE, block editor, design-to-theme, visual parity, and editor/frontend parity work.
 - `wp-site-expert` for whole-site, landing page, UX, CRO, SEO/content, analytics, accessibility, and premium site polish work.
+- `wp-quality-reviewer` for explicit security, performance, modularity/maintainability, or accessibility audits, fixes, and independent reassessment.
 - `wp-portfolio-cto` for cross-product portfolio governance, product-thread health, release conflicts, and owner portfolio briefs.
 - `wp-product-orchestrator` for one plugin/theme product's backlog, release train, GitHub issue/PR queue, and delegated implementation workflow.
 - `loop-steward` for active control-plane PRs that need independent review, bounded repair, or a policy-gated merge decision.

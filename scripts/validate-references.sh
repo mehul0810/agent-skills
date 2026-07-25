@@ -417,6 +417,17 @@ validate_visual_wordpress_rules() {
   fi
 }
 
+validate_quality_reviewer_rules() {
+  echo ""
+  echo "=== Validating quality reviewer guardrails ==="
+
+  if bash "$repo_root/scripts/quality-reviewer-behavior-audit.sh"; then
+    log_success "Quality reviewer guardrails are present"
+  else
+    log_error "Quality reviewer guardrail audit failed"
+  fi
+}
+
 validate_model_routing_rules() {
   echo ""
   echo "=== Validating availability-first model routing ==="
@@ -522,6 +533,7 @@ main() {
     validate_behavior_rules
     validate_orchestration_rules
     validate_visual_wordpress_rules
+    validate_quality_reviewer_rules
     validate_model_routing_rules
     validate_loop_steward_rules
     validate_video_production_rules
@@ -539,6 +551,8 @@ main() {
     validate_orchestration_rules
   elif [ "$check_type" = "visual" ]; then
     validate_visual_wordpress_rules
+  elif [ "$check_type" = "quality" ]; then
+    validate_quality_reviewer_rules
   elif [ "$check_type" = "models" ]; then
     validate_model_routing_rules
   elif [ "$check_type" = "steward" ]; then
