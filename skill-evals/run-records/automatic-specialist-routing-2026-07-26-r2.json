@@ -1,0 +1,48 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "automatic-specialist-routing-2026-07-26-r2",
+  "scenario": "automatic-specialist-selection",
+  "result": "succeeded",
+  "startedAt": "2026-07-26T04:36:53.000Z",
+  "durationMs": 8000,
+  "checks": [
+    {
+      "name": "direct-plugin-specialist",
+      "result": "pass"
+    },
+    {
+      "name": "no-umbrella-map-load",
+      "result": "pass"
+    },
+    {
+      "name": "one-primary-reference-budget",
+      "result": "pass"
+    },
+    {
+      "name": "bounded-evidence-handoff",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 4
+  },
+  "lineage": {
+    "verificationId": "automatic-specialist-routing-2026-07-26-r2",
+    "artifactPointer": "codex-fresh-agent:/root/behavior_drift_audit#2026-07-26T04:36:53Z"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-07-26T04:37:01.000Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "After the authority correction, a fresh unnamed-task agent still selected wp-plugin-expert directly, avoided broad routing, and returned a bounded REST fix and test evidence handoff."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "routing",
+    "plugin"
+  ]
+}

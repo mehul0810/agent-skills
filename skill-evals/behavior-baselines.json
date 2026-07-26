@@ -191,7 +191,7 @@
         "wp-expert/agents/openai.yaml",
         "templates/product-repo/AGENTS.md"
       ],
-      "sha256": "0a6b2c4da5954389ccbdd22e7b7e5bce4a75c5f8847d2becd2fc5e92deaa9f08",
+      "sha256": "3acf858aab81fdf542e0d4e78351deeae7899b80e4e391925ddc3f19aca61135",
       "scenario": {
         "id": "automatic-specialist-selection",
         "files": [
@@ -210,10 +210,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/automatic-specialist-routing-2026-07-26.json",
-          "sha256": "fcee16ddc49e664a5df21ad4484508d0741af68987a3c9e4e47dd21197116f8a",
-          "testedRevision": "8a391aab4b2e945dfe83a3b4647145d4d2952072",
-          "testedSourceSha256": "0a6b2c4da5954389ccbdd22e7b7e5bce4a75c5f8847d2becd2fc5e92deaa9f08",
+          "runRecord": "skill-evals/run-records/automatic-specialist-routing-2026-07-26-r2.json",
+          "sha256": "9c94e2a28554c865f28b4090cd7df568ab4bd245b3034f81424f98eafd1c0b1c",
+          "testedRevision": "5a92944b8bce58ac4f2083f29a202fe9644dfd69",
+          "testedSourceSha256": "3acf858aab81fdf542e0d4e78351deeae7899b80e4e391925ddc3f19aca61135",
           "testedScenarioSha256": "5964fa0002f260ea2ed1ecdf40a842bc6a5548173fca1f1b38adfa16b713693d",
           "runtime": {
             "host": "codex-desktop",
@@ -231,7 +231,7 @@
         "shared/references/product-autonomy-permissions.md",
         "shared/references/release-train-discipline.md"
       ],
-      "sha256": "7c8ad560b27136970d986cfc6491532c70b8b93e2d6c1baa28a0d7f76d372c7c",
+      "sha256": "5c6a6400ff9a3e1ebd37d82a39a6945d47199fe27399e1e336e519d6723735ed",
       "scenario": {
         "id": "product-release-authority",
         "files": [
@@ -241,7 +241,7 @@
           "Safe non-production PR merge",
           "Main-first production release"
         ],
-        "sha256": "ced7f603ed9d858c4a5d59ef394eb7570c22ebee32eafeb33995c6531253ad60"
+        "sha256": "bf51fc386275f8db17565c4a2fd0b1971fc50fd3f4d14a93104cb6d6ffc6eaa6"
       },
       "requiredChecks": [
         "safe-non-production-merge-autonomy",
@@ -251,11 +251,11 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-release-authority-2026-07-26.json",
-          "sha256": "60eb7df41ecf7337d7af4b9d556a75f77f53c90893f4657dd0e3d4101bb76fae",
-          "testedRevision": "8a391aab4b2e945dfe83a3b4647145d4d2952072",
-          "testedSourceSha256": "7c8ad560b27136970d986cfc6491532c70b8b93e2d6c1baa28a0d7f76d372c7c",
-          "testedScenarioSha256": "ced7f603ed9d858c4a5d59ef394eb7570c22ebee32eafeb33995c6531253ad60",
+          "runRecord": "skill-evals/run-records/product-release-authority-2026-07-26-r2.json",
+          "sha256": "3dc3d367077d0a2e7160e9fc264dd2a86577165e9319dbf1b83f7578522529a6",
+          "testedRevision": "5a92944b8bce58ac4f2083f29a202fe9644dfd69",
+          "testedSourceSha256": "5c6a6400ff9a3e1ebd37d82a39a6945d47199fe27399e1e336e519d6723735ed",
+          "testedScenarioSha256": "bf51fc386275f8db17565c4a2fd0b1971fc50fd3f4d14a93104cb6d6ffc6eaa6",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",

@@ -1,0 +1,49 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "product-release-authority-2026-07-26-r2",
+  "scenario": "product-release-authority",
+  "result": "succeeded",
+  "startedAt": "2026-07-26T04:37:09.000Z",
+  "durationMs": 30000,
+  "checks": [
+    {
+      "name": "safe-non-production-merge-autonomy",
+      "result": "pass"
+    },
+    {
+      "name": "exact-live-base-scope-status-check",
+      "result": "pass"
+    },
+    {
+      "name": "production-owner-approval-gate",
+      "result": "pass"
+    },
+    {
+      "name": "main-first-tag-and-ancestry-proof",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 4
+  },
+  "lineage": {
+    "verificationId": "product-release-authority-2026-07-26-r2",
+    "artifactPointer": "codex-fresh-agent:/root/install_runtime_audit#2026-07-26T04:37:09Z"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-07-26T04:37:39.000Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "Fresh PO required live unprotected-branch proof for autonomous non-production merge, failed protected or unknown targets closed, and retained exact main-first production gates."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "product-orchestrator",
+    "release-authority",
+    "protected-branch"
+  ]
+}
