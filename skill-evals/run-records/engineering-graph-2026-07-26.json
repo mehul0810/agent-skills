@@ -1,0 +1,51 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "engineering-graph-2026-07-26",
+  "scenario": "bounded-questions-and-deterministic-graph-closure",
+  "result": "succeeded",
+  "startedAt": "2026-07-26T04:23:52.000Z",
+  "durationMs": 126000,
+  "checks": [
+    {
+      "name": "one-brief-maximum-three-questions",
+      "result": "pass"
+    },
+    {
+      "name": "recommendation-impact-safe-default",
+      "result": "pass"
+    },
+    {
+      "name": "no-placeholder-policy",
+      "result": "pass"
+    },
+    {
+      "name": "bundled-validator-executed",
+      "result": "pass"
+    },
+    {
+      "name": "incomplete-critical-graph-rejected",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 5
+  },
+  "lineage": {
+    "verificationId": "engineering-graph-2026-07-26",
+    "artifactPointer": "codex-fresh-agent:/root/evidence_graph#2026-07-26T04:23:52Z"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-07-26T04:25:58.000Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "Fresh agent used one three-question decision brief, ran the bundled validator self-test, rejected a missing graph artifact, and kept release closure blocked."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "engineering-graph"
+  ]
+}

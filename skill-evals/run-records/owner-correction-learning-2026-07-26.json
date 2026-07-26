@@ -1,0 +1,52 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "owner-correction-learning-2026-07-26",
+  "scenario": "owner-correction-learning",
+  "result": "succeeded",
+  "startedAt": "2026-07-26T04:25:00.000Z",
+  "durationMs": 5000,
+  "checks": [
+    {
+      "name": "immediate-root-cause-correction",
+      "result": "pass"
+    },
+    {
+      "name": "compact-correction-result",
+      "result": "pass"
+    },
+    {
+      "name": "worker-candidate-only",
+      "result": "pass"
+    },
+    {
+      "name": "dedupe-and-repeatability-gate",
+      "result": "pass"
+    },
+    {
+      "name": "reviewed-durable-destination",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 5
+  },
+  "lineage": {
+    "verificationId": "owner-correction-learning-2026-07-26",
+    "artifactPointer": "codex-fresh-agent:/root/behavior_drift_audit/learning_drift_protocol#2026-07-26T04:25:00Z"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-07-26T04:25:05.000Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "Fresh worker revoked the false completion, prescribed ownership-level correction and editor proof, emitted a candidate only, and deduped it against existing durable guidance."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "owner-correction",
+    "learning"
+  ]
+}

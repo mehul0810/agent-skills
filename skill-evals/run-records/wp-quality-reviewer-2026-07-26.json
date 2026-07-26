@@ -1,0 +1,83 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "wp-quality-reviewer-2026-07-26",
+  "scenario": "multi-domain-release-quality-review",
+  "result": "succeeded",
+  "startedAt": "2026-07-26T04:23:58.000Z",
+  "durationMs": 46000,
+  "checks": [
+    {
+      "name": "compact-multi-domain-route",
+      "result": "pass"
+    },
+    {
+      "name": "evidence-backed-severity-findings",
+      "result": "pass"
+    },
+    {
+      "name": "security-negative-proof",
+      "result": "pass"
+    },
+    {
+      "name": "performance-comparable-delta",
+      "result": "pass"
+    },
+    {
+      "name": "modularity-behavior-proof",
+      "result": "pass"
+    },
+    {
+      "name": "accessibility-manual-proof",
+      "result": "pass"
+    },
+    {
+      "name": "immutable-candidate-and-domain-dispositions",
+      "result": "pass"
+    },
+    {
+      "name": "critical-fix-independent-review",
+      "result": "pass"
+    },
+    {
+      "name": "performance-direction-and-budget",
+      "result": "pass"
+    },
+    {
+      "name": "malformed-vague-report-rejection",
+      "result": "pass"
+    },
+    {
+      "name": "unresolved-critical-blocks-pass",
+      "result": "pass"
+    },
+    {
+      "name": "formal-report-validation",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 12
+  },
+  "lineage": {
+    "verificationId": "wp-quality-reviewer-2026-07-26",
+    "artifactPointer": "codex-fresh-agent:/root/evidence_quality#2026-07-26T04:23:58Z"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-07-26T04:24:44.000Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "Fresh agent required immutable multi-domain evidence, independent critical-fix review and directional performance budgets, and deterministically rejected vague malformed proof."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "quality",
+    "security",
+    "performance",
+    "modularity",
+    "accessibility"
+  ]
+}

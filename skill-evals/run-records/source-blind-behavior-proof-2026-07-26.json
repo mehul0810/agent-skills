@@ -1,0 +1,52 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "source-blind-behavior-proof-2026-07-26",
+  "scenario": "source-blind-settings-persistence",
+  "result": "succeeded",
+  "startedAt": "2026-07-26T04:24:48.000Z",
+  "durationMs": 29000,
+  "checks": [
+    {
+      "name": "source-context-excluded",
+      "result": "pass"
+    },
+    {
+      "name": "exact-package-environment-identity",
+      "result": "pass"
+    },
+    {
+      "name": "persistence-invalid-input-role-probes",
+      "result": "pass"
+    },
+    {
+      "name": "clause-status-and-proof-gaps",
+      "result": "pass"
+    },
+    {
+      "name": "no-release-authority",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 5
+  },
+  "lineage": {
+    "verificationId": "source-blind-behavior-proof-2026-07-26",
+    "artifactPointer": "codex-fresh-agent:/root/quality_gate_hardening/validator_edge_review#2026-07-26T04:24:48Z"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-07-26T04:25:17.000Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "Fresh source-blind validator required exact package and environment identity, defined persistence, invalid-input and role probes, and reported every clause blocked without release authority."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "behavior-validator",
+    "source-blind"
+  ]
+}

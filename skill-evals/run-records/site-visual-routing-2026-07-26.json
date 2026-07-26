@@ -1,0 +1,52 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "site-visual-routing-2026-07-26",
+  "scenario": "site-screenshot-to-editable-wordpress",
+  "result": "succeeded",
+  "startedAt": "2026-07-26T04:23:52.000Z",
+  "durationMs": 15000,
+  "checks": [
+    {
+      "name": "missing-source-not-hallucinated",
+      "result": "pass"
+    },
+    {
+      "name": "runtime-block-and-theme-inventory",
+      "result": "pass"
+    },
+    {
+      "name": "editable-page-content-ownership",
+      "result": "pass"
+    },
+    {
+      "name": "visitor-and-author-proof",
+      "result": "pass"
+    },
+    {
+      "name": "responsive-accessibility-visual-proof",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 5
+  },
+  "lineage": {
+    "verificationId": "site-visual-routing-2026-07-26",
+    "artifactPointer": "codex-fresh-agent:/root/evidence_site#2026-07-26T04:23:52Z"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-07-26T04:24:07.000Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "Fresh agent refused to infer a missing screenshot, preserved editable page-block ownership, and required visitor, author, responsive, accessibility and visual proof."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "site",
+    "visual"
+  ]
+}

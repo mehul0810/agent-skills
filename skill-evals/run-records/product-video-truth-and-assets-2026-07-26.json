@@ -1,0 +1,53 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "product-video-truth-and-assets-2026-07-26",
+  "scenario": "product-video-truth-and-assets",
+  "result": "succeeded",
+  "startedAt": "2026-07-26T04:25:15.000Z",
+  "durationMs": 25000,
+  "checks": [
+    {
+      "name": "no-fake-ui-or-unsupported-claims",
+      "result": "pass"
+    },
+    {
+      "name": "governed-logo-alpha-asset",
+      "result": "pass"
+    },
+    {
+      "name": "storyboard-before-full-render",
+      "result": "pass"
+    },
+    {
+      "name": "deterministic-review-package",
+      "result": "pass"
+    },
+    {
+      "name": "bounded-critique-iteration",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 5
+  },
+  "lineage": {
+    "verificationId": "product-video-truth-and-assets-2026-07-26",
+    "artifactPointer": "codex-fresh-agent:/root/evidence_quality#2026-07-26T04:25:15Z"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-07-26T04:25:40.000Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "Fresh video producer rejected fake UI and universal claims, required a governed alpha logo, storyboard approval, deterministic review artifacts and bounded critique iteration."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "video",
+    "brand",
+    "truth"
+  ]
+}
