@@ -262,12 +262,59 @@
       ]
     },
     {
-      "name": "Product video",
-      "maxWords": 2200,
+      "name": "Product video story",
+      "maxWords": 1850,
+      "warningPercent": 85,
+      "files": [
+        "product-video-producer/SKILL.md",
+        "product-video-producer/references/reference-to-storyboard.md"
+      ]
+    },
+    {
+      "name": "Product video editing",
+      "maxWords": 2300,
+      "warningPercent": 85,
+      "files": [
+        "product-video-producer/SKILL.md",
+        "product-video-producer/references/render-review-iteration.md"
+      ]
+    },
+    {
+      "name": "Product video channel",
+      "maxWords": 2000,
+      "warningPercent": 85,
+      "files": [
+        "product-video-producer/SKILL.md",
+        "product-video-producer/references/channel-delivery-feedback.md"
+      ]
+    },
+    {
+      "name": "Product video story and editing",
+      "maxWords": 3250,
       "warningPercent": 85,
       "files": [
         "product-video-producer/SKILL.md",
         "product-video-producer/references/reference-to-storyboard.md",
+        "product-video-producer/references/render-review-iteration.md"
+      ]
+    },
+    {
+      "name": "Product video story and channel",
+      "maxWords": 2950,
+      "warningPercent": 85,
+      "files": [
+        "product-video-producer/SKILL.md",
+        "product-video-producer/references/reference-to-storyboard.md",
+        "product-video-producer/references/channel-delivery-feedback.md"
+      ]
+    },
+    {
+      "name": "Product video channel delivery QA",
+      "maxWords": 3350,
+      "warningPercent": 85,
+      "files": [
+        "product-video-producer/SKILL.md",
+        "product-video-producer/references/channel-delivery-feedback.md",
         "product-video-producer/references/render-review-iteration.md"
       ]
     }
@@ -346,7 +393,27 @@
     {
       "name": "Product Video Producer",
       "file": "skill-evals/product-video-producer-scenarios.md",
-      "requiredPhrases": ["# Product Video Producer Scenarios", "Logo matte defect", "Deterministic 4K", "Exact critique"]
+      "requiredPhrases": [
+        "# Product Video Producer Scenarios",
+        "Automatic video specialist selection",
+        "Reference-led direction",
+        "Inaccessible reference",
+        "Abstract product",
+        "Logo matte defect",
+        "Deterministic 4K",
+        "Exact critique",
+        "Unsupported proof",
+        "Privacy-safe software demo",
+        "Enterprise anti-slop",
+        "Generated sequence continuity",
+        "Non-destructive editing",
+        "Long-form and Short",
+        "Accessible post",
+        "Synthetic media and rights",
+        "Wrong output identity",
+        "Evidence-led YouTube learning",
+        "Publication boundary"
+      ]
     }
   ]
 }

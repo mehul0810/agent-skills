@@ -31,6 +31,8 @@ Translate premium cues into the product's own system:
 
 For AI or workflow products, show governed inputs, decisions, approvals, integrations, and outcomes. Do not use vague particles, glowing brains, magic automation, or impossible dashboards as substitutes for product truth.
 
+Treat each shot as an accountable product statement. Ask what the viewer learns, what evidence supports it, and why motion is needed. Reject generic stock-office montages, fake customer reactions, decorative device mockups, arbitrary zooms, subtitle walls, transition packs, and repeated bass hits when they do not advance the promise. Restraint, product specificity, and a clear failure or recovery state read as more enterprise than ornamental density.
+
 ## Storyboard Contract
 
 Every shot records:
@@ -55,8 +57,14 @@ Keep the arc compact: context, tension, product role, verified proof, outcome, n
 - Prefer original SVG logos and licensed brand fonts. Raster logos require real alpha, adequate resolution, and edge checks on both light and dark backgrounds.
 - Treat a white rectangle behind a logo as a defect unless the brand specification explicitly defines that container.
 - Do not generate exact logos, UI screenshots, wordmarks, or readable product copy. Generate supporting scenes/textures separately and composite governed assets afterward.
+- For generated sequences, approve a representative style frame before motion; lock subject/object identity, palette, lighting, lens/camera language, aspect ratio, and reproducibility inputs. Inspect temporal consistency, geometry, unwanted text/watermarks, and frame-to-frame artifacts before compositing governed assets.
 - Capture real UI from a verified build and identify version/environment. If UI is unavailable or unreleased, use clearly conceptual shapes without browser chrome, controls, or interactions that could be mistaken for shipped UI.
+- Use sanitized deterministic fixture data for product captures. Hide secrets, personal/customer data, internal URLs, test credentials, and notifications. Record the actor/role, product version, viewport, fixture, and capture date. Obtain consent before using a person's likeness or voice.
+- For original camera or voice capture, lock controlled exposure, white balance, and frame rate; record clean dialogue and room tone; choose intentional framing, eyeline, and background; and obtain the required talent, voice, and location releases.
+- Preserve truthful chronology. Trimming pauses is acceptable; rearranging states, masking failures, or compositing a result that the product did not produce must be labeled as simulated or excluded.
 - Record palette values, type files/weights, source dimensions, licenses, and transformations. Never stretch, crop, recolor, or add effects to a protected mark without approval.
+
+Generated or materially altered media needs a receipt: tool and source, human oversight, rights/consent, what changed, whether it looks realistic, and the destination disclosure decision. Preserve Content Credentials/C2PA data when the workflow supports it, but do not treat provenance metadata as proof that a product claim is true.
 
 ## Approval Gate
 

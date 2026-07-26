@@ -1,4 +1,4 @@
 interface:
   display_name: "Product Video Producer"
-  short_description: "Premium enterprise product video production"
-  default_prompt: "Use $product-video-producer to turn brand references into a reviewable product video with deterministic renders and evidence."
+  short_description: "Enterprise product films, demos, YouTube, and post"
+  default_prompt: "Use $product-video-producer to plan, edit, validate, or package a premium product or brand video from governed evidence."

@@ -1,45 +1,250 @@
 {
-  "schema_version": 1,
-  "project": "",
-  "product": "",
-  "storyboard": {
-    "path": "",
-    "version": ""
+  "$schema": "./video-manifest.schema.json",
+  "schema_version": 2,
+  "identity": {
+    "project_id": "",
+    "job_id": "",
+    "project_root": "",
+    "project_file": "",
+    "project_file_sha256": "",
+    "sequence_or_composition": "",
+    "expected_output_artifact_id": "",
+    "expected_output_role": "review_video",
+    "expected_output_path": ""
   },
   "source": {
     "repository": "",
-    "revision": ""
+    "revision": "",
+    "dirty": false,
+    "dirty_state_sha256": "not_applicable"
+  },
+  "storyboard": {
+    "status": "required",
+    "path": "",
+    "version": "",
+    "sha256": "",
+    "reason": ""
+  },
+  "edit": {
+    "timeline_id": "",
+    "version": "",
+    "source_chronology": "truthful",
+    "proxy_conform": "not_applicable",
+    "lineage_notes": ""
   },
   "render": {
-    "toolchain": [],
+    "toolchain": [
+      {
+        "name": "",
+        "version": "",
+        "digest": ""
+      }
+    ],
     "command_or_project": "",
     "width": 1920,
     "height": 1080,
-    "fps": 30,
-    "duration_seconds": 0,
-    "color_profile": "Rec.709 SDR",
-    "audio_hz": 48000
+    "fps": {
+      "numerator": 30,
+      "denominator": 1
+    },
+    "frame_count": 0,
+    "pixel_format": "yuv420p",
+    "scan": "progressive",
+    "color": {
+      "profile": "Rec.709 SDR",
+      "primaries": "bt709",
+      "transfer": "bt709",
+      "matrix": "bt709",
+      "range": "limited"
+    },
+    "audio": {
+      "enabled": true,
+      "codec": "aac",
+      "sample_rate_hz": 48000,
+      "layout": "stereo",
+      "loudness_target": "",
+      "true_peak_target": ""
+    }
+  },
+  "rights": {
+    "asset_register": "",
+    "asset_register_sha256": "",
+    "music": "not_applicable",
+    "voice_likeness": "not_applicable"
+  },
+  "synthetic_media": {
+    "used": false,
+    "realistic": false,
+    "disclosure_required": false,
+    "decision_evidence": "",
+    "provenance_receipt": "not_applicable",
+    "human_oversight": ""
   },
   "assets": [],
   "claims": [],
-  "outputs": {
-    "review_video": {
+  "outputs": [
+    {
+      "artifact_id": "",
+      "role": "review_video",
+      "source_timeline_id": "",
+      "parent_artifact_ids": [],
+      "path": "",
+      "sha256": "",
+      "state": "rendered",
+      "media": {
+        "kind": "video",
+        "expected": {
+          "container": "mp4",
+          "codec": "h264",
+          "codec_profile": "High",
+          "width": 1920,
+          "height": 1080,
+          "fps": {
+            "numerator": 30,
+            "denominator": 1
+          },
+          "frame_count": 0,
+          "pixel_aspect_ratio": {
+            "numerator": 1,
+            "denominator": 1
+          },
+          "pixel_format": "yuv420p",
+          "scan": "progressive",
+          "color": {
+            "profile": "Rec.709 SDR",
+            "primaries": "bt709",
+            "transfer": "bt709",
+            "matrix": "bt709",
+            "range": "limited"
+          },
+          "audio": {
+            "enabled": true,
+            "codec": "aac",
+            "sample_rate_hz": 48000,
+            "layout": "stereo",
+            "loudness_target": "",
+            "true_peak_target": ""
+          }
+        },
+        "observed": {
+          "container": "",
+          "codec": "",
+          "codec_profile": "",
+          "width": 0,
+          "height": 0,
+          "fps": {
+            "numerator": 0,
+            "denominator": 0
+          },
+          "frame_count": 0,
+          "pixel_aspect_ratio": {
+            "numerator": 0,
+            "denominator": 0
+          },
+          "pixel_format": "",
+          "scan": "",
+          "color": {
+            "profile": "",
+            "primaries": "",
+            "transfer": "",
+            "matrix": "",
+            "range": ""
+          },
+          "audio": {
+            "enabled": true,
+            "codec": "",
+            "sample_rate_hz": 0,
+            "layout": "",
+            "loudness_target": "",
+            "true_peak_target": ""
+          }
+        }
+      },
+      "probe_evidence": {
+        "adapter": "",
+        "path": "",
+        "sha256": ""
+      }
+    },
+    {
+      "artifact_id": "",
+      "role": "poster",
+      "source_timeline_id": "",
+      "parent_artifact_ids": [],
+      "path": "",
+      "sha256": "",
+      "state": "rendered",
+      "media": {
+        "kind": "image",
+        "expected": {
+          "format": "png",
+          "width": 1920,
+          "height": 1080,
+          "pixel_format": "rgba",
+          "color_profile": "sRGB",
+          "alpha": true
+        },
+        "observed": {
+          "format": "",
+          "width": 0,
+          "height": 0,
+          "pixel_format": "",
+          "color_profile": "",
+          "alpha": false
+        }
+      },
+      "probe_evidence": {
+        "adapter": "",
+        "path": "",
+        "sha256": ""
+      }
+    }
+  ],
+  "accessibility": {
+    "speech_present": true,
+    "essential_visual_information": true,
+    "decision_evidence": "",
+    "captions": {
+      "status": "required",
+      "path": "",
+      "sha256": "",
+      "human_reviewed": false
+    },
+    "transcript": {
+      "status": "required",
       "path": "",
       "sha256": ""
     },
-    "poster": {
-      "path": "",
-      "sha256": ""
+    "visual_equivalence": {
+      "decision": "integrated_narration",
+      "evidence": "",
+      "artifact": {
+        "status": "not_applicable",
+        "path": "",
+        "sha256": "not_applicable"
+      }
     },
-    "master": {
-      "path": "",
-      "sha256": ""
+    "flash_check": {
+      "status": "",
+      "evidence": ""
     }
   },
   "validation": {
     "technical": [],
     "content": [],
+    "audio": [],
     "accessibility": [],
-    "known_gaps": []
-  }
+    "rights": [],
+    "platform": []
+  },
+  "approval": {
+    "state": "draft",
+    "owner": "",
+    "approved_at": "",
+    "evidence_path": "",
+    "evidence_sha256": "not_applicable",
+    "approved_artifact_id": "not_applicable",
+    "approved_artifact_sha256": "not_applicable"
+  },
+  "known_gaps": []
 }

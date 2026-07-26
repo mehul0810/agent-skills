@@ -346,8 +346,13 @@
       "name": "product-video-truth-and-assets",
       "files": [
         "product-video-producer/SKILL.md",
+        "product-video-producer/agents/openai.yaml",
         "product-video-producer/references/reference-to-storyboard.md",
-        "product-video-producer/references/render-review-iteration.md"
+        "product-video-producer/references/render-review-iteration.md",
+        "product-video-producer/references/channel-delivery-feedback.md",
+        "product-video-producer/assets/video-manifest.template.json",
+        "product-video-producer/assets/video-manifest.schema.json",
+        "product-video-producer/scripts/validate-video-manifest.mjs"
       ],
       "sha256": "5a04e22ea364a43ab3bbc54f2ffeed2113142a23413997dcb5d27224db87be47",
       "scenario": {
@@ -356,17 +361,47 @@
           "skill-evals/product-video-producer-scenarios.md"
         ],
         "anchors": [
+          "Automatic video specialist selection",
+          "Reference-led direction",
+          "Inaccessible reference",
           "Abstract product",
-          "Logo matte defect"
+          "Logo matte defect",
+          "Deterministic 4K",
+          "Exact critique",
+          "Unsupported proof",
+          "Privacy-safe software demo",
+          "Enterprise anti-slop",
+          "Generated sequence continuity",
+          "Non-destructive editing",
+          "Long-form and Short",
+          "Accessible post",
+          "Synthetic media and rights",
+          "Wrong output identity",
+          "Evidence-led YouTube learning",
+          "Publication boundary"
         ],
         "sha256": "1807500b15ec36c710b8cf7d3710b41b8f9aba7487918ccb13bef9a7fc686dc2"
       },
       "requiredChecks": [
+        "automatic-specialist-routing",
+        "reference-originality-and-storyboard-gate",
+        "inaccessible-reference-no-hallucination",
         "no-fake-ui-or-unsupported-claims",
         "governed-logo-alpha-asset",
         "storyboard-before-full-render",
         "deterministic-review-package",
-        "bounded-critique-iteration"
+        "strict-manifest-identity-and-approval",
+        "bounded-critique-iteration",
+        "privacy-safe-truthful-ui-capture",
+        "enterprise-anti-slop-editorial-restraint",
+        "generated-sequence-continuity-and-governed-compositing",
+        "non-destructive-edit-and-output-lineage",
+        "native-long-form-and-short-packages",
+        "accessible-caption-audio-and-visual-equivalence",
+        "synthetic-media-rights-and-disclosure",
+        "exact-job-and-output-identity",
+        "evidence-led-channel-learning",
+        "owner-gated-publication-and-master-preservation"
       ],
       "evidence": [
         {

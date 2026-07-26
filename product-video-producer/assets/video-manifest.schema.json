@@ -1,0 +1,896 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mehul0810/agent-skills/product-video-producer/v2/video-manifest.schema.json",
+  "title": "Product Video Delivery Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "identity",
+    "source",
+    "storyboard",
+    "edit",
+    "render",
+    "rights",
+    "synthetic_media",
+    "assets",
+    "claims",
+    "outputs",
+    "accessibility",
+    "validation",
+    "approval",
+    "known_gaps"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": 2 },
+    "identity": { "$ref": "#/$defs/identity" },
+    "source": { "$ref": "#/$defs/source" },
+    "storyboard": { "$ref": "#/$defs/storyboard" },
+    "edit": { "$ref": "#/$defs/edit" },
+    "render": { "$ref": "#/$defs/render" },
+    "rights": { "$ref": "#/$defs/rights" },
+    "synthetic_media": { "$ref": "#/$defs/syntheticMedia" },
+    "assets": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/asset" }
+    },
+    "claims": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/claim" }
+    },
+    "outputs": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "$ref": "#/$defs/output" },
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "required": ["role"],
+            "properties": { "role": { "const": "review_video" } }
+          },
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": ["role"],
+            "properties": { "role": { "const": "poster" } }
+          },
+          "minContains": 1
+        }
+      ]
+    },
+    "accessibility": { "$ref": "#/$defs/accessibility" },
+    "validation": { "$ref": "#/$defs/validation" },
+    "approval": { "$ref": "#/$defs/approval" },
+    "known_gaps": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/knownGap" }
+    }
+  },
+  "$defs": {
+    "nonEmpty": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "nonApplicable": { "const": "not_applicable" },
+    "nonNAString": {
+      "allOf": [
+        { "$ref": "#/$defs/nonEmpty" },
+        { "not": { "$ref": "#/$defs/nonApplicable" } }
+      ]
+    },
+    "nonApplicableOrString": {
+      "oneOf": [
+        { "$ref": "#/$defs/nonNAString" },
+        { "$ref": "#/$defs/nonApplicable" }
+      ]
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "shaOrNA": {
+      "oneOf": [
+        { "$ref": "#/$defs/sha256" },
+        { "$ref": "#/$defs/nonApplicable" }
+      ]
+    },
+    "relativePath": { "$ref": "#/$defs/nonEmpty" },
+    "rightsDecision": {
+      "type": "string",
+      "pattern": "^(?:not_applicable|cleared:.+)$"
+    },
+    "rational": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["numerator", "denominator"],
+      "properties": {
+        "numerator": { "type": "integer", "minimum": 1 },
+        "denominator": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "receipts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/validationReceipt" }
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "project_id",
+        "job_id",
+        "project_root",
+        "project_file",
+        "project_file_sha256",
+        "sequence_or_composition",
+        "expected_output_artifact_id",
+        "expected_output_role",
+        "expected_output_path"
+      ],
+      "properties": {
+        "project_id": { "$ref": "#/$defs/nonNAString" },
+        "job_id": { "$ref": "#/$defs/nonNAString" },
+        "project_root": { "$ref": "#/$defs/nonEmpty" },
+        "project_file": { "$ref": "#/$defs/relativePath" },
+        "project_file_sha256": { "$ref": "#/$defs/sha256" },
+        "sequence_or_composition": { "$ref": "#/$defs/nonNAString" },
+        "expected_output_artifact_id": { "$ref": "#/$defs/nonNAString" },
+        "expected_output_role": { "$ref": "#/$defs/outputRole" },
+        "expected_output_path": { "$ref": "#/$defs/relativePath" }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "revision", "dirty", "dirty_state_sha256"],
+      "properties": {
+        "repository": { "$ref": "#/$defs/nonEmpty" },
+        "revision": { "$ref": "#/$defs/nonEmpty" },
+        "dirty": { "type": "boolean" },
+        "dirty_state_sha256": { "$ref": "#/$defs/shaOrNA" }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "dirty": { "const": true },
+            "dirty_state_sha256": { "$ref": "#/$defs/sha256" }
+          }
+        },
+        {
+          "properties": {
+            "dirty": { "const": false },
+            "dirty_state_sha256": { "$ref": "#/$defs/nonApplicable" }
+          }
+        }
+      ]
+    },
+    "storyboard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "path", "version", "sha256", "reason"],
+      "properties": {
+        "status": { "enum": ["required", "not_applicable"] },
+        "path": { "type": "string" },
+        "version": { "type": "string" },
+        "sha256": { "$ref": "#/$defs/shaOrNA" },
+        "reason": { "type": "string" }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "status": { "const": "required" },
+            "path": { "$ref": "#/$defs/relativePath" },
+            "version": { "$ref": "#/$defs/nonEmpty" },
+            "sha256": { "$ref": "#/$defs/sha256" }
+          }
+        },
+        {
+          "properties": {
+            "status": { "const": "not_applicable" },
+            "path": { "const": "" },
+            "version": { "$ref": "#/$defs/nonApplicable" },
+            "sha256": { "$ref": "#/$defs/nonApplicable" },
+            "reason": { "$ref": "#/$defs/nonEmpty" }
+          }
+        }
+      ]
+    },
+    "edit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "timeline_id",
+        "version",
+        "source_chronology",
+        "proxy_conform",
+        "lineage_notes"
+      ],
+      "properties": {
+        "timeline_id": { "$ref": "#/$defs/nonNAString" },
+        "version": { "$ref": "#/$defs/nonEmpty" },
+        "source_chronology": { "enum": ["truthful", "simulated_disclosed"] },
+        "proxy_conform": { "$ref": "#/$defs/nonEmpty" },
+        "lineage_notes": { "type": "string" }
+      }
+    },
+    "toolPin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version", "digest"],
+      "properties": {
+        "name": { "$ref": "#/$defs/nonEmpty" },
+        "version": {
+          "type": "string",
+          "pattern": "^(?!latest$)(?!.*[<>=*^~|])[A-Za-z0-9][A-Za-z0-9._+-]*$"
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        }
+      }
+    },
+    "audioProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled",
+        "codec",
+        "sample_rate_hz",
+        "layout",
+        "loudness_target",
+        "true_peak_target"
+      ],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "codec": { "$ref": "#/$defs/nonApplicableOrString" },
+        "sample_rate_hz": {
+          "oneOf": [
+            { "type": "integer", "minimum": 1 },
+            { "$ref": "#/$defs/nonApplicable" }
+          ]
+        },
+        "layout": { "$ref": "#/$defs/nonApplicableOrString" },
+        "loudness_target": { "$ref": "#/$defs/nonApplicableOrString" },
+        "true_peak_target": { "$ref": "#/$defs/nonApplicableOrString" }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "enabled": { "const": true },
+            "codec": { "$ref": "#/$defs/nonNAString" },
+            "sample_rate_hz": { "type": "integer", "minimum": 1 },
+            "layout": { "$ref": "#/$defs/nonNAString" },
+            "loudness_target": { "$ref": "#/$defs/nonNAString" },
+            "true_peak_target": { "$ref": "#/$defs/nonNAString" }
+          }
+        },
+        {
+          "properties": {
+            "enabled": { "const": false },
+            "codec": { "$ref": "#/$defs/nonApplicable" },
+            "sample_rate_hz": { "$ref": "#/$defs/nonApplicable" },
+            "layout": { "$ref": "#/$defs/nonApplicable" },
+            "loudness_target": { "$ref": "#/$defs/nonApplicable" },
+            "true_peak_target": { "$ref": "#/$defs/nonApplicable" }
+          }
+        }
+      ]
+    },
+    "colorProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profile", "primaries", "transfer", "matrix", "range"],
+      "properties": {
+        "profile": { "$ref": "#/$defs/nonEmpty" },
+        "primaries": { "$ref": "#/$defs/nonEmpty" },
+        "transfer": { "$ref": "#/$defs/nonEmpty" },
+        "matrix": { "$ref": "#/$defs/nonEmpty" },
+        "range": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "render": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "toolchain",
+        "command_or_project",
+        "width",
+        "height",
+        "fps",
+        "frame_count",
+        "pixel_format",
+        "scan",
+        "color",
+        "audio"
+      ],
+      "properties": {
+        "toolchain": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/toolPin" }
+        },
+        "command_or_project": { "$ref": "#/$defs/nonEmpty" },
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "fps": { "$ref": "#/$defs/rational" },
+        "frame_count": { "type": "integer", "minimum": 1 },
+        "pixel_format": { "$ref": "#/$defs/nonEmpty" },
+        "scan": { "$ref": "#/$defs/nonEmpty" },
+        "color": { "$ref": "#/$defs/colorProfile" },
+        "audio": { "$ref": "#/$defs/audioProfile" }
+      }
+    },
+    "rights": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["asset_register", "asset_register_sha256", "music", "voice_likeness"],
+      "properties": {
+        "asset_register": { "$ref": "#/$defs/relativePath" },
+        "asset_register_sha256": { "$ref": "#/$defs/sha256" },
+        "music": { "$ref": "#/$defs/rightsDecision" },
+        "voice_likeness": { "$ref": "#/$defs/rightsDecision" }
+      }
+    },
+    "syntheticMedia": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "used",
+        "realistic",
+        "disclosure_required",
+        "decision_evidence",
+        "provenance_receipt",
+        "human_oversight"
+      ],
+      "properties": {
+        "used": { "type": "boolean" },
+        "realistic": { "type": "boolean" },
+        "disclosure_required": { "type": "boolean" },
+        "decision_evidence": { "$ref": "#/$defs/nonEmpty" },
+        "provenance_receipt": { "$ref": "#/$defs/nonEmpty" },
+        "human_oversight": { "$ref": "#/$defs/nonEmpty" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["used"],
+            "properties": { "used": { "const": true } }
+          },
+          "then": {
+            "properties": {
+              "provenance_receipt": { "$ref": "#/$defs/nonNAString" }
+            }
+          },
+          "else": {
+            "properties": {
+              "realistic": { "const": false },
+              "disclosure_required": { "const": false },
+              "provenance_receipt": { "$ref": "#/$defs/nonApplicable" }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": ["realistic"],
+            "properties": { "realistic": { "const": true } }
+          },
+          "then": { "properties": { "used": { "const": true } } }
+        },
+        {
+          "if": {
+            "required": ["disclosure_required"],
+            "properties": { "disclosure_required": { "const": true } }
+          },
+          "then": { "properties": { "used": { "const": true } } }
+        }
+      ]
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "path", "sha256", "license"],
+      "properties": {
+        "id": { "$ref": "#/$defs/nonNAString" },
+        "path": { "$ref": "#/$defs/relativePath" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "license": { "$ref": "#/$defs/rightsDecision" }
+      }
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "text", "evidence"],
+      "properties": {
+        "id": { "$ref": "#/$defs/nonNAString" },
+        "text": { "$ref": "#/$defs/nonEmpty" },
+        "evidence": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "outputRole": {
+      "enum": [
+        "review_video",
+        "master",
+        "poster",
+        "platform_derivative",
+        "short"
+      ]
+    },
+    "videoProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "container",
+        "codec",
+        "codec_profile",
+        "width",
+        "height",
+        "fps",
+        "frame_count",
+        "pixel_aspect_ratio",
+        "pixel_format",
+        "scan",
+        "color",
+        "audio"
+      ],
+      "properties": {
+        "container": { "$ref": "#/$defs/nonEmpty" },
+        "codec": { "$ref": "#/$defs/nonEmpty" },
+        "codec_profile": { "$ref": "#/$defs/nonEmpty" },
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "fps": { "$ref": "#/$defs/rational" },
+        "frame_count": { "type": "integer", "minimum": 1 },
+        "pixel_aspect_ratio": { "$ref": "#/$defs/rational" },
+        "pixel_format": { "$ref": "#/$defs/nonEmpty" },
+        "scan": { "$ref": "#/$defs/nonEmpty" },
+        "color": { "$ref": "#/$defs/colorProfile" },
+        "audio": { "$ref": "#/$defs/audioProfile" }
+      }
+    },
+    "imageProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["format", "width", "height", "pixel_format", "color_profile", "alpha"],
+      "properties": {
+        "format": { "$ref": "#/$defs/nonEmpty" },
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "pixel_format": { "$ref": "#/$defs/nonEmpty" },
+        "color_profile": { "$ref": "#/$defs/nonEmpty" },
+        "alpha": { "type": "boolean" }
+      }
+    },
+    "videoMedia": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "expected", "observed"],
+      "properties": {
+        "kind": { "const": "video" },
+        "expected": { "$ref": "#/$defs/videoProfile" },
+        "observed": { "$ref": "#/$defs/videoProfile" }
+      }
+    },
+    "imageMedia": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "expected", "observed"],
+      "properties": {
+        "kind": { "const": "image" },
+        "expected": { "$ref": "#/$defs/imageProfile" },
+        "observed": { "$ref": "#/$defs/imageProfile" }
+      }
+    },
+    "probeEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["adapter", "path", "sha256"],
+      "properties": {
+        "adapter": { "$ref": "#/$defs/nonEmpty" },
+        "path": { "$ref": "#/$defs/relativePath" },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_id",
+        "role",
+        "source_timeline_id",
+        "parent_artifact_ids",
+        "path",
+        "sha256",
+        "state",
+        "media",
+        "probe_evidence"
+      ],
+      "properties": {
+        "artifact_id": { "$ref": "#/$defs/nonNAString" },
+        "role": { "$ref": "#/$defs/outputRole" },
+        "source_timeline_id": { "$ref": "#/$defs/nonNAString" },
+        "parent_artifact_ids": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/nonNAString" }
+        },
+        "path": { "$ref": "#/$defs/relativePath" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "state": {
+          "enum": ["rendered", "validated", "accepted", "superseded", "quarantined"]
+        },
+        "media": {
+          "oneOf": [
+            { "$ref": "#/$defs/videoMedia" },
+            { "$ref": "#/$defs/imageMedia" }
+          ]
+        },
+        "probe_evidence": { "$ref": "#/$defs/probeEvidence" }
+      }
+    },
+    "artifactDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "path", "sha256"],
+      "properties": {
+        "status": { "enum": ["required", "not_applicable"] },
+        "path": { "type": "string" },
+        "sha256": { "$ref": "#/$defs/shaOrNA" }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "status": { "const": "required" },
+            "path": { "$ref": "#/$defs/relativePath" },
+            "sha256": { "$ref": "#/$defs/sha256" }
+          }
+        },
+        {
+          "properties": {
+            "status": { "const": "not_applicable" },
+            "path": { "const": "" },
+            "sha256": { "$ref": "#/$defs/nonApplicable" }
+          }
+        }
+      ]
+    },
+    "captionDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "path", "sha256", "human_reviewed"],
+      "properties": {
+        "status": { "enum": ["required", "not_applicable"] },
+        "path": { "type": "string" },
+        "sha256": { "$ref": "#/$defs/shaOrNA" },
+        "human_reviewed": { "type": "boolean" }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "status": { "const": "required" },
+            "path": { "$ref": "#/$defs/relativePath" },
+            "sha256": { "$ref": "#/$defs/sha256" },
+            "human_reviewed": { "const": true }
+          }
+        },
+        {
+          "properties": {
+            "status": { "const": "not_applicable" },
+            "path": { "const": "" },
+            "sha256": { "$ref": "#/$defs/nonApplicable" },
+            "human_reviewed": { "const": false }
+          }
+        }
+      ]
+    },
+    "accessibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "speech_present",
+        "essential_visual_information",
+        "decision_evidence",
+        "captions",
+        "transcript",
+        "visual_equivalence",
+        "flash_check"
+      ],
+      "properties": {
+        "speech_present": { "type": "boolean" },
+        "essential_visual_information": { "type": "boolean" },
+        "decision_evidence": { "$ref": "#/$defs/nonEmpty" },
+        "captions": { "$ref": "#/$defs/captionDecision" },
+        "transcript": { "$ref": "#/$defs/artifactDecision" },
+        "visual_equivalence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["decision", "evidence", "artifact"],
+          "properties": {
+            "decision": {
+              "enum": [
+                "integrated_narration",
+                "audio_description",
+                "descriptive_transcript",
+                "not_applicable"
+              ]
+            },
+            "evidence": { "$ref": "#/$defs/nonEmpty" },
+            "artifact": { "$ref": "#/$defs/artifactDecision" }
+          }
+        },
+        "flash_check": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "evidence"],
+          "properties": {
+            "status": { "enum": ["pass", "not_applicable"] },
+            "evidence": { "$ref": "#/$defs/nonEmpty" }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["speech_present"],
+            "properties": { "speech_present": { "const": true } }
+          },
+          "then": {
+            "properties": {
+              "captions": {
+                "type": "object",
+                "properties": {
+                  "status": { "const": "required" },
+                  "human_reviewed": { "const": true }
+                }
+              },
+              "transcript": {
+                "type": "object",
+                "properties": { "status": { "const": "required" } }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": ["essential_visual_information"],
+            "properties": { "essential_visual_information": { "const": true } }
+          },
+          "then": {
+            "properties": {
+              "visual_equivalence": {
+                "type": "object",
+                "properties": {
+                  "decision": {
+                    "enum": [
+                      "integrated_narration",
+                      "audio_description",
+                      "descriptive_transcript"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "visual_equivalence": {
+                "type": "object",
+                "properties": {
+                  "decision": { "const": "not_applicable" },
+                  "artifact": {
+                    "type": "object",
+                    "properties": { "status": { "const": "not_applicable" } }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": ["visual_equivalence"],
+            "properties": {
+              "visual_equivalence": {
+                "type": "object",
+                "required": ["decision"],
+                "properties": {
+                  "decision": {
+                    "enum": ["audio_description", "descriptive_transcript"]
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "visual_equivalence": {
+                "type": "object",
+                "properties": {
+                  "artifact": {
+                    "type": "object",
+                    "properties": { "status": { "const": "required" } }
+                  }
+                }
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "visual_equivalence": {
+                "type": "object",
+                "properties": {
+                  "artifact": {
+                    "type": "object",
+                    "properties": { "status": { "const": "not_applicable" } }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["technical", "content", "audio", "accessibility", "rights", "platform"],
+      "properties": {
+        "technical": { "$ref": "#/$defs/receipts" },
+        "content": { "$ref": "#/$defs/receipts" },
+        "audio": { "$ref": "#/$defs/receipts" },
+        "accessibility": { "$ref": "#/$defs/receipts" },
+        "rights": { "$ref": "#/$defs/receipts" },
+        "platform": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/platformReceipt" }
+        }
+      }
+    },
+    "validationReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "check",
+        "artifact_id",
+        "artifact_sha256",
+        "status",
+        "evidence_path",
+        "evidence_sha256"
+      ],
+      "properties": {
+        "check": { "$ref": "#/$defs/nonEmpty" },
+        "artifact_id": { "$ref": "#/$defs/nonNAString" },
+        "artifact_sha256": { "$ref": "#/$defs/sha256" },
+        "status": { "const": "pass" },
+        "evidence_path": { "$ref": "#/$defs/relativePath" },
+        "evidence_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "platformReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "check",
+        "artifact_id",
+        "artifact_sha256",
+        "platform",
+        "spec_source",
+        "source_authority",
+        "verified_at",
+        "status",
+        "evidence_path",
+        "evidence_sha256"
+      ],
+      "properties": {
+        "check": { "$ref": "#/$defs/nonEmpty" },
+        "artifact_id": { "$ref": "#/$defs/nonNAString" },
+        "artifact_sha256": { "$ref": "#/$defs/sha256" },
+        "platform": { "$ref": "#/$defs/nonEmpty" },
+        "spec_source": {
+          "type": "string",
+          "pattern": "^https://[^\\s]+$"
+        },
+        "source_authority": { "const": "official_primary" },
+        "verified_at": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$"
+        },
+        "status": { "const": "pass" },
+        "evidence_path": { "$ref": "#/$defs/relativePath" },
+        "evidence_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "owner",
+        "approved_at",
+        "evidence_path",
+        "evidence_sha256",
+        "approved_artifact_id",
+        "approved_artifact_sha256"
+      ],
+      "properties": {
+        "state": { "enum": ["draft", "review", "accepted", "superseded"] },
+        "owner": { "type": "string" },
+        "approved_at": { "type": "string" },
+        "evidence_path": { "type": "string" },
+        "evidence_sha256": { "$ref": "#/$defs/shaOrNA" },
+        "approved_artifact_id": { "$ref": "#/$defs/nonApplicableOrString" },
+        "approved_artifact_sha256": { "$ref": "#/$defs/shaOrNA" }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "state": { "const": "accepted" },
+            "owner": { "$ref": "#/$defs/nonEmpty" },
+            "approved_at": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$"
+            },
+            "evidence_path": { "$ref": "#/$defs/relativePath" },
+            "evidence_sha256": { "$ref": "#/$defs/sha256" },
+            "approved_artifact_id": { "$ref": "#/$defs/nonNAString" },
+            "approved_artifact_sha256": { "$ref": "#/$defs/sha256" }
+          }
+        },
+        {
+          "properties": {
+            "state": { "enum": ["draft", "review", "superseded"] },
+            "approved_at": { "const": "" },
+            "evidence_path": { "const": "" },
+            "evidence_sha256": { "$ref": "#/$defs/nonApplicable" },
+            "approved_artifact_id": { "$ref": "#/$defs/nonApplicable" },
+            "approved_artifact_sha256": { "$ref": "#/$defs/nonApplicable" }
+          }
+        }
+      ]
+    },
+    "knownGap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "category", "disposition", "evidence", "accepted_by"],
+      "properties": {
+        "id": { "$ref": "#/$defs/nonNAString" },
+        "category": {
+          "enum": [
+            "technical",
+            "content",
+            "audio",
+            "accessibility",
+            "platform",
+            "privacy",
+            "consent",
+            "rights",
+            "truth",
+            "identity",
+            "other"
+          ]
+        },
+        "disposition": { "enum": ["unresolved", "accepted", "resolved"] },
+        "evidence": { "$ref": "#/$defs/nonEmpty" },
+        "accepted_by": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["disposition"],
+            "properties": { "disposition": { "const": "accepted" } }
+          },
+          "then": { "properties": { "accepted_by": { "$ref": "#/$defs/nonEmpty" } } }
+        },
+        {
+          "if": {
+            "required": ["disposition"],
+            "properties": { "disposition": { "enum": ["unresolved", "resolved"] } }
+          },
+          "then": { "properties": { "accepted_by": { "const": "" } } }
+        }
+      ]
+    }
+  }
+}

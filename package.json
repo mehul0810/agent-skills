@@ -11,9 +11,13 @@
     "validate:behavior-evidence": "node scripts/behavior-evidence-audit.mjs --self-test && node scripts/behavior-evidence-audit.mjs",
     "validate:graph": "node wp-expert/scripts/validate-engineering-graph.mjs --self-test",
     "validate:quality": "node wp-quality-reviewer/scripts/validate-review-report.mjs --self-test && bash scripts/quality-reviewer-behavior-audit.sh",
-    "test": "npm run harness && npm run run-record:example && npm run run-record:behavior && npm run validate:behavior-evidence && npm run validate:graph && npm run validate:quality"
+    "validate:video": "node product-video-producer/scripts/validate-video-manifest.mjs --self-test && bash scripts/video-production-behavior-audit.sh",
+    "test": "npm run harness && npm run run-record:example && npm run run-record:behavior && npm run validate:behavior-evidence && npm run validate:graph && npm run validate:quality && npm run validate:video"
   },
   "devDependencies": {
     "@mehul0810/agent-harness": "https://github.com/mehul0810/agent-harness/archive/24ffe6e5481aebe33f403df9b72f0de7214f019a.tar.gz"
+  },
+  "dependencies": {
+    "ajv": "8.20.0"
   }
 }
