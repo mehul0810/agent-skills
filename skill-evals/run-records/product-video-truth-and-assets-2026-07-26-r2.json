@@ -1,0 +1,109 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "product-video-truth-and-assets-2026-07-26-r2",
+  "scenario": "product-video-truth-and-assets",
+  "result": "succeeded",
+  "startedAt": "2026-07-26T06:07:43.000Z",
+  "durationMs": 0,
+  "checks": [
+    {
+      "name": "automatic-specialist-routing",
+      "result": "pass"
+    },
+    {
+      "name": "reference-originality-and-storyboard-gate",
+      "result": "pass"
+    },
+    {
+      "name": "inaccessible-reference-no-hallucination",
+      "result": "pass"
+    },
+    {
+      "name": "no-fake-ui-or-unsupported-claims",
+      "result": "pass"
+    },
+    {
+      "name": "governed-logo-alpha-asset",
+      "result": "pass"
+    },
+    {
+      "name": "storyboard-before-full-render",
+      "result": "pass"
+    },
+    {
+      "name": "deterministic-review-package",
+      "result": "pass"
+    },
+    {
+      "name": "strict-manifest-identity-and-approval",
+      "result": "pass"
+    },
+    {
+      "name": "bounded-critique-iteration",
+      "result": "pass"
+    },
+    {
+      "name": "privacy-safe-truthful-ui-capture",
+      "result": "pass"
+    },
+    {
+      "name": "enterprise-anti-slop-editorial-restraint",
+      "result": "pass"
+    },
+    {
+      "name": "generated-sequence-continuity-and-governed-compositing",
+      "result": "pass"
+    },
+    {
+      "name": "non-destructive-edit-and-output-lineage",
+      "result": "pass"
+    },
+    {
+      "name": "native-long-form-and-short-packages",
+      "result": "pass"
+    },
+    {
+      "name": "accessible-caption-audio-and-visual-equivalence",
+      "result": "pass"
+    },
+    {
+      "name": "synthetic-media-rights-and-disclosure",
+      "result": "pass"
+    },
+    {
+      "name": "exact-job-and-output-identity",
+      "result": "pass"
+    },
+    {
+      "name": "evidence-led-channel-learning",
+      "result": "pass"
+    },
+    {
+      "name": "owner-gated-publication-and-master-preservation",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 19
+  },
+  "lineage": {
+    "verificationId": "product-video-truth-and-assets-2026-07-26-r2",
+    "artifactPointer": "codex-fresh-agent:/root/video_fresh_routing,/root/video_fresh_scenarios_a,/root/video_fresh_scenarios_b#2026-07-26"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-07-26T06:07:43.000Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "Three source-blind agents demonstrated all 19 routing, truth, rights, accessibility, post-production, delivery, learning, and publication-boundary checks."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "video",
+    "enterprise",
+    "youtube"
+  ]
+}

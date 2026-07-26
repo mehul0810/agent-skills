@@ -354,7 +354,7 @@
         "product-video-producer/assets/video-manifest.schema.json",
         "product-video-producer/scripts/validate-video-manifest.mjs"
       ],
-      "sha256": "5a04e22ea364a43ab3bbc54f2ffeed2113142a23413997dcb5d27224db87be47",
+      "sha256": "d8bccecedf83437ffc02870b48f209ad05562e18df7b5fd9e78fd3d682ff5bbb",
       "scenario": {
         "id": "product-video-truth-and-assets",
         "files": [
@@ -380,7 +380,7 @@
           "Evidence-led YouTube learning",
           "Publication boundary"
         ],
-        "sha256": "1807500b15ec36c710b8cf7d3710b41b8f9aba7487918ccb13bef9a7fc686dc2"
+        "sha256": "b24dd7ab1f08bcafe660d90578186a40a57f7774abbf16bf1072c1e8aac13339"
       },
       "requiredChecks": [
         "automatic-specialist-routing",
@@ -405,11 +405,11 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-07-26.json",
-          "sha256": "c1de83e005475fc86301c1935152e2f011dcc71407112453119020505ece2cf7",
-          "testedRevision": "8a391aab4b2e945dfe83a3b4647145d4d2952072",
-          "testedSourceSha256": "5a04e22ea364a43ab3bbc54f2ffeed2113142a23413997dcb5d27224db87be47",
-          "testedScenarioSha256": "1807500b15ec36c710b8cf7d3710b41b8f9aba7487918ccb13bef9a7fc686dc2",
+          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-07-26-r2.json",
+          "sha256": "418f15b495d66f91437881a2c0e3a37b5419157c833c81f499b6a888a202b74b",
+          "testedRevision": "3212cd4a704e14a24825d2036f8630124727d654",
+          "testedSourceSha256": "d8bccecedf83437ffc02870b48f209ad05562e18df7b5fd9e78fd3d682ff5bbb",
+          "testedScenarioSha256": "b24dd7ab1f08bcafe660d90578186a40a57f7774abbf16bf1072c1e8aac13339",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
