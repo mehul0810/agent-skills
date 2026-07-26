@@ -8,4 +8,4 @@ Use `$wp-product-orchestrator` for a PR landing review.
 4. Review with the artifact specialist and product docs; add `$wp-quality-reviewer` for a focused quality audit.
 5. Repair only if authorized, preserve contributor credit, and use `$behavior-validator` when independent observable proof is required.
 6. Run tests/live proof required by the changed boundary.
-7. The PO may merge a reviewed, green, non-draft PR into a verified non-production branch when repo policy allows and no current owner stop exists. Production/main merges and beta/production actions require explicit current approval.
+7. The PO may merge a reviewed, green, non-draft PR into a live-verified unprotected non-production branch when repo policy allows and no current owner stop exists. Protected-branch or production/main merges and beta/production actions require explicit current approval; ambiguous protection status fails closed.

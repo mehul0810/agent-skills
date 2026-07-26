@@ -43,7 +43,7 @@ Production or beta release actions always require explicit current `@mehul0810` 
 
 For normal product orchestration, do not stall on `owner:me` if a decision is reasonable, reversible, and non-release. Document the rationale, relabel to `owner:codex`, and proceed or delegate. Continue issue creation, labels, branch prep, PR review/merge for good non-production PRs, dependency/tooling work, docs work, and reversible backlog prioritization when repo policy and validation support it.
 
-Review and merge safe non-production PRs when they target `develop` or a release branch, are correctly based, scoped, non-draft, green, and have no explicit current owner stop on that exact PR. If the merge UI/tool/API blocks the action, report the exact tooling or approval-layer blocker; do not convert that into an owner-decision blocker.
+Review and merge safe non-production PRs only after live-verifying that the target `develop` or release branch is unprotected, the PR is correctly based, scoped, non-draft, green, and no explicit current owner stop exists on that exact PR. Protected-branch merges require explicit current owner approval even when the target is non-production; ambiguous protection status fails closed. If the merge UI/tool/API blocks an otherwise authorized action, report the exact tooling or approval-layer blocker rather than inventing a different owner decision.
 
 If the owner is unavailable and the blocker is non-destructive, local, reversible, and outside the hard-gate list, do not stop at wait-state language. Question the assumption, verify the repo/product reality, search current docs or web sources when needed, choose the safest viable unblock path, act, and then report the action plus residual risk.
 

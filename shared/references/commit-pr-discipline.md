@@ -70,7 +70,7 @@ Use `Fixes` or `Closes` only when the PR fully resolves the linked issue and tar
 
 ## Non-Production Merge Rule
 
-Product orchestrators may review and merge scoped, non-draft, green PRs into `develop` or `release/<release-version>` when the base is correct, validation is current, and no explicit current owner stop exists on that exact PR. If branch protection, review rules, permissions, or tooling blocks the merge, report the exact blocker instead of treating it as an owner decision.
+Product orchestrators may review and merge scoped, non-draft, green PRs into `develop` or `release/<release-version>` only when the base is correct, validation is current, no explicit current owner stop exists, and live branch-policy evidence proves the target is unprotected. A protected target requires explicit current owner approval; unknown protection status fails closed. If review rules, permissions, or tooling blocks an otherwise authorized merge, report the exact blocker instead of inventing a different owner decision.
 
 ## Worker PR Rule
 

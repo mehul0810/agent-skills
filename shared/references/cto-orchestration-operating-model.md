@@ -60,9 +60,9 @@ Routine heartbeats must return promptly with verified evidence, unavailable chec
 
 ## Authority Boundary
 
-Normal reversible product decisions, issue creation, labels, branch preparation, good non-production PR review/merge, dependency/tooling work, docs, and backlog prioritization continue without owner waiting.
+Normal reversible product decisions, issue creation, labels, branch preparation, good unprotected non-production PR review/merge, dependency/tooling work, docs, and backlog prioritization continue without owner waiting.
 
-Require explicit current approval for production/beta tags or releases, publish/deploy, production/main merge, destructive cleanup, pricing/licensing/free-vs-pro, privacy/security posture, public API/schema/breaking contracts, or broad positioning. Sensitive security details stay private and public work uses sanitized hardening language.
+Require explicit current approval for protected-branch or production/main merge, production/beta tags or releases, publish/deploy, destructive cleanup, pricing/licensing/free-vs-pro, privacy/security posture, public API/schema/breaking contracts, or broad positioning. Unknown branch-protection status fails closed. Sensitive security details stay private and public work uses sanitized hardening language.
 
 ## Focused Routing
 

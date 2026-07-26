@@ -69,7 +69,7 @@ Package/readme/Plugin Check validation is not current when any release metadata 
 
 If metadata/readme/changelog is stale, create a focused release-readiness issue/PR against the active `release/<version>` branch, rerun package/readme/Plugin Check, and regenerate the brief. Otherwise include explicit readme/changelog audit evidence.
 
-Normal product orchestration, issue intake, implementation, hardening PRs, branch creation, good non-production PR review/merge, tooling/docs/validation need no release approval when they avoid release/tag/deploy claims.
+Issue intake, implementation, hardening PRs, branch creation, unprotected non-production merges, tooling, docs, and validation need no release approval; protected-branch, release, tag, and deploy actions do.
 
 ## Release Quality Gate Matrix
 
