@@ -1,6 +1,6 @@
 ---
 name: wp-theme-expert
-description: "Use for WordPress theme engineering: classic themes, child themes, block themes, FSE, theme.json, templates, patterns, block styles, custom blocks, editor/frontend parity, design-to-theme, visual parity, responsive architecture, and premium theme UX."
+description: "Use for WordPress theme engineering: classic themes, child themes, block themes, FSE, theme.json, templates, patterns, block styles, theme/FSE-owned block presentation, distribution-permitted theme blocks, editor/frontend parity, design-to-theme, visual parity, responsive architecture, and premium theme UX."
 ---
 
 # WP Theme Expert

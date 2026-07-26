@@ -74,7 +74,9 @@ Use these lightweight scenarios to verify one-product plugin/theme workflow rout
 | Weekly intelligence | "What changed in WordPress this week that affects our products?" | `weekly-wordpress-intelligence.md` | Checks current official WordPress sources, stores a concise durable summary, and recommends issues or no-action rationale. |
 | Self-improvement | "Why did the last orchestration create a PR against main?" | `self-improvement-loop.md` | Classifies the failure, corrects safe local state, identifies the missing gate, places durable learning in the right doc/skill/issue, and adds audit coverage when repeatable. |
 | Closed feedback | "Three products hit the same proof failure and we fixed each one." | `self-improvement-loop.md` | Uses one stable pattern, preserves independent evidence, records the reviewed decision/action/artifact, defines a verification window, and does not claim learning succeeded until the outcome is measured. |
-| Product repo setup | "Set up this plugin repo for autonomous Codex workflow." | `wp-product-orchestrator` | Uses `scripts/install-product-agent-kit.sh`, preserves existing files unless forced, tells user to fill `PRODUCT.md`. |
+| Product repo setup | "Set up this plugin repo for autonomous Codex workflow." | `wp-product-orchestrator` | Uses `scripts/install-product-agent-kit.sh`, preserves existing files, tells user to fill `PRODUCT.md`, and routes clear work directly to the artifact specialist. |
+| Product kit drift | "This repo has an older customized agent kit. Update it." | `install-product-agent-kit.sh` | Runs `--check`, stages changed templates under the current version for review, and never overwrites active repo instructions. |
+| PO parallel coordination | "Coordinate three independent milestone issues." | `wp-product-orchestrator` | Keeps each worker to one issue/branch/worktree/PR while allowing the PO to coordinate non-overlapping workers in parallel. |
 
 ## Regression Questions
 

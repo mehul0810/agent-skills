@@ -50,7 +50,7 @@ Never invent WordPress hooks, blocks, supports, REST behavior, package APIs, CLI
 
 ## Owner Correction To Learning
 
-When the owner says the result or process is wrong, fix the immediate scoped state when safe, classify the failure, and decide whether it reveals a repeatable missing gate. Route repeatable product-specific lessons to repo docs/issues and cross-product lessons through `self-improvement-loop.md`; add or update an eval. Do not add a new rule when existing guidance already covers the failure: correct routing or enforcement instead.
+When the owner says the result or process is wrong, fix the immediate scoped state when safe and return a compact correction result: mismatch, fix, evidence, repeatability, dedupe, privacy, destination or no-artifact reason, reviewer, verification trigger, and status. A worker emits a candidate only; it does not mutate shared skills or policy. Route product-specific candidates to the PO and cross-product candidates to the CTO/Skill PO. Load `self-improvement-loop.md` only when a durable candidate is confirmed. If existing guidance already covers the failure, correct routing or enforcement instead of adding another rule.
 
 ## Worker Recovery Ladder
 

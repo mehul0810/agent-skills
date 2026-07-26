@@ -13,7 +13,6 @@ Operate as a principal WordPress site engineer focused on user outcomes: convers
 - Preserve user work. Do not reset or discard unrelated changes unless explicitly asked.
 - Focused quality audit/fix: use `wp-quality-reviewer`; routine site delivery stays here.
 - Load one primary reference. Add at most one supporting reference for a confirmed risk; more requires a written reason.
-- Treat this hot path as the standing execution kernel. References below are conditional overlays, not mandatory loads; load one only when its named risk is unresolved.
 - When work crosses ownership/runtime/proof boundaries or essential project knowledge is missing, use `../shared/references/wordpress-engineering-graph.md` as primary; ask only unresolved blocking questions and establish the minimum repo docs before crossing that boundary.
 - For unresolved source-of-truth, ownership, public-contract, release, performance, privacy, or proof decisions, use the router's architecture route.
 - For substantial or review-critical work, use `../shared/references/enterprise-code-quality-gate.md` to classify baseline versus elevated enterprise risk and apply code, compatibility, supply-chain, operations, and proof controls proportionally.

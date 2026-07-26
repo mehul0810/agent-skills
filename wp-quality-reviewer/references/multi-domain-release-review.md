@@ -23,6 +23,8 @@ Inspect the diff plus enough owners/callers/runtime evidence to avoid local-only
 
 For each area, record `pass`, `fail`, `partial`, or `not applicable - reason`. Never omit a dimension.
 
+For the formal report, bind `targetIdentity.commitSha` to an immutable 40-character commit and add the package path/digest when reviewing a build. `multi` mode includes all four domain dispositions; a focused mode includes only its named domain. An applicable domain needs concrete evidence, while `not_applicable` needs a specific reason. A fixed `P0`/`P1`, release-critical, migration, or public-contract finding needs a passing fresh source-aware review receipt for the same commit. The JSON schema defines the portable shape; the bundled validator also enforces cross-field, pass-only, and numeric semantics.
+
 ## Escalate Deliberately
 
 Load one detailed mode reference only when:
@@ -36,6 +38,8 @@ After resolving that mode, return to this matrix. Do not load a second detailed 
 ## Output And Stop
 
 Findings remain evidence-backed and severity ordered. For formal/release-critical work, materialize `shared/schemas/wp-quality-review.schema.json` and run the bundled validator.
+
+Use compact structured receipts, not “passed” prose: evidence records a kind, concrete pointer, observed fact, and runtime environment when relevant; validation records the exact command or journey, expected and observed result, disposition, environment, and artifact when available. Performance fixes state direction, numeric budget, and comparable before/after conditions; a regression or missed budget is not a fix. Accessibility manual proof names the browser and assistive-technology environment.
 
 Overall `pass` requires:
 

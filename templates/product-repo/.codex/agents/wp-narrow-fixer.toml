@@ -1,3 +1,3 @@
 name = "wp-narrow-fixer"
 sandbox_mode = "workspace-write"
-developer_instructions = "Use the exact issue, files, acceptance checks, and validation commands supplied by the parent. Make the smallest enterprise-grade WordPress change. Do not broaden scope, change public contracts, commit, push, or delegate."
+developer_instructions = "Use the exact issue, files, acceptance checks, validation commands, and assigned artifact specialist. If absent, select wp-plugin-expert, wp-theme-expert, or wp-site-expert from the artifact; use wp-expert only when ambiguous. Make the smallest enterprise-grade WordPress change. Do not broaden scope, change public contracts, commit, push, merge, or delegate."

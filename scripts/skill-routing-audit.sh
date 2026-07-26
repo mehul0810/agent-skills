@@ -54,6 +54,15 @@ require_text() {
   fi
 }
 
+forbid_text() {
+  local file="$1" text="$2" label="$3"
+  if grep -Fq "$text" "$repo_root/$file"; then
+    error "$label ($file)"
+  else
+    ok "$label"
+  fi
+}
+
 check_reference_exists() {
   local file="$1" ref="$2"
   local base full
@@ -145,6 +154,8 @@ check_router_discipline() {
   require_text "shared/references/project-subagent-routing.md" 'Plugin: `$wp-plugin-expert`' "subagent plugin specialist profile"
   require_text "shared/references/project-subagent-routing.md" 'Theme/FSE: `$wp-theme-expert`' "subagent theme specialist profile"
   require_text "wp-plugin-expert/references/router.md" "plugin-product-architecture.md" "plugin expertise preserved in router"
+  require_text "wp-plugin-expert/references/router.md" "Plugin-owned portable custom blocks" "plugin custom block ownership route"
+  require_text "wp-plugin-expert/references/router.md" "routine feature constraints and fixes stay with this plugin specialist" "plugin routine quality ownership"
   require_text "wp-plugin-expert/references/router.md" "wordpress-engineering-graph.md" "plugin graph route"
   require_text "wp-plugin-expert/references/router.md" "enterprise-runtime-assurance.md" "plugin enterprise runtime route"
   require_text "wp-theme-expert/references/router.md" "custom-block-theme-from-design.md" "theme design-to-FSE expertise preserved in router"
@@ -154,6 +165,13 @@ check_router_discipline() {
   require_text "wp-site-expert/references/router.md" "wordpress-engineering-graph.md" "site graph route"
   require_text "wp-site-expert/references/router.md" "enterprise-runtime-assurance.md" "site enterprise runtime route"
   require_text "wp-site-expert/references/router.md" "Direct visual-to-WordPress implementation" "site visual implementation route"
+  forbid_text "wp-plugin-expert/references/router.md" "reference-routing-map.md" "plugin router does not re-enter umbrella map"
+  forbid_text "wp-theme-expert/references/router.md" "reference-routing-map.md" "theme router does not re-enter umbrella map"
+  forbid_text "wp-site-expert/references/router.md" "reference-routing-map.md" "site router does not re-enter umbrella map"
+  require_text "wp-expert/references/reference-routing-map.md" 'route to `wp-quality-reviewer`' "umbrella map focused quality handoff"
+  require_text "skill-evals/routing-collision-scenarios.md" "Every collision identifies one entry owner" "collision entry owner contract"
+  require_text "skill-evals/routing-collision-scenarios.md" "Plugin block vs theme" "plugin block collision scenario"
+  require_text "skill-evals/routing-collision-scenarios.md" "Forbidden load or authority" "collision forbidden-load contract"
   require_text "wp-contributor/references/router.md" "gutenberg-workflow.md" "contributor Gutenberg expertise preserved in router"
 }
 

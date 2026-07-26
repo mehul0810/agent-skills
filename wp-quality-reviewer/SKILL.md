@@ -21,9 +21,9 @@ For a multi-domain enterprise/release audit, load `references/multi-domain-relea
 ## Routing Boundary
 
 - A focused quality review or remediation belongs here even when the artifact is a plugin, theme, or site.
-- New feature delivery stays with `wp-plugin-expert`, `wp-theme-expert`, or `wp-site-expert`; those specialists still apply routine quality controls.
-- Product scope, issue priority, milestones, merges, and release approval remain with `wp-product-orchestrator`.
-- Source-blind runtime proof is separate from implementation. Use it only when independently requested or release risk requires it.
+- New feature delivery and routine implementation constraints stay with `wp-plugin-expert`, `wp-theme-expert`, or `wp-site-expert`. Hand non-trivial artifact-specific architecture changes back with a finding, fix contract, and required re-proof; make a direct fix only when it is narrow and lower risk than the handoff.
+- For release readiness, this skill owns the technical quality evidence and gate dispositions; `wp-product-orchestrator` owns candidate coordination, product/release synthesis, and approval requests.
+- Source-aware code review and source-blind runtime proof are different controls. Use a fresh source-aware reviewer for critical fixes, then a fresh `behavior-validator` for observable behavior when applicable.
 
 ## Review And Fix Loop
 
@@ -33,7 +33,8 @@ For a multi-domain enterprise/release audit, load `references/multi-domain-relea
 4. Report findings first, ordered by severity, with absolute file/line or runtime evidence, realistic impact, root cause, compatible remediation, and proof required.
 5. When fixing is requested, protect current behavior with characterization or negative proof when practical, make the smallest root-cause change, and add proportional regression coverage. Do not suppress tools, weaken checks, or hide symptoms.
 6. Rerun the narrowest reliable checks, then the affected integration/runtime path. Compare before/after evidence where the mode requires it.
-7. Run a finish pass for adjacent risks, tests, docs, dead/debug code, and release impact. Preserve scope; route validated adjacent findings through the existing issue protocol.
+7. For `P0`/`P1`, release-critical, migration, or public-contract fixes, require a fresh source-aware re-review of the changed code and evidence before passing the gate. Add separate source-blind behavior proof when the claim is observable at runtime.
+8. Run a finish pass for adjacent risks, tests, docs, dead/debug code, and release impact. Preserve scope; route validated adjacent findings through the existing issue protocol.
 
 ## Evidence And Severity
 

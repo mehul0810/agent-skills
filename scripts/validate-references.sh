@@ -143,6 +143,50 @@ validate_referenced_files() {
   done < <(find_skill_dirs)
 }
 
+# Resolve routed Markdown files from the file that owns each route. This catches
+# broken reference-to-reference paths without treating historical root docs as
+# executable skill routing.
+validate_relative_reference_routes() {
+  echo ""
+  echo "=== Checking relative reference routes ==="
+
+  local checked=0
+  local source_file
+  while IFS= read -r source_file; do
+    local token
+    while IFS= read -r token; do
+      local ref_path="$token"
+
+      ref_path="${ref_path#\`}"
+      ref_path="${ref_path%\`}"
+      ref_path="${ref_path#]\(}"
+      ref_path="${ref_path%\)}"
+      ref_path="${ref_path%%#*}"
+
+      checked=$((checked + 1))
+      if [ ! -f "$(dirname "$source_file")/$ref_path" ]; then
+        log_error "Broken route in ${source_file#$repo_root/}: $ref_path"
+      fi
+    done < <(
+      grep -Eo '`((\.\./)+|references/)[a-zA-Z0-9_./-]+\.md`|\]\(((\.\./)+|references/)[a-zA-Z0-9_./-]+\.md(#[^)]*)?\)' \
+        "$source_file" 2>/dev/null | sort -u || true
+    )
+  done < <(
+    while IFS= read -r skill_dir; do
+      printf '%s\n' "$skill_dir/SKILL.md"
+      if [ -d "$skill_dir/references" ]; then
+        find "$skill_dir/references" -maxdepth 1 -type f -name "*.md" -print
+      fi
+    done < <(find_skill_dirs)
+  )
+
+  if [ "$checked" -eq 0 ]; then
+    log_warning "No relative reference routes were found"
+  else
+    log_success "Checked $checked relative reference route(s)"
+  fi
+}
+
 # Validate reference routing map
 validate_routing_map() {
   echo ""
@@ -355,6 +399,36 @@ validate_metadata() {
   done
 }
 
+validate_agent_metadata() {
+  echo ""
+  echo "=== Validating skill agent metadata ==="
+
+  local skill_dir
+  while IFS= read -r skill_dir; do
+    local skill_name
+    local metadata_file
+    skill_name="$(basename "$skill_dir")"
+    metadata_file="$skill_dir/agents/openai.yaml"
+
+    if [ ! -f "$metadata_file" ]; then
+      log_error "[$skill_name] Missing agents/openai.yaml"
+      continue
+    fi
+
+    for field in display_name short_description default_prompt; do
+      if ! grep -Eq "^[[:space:]]+${field}:[[:space:]]+\".+\"" "$metadata_file"; then
+        log_error "[$skill_name] Missing non-empty agents/openai.yaml field: $field"
+      fi
+    done
+
+    if ! grep -Fq "\$$skill_name" "$metadata_file"; then
+      log_error "[$skill_name] default prompt does not invoke \$$skill_name"
+    else
+      log_success "[$skill_name] Agent metadata is present and invocable"
+    fi
+  done < <(find_skill_dirs)
+}
+
 validate_token_budgets() {
   echo ""
   echo "=== Validating skill token budgets ==="
@@ -513,7 +587,11 @@ main() {
   if [ "$check_all" -eq 1 ] || [ "$check_type" = "files" ]; then
     validate_skill_files
     validate_referenced_files
+    validate_relative_reference_routes
     validate_unreferenced_files
+  elif [ "$check_type" = "links" ]; then
+    validate_referenced_files
+    validate_relative_reference_routes
   fi
 
   if [ "$check_all" -eq 1 ] || [ "$check_type" = "routing" ]; then
@@ -527,6 +605,7 @@ main() {
     validate_engineering_graph
     validate_behavior_evidence
     validate_metadata
+    validate_agent_metadata
     validate_token_budgets
     validate_harness_contracts
     validate_routing_fanout

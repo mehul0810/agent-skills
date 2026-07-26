@@ -9,6 +9,8 @@ const allowedTypes = new Set([
   "owner",
   "artifact",
   "runtime",
+  "observation",
+  "correction",
   "proof",
   "outcome",
   "learning",
@@ -31,6 +33,14 @@ const allowedEvidenceKinds = new Set([
   "package",
   "public",
   "owner",
+]);
+const allowedProofKinds = new Set(["verification", "regression"]);
+const allowedPromotionDestinations = new Set([
+  "repo_doc",
+  "adr",
+  "issue",
+  "skill",
+  "automation",
 ]);
 
 function isObject(value) {
@@ -127,7 +137,7 @@ function validateGraph(graph) {
         errors.push(`${node.id} depends on missing node ${dependency}`);
       }
     }
-    if (node.type !== "intent" && node.type !== "learning" && node.dependsOn?.length === 0) {
+    if (node.type !== "intent" && node.dependsOn?.length === 0) {
       errors.push(`${node.id} is orphaned; non-intent nodes need an upstream dependency`);
     }
     if (node.critical && ["provisional", "unknown", "failed"].includes(node.state)) {
@@ -135,6 +145,74 @@ function validateGraph(graph) {
     }
     if (node.state === "not_applicable" && !node.notApplicableReason?.trim()) {
       errors.push(`${node.id} needs notApplicableReason`);
+    }
+    if (node.proofKind !== undefined) {
+      if (node.type !== "proof") {
+        errors.push(`${node.id} has proofKind but is not a proof`);
+      } else if (!allowedProofKinds.has(node.proofKind)) {
+        errors.push(`${node.id}.proofKind is invalid`);
+      }
+    }
+    if (node.promotion !== undefined && node.type !== "learning") {
+      errors.push(`${node.id} has promotion metadata but is not a learning`);
+    }
+    if (node.type === "learning") {
+      const promotion = node.promotion;
+      if (!isObject(promotion)) {
+        errors.push(`${node.id} learning lacks structured promotion metadata`);
+      } else {
+        if (!isObject(promotion.destination)) {
+          errors.push(`${node.id} learning lacks a durable destination`);
+        } else {
+          if (!allowedPromotionDestinations.has(promotion.destination.kind)) {
+            errors.push(`${node.id} learning destination kind is invalid`);
+          }
+          if (
+            typeof promotion.destination.pointer !== "string"
+            || promotion.destination.pointer.trim() === ""
+          ) {
+            errors.push(`${node.id} learning destination pointer is missing`);
+          }
+        }
+        if (promotion.status !== "verified") {
+          errors.push(`${node.id} learning promotion is not verified`);
+        }
+        if (typeof promotion.reviewer !== "string" || promotion.reviewer.trim() === "") {
+          errors.push(`${node.id} learning reviewer is missing`);
+        }
+      }
+    }
+    if (
+      node.type === "observation"
+      && node.state === "failed"
+      && node.evidence?.length === 0
+    ) {
+      errors.push(`${node.id} failed observation has no evidence`);
+    }
+    if (
+      node.type === "correction"
+      && node.state === "verified"
+      && node.evidence?.length === 0
+    ) {
+      errors.push(`${node.id} verified correction has no evidence`);
+    }
+    if (
+      node.type === "proof"
+      && node.proofKind === "regression"
+      && node.evidence?.length === 0
+    ) {
+      errors.push(`${node.id} regression proof has no evidence`);
+    }
+    if (node.type === "proof" && node.proofKind === "regression") {
+      if (node.state !== "verified") {
+        errors.push(`${node.id} regression proof is not verified`);
+      }
+      const hasIdentity = node.evidence?.some(
+        (evidence) => isObject(evidence.identity) && Object.keys(evidence.identity).length > 0,
+      );
+      if (!hasIdentity) {
+        errors.push(`${node.id} regression proof lacks run identity`);
+      }
     }
     if (node.critical && node.state === "verified" && node.evidence?.length === 0) {
       errors.push(`${node.id} is verified and critical but has no evidence`);
@@ -194,6 +272,27 @@ function validateGraph(graph) {
     return false;
   }
 
+  function hasAncestorNode(node, predicate, visiting = new Set()) {
+    if (visiting.has(node.id)) {
+      return false;
+    }
+    visiting.add(node.id);
+    for (const dependency of node.dependsOn ?? []) {
+      const parent = byId.get(dependency);
+      if (!parent) {
+        continue;
+      }
+      if (predicate(parent) || hasAncestorNode(parent, predicate, new Set(visiting))) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function hasAncestorId(node, expectedId) {
+    return hasAncestorNode(node, (candidate) => candidate.id === expectedId);
+  }
+
   for (const node of graph.nodes) {
     if (!isObject(node) || !node.critical) {
       continue;
@@ -203,6 +302,78 @@ function validateGraph(graph) {
     }
     if (node.type === "outcome" && !hasAncestorType(node, "proof")) {
       errors.push(`${node.id} is an outcome without upstream proof`);
+    }
+  }
+
+  for (const node of graph.nodes) {
+    if (!isObject(node) || node.type !== "learning") {
+      continue;
+    }
+    if (node.state !== "verified") {
+      errors.push(`${node.id} learning is not verified`);
+    }
+    if (!hasAncestorType(node, "intent")) {
+      errors.push(`${node.id} learning has no path to an intent node`);
+    }
+    const regressionProofs = (node.dependsOn ?? [])
+      .map((dependency) => byId.get(dependency))
+      .filter(
+        (candidate) => candidate
+          && candidate.type === "proof"
+          && candidate.proofKind === "regression"
+          && candidate.state === "verified"
+          && Array.isArray(candidate.evidence)
+          && candidate.evidence.length > 0
+          && candidate.evidence.some(
+            (evidence) => isObject(evidence.identity)
+              && Object.keys(evidence.identity).length > 0,
+          ),
+      );
+    if (regressionProofs.length === 0) {
+      errors.push(`${node.id} learning lacks upstream verified regression proof`);
+    }
+    const hasFailureCorrectionLineage = regressionProofs.some((proof) =>
+      hasAncestorNode(
+        proof,
+        (candidate) =>
+          candidate.type === "correction"
+          && candidate.state === "verified"
+          && Array.isArray(candidate.evidence)
+          && candidate.evidence.length > 0
+          && hasAncestorNode(
+            candidate,
+            (ancestor) =>
+              ancestor.type === "observation"
+              && ancestor.state === "failed"
+              && Array.isArray(ancestor.evidence)
+              && ancestor.evidence.length > 0,
+          ),
+      ));
+    if (regressionProofs.length > 0 && !hasFailureCorrectionLineage) {
+      errors.push(`${node.id} learning lacks failed-observation and verified-correction lineage`);
+    }
+    if (!Array.isArray(node.evidence) || node.evidence.length === 0) {
+      errors.push(`${node.id} verified learning has no durable evidence`);
+    }
+    if (isObject(node.promotion)) {
+      const destinationPointer = node.promotion.destination?.pointer;
+      if (
+        typeof destinationPointer === "string"
+        && !node.evidence?.some((evidence) => evidence.pointer === destinationPointer)
+      ) {
+        errors.push(`${node.id} learning evidence does not verify its durable destination`);
+      }
+    }
+    const hasVerifiedClosure = graph.nodes.some(
+      (candidate) => isObject(candidate)
+        && candidate.type === "outcome"
+        && candidate.state === "verified"
+        && Array.isArray(candidate.evidence)
+        && candidate.evidence.length > 0
+        && hasAncestorId(candidate, node.id),
+    );
+    if (!hasVerifiedClosure) {
+      errors.push(`${node.id} learning is not closed by a verified evidenced outcome`);
     }
   }
 
@@ -256,22 +427,186 @@ function selfTest() {
   missingIdentity.nodes[1].evidence[0].identity = {};
   const cyclic = structuredClone(valid);
   cyclic.nodes[1].dependsOn = ["outcome.ready"];
+  const validLearning = {
+    schemaVersion: 1,
+    task: "Learn from a packaged settings regression",
+    assuranceLevel: "elevated",
+    nodes: [
+      structuredClone(valid.nodes[0]),
+      {
+        id: "observation.settings-broken",
+        type: "observation",
+        owner: "behavior-validator",
+        state: "failed",
+        critical: false,
+        dependsOn: ["intent.settings"],
+        evidence: [{ kind: "browser", pointer: "artifacts/settings-broken.png" }],
+      },
+      {
+        id: "correction.settings-owner",
+        type: "correction",
+        owner: "wp-plugin-expert",
+        state: "verified",
+        critical: false,
+        dependsOn: ["observation.settings-broken"],
+        evidence: [{ kind: "git", pointer: "commit:def456" }],
+      },
+      {
+        id: "proof.settings-regression",
+        type: "proof",
+        proofKind: "regression",
+        owner: "behavior-validator",
+        state: "verified",
+        critical: true,
+        dependsOn: ["correction.settings-owner"],
+        evidence: [
+          {
+            kind: "browser",
+            pointer: "artifacts/settings-fixed.png",
+            identity: { commit: "def456", packageSha256: "example" },
+          },
+        ],
+      },
+      {
+        id: "learning.settings-regression",
+        type: "learning",
+        owner: "repo-doc",
+        state: "verified",
+        critical: false,
+        dependsOn: ["proof.settings-regression"],
+        promotion: {
+          destination: {
+            kind: "repo_doc",
+            pointer: "TESTING.md#settings-regression",
+          },
+          status: "verified",
+          reviewer: "product-po",
+        },
+        evidence: [{ kind: "repo", pointer: "TESTING.md#settings-regression" }],
+      },
+      {
+        id: "outcome.ready",
+        type: "outcome",
+        owner: "product-po",
+        state: "verified",
+        critical: true,
+        dependsOn: ["learning.settings-regression"],
+        evidence: [{ kind: "github", pointer: "release-brief" }],
+      },
+    ],
+  };
+  const orphanLearning = structuredClone(validLearning);
+  orphanLearning.nodes[4].dependsOn = [];
+  const genericProof = structuredClone(validLearning);
+  genericProof.nodes[3].proofKind = "verification";
+  const learningWithoutCorrection = structuredClone(validLearning);
+  learningWithoutCorrection.nodes[3].dependsOn = ["observation.settings-broken"];
+  const learningWithoutFailure = structuredClone(validLearning);
+  learningWithoutFailure.nodes[1].state = "verified";
+  const learningWithoutClosure = structuredClone(validLearning);
+  learningWithoutClosure.nodes[5].dependsOn = ["proof.settings-regression"];
+  const learningWithoutEvidence = structuredClone(validLearning);
+  learningWithoutEvidence.nodes[4].evidence = [];
+  const learningWithoutDestination = structuredClone(validLearning);
+  delete learningWithoutDestination.nodes[4].promotion.destination;
+  const learningWithoutReviewer = structuredClone(validLearning);
+  delete learningWithoutReviewer.nodes[4].promotion.reviewer;
+  const learningWithoutVerifiedPromotion = structuredClone(validLearning);
+  learningWithoutVerifiedPromotion.nodes[4].promotion.status = "implemented";
+  const regressionWithoutEvidence = structuredClone(validLearning);
+  regressionWithoutEvidence.nodes[3].evidence = [];
+  const regressionWithoutIdentity = structuredClone(validLearning);
+  delete regressionWithoutIdentity.nodes[3].evidence[0].identity;
+  const failureWithoutEvidence = structuredClone(validLearning);
+  failureWithoutEvidence.nodes[1].evidence = [];
+  const correctionWithoutEvidence = structuredClone(validLearning);
+  correctionWithoutEvidence.nodes[2].evidence = [];
+  const learningDestinationMismatch = structuredClone(validLearning);
+  learningDestinationMismatch.nodes[4].promotion.destination.pointer =
+    "TESTING.md#different-regression";
+  const outcomeWithoutEvidence = structuredClone(validLearning);
+  outcomeWithoutEvidence.nodes[5].evidence = [];
+  const outcomeNotVerified = structuredClone(validLearning);
+  outcomeNotVerified.nodes[5].state = "provisional";
 
   const validErrors = validateGraph(valid);
   const failedErrors = validateGraph(failedCritical);
   const identityErrors = validateGraph(missingIdentity);
   const cycleErrors = validateGraph(cyclic);
+  const validLearningErrors = validateGraph(validLearning);
+  const orphanLearningErrors = validateGraph(orphanLearning);
+  const genericProofErrors = validateGraph(genericProof);
+  const learningWithoutCorrectionErrors = validateGraph(learningWithoutCorrection);
+  const learningWithoutFailureErrors = validateGraph(learningWithoutFailure);
+  const learningWithoutClosureErrors = validateGraph(learningWithoutClosure);
+  const learningWithoutEvidenceErrors = validateGraph(learningWithoutEvidence);
+  const learningWithoutDestinationErrors = validateGraph(learningWithoutDestination);
+  const learningWithoutReviewerErrors = validateGraph(learningWithoutReviewer);
+  const learningWithoutVerifiedPromotionErrors = validateGraph(
+    learningWithoutVerifiedPromotion,
+  );
+  const regressionWithoutEvidenceErrors = validateGraph(regressionWithoutEvidence);
+  const regressionWithoutIdentityErrors = validateGraph(regressionWithoutIdentity);
+  const failureWithoutEvidenceErrors = validateGraph(failureWithoutEvidence);
+  const correctionWithoutEvidenceErrors = validateGraph(correctionWithoutEvidence);
+  const learningDestinationMismatchErrors = validateGraph(learningDestinationMismatch);
+  const outcomeWithoutEvidenceErrors = validateGraph(outcomeWithoutEvidence);
+  const outcomeNotVerifiedErrors = validateGraph(outcomeNotVerified);
   if (
     validErrors.length > 0 ||
     failedErrors.length === 0 ||
     identityErrors.length === 0 ||
-    !cycleErrors.some((error) => error.startsWith("dependency cycle:"))
+    !cycleErrors.some((error) => error.startsWith("dependency cycle:")) ||
+    validLearningErrors.length > 0 ||
+    !orphanLearningErrors.some((error) => error.includes("is orphaned")) ||
+    !genericProofErrors.some((error) => error.includes("lacks upstream verified regression proof")) ||
+    !learningWithoutCorrectionErrors.some((error) =>
+      error.includes("lacks failed-observation and verified-correction lineage")) ||
+    !learningWithoutFailureErrors.some((error) =>
+      error.includes("lacks failed-observation and verified-correction lineage")) ||
+    !learningWithoutClosureErrors.some((error) => error.includes("not closed by a verified evidenced outcome")) ||
+    !learningWithoutEvidenceErrors.some((error) => error.includes("has no durable evidence")) ||
+    !learningWithoutDestinationErrors.some((error) => error.includes("lacks a durable destination")) ||
+    !learningWithoutReviewerErrors.some((error) => error.includes("reviewer is missing")) ||
+    !learningWithoutVerifiedPromotionErrors.some((error) =>
+      error.includes("promotion is not verified")) ||
+    !regressionWithoutEvidenceErrors.some((error) =>
+      error.includes("regression proof has no evidence")) ||
+    !regressionWithoutIdentityErrors.some((error) =>
+      error.includes("regression proof lacks run identity")) ||
+    !failureWithoutEvidenceErrors.some((error) =>
+      error.includes("failed observation has no evidence")) ||
+    !correctionWithoutEvidenceErrors.some((error) =>
+      error.includes("verified correction has no evidence")) ||
+    !learningDestinationMismatchErrors.some((error) =>
+      error.includes("evidence does not verify its durable destination")) ||
+    !outcomeWithoutEvidenceErrors.some((error) =>
+      error.includes("not closed by a verified evidenced outcome")) ||
+    !outcomeNotVerifiedErrors.some((error) =>
+      error.includes("not closed by a verified evidenced outcome"))
   ) {
     console.error("engineering graph validator self-test failed", {
       validErrors,
       failedErrors,
       identityErrors,
       cycleErrors,
+      validLearningErrors,
+      orphanLearningErrors,
+      genericProofErrors,
+      learningWithoutCorrectionErrors,
+      learningWithoutFailureErrors,
+      learningWithoutClosureErrors,
+      learningWithoutEvidenceErrors,
+      learningWithoutDestinationErrors,
+      learningWithoutReviewerErrors,
+      learningWithoutVerifiedPromotionErrors,
+      regressionWithoutEvidenceErrors,
+      regressionWithoutIdentityErrors,
+      failureWithoutEvidenceErrors,
+      correctionWithoutEvidenceErrors,
+      learningDestinationMismatchErrors,
+      outcomeWithoutEvidenceErrors,
+      outcomeNotVerifiedErrors,
     });
     process.exit(1);
   }

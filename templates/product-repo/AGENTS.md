@@ -1,17 +1,26 @@
 # Agent Instructions
 
-Use `$wp-product-orchestrator` for autonomous issue/PR coordination, queue triage, plugin/theme development workflow, live proof, and release readiness.
+Use `$wp-product-orchestrator` for issue/PR coordination, queue triage, delegation, milestone flow, and release readiness.
 
-Use `$wp-expert` for implementation details, architecture, plugin/theme/block/FSE decisions, performance, security, UX, testing, and WordPress.org/WPVIP standards.
+For implementation, select the narrowest owner:
+
+- `$wp-plugin-expert`: plugin, portable custom block, REST, WP-CLI, data, and integration code.
+- `$wp-theme-expert`: classic/block themes, FSE, templates, patterns, styles, and editor parity.
+- `$wp-site-expert`: whole-site composition, content architecture, conversion, and site UX.
+- `$wp-quality-reviewer`: focused security, performance, modularity, maintainability, or accessibility review/remediation.
+- `$behavior-validator`: independent source-blind proof of observable behavior.
+
+Use `$wp-expert` only when the WordPress artifact or specialist remains ambiguous.
 
 ## Repo Rules
 
 - Read `PRODUCT.md` before judging product fit or autonomous scope.
 - Read release docs and milestones before creating branches or PRs.
 - PRs for issue work must target the release branch implied by the issue milestone when that branch exists.
-- Work one issue/PR at a time unless the user explicitly asks for broader planning.
+- Each worker owns one issue, branch, worktree, and PR. The PO may coordinate parallel workers only when their scopes do not overlap.
 - Commit focused validated changes. Push only when authorized by the user or project workflow.
-- Do not merge, close, release, deploy, publish to WordPress.org, change licensing/pricing/free-pro boundaries, or run destructive migrations without explicit current permission.
+- The PO may merge a reviewed, green, non-draft PR into a verified non-production branch when repo policy allows it and no current owner stop exists.
+- Never merge to `main`/production, create beta or production tags/releases, deploy/publish, close ambiguous issues, change licensing/pricing/free-pro, privacy/security posture, or public contracts, or run destructive migrations without explicit current permission.
 - Use REST endpoints for new interactive behavior when REST fits; avoid new `admin-ajax.php`.
 - Preserve launched public contracts. Do not add compatibility shims for abandoned intermediate shapes of unreleased work.
 - Add or update tests when behavior, security, data, editor, release, or scale risk warrants it.

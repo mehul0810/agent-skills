@@ -39,7 +39,7 @@ Confirm:
 - `composer.json` should keep runtime packages in `require` and dev tools in `require-dev`.
 - Build SVN artifacts from a production Composer install, typically `composer install --no-dev --optimize-autoloader` when compatible with the project.
 - Verify deployed `vendor/` does not include dev tooling such as PHPUnit, PHPStan, PHPCS, WPCS, stubs, fixtures, or test-only libraries.
-- See `../shared/references/production-dependency-discipline.md` for general Composer/npm production artifact rules.
+- See `../../shared/references/production-dependency-discipline.md` for general Composer/npm production artifact rules.
 
 ## First SVN Commit Risk
 

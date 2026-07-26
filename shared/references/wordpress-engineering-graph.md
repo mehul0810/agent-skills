@@ -61,6 +61,8 @@ node wp-expert/scripts/validate-engineering-graph.mjs <graph.json>
 
 The validator rejects orphaned nodes, missing dependencies, critical unresolved states, verified critical nodes without evidence, proof without identity, and outcomes without upstream proof. Keep the manifest in the issue/PR evidence path or a governed temporary artifact; do not commit one for every tiny change.
 
+Graphs without a learning event need no learning node. A learning chain is `intent -> failed observation -> verified correction -> evidenced regression proof -> reviewed learning -> verified outcome`. Regression proof needs `proofKind: regression` and run identity; learning directly depends on it and records a verified destination and reviewer. Generic passing checks or chat notes do not close learning.
+
 ## Closure Gate
 
 Work is not complete when a node lacks intent/proof; mutable owners conflict; a critical edge is unresolved; proof uses the wrong commit/package/environment/role/viewport/data; docs/claims disagree with runtime; or frontend-only CSS hides an owning visual/editor failure.

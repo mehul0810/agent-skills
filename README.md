@@ -163,12 +163,14 @@ wp-expert/
 wp-plugin-expert/
 wp-theme-expert/
 wp-site-expert/
+wp-quality-reviewer/
 wp-portfolio-cto/
 wp-product-orchestrator/
 loop-steward/
 behavior-validator/
 wp-contributor/
 content-writer/
+product-video-producer/
 ```
 
 Default invocations:
@@ -181,6 +183,8 @@ Use $wp-plugin-expert to review, implement, debug, harden, refactor, test, packa
 Use $wp-theme-expert to build, review, debug, or improve a WordPress theme, custom child theme, block/FSE theme, `theme.json`, templates, patterns, block styles, custom block, design-to-theme implementation, Ollie/Blocksy site, visual parity task, or editor/frontend parity issue.
 
 Use $wp-site-expert to plan, build, review, or improve a WordPress website, landing page, conversion flow, UX/IA, content model, SEO/AEO/GEO surface, analytics/tracking setup, accessibility, performance, responsive polish, or premium enterprise site experience.
+
+Use $wp-quality-reviewer for a focused independent WordPress security, performance, modularity/maintainability, or accessibility audit and review-led remediation.
 
 Use the relevant specialist with `shared/references/project-subagent-routing.md` when a project needs subagent profiles, skill routing, or availability-first model/reasoning allocation; use $wp-expert only if the lane is ambiguous.
 
@@ -197,6 +201,8 @@ Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-
 Use $wp-contributor with `shared/references/project-subagent-routing.md` when a contribution repo needs bounded Core/Meta/Gutenberg subagent mapping, review, or test triage.
 
 Use $content-writer to research, brief, draft, rewrite, audit, or refresh organic-search-focused content for SEO, AEO, GEO, AI Overviews, answer engines, and AI tools.
+
+Use $product-video-producer for reference-led product films, storyboards, premium motion direction, deterministic 1080p/4K renders, review packages, and bounded critique-driven revisions.
 ```
 
 ## Quick Start
@@ -220,12 +226,14 @@ This symlinks the skills into `~/.claude/skills/`, where Claude Code discovers p
 ~/.claude/skills/wp-plugin-expert/SKILL.md
 ~/.claude/skills/wp-theme-expert/SKILL.md
 ~/.claude/skills/wp-site-expert/SKILL.md
+~/.claude/skills/wp-quality-reviewer/SKILL.md
 ~/.claude/skills/wp-portfolio-cto/SKILL.md
 ~/.claude/skills/wp-product-orchestrator/SKILL.md
 ~/.claude/skills/loop-steward/SKILL.md
 ~/.claude/skills/behavior-validator/SKILL.md
 ~/.claude/skills/wp-contributor/SKILL.md
 ~/.claude/skills/content-writer/SKILL.md
+~/.claude/skills/product-video-producer/SKILL.md
 ~/.claude/skills/shared/references/*.md
 ~/.claude/skills/templates/product-repo/*
 ```
@@ -235,13 +243,14 @@ Install selected skills only:
 ```bash
 bash scripts/install-global-skill-links.sh wp-expert
 bash scripts/install-global-skill-links.sh wp-plugin-expert wp-theme-expert wp-site-expert
+bash scripts/install-global-skill-links.sh wp-quality-reviewer behavior-validator
 bash scripts/install-global-skill-links.sh wp-expert wp-plugin-expert wp-theme-expert wp-site-expert wp-portfolio-cto wp-product-orchestrator wp-contributor
 bash scripts/install-global-skill-links.sh loop-steward
-bash scripts/install-global-skill-links.sh behavior-validator
 bash scripts/install-global-skill-links.sh content-writer
+bash scripts/install-global-skill-links.sh product-video-producer
 ```
 
-Replace existing non-symlink targets if needed:
+Repoint incorrect symlinks if needed. Real files and directories are always preserved:
 
 ```bash
 bash scripts/install-global-skill-links.sh --force
@@ -255,15 +264,17 @@ test -f ~/.claude/skills/wp-expert/SKILL.md && echo "wp-expert installed"
 test -f ~/.claude/skills/wp-plugin-expert/SKILL.md && echo "wp-plugin-expert installed"
 test -f ~/.claude/skills/wp-theme-expert/SKILL.md && echo "wp-theme-expert installed"
 test -f ~/.claude/skills/wp-site-expert/SKILL.md && echo "wp-site-expert installed"
+test -f ~/.claude/skills/wp-quality-reviewer/SKILL.md && echo "wp-quality-reviewer installed"
 test -f ~/.claude/skills/wp-portfolio-cto/SKILL.md && echo "wp-portfolio-cto installed"
 test -f ~/.claude/skills/wp-product-orchestrator/SKILL.md && echo "wp-product-orchestrator installed"
 test -f ~/.claude/skills/loop-steward/SKILL.md && echo "loop-steward installed"
 test -f ~/.claude/skills/behavior-validator/SKILL.md && echo "behavior-validator installed"
 test -f ~/.claude/skills/wp-contributor/SKILL.md && echo "wp-contributor installed"
 test -f ~/.claude/skills/content-writer/SKILL.md && echo "content-writer installed"
+test -f ~/.claude/skills/product-video-producer/SKILL.md && echo "product-video-producer installed"
 ```
 
-After first install, fully restart Claude Code if the skills do not appear immediately. Then run `/help` or explicitly ask Claude Code to use `wp-expert`, `wp-plugin-expert`, `wp-theme-expert`, `wp-site-expert`, `wp-portfolio-cto`, `wp-product-orchestrator`, `loop-steward`, `behavior-validator`, `wp-contributor`, or `content-writer`.
+Run `bash scripts/check-global-skill-links.sh` after adding or renaming a skill. After first install, restart Claude Code if the skills do not appear immediately. `loop-steward` remains a conditional control-plane role; it is not part of routine WordPress execution.
 
 ### Install Globally For Codex
 
@@ -274,12 +285,14 @@ The same installer also symlinks skills into Codex's global skills directory:
 ~/.codex/skills/wp-plugin-expert/SKILL.md
 ~/.codex/skills/wp-theme-expert/SKILL.md
 ~/.codex/skills/wp-site-expert/SKILL.md
+~/.codex/skills/wp-quality-reviewer/SKILL.md
 ~/.codex/skills/wp-portfolio-cto/SKILL.md
 ~/.codex/skills/wp-product-orchestrator/SKILL.md
 ~/.codex/skills/loop-steward/SKILL.md
 ~/.codex/skills/behavior-validator/SKILL.md
 ~/.codex/skills/wp-contributor/SKILL.md
 ~/.codex/skills/content-writer/SKILL.md
+~/.codex/skills/product-video-producer/SKILL.md
 ~/.codex/skills/shared/references/*.md
 ~/.codex/skills/templates/product-repo/*
 ```
@@ -297,6 +310,8 @@ What it does:
 - Symlinks skills to Claude global path: `${CLAUDE_HOME:-~/.claude}/skills/<skill-name>`.
 - Symlinks shared references to both skill roots as `shared/` so `../shared/references/*.md` resolves consistently from symlinked skill folders.
 - Symlinks product repo templates to both skill roots as `templates/` so starter-kit paths are available from global installs.
+- Preserves any real file or directory already present at a target path.
+- Provides `scripts/check-global-skill-links.sh` for read-only live parity checks.
 
 ## Product Repo Autonomy Kit
 
@@ -306,7 +321,7 @@ Install the starter kit into a WordPress plugin/theme repo:
 bash /path/to/agent-skills/scripts/install-product-agent-kit.sh /path/to/product-repo
 ```
 
-This copies `AGENTS.md`, `PRODUCT.md`, `.codex/config.toml`, `.codex/agents/*.toml`, and `.codex/prompts/*.md`. Existing files are skipped unless `--force` is passed.
+This installs missing starter-kit files without overwriting repo-owned guidance. Use `--check` to audit drift or `--stage-update` to stage reviewable candidates under `.codex/product-agent-kit-updates/`; `--force` is intentionally unsupported.
 
 ## Design
 

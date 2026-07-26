@@ -6,11 +6,8 @@
     "skill-evals/README.md",
     "skill-evals/run-record.example.json",
     "skill-evals/behavior-baselines.json",
-    "skill-evals/run-records/enterprise-runtime-assurance-2026-07-25.json",
-    "skill-evals/run-records/site-visual-routing-2026-07-25.json",
-    "skill-evals/run-records/engineering-graph-2026-07-25.json",
-    "skill-evals/run-records/wp-quality-reviewer-2026-07-25.json",
     "scripts/behavior-evidence-audit.mjs",
+    "scripts/validate-behavior-run-records.mjs",
     "shared/schemas/wordpress-engineering-graph.schema.json",
     "shared/schemas/wp-quality-review.schema.json",
     "wp-quality-reviewer/scripts/validate-review-report.mjs"
@@ -22,6 +19,33 @@
     }
   ],
   "routeBudgets": [
+    {
+      "name": "WP ambiguous routing",
+      "maxWords": 2400,
+      "warningPercent": 85,
+      "files": [
+        "wp-expert/SKILL.md",
+        "wp-expert/references/reference-routing-map.md"
+      ]
+    },
+    {
+      "name": "Loop Steward learning",
+      "maxWords": 2200,
+      "warningPercent": 85,
+      "files": [
+        "loop-steward/SKILL.md",
+        "shared/references/self-improvement-loop.md"
+      ]
+    },
+    {
+      "name": "Loop Steward proof environment",
+      "maxWords": 1300,
+      "warningPercent": 85,
+      "files": [
+        "loop-steward/SKILL.md",
+        "shared/references/disposable-proof-environment-lifecycle.md"
+      ]
+    },
     {
       "name": "PO topology",
       "maxWords": 3500,

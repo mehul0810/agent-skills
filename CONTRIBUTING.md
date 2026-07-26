@@ -148,8 +148,8 @@ fi
 
 To improve agent YAML configuration:
 
-- Files: `wp-expert/agents/openai.yaml` and `wp-contributor/agents/openai.yaml`
-- These control display names, descriptions, and default prompts
+- Every top-level skill owns `agents/openai.yaml`.
+- These files control display names, descriptions, and default prompts; keep their role boundaries aligned with each `SKILL.md`.
 - Keep descriptions under 160 characters for UI display
 - Test by restarting Claude Code after changes
 
@@ -171,7 +171,8 @@ git clone https://github.com/mehul0810/agent-skills.git
 cd agent-skills
 
 # Install globally for local testing
-bash scripts/install-global-skill-links.sh --force
+bash scripts/install-global-skill-links.sh
+bash scripts/check-global-skill-links.sh
 
 # Restart Claude Code to load the updated skills
 ```

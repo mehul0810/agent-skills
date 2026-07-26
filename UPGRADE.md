@@ -7,8 +7,8 @@ Instructions for upgrading to new versions of the WP Expert skill pack.
 To see which version you have installed:
 
 ```bash
-# Check the version file
-cat ~/.claude/skills/../../VERSION
+# Resolve through an installed skill symlink to the pack root.
+cat ~/.claude/skills/wp-expert/../VERSION
 
 # Or check in the repo
 cat /path/to/skill-repo/VERSION
@@ -27,6 +27,20 @@ cat /path/to/skill-repo/VERSION
    ```
 
 3. **Read this guide** to understand what changes are coming
+
+---
+
+## Unreleased: Quality Review Schema v2
+
+Formal `wp-quality-reviewer` reports now use `schemaVersion: 2`. Replace free-form `target`, `scope.revision`, evidence strings, and before/after strings with:
+
+- immutable `targetIdentity` commit/package fields,
+- explicit domain dispositions,
+- structured evidence and validation receipts,
+- direction, budget, and comparable numeric performance measurements,
+- same-commit fresh source-aware review receipts for critical fixes.
+
+The bundled validator rejects v1 reports rather than silently upgrading evidence claims.
 
 ---
 
@@ -75,7 +89,7 @@ bash scripts/install-global-skill-links.sh --force
    ```
 3. **Check version**:
    ```bash
-   cat ~/.claude/skills/wp-expert/../../VERSION
+   cat ~/.claude/skills/wp-expert/../VERSION
    ```
 
 ---
@@ -105,17 +119,22 @@ Future major versions may include breaking changes. When released, detailed migr
 
 ### Conflicting old skill directories
 
-**Problem**: You have both old and new skill versions installed somehow.
+**Problem**: A skill target conflicts with an existing real file/directory or an incorrect symlink.
 
 **Solution**:
 ```bash
-# Remove old copies
-rm -rf ~/.claude/skills/wp-expert
-rm -rf ~/.claude/skills/wp-contributor
-rm -rf ~/.codex/skills/wp-expert
-rm -rf ~/.codex/skills/wp-contributor
+# Inspect first. The installer preserves real files/directories.
+bash /path/to/repo/scripts/check-global-skill-links.sh
 
-# Reinstall cleanly
+# Repoint incorrect symlinks only.
+bash /path/to/repo/scripts/install-global-skill-links.sh --force
+bash /path/to/repo/scripts/check-global-skill-links.sh
+```
+
+Move or remove a conflicting real path only after reviewing and backing up its contents. Do not use recursive deletion as an installation shortcut.
+
+```bash
+# Install missing links after resolving any reviewed conflict.
 bash /path/to/repo/scripts/install-global-skill-links.sh
 ```
 
@@ -249,7 +268,7 @@ If you encounter upgrade issues:
 **A**: No. Minor version upgrades (1.0 → 1.1) are fully backward compatible. Breaking changes only happen in major versions (1.0 → 2.0).
 
 ### Q: Should I reinstall with `--force`?
-**A**: No, unless you're seeing errors. Regular installs (`bash scripts/install-global-skill-links.sh`) are smart enough to update broken symlinks without `--force`.
+**A**: Only when the live checker reports an incorrect symlink. `--force` repoints symlinks but never replaces a real file or directory. Run `bash scripts/check-global-skill-links.sh` afterward.
 
 ### Q: Can I use both Codex and Claude Code?
 **A**: Yes. The installer puts skills in both `~/.codex/skills/` and `~/.claude/skills/`. Both use the same symlinks.

@@ -1,0 +1,15 @@
+.codex/agents/wp-narrow-fixer.toml
+.codex/agents/wp-plugin-mapper.toml
+.codex/agents/wp-pr-reviewer.toml
+.codex/agents/wp-test-runner.toml
+.codex/agents/wp-theme-mapper.toml
+.codex/config.toml
+.codex/product-agent-kit.files
+.codex/product-agent-kit.version
+.codex/prompts/fixissue.md
+.codex/prompts/handoff.md
+.codex/prompts/landpr.md
+.codex/prompts/pickup.md
+.codex/prompts/release-wporg.md
+AGENTS.md
+PRODUCT.md

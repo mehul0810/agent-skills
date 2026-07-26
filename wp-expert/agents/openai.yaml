@@ -1,4 +1,4 @@
 interface:
   display_name: "WP Expert"
   short_description: "Thin router for ambiguous WordPress work"
-  default_prompt: "Use $wp-expert only when WordPress work is ambiguous; otherwise use the plugin, theme, site, portfolio, product, contributor, or content specialist."
+  default_prompt: "Use $wp-expert only when WordPress work is ambiguous; otherwise route directly to the matching implementation, quality-review, behavior-validation, orchestration, contribution, or content specialist."

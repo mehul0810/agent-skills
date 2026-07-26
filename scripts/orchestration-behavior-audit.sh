@@ -498,6 +498,10 @@ require_text "shared/references/adjacent-finding-protocol.md" "weak comments aro
 require_text "shared/references/adjacent-finding-protocol.md" "Create a focused GitHub issue for any unexpected behavior, code smell, maintainability debt, weak non-obvious comments, missing test coverage, repeated validation/tooling surprise, or workflow friction unless it was fixed inside the current PR scope" "adjacent focused issue rule"
 require_text "shared/references/adjacent-finding-protocol.md" "Use issue fields: observed symptom, why it matters, suspected source, affected files/surfaces, acceptance criteria, validation/proof expectation, risk, and whether docs need updating" "adjacent issue fields rule"
 
+if ! bash "$repo_root/scripts/product-agent-kit-audit.sh"; then
+  errors=$((errors + 1))
+fi
+
 if [ "$errors" -gt 0 ]; then
   echo "orchestration behavior audit failed: $errors missing guardrail(s)" >&2
   exit 1

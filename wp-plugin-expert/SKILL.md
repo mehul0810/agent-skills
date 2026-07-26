@@ -1,6 +1,6 @@
 ---
 name: wp-plugin-expert
-description: "Use for WordPress plugin/product engineering: plugin features, architecture, admin screens, REST APIs, custom tables, WordPress.org releases, Composer/npm tooling, tests, CI, troubleshooting, and product-grade implementation. Use wp-quality-reviewer for a focused quality audit or remediation."
+description: "Use for WordPress plugin/product engineering: plugin features, architecture, admin screens, plugin-owned custom blocks, REST APIs, custom tables, WordPress.org releases, Composer/npm tooling, tests, CI, troubleshooting, and product-grade implementation. Use wp-quality-reviewer for a focused quality audit or remediation."
 ---
 
 # WP Plugin Expert

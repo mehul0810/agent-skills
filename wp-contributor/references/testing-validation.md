@@ -9,8 +9,8 @@ Use this to choose validation for Core, Meta, Gutenberg, and related WordPress c
 - Record exact commands and outcomes in Trac or PR comments.
 - If a tool is unavailable locally, say that clearly and provide the next best evidence.
 - Do not mark work as ready until the changed behavior has been confirmed against trunk/main or the required release branch.
-- For packaging, release, or deploy changes, verify development-only Composer/npm packages are not present in the production artifact; see `../shared/references/production-dependency-discipline.md`.
-- For code changes, use `../shared/references/enterprise-code-quality-gate.md` to select tests for modularity, security, performance, maintainability, and rare/failure scenarios without bloating the patch.
+- For packaging, release, or deploy changes, verify development-only Composer/npm packages are not present in the production artifact; see `../../shared/references/production-dependency-discipline.md`.
+- For code changes, use `../../shared/references/enterprise-code-quality-gate.md` to select tests for modularity, security, performance, maintainability, and rare/failure scenarios without bloating the patch.
 
 ## Core Validation
 

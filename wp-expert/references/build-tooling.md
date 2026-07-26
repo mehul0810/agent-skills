@@ -27,7 +27,7 @@ Use this for WordPress build systems, dependency management, webpack configurati
 - Use `composer validate` before deeper debugging.
 - Use `composer dump-autoload` after changing autoload config or adding classes when the repo relies on generated autoload files.
 - Use optimized autoloaders for production packages when appropriate: `composer install --no-dev --optimize-autoloader`.
-- Never ship Composer `require-dev` packages in production `vendor/`; use `../shared/references/production-dependency-discipline.md` for artifact checks.
+- Never ship Composer `require-dev` packages in production `vendor/`; use `../../shared/references/production-dependency-discipline.md` for artifact checks.
 - Be cautious with Composer scripts and plugins in production. Composer scripts execute only from the root package; dependency scripts are not executed.
 - In WordPress plugin ecosystems, dependency collisions are real. Consider namespacing/scoping bundled vendor libraries for distributed plugins when conflicts are plausible.
 

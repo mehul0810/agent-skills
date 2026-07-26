@@ -10,9 +10,9 @@ Use this skill as the thin WordPress engineering router. Prefer the narrow speci
 ## Route First
 
 - Auto-select the specialist by the task's primary artifact or outcome. Stop after routing when the specialist is clear; do not load the routing map or broad references.
-- Focused security, performance, modularity/maintainability, or accessibility review, hardening, profiling, remediation, or independent reassessment: use `wp-quality-reviewer`.
-- Plugin/product feature code, REST APIs, admin screens, custom tables, WordPress.org plugin releases, Composer/npm tooling, CI, tests, or plugin troubleshooting: use `wp-plugin-expert`.
-- Themes, block themes, FSE, `theme.json`, templates, patterns, block styles, custom blocks, design-to-theme builds, visual parity, Ollie, Blocksy, or editor/frontend parity: use `wp-theme-expert`.
+- Focused security, performance, modularity/maintainability, or accessibility review, hardening, profiling, review-led remediation, or independent reassessment: use `wp-quality-reviewer`; routine constraints stay with the artifact specialist.
+- Plugin/product feature code, REST APIs, admin screens, custom tables, plugin-owned portable blocks, WordPress.org plugin releases, Composer/npm tooling, CI, tests, or plugin troubleshooting: use `wp-plugin-expert`.
+- Themes, block themes, FSE, `theme.json`, templates, patterns, block styles, theme-owned presentation, design-to-theme builds, visual parity, Ollie, Blocksy, or editor/frontend parity: use `wp-theme-expert`.
 - Whole-site work, landing pages, conversion flows, UX/IA, content architecture, SEO/AEO/GEO, analytics, accessibility, responsive polish, performance, or premium visitor/admin experience: use `wp-site-expert`.
 - Independent source-blind proof of observable runtime, admin/editor/frontend, API, packaged-build, or generated-artifact behavior: use `behavior-validator`; implementation remains with the owning specialist.
 - Cross-product portfolio governance, portfolio heartbeats, product-thread health, release conflicts across products, owner portfolio briefs, or shared process/skill self-improvement: use `wp-portfolio-cto`.

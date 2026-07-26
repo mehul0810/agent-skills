@@ -27,7 +27,17 @@
             "pattern": "^[a-z0-9][a-z0-9._-]*$"
           },
           "type": {
-            "enum": ["intent", "owner", "artifact", "runtime", "proof", "outcome", "learning"]
+            "enum": [
+              "intent",
+              "owner",
+              "artifact",
+              "runtime",
+              "observation",
+              "correction",
+              "proof",
+              "outcome",
+              "learning"
+            ]
           },
           "owner": {
             "type": "string",
@@ -48,6 +58,37 @@
           },
           "notApplicableReason": {
             "type": "string"
+          },
+          "proofKind": {
+            "enum": ["verification", "regression"]
+          },
+          "promotion": {
+            "type": "object",
+            "required": ["destination", "status", "reviewer"],
+            "properties": {
+              "destination": {
+                "type": "object",
+                "required": ["kind", "pointer"],
+                "properties": {
+                  "kind": {
+                    "enum": ["repo_doc", "adr", "issue", "skill", "automation"]
+                  },
+                  "pointer": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "additionalProperties": false
+              },
+              "status": {
+                "const": "verified"
+              },
+              "reviewer": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": false
           },
           "evidence": {
             "type": "array",
@@ -71,6 +112,120 @@
             }
           }
         },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "type": { "const": "learning" }
+              },
+              "required": ["type"]
+            },
+            "then": {
+              "required": ["promotion"],
+              "properties": {
+                "state": {
+                  "const": "verified"
+                },
+                "dependsOn": {
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": { "const": "learning" },
+                "state": { "const": "verified" }
+              },
+              "required": ["type", "state"]
+            },
+            "then": {
+              "properties": {
+                "evidence": {
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "required": ["promotion"]
+            },
+            "then": {
+              "properties": {
+                "type": {
+                  "const": "learning"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "required": ["proofKind"]
+            },
+            "then": {
+              "properties": {
+                "type": {
+                  "const": "proof"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": { "const": "observation" },
+                "state": { "const": "failed" }
+              },
+              "required": ["type", "state"]
+            },
+            "then": {
+              "properties": {
+                "evidence": {
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": { "const": "correction" },
+                "state": { "const": "verified" }
+              },
+              "required": ["type", "state"]
+            },
+            "then": {
+              "properties": {
+                "evidence": {
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "proofKind": { "const": "regression" }
+              },
+              "required": ["proofKind"]
+            },
+            "then": {
+              "properties": {
+                "type": {
+                  "const": "proof"
+                },
+                "state": {
+                  "const": "verified"
+                },
+                "evidence": {
+                  "minItems": 1
+                }
+              }
+            }
+          }
+        ],
         "additionalProperties": false
       }
     }

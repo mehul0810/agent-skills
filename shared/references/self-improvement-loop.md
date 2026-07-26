@@ -16,6 +16,20 @@ When a mistake is identified:
 
 Before adding guidance, prefer tightening routing, replacing weak wording, consolidating duplicates, adding a deterministic check, or extending an eval. Add a new rule only when the behavior is missing and repeatable evidence justifies its token cost.
 
+## Correction Transfer Contract
+
+Every owner correction ends with a compact result, even when no shared rule is promoted:
+
+```text
+Mismatch | immediate fix | evidence | repeatability | dedupe | privacy | destination/no-artifact reason | reviewer | verification trigger | status
+```
+
+- A worker records a candidate only; it does not mutate shared skills or policy from its own classification.
+- The PO or CTO dedupes and routes the candidate. A Skill PO, explicit owner, or designated reviewer admits a shared-skill change.
+- Promote after two independent occurrences, or one high-confidence failure that disproves an explicit safety, authority, release, proof, or editing invariant.
+- Keep one-off preferences local, but record the no-artifact reason instead of silently dropping the correction.
+- A `pending` candidate needs a named verifier plus a review date or event. Surface overdue candidates in the next governed learning review.
+
 ## Learning Placement
 
 Place durable lessons where they can be enforced:

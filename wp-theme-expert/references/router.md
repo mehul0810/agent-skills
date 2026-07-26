@@ -4,7 +4,7 @@ Use this router only after `wp-theme-expert` is selected. Load one primary refer
 
 ## Primary Routes
 
-- Focused security, performance, modularity/maintainability, or accessibility review/fix: route to `wp-quality-reviewer`; do not load a broad theme reference as a substitute.
+- Focused independent security, performance, modularity/maintainability, or accessibility review or review-led remediation: route to `wp-quality-reviewer`; routine theme/FSE constraints and fixes stay with this specialist.
 - Cross-boundary engineering graph, missing project knowledge/docs, graph closure, and durable failure learning: `../../shared/references/wordpress-engineering-graph.md`.
 - Compatibility, supply chain, production observation, recovery, and adaptive enterprise contracts: `../../shared/references/enterprise-runtime-assurance.md`.
 - Theme/plugin/content ownership, public-contract, release, performance, or proof decisions: `../../wp-expert/references/architecture-decision-gate.md`.
@@ -16,8 +16,8 @@ Use this router only after `wp-theme-expert` is selected. Load one primary refer
 - Classic themes, child themes, block editor compatibility: `../../wp-expert/references/theme-and-block-editor.md`.
 - Style guides, design tokens, custom themes, child-theme translation: `../../wp-expert/references/style-guide-theme-translation.md`.
 - Deterministic visual parity, visitor/author workflows, content stress, responsive/browser evidence, and release proof: `../../wp-expert/references/visual-parity-regression.md`.
-- Theme/frontend performance, Core Web Vitals, fonts/images/assets: `../../wp-expert/references/theme-frontend-performance-quality-gate.md`.
-- Accessibility, i18n, RTL, multilingual, browser, and input-mode readiness: `../../wp-expert/references/accessibility-i18n-global-readiness.md`.
+- Theme/frontend performance implementation budgets for Core Web Vitals, fonts/images/assets: `../../wp-expert/references/theme-frontend-performance-quality-gate.md`; use the reviewer for focused profiling or reassessment.
+- Accessibility implementation constraints plus i18n, RTL, multilingual, browser, and input-mode readiness: `../../wp-expert/references/accessibility-i18n-global-readiness.md`; use the reviewer for a focused accessibility audit.
 - Enterprise launch, rollback, observability, or continuity: `../../wp-expert/references/vip-enterprise-launch-readiness.md`, `../../wp-expert/references/observability-incident-response.md`, or `../../wp-expert/references/disaster-recovery-business-continuity.md`.
 - Local-first validation, standards, GitHub Actions, and release automation: `../../wp-expert/references/standards-ci-github.md`.
 - WordPress Design System and block editor components: `../../wp-expert/references/wordpress-design-system.md`.
@@ -29,7 +29,7 @@ Use this router only after `wp-theme-expert` is selected. Load one primary refer
 - Hybrid theme/page-builder migration: `../../wp-expert/references/hybrid-theme-migration-modernization.md`.
 - Local HTTPS/browser testing blockers: `../../wp-expert/references/local-https-testing.md`.
 - High-context continuation or compact/fresh-thread decision: `../../shared/references/context-window-discipline.md`.
-- Ambiguous or cross-lane work: `../../wp-expert/references/reference-routing-map.md`.
+- If the primary artifact changes or another lane owns the outcome, return a compact evidence handoff to `wp-expert` or the owning specialist; do not load another broad router.
 
 ## Always Keep Visible
 

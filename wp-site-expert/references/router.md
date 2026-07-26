@@ -4,7 +4,7 @@ Use this router only after `wp-site-expert` is selected. Load one primary refere
 
 ## Primary Routes
 
-- Focused security, performance, modularity/maintainability, or accessibility review/fix: route to `wp-quality-reviewer`; do not load a broad site reference as a substitute.
+- Focused independent security, performance, modularity/maintainability, or accessibility review or review-led remediation: route to `wp-quality-reviewer`; routine site delivery constraints and fixes stay with this specialist.
 - Cross-boundary engineering graph, missing project knowledge/docs, graph closure, and durable failure learning: `../../shared/references/wordpress-engineering-graph.md`.
 - Compatibility, supply chain, production observation, recovery, and adaptive enterprise contracts: `../../shared/references/enterprise-runtime-assurance.md`.
 - Source-of-truth, ownership, public-contract, release, performance, privacy, or proof decisions: `../../wp-expert/references/architecture-decision-gate.md`.
@@ -20,8 +20,8 @@ Use this router only after `wp-site-expert` is selected. Load one primary refere
 - Block Editor page/post structure, Core/plugin block selection, patterns/styles/variations, author usability, CSS governance, and WYSIWYG proof: `../../shared/references/block-editor-page-composition.md`.
 - Runtime block inventory, core-first page composition, editable render proof, and Site Editor override precedence: `../../shared/references/core-first-site-theme-workflow.md`.
 - Content migration, editorial scale, redirects, launch cutovers: `../../wp-expert/references/content-migration-editorial-scale.md`.
-- Accessibility, i18n, RTL, multilingual readiness: `../../wp-expert/references/accessibility-i18n-global-readiness.md`.
-- Performance profiling and Core Web Vitals: `../../wp-expert/references/performance-profiling-scale-budgets.md`.
+- Accessibility implementation constraints plus i18n, RTL, and multilingual readiness: `../../wp-expert/references/accessibility-i18n-global-readiness.md`; use the reviewer for a focused accessibility audit.
+- Performance budgets and implementation constraints for Core Web Vitals and scale: `../../wp-expert/references/performance-profiling-scale-budgets.md`; use the reviewer for focused profiling or reassessment.
 - Local-first validation, standards, GitHub Actions, and release automation: `../../wp-expert/references/standards-ci-github.md`.
 - Edge caching/CDN and personalization: `../../wp-expert/references/edge-caching-cdn-architecture.md`.
 - Headless/decoupled site architecture: `../../wp-expert/references/headless-decoupled-wordpress.md`.
@@ -29,7 +29,7 @@ Use this router only after `wp-site-expert` is selected. Load one primary refere
 - Exact owner-provided values and calibrated proof: `../../wp-expert/references/planning-drift-control.md`.
 - Enterprise launch, rollback, observability, or continuity: `../../wp-expert/references/vip-enterprise-launch-readiness.md`, `../../wp-expert/references/observability-incident-response.md`, or `../../wp-expert/references/disaster-recovery-business-continuity.md`.
 - Web-heavy, current-policy, API, or source-backed research: `../../shared/references/research-token-discipline.md`.
-- Ambiguous or cross-lane work: `../../wp-expert/references/reference-routing-map.md`.
+- If the primary artifact changes or another lane owns the outcome, return a compact evidence handoff to `wp-expert` or the owning specialist; do not load another broad router.
 
 ## Always Keep Visible
 

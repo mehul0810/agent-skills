@@ -2,7 +2,7 @@
 
 Use this when writing or refactoring code. Adapt names and capabilities to the codebase.
 
-For enterprise/WPVIP-grade implementation or review, load `../shared/references/enterprise-code-quality-gate.md` before choosing final structure and validation.
+For enterprise/WPVIP-grade implementation or review, load `../../shared/references/enterprise-code-quality-gate.md` before choosing final structure and validation.
 
 ## Compatibility Before Patterns
 

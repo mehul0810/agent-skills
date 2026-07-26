@@ -75,7 +75,9 @@ Normal product orchestration, issue intake, implementation, hardening PRs, branc
 
 Every brief has a compact quality gate matrix: one-line passes, expanded risks, `Not applicable - reason`.
 
-Before counting a PR, require `enterprise-code-quality-gate.md` or record exception/residual risk.
+For release-ready status, `$wp-quality-reviewer` owns the technical matrix evidence and gate dispositions using its compact multi-domain release mode; the PO verifies candidate identity and synthesizes that evidence with product, milestone, packaging, and approval state. The PO must not infer a technical pass from worker summaries or green CI alone. Escalate to one detailed review mode only for a confirmed risk.
+
+Before counting a PR, require `enterprise-code-quality-gate.md` or record exception/residual risk. Critical fixes also need a fresh source-aware re-review; use a separate source-blind `$behavior-validator` for applicable observable claims.
 
 - Security/privacy: capabilities, nonces/auth, sanitization/escaping, secrets/data, dependencies, no exploit detail.
 - Performance: admin/frontend load, queries, assets/enqueues, footprint, cache/async, regression risk.

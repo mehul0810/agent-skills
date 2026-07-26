@@ -4,18 +4,17 @@ Use this map to choose references with low context cost.
 
 ## Loading Discipline
 
-- Choose one primary reference that matches the core deliverable.
-- Add at most one supporting reference for confirmed cross-cutting risk.
-- Exceed that budget only when a named acceptance risk cannot be handled safely with the current set.
-- Stop loading more references when you already have enough to implement or review safely.
+- Load one primary reference for the core deliverable.
+- Add one supporting reference only for a confirmed risk; exceed this only when acceptance would otherwise be unsafe.
+- Stop when the loaded guidance is sufficient to implement or review safely.
 
 ## Risk-Triggered Overlays
 
-- Focused security, performance, modularity/maintainability, or accessibility audit/remediation: route directly to `wp-quality-reviewer`; its mode reference is the primary contract.
-- Substantial implementation/review: load `architecture-decision-gate.md` when ownership, source of truth, public contract, release state, performance, security, or proof is unclear.
-- Code change: apply enterprise and test principles from the active skill; load `enterprise-code-quality-gate.md` or `test-coverage-discipline.md` only when risk is non-trivial, ambiguous, or review-critical.
-- Public, commercial, VIP, data-sensitive, migration, dependency-heavy, or operationally critical work: let the quality gate classify baseline versus elevated assurance; load `enterprise-runtime-assurance.md` only when compatibility, supply-chain, monitoring, or recovery evidence is material.
-- Completion claim: load `live-proof-wordpress.md` only when runtime, editor, frontend, external integration, or release proof is material.
+- Focused security, performance, modularity, or accessibility review/remediation: route to `wp-quality-reviewer`; routine constraints stay with the artifact specialist.
+- Load `architecture-decision-gate.md` only when ownership, source of truth, public contract, release state, or proof is unclear.
+- Apply enterprise/test principles from the active skill; load their deeper references only for non-trivial or review-critical risk.
+- Load `enterprise-runtime-assurance.md` only for material compatibility, supply-chain, operations, or recovery risk.
+- Load `live-proof-wordpress.md` only for material runtime, editor, frontend, integration, or release proof.
 - Branch/PR/resumed-session work: load `session-continuity-pr-discipline.md` when branch base or PR target can drift.
 - Package/deploy/artifact work: load `production-dependency-discipline.md` when Composer, npm, release ZIP/SVN, deploy, or production dependency boundaries matter.
 - Web-heavy or current-policy lookup: load `research-token-discipline.md` when source selection or freshness can affect the answer.
@@ -25,10 +24,10 @@ Use this map to choose references with low context cost.
 
 | Task signal | Primary reference | Common supporting references |
 | --- | --- | --- |
-| Skill behavior audit, routing regression, eval scenarios, prompt drift after skill edits | `agent-behavior-eval-scenarios.md` | `architecture-decision-gate.md`, `reference-routing-map.md` |
+| Skill behavior audit, routing regression, eval scenarios, prompt drift after skill edits | `agent-behavior-eval-scenarios.md` | `architecture-decision-gate.md` when ownership or authority is unclear |
 | Architecture decision gate, ownership/source-of-truth choice, public contract, release state, validation proof, project policy precedence | `architecture-decision-gate.md` | `enterprise-code-quality-gate.md`, `live-proof-wordpress.md` |
 | New chat/session continuity, branch creation, issue milestone to PR release branch, PR base selection, release branch drift | `session-continuity-pr-discipline.md` | `standards-ci-github.md`, `delivery-excellence.md` |
-| Project-level Codex subagents, skill routing, availability-first model/reasoning allocation | `project-subagent-routing.md` | `reference-routing-map.md`, `thinking-brainstorming-engineering-discipline.md` |
+| Project-level Codex subagents, skill routing, availability-first model/reasoning allocation | `project-subagent-routing.md` | `thinking-brainstorming-engineering-discipline.md` for unresolved planning ambiguity |
 | PRD, SOW, estimates, milestones, mobile-first planning | `delivery-excellence.md` | `review-checklists.md`, `runtime-toolchain-version-policy.md` |
 | Enterprise acceptance criteria or definition of done for plugin/theme/API/migration/security/performance/conversion work | `enterprise-acceptance-criteria-templates.md` | `test-coverage-discipline.md`, `validation-commands.md` |
 | Planning drift control, scope guard, exact CSS/value change, calibrated validation | `planning-drift-control.md` | `delivery-excellence.md`, `validation-commands.md` |
@@ -63,9 +62,9 @@ Use this map to choose references with low context cost.
 | Analytics, measurement, GA4/GTM/data layer, consent-aware tracking, funnel events | `analytics-measurement-engineering.md` | `privacy-consent-data-governance.md`, `conversion-focused-website-engineering.md` |
 | UI/UX implementation, premium feel, or admin UX | `ui-ux-pro-for-wordpress.md` | `ux-product-strategy-design-qa.md`, `admin-ux-and-ui.md` |
 | WordPress Design System implementation | `wordpress-design-system.md` | `admin-ux-and-ui.md`, `ui-ux-pro-for-wordpress.md` |
-| Performance/security quick triage | `performance-and-security.md` | `performance-profiling-scale-budgets.md`, `security-threat-modeling-review.md` |
-| Performance profiling, budgets, query/object-cache scale, Core Web Vitals, admin/editor speed | `performance-profiling-scale-budgets.md` | `edge-caching-cdn-architecture.md`, `load-testing-capacity-planning.md` |
-| Security threat model, sensitive endpoint review, REST/admin/upload/webhook/OAuth/MCP risk | `security-threat-modeling-review.md` | `security-operations-compliance.md`, `privacy-consent-data-governance.md` |
+| Focused security, performance, modularity, or accessibility audit/profiling/remediation | route to `wp-quality-reviewer` | selected reviewer mode only |
+| Performance architecture and implementation constraints for queries, cache, Core Web Vitals, or admin/editor speed | `performance-profiling-scale-budgets.md` | `edge-caching-cdn-architecture.md` or `load-testing-capacity-planning.md` for a confirmed scale risk |
+| Security architecture and threat modeling before sensitive REST/admin/upload/webhook/OAuth/MCP implementation | `security-threat-modeling-review.md` | `security-operations-compliance.md` or `privacy-consent-data-governance.md` for a confirmed risk |
 | Privacy, consent, telemetry, PII, data retention, exporter/eraser support | `privacy-consent-data-governance.md` | `security-operations-compliance.md`, `plugin-guidelines-review.md` |
 | VIP/high-scale architecture decisions | `vip-scale-playbook.md` | `edge-caching-cdn-architecture.md`, `load-testing-capacity-planning.md` |
 | VIP/enterprise launch readiness, go/no-go review, launch matrix, post-launch checks | `vip-enterprise-launch-readiness.md` | `deployment-release-resilience.md`, `observability-incident-response.md` |
@@ -89,10 +88,10 @@ Use this map to choose references with low context cost.
 
 ## Shared References
 
-- Use `../shared/references/research-token-discipline.md` only for web-heavy, drift-prone, or broad discovery tasks.
-- Use `../shared/references/session-continuity-pr-discipline.md` for new chats, resumed repo work, branch creation, release branch detection, and explicit PR base safety.
-- Use `../shared/references/project-subagent-routing.md` for project-level Codex subagents, skill-level routing, bounded parallel mapping/review, and model routing.
-- Use `../shared/references/production-dependency-discipline.md` for packaging, CI artifacts, release ZIP/SVN, and production dependency verification.
-- Use `../shared/references/enterprise-code-quality-gate.md` for implementation, refactoring, and review tasks where generated or reviewed code must meet enterprise/WPVIP-grade engineering expectations.
-- Use `../shared/references/enterprise-runtime-assurance.md` only after material compatibility, supply-chain, operations, or recovery risk is confirmed.
-- Use `../shared/references/live-proof-wordpress.md` before claiming WordPress runtime, editor, frontend, external, or release work is complete.
+- Use `../../shared/references/research-token-discipline.md` only for web-heavy, drift-prone, or broad discovery tasks.
+- Use `../../shared/references/session-continuity-pr-discipline.md` for new chats, resumed repo work, branch creation, release branch detection, and explicit PR base safety.
+- Use `../../shared/references/project-subagent-routing.md` for project-level Codex subagents, skill-level routing, bounded parallel mapping/review, and model routing.
+- Use `../../shared/references/production-dependency-discipline.md` for packaging, CI artifacts, release ZIP/SVN, and production dependency verification.
+- Use `../../shared/references/enterprise-code-quality-gate.md` for implementation, refactoring, and review tasks where generated or reviewed code must meet enterprise/WPVIP-grade engineering expectations.
+- Use `../../shared/references/enterprise-runtime-assurance.md` only after material compatibility, supply-chain, operations, or recovery risk is confirmed.
+- Use `../../shared/references/live-proof-wordpress.md` before claiming WordPress runtime, editor, frontend, external, or release work is complete.

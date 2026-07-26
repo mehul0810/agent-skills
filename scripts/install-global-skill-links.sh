@@ -12,7 +12,7 @@ Usage:
   bash scripts/install-global-skill-links.sh [--force] [skill-name ...]
 
 Options:
-  --force    Replace existing non-symlink paths in target directories.
+  --force    Repoint incorrect symlinks. Real files/directories are never replaced.
 
 Defaults:
   - If no skill names are provided, all top-level skill directories in this repo
@@ -92,20 +92,18 @@ ensure_link() {
       echo "ok: $link_path -> $skill_dir"
       return 0
     fi
-    rm -f "$link_path"
+    if [ "$force" -ne 1 ]; then
+      echo "incorrect symlink, skipped: $link_path -> $current (use --force to repoint)" >&2
+      return 1
+    fi
+    unlink "$link_path"
     ln -s "$skill_dir" "$link_path"
     echo "updated: $link_path -> $skill_dir"
     return 0
   fi
 
   if [ -e "$link_path" ]; then
-    if [ "$force" -eq 1 ]; then
-      rm -rf "$link_path"
-      ln -s "$skill_dir" "$link_path"
-      echo "replaced: $link_path -> $skill_dir"
-      return 0
-    fi
-    echo "exists and not symlink, skipped: $link_path (use --force to replace)" >&2
+    echo "exists and is not a symlink, preserved: $link_path" >&2
     return 1
   fi
 
@@ -128,20 +126,18 @@ ensure_named_link() {
       echo "ok: $link_path -> $source_dir"
       return 0
     fi
-    rm -f "$link_path"
+    if [ "$force" -ne 1 ]; then
+      echo "incorrect symlink, skipped: $link_path -> $current (use --force to repoint)" >&2
+      return 1
+    fi
+    unlink "$link_path"
     ln -s "$source_dir" "$link_path"
     echo "updated: $link_path -> $source_dir"
     return 0
   fi
 
   if [ -e "$link_path" ]; then
-    if [ "$force" -eq 1 ]; then
-      rm -rf "$link_path"
-      ln -s "$source_dir" "$link_path"
-      echo "replaced: $link_path -> $source_dir"
-      return 0
-    fi
-    echo "exists and not symlink, skipped: $link_path (use --force to replace)" >&2
+    echo "exists and is not a symlink, preserved: $link_path" >&2
     return 1
   fi
 

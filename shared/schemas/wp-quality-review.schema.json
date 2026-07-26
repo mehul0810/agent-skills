@@ -2,77 +2,279 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/mehul0810/agent-skills/shared/schemas/wp-quality-review.schema.json",
   "title": "WordPress Quality Review",
+  "$defs": {
+    "evidenceReceipt": {
+      "type": "object",
+      "required": ["kind", "pointer", "observation"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "enum": ["code", "git", "github", "runtime", "test", "browser", "profile", "dependency", "document", "package", "public", "owner"] },
+        "pointer": { "type": "string", "minLength": 5 },
+        "observation": { "type": "string", "minLength": 12 },
+        "environment": { "type": "string", "minLength": 8 },
+        "identity": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": { "type": "string", "minLength": 1 }
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "kind": { "enum": ["runtime", "browser", "profile"] } }, "required": ["kind"] },
+          "then": { "required": ["environment"] }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "package" } }, "required": ["kind"] },
+          "then": { "required": ["identity"] }
+        }
+      ]
+    },
+    "validationReceipt": {
+      "type": "object",
+      "required": ["kind", "check", "expected", "observed", "result"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "enum": ["static", "test", "runtime", "browser", "manual", "profile", "package"] },
+        "check": { "type": "string", "minLength": 8 },
+        "expected": { "type": "string", "minLength": 12 },
+        "observed": { "type": "string", "minLength": 12 },
+        "result": { "enum": ["pass", "fail", "blocked"] },
+        "environment": { "type": "string", "minLength": 8 },
+        "artifact": { "type": "string", "minLength": 5 }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "kind": { "enum": ["runtime", "browser", "manual", "profile"] } }, "required": ["kind"] },
+          "then": { "required": ["environment"] }
+        }
+      ]
+    },
+    "domainDisposition": {
+      "type": "object",
+      "required": ["disposition"],
+      "additionalProperties": false,
+      "properties": {
+        "disposition": { "enum": ["pass", "fail", "partial", "not_applicable"] },
+        "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidenceReceipt" } },
+        "reason": { "type": "string", "minLength": 12 }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "disposition": { "const": "not_applicable" } }, "required": ["disposition"] },
+          "then": { "required": ["reason"], "properties": { "evidence": { "maxItems": 0 } } },
+          "else": { "required": ["evidence"], "properties": { "evidence": { "minItems": 1 } } }
+        }
+      ]
+    },
+    "performanceMeasurement": {
+      "type": "object",
+      "required": ["metric", "unit", "direction", "before", "after", "budget", "conditions"],
+      "additionalProperties": false,
+      "properties": {
+        "metric": { "type": "string", "minLength": 6 },
+        "unit": { "type": "string", "minLength": 1 },
+        "direction": { "enum": ["lower_is_better", "higher_is_better"] },
+        "before": { "type": "number" },
+        "after": { "type": "number" },
+        "budget": { "type": "number" },
+        "conditions": { "type": "string", "minLength": 12 },
+        "sampleSize": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "independentReview": {
+      "type": "object",
+      "required": ["kind", "runId", "reviewedCommitSha", "result", "evidence"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "const": "fresh_source_aware" },
+        "runId": { "type": "string", "minLength": 5 },
+        "reviewedCommitSha": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+        "result": { "const": "pass" },
+        "evidence": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/evidenceReceipt" } }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "required": ["id", "area", "severity", "status", "evidence", "impact", "remediation", "validation"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "area": { "enum": ["security", "performance", "modularity", "accessibility"] },
+        "severity": { "enum": ["P0", "P1", "P2", "P3"] },
+        "status": { "enum": ["open", "fixed", "accepted"] },
+        "riskFlags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "enum": ["release_critical", "migration", "public_contract"] }
+        },
+        "evidence": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/evidenceReceipt" } },
+        "impact": { "type": "string", "minLength": 12 },
+        "remediation": { "type": "string", "minLength": 12 },
+        "validation": { "type": "array", "items": { "$ref": "#/$defs/validationReceipt" } },
+        "performanceMeasurement": { "$ref": "#/$defs/performanceMeasurement" },
+        "negativeTests": { "type": "array", "items": { "$ref": "#/$defs/validationReceipt" } },
+        "behaviorChecks": { "type": "array", "items": { "$ref": "#/$defs/validationReceipt" } },
+        "manualChecks": { "type": "array", "items": { "$ref": "#/$defs/validationReceipt" } },
+        "independentReview": { "$ref": "#/$defs/independentReview" },
+        "riskAcceptance": { "$ref": "#/$defs/evidenceReceipt" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "const": "fixed" } }, "required": ["status"] },
+          "then": {
+            "properties": {
+              "validation": {
+                "minItems": 1,
+                "items": {
+                  "allOf": [
+                    { "$ref": "#/$defs/validationReceipt" },
+                    { "properties": { "result": { "const": "pass" } } }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "status": { "const": "fixed" }, "area": { "const": "security" } }, "required": ["status", "area"] },
+          "then": { "required": ["negativeTests"], "properties": { "negativeTests": { "minItems": 1 } } }
+        },
+        {
+          "if": { "properties": { "status": { "const": "fixed" }, "area": { "const": "performance" } }, "required": ["status", "area"] },
+          "then": { "required": ["performanceMeasurement"] }
+        },
+        {
+          "if": { "properties": { "status": { "const": "fixed" }, "area": { "const": "modularity" } }, "required": ["status", "area"] },
+          "then": { "required": ["behaviorChecks"], "properties": { "behaviorChecks": { "minItems": 1 } } }
+        },
+        {
+          "if": { "properties": { "status": { "const": "fixed" }, "area": { "const": "accessibility" } }, "required": ["status", "area"] },
+          "then": { "required": ["manualChecks"], "properties": { "manualChecks": { "minItems": 1 } } }
+        },
+        {
+          "if": { "properties": { "status": { "const": "accepted" } }, "required": ["status"] },
+          "then": {
+            "required": ["riskAcceptance"],
+            "properties": {
+              "riskAcceptance": {
+                "allOf": [
+                  { "$ref": "#/$defs/evidenceReceipt" },
+                  { "properties": { "kind": { "const": "owner" } } }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": { "const": "fixed" },
+              "severity": { "enum": ["P0", "P1"] }
+            },
+            "required": ["status", "severity"]
+          },
+          "then": { "required": ["independentReview"] }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": { "const": "fixed" },
+              "riskFlags": {
+                "contains": {
+                  "enum": ["release_critical", "migration", "public_contract"]
+                }
+              }
+            },
+            "required": ["status", "riskFlags"]
+          },
+          "then": { "required": ["independentReview"] }
+        }
+      ]
+    }
+  },
   "type": "object",
-  "required": ["schemaVersion", "mode", "scope", "target", "findings", "proofGaps", "conclusion"],
+  "required": ["schemaVersion", "mode", "targetIdentity", "scope", "qualityTarget", "domains", "findings", "proofGaps", "conclusion"],
   "additionalProperties": false,
   "properties": {
-    "schemaVersion": { "const": 1 },
-    "mode": {
-      "enum": ["security", "performance", "modularity", "accessibility", "multi"]
+    "schemaVersion": { "const": 2 },
+    "mode": { "enum": ["security", "performance", "modularity", "accessibility", "multi"] },
+    "targetIdentity": {
+      "type": "object",
+      "required": ["kind", "repository", "commitSha"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "enum": ["commit", "package"] },
+        "repository": { "type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$" },
+        "commitSha": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+        "baseCommitSha": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+        "artifact": {
+          "type": "object",
+          "required": ["path", "sha256"],
+          "additionalProperties": false,
+          "properties": {
+            "path": { "type": "string", "minLength": 5 },
+            "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "kind": { "const": "package" } }, "required": ["kind"] },
+          "then": { "required": ["artifact"] }
+        }
+      ]
     },
     "scope": {
       "type": "object",
-      "required": ["revision", "targets", "exclusions"],
+      "required": ["targets", "exclusions"],
       "additionalProperties": false,
       "properties": {
-        "revision": { "type": "string", "minLength": 1 },
-        "targets": {
-          "type": "array",
-          "minItems": 1,
-          "items": { "type": "string", "minLength": 1 }
-        },
-        "exclusions": {
-          "type": "array",
-          "items": { "type": "string", "minLength": 1 }
-        }
+        "targets": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "exclusions": { "type": "array", "items": { "type": "string", "minLength": 1 } }
       }
     },
-    "target": { "type": "string", "minLength": 1 },
-    "findings": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "required": ["id", "area", "severity", "status", "evidence", "impact", "remediation", "validation"],
-        "additionalProperties": false,
+    "qualityTarget": { "type": "string", "minLength": 8 },
+    "domains": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": false,
+      "properties": {
+        "security": { "$ref": "#/$defs/domainDisposition" },
+        "performance": { "$ref": "#/$defs/domainDisposition" },
+        "modularity": { "$ref": "#/$defs/domainDisposition" },
+        "accessibility": { "$ref": "#/$defs/domainDisposition" }
+      }
+    },
+    "findings": { "type": "array", "items": { "$ref": "#/$defs/finding" } },
+    "proofGaps": { "type": "array", "items": { "type": "string", "minLength": 12 } },
+    "conclusion": { "enum": ["pass", "fail", "partial", "blocked"] }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "mode": { "const": "multi" } }, "required": ["mode"] },
+      "then": {
         "properties": {
-          "id": { "type": "string", "minLength": 1 },
-          "area": {
-            "enum": ["security", "performance", "modularity", "accessibility"]
-          },
-          "severity": { "enum": ["P0", "P1", "P2", "P3"] },
-          "status": { "enum": ["open", "fixed", "accepted", "not_applicable"] },
-          "evidence": {
-            "type": "array",
-            "minItems": 1,
-            "items": { "type": "string", "minLength": 1 }
-          },
-          "impact": { "type": "string", "minLength": 1 },
-          "remediation": { "type": "string", "minLength": 1 },
-          "validation": {
-            "type": "array",
-            "items": { "type": "string", "minLength": 1 }
-          },
-          "before": { "type": "string", "minLength": 1 },
-          "after": { "type": "string", "minLength": 1 },
-          "negativeTests": {
-            "type": "array",
-            "items": { "type": "string", "minLength": 1 }
-          },
-          "behaviorChecks": {
-            "type": "array",
-            "items": { "type": "string", "minLength": 1 }
-          },
-          "manualChecks": {
-            "type": "array",
-            "items": { "type": "string", "minLength": 1 }
+          "domains": {
+            "required": ["security", "performance", "modularity", "accessibility"]
           }
         }
       }
     },
-    "proofGaps": {
-      "type": "array",
-      "items": { "type": "string", "minLength": 1 }
+    {
+      "if": { "properties": { "mode": { "const": "security" } }, "required": ["mode"] },
+      "then": { "properties": { "domains": { "required": ["security"], "maxProperties": 1 } } }
     },
-    "conclusion": { "enum": ["pass", "fail", "partial", "blocked"] }
-  }
+    {
+      "if": { "properties": { "mode": { "const": "performance" } }, "required": ["mode"] },
+      "then": { "properties": { "domains": { "required": ["performance"], "maxProperties": 1 } } }
+    },
+    {
+      "if": { "properties": { "mode": { "const": "modularity" } }, "required": ["mode"] },
+      "then": { "properties": { "domains": { "required": ["modularity"], "maxProperties": 1 } } }
+    },
+    {
+      "if": { "properties": { "mode": { "const": "accessibility" } }, "required": ["mode"] },
+      "then": { "properties": { "domains": { "required": ["accessibility"], "maxProperties": 1 } } }
+    }
+  ]
 }

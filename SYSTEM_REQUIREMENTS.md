@@ -109,8 +109,8 @@ To install the skills globally, you need:
 
 ### Known Compatibility Notes
 
-- **Restart required**: After installing skills, restart Claude Code for changes to take effect
-- **Symlinks**: Skills are installed as symlinks, so updating the repo updates all Claude Code sessions
+- **Reload required**: After installing or changing skill metadata, restart Claude Code if the current session does not discover the update.
+- **Symlinks**: Repository files update immediately through the links, but an already-running session may retain previously loaded metadata or instructions.
 - **Settings inheritance**: Claude Code reads both global (~/.claude/) and project-level (.claude/) skills
 
 ## Codex Integration
@@ -293,7 +293,7 @@ bash /path/to/repo/scripts/install-global-skill-links.sh --force
 Check installed skill version:
 ```bash
 # View skill version file
-cat ~/.claude/skills/wp-expert/../../VERSION
+cat ~/.claude/skills/wp-expert/../VERSION
 
 # Or check directly in repo
 cat /path/to/skill-repo/VERSION
