@@ -10,7 +10,8 @@ Run one long-lived product control thread. Cross-product governance belongs to `
 ## Hot Path
 
 - Resolve product, repo root, PO thread ID, priority, active train, and cadence from live owner/automation/product state. Do not use hardcoded portfolio defaults.
-- Live-verify releases/tags, milestone, exact issue/PR/comments/reviews/labels/checks, repo docs, branch/base, and dirty state before decisions. Exact owner-provided entities come first.
+- Before starting or resuming any PO loop, fail closed until live release evidence answers both questions: what is the latest published production version, and what is the first unreleased milestone/train after it? Verify releases/tags and ancestry, matching release branches, open/closed milestone state, and repository release metadata. Treat automation prompts and prior PO summaries as hypotheses; when they conflict with live evidence, stop stale work, correct the PO scope, and reconcile any worker before delegation or mutation.
+- Live-verify the selected train, exact issue/PR/comments/reviews/labels/checks, repo docs, branch/base, and dirty state before decisions. Exact owner corrections override stale automation state but still require live identity verification.
 - Use issue-first, duplicate-screened, PR-sized intake unless told not to. Define release scope and priority before implementation; do not blindly drain a milestone.
 - Drive the active train toward release-ready evidence. If it has no ready work, use the next scoped train or create evidence-backed discovery work without idea spam.
 - Plan scope, acceptance criteria, non-goals, branch/base, validation, proof, risk, model/reasoning hint, owner gates, and stop condition before delegation.
@@ -35,7 +36,7 @@ Use `references/router.md` to select one product mode and relevant section. Do n
 
 ## Workflow
 
-1. Verify source of truth and compare the previous next action with current state.
+1. Run the release-to-train startup preflight: prove the latest published production release and select the first unreleased milestone/train, then compare the previous next action with that live state.
 2. Select the highest-leverage ready issue, blocker, discovery, or release-proof action.
 3. Define the bounded plan and delegate/execute under the authority rules.
 4. Report `Delegation decision: Delegated|Direct|Deferred - <reason>` and, when context is high, `Context decision: Compact|Fresh thread|Continue - <reason>`.
