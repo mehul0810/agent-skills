@@ -239,7 +239,7 @@
         "shared/references/product-autonomy-permissions.md",
         "shared/references/release-train-discipline.md"
       ],
-      "sha256": "5c6a6400ff9a3e1ebd37d82a39a6945d47199fe27399e1e336e519d6723735ed",
+      "sha256": "9b764ba3ecb37321862f5d0a48f48439ca434698c7061e7a402cc522230d9fa7",
       "scenario": {
         "id": "product-release-authority",
         "files": [
@@ -247,23 +247,26 @@
         ],
         "anchors": [
           "Safe non-production PR merge",
-          "Main-first production release"
+          "Main-first production release",
+          "Stale PO train correction"
         ],
-        "sha256": "bf51fc386275f8db17565c4a2fd0b1971fc50fd3f4d14a93104cb6d6ffc6eaa6"
+        "sha256": "8e624bd4dfdeb5ec7eba33bc4dc95908b44eb261aa82a05c5947b71304310875"
       },
       "requiredChecks": [
-        "safe-non-production-merge-autonomy",
-        "exact-live-base-scope-status-check",
-        "production-owner-approval-gate",
-        "main-first-tag-and-ancestry-proof"
+        "latest-published-release-preflight",
+        "first-unreleased-train-selection",
+        "stale-prompt-hypothesis-boundary",
+        "stale-worker-reconciliation-before-mutation",
+        "owner-correction-with-live-identity",
+        "production-owner-approval-gate"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-release-authority-2026-07-26-r2.json",
-          "sha256": "3dc3d367077d0a2e7160e9fc264dd2a86577165e9319dbf1b83f7578522529a6",
-          "testedRevision": "5a92944b8bce58ac4f2083f29a202fe9644dfd69",
-          "testedSourceSha256": "5c6a6400ff9a3e1ebd37d82a39a6945d47199fe27399e1e336e519d6723735ed",
-          "testedScenarioSha256": "bf51fc386275f8db17565c4a2fd0b1971fc50fd3f4d14a93104cb6d6ffc6eaa6",
+          "runRecord": "skill-evals/run-records/product-release-authority-2026-08-03-r1.json",
+          "sha256": "18ae02f0b6d723d5c15e94e09bf680945a6119fc8ce46af4b79ed8dfc8a186fd",
+          "testedRevision": "00b4bd94c3be964a64a1aa6a7e3c2fa5c4e8a4fe",
+          "testedSourceSha256": "9b764ba3ecb37321862f5d0a48f48439ca434698c7061e7a402cc522230d9fa7",
+          "testedScenarioSha256": "8e624bd4dfdeb5ec7eba33bc4dc95908b44eb261aa82a05c5947b71304310875",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
