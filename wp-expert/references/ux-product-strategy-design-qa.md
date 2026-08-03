@@ -125,6 +125,16 @@ For UX review, evaluate:
 - Does mobile preserve the same task success path as desktop?
 - Does the design scale to real content, translated strings, long names, missing media, and high counts?
 
+### Risk-Tiered Usability Evidence
+
+Match evidence to consequence; do not require research for every polish change.
+
+- **Low-risk/familiar:** heuristic and accessibility checks, content stress, and an independent task walkthrough. Claim implementation quality, not proven user excellence.
+- **Material journey:** observe representative users or a valid proxy on realistic tasks. Record completion, wrong turns, help, errors/recovery, and time-to-value without implying statistical certainty.
+- **Enterprise-critical:** combine task observations with relevant support, funnel/product analytics, accessibility, or controlled-rollout signals. Define success and guardrails first.
+
+Use privacy-safe fixtures and representative roles. Separate observation, product signal, and inference. If field evidence is unavailable, record the exact gap and strongest reversible proxy; never call screenshot parity or an engineer walkthrough proof of excellent UX.
+
 Severity guide:
 
 - P1: user cannot complete the primary task, loses data, triggers irreversible action, or cannot use the UI with assistive technology.

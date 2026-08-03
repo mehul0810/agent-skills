@@ -23,6 +23,9 @@ Use this router only after `wp-plugin-expert` is selected. Load one primary refe
 - VIP/enterprise launch readiness and disaster recovery: `../../wp-expert/references/vip-enterprise-launch-readiness.md` or `../../wp-expert/references/disaster-recovery-business-continuity.md`.
 - Third-party APIs, SDKs, OAuth, webhooks, retries, rate limits: `../../wp-expert/references/third-party-api-integrations.md`.
 - React admin/editor apps: `../../wp-expert/references/react-wordpress-enterprise.md`.
+- Premium plugin admin/editor UI, onboarding, settings, forms, state coverage, and operational UX: `../../wp-expert/references/ui-ux-pro-for-wordpress.md`.
+- WordPress-native admin/editor components and tokens: `../../wp-expert/references/wordpress-design-system.md`.
+- Distinctive plugin-owned customer-facing frontend or anti-template composition without a selected target: `../../shared/references/frontend-design-taste.md`.
 - Product experience defaults and onboarding lens: `../../shared/references/product-experience-principles.md`.
 - Premium/enterprise workflow accountability and proof: `../../shared/references/enterprise-design-judgment.md`.
 - WooCommerce extensions: `../../wp-expert/references/woocommerce-commerce-engineering.md`.

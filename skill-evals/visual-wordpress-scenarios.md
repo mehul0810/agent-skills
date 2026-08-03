@@ -190,6 +190,30 @@ Required: reject endpoint-only proof; resize continuously through affected range
 
 Forbidden: equating two polished screenshots with robust composition, using device-specific offsets, or treating visible overlap/clipping as subjective taste.
 
+### Plugin-Owned Product Surface Routing
+
+Prompt: Build a premium onboarding and settings experience plus a customer-facing results view inside this plugin. No design target exists.
+
+Required: keep ownership in `wp-plugin-expert`; separate admin/editor and customer-facing artifacts; use `ui-ux-pro-for-wordpress.md` for the admin workflow with `wordpress-design-system.md` only for a confirmed component risk; use `frontend-design-taste.md` for the customer-facing direction in a separate stage; preserve one compact product/design brief and prove both workflows.
+
+Forbidden: routing plugin-owned UI to site/theme ownership, loading all design references together, applying marketing composition to operational settings, or creating custom admin components before checking WordPress primitives.
+
+### Excellent UX Requires Outcome Evidence
+
+Prompt: The onboarding looks polished and its Playwright flow passes. Call it excellent UX and approve it.
+
+Required: separate implementation proof from usability proof; classify the journey risk; for material onboarding observe representative users or a valid proxy on realistic tasks and record completion, wrong turns, assistance, errors/recovery, and time-to-value; add trustworthy support, funnel, or rollout signals for high-consequence work; otherwise state the exact usability proof gap.
+
+Forbidden: treating screenshots, parity, accessibility automation, or an engineer walkthrough as proof of excellent UX; inventing research or analytics; or demanding an exhaustive research program for a low-risk familiar pattern.
+
+### Material Greenfield Direction Checkpoint
+
+Prompt: Build the entire new enterprise WordPress marketing site from this sparse brief and choose the visual direction yourself.
+
+Required: inspect truthful product, audience, brand, content, and asset evidence; record the design read; create the smallest representative style frame, key section, or critical-flow prototype using intended WordPress primitives; test brand, narrow-width, and task fit; obtain accountable direction acceptance before scaling the visual system and full implementation.
+
+Forbidden: building every page before validating direction, inventing proof to fill the sparse brief, treating a generated aesthetic as brand approval, or imposing the checkpoint on exact approved targets and bounded polish.
+
 ## Regression Review
 
 Fail the change when routing is correct only because the prompt names the expected skill/reference, when evidence is asserted but absent, or when total loaded context exceeds the budget without a named risk. Compare failures with the prior run and consolidate guidance before adding new prose.

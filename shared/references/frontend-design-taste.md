@@ -26,6 +26,8 @@ Treat the dials as reasoning aids, not user-facing configuration or mechanical s
 
 Audience, accessibility, brand truth, task frequency, and operational risk override aesthetic preference. If two materially different readings remain plausible, ask one focused question. Otherwise proceed without a questionnaire.
 
+For a brand-critical greenfield surface, major overhaul, or multi-page system, do not spend the full implementation budget on an untested direction. First produce the smallest representative direction artifact: a style frame, key section, or critical-flow prototype using truthful content and the intended WordPress primitives. Check it against the design read, brand, narrow-width behavior, and primary task. Obtain acceptance from the accountable product/design reviewer before scaling that direction. Skip this checkpoint for bounded preserve redesigns, exact approved targets, and low-risk polish.
+
 ## 2. Audit Before Redesign
 
 For an existing surface, inspect before proposing:
@@ -91,6 +93,8 @@ Before completion, verify:
 - performance and asset behavior meet repository budgets,
 - the visitor completes the primary task and the intended author/operator completes the editing or operational task,
 - source and candidate screenshots, measurements, or browser evidence support every visual completion claim.
+
+Visual and browser proof establish implementation quality, not excellent usability by themselves. For material onboarding, conversion, account, settings, publishing, or repeated operational journeys, apply the risk-tiered usability evidence in `ux-product-strategy-design-qa.md`. Without representative-user, product-signal, or equivalent outcome evidence, report the usability claim as unverified rather than upgrading a polished implementation to proven excellent UX.
 
 An observed overlap, clipping, broken hierarchy, generic placeholder asset, inaccessible interaction, or editor/frontend divergence is a failed implementation, not a subjective proof gap. Fix the owning layer and rerun the smallest affected visual and workflow matrix.
 

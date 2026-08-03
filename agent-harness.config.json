@@ -156,6 +156,25 @@
       ]
     },
     {
+      "name": "Site frontend taste",
+      "maxWords": 2100,
+      "warningPercent": 85,
+      "files": [
+        "wp-site-expert/SKILL.md",
+        "shared/references/frontend-design-taste.md"
+      ]
+    },
+    {
+      "name": "Plugin premium UI",
+      "maxWords": 3200,
+      "warningPercent": 85,
+      "files": [
+        "wp-plugin-expert/SKILL.md",
+        "wp-expert/references/ui-ux-pro-for-wordpress.md",
+        "wp-expert/references/wordpress-design-system.md"
+      ]
+    },
+    {
       "name": "Enterprise runtime assurance",
       "maxWords": 2700,
       "warningPercent": 85,

@@ -33,6 +33,8 @@ Use design QA only after a prototype/build has both a source visual and a render
 - If UI changed, require screenshot proof.
 - If layout, workflow quality, or UX clarity changed materially, add a design audit.
 - If a large redesign has no chosen direction, ideate before implementation.
+- For brand-critical greenfield, major overhaul, or multi-page work, validate one representative direction artifact before scaling the design; do not require this gate for exact targets or bounded polish.
+- For material onboarding, conversion, settings, publishing, or repeated operational journeys, use risk-tiered usability evidence before claiming excellent UX.
 - Convert Product Design findings into actionable acceptance criteria, design QA checks, or adjacent findings for PO triage.
 
 ## Ownership Boundary
