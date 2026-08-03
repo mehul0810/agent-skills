@@ -1,0 +1,53 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "enterprise-runtime-assurance-2026-08-03-r2",
+  "scenario": "elevated-enterprise-runtime-assurance",
+  "result": "succeeded",
+  "startedAt": "2026-08-03T12:22:39.000Z",
+  "durationMs": 0,
+  "checks": [
+    {
+      "name": "elevated-risk-classification",
+      "result": "pass"
+    },
+    {
+      "name": "compatibility-matrix-and-adaptive-docs",
+      "result": "pass"
+    },
+    {
+      "name": "artifact-sbom-license-vulnerability-provenance",
+      "result": "pass"
+    },
+    {
+      "name": "operations-observation-rollback-recovery",
+      "result": "pass"
+    },
+    {
+      "name": "missing-release-evidence-fails-closed",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 5
+  },
+  "lineage": {
+    "verificationId": "enterprise-runtime-assurance-2026-08-03-r2",
+    "artifactPointer": "codex-fresh-agent:/root/frontend_enterprise_regression#2026-08-03"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-03T12:22:39.000Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "Fresh regression kept ownership with the plugin specialist, classified elevated risk, required compatibility, supply-chain, operations and recovery proof, and withheld readiness without evidence."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "enterprise",
+    "release",
+    "regression"
+  ]
+}
