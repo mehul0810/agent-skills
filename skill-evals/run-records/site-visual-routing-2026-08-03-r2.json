@@ -1,0 +1,61 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "site-visual-routing-2026-08-03-r2",
+  "scenario": "frontend-design-taste-routing",
+  "result": "succeeded",
+  "startedAt": "2026-08-03T04:45:32.000Z",
+  "durationMs": 36000,
+  "checks": [
+    {
+      "name": "greenfield-taste-route",
+      "result": "pass"
+    },
+    {
+      "name": "design-read-and-four-dials",
+      "result": "pass"
+    },
+    {
+      "name": "WordPress-native-ownership",
+      "result": "pass"
+    },
+    {
+      "name": "truthful-assets-and-claims",
+      "result": "pass"
+    },
+    {
+      "name": "operational-dashboard-route-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "exact-target-parity-authority",
+      "result": "pass"
+    },
+    {
+      "name": "responsive-accessibility-workflow-proof",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 7
+  },
+  "lineage": {
+    "verificationId": "site-visual-routing-2026-08-03-r2",
+    "artifactPointer": "codex-fresh-agent:/root/frontend_taste_bound_eval#2026-08-03T04:45:32Z"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-03T04:46:08.000Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "Fresh agent correctly routed greenfield taste, rejected the taste overlay for an operational dashboard, preserved exact-target parity authority, and required truthful WordPress-native responsive workflow proof."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "site",
+    "visual",
+    "frontend-taste"
+  ]
+}

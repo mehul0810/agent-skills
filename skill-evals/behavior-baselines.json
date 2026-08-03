@@ -54,35 +54,43 @@
     {
       "name": "site-visual-routing",
       "files": [
+        "shared/references/design-intelligence-routing.md",
+        "shared/references/frontend-design-taste.md",
+        "shared/references/visual-to-wordpress-implementation.md",
+        "wp-expert/references/ui-ux-pro-for-wordpress.md",
         "wp-site-expert/SKILL.md",
         "wp-site-expert/references/router.md",
-        "shared/references/visual-to-wordpress-implementation.md"
+        "wp-theme-expert/references/router.md"
       ],
-      "sha256": "66ff643a7f2429934966082b253cd9acf7ae7ad8caf036db5d924405b90c7c24",
+      "sha256": "a1f0475a3892da0cc818dcc40bcc522c206e308ece6a2c429e05b269b6a8fcee",
       "scenario": {
-        "id": "site-screenshot-to-editable-wordpress",
+        "id": "frontend-design-taste-routing",
         "files": [
           "skill-evals/visual-wordpress-scenarios.md"
         ],
         "anchors": [
-          "Existing Site Screenshot To Editable Page"
+          "Exact Target Must Not Be Reinterpreted",
+          "Generic SaaS Composition Without A Target",
+          "Operational Dashboard Rejects Marketing Taste"
         ],
-        "sha256": "560976826cbaf6e704940da7e423c1a5d7dc5c1b5d994aea60783a7073120dee"
+        "sha256": "d4d3a1ef5d57e5279b144146fd600a456113017f8ac0fe2b52f25a79bcd8e522"
       },
       "requiredChecks": [
-        "missing-source-not-hallucinated",
-        "runtime-block-and-theme-inventory",
-        "editable-page-content-ownership",
-        "visitor-and-author-proof",
-        "responsive-accessibility-visual-proof"
+        "greenfield-taste-route",
+        "design-read-and-four-dials",
+        "WordPress-native-ownership",
+        "truthful-assets-and-claims",
+        "operational-dashboard-route-boundary",
+        "exact-target-parity-authority",
+        "responsive-accessibility-workflow-proof"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/site-visual-routing-2026-07-26.json",
-          "sha256": "eb9da3802730b8fb6f2cc64cdfc6417956f94f9d12b05ce110e3234f7f91039d",
-          "testedRevision": "8a391aab4b2e945dfe83a3b4647145d4d2952072",
-          "testedSourceSha256": "66ff643a7f2429934966082b253cd9acf7ae7ad8caf036db5d924405b90c7c24",
-          "testedScenarioSha256": "560976826cbaf6e704940da7e423c1a5d7dc5c1b5d994aea60783a7073120dee",
+          "runRecord": "skill-evals/run-records/site-visual-routing-2026-08-03-r2.json",
+          "sha256": "d61b983cceeb1bcc91bb1835dda1b1d2161a7718454fb8bc97dc1b0d1fec9858",
+          "testedRevision": "0977dc7c5188c01e0fc394af4075097ac5b13eb1",
+          "testedSourceSha256": "a1f0475a3892da0cc818dcc40bcc522c206e308ece6a2c429e05b269b6a8fcee",
+          "testedScenarioSha256": "d4d3a1ef5d57e5279b144146fd600a456113017f8ac0fe2b52f25a79bcd8e522",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
