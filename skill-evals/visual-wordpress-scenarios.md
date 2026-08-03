@@ -126,6 +126,70 @@ Required: mark visual proof `FAIL`; keep the task open; classify the highest own
 
 Forbidden: apology-only handoff, `done` or PR-ready claim, treating the observed defect as a proof gap, asking the owner to approve an ordinary reversible fix, blind CSS nudging, or showing only the repaired viewport without regression proof.
 
+### Generic SaaS Composition Without A Target
+
+Prompt: Build a premium landing page for a WordPress workflow product. No screenshot or chosen visual direction exists.
+
+Required: route to `wp-site-expert`; inspect product, audience, brand, content, and existing assets; use `frontend-design-taste.md` as the one support reference; record a compact design read with expressiveness, motion, density, and trust; give each section a content-driven job and layout; implement with WordPress-native ownership; prove intermediate widths and visitor/author workflows.
+
+Forbidden: default centered gradient hero plus three equal feature cards, invented customers/metrics/screenshots, installing a new frontend system for its aesthetic, or loading exact-parity guidance without a target.
+
+### Preserve Redesign Without Contract Drift
+
+Prompt: Modernize an established branded WordPress site while preserving recognition and current conversion behavior.
+
+Required: classify `preserve redesign`; audit brand tokens, IA, copy voice, real assets, URLs, forms, analytics, SEO, consent, accessibility, and editor ownership before changes; improve typography, spacing, hierarchy, assets, then interaction; identify every intentionally changed contract; compare current and candidate behavior.
+
+Forbidden: silent route/nav/form/analytics changes, replacing the brand with a preferred aesthetic, rewriting content without scope, or treating existing assets and tokens as optional.
+
+### Operational Dashboard Rejects Marketing Taste
+
+Prompt: Make a frequently used WordPress queue operations dashboard feel premium and less generic.
+
+Required: keep `ui-ux-pro-for-wordpress.md` primary; prioritize scanability, density, status, filters, permissions, failure/retry, keyboard use, and query performance; use existing WordPress/product components; apply only compatible coherence and anti-repetition checks.
+
+Forbidden: routing the whole task through `frontend-design-taste.md`, replacing tables with marketing cards, adding cinematic motion, hiding operational detail for visual minimalism, or changing workflow semantics for novelty.
+
+### Motion Proposal Needs A Contract
+
+Prompt: Add premium scroll animation and magnetic buttons to a WordPress product page.
+
+Required: state what each proposed animation communicates; inspect the existing stack and performance budget; reject unjustified effects; provide keyboard, touch/no-hover, reduced-motion, cleanup, and interruption behavior; prove input response and layout stability.
+
+Forbidden: motion because it looks expensive, default scroll hijacking, continuous React state updates, adding multiple animation libraries, or completion without reduced-motion and touch evidence.
+
+### Sparse Brief Cannot Create Proof
+
+Prompt: Create a visually rich new product page. No logo, screenshots, customer list, testimonial, or metrics were supplied.
+
+Required: distinguish known content from missing assets; use truthful product evidence; choose reuse, generation, licensed sourcing, suitable non-factual geometry, or labeled placeholders per asset; keep claims and fixtures explicit; ask one focused question only if direction materially diverges.
+
+Forbidden: invented customer logos, generated factual product screenshots, fabricated testimonials or metrics, fake precision, or presenting fixtures as production proof.
+
+### Polished But Repetitive Candidate
+
+Prompt: Approve a responsive page whose eight sections all use floating cards, eyebrow labels, and alternating image/text splits.
+
+Required: fail taste preflight; map each section's content job; retain familiar patterns where meaningful; recompose repeated sections into a coherent but varied hierarchy; rerun intermediate-width, content-stress, visitor, and author proof.
+
+Forbidden: approving because spacing and colors are polished, applying a mechanical ban without reading content, or adding decoration instead of correcting composition.
+
+### Exact Target Must Not Be Reinterpreted
+
+Prompt: Match this approved Figma frame exactly, but make it look less templated using the design-taste rules.
+
+Required: keep `visual-to-wordpress-implementation.md` primary; treat the approved target as design authority subject to accessibility, responsiveness, and WordPress ownership; use taste guidance only to flag an adjacent concern, not reinterpret geometry or brand; measure and compare source/candidate evidence.
+
+Forbidden: changing the target's centered hero, typography, palette, or composition because of generic anti-pattern guidance; stacking unrelated references; or claiming improvement instead of parity.
+
+### Taste Proof Across Intermediate Widths
+
+Prompt: The new premium WordPress page passes screenshots at 375px and 1440px. Approve it.
+
+Required: reject endpoint-only proof; resize continuously through affected ranges; test long and translated copy, CTA wrapping, navigation, missing/extreme media, zoom/reflow, touch/no-hover, and reduced motion; prove editor/frontend parity and primary workflows.
+
+Forbidden: equating two polished screenshots with robust composition, using device-specific offsets, or treating visible overlap/clipping as subjective taste.
+
 ## Regression Review
 
 Fail the change when routing is correct only because the prompt names the expected skill/reference, when evidence is asserted but absent, or when total loaded context exceeds the budget without a named risk. Compare failures with the prior run and consolidate guidance before adding new prose.

@@ -12,6 +12,7 @@ Use this router only after `wp-theme-expert` is selected. Load one primary refer
 - Runtime block inventory, core-first composition, editable render proof, and Site Editor override promotion/precedence: `../../shared/references/core-first-site-theme-workflow.md`.
 - Page/post briefs, Core/plugin block selection, patterns/styles/variations, author guardrails, CSS governance, and WYSIWYG proof: `../../shared/references/block-editor-page-composition.md`.
 - Screenshot/Figma/image/mockup to editable WordPress implementation: `../../shared/references/visual-to-wordpress-implementation.md`.
+- Distinctive greenfield/redesign frontend direction or anti-template composition review without a selected target: `../../shared/references/frontend-design-taste.md`.
 - Detailed custom block-theme/FSE architecture after a confirmed ownership or block-mapping risk: `../../wp-expert/references/custom-block-theme-from-design.md`.
 - Classic themes, child themes, block editor compatibility: `../../wp-expert/references/theme-and-block-editor.md`.
 - Style guides, design tokens, custom themes, child-theme translation: `../../wp-expert/references/style-guide-theme-translation.md`.

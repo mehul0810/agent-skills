@@ -19,6 +19,8 @@ Use `product-design:index` as the router only. Then pick the narrowest Product D
 - `product-design:image-to-code`: only after a source visual direction is selected.
 - `imagegen`: generate or edit production raster assets after an asset brief exists; it does not replace WordPress implementation or visual QA.
 
+When a greenfield or redesigned frontend has no selected visual target, or a rendered result is coherent but still generic/template-like, use `frontend-design-taste.md` as the one supporting judgment reference. It provides a WordPress-native design read, expressiveness/motion/density/trust dials, anti-repetition review, and taste preflight. Do not stack it onto exact screenshot/Figma implementation, routine admin UX, or a second confirmed support risk.
+
 Discover the named capability before relying on it. If unavailable, recover in order: inspect evidence and write the compact brief; perform a manual heuristic audit or text direction set; let the owning WordPress specialist implement the chosen direction; for missing raster assets use `imagegen`, licensed/supplied media, or an explicit placeholder. Do not invent a tool or stop without a safe fallback.
 
 Use design QA only after a prototype/build has both a source visual and a rendered implementation.
