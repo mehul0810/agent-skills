@@ -258,23 +258,35 @@
     {
       "name": "product-release-authority",
       "files": [
+        "wp-portfolio-cto/SKILL.md",
         "wp-product-orchestrator/SKILL.md",
         "wp-product-orchestrator/references/router.md",
+        "shared/references/cto-orchestration-operating-model.md",
+        "shared/references/heartbeat-checkin-discipline.md",
         "shared/references/product-autonomy-permissions.md",
+        "shared/references/product-queue-triage.md",
+        "shared/references/rolling-milestone-triage.md",
         "shared/references/release-train-discipline.md"
       ],
-      "sha256": "9b764ba3ecb37321862f5d0a48f48439ca434698c7061e7a402cc522230d9fa7",
+      "sha256": "f3d6259f592a2ac46acadad4f52fa3aa062bed6e3d986b0045c02f905d379120",
       "scenario": {
         "id": "product-release-authority",
         "files": [
+          "skill-evals/wp-portfolio-cto-scenarios.md",
           "skill-evals/wp-product-orchestrator-scenarios.md"
         ],
         "anchors": [
           "Safe non-production PR merge",
           "Main-first production release",
-          "Stale PO train correction"
+          "Stale PO train correction",
+          "Research-before-escalation",
+          "Milestone metadata autonomy",
+          "Verification blocker is not authority",
+          "Reversible product default",
+          "False owner blocker",
+          "Product decision"
         ],
-        "sha256": "8e624bd4dfdeb5ec7eba33bc4dc95908b44eb261aa82a05c5947b71304310875"
+        "sha256": "dd40a590712c8ea177dc836d7a1c1791d71709376152f5b8d951491657e4c82d"
       },
       "requiredChecks": [
         "latest-published-release-preflight",
@@ -282,15 +294,24 @@
         "stale-prompt-hypothesis-boundary",
         "stale-worker-reconciliation-before-mutation",
         "owner-correction-with-live-identity",
-        "production-owner-approval-gate"
+        "production-owner-approval-gate",
+        "uncertainty-investigation-not-authority",
+        "bounded-official-research",
+        "reversible-decision-execution",
+        "milestone-date-autonomy",
+        "verification-blocker-not-owner-gate",
+        "material-decision-record",
+        "destructive-action-refusal",
+        "privacy-security-public-contract-owner-gate",
+        "cto-false-blocker-intervention"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-release-authority-2026-08-03-r1.json",
-          "sha256": "18ae02f0b6d723d5c15e94e09bf680945a6119fc8ce46af4b79ed8dfc8a186fd",
-          "testedRevision": "00b4bd94c3be964a64a1aa6a7e3c2fa5c4e8a4fe",
-          "testedSourceSha256": "9b764ba3ecb37321862f5d0a48f48439ca434698c7061e7a402cc522230d9fa7",
-          "testedScenarioSha256": "8e624bd4dfdeb5ec7eba33bc4dc95908b44eb261aa82a05c5947b71304310875",
+          "runRecord": "skill-evals/run-records/product-release-authority-2026-08-06-r2.json",
+          "sha256": "3348c3e3a62a4f4785d9ea3ec69c4a8dcafe763681fa6f39b2f42769faef201d",
+          "testedRevision": "7ccf6f1813f22962899495c321b33b04705cf853",
+          "testedSourceSha256": "f3d6259f592a2ac46acadad4f52fa3aa062bed6e3d986b0045c02f905d379120",
+          "testedScenarioSha256": "dd40a590712c8ea177dc836d7a1c1791d71709376152f5b8d951491657e4c82d",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
