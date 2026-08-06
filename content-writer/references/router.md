@@ -14,3 +14,4 @@ Use this router after `content-writer` is selected. Load one primary reference, 
 - Do not force enterprise tone onto founder writing, community support, ordinary documentation, or general informational content.
 - For a mixed enterprise landing page, use enterprise product writing as primary and load the editorial gate only for a final pass when generic prose is a confirmed risk.
 - Keep implementation in `wp-site-expert`; this skill owns the content artifact.
+- Route factual WordPress.org `readme.txt`, repository `README.md`, changelog, release-note, upgrade-notice, and release-document synchronization to `wp-product-docs-writer`; do not turn release truth into marketing copy.

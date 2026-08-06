@@ -21,7 +21,7 @@ while IFS= read -r skill_dir; do
   done
 done < <(find "$repo_root" -mindepth 1 -maxdepth 1 -type d -exec test -f "{}/SKILL.md" \; -print | sort)
 
-for required in product-video-producer loop-steward; do
+for required in product-video-producer wp-product-docs-writer loop-steward; do
   [ -L "$tmp/codex/skills/$required" ] || { echo "ERROR: required Codex skill missing: $required" >&2; exit 1; }
   [ -L "$tmp/claude/skills/$required" ] || { echo "ERROR: required Claude skill missing: $required" >&2; exit 1; }
 done

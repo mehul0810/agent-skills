@@ -29,6 +29,22 @@ Use `$content-writer` for SEO, AEO, GEO, AI Overviews, answer engines, AI tools,
 - Skill: `content-writer`
 - Load: `organic-search-content.md`
 
+## Product Documentation Tasks
+
+Use `$wp-product-docs-writer` for factual WordPress product and release documentation grounded in verified shipped evidence.
+
+**"Write or audit this WordPress.org readme.txt or GitHub README.md"**
+- Skill: `wp-product-docs-writer`
+- Load: `readme-product-docs.md`
+
+**"Prepare this changelog, release note, or upgrade notice"**
+- Skill: `wp-product-docs-writer`
+- Load: `changelog-release-notes.md`
+
+**"Synchronize README, package metadata, changelog, and release notes"**
+- Skill: `wp-product-docs-writer`
+- Load: both documentation modes only because the request spans them
+
 ## WordPress Contribution Tasks
 
 Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR, patch, testing, docs, triage, and contributor communication work.

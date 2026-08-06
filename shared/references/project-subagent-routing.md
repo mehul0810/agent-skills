@@ -85,6 +85,7 @@ Assign one lane and the narrowest skill/reference:
 - Design: `design-intelligence-routing.md`, then the narrow Product Design capability.
 - Portfolio: `$wp-portfolio-cto`; product execution remains in PO/worker lanes.
 - Product workflow: `$wp-product-orchestrator`; implementation routes to a specialist.
+- Product/release documentation: `$wp-product-docs-writer` for factual README, `readme.txt`, changelog, release-note, upgrade-notice, and synchronization work.
 - Content/growth: `content-writer`, `seo-positioning-optimizer`, or `$wp-site-expert` by artifact.
 
 Subagent prompt contract:

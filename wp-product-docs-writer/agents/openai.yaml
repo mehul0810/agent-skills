@@ -1,0 +1,4 @@
+interface:
+  display_name: "WP Product Docs Writer"
+  short_description: "Evidence-based WordPress product and release docs"
+  default_prompt: "Use $wp-product-docs-writer to write or audit a WordPress README, readme.txt, changelog, release note, or upgrade notice from verified product evidence."

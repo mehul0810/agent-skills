@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ### Added
 
+- **WP Product Docs Writer Skill**: Added evidence-based WordPress.org `readme.txt`, repository README, changelog, release-note, upgrade-notice, and release-document synchronization with shipped-claim, metadata, disclosure, and publication-authority gates.
 - **Advanced Troubleshooting Decision Tree**: Added symptom-to-probe debugging, conflict isolation, REST/auth diagnosis, cache/CDN debugging, and rollback-first production triage guidance.
 - **Analytics And Measurement Engineering**: Added consent-aware analytics, GA4/GTM/data layer, WooCommerce and lead-funnel events, duplicate-event prevention, privacy boundaries, and validation guidance.
 - **Block/FSE Architecture Decisioning**: Dedicated guidance for theme vs plugin ownership, content/data contracts, editor ownership, templates, template parts, patterns, block styles, variations, bindings, custom blocks, dynamic rendering, and Interactivity API.

@@ -21,6 +21,7 @@ reference_mentions() {
 skill_limit() {
   case "$1" in
     content-writer) echo 4 ;;
+    wp-product-docs-writer) echo 3 ;;
     wp-portfolio-cto) echo 8 ;;
     wp-product-orchestrator) echo 11 ;;
     wp-expert) echo 8 ;;
@@ -124,9 +125,11 @@ check_router_discipline() {
   require_text "behavior-validator/SKILL.md" "Use for source-blind validation" "behavior validator trigger description"
   require_text "wp-portfolio-cto/SKILL.md" "Use for cross-product WordPress portfolio CTO governance" "portfolio CTO trigger description"
   require_text "wp-product-orchestrator/SKILL.md" "Use for one WordPress product control thread" "product orchestrator trigger description"
+  require_text "wp-product-docs-writer/SKILL.md" "Use for evidence-based WordPress product documentation" "product docs trigger description"
   require_text "wp-expert/SKILL.md" "wp-portfolio-cto" "wp-expert portfolio specialist routing"
   require_text "wp-expert/SKILL.md" 'use `behavior-validator`' "wp-expert behavior validator routing"
   require_text "wp-expert/SKILL.md" 'use `wp-quality-reviewer`' "wp-expert quality reviewer routing"
+  require_text "wp-expert/SKILL.md" 'use `wp-product-docs-writer`' "wp-expert product docs routing"
   require_text "wp-contributor/SKILL.md" "Use for official WordPress contribution" "contributor trigger description"
   require_text "loop-steward/SKILL.md" "control-plane PR" "loop steward trigger description"
   require_text "wp-expert/SKILL.md" 'use `loop-steward`' "control-plane routing boundary"
@@ -153,6 +156,10 @@ check_router_discipline() {
   require_text "shared/references/project-subagent-routing.md" "lowest sufficient available capability tier" "subagent strongest-model guard"
   require_text "shared/references/project-subagent-routing.md" 'Plugin: `$wp-plugin-expert`' "subagent plugin specialist profile"
   require_text "shared/references/project-subagent-routing.md" 'Theme/FSE: `$wp-theme-expert`' "subagent theme specialist profile"
+  require_text "shared/references/project-subagent-routing.md" 'Product/release documentation: `$wp-product-docs-writer`' "subagent product docs specialist profile"
+  require_text "wp-product-docs-writer/SKILL.md" "Load only the primary mode" "product docs single-mode routing"
+  require_text "wp-product-docs-writer/SKILL.md" "../wp-expert/references/changelog-release-notes.md" "product docs reuses changelog expertise"
+  require_text "content-writer/references/router.md" "wp-product-docs-writer" "content and factual docs boundary"
   require_text "wp-plugin-expert/references/router.md" "plugin-product-architecture.md" "plugin expertise preserved in router"
   require_text "wp-plugin-expert/references/router.md" "Plugin-owned portable custom blocks" "plugin custom block ownership route"
   require_text "wp-plugin-expert/references/router.md" "routine feature constraints and fixes stay with this plugin specialist" "plugin routine quality ownership"

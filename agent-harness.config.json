@@ -230,6 +230,24 @@
       ]
     },
     {
+      "name": "Product docs README",
+      "maxWords": 2100,
+      "warningPercent": 85,
+      "files": [
+        "wp-product-docs-writer/SKILL.md",
+        "wp-product-docs-writer/references/readme-product-docs.md"
+      ]
+    },
+    {
+      "name": "Product docs changelog",
+      "maxWords": 2100,
+      "warningPercent": 85,
+      "files": [
+        "wp-product-docs-writer/SKILL.md",
+        "wp-expert/references/changelog-release-notes.md"
+      ]
+    },
+    {
       "name": "Content research",
       "maxWords": 2900,
       "warningPercent": 85,
@@ -380,6 +398,11 @@
       "requiredPhrases": ["# Loop Steward Scenarios", "Structural audits only prove"]
     },
     {
+      "name": "WP Product Docs Writer",
+      "file": "skill-evals/wp-product-docs-writer-scenarios.md",
+      "requiredPhrases": ["# WP Product Docs Writer Scenarios", "Unreleased feature changelog", "Conflicting product sources", "Publication boundary"]
+    },
+    {
       "name": "Content Writer",
       "file": "skill-evals/content-writer-scenarios.md",
       "requiredPhrases": ["# Content Writer Scenarios"]
@@ -392,7 +415,7 @@
     {
       "name": "Routing collisions",
       "file": "skill-evals/routing-collision-scenarios.md",
-      "requiredPhrases": ["# Routing Collision Scenarios", "Site vs content", "Implementation vs independent proof", "Loop Steward vs CTO"]
+      "requiredPhrases": ["# Routing Collision Scenarios", "Site vs content", "Product docs vs marketing", "Implementation vs independent proof", "Loop Steward vs CTO"]
     },
     {
       "name": "WP Quality Reviewer",

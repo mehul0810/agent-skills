@@ -106,6 +106,7 @@ skill_body_limit() {
     wp-contributor) echo "${WP_CONTRIBUTOR_BODY_MAX_WORDS:-1300}" ;;
     wp-expert) echo "${WP_EXPERT_BODY_MAX_WORDS:-900}" ;;
     wp-plugin-expert|wp-theme-expert|wp-site-expert) echo "${WP_SPECIALIST_BODY_MAX_WORDS:-700}" ;;
+    wp-product-docs-writer) echo "${WP_PRODUCT_DOCS_WRITER_BODY_MAX_WORDS:-650}" ;;
     content-writer) echo "${CONTENT_WRITER_BODY_MAX_WORDS:-800}" ;;
     *) echo "$max_body_words" ;;
   esac

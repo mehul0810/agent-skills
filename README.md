@@ -12,6 +12,7 @@ This repository contains WordPress engineering, product operations, organic-sear
 - `loop-steward`: independent control-plane PR review, bounded revision, validation, and policy-gated merge decisions for `agent-loop`, `agent-book`, and `agent-skills`.
 - `behavior-validator`: independent source-blind validation of observable WordPress runtime, editor, UI, API, packaged-build, and generated-artifact behavior against an explicit contract.
 - `wp-contributor`: official WordPress project contribution workflows for Core, Meta, Gutenberg, Trac, GitHub PRs, patches, testing, docs, triage, releases, and contributor communication.
+- `wp-product-docs-writer`: evidence-based WordPress.org `readme.txt`, repository README, changelog, release-note, upgrade-notice, and product-document synchronization.
 - `content-writer`: organic search content writing for SEO, AEO, GEO, AI Overviews, AI Mode, answer engines, AI tools, briefs, outlines, drafts, audits, and content refreshes.
 - `product-video-producer`: premium enterprise promos, software demos, YouTube long-form/Shorts, editing/post, governed assets, deterministic delivery, accessibility, and evidence-led revision.
 - `shared/references/research-token-discipline.md`: reusable token-efficient reasoning, repo exploration, web search, validation, and output discipline used by both skills.
@@ -35,6 +36,7 @@ This repository contains WordPress engineering, product operations, organic-sear
 - `wp-product-orchestrator` for one plugin/theme product's backlog, release train, GitHub issue/PR queue, and delegated implementation workflow.
 - `loop-steward` for active control-plane PRs that need independent review, bounded repair, or a policy-gated merge decision.
 - `behavior-validator` for black-box proof that a WordPress UI, editor flow, API side effect, packaged candidate, or generated artifact behaves as promised without implementation context.
+- `wp-product-docs-writer` for factual README, WordPress.org listing, changelog, release-note, upgrade-notice, and release-document work grounded in shipped evidence.
 - `product-video-producer` for product/brand films, software demos, YouTube long-form/Shorts, editing/post, motion direction, deterministic delivery, and video learning.
 
 Detailed playbooks remain in specialist `references/` directories and `shared/references/`; skills load them only when needed.
@@ -139,6 +141,12 @@ Detailed playbooks remain in specialist `references/` directories and `shared/re
 - Helpful people-first content, E-E-A-T/trust signals, search intent mapping, entity coverage, schema-aware copy, internal-link guidance, and source-grounded fact handling.
 - Organic search content for any topic, with stronger source standards for current, regulated, YMYL, technical, or high-stakes topics.
 
+## wp-product-docs-writer Coverage
+
+- WordPress.org `readme.txt`, repository `README.md`, changelogs, release notes, upgrade notices, and cross-document synchronization.
+- Shipped/planned/conflicting claim classification grounded in tags, candidate diffs, packages, runtime proof, and accepted repo docs.
+- Stable-tag, version, compatibility, installation, screenshot, external-service, privacy, and support disclosure checks without release or publishing authority.
+
 ## wp-contributor Coverage
 
 - WordPress Core contribution through `wordpress-develop`, Core Trac, SVN/Git patches, and linked GitHub PRs.
@@ -169,6 +177,7 @@ wp-product-orchestrator/
 loop-steward/
 behavior-validator/
 wp-contributor/
+wp-product-docs-writer/
 content-writer/
 product-video-producer/
 ```
@@ -199,6 +208,8 @@ Use $behavior-validator to independently validate observable WordPress runtime, 
 Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-develop, WordPress.org, WordCamp.org, Trac tickets, GitHub PRs, patches, tests, docs, standards, AI-assisted contribution guidelines, enterprise code-quality gates, triage, release/backport work, or contributor communication.
 
 Use $wp-contributor with `shared/references/project-subagent-routing.md` when a contribution repo needs bounded Core/Meta/Gutenberg subagent mapping, review, or test triage.
+
+Use $wp-product-docs-writer to write or audit a WordPress.org readme, repository README, changelog, release note, upgrade notice, or synchronized release documentation from verified product evidence.
 
 Use $content-writer to research, brief, draft, rewrite, audit, or refresh organic-search-focused content for SEO, AEO, GEO, AI Overviews, answer engines, and AI tools.
 
@@ -232,6 +243,7 @@ This symlinks the skills into `~/.claude/skills/`, where Claude Code discovers p
 ~/.claude/skills/loop-steward/SKILL.md
 ~/.claude/skills/behavior-validator/SKILL.md
 ~/.claude/skills/wp-contributor/SKILL.md
+~/.claude/skills/wp-product-docs-writer/SKILL.md
 ~/.claude/skills/content-writer/SKILL.md
 ~/.claude/skills/product-video-producer/SKILL.md
 ~/.claude/skills/shared/references/*.md
@@ -246,6 +258,7 @@ bash scripts/install-global-skill-links.sh wp-plugin-expert wp-theme-expert wp-s
 bash scripts/install-global-skill-links.sh wp-quality-reviewer behavior-validator
 bash scripts/install-global-skill-links.sh wp-expert wp-plugin-expert wp-theme-expert wp-site-expert wp-portfolio-cto wp-product-orchestrator wp-contributor
 bash scripts/install-global-skill-links.sh loop-steward
+bash scripts/install-global-skill-links.sh wp-product-docs-writer
 bash scripts/install-global-skill-links.sh content-writer
 bash scripts/install-global-skill-links.sh product-video-producer
 ```
@@ -270,6 +283,7 @@ test -f ~/.claude/skills/wp-product-orchestrator/SKILL.md && echo "wp-product-or
 test -f ~/.claude/skills/loop-steward/SKILL.md && echo "loop-steward installed"
 test -f ~/.claude/skills/behavior-validator/SKILL.md && echo "behavior-validator installed"
 test -f ~/.claude/skills/wp-contributor/SKILL.md && echo "wp-contributor installed"
+test -f ~/.claude/skills/wp-product-docs-writer/SKILL.md && echo "wp-product-docs-writer installed"
 test -f ~/.claude/skills/content-writer/SKILL.md && echo "content-writer installed"
 test -f ~/.claude/skills/product-video-producer/SKILL.md && echo "product-video-producer installed"
 ```
@@ -291,6 +305,7 @@ The same installer also symlinks skills into Codex's global skills directory:
 ~/.codex/skills/loop-steward/SKILL.md
 ~/.codex/skills/behavior-validator/SKILL.md
 ~/.codex/skills/wp-contributor/SKILL.md
+~/.codex/skills/wp-product-docs-writer/SKILL.md
 ~/.codex/skills/content-writer/SKILL.md
 ~/.codex/skills/product-video-producer/SKILL.md
 ~/.codex/skills/shared/references/*.md

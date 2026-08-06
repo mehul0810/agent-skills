@@ -31,7 +31,7 @@ Use this router only after `wp-plugin-expert` is selected. Load one primary refe
 - WooCommerce extensions: `../../wp-expert/references/woocommerce-commerce-engineering.md`.
 - Build tooling, Composer, npm, webpack: `../../wp-expert/references/build-tooling.md`.
 - CI/CD, standards, GitHub workflows: `../../wp-expert/references/standards-ci-github.md`.
-- Changelog or launch-state compatibility: `../../wp-expert/references/changelog-release-notes.md` or `../../wp-expert/references/release-contract-compatibility.md`.
+- Factual README, `readme.txt`, changelog, release-note, or upgrade-notice writing/audit: route to `wp-product-docs-writer`; launch-state compatibility decisions remain in `../../wp-expert/references/release-contract-compatibility.md`.
 - Troubleshooting: `../../wp-expert/references/advanced-troubleshooting-decision-tree.md`.
 - If the primary artifact changes or another lane owns the outcome, return a compact evidence handoff to `wp-expert` or the owning specialist; do not load another broad router.
 

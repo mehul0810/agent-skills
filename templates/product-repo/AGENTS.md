@@ -9,6 +9,7 @@ For implementation, select the narrowest owner:
 - `$wp-site-expert`: whole-site composition, content architecture, conversion, and site UX.
 - `$wp-quality-reviewer`: focused security, performance, modularity, maintainability, or accessibility review/remediation.
 - `$behavior-validator`: independent source-blind proof of observable behavior.
+- `$wp-product-docs-writer`: factual README, `readme.txt`, changelog, release-note, upgrade-notice, and release-document synchronization.
 
 Use `$wp-expert` only when the WordPress artifact or specialist remains ambiguous.
 
