@@ -223,7 +223,7 @@
         "wp-expert/agents/openai.yaml",
         "templates/product-repo/AGENTS.md"
       ],
-      "sha256": "3acf858aab81fdf542e0d4e78351deeae7899b80e4e391925ddc3f19aca61135",
+      "sha256": "4e0d87c13037ff161d7b66ffa0954e61328946f858ef895b0557dc6d4a374244",
       "scenario": {
         "id": "automatic-specialist-selection",
         "files": [
@@ -242,10 +242,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/automatic-specialist-routing-2026-07-26-r2.json",
-          "sha256": "9c94e2a28554c865f28b4090cd7df568ab4bd245b3034f81424f98eafd1c0b1c",
-          "testedRevision": "5a92944b8bce58ac4f2083f29a202fe9644dfd69",
-          "testedSourceSha256": "3acf858aab81fdf542e0d4e78351deeae7899b80e4e391925ddc3f19aca61135",
+          "runRecord": "skill-evals/run-records/automatic-specialist-routing-2026-08-06-r3.json",
+          "sha256": "3affe0f08d70aee9ace0e4c356bcc40d5dc9ce279c58f35debd8182e104c6ccc",
+          "testedRevision": "1242f2e1a087c9cd0c507482d33633d854c701fb",
+          "testedSourceSha256": "4e0d87c13037ff161d7b66ffa0954e61328946f858ef895b0557dc6d4a374244",
           "testedScenarioSha256": "5964fa0002f260ea2ed1ecdf40a842bc6a5548173fca1f1b38adfa16b713693d",
           "runtime": {
             "host": "codex-desktop",
@@ -268,7 +268,7 @@
         "shared/references/rolling-milestone-triage.md",
         "shared/references/release-train-discipline.md"
       ],
-      "sha256": "f3d6259f592a2ac46acadad4f52fa3aa062bed6e3d986b0045c02f905d379120",
+      "sha256": "6ad975d9abcb44efb8557703b5ef956079579be8e203017a447a62a309425205",
       "scenario": {
         "id": "product-release-authority",
         "files": [
@@ -307,10 +307,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-release-authority-2026-08-06-r2.json",
-          "sha256": "3348c3e3a62a4f4785d9ea3ec69c4a8dcafe763681fa6f39b2f42769faef201d",
-          "testedRevision": "7ccf6f1813f22962899495c321b33b04705cf853",
-          "testedSourceSha256": "f3d6259f592a2ac46acadad4f52fa3aa062bed6e3d986b0045c02f905d379120",
+          "runRecord": "skill-evals/run-records/product-release-authority-2026-08-06-r3.json",
+          "sha256": "1833099d5fd513b0dd0838bf19171f6e395655030c59f8efcf57d305afedff81",
+          "testedRevision": "1242f2e1a087c9cd0c507482d33633d854c701fb",
+          "testedSourceSha256": "6ad975d9abcb44efb8557703b5ef956079579be8e203017a447a62a309425205",
           "testedScenarioSha256": "dd40a590712c8ea177dc836d7a1c1791d71709376152f5b8d951491657e4c82d",
           "runtime": {
             "host": "codex-desktop",
@@ -466,6 +466,55 @@
           "testedRevision": "3212cd4a704e14a24825d2036f8630124727d654",
           "testedSourceSha256": "d8bccecedf83437ffc02870b48f209ad05562e18df7b5fd9e78fd3d682ff5bbb",
           "testedScenarioSha256": "b24dd7ab1f08bcafe660d90578186a40a57f7774abbf16bf1072c1e8aac13339",
+          "runtime": {
+            "host": "codex-desktop",
+            "isolation": "fresh-agent",
+            "harnessRevision": "24ffe6e5481aebe33f403df9b72f0de7214f019a"
+          }
+        }
+      ]
+    },
+    {
+      "name": "wp-product-docs-writer",
+      "files": [
+        "wp-expert/references/changelog-release-notes.md",
+        "wp-product-docs-writer/SKILL.md",
+        "wp-product-docs-writer/references/readme-product-docs.md"
+      ],
+      "sha256": "e737b2b98b8ba65fa13e5300e644fcf6f1aaffee76ecb6fcfdf5edf2ae1914a1",
+      "scenario": {
+        "id": "wp-product-docs-writer-truth",
+        "files": [
+          "skill-evals/wp-product-docs-writer-scenarios.md"
+        ],
+        "anchors": [
+          "WordPress.org readme truth",
+          "Unreleased feature changelog",
+          "Conflicting product sources",
+          "Release metadata mismatch",
+          "External service disclosure",
+          "Marketing boundary",
+          "Publication boundary"
+        ],
+        "sha256": "ee6567ec57375f13ef7a284bc086164cd3fc42dee81b96a906f9dcf29ba13029"
+      },
+      "requiredChecks": [
+        "exact-artifact-and-evidence-range",
+        "shipped-planned-conflict-ledger",
+        "release-metadata-mismatch-fails-closed",
+        "unreleased-feature-single-entry",
+        "external-service-privacy-disclosure",
+        "content-writer-boundary",
+        "publication-authority-gate",
+        "compact-mode-routing"
+      ],
+      "evidence": [
+        {
+          "runRecord": "skill-evals/run-records/wp-product-docs-writer-2026-08-06-r1.json",
+          "sha256": "76fc3ac1cd3ed5cc8029d003b6decbd7626dc6720b5db28e8f5ee905a61a0af4",
+          "testedRevision": "1242f2e1a087c9cd0c507482d33633d854c701fb",
+          "testedSourceSha256": "e737b2b98b8ba65fa13e5300e644fcf6f1aaffee76ecb6fcfdf5edf2ae1914a1",
+          "testedScenarioSha256": "ee6567ec57375f13ef7a284bc086164cd3fc42dee81b96a906f9dcf29ba13029",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",

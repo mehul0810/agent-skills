@@ -1,0 +1,38 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "wp-product-docs-writer-2026-08-06-r1",
+  "scenario": "wp-product-docs-writer-truth",
+  "result": "succeeded",
+  "startedAt": "2026-08-06T05:50:45.000Z",
+  "durationMs": 90000,
+  "checks": [
+    { "name": "exact-artifact-and-evidence-range", "result": "pass" },
+    { "name": "shipped-planned-conflict-ledger", "result": "pass" },
+    { "name": "release-metadata-mismatch-fails-closed", "result": "pass" },
+    { "name": "unreleased-feature-single-entry", "result": "pass" },
+    { "name": "external-service-privacy-disclosure", "result": "pass" },
+    { "name": "content-writer-boundary", "result": "pass" },
+    { "name": "publication-authority-gate", "result": "pass" },
+    { "name": "compact-mode-routing", "result": "pass" }
+  ],
+  "metrics": {
+    "checks_passed": 8
+  },
+  "lineage": {
+    "verificationId": "wp-product-docs-writer-2026-08-06-r1",
+    "artifactPointer": "codex-fresh-agent:/root/docs_truth_eval#2026-08-06"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-06T05:52:15.000Z",
+    "metricNames": ["checks_passed"],
+    "summary": "A fresh source-blind agent failed closed on release metadata conflict, excluded roadmap-only claims, consolidated unreleased feature history, disclosed external data flow, and preserved marketing and publication boundaries."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "product-documentation",
+    "release-truth"
+  ]
+}

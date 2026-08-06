@@ -1,0 +1,27 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "automatic-specialist-routing-2026-08-06-r3",
+  "scenario": "automatic-specialist-selection",
+  "result": "succeeded",
+  "startedAt": "2026-08-06T05:50:50.000Z",
+  "durationMs": 300000,
+  "checks": [
+    { "name": "direct-plugin-specialist", "result": "pass" },
+    { "name": "no-umbrella-map-load", "result": "pass" },
+    { "name": "one-primary-reference-budget", "result": "pass" },
+    { "name": "bounded-evidence-handoff", "result": "pass" }
+  ],
+  "metrics": { "checks_passed": 4 },
+  "lineage": {
+    "verificationId": "automatic-specialist-routing-2026-08-06-r3",
+    "artifactPointer": "codex-fresh-agent:/root/routing_enterprise_eval#2026-08-06"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-06T05:55:50.000Z",
+    "metricNames": ["checks_passed"],
+    "summary": "A fresh source-blind agent routed a REST settings bug directly to the plugin specialist, avoided the umbrella map, loaded one primary reference, and returned a bounded evidence handoff; it also selected the new docs specialist for factual release documents."
+  },
+  "tags": ["fresh-agent", "sanitized", "routing", "plugin", "product-documentation"]
+}
