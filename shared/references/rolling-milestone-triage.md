@@ -33,7 +33,7 @@ The due date is the release exit date. At T-1, implementation must already be me
 - Triage the current train, next train, and horizon train when product maturity and backlog pressure justify it.
 - Create patch/hotfix milestones only when regression, security, support, or release evidence supports urgency.
 - Use issue type, release intent, urgency, and evidence to choose the right train instead of forcing every item into the next version number.
-- Surface owner decisions when due dates, scope, or release intent are ambiguous.
+- Apply documented formulas and live release evidence to set or adjust milestone metadata when the choice is reversible and conflicts with no published commitment. Ask only when due date, scope, or release intent remains materially conflicting after bounded research, or changes an external commitment/hard gate.
 
 ## CTO Responsibilities
 
@@ -46,4 +46,4 @@ The due date is the release exit date. At T-1, implementation must already be me
 - Do not open a dynamic patch/hotfix train without concrete evidence.
 - Do not let horizon-train triage turn into premature implementation.
 - Keep milestone names aligned to explicit release intent.
-- If no future train is ready, report the planning gap instead of silently draining random issues.
+- If no future train is ready, shape the evidence-backed next train or research lane instead of silently draining random issues or waiting on the owner by default.

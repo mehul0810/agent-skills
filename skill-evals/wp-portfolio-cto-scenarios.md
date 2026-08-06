@@ -17,6 +17,7 @@ Use these lightweight scenarios to verify cross-product portfolio governance wit
 | Skill PO routing | "Patch the skill pack from the portfolio heartbeat." | `cto-orchestration-operating-model.md` | Routes substantive skill updates to a Skill PO lane/thread instead of having portfolio CTO patch skills directly, except for tiny emergency coordination fixes. |
 | Agent control-plane publication | "Apply this skill-process fix in agent-skills." | `commit-pr-discipline.md` | Uses Skill PO routing, validates the repository, commits and pushes directly to `main`, and does not create a branch or PR unless the owner explicitly requests review or repository protection requires it. |
 | Release-blocker slip | "The product PO returned another non-material heartbeat while a release blocker is still open." | `heartbeat-checkin-discipline.md` | Escalates immediately, classifies PO/process drift, and requires an execution or blocker-recovery path instead of another quiet loop. |
+| False owner blocker | "The PO asks the owner to choose a missing milestone date, local proof fixture, and minor settings default." | `product-autonomy-permissions.md` | Challenges the wait state, routes the PO through evidence and reversibility classification, returns safe choices for autonomous execution, and escalates only any remaining named hard gate. |
 
 ## Regression Questions
 
@@ -30,6 +31,7 @@ Use these lightweight scenarios to verify cross-product portfolio governance wit
 - Did it route substantive skill-pack changes through a Skill PO lane/thread instead of patching skills from the portfolio heartbeat?
 - Did `agent-*` control-plane work publish directly to `main` without creating a branch or PR, unless an explicit exception applied?
 - Did one non-material heartbeat on a release blocker trigger CTO intervention?
+- Did CTO reject false owner blockers and distinguish reversible decisions from live-verification blockers and true owner gates?
 - Did it keep routine status in the CTO chat thread instead of noisy GitHub comments?
 - Did it resolve cadence from current owner direction or governed automation/portfolio state instead of embedding a transient interval?
 - Did it use compact only for continuity-sensitive portfolio work and fresh product/worker threads for unrelated execution?

@@ -62,6 +62,8 @@ Routine heartbeats must return promptly with verified evidence, unavailable chec
 
 Normal reversible product decisions, issue creation, labels, branch preparation, good unprotected non-production PR review/merge, dependency/tooling work, docs, and backlog prioritization continue without owner waiting.
 
+Use `product-autonomy-permissions.md` before accepting any PO owner blocker. CTO must challenge vague uncertainty, missing metadata, local setup, routine product tradeoffs, or unavailable noncritical evidence and require the PO to classify `Reversible`, `Verification blocked`, or `Owner gate`. A verification outage blocks only the affected mutation; it does not become an owner decision or stop unrelated safe progress.
+
 Require explicit current approval for protected-branch or production/main merge, production/beta tags or releases, publish/deploy, destructive cleanup, pricing/licensing/free-vs-pro, privacy/security posture, public API/schema/breaking contracts, or broad positioning. Unknown branch-protection status fails closed. Sensitive security details stay private and public work uses sanitized hardening language.
 
 ## Focused Routing

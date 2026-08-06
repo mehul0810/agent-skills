@@ -47,14 +47,31 @@ Review and merge safe non-production PRs only after live-verifying that the targ
 
 If the owner is unavailable and the blocker is non-destructive, local, reversible, and outside the hard-gate list, do not stop at wait-state language. Question the assumption, verify the repo/product reality, search current docs or web sources when needed, choose the safest viable unblock path, act, and then report the action plus residual risk.
 
+## Research And Reversibility Ladder
+
+Uncertainty starts investigation; it does not create owner authority. Before writing `owner decision needed`:
+
+1. Name the exact decision/side effect; separate gated actions.
+2. Check the exact item, repo docs/patterns, release state, tests, and runtime. For drift-prone facts, search current official/primary sources and record the date.
+3. Classify:
+   - `Reversible`: scoped, non-production, limited impact, no governed data/contract/promise, and credible rollback. Decide and act.
+   - `Verification blocked`: authority may exist, but a required live fact is unavailable. Pause only that mutation, finish safe work, and retry narrowly; do not ask the owner to supply authority.
+   - `Owner gate`: destructive/protected/release/publish/deploy/transfer/irreversible action or governed commercial, privacy/security, public-contract, or broad-positioning change. Prepare one recommendation and ask. Never execute destructive work without approval.
+4. Record material reversible choices as `Decision / Evidence / Assumptions / Rollback / Validation / Review trigger`; skip ADRs for routine choices.
+5. Act and validate. Escalate only if evidence reveals a gate or rollback is no longer credible.
+
+Use one authoritative source plus repo/runtime proof when sufficient; stop when more research cannot change classification. Never use web search to justify bypassing an approval boundary.
+
+Common reversible PO decisions: branch/base or missing non-protected release branch from verified policy; formula-backed labels/milestones/due dates; local proof fixtures and test matrices; implementation details or minor UX/copy defaults inside accepted contracts; duplicate-screened PR-sized intake; dependency/docs/tests work; wrong-base non-production correction without history rewrite/deletion; and eligible unprotected non-production PR merge.
+
 Escalate rather than guess when work is not reversible or crosses:
 
-- Product positioning, roadmap, pricing, licensing, free/pro entitlement, upsell, or telemetry.
+- Broad or externally committed positioning/roadmap, pricing, licensing, free/pro entitlement, upsell, or telemetry. Routine issue ordering inside an accepted roadmap is autonomous.
 - Public contracts: hooks, filters, REST schema, shortcode attributes, block attributes, WP-CLI commands, database schema, storage layout, import/export format, or API behavior.
 - Security/privacy posture, data retention, consent, PII handling, OAuth scopes, webhook trust, or external provider permissions.
 - Migrations affecting real production data.
-- Release branch policy, versioning, WordPress.org assets/SVN, marketplace submissions, public release notes, or production/beta release action.
-- Broad UI/brand direction, conversion strategy, SEO-critical templates, or content model.
+- Changing release branch policy/versioning, WordPress.org publish/SVN, marketplace submissions, public release claims, or production/beta release action. Applying documented branch/version policy is autonomous.
+- New brand-wide UI direction, conversion promise, SEO-critical information architecture, or content-model contract. Issue-level implementation inside accepted `DESIGN.md`/product contracts is autonomous.
 
 ## Reversible Default Rule
 
@@ -64,18 +81,18 @@ If a product choice is minor and reversible, choose the safer enterprise default
 
 Security-sensitive findings should not become public issues and should not include exploit details, reproduction steps, or public `security issue` wording. Implement them as sanitized hardening PRs with validation and minimal public detail.
 
-## Stop Conditions
+## Fail-Closed Boundaries
 
-Stop immediately and report exact next action when:
+Pause only the affected mutation and report the exact recovery when:
 
-- The worktree has unrelated dirty changes.
-- The issue milestone/base branch is ambiguous.
-- Required credential, paid account, local site, test data, or live proof target is unavailable.
-- Validation fails outside the scoped change and cannot be safely fixed.
-- The best implementation requires a broader architecture/product decision.
+- An unrelated dirty checkout has no proven clean worktree/base alternative.
+- Milestone/base evidence still conflicts after repo/GitHub/release-policy verification.
+- A required credential, account, runtime, or live fact is unavailable and no fixture or safe fallback can prove the affected boundary.
+- Validation exposes a release-blocking or one-way-door conflict outside scope; otherwise record an adjacent issue and finish scoped proof.
+- The best implementation changes a public contract, real data, security/privacy posture, commercial promise, or broad product direction.
 - A destructive command, migration, or production/beta release action would be needed.
 
-Proof-environment blockers, stale product-thread topology, local reversible config adjustments, repeated validation surprises, or weak workflow defaults are not stop conditions by themselves. Try the best safe local unblock or recovery path first, then escalate only the remaining owner-only action.
+Proof-environment blockers, missing branches/dates, stale product-thread topology, local reversible config adjustments, repeated validation surprises, or weak workflow defaults are not owner decisions by themselves. Apply the ladder, recover safely, and escalate only the remaining owner-only action.
 
 ## Decision Brief Format
 

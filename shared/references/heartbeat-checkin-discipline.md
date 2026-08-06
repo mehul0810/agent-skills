@@ -10,6 +10,7 @@ Use this reference for CTO and PO heartbeat reporting. Check-ins must be delta-f
 - Use `NOTIFY` only when there is a material change, blocker, owner decision, executable work, release/proof drift, topology/process concern, or cadence change worth surfacing.
 - Use `DONT_NOTIFY` only when no owner decision, blocker, executable work, material drift, or process concern exists.
 - Replace `owner-gated` jargon with the exact decision. If checks cannot finish quickly, return a partial owner-readable result instead of staying in progress.
+- Put an item under `Owner decisions` only after the research-and-reversibility ladder identifies a named hard gate. Put unavailable required live facts under `Blocked` as verification blockers, and put reversible decisions under `Codex-owned next actions` with the chosen action and rollback.
 
 ## Readability Rules
 
@@ -121,7 +122,7 @@ Intervene without prompting when:
 - Raw logs replace decisions; evidence-backed or unexpected behavior, maintainability/comments/tests/validation/workflow findings lack a focused issue.
 - Community PR/issues are ignored; UI work lacks Playground/equivalent proof; executable work is falsely owner-gated; cadence mismatches urgency; or work lacks proof/uses the wrong lane.
 
-CTO response should be one of: correct the PO, reduce/pause cadence, request the exact blocker, recover/fork the product thread with owner approval when needed, or route a skill/process patch.
+CTO response should be one of: return a false owner blocker for researched execution, correct the PO, reduce/pause cadence, request the exact verification blocker, recover/fork the product thread with owner approval when needed, or route a skill/process patch.
 
 Portfolio 'NOTIFY' check-ins should include 'CTO intervention' when this happens so the owner sees what was corrected and why.
 

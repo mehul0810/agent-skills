@@ -110,7 +110,7 @@ Use `adjacent-finding-protocol.md`. Do not blindly expand the current PR; duplic
 Classify each item:
 
 - `Autonomous`: bounded, aligned, provable, no sensitive decision.
-- `Needs owner`: production/beta release action, unsafe milestone inference, or non-reversible product/security/privacy/API/schema/destructive/broad-positioning conflict. Ask clearly in the issue/PR and label `owner:me`; reversible non-release choices should be decided, documented, relabeled `owner:codex`, and continued.
+- `Needs owner`: production/beta action or a researched one-way-door product/security/privacy/API/schema/destructive/broad-positioning conflict. Label `owner:me`. Missing metadata/initial ambiguity is insufficient: apply `product-autonomy-permissions.md`, decide reversible work, or report the exact verification conflict.
 - `Release blocker`: must land or be explicitly deferred.
 - `Blocked`: missing access, bad environment/branch/base, unclear reproduction.
 - `Defer/close`: duplicate, superseded, stale without evidence, support-only, or poor product fit.
