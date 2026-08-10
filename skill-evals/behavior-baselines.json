@@ -78,7 +78,7 @@
         "wp-theme-expert/SKILL.md",
         "wp-theme-expert/references/router.md"
       ],
-      "sha256": "af060ed81e6aee22649d98999564e5abe73414b38e2c1dfc06cb488396b8e660",
+      "sha256": "8082b064571bf0ac92376ff8e1271a02ff6c886b9c672085f540aa6861d5bfab",
       "scenario": {
         "id": "frontend-design-taste-routing",
         "files": [
@@ -107,7 +107,7 @@
           "Excellent UX Requires Outcome Evidence",
           "Material Greenfield Direction Checkpoint"
         ],
-        "sha256": "d9d236220074678ea9908a73324302642a59217f8e966c520e2cb38ab028503a"
+        "sha256": "c3c4468254ca56484031022d22adf7bdac66354e763af74d5ad68742ff8c7f82"
       },
       "requiredChecks": [
         "greenfield-taste-route",
@@ -139,11 +139,11 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/site-visual-routing-2026-08-10-r4.json",
-          "sha256": "326acd20105027ee4b77722a64844167ccd7c8979a5e51d99d5077bd964ac40e",
-          "testedRevision": "ab34bc4eb0b4d0911434af84d4f72ea8c37fb2ce",
-          "testedSourceSha256": "af060ed81e6aee22649d98999564e5abe73414b38e2c1dfc06cb488396b8e660",
-          "testedScenarioSha256": "d9d236220074678ea9908a73324302642a59217f8e966c520e2cb38ab028503a",
+          "runRecord": "skill-evals/run-records/site-visual-routing-2026-08-10-r5.json",
+          "sha256": "81f4fa490b1cbd71756da6b8f347c85fbd0903efc5f8826e2794e4e7808d8065",
+          "testedRevision": "0d219eb3d3c952c0a8a2c96d63beab92e9c75f7a",
+          "testedSourceSha256": "8082b064571bf0ac92376ff8e1271a02ff6c886b9c672085f540aa6861d5bfab",
+          "testedScenarioSha256": "c3c4468254ca56484031022d22adf7bdac66354e763af74d5ad68742ff8c7f82",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
