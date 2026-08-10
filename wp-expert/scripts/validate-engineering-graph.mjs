@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import fs from "node:fs";
+import crypto from "node:crypto";
 import path from "node:path";
 import process from "node:process";
 
@@ -42,19 +43,33 @@ const allowedPromotionDestinations = new Set([
   "skill",
   "automation",
 ]);
+const allowedIdentityKeys = new Set([
+  "repository",
+  "revision",
+  "pullRequest",
+  "issue",
+  "tag",
+  "packageSha256",
+  "runId",
+  "environment",
+  "actor",
+  "viewport",
+  "dataFixture",
+]);
+const fingerprintPattern = /^sha256:[a-f0-9]{64}$/;
 
 function isObject(value) {
   return value !== null && typeof value === "object" && !Array.isArray(value);
 }
 
-function validateGraph(graph) {
+function validateGraph(graph, { graphPath = null } = {}) {
   const errors = [];
 
   if (!isObject(graph)) {
     return ["graph must be a JSON object"];
   }
-  if (graph.schemaVersion !== 1) {
-    errors.push("schemaVersion must be 1");
+  if (graph.schemaVersion !== 2) {
+    errors.push("schemaVersion must be 2");
   }
   if (typeof graph.task !== "string" || graph.task.trim() === "") {
     errors.push("task must be a non-empty string");
@@ -67,6 +82,9 @@ function validateGraph(graph) {
   }
   if (!Array.isArray(graph.nodes) || graph.nodes.length === 0) {
     return [...errors, "nodes must be a non-empty array"];
+  }
+  if (!Array.isArray(graph.acceptanceCriteria) || graph.acceptanceCriteria.length === 0) {
+    errors.push("acceptanceCriteria must be a non-empty array");
   }
 
   const ids = new Set();
@@ -91,6 +109,12 @@ function validateGraph(graph) {
     }
     if (typeof node.owner !== "string" || node.owner.trim() === "") {
       errors.push(`${label}.owner must be non-empty`);
+    }
+    if (node.fingerprint !== undefined && !fingerprintPattern.test(node.fingerprint)) {
+      errors.push(`${label}.fingerprint must be sha256:<64 lowercase hex>`);
+    }
+    if (node.dependencyFingerprints !== undefined && !isObject(node.dependencyFingerprints)) {
+      errors.push(`${label}.dependencyFingerprints must be an object`);
     }
     if (!allowedStates.has(node.state)) {
       errors.push(`${label}.state is invalid`);
@@ -124,6 +148,28 @@ function validateGraph(graph) {
         (!isObject(evidence.identity) || Object.keys(evidence.identity).length === 0)
       ) {
         errors.push(`${evidenceLabel}.identity must be a non-empty object when present`);
+      }
+      if (isObject(evidence.identity)) {
+        for (const key of Object.keys(evidence.identity)) {
+          if (!allowedIdentityKeys.has(key)) errors.push(`${evidenceLabel}.identity uses unsupported key ${key}`);
+        }
+        if (evidence.identity.revision !== undefined && !/^[a-f0-9]{40}$/.test(evidence.identity.revision)) errors.push(`${evidenceLabel}.identity.revision must be a full commit SHA`);
+        if (evidence.identity.packageSha256 !== undefined && !fingerprintPattern.test(evidence.identity.packageSha256)) errors.push(`${evidenceLabel}.identity.packageSha256 must be sha256:<64 lowercase hex>`);
+      }
+      if (evidence.fingerprint !== undefined) {
+        if (!fingerprintPattern.test(evidence.fingerprint)) {
+          errors.push(`${evidenceLabel}.fingerprint must be sha256:<64 lowercase hex>`);
+        } else if (/^[a-z]+:\/\//i.test(evidence.pointer)) {
+          errors.push(`${evidenceLabel} cannot byte-verify a remote pointer; materialize immutable local evidence`);
+        } else if (graphPath) {
+          const evidencePath = path.resolve(path.dirname(graphPath), evidence.pointer);
+          if (!fs.existsSync(evidencePath) || !fs.statSync(evidencePath).isFile()) {
+            errors.push(`${evidenceLabel} local evidence file is missing`);
+          } else {
+            const actual = `sha256:${crypto.createHash("sha256").update(fs.readFileSync(evidencePath)).digest("hex")}`;
+            if (actual !== evidence.fingerprint) errors.push(`${evidenceLabel} fingerprint does not match local evidence bytes`);
+          }
+        }
       }
     }
   }
@@ -208,7 +254,7 @@ function validateGraph(graph) {
         errors.push(`${node.id} regression proof is not verified`);
       }
       const hasIdentity = node.evidence?.some(
-        (evidence) => isObject(evidence.identity) && Object.keys(evidence.identity).length > 0,
+        (evidence) => isObject(evidence.identity) && Object.keys(evidence.identity).some((key) => allowedIdentityKeys.has(key)),
       );
       if (!hasIdentity) {
         errors.push(`${node.id} regression proof lacks run identity`);
@@ -217,9 +263,23 @@ function validateGraph(graph) {
     if (node.critical && node.state === "verified" && node.evidence?.length === 0) {
       errors.push(`${node.id} is verified and critical but has no evidence`);
     }
+    if (node.critical && node.state === "verified") {
+      if (!fingerprintPattern.test(node.fingerprint ?? "")) errors.push(`${node.id} verified critical node lacks a typed fingerprint`);
+      if (!isObject(node.dependencyFingerprints)) {
+        errors.push(`${node.id} verified critical node lacks dependency fingerprints`);
+      } else {
+        const actualDependencies = [...(node.dependsOn ?? [])].sort();
+        const recordedDependencies = Object.keys(node.dependencyFingerprints).sort();
+        if (JSON.stringify(actualDependencies) !== JSON.stringify(recordedDependencies)) errors.push(`${node.id} dependency fingerprints do not match its dependency set`);
+        for (const dependency of actualDependencies) {
+          const parent = byId.get(dependency);
+          if (!parent?.fingerprint || node.dependencyFingerprints[dependency] !== parent.fingerprint) errors.push(`${node.id} has stale dependency fingerprint for ${dependency}`);
+        }
+      }
+    }
     if (node.type === "proof" && node.critical && node.state === "verified") {
       const hasIdentity = node.evidence?.some(
-        (evidence) => isObject(evidence.identity) && Object.keys(evidence.identity).length > 0,
+        (evidence) => isObject(evidence.identity) && Object.keys(evidence.identity).some((key) => allowedIdentityKeys.has(key)),
       );
       if (!hasIdentity) {
         errors.push(`${node.id} is critical proof without commit/package/environment identity`);
@@ -253,6 +313,14 @@ function validateGraph(graph) {
     if (isObject(node) && typeof node.id === "string") {
       visitDependencies(node);
     }
+  }
+
+  const exclusiveOwners = new Map();
+  for (const node of graph.nodes) {
+    if (!isObject(node) || node.type !== "owner" || node.state !== "verified" || !node.resource || node.ownershipMode === "shared") continue;
+    const previous = exclusiveOwners.get(node.resource);
+    if (previous && previous !== node.id) errors.push(`resource ${node.resource} has conflicting exclusive owners ${previous} and ${node.id}`);
+    exclusiveOwners.set(node.resource, node.id);
   }
 
   function hasAncestorType(node, expectedType, visiting = new Set()) {
@@ -302,6 +370,38 @@ function validateGraph(graph) {
     }
     if (node.type === "outcome" && !hasAncestorType(node, "proof")) {
       errors.push(`${node.id} is an outcome without upstream proof`);
+    }
+  }
+
+  for (const node of graph.nodes) {
+    if (isObject(node) && node.type === "outcome" && node.state === "verified" && !hasAncestorType(node, "proof")) {
+      errors.push(`${node.id} verified outcome is missing upstream proof`);
+    }
+  }
+
+  const criterionIds = new Set();
+  for (const [index, criterion] of (graph.acceptanceCriteria ?? []).entries()) {
+    const label = `acceptanceCriteria[${index}]`;
+    if (!isObject(criterion) || typeof criterion.id !== "string" || !criterion.id.trim()) {
+      errors.push(`${label}.id must be non-empty`);
+      continue;
+    }
+    if (criterionIds.has(criterion.id)) errors.push(`${label}.id duplicates ${criterion.id}`);
+    criterionIds.add(criterion.id);
+    if (typeof criterion.statement !== "string" || !criterion.statement.trim()) errors.push(`${label}.statement must be non-empty`);
+    const intent = byId.get(criterion.intentNodeId);
+    if (!intent || intent.type !== "intent") errors.push(`${criterion.id} references a missing or non-intent node`);
+    if (!Array.isArray(criterion.proofNodeIds) || criterion.proofNodeIds.length === 0) {
+      errors.push(`${criterion.id} needs at least one proof node`);
+      continue;
+    }
+    for (const proofId of criterion.proofNodeIds) {
+      const proof = byId.get(proofId);
+      if (!proof || proof.type !== "proof" || proof.state !== "verified") {
+        errors.push(`${criterion.id} references unverified or missing proof ${proofId}`);
+      } else if (intent && !hasAncestorId(proof, intent.id)) {
+        errors.push(`${criterion.id} proof ${proofId} has no path to intent ${intent.id}`);
+      }
     }
   }
 
@@ -381,233 +481,112 @@ function validateGraph(graph) {
 }
 
 function selfTest() {
+  const temp = fs.mkdtempSync(path.join(process.env.TMPDIR ?? "/tmp", "engineering-graph-"));
+  const graphPath = path.join(temp, "graph.json");
+  const proofFile = path.join(temp, "proof.txt");
+  fs.writeFileSync(proofFile, "verified proof\n");
+  const fp = (value) => `sha256:${value.repeat(64)}`;
+  const proofBytes = `sha256:${crypto.createHash("sha256").update(fs.readFileSync(proofFile)).digest("hex")}`;
   const valid = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     task: "Prove a packaged settings workflow",
     assuranceLevel: "baseline",
+    acceptanceCriteria: [{
+      id: "ac.settings",
+      statement: "The packaged settings workflow passes.",
+      intentNodeId: "intent.settings",
+      proofNodeIds: ["proof.package"],
+    }],
     nodes: [
       {
-        id: "intent.settings",
-        type: "intent",
-        owner: "issue",
-        state: "verified",
-        critical: true,
-        dependsOn: [],
-        evidence: [{ kind: "github", pointer: "issue-123" }],
+        id: "intent.settings", type: "intent", owner: "issue", state: "verified", critical: true,
+        dependsOn: [], fingerprint: fp("a"), dependencyFingerprints: {},
+        evidence: [{ kind: "github", pointer: "issue-123", identity: { issue: 123 } }],
       },
       {
-        id: "proof.package",
-        type: "proof",
-        owner: "behavior-validator",
-        state: "verified",
-        critical: true,
-        dependsOn: ["intent.settings"],
-        evidence: [
-          {
-            kind: "package",
-            pointer: "dist/plugin.zip",
-            identity: { commit: "abc123", sha256: "example" },
-          },
-        ],
+        id: "proof.package", type: "proof", proofKind: "verification", owner: "behavior-validator",
+        state: "verified", critical: true, dependsOn: ["intent.settings"], fingerprint: fp("b"),
+        dependencyFingerprints: { "intent.settings": fp("a") },
+        evidence: [{
+          kind: "package", pointer: "proof.txt", fingerprint: proofBytes,
+          identity: { revision: "c".repeat(40), packageSha256: fp("d"), environment: "wp-proof" },
+        }],
       },
       {
-        id: "outcome.ready",
-        type: "outcome",
-        owner: "product-po",
-        state: "verified",
-        critical: true,
-        dependsOn: ["proof.package"],
-        evidence: [{ kind: "github", pointer: "release-brief" }],
+        id: "outcome.ready", type: "outcome", owner: "product-po", state: "verified", critical: true,
+        dependsOn: ["proof.package"], fingerprint: fp("e"),
+        dependencyFingerprints: { "proof.package": fp("b") },
+        evidence: [{ kind: "github", pointer: "release-brief", identity: { revision: "c".repeat(40) } }],
       },
     ],
   };
-  const failedCritical = structuredClone(valid);
-  failedCritical.nodes[1].state = "failed";
-  const missingIdentity = structuredClone(valid);
-  missingIdentity.nodes[1].evidence[0].identity = {};
-  const cyclic = structuredClone(valid);
-  cyclic.nodes[1].dependsOn = ["outcome.ready"];
-  const validLearning = {
-    schemaVersion: 1,
-    task: "Learn from a packaged settings regression",
-    assuranceLevel: "elevated",
-    nodes: [
-      structuredClone(valid.nodes[0]),
-      {
-        id: "observation.settings-broken",
-        type: "observation",
-        owner: "behavior-validator",
-        state: "failed",
-        critical: false,
-        dependsOn: ["intent.settings"],
-        evidence: [{ kind: "browser", pointer: "artifacts/settings-broken.png" }],
-      },
-      {
-        id: "correction.settings-owner",
-        type: "correction",
-        owner: "wp-plugin-expert",
-        state: "verified",
-        critical: false,
-        dependsOn: ["observation.settings-broken"],
-        evidence: [{ kind: "git", pointer: "commit:def456" }],
-      },
-      {
-        id: "proof.settings-regression",
-        type: "proof",
-        proofKind: "regression",
-        owner: "behavior-validator",
-        state: "verified",
-        critical: true,
-        dependsOn: ["correction.settings-owner"],
-        evidence: [
-          {
-            kind: "browser",
-            pointer: "artifacts/settings-fixed.png",
-            identity: { commit: "def456", packageSha256: "example" },
-          },
-        ],
-      },
-      {
-        id: "learning.settings-regression",
-        type: "learning",
-        owner: "repo-doc",
-        state: "verified",
-        critical: false,
-        dependsOn: ["proof.settings-regression"],
-        promotion: {
-          destination: {
-            kind: "repo_doc",
-            pointer: "TESTING.md#settings-regression",
-          },
-          status: "verified",
-          reviewer: "product-po",
-        },
-        evidence: [{ kind: "repo", pointer: "TESTING.md#settings-regression" }],
-      },
-      {
-        id: "outcome.ready",
-        type: "outcome",
-        owner: "product-po",
-        state: "verified",
-        critical: true,
-        dependsOn: ["learning.settings-regression"],
-        evidence: [{ kind: "github", pointer: "release-brief" }],
-      },
-    ],
-  };
-  const orphanLearning = structuredClone(validLearning);
-  orphanLearning.nodes[4].dependsOn = [];
-  const genericProof = structuredClone(validLearning);
-  genericProof.nodes[3].proofKind = "verification";
-  const learningWithoutCorrection = structuredClone(validLearning);
-  learningWithoutCorrection.nodes[3].dependsOn = ["observation.settings-broken"];
-  const learningWithoutFailure = structuredClone(validLearning);
-  learningWithoutFailure.nodes[1].state = "verified";
-  const learningWithoutClosure = structuredClone(validLearning);
-  learningWithoutClosure.nodes[5].dependsOn = ["proof.settings-regression"];
-  const learningWithoutEvidence = structuredClone(validLearning);
-  learningWithoutEvidence.nodes[4].evidence = [];
-  const learningWithoutDestination = structuredClone(validLearning);
-  delete learningWithoutDestination.nodes[4].promotion.destination;
-  const learningWithoutReviewer = structuredClone(validLearning);
-  delete learningWithoutReviewer.nodes[4].promotion.reviewer;
-  const learningWithoutVerifiedPromotion = structuredClone(validLearning);
-  learningWithoutVerifiedPromotion.nodes[4].promotion.status = "implemented";
-  const regressionWithoutEvidence = structuredClone(validLearning);
-  regressionWithoutEvidence.nodes[3].evidence = [];
-  const regressionWithoutIdentity = structuredClone(validLearning);
-  delete regressionWithoutIdentity.nodes[3].evidence[0].identity;
-  const failureWithoutEvidence = structuredClone(validLearning);
-  failureWithoutEvidence.nodes[1].evidence = [];
-  const correctionWithoutEvidence = structuredClone(validLearning);
-  correctionWithoutEvidence.nodes[2].evidence = [];
-  const learningDestinationMismatch = structuredClone(validLearning);
-  learningDestinationMismatch.nodes[4].promotion.destination.pointer =
-    "TESTING.md#different-regression";
-  const outcomeWithoutEvidence = structuredClone(validLearning);
-  outcomeWithoutEvidence.nodes[5].evidence = [];
-  const outcomeNotVerified = structuredClone(validLearning);
-  outcomeNotVerified.nodes[5].state = "provisional";
 
-  const validErrors = validateGraph(valid);
-  const failedErrors = validateGraph(failedCritical);
-  const identityErrors = validateGraph(missingIdentity);
-  const cycleErrors = validateGraph(cyclic);
-  const validLearningErrors = validateGraph(validLearning);
-  const orphanLearningErrors = validateGraph(orphanLearning);
-  const genericProofErrors = validateGraph(genericProof);
-  const learningWithoutCorrectionErrors = validateGraph(learningWithoutCorrection);
-  const learningWithoutFailureErrors = validateGraph(learningWithoutFailure);
-  const learningWithoutClosureErrors = validateGraph(learningWithoutClosure);
-  const learningWithoutEvidenceErrors = validateGraph(learningWithoutEvidence);
-  const learningWithoutDestinationErrors = validateGraph(learningWithoutDestination);
-  const learningWithoutReviewerErrors = validateGraph(learningWithoutReviewer);
-  const learningWithoutVerifiedPromotionErrors = validateGraph(
-    learningWithoutVerifiedPromotion,
+  const validLearning = structuredClone(valid);
+  validLearning.task = "Learn from a settings regression";
+  validLearning.acceptanceCriteria[0].proofNodeIds = ["proof.settings-regression"];
+  validLearning.nodes = [validLearning.nodes[0],
+    {
+      id: "observation.settings-broken", type: "observation", owner: "behavior-validator",
+      state: "failed", critical: false, dependsOn: ["intent.settings"], fingerprint: fp("f"),
+      evidence: [{ kind: "browser", pointer: "broken.png", identity: { viewport: "1280x900" } }],
+    },
+    {
+      id: "correction.settings-owner", type: "correction", owner: "wp-plugin-expert",
+      state: "verified", critical: false, dependsOn: ["observation.settings-broken"], fingerprint: fp("1"),
+      evidence: [{ kind: "git", pointer: "commit", identity: { revision: "2".repeat(40) } }],
+    },
+    {
+      id: "proof.settings-regression", type: "proof", proofKind: "regression", owner: "behavior-validator",
+      state: "verified", critical: true, dependsOn: ["correction.settings-owner"], fingerprint: fp("3"),
+      dependencyFingerprints: { "correction.settings-owner": fp("1") },
+      evidence: [{ kind: "browser", pointer: "fixed.png", identity: { revision: "2".repeat(40), runId: "settings-regression" } }],
+    },
+    {
+      id: "learning.settings-regression", type: "learning", owner: "repo-doc", state: "verified",
+      critical: false, dependsOn: ["proof.settings-regression"], fingerprint: fp("4"),
+      promotion: { destination: { kind: "repo_doc", pointer: "TESTING.md#settings" }, status: "verified", reviewer: "product-po" },
+      evidence: [{ kind: "repo", pointer: "TESTING.md#settings", identity: { revision: "2".repeat(40) } }],
+    },
+    {
+      id: "outcome.ready", type: "outcome", owner: "product-po", state: "verified", critical: true,
+      dependsOn: ["learning.settings-regression"], fingerprint: fp("5"),
+      dependencyFingerprints: { "learning.settings-regression": fp("4") },
+      evidence: [{ kind: "github", pointer: "release-brief", identity: { revision: "2".repeat(40) } }],
+    },
+  ];
+
+  const cases = [];
+  cases.push(["valid", valid, (errors) => errors.length === 0]);
+  cases.push(["valid learning", validLearning, (errors) => errors.length === 0]);
+  const stale = structuredClone(valid); stale.nodes[1].dependencyFingerprints["intent.settings"] = fp("9");
+  cases.push(["stale dependency", stale, (errors) => errors.some((error) => error.includes("stale dependency fingerprint"))]);
+  const fakeIdentity = structuredClone(valid); fakeIdentity.nodes[1].evidence[0].identity = { commit: "abc123" };
+  cases.push(["fake identity", fakeIdentity, (errors) => errors.some((error) => error.includes("unsupported key"))]);
+  const noCriterionProof = structuredClone(valid); noCriterionProof.nodes[1].state = "failed";
+  cases.push(["unverified criterion", noCriterionProof, (errors) => errors.some((error) => error.includes("unverified or missing proof"))]);
+  const cycle = structuredClone(valid); cycle.nodes[1].dependsOn = ["outcome.ready"];
+  cases.push(["cycle", cycle, (errors) => errors.some((error) => error.startsWith("dependency cycle:"))]);
+  const noLearningClosure = structuredClone(validLearning); noLearningClosure.nodes[5].dependsOn = ["proof.settings-regression"];
+  cases.push(["learning closure", noLearningClosure, (errors) => errors.some((error) => error.includes("learning is not closed by a verified evidenced outcome"))]);
+  const noLearningLineage = structuredClone(validLearning); noLearningLineage.nodes[3].dependsOn = ["observation.settings-broken"];
+  cases.push(["learning lineage", noLearningLineage, (errors) => errors.some((error) => error.includes("learning lacks failed-observation and verified-correction lineage"))]);
+  const conflictingOwner = structuredClone(valid);
+  conflictingOwner.nodes.splice(1, 0,
+    { id: "owner.one", type: "owner", owner: "theme", resource: "header", state: "verified", critical: false, dependsOn: ["intent.settings"], evidence: [] },
+    { id: "owner.two", type: "owner", owner: "page", resource: "header", state: "verified", critical: false, dependsOn: ["intent.settings"], evidence: [] },
   );
-  const regressionWithoutEvidenceErrors = validateGraph(regressionWithoutEvidence);
-  const regressionWithoutIdentityErrors = validateGraph(regressionWithoutIdentity);
-  const failureWithoutEvidenceErrors = validateGraph(failureWithoutEvidence);
-  const correctionWithoutEvidenceErrors = validateGraph(correctionWithoutEvidence);
-  const learningDestinationMismatchErrors = validateGraph(learningDestinationMismatch);
-  const outcomeWithoutEvidenceErrors = validateGraph(outcomeWithoutEvidence);
-  const outcomeNotVerifiedErrors = validateGraph(outcomeNotVerified);
-  if (
-    validErrors.length > 0 ||
-    failedErrors.length === 0 ||
-    identityErrors.length === 0 ||
-    !cycleErrors.some((error) => error.startsWith("dependency cycle:")) ||
-    validLearningErrors.length > 0 ||
-    !orphanLearningErrors.some((error) => error.includes("is orphaned")) ||
-    !genericProofErrors.some((error) => error.includes("lacks upstream verified regression proof")) ||
-    !learningWithoutCorrectionErrors.some((error) =>
-      error.includes("lacks failed-observation and verified-correction lineage")) ||
-    !learningWithoutFailureErrors.some((error) =>
-      error.includes("lacks failed-observation and verified-correction lineage")) ||
-    !learningWithoutClosureErrors.some((error) => error.includes("not closed by a verified evidenced outcome")) ||
-    !learningWithoutEvidenceErrors.some((error) => error.includes("has no durable evidence")) ||
-    !learningWithoutDestinationErrors.some((error) => error.includes("lacks a durable destination")) ||
-    !learningWithoutReviewerErrors.some((error) => error.includes("reviewer is missing")) ||
-    !learningWithoutVerifiedPromotionErrors.some((error) =>
-      error.includes("promotion is not verified")) ||
-    !regressionWithoutEvidenceErrors.some((error) =>
-      error.includes("regression proof has no evidence")) ||
-    !regressionWithoutIdentityErrors.some((error) =>
-      error.includes("regression proof lacks run identity")) ||
-    !failureWithoutEvidenceErrors.some((error) =>
-      error.includes("failed observation has no evidence")) ||
-    !correctionWithoutEvidenceErrors.some((error) =>
-      error.includes("verified correction has no evidence")) ||
-    !learningDestinationMismatchErrors.some((error) =>
-      error.includes("evidence does not verify its durable destination")) ||
-    !outcomeWithoutEvidenceErrors.some((error) =>
-      error.includes("not closed by a verified evidenced outcome")) ||
-    !outcomeNotVerifiedErrors.some((error) =>
-      error.includes("not closed by a verified evidenced outcome"))
-  ) {
-    console.error("engineering graph validator self-test failed", {
-      validErrors,
-      failedErrors,
-      identityErrors,
-      cycleErrors,
-      validLearningErrors,
-      orphanLearningErrors,
-      genericProofErrors,
-      learningWithoutCorrectionErrors,
-      learningWithoutFailureErrors,
-      learningWithoutClosureErrors,
-      learningWithoutEvidenceErrors,
-      learningWithoutDestinationErrors,
-      learningWithoutReviewerErrors,
-      learningWithoutVerifiedPromotionErrors,
-      regressionWithoutEvidenceErrors,
-      regressionWithoutIdentityErrors,
-      failureWithoutEvidenceErrors,
-      correctionWithoutEvidenceErrors,
-      learningDestinationMismatchErrors,
-      outcomeWithoutEvidenceErrors,
-      outcomeNotVerifiedErrors,
-    });
+  cases.push(["ownership conflict", conflictingOwner, (errors) => errors.some((error) => error.includes("conflicting exclusive owners"))]);
+  const badBytes = structuredClone(valid); badBytes.nodes[1].evidence[0].fingerprint = fp("8");
+  cases.push(["local byte mismatch", badBytes, (errors) => errors.some((error) => error.includes("does not match local evidence bytes"))]);
+
+  const failures = [];
+  for (const [name, graph, expected] of cases) {
+    const errors = validateGraph(graph, { graphPath });
+    if (!expected(errors)) failures.push({ name, errors });
+  }
+  fs.rmSync(temp, { recursive: true, force: true });
+  if (failures.length) {
+    console.error("engineering graph validator self-test failed", failures);
     process.exit(1);
   }
   console.log("engineering graph validator self-test passed");
@@ -632,7 +611,7 @@ try {
   process.exit(2);
 }
 
-const errors = validateGraph(graph);
+const errors = validateGraph(graph, { graphPath: target });
 if (errors.length > 0) {
   for (const error of errors) {
     console.error(`ERROR: ${error}`);

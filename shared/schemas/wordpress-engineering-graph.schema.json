@@ -3,232 +3,129 @@
   "$id": "https://github.com/mehul0810/agent-skills/shared/schemas/wordpress-engineering-graph.schema.json",
   "title": "WordPress Engineering Graph",
   "type": "object",
-  "required": ["schemaVersion", "task", "nodes"],
+  "additionalProperties": false,
+  "required": ["schemaVersion", "task", "acceptanceCriteria", "nodes"],
   "properties": {
-    "schemaVersion": {
-      "const": 1
-    },
-    "task": {
-      "type": "string",
-      "minLength": 1
-    },
-    "assuranceLevel": {
-      "enum": ["baseline", "elevated"]
-    },
-    "nodes": {
+    "schemaVersion": { "const": 2 },
+    "task": { "type": "string", "minLength": 1 },
+    "assuranceLevel": { "enum": ["baseline", "elevated"] },
+    "acceptanceCriteria": {
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["id", "type", "owner", "state", "critical", "dependsOn", "evidence"],
+        "additionalProperties": false,
+        "required": ["id", "statement", "intentNodeId", "proofNodeIds"],
         "properties": {
-          "id": {
-            "type": "string",
-            "pattern": "^[a-z0-9][a-z0-9._-]*$"
-          },
-          "type": {
-            "enum": [
-              "intent",
-              "owner",
-              "artifact",
-              "runtime",
-              "observation",
-              "correction",
-              "proof",
-              "outcome",
-              "learning"
-            ]
-          },
-          "owner": {
-            "type": "string",
-            "minLength": 1
-          },
-          "state": {
-            "enum": ["verified", "provisional", "unknown", "failed", "not_applicable"]
-          },
-          "critical": {
-            "type": "boolean"
-          },
-          "dependsOn": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "uniqueItems": true
-          },
-          "notApplicableReason": {
-            "type": "string"
-          },
-          "proofKind": {
-            "enum": ["verification", "regression"]
-          },
-          "promotion": {
-            "type": "object",
-            "required": ["destination", "status", "reviewer"],
-            "properties": {
-              "destination": {
-                "type": "object",
-                "required": ["kind", "pointer"],
-                "properties": {
-                  "kind": {
-                    "enum": ["repo_doc", "adr", "issue", "skill", "automation"]
-                  },
-                  "pointer": {
-                    "type": "string",
-                    "minLength": 1
-                  }
-                },
-                "additionalProperties": false
-              },
-              "status": {
-                "const": "verified"
-              },
-              "reviewer": {
-                "type": "string",
-                "minLength": 1
-              }
-            },
-            "additionalProperties": false
-          },
-          "evidence": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": ["kind", "pointer"],
-              "properties": {
-                "kind": {
-                  "enum": ["repo", "git", "github", "runtime", "test", "browser", "editor", "package", "public", "owner"]
-                },
-                "pointer": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "identity": {
-                  "type": "object",
-                  "minProperties": 1
-                }
-              },
-              "additionalProperties": false
-            }
-          }
-        },
-        "allOf": [
-          {
-            "if": {
-              "properties": {
-                "type": { "const": "learning" }
-              },
-              "required": ["type"]
-            },
-            "then": {
-              "required": ["promotion"],
-              "properties": {
-                "state": {
-                  "const": "verified"
-                },
-                "dependsOn": {
-                  "minItems": 1
-                }
-              }
-            }
-          },
-          {
-            "if": {
-              "properties": {
-                "type": { "const": "learning" },
-                "state": { "const": "verified" }
-              },
-              "required": ["type", "state"]
-            },
-            "then": {
-              "properties": {
-                "evidence": {
-                  "minItems": 1
-                }
-              }
-            }
-          },
-          {
-            "if": {
-              "required": ["promotion"]
-            },
-            "then": {
-              "properties": {
-                "type": {
-                  "const": "learning"
-                }
-              }
-            }
-          },
-          {
-            "if": {
-              "required": ["proofKind"]
-            },
-            "then": {
-              "properties": {
-                "type": {
-                  "const": "proof"
-                }
-              }
-            }
-          },
-          {
-            "if": {
-              "properties": {
-                "type": { "const": "observation" },
-                "state": { "const": "failed" }
-              },
-              "required": ["type", "state"]
-            },
-            "then": {
-              "properties": {
-                "evidence": {
-                  "minItems": 1
-                }
-              }
-            }
-          },
-          {
-            "if": {
-              "properties": {
-                "type": { "const": "correction" },
-                "state": { "const": "verified" }
-              },
-              "required": ["type", "state"]
-            },
-            "then": {
-              "properties": {
-                "evidence": {
-                  "minItems": 1
-                }
-              }
-            }
-          },
-          {
-            "if": {
-              "properties": {
-                "proofKind": { "const": "regression" }
-              },
-              "required": ["proofKind"]
-            },
-            "then": {
-              "properties": {
-                "type": {
-                  "const": "proof"
-                },
-                "state": {
-                  "const": "verified"
-                },
-                "evidence": {
-                  "minItems": 1
-                }
-              }
-            }
-          }
-        ],
-        "additionalProperties": false
+          "id": { "$ref": "#/$defs/id" },
+          "statement": { "type": "string", "minLength": 1 },
+          "intentNodeId": { "$ref": "#/$defs/id" },
+          "proofNodeIds": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/id" } }
+        }
       }
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/node" }
     }
   },
-  "additionalProperties": false
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$" },
+    "sha256": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "repository": { "type": "string", "minLength": 1 },
+        "revision": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+        "pullRequest": { "type": ["integer", "string"] },
+        "issue": { "type": ["integer", "string"] },
+        "tag": { "type": "string", "minLength": 1 },
+        "packageSha256": { "$ref": "#/$defs/sha256" },
+        "runId": { "type": "string", "minLength": 1 },
+        "environment": { "type": "string", "minLength": 1 },
+        "actor": { "type": "string", "minLength": 1 },
+        "viewport": { "type": "string", "minLength": 1 },
+        "dataFixture": { "type": "string", "minLength": 1 }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "pointer"],
+      "properties": {
+        "kind": { "enum": ["repo", "git", "github", "runtime", "test", "browser", "editor", "package", "public", "owner"] },
+        "pointer": { "type": "string", "minLength": 1 },
+        "fingerprint": { "$ref": "#/$defs/sha256" },
+        "identity": { "$ref": "#/$defs/identity" }
+      }
+    },
+    "promotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["destination", "status", "reviewer"],
+      "properties": {
+        "destination": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "pointer"],
+          "properties": {
+            "kind": { "enum": ["repo_doc", "adr", "issue", "skill", "automation"] },
+            "pointer": { "type": "string", "minLength": 1 }
+          }
+        },
+        "status": { "const": "verified" },
+        "reviewer": { "type": "string", "minLength": 1 }
+      }
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "owner", "state", "critical", "dependsOn", "evidence"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "type": { "enum": ["intent", "owner", "artifact", "runtime", "observation", "correction", "proof", "outcome", "learning"] },
+        "owner": { "type": "string", "minLength": 1 },
+        "resource": { "type": "string", "minLength": 1 },
+        "ownershipMode": { "enum": ["exclusive", "shared"] },
+        "state": { "enum": ["verified", "provisional", "unknown", "failed", "not_applicable"] },
+        "critical": { "type": "boolean" },
+        "dependsOn": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/id" } },
+        "fingerprint": { "$ref": "#/$defs/sha256" },
+        "dependencyFingerprints": {
+          "type": "object",
+          "propertyNames": { "pattern": "^[a-z0-9][a-z0-9._-]*$" },
+          "additionalProperties": { "$ref": "#/$defs/sha256" }
+        },
+        "notApplicableReason": { "type": "string", "minLength": 1 },
+        "proofKind": { "enum": ["verification", "regression"] },
+        "promotion": { "$ref": "#/$defs/promotion" },
+        "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "learning" } }, "required": ["type"] },
+          "then": { "required": ["promotion"], "properties": { "state": { "const": "verified" }, "dependsOn": { "minItems": 1 }, "evidence": { "minItems": 1 } } }
+        },
+        {
+          "if": { "required": ["promotion"] },
+          "then": { "properties": { "type": { "const": "learning" } } }
+        },
+        {
+          "if": { "required": ["proofKind"] },
+          "then": { "properties": { "type": { "const": "proof" } } }
+        },
+        {
+          "if": { "properties": { "proofKind": { "const": "regression" } }, "required": ["proofKind"] },
+          "then": { "properties": { "state": { "const": "verified" }, "evidence": { "minItems": 1 } } }
+        },
+        {
+          "if": { "properties": { "critical": { "const": true }, "state": { "const": "verified" } }, "required": ["critical", "state"] },
+          "then": { "required": ["fingerprint", "dependencyFingerprints"], "properties": { "evidence": { "minItems": 1 } } }
+        }
+      ]
+    }
+  }
 }

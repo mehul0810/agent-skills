@@ -59,7 +59,9 @@ For substantial cross-boundary, migration, release-critical, or repeatedly faili
 node wp-expert/scripts/validate-engineering-graph.mjs <graph.json>
 ```
 
-The validator rejects orphaned nodes, missing dependencies, critical unresolved states, verified critical nodes without evidence, proof without identity, and outcomes without upstream proof. Keep the manifest in the issue/PR evidence path or a governed temporary artifact; do not commit one for every tiny change.
+Schema v2 makes acceptance and invalidation explicit. Give each acceptance criterion one intent node and one or more verified proof nodes. Verified critical nodes use a `sha256:` fingerprint and record the current fingerprint of every dependency; changing an upstream fingerprint invalidates downstream proof until it is rerun. Evidence identities use typed fields such as full `revision`, `packageSha256`, `runId`, `environment`, `actor`, `viewport`, or `dataFixture`, not arbitrary labels. When evidence points to a local immutable file and includes `fingerprint`, the validator checks the file bytes.
+
+The validator rejects orphaned nodes, missing dependencies, critical unresolved states, conflicting exclusive owners for the same resource, stale dependency fingerprints, acceptance criteria without verified proof, fabricated identity fields, byte-mismatched local evidence, and verified outcomes without upstream proof. Keep the manifest in the issue/PR evidence path or a governed temporary artifact; do not commit one for every tiny change.
 
 Graphs without a learning event need no learning node. A learning chain is `intent -> failed observation -> verified correction -> evidenced regression proof -> reviewed learning -> verified outcome`. Regression proof needs `proofKind: regression` and run identity; learning directly depends on it and records a verified destination and reviewer. Generic passing checks or chat notes do not close learning.
 
@@ -67,7 +69,7 @@ Graphs without a learning event need no learning node. A learning chain is `inte
 
 Work is not complete when a node lacks intent/proof; mutable owners conflict; a critical edge is unresolved; proof uses the wrong commit/package/environment/role/viewport/data; docs/claims disagree with runtime; or frontend-only CSS hides an owning visual/editor failure.
 
-Every acceptance criterion must map to proof. Re-run affected downstream proof after changing an upstream node.
+Every acceptance criterion must map to proof in `acceptanceCriteria`. Re-run affected downstream proof after changing an upstream node; update its fingerprint only from the newly verified artifact, never to silence the validator. One mutable resource has one exclusive owner unless shared ownership is explicit and its coordination contract is evidenced.
 
 When `enterprise-code-quality-gate.md` classifies runtime assurance as material, reconcile the graph with `enterprise-runtime-assurance.md` before closure.
 
