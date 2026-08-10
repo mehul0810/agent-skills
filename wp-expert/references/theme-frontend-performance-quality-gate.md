@@ -2,7 +2,7 @@
 
 Use this for WordPress theme, block theme, frontend, marketing-page, and conversion-page work where performance, Core Web Vitals, responsive quality, and enterprise polish matter.
 
-Use alongside `theme-and-block-editor.md`, `block-theme-architecture.md`, `custom-block-theme-from-design.md`, `performance-profiling-scale-budgets.md`, `visual-parity-regression.md`, and `conversion-focused-website-engineering.md`.
+Keep this primary for frontend performance. Load at most one support only for a confirmed block architecture, deeper profiling, visual regression, or conversion risk; do not preload the theme design stack.
 
 ## Frontend Performance Priorities
 

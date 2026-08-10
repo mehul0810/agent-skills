@@ -93,7 +93,7 @@ check_all_md_links() {
 
 check_reference_chain_discipline() {
   local matches
-  matches="$(rg -n 'also read|Use it alongside|use .* alongside' "$repo_root/wp-expert/references" "$repo_root/shared/references" 2>/dev/null || true)"
+  matches="$(rg -ni 'also read `|use (it )?alongside `' "$repo_root/wp-expert/references" "$repo_root/shared/references" 2>/dev/null || true)"
   if [ -n "$matches" ]; then
     error "references contain broad read-chaining directives"
     printf '%s\n' "$matches" >&2
@@ -165,6 +165,9 @@ check_router_discipline() {
   require_text "wp-plugin-expert/references/router.md" "routine feature constraints and fixes stay with this plugin specialist" "plugin routine quality ownership"
   require_text "wp-plugin-expert/references/router.md" "wordpress-engineering-graph.md" "plugin graph route"
   require_text "wp-plugin-expert/references/router.md" "enterprise-runtime-assurance.md" "plugin enterprise runtime route"
+  require_text "wp-plugin-expert/SKILL.md" "visual-to-wordpress-implementation.md" "plugin direct visual trigger"
+  require_text "wp-plugin-expert/references/router.md" "visual-to-wordpress-implementation.md" "plugin visual implementation route"
+  require_text "wp-plugin-expert/references/router.md" "interactivity-api-frontend.md" "plugin interactive frontend route"
   require_text "wp-theme-expert/references/router.md" "custom-block-theme-from-design.md" "theme design-to-FSE expertise preserved in router"
   require_text "wp-theme-expert/references/router.md" "wordpress-engineering-graph.md" "theme graph route"
   require_text "wp-theme-expert/references/router.md" "enterprise-runtime-assurance.md" "theme enterprise runtime route"

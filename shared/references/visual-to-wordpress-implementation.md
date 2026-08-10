@@ -1,10 +1,10 @@
 # Visual To WordPress Implementation Contract
 
-Use this as the single primary reference when translating a screenshot, image, Figma frame, mockup, or approved visual direction into a WordPress theme, page, pattern, block, admin screen, or website. Add at most one support reference for a confirmed architecture, conversion, accessibility, performance, vendor, or proof risk.
+Use this as primary for translating an approved visual into a WordPress theme, page, pattern, block, plugin surface, or site. Add one support only for a confirmed architecture, conversion, accessibility, performance, vendor, interaction, or proof risk.
 
 ## 1. Qualify The Source
 
-Inspect the actual source visual before planning. Never infer its contents from a filename, prompt summary, or prior chat.
+Inspect the actual source visual; never infer it from a filename, summary, or chat memory.
 
 Classify it as:
 
@@ -12,23 +12,23 @@ Classify it as:
 - `Directional`: hierarchy and visual language matter; composition may adapt.
 - `Inspiration`: extract principles, not layout.
 
-Record source dimensions, intended viewport, page/screen state, known fonts/assets, and whether mobile or interaction behavior is supplied. Mark important values as `supplied`, `measured`, or `inferred`; never present an inference as a design fact.
+Record dimensions, viewport/state, fonts/assets, and supplied responsive/interaction behavior. Mark important values `supplied`, `measured`, or `inferred`; never present inference as fact.
 
-Keep an ambiguity ledger when sources conflict or omit material behavior. Record the unknown, evidence, chosen reversible inference, and validation. Ask only when the decision is brand-critical, irreversible, unsafe, or changes the product journey; otherwise choose the strongest accessible WordPress-native default and label it inferred.
+Keep an ambiguity ledger: unknown, evidence, reversible inference, and validation. Ask only for brand-critical, irreversible, unsafe, or journey-changing decisions; otherwise use the strongest accessible WordPress-native default and label it inferred.
+
+### Figma Source Preflight
+
+For Figma, discover structured context before using a screenshot: file/frame/node/version, variables, components, assets, fonts, constraints, and interactions. Use `figma-implement-design` when available; WordPress ownership stays with the specialist. Fingerprint the source. If access fails, declare it and inspect an owner-supplied export; never invent hidden values.
 
 ## 2. Build A Visual And Behavior Manifest
 
 Before code, map:
 
-- regions, hierarchy, exact visible copy, and semantic intent,
-- measured widths, gaps, alignment, typography, colors, borders, radii, shadows, and layering,
-- reusable component contracts: role, variants, states, content bounds, tokens, and WordPress primitive,
-- source assets, missing assets, crops, focal points, and responsive variants,
-- desktop-to-mobile and interaction behavior: supplied, safely inferred, or requiring a decision,
-- content owner and editing surface,
-- visitor golden workflow and author/editor golden workflow,
-- target distribution and runtime: private/client/VIP, commercial, or WordPress.org Theme Directory; WordPress/Gutenberg versions and browser policy,
-- parity tolerance, performance budget, and intentional deviations.
+- regions, hierarchy, copy, semantics, measurements, typography, treatment, and layering,
+- reusable component contracts: role, variants, states, bounds, tokens, and WordPress primitive,
+- assets, crops, focal points, responsive variants, and supplied/inferred interaction behavior,
+- content owner, editing surface, visitor and author golden workflows,
+- distribution, WordPress/Gutenberg/browser targets, parity tolerance, performance budget, and deviations.
 
 Use `wp-expert/scripts/fse-design-map.sh` for theme/FSE work. Keep the manifest compact and update it when implementation evidence disproves an assumption.
 
@@ -36,22 +36,22 @@ Use `wp-expert/scripts/fse-design-map.sh` for theme/FSE work. Keep the manifest 
 
 - Site strategy, journey, IA, conversion, SEO, analytics, and page outcomes belong to `wp-site-expert`.
 - Theme tokens, templates, patterns, blocks, editor ownership, and visual implementation belong to `wp-theme-expert`.
-- Plugin admin/editor product surfaces belong to `wp-plugin-expert`.
-- For mixed site/theme work, produce one site outcome brief, then let theme implementation consume it; do not load both full specialist contexts unless one worker owns both boundaries.
+- Plugin-owned admin, editor, onboarding, and customer-facing product surfaces belong to `wp-plugin-expert`.
+- For mixed site/theme work, produce one site brief for theme implementation; do not load both specialist contexts unless one worker owns both boundaries.
 
-For block themes, map in this order: `theme.json`, verified Core/plugin blocks, block supports/styles, patterns, template parts/templates, block variations, block bindings, custom blocks, then Interactivity API. Templates remain structural and render Post Content when Pages > Edit owns the visible body. Build the actual saved page/post composition; do not stop at a pattern file or simulate missing hierarchy with frontend-only CSS. Do not use Custom HTML or Shortcode blocks as shortcuts. Before placing custom functionality in a theme, apply the distribution and portability gate in `../../wp-expert/references/block-theme-architecture.md`.
+For block themes, map through `theme.json`, verified blocks/supports, patterns, templates/parts, variations, bindings, custom blocks, then Interactivity API. Structural templates render Post Content when Pages > Edit owns the body. Build saved content, not a pattern-only or frontend-CSS simulation. Never use Custom HTML/Shortcode shortcuts. Apply the distribution gate in `../../wp-expert/references/block-theme-architecture.md` before theme-owned functionality.
 
 ## 4. Handle Image Assets Deliberately
 
-Inventory every visual asset and choose one outcome: reuse supplied asset, generate, source/license, recreate as CSS/SVG when appropriate, or use an explicitly temporary placeholder.
+Inventory each asset: reuse, generate, source/license, recreate appropriately, or mark a temporary placeholder.
 
 When generation is needed:
 
-1. Create an asset brief covering purpose, subject, art direction, brand palette, composition, negative constraints, crop-safe area, aspect ratios, and required resolutions.
+1. Brief purpose, subject, art direction, palette, composition, negative constraints, crop safety, ratios, and resolutions.
 2. Use `product-design:ideate` for alternative directions and `imagegen` for production raster assets or edits. Do not guess a supplied logo, factual product screenshot, identity, or exact copyrighted artwork.
-3. For material or identity-sensitive assets, compare a small candidate set against a weighted rubric: subject accuracy, brand fit, composition, responsive crop safety, artifact quality, and accessibility purpose. Keep asset-family style consistent.
+3. Score a small candidate set for accuracy, brand, composition/crops, artifacts, accessibility, and family consistency.
 4. Generate text-free imagery unless embedded text is intentional and verified; render interface copy in HTML/blocks.
-5. Inspect every selected output at target crops and resolutions. If it misses the brief, revise and regenerate rather than compensating with fragile CSS.
+5. Inspect target crops/resolutions; revise a miss instead of compensating with CSS.
 6. Record provenance, approval status, alt-text intent, focal point, responsive crops, format, dimensions, and optimization status.
 
 Prefer responsive WordPress media handling and appropriate WebP/AVIF/JPEG/PNG/SVG output. Do not claim licensing, authorship, brand approval, or factual depiction without evidence.
@@ -70,11 +70,13 @@ Do not start with cosmetic nudges before ownership, structure, fonts, and real a
 
 ## 6. Prove The Result
 
-For exact or regression-sensitive work with no competing architecture risk, use `../../wp-expert/references/visual-parity-regression.md` as the one supporting reference. If architecture, accessibility, performance, or vendor risk already consumes the support slot, keep the compact proof contract in this section and do not load a second support reference. Establish a capture fingerprint before comparison: committed/package build, WordPress/Gutenberg/theme version, browser engine/version, operating system, device-pixel ratio, viewport/zoom/scroll state, locale/timezone, color scheme/reduced motion, font and image readiness, and treatment of animation or volatile data.
+For exact/regression work, use `../../wp-expert/references/visual-parity-regression.md` only when no other confirmed support risk owns the support slot. Establish a capture fingerprint: build, runtime, browser/OS/DPR, viewport/zoom/scroll, locale, preferences, loaded media/fonts, and volatile-input treatment.
+
+For `Exact`, regression, release-critical, or failed work, use `../schemas/wordpress-visual-proof.schema.json` and run `node wp-expert/scripts/validate-visual-proof.mjs <proof.json>`. It binds identities, captures, workflows, gates, gaps, and defects. Validation proves receipt completeness, not aesthetic correctness.
 
 Compare source and candidate by overlay or perceptual diff when available. Evaluate geometry, typography, color, asset crop, responsive behavior, interactions, and editing surfaces. Use project or region-specific tolerances. Without one, investigate hard-edge geometry deltas above 2 CSS px only after the capture environment is deterministic; treat font rasterization and anti-aliasing separately rather than forcing fragile compensation.
 
-Use the smallest risk-based matrix. Typical page work starts with narrow/mobile and target desktop, plus an intermediate resize sweep. Add tablet, wide, alternate browser engines, real touch devices, long/translated content, missing media, or alternate roles when risk requires them. When no mobile visual exists, mobile proof covers accessible, coherent inferred behavior, not pixel parity.
+Use the smallest risk matrix: narrow/mobile, target desktop, and intermediate resize sweep; add browsers/devices/content/roles only when risk requires. When no mobile visual exists, mobile proof covers accessible, coherent inferred behavior, not pixel parity.
 
 ### Failed Proof Recovery Gate
 
@@ -88,7 +90,7 @@ Completion requires:
 
 - intended content is editable from the documented WordPress surface and survives save/reload,
 - the visitor completes the primary task and the author completes the primary editing task,
-- the intended non-technical author can create or insert the composition, recognize its hierarchy in the editor, and change representative copy, media, links, and allowed layout choices without CSS or code,
+- the non-technical author can create/insert it and edit representative copy, media, links, and allowed layout without code,
 - no invented design facts, APIs, blocks, assets, behavior, or proof,
 - source/candidate evidence exists for changed visual surfaces,
 - generated assets pass the approved rubric and target-crop inspection,

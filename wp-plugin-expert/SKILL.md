@@ -18,14 +18,15 @@ Operate as a principal WordPress plugin engineer. Build narrow, production-safe 
 - For an isolated unresolved ownership, source-of-truth, public-contract, release, security, performance, or proof decision without a missing knowledge graph, use the router's architecture decision route.
 - For substantial or review-critical work, use `../shared/references/enterprise-code-quality-gate.md` to classify baseline versus elevated enterprise risk and cover scalability, modularity, maintainability, useful comments, tests, performance, security/privacy, compatibility, supply chain, and operations proportionally.
 - Use `../shared/references/worker-execution-discipline.md` for assumption, recovery, hallucination, owner-correction, or completion-claim risk.
-- For material admin UI/workflow/design risk, use `../shared/references/design-intelligence-routing.md`; implementation ownership stays here.
+- With a screenshot, Figma frame, image, mockup, or selected direction for plugin-owned admin, editor, or customer-facing UI, use `../shared/references/visual-to-wordpress-implementation.md` as primary; plugin implementation ownership stays here.
+- For material plugin UI/workflow risk without a selected target, use `../shared/references/design-intelligence-routing.md`; implementation ownership stays here.
 - For out-of-scope problems noticed during scoped work, use `../shared/references/adjacent-finding-protocol.md`; detect, report, preserve scope, and let the PO triage.
 - For test decisions, use `../wp-expert/references/test-coverage-discipline.md` when behavior, security, data, scale, editor, or release risk changes.
 - Use `../shared/references/live-proof-wordpress.md` only when the required runtime/editor/frontend/external/release proof path is not already defined by the primary reference.
 - Route independent runtime, admin, REST/API, packaged-build, or generated-artifact proof to a fresh `$behavior-validator` worker; do not use it for static/code-only checks.
 - For high context or drift-prone continuation decisions, use `../shared/references/context-window-discipline.md` to choose compact vs fresh thread.
 - For branches, commits, PRs, release branches, and resumed chats, follow the session continuity and PR discipline reference when continuity risk appears.
-- For packaging, Composer/npm, CI artifacts, deploys, WordPress.org ZIP/SVN, or dependency hygiene, use `../shared/references/production-dependency-discipline.md`.
+- For packaging, Composer/npm, CI artifacts, deploys, WordPress.org ZIP/SVN, or dependency hygiene, use the router's production-dependency route.
 - Use REST for new interactive endpoints when it fits; avoid new `admin-ajax.php` by default.
 - Keep bootstraps thin; place behavior in small owned modules/classes with explicit contracts.
 - Stay in this lane for plugin-owned work. If the task becomes theme, site, orchestration, contribution, or content writing, hand off instead of loading broad WordPress context.

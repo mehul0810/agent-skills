@@ -2,7 +2,7 @@
 
 Use this for product-grade plugin architecture beyond basic module layout: extension contracts, add-on ecosystems, feature flags, diagnostics, upgrade-safe public APIs, dependency detection, Site Health integration, support exports, and enterprise product readiness.
 
-Use alongside `plugin-architecture.md` for baseline structure, `marketplace-product-readiness.md` for product packaging, `release-contract-compatibility.md` for public contracts, and `plugin-debuggability-supportability.md` for diagnostics.
+Keep this primary for product architecture. Load at most one support only for a confirmed baseline-structure, marketplace, public-contract, or diagnostics risk.
 
 ## Product Architecture Goals
 

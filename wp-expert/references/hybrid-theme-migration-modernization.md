@@ -2,7 +2,7 @@
 
 Use this for classic-to-block theme migration, page-builder-to-block migration, child theme modernization, WooCommerce template cleanup, block theme adoption, and preserving SEO/content while moving toward Full Site Editing or modern WordPress theme architecture.
 
-Use alongside `theme-and-block-editor.md`, `block-theme-architecture.md`, `style-guide-theme-translation.md`, `content-migration-editorial-scale.md`, `technical-seo-engineering.md`, and `visual-parity-regression.md`.
+Keep this primary for migration. Load at most one support only for a confirmed block architecture, token/style, content, SEO, or visual-regression risk.
 
 ## Migration Principles
 

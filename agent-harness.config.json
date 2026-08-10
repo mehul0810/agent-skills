@@ -9,7 +9,9 @@
     "scripts/behavior-evidence-audit.mjs",
     "scripts/validate-behavior-run-records.mjs",
     "shared/schemas/wordpress-engineering-graph.schema.json",
+    "shared/schemas/wordpress-visual-proof.schema.json",
     "shared/schemas/wp-quality-review.schema.json",
+    "wp-expert/scripts/validate-visual-proof.mjs",
     "wp-quality-reviewer/scripts/validate-review-report.mjs"
   ],
   "requiredPhrases": [
@@ -151,7 +153,6 @@
       "warningPercent": 85,
       "files": [
         "wp-site-expert/SKILL.md",
-        "wp-site-expert/references/router.md",
         "shared/references/visual-to-wordpress-implementation.md"
       ]
     },
@@ -162,6 +163,24 @@
       "files": [
         "wp-site-expert/SKILL.md",
         "shared/references/frontend-design-taste.md"
+      ]
+    },
+    {
+      "name": "Plugin visual implementation",
+      "maxWords": 2500,
+      "warningPercent": 85,
+      "files": [
+        "wp-plugin-expert/SKILL.md",
+        "shared/references/visual-to-wordpress-implementation.md"
+      ]
+    },
+    {
+      "name": "Interactive WordPress frontend",
+      "maxWords": 2200,
+      "warningPercent": 85,
+      "files": [
+        "wp-plugin-expert/SKILL.md",
+        "wp-expert/references/interactivity-api-frontend.md"
       ]
     },
     {

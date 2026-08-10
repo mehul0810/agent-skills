@@ -19,6 +19,8 @@ Use `product-design:index` as the router only. Then pick the narrowest Product D
 - `product-design:image-to-code`: only after a source visual direction is selected.
 - `imagegen`: generate or edit production raster assets after an asset brief exists; it does not replace WordPress implementation or visual QA.
 
+For a Figma URL/file/node, discover the Figma context capability and obtain structured node, variable, component, asset, font, constraint, and interaction evidence before using image-to-code. Do not substitute a screenshot when live structured context is available; if access fails, use an inspected export and state the proof gap.
+
 When a greenfield or redesigned frontend has no selected visual target, or a rendered result is coherent but still generic/template-like, use `frontend-design-taste.md` as the one supporting judgment reference. It provides a WordPress-native design read, expressiveness/motion/density/trust dials, anti-repetition review, and taste preflight. Do not stack it onto exact screenshot/Figma implementation, routine admin UX, or a second confirmed support risk.
 
 Discover the named capability before relying on it. If unavailable, recover in order: inspect evidence and write the compact brief; perform a manual heuristic audit or text direction set; let the owning WordPress specialist implement the chosen direction; for missing raster assets use `imagegen`, licensed/supplied media, or an explicit placeholder. Do not invent a tool or stop without a safe fallback.
@@ -28,8 +30,8 @@ Use design QA only after a prototype/build has both a source visual and a render
 ## Workflow Rules
 
 - CTO/PO decides whether a design pass is needed based on product risk and context, not by default.
-- Use `product-experience-principles.md` as the quality lens for premium polish, plug-and-play defaults, onboarding simplicity, and advanced-user escape hatches.
-- For premium/enterprise, AI/workflow, buyer-facing, or governance-heavy surfaces, also use `enterprise-design-judgment.md` to judge proof-led IA, trust signals, workflow control, auditability, and failure behavior.
+- Apply the compact product-experience lens already present in the issue or product brief. Load `product-experience-principles.md` as the one support only when defaults, onboarding, or advanced-user controls remain a confirmed decision risk.
+- Load `enterprise-design-judgment.md` as the one support only for a confirmed premium/enterprise, AI/workflow, buyer-facing, or governance risk. Never stack it with frontend taste or another support reference.
 - If UI changed, require screenshot proof.
 - If layout, workflow quality, or UX clarity changed materially, add a design audit.
 - If a large redesign has no chosen direction, ideate before implementation.

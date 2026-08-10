@@ -57,7 +57,7 @@ Block work must preserve editor/frontend parity:
 - For static blocks, maintain save markup compatibility and deprecations when markup changes.
 - Use `useBlockProps`, `InnerBlocks`, allowed blocks, templates, and locking deliberately.
 - Register editor/front-end assets through block metadata or precise enqueue logic.
-- For interactive frontend behavior, consider the Interactivity API before adding isolated jQuery/vanilla scripts that may not cooperate with modern block rendering and client-side navigation.
+- For stateful block/frontend behavior, use `interactivity-api-frontend.md` as primary before adding isolated jQuery/vanilla scripts that may not cooperate with modern block rendering or client-side navigation.
 
 ## Query Loop And Layout Preservation
 

@@ -154,7 +154,7 @@ Forbidden: routing the whole task through `frontend-design-taste.md`, replacing 
 
 Prompt: Add premium scroll animation and magnetic buttons to a WordPress product page.
 
-Required: state what each proposed animation communicates; inspect the existing stack and performance budget; reject unjustified effects; provide keyboard, touch/no-hover, reduced-motion, cleanup, and interruption behavior; prove input response and layout stability.
+Required: state what each proposed animation communicates; inspect existing product motion tokens and the performance budget; reject unjustified effects; choose evidence-based durations rather than a universal range; provide keyboard, touch/no-hover, reduced-motion, cleanup, and interruption behavior; prove input response and layout stability.
 
 Forbidden: motion because it looks expensive, default scroll hijacking, continuous React state updates, adding multiple animation libraries, or completion without reduced-motion and touch evidence.
 
@@ -213,6 +213,46 @@ Prompt: Build the entire new enterprise WordPress marketing site from this spars
 Required: inspect truthful product, audience, brand, content, and asset evidence; record the design read; create the smallest representative style frame, key section, or critical-flow prototype using intended WordPress primitives; test brand, narrow-width, and task fit; obtain accountable direction acceptance before scaling the visual system and full implementation.
 
 Forbidden: building every page before validating direction, inventing proof to fill the sparse brief, treating a generated aesthetic as brand approval, or imposing the checkpoint on exact approved targets and bounded polish.
+
+### Exact Plugin Customer Surface
+
+Prompt: Implement this approved screenshot as a plugin-owned customer results view and matching admin configuration screen.
+
+Required: route to `wp-plugin-expert` with `visual-to-wordpress-implementation.md` primary; inspect the actual source; preserve plugin ownership for both surfaces; map admin controls to WordPress-native components and the customer view to the product design system; bind exact source/candidate evidence; prove operator and customer workflows.
+
+Forbidden: routing the customer surface to site/theme ownership, using frontend taste to reinterpret the approved target, or skipping exact visual proof because the UI is plugin-owned.
+
+### Structured Figma Source
+
+Prompt: Implement the selected Figma node exactly in an editable WordPress page.
+
+Required: discover the available Figma context capability; retrieve exact file/node/version, variables, components, assets, fonts, constraints, and interaction evidence before implementation; record a Figma source fingerprint; keep WordPress block/content ownership with the specialist; use an inspected export with a declared limitation only when structured access is unavailable.
+
+Forbidden: treating the Figma URL as a filename, implementing from memory or a thumbnail when structured context is available, inventing hidden tokens, or letting a generic image-to-code result bypass WordPress editability.
+
+### Visual Receipt Rejects Broken Candidate
+
+Prompt: An exact page has desktop and mobile screenshots, but mobile overlap remains and the author workflow was not tested. Mark the visual proof complete.
+
+Required: write the structured visual proof receipt; bind source/candidate fingerprints, captures, required roles, and all gate dispositions; record the overlap as unresolved and the missing author workflow as blocked; run `validate-visual-proof.mjs`; return `FAIL` or `blocked`, repair, then regenerate evidence before any pass.
+
+Forbidden: prose-only pass, empty screenshot paths, mutable candidate identity, accepted deviation without rationale/evidence, or changing the manifest merely to make validation green.
+
+### Interactive Block Client Navigation
+
+Prompt: Add an interactive filter block that persists state while navigating between router regions.
+
+Required: verify supported runtime capabilities; keep semantic server-rendered fallback and server authority; define namespace/context/actions and all async states; prove hydration, duplicate-instance isolation, stale-request handling, Back/Forward, refresh, deep links, region asset lifecycle, focus/announcements, no-JS behavior, editor save/reload, and INP/script budgets.
+
+Forbidden: global page hydration for one block, click-only navigation, duplicated listeners after region replacement, client-side permission decisions, experimental full-page routing without support evidence, or Chromium happy-path proof only.
+
+### Multi-Step WCAG Flow
+
+Prompt: Approve a three-step plugin onboarding flow that asks for the site URL twice and moves support help between steps.
+
+Required: apply WCAG 2.2 Consistent Help and Redundant Entry where applicable; retain or offer previously entered data; keep repeated help in a consistent relative order; prove labels/errors/focus with keyboard and a named supported browser/assistive-technology pair; test narrow viewport and recovery.
+
+Forbidden: treating repeated entry as harmless, reporting an unspecified screen-reader pass, or approving from axe output alone.
 
 ## Regression Review
 

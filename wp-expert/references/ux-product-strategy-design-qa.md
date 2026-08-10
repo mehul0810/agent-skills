@@ -2,7 +2,7 @@
 
 Use this for UX discovery, product strategy, information architecture, UX writing, conversion flows, critique, usability testing, and enterprise/premium design QA. For implementation from an image, screenshot, mockup, Figma frame, or visual reference, use `../../shared/references/visual-to-wordpress-implementation.md` as primary and load this only when a confirmed journey/IA/UX risk needs support.
 
-Use alongside `ui-ux-pro-for-wordpress.md` for UI implementation, `conversion-focused-website-engineering.md` for landing pages and funnels, `analytics-measurement-engineering.md` for measurement, `wordpress-design-system.md` for wp-admin/editor components, `style-guide-theme-translation.md` for tokens and theme translation, and `visual-parity-regression.md` for screenshot evidence. Use `thinking-brainstorming-engineering-discipline.md` for brainstorming convergence, anti-overengineering, and the premium polish stopping rule.
+Keep this primary for journey and design QA. Load at most one support only for a confirmed UI implementation, conversion, measurement, WPDS, token, visual-proof, or brainstorming-convergence risk.
 
 ## Non-Negotiables
 

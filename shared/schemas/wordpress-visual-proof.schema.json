@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mehulgohil.com/schemas/wordpress-visual-proof.schema.json",
+  "title": "WordPress Visual Proof Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "proofId",
+    "status",
+    "surfaceKind",
+    "source",
+    "candidate",
+    "scope",
+    "captures",
+    "workflows",
+    "gates",
+    "defects",
+    "proofGaps"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "proofId": { "$ref": "#/$defs/nonEmpty" },
+    "status": { "enum": ["pass", "fail", "blocked"] },
+    "surfaceKind": { "enum": ["site", "theme", "plugin_admin", "plugin_frontend", "editor"] },
+    "source": { "$ref": "#/$defs/source" },
+    "candidate": { "$ref": "#/$defs/candidate" },
+    "scope": { "$ref": "#/$defs/scope" },
+    "captures": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/capture" }
+    },
+    "workflows": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/workflow" }
+    },
+    "gates": {
+      "type": "array",
+      "minItems": 7,
+      "items": { "$ref": "#/$defs/gate" }
+    },
+    "defects": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/defect" }
+    },
+    "proofGaps": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/nonEmpty" }
+    }
+  },
+  "$defs": {
+    "nonEmpty": { "type": "string", "minLength": 1 },
+    "fingerprint": { "type": "string", "minLength": 8 },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "classification", "identity", "fingerprint"],
+      "properties": {
+        "kind": { "enum": ["screenshot", "image", "figma", "mockup", "approved_direction", "baseline"] },
+        "classification": { "enum": ["exact", "directional", "inspiration"] },
+        "identity": { "$ref": "#/$defs/nonEmpty" },
+        "fingerprint": { "$ref": "#/$defs/fingerprint" }
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["revision", "artifact", "fingerprint", "environment"],
+      "properties": {
+        "revision": { "type": "string", "minLength": 7 },
+        "artifact": { "$ref": "#/$defs/nonEmpty" },
+        "fingerprint": { "$ref": "#/$defs/fingerprint" },
+        "environment": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["wordpress", "product", "browser", "operatingSystem", "locale"],
+          "properties": {
+            "wordpress": { "$ref": "#/$defs/nonEmpty" },
+            "gutenberg": { "$ref": "#/$defs/nonEmpty" },
+            "product": { "$ref": "#/$defs/nonEmpty" },
+            "browser": { "$ref": "#/$defs/nonEmpty" },
+            "operatingSystem": { "$ref": "#/$defs/nonEmpty" },
+            "locale": { "$ref": "#/$defs/nonEmpty" }
+          }
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["surfaces", "requiredWorkflowRoles", "responsiveRequired"],
+      "properties": {
+        "surfaces": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/nonEmpty" }
+        },
+        "requiredWorkflowRoles": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "enum": ["visitor", "author", "operator", "customer"] }
+        },
+        "responsiveRequired": { "type": "boolean" }
+      }
+    },
+    "viewport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height", "devicePixelRatio"],
+      "properties": {
+        "width": { "type": "integer", "minimum": 240 },
+        "height": { "type": "integer", "minimum": 240 },
+        "devicePixelRatio": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "capture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "surface", "state", "viewport", "browser", "sourceEvidence", "candidateEvidence", "comparison", "result", "deviations"],
+      "properties": {
+        "id": { "$ref": "#/$defs/nonEmpty" },
+        "surface": { "$ref": "#/$defs/nonEmpty" },
+        "state": { "$ref": "#/$defs/nonEmpty" },
+        "viewport": { "$ref": "#/$defs/viewport" },
+        "browser": { "$ref": "#/$defs/nonEmpty" },
+        "sourceEvidence": { "$ref": "#/$defs/nonEmpty" },
+        "candidateEvidence": { "$ref": "#/$defs/nonEmpty" },
+        "comparison": { "enum": ["overlay", "perceptual", "manual", "not_applicable"] },
+        "result": { "enum": ["pass", "accepted", "fail", "blocked"] },
+        "deviations": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/nonEmpty" }
+        }
+      }
+    },
+    "workflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "task", "result"],
+      "properties": {
+        "role": { "enum": ["visitor", "author", "operator", "customer"] },
+        "task": { "$ref": "#/$defs/nonEmpty" },
+        "result": { "enum": ["pass", "fail", "blocked", "not_applicable"] },
+        "evidence": { "$ref": "#/$defs/nonEmpty" },
+        "reason": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "result"],
+      "properties": {
+        "name": { "enum": ["responsive", "accessibility", "editor_frontend_parity", "workflow", "content_stress", "performance", "browser_compatibility"] },
+        "result": { "enum": ["pass", "fail", "blocked", "not_applicable"] },
+        "evidence": { "$ref": "#/$defs/nonEmpty" },
+        "reason": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "defect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "status"],
+      "properties": {
+        "description": { "$ref": "#/$defs/nonEmpty" },
+        "status": { "enum": ["fixed", "accepted", "unresolved"] },
+        "evidence": { "$ref": "#/$defs/nonEmpty" },
+        "rationale": { "$ref": "#/$defs/nonEmpty" }
+      }
+    }
+  }
+}

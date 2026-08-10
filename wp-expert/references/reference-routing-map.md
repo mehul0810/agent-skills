@@ -51,10 +51,11 @@ Use this map to choose references with low context cost.
 | Backward compatibility and launch-state decisions | `release-contract-compatibility.md` | `changelog-release-notes.md`, `plugin-architecture.md` |
 | Technical SEO, canonicals, redirects, robots, sitemaps, structured data, crawl risk | `technical-seo-engineering.md` | `content-migration-editorial-scale.md`, `headless-decoupled-wordpress.md` |
 | Style guide, design system, design tokens, custom theme, or child theme | `style-guide-theme-translation.md` | `block-theme-architecture.md`, `visual-parity-regression.md` |
-| Screenshot, Figma, image, mockup, or chosen visual direction to WordPress | `../../shared/references/visual-to-wordpress-implementation.md` | one confirmed architecture, conversion, accessibility, performance, or vendor risk only |
+| Screenshot, Figma, image, mockup, or chosen visual direction to WordPress | `../../shared/references/visual-to-wordpress-implementation.md` | one confirmed architecture, conversion, accessibility, performance, interaction, or vendor risk only |
 | Custom FSE architecture without a supplied visual target | `block-theme-architecture.md` | `custom-block-theme-from-design.md` |
 | Classic-to-block theme migration, page-builder migration, child-theme modernization, WooCommerce template cleanup | `hybrid-theme-migration-modernization.md` | `theme-and-block-editor.md`, `technical-seo-engineering.md` |
 | Theme/block editor behavior or block implementation | `block-theme-architecture.md` | `theme-and-block-editor.md`, `validation-commands.md` |
+| Interactivity API, directives, script modules, stateful block frontend, hydration, or client-side navigation | `interactivity-api-frontend.md` | one confirmed visual, architecture, accessibility, or performance risk only |
 | Theme/frontend performance, Core Web Vitals, fonts/images/assets/CLS/INP/LCP quality gate | `theme-frontend-performance-quality-gate.md` | `performance-profiling-scale-budgets.md`, `visual-parity-regression.md` |
 | React in WordPress (admin/editor/frontend/headless) | `react-wordpress-enterprise.md` | `wordpress-design-system.md`, `standards-ci-github.md` |
 | UX discovery, product strategy, information architecture, UX writing, conversion UX, or image/pixel design QA | `ux-product-strategy-design-qa.md` | `ui-ux-pro-for-wordpress.md`, `visual-parity-regression.md` |

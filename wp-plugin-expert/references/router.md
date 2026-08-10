@@ -23,6 +23,8 @@ Use this router only after `wp-plugin-expert` is selected. Load one primary refe
 - VIP/enterprise launch readiness and disaster recovery: `../../wp-expert/references/vip-enterprise-launch-readiness.md` or `../../wp-expert/references/disaster-recovery-business-continuity.md`.
 - Third-party APIs, SDKs, OAuth, webhooks, retries, rate limits: `../../wp-expert/references/third-party-api-integrations.md`.
 - React admin/editor apps: `../../wp-expert/references/react-wordpress-enterprise.md`.
+- Screenshot/Figma/image/mockup to plugin-owned admin, editor, onboarding, or customer-facing implementation: `../../shared/references/visual-to-wordpress-implementation.md`.
+- Stateful block or frontend interaction, Interactivity API directives, hydration, client-side navigation, or interaction lifecycle proof: `../../wp-expert/references/interactivity-api-frontend.md`.
 - Premium plugin admin/editor UI, onboarding, settings, forms, state coverage, and operational UX: `../../wp-expert/references/ui-ux-pro-for-wordpress.md`.
 - WordPress-native admin/editor components and tokens: `../../wp-expert/references/wordpress-design-system.md`.
 - Distinctive plugin-owned customer-facing frontend or anti-template composition without a selected target: `../../shared/references/frontend-design-taste.md`.
@@ -30,6 +32,7 @@ Use this router only after `wp-plugin-expert` is selected. Load one primary refe
 - Premium/enterprise workflow accountability and proof: `../../shared/references/enterprise-design-judgment.md`.
 - WooCommerce extensions: `../../wp-expert/references/woocommerce-commerce-engineering.md`.
 - Build tooling, Composer, npm, webpack: `../../wp-expert/references/build-tooling.md`.
+- Production dependency classification, package/ZIP/SVN contents, CI artifacts, and dev-package exclusion: `../../shared/references/production-dependency-discipline.md`.
 - CI/CD, standards, GitHub workflows: `../../wp-expert/references/standards-ci-github.md`.
 - Changelog or launch-state compatibility: `../../wp-expert/references/changelog-release-notes.md` or `../../wp-expert/references/release-contract-compatibility.md`.
 - Troubleshooting: `../../wp-expert/references/advanced-troubleshooting-decision-tree.md`.

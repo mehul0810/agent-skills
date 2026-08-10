@@ -2,7 +2,7 @@
 
 Use this for go/no-go reviews before enterprise, VIP, high-traffic, migration, release, campaign, conversion, or critical WordPress launches.
 
-Use alongside `vip-scale-playbook.md`, `deployment-release-resilience.md`, `observability-incident-response.md`, `load-testing-capacity-planning.md`, `edge-caching-cdn-architecture.md`, `security-operations-compliance.md`, and `enterprise-acceptance-criteria-templates.md`.
+Keep this primary for launch readiness. Load at most one support only for a confirmed scale, deployment, observability, load, edge-cache, security-operations, or acceptance-definition risk.
 
 ## Launch Readiness Mindset
 

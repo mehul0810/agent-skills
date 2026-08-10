@@ -16,6 +16,18 @@ require_text() {
   fi
 }
 
+forbid_text() {
+  local file="$1"
+  local needle="$2"
+  local label="$3"
+  if grep -Fq -- "$needle" "$repo_root/$file"; then
+    echo "ERROR: forbidden $label in $file" >&2
+    errors=$((errors + 1))
+  else
+    echo "ok: $label"
+  fi
+}
+
 require_text "shared/references/visual-to-wordpress-implementation.md" "Inspect the actual source visual" "actual visual inspection"
 require_text "shared/references/visual-to-wordpress-implementation.md" 'supplied`, `measured`, or `inferred' "visual evidence confidence"
 require_text "shared/references/visual-to-wordpress-implementation.md" "ambiguity ledger" "visual ambiguity decision discipline"
@@ -31,6 +43,10 @@ require_text "shared/references/visual-to-wordpress-implementation.md" "visitor 
 require_text "shared/references/visual-to-wordpress-implementation.md" "author completes the primary editing task" "author workflow proof"
 require_text "shared/references/visual-to-wordpress-implementation.md" "mobile proof covers accessible, coherent inferred behavior, not pixel parity" "missing-mobile-design rule"
 require_text "shared/references/visual-to-wordpress-implementation.md" "support slot" "single-support collision handling"
+require_text "shared/references/visual-to-wordpress-implementation.md" "Figma Source Preflight" "structured Figma source preflight"
+require_text "shared/references/visual-to-wordpress-implementation.md" "figma-implement-design" "Figma capability routing"
+require_text "shared/references/visual-to-wordpress-implementation.md" "wordpress-visual-proof.schema.json" "structured visual proof receipt"
+require_text "shared/references/visual-to-wordpress-implementation.md" "validate-visual-proof.mjs" "visual proof validator routing"
 require_text "shared/references/visual-to-wordpress-implementation.md" "sets the work to \`FAIL\` and reopens implementation" "failed visual proof recovery gate"
 require_text "shared/references/visual-to-wordpress-implementation.md" "cannot convert an observed failure into a pass" "observed failure proof-gap prohibition"
 require_text "wp-expert/references/visual-parity-regression.md" "Baseline Governance" "visual baseline governance"
@@ -62,6 +78,8 @@ require_text "wp-theme-expert/references/router.md" "frontend-design-taste.md" "
 require_text "wp-plugin-expert/references/router.md" "ui-ux-pro-for-wordpress.md" "plugin premium UI route"
 require_text "wp-plugin-expert/references/router.md" "wordpress-design-system.md" "plugin WordPress design system route"
 require_text "wp-plugin-expert/references/router.md" "frontend-design-taste.md" "plugin frontend taste route"
+require_text "wp-plugin-expert/SKILL.md" "plugin-owned admin, editor, or customer-facing UI" "plugin direct exact-visual trigger"
+require_text "wp-plugin-expert/references/router.md" "visual-to-wordpress-implementation.md" "plugin exact visual route"
 require_text "shared/references/worker-execution-discipline.md" "Claim And Evidence Gate" "claim evidence gate"
 require_text "shared/references/worker-execution-discipline.md" "Never invent WordPress hooks" "hallucination guard"
 require_text "shared/references/worker-execution-discipline.md" "Owner Correction To Learning" "worker learning trigger"
@@ -127,6 +145,20 @@ require_text "behavior-validator/references/wordpress-behavior-contract.md" "no 
 require_text "wp-expert/scripts/fse-design-map.sh" "Component Contracts" "FSE component contract fields"
 require_text "wp-expert/scripts/fse-design-map.sh" "Golden Workflows" "FSE golden workflow fields"
 require_text "wp-expert/scripts/fse-design-map.sh" "Capture fingerprint" "FSE deterministic proof fields"
+require_text "wp-expert/scripts/fse-design-map.sh" "Structured visual proof receipt path" "FSE structured visual receipt field"
+require_text "wp-expert/references/interactivity-api-frontend.md" "Client-Side Navigation" "Interactivity API client navigation contract"
+require_text "wp-expert/references/interactivity-api-frontend.md" "duplicate listeners" "Interactivity lifecycle cleanup"
+require_text "wp-expert/references/interactivity-api-frontend.md" "Back, Forward" "Interactivity history proof"
+require_text "wp-expert/references/interactivity-api-frontend.md" "no-JS" "Interactivity progressive enhancement proof"
+require_text "wp-expert/references/accessibility-i18n-global-readiness.md" "Consistent Help" "WCAG 2.2 consistent help"
+require_text "wp-expert/references/accessibility-i18n-global-readiness.md" "Redundant Entry" "WCAG 2.2 redundant entry"
+require_text "wp-expert/references/accessibility-i18n-global-readiness.md" "actual supported browser/assistive-technology pair" "named assistive technology proof"
+forbid_text "wp-expert/references/ui-ux-pro-for-wordpress.md" "150-300ms" "universal motion timing removed"
+require_text "skill-evals/visual-wordpress-scenarios.md" "Exact Plugin Customer Surface" "plugin exact visual scenario"
+require_text "skill-evals/visual-wordpress-scenarios.md" "Structured Figma Source" "Figma source scenario"
+require_text "skill-evals/visual-wordpress-scenarios.md" "Visual Receipt Rejects Broken Candidate" "visual receipt negative scenario"
+require_text "skill-evals/visual-wordpress-scenarios.md" "Interactive Block Client Navigation" "interactive navigation scenario"
+require_text "skill-evals/visual-wordpress-scenarios.md" "Multi-Step WCAG Flow" "WCAG flow scenario"
 
 if [ "$errors" -gt 0 ]; then
   echo "visual WordPress behavior audit failed: $errors issue(s)" >&2

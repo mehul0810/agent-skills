@@ -30,7 +30,7 @@ Inspect each relevant state: initial, hover, focus, active, selected, expanded, 
 - Structure: language, title, landmarks, one logical heading outline, lists/tables, reading/DOM order, and skip navigation.
 - Names and semantics: native controls, accessible names/descriptions, programmatic relationships, current/expanded/selected states, and status messages.
 - Keyboard/focus: logical order, visible and unobscured focus, no traps/dead ends, correct modal entry/return, Escape behavior, and full operation without pointer.
-- Forms: persistent labels, instructions, required state, autocomplete, grouped controls, error association, summary/focus, and retained input.
+- Forms and journeys: persistent labels, instructions, required state, autocomplete, grouped controls, error association, summary/focus, retained input, no unjustified redundant entry, and consistent placement/order of repeated help.
 - Visual: contrast, non-color cues, 200% text resize, 320 CSS-pixel reflow, orientation, text spacing, zoom, forced colors, and reduced motion.
 - Input: at least 24x24 CSS-pixel targets or a valid exception, single-pointer alternative for dragging, no hover-only action, and coarse-pointer/mobile support.
 - Dynamic UI: announced results/errors/progress, stable focus, no surprise context change, and timeout/session recovery.

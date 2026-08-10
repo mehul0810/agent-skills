@@ -2,7 +2,7 @@
 
 Use this for WordPress analytics, conversion tracking, event measurement, GA4/GTM/server-side tagging, WooCommerce funnels, lead attribution, privacy-safe telemetry, and validation of measurement without polluting production data.
 
-Use alongside `conversion-focused-website-engineering.md`, `privacy-consent-data-governance.md`, `technical-seo-engineering.md`, `woocommerce-commerce-engineering.md`, and `ux-product-strategy-design-qa.md`.
+Keep this primary for measurement. Load at most one support only for a confirmed conversion, privacy, SEO, commerce, or UX-research risk.
 
 ## Measurement Principles
 

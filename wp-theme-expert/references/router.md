@@ -15,6 +15,7 @@ Use this router only after `wp-theme-expert` is selected. Load one primary refer
 - Distinctive greenfield/redesign frontend direction or anti-template composition review without a selected target: `../../shared/references/frontend-design-taste.md`.
 - Detailed custom block-theme/FSE architecture after a confirmed ownership or block-mapping risk: `../../wp-expert/references/custom-block-theme-from-design.md`.
 - Classic themes, child themes, block editor compatibility: `../../wp-expert/references/theme-and-block-editor.md`.
+- Stateful block or frontend interaction, Interactivity API directives, hydration, client-side navigation, or interaction lifecycle proof: `../../wp-expert/references/interactivity-api-frontend.md`.
 - Style guides, design tokens, custom themes, child-theme translation: `../../wp-expert/references/style-guide-theme-translation.md`.
 - Deterministic visual parity, visitor/author workflows, content stress, responsive/browser evidence, and release proof: `../../wp-expert/references/visual-parity-regression.md`.
 - Theme/frontend performance implementation budgets for Core Web Vitals, fonts/images/assets: `../../wp-expert/references/theme-frontend-performance-quality-gate.md`; use the reviewer for focused profiling or reassessment.

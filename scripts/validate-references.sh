@@ -489,6 +489,12 @@ validate_visual_wordpress_rules() {
   else
     log_error "Visual WordPress guardrail audit failed"
   fi
+
+  if node "$repo_root/wp-expert/scripts/validate-visual-proof.mjs" --self-test; then
+    log_success "Visual proof receipt validator is valid"
+  else
+    log_error "Visual proof receipt validator failed"
+  fi
 }
 
 validate_quality_reviewer_rules() {

@@ -27,7 +27,9 @@ cat > "$output_path" <<'TEMPLATE'
 - Prepared by:
 - Source classification (exact, directional, inspiration):
 - Source dimensions and intended viewport:
+- Source fingerprint (file SHA-256 or Figma file/node/version):
 - Source/candidate screenshot paths:
+- Candidate revision, artifact path, and SHA-256 fingerprint:
 - Distribution target (WordPress.org Theme Directory, commercial, private/client/VIP):
 - Target WordPress/Gutenberg/browser policy:
 
@@ -188,6 +190,7 @@ cat > "$output_path" <<'TEMPLATE'
 - Matched viewport/zoom/content/font/data state:
 - Capture fingerprint (build, WP/Gutenberg/theme, browser/OS/DPR, locale/timezone, color scheme, font/media readiness, volatile-input policy):
 - Overlay or perceptual-diff method:
+- Structured visual proof receipt path and validator result (required for exact/regression/release-critical/previously failed work):
 - Region-level parity tolerance:
 - Accepted, constrained, and unresolved deviations:
 - WCAG 2.2 checks, including reflow/focus/target/dragging where applicable:

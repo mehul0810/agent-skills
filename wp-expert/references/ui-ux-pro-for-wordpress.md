@@ -20,7 +20,7 @@ Apply priorities in this order:
 4. Information hierarchy: one primary action, clear headings, progressive disclosure, scannable groups.
 5. Responsive layout: mobile-first where frontend/customer-facing; admin/editor layouts must handle narrow sidebars and small screens.
 6. Typography and color: use tokens, readable sizes, semantic colors, no low-contrast gray-on-gray.
-7. Motion: 150-300ms, meaningful, transform/opacity only, respects reduced motion.
+7. Motion: use product tokens and task evidence; keep it brief, meaningful, non-blocking, and reduced-motion safe.
 8. Forms and feedback: visible labels, helper text, inline errors, success state, retry path.
 9. Navigation: predictable back/close/cancel behavior, breadcrumbs/steps when needed, deep links for complex screens.
 10. Data visualization: table/chart readability, legends, filters, accessible color and text labels.
@@ -116,7 +116,7 @@ Avoid generic AI-looking UI:
 ## Motion And Interaction
 
 - Motion must explain cause and effect: opening, closing, saving, expanding, sorting, filtering, progressing.
-- Keep common transitions between 150ms and 300ms.
+- Use established product motion tokens. If none exist, choose the shortest duration that communicates cause and effect, validate it in context, and promote repeated values into tokens rather than hardcoding a universal range.
 - Use transform and opacity, not layout-changing properties.
 - Respect `prefers-reduced-motion`.
 - Provide immediate press/click feedback for async actions.

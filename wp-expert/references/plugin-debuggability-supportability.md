@@ -2,7 +2,7 @@
 
 Use this when building or reviewing plugins that need safe diagnostics, support workflows, health checks, log visibility, recovery controls, and enterprise operations without exposing secrets or PII.
 
-Use alongside `plugin-product-architecture.md`, `troubleshooting-operations.md`, `observability-incident-response.md`, `privacy-consent-data-governance.md`, and `security-operations-compliance.md`.
+Keep this primary for supportability. Load at most one support only for a confirmed product-contract, troubleshooting, observability, privacy, or security-operations risk.
 
 ## Supportability Goals
 

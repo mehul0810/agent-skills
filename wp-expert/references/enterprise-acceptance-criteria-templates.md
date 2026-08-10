@@ -1,6 +1,6 @@
 # Enterprise Acceptance Criteria Templates
 
-Use this to define done criteria for enterprise/WPVIP WordPress work before implementation or review. Use alongside the primary technical reference for the task plus `test-coverage-discipline.md`, `validation-commands.md`, and `vip-enterprise-launch-readiness.md`. Use `thinking-brainstorming-engineering-discipline.md` when template use starts creating process overhead instead of clarity.
+Use this as primary only when defining done criteria for enterprise/WPVIP WordPress work is the deliverable. Otherwise keep acceptance criteria in the task's primary reference and load at most one support for a confirmed testing, validation, launch, or convergence risk.
 
 ## Acceptance Criteria Rules
 

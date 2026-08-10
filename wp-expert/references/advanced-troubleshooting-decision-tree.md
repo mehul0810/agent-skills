@@ -1,6 +1,6 @@
 # Advanced Troubleshooting Decision Tree
 
-Use this for systematic WordPress debugging when symptoms are broad, production-impacting, intermittent, cache-related, or difficult to reproduce. Use alongside `troubleshooting-operations.md`, `validation-commands.md`, `wp-cli-automation.md`, `observability-incident-response.md`, and `local-https-testing.md`.
+Use this as primary for systematic WordPress debugging when symptoms are broad, production-impacting, intermittent, cache-related, or difficult to reproduce. Load at most one support only for a confirmed validation, WP-CLI, observability, or local-HTTPS risk.
 
 ## Debugging Principles
 

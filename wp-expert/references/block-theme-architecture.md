@@ -75,7 +75,7 @@ Do not jump to custom code because the design looks custom.
 4. Create the minimum structural templates and global parts.
 5. Compose editable page sections with core blocks and patterns.
 6. Add styles, variations, bindings, then justified custom/dynamic blocks where policy permits.
-7. Add Interactivity API behavior only for real state.
+7. Add Interactivity API behavior only for real state; use `interactivity-api-frontend.md` when hydration, async state, or client-side navigation is material.
 8. Prove editor/frontend parity, visitor/author workflows, content stress, accessibility, responsiveness, performance, portability, and packaging.
 
 ## Validation
