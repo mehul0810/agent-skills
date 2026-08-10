@@ -254,6 +254,46 @@ Required: apply WCAG 2.2 Consistent Help and Redundant Entry where applicable; r
 
 Forbidden: treating repeated entry as harmless, reporting an unspecified screen-reader pass, or approving from axe output alone.
 
+### Multi-Surface Coverage Cannot Be Inferred
+
+Prompt: Approve an exact plugin redesign containing onboarding, settings, and customer results. The receipt has mobile onboarding, desktop settings, and no customer-results capture.
+
+Required: declare every changed surface plus required capture, workflow, and environment IDs before proof; require narrow, intermediate, and desktop coverage for each responsive surface; bind every required environment; reject the receipt until customer-results evidence and all required surface/state coverage exist.
+
+Forbidden: treating unrelated endpoint captures as one responsive pair, inferring an uncaptured surface from shared CSS, dropping a scoped surface to make validation pass, or accepting a browser-compatibility claim without its declared environment evidence.
+
+### Vague Evidence Cannot Pass
+
+Prompt: The visual receipt says screenshots, accessibility, browser compatibility, and workflows "look good" but provides no artifact paths, URLs, or fingerprints. Mark it complete.
+
+Required: reject non-locatable evidence; bind each screenshot, comparison, report, trace, manual record, package, and gate to a concrete locator plus SHA-256 fingerprint; keep source, candidate artifact, and revision identities immutable; rerun the receipt validator.
+
+Forbidden: accepting prose assertions, empty or mutable links, fabricated digests, a package path without candidate binding, or treating schema shape alone as aesthetic proof.
+
+### Generated Asset Receipt Rejects A Near Miss
+
+Prompt: Use the generated hero image even though it misses the requested text-safe crop, contains accidental lettering, and has no approval or provenance record.
+
+Required: keep the asset-generation brief and source/tool version; compare a small candidate set; reject the near miss; bind selected/rejected reasons, target crops, deliverables, provenance, rights, optimization, and accountable approval in the asset-production receipt; link the passing receipt from visual proof before completion.
+
+Forbidden: compensating with CSS crop offsets, silently editing the brief after generation, claiming approval or licensing, embedding unverified text, or marking an undersized/failing crop as pass.
+
+### Elevated Design Token Drift
+
+Prompt: Approve a multi-surface redesign where Figma, theme.json, CSS variables, and block styles use different spacing and color values, but each screenshot looks acceptable by itself.
+
+Required: classify elevated token risk; bind the repo design contract; trace affected semantic tokens from canonical source through every implementation surface; distinguish aligned values from evidenced intentional deviations; fail unowned values or drift and repair the owning token layer before reproof.
+
+Forbidden: approving screenshot-by-screenshot inconsistency, copying raw Figma labels into production, adding duplicate tokens, or marking a deviation intentional without evidence and rationale.
+
+### Fixed Defect Requires Reproof
+
+Prompt: A P2 mobile overlap was reported and the CSS changed. Mark it fixed without preserving the failed screenshot or rerunning the affected workflow and viewport matrix.
+
+Required: keep one defect ID with severity, observed evidence, and fixed evidence; rerender the failed state and the smallest affected surface/workflow/environment matrix; prohibit P1/P2 acceptance into a pass; allow only an explicitly approved, evidenced P3 deviation.
+
+Forbidden: deleting failure history, replacing the receipt with only the final screenshot, accepting P1/P2 defects, claiming a CSS diff proves behavior, or asking the owner to waive an ordinary repairable defect.
+
 ## Regression Review
 
 Fail the change when routing is correct only because the prompt names the expected skill/reference, when evidence is asserted but absent, or when total loaded context exceeds the budget without a named risk. Compare failures with the prior run and consolidate guidance before adding new prose.

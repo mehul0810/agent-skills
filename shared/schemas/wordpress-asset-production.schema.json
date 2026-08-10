@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mehulgohil.com/schemas/wordpress-asset-production.schema.json",
+  "title": "WordPress Asset Production Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "assetId",
+    "status",
+    "purpose",
+    "brief",
+    "source",
+    "candidates",
+    "selectedCandidateId",
+    "deliverables",
+    "provenance",
+    "approval",
+    "optimization",
+    "proofGaps"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "assetId": { "$ref": "#/$defs/nonEmpty" },
+    "status": { "enum": ["pass", "fail", "blocked"] },
+    "purpose": { "$ref": "#/$defs/nonEmpty" },
+    "brief": { "$ref": "#/$defs/brief" },
+    "source": { "$ref": "#/$defs/source" },
+    "candidates": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/candidate" }
+    },
+    "selectedCandidateId": { "$ref": "#/$defs/nonEmpty" },
+    "deliverables": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/deliverable" }
+    },
+    "provenance": { "$ref": "#/$defs/provenance" },
+    "approval": { "$ref": "#/$defs/approval" },
+    "optimization": { "$ref": "#/$defs/optimization" },
+    "proofGaps": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/nonEmpty" }
+    }
+  },
+  "$defs": {
+    "nonEmpty": { "type": "string", "minLength": 1 },
+    "fingerprint": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "locator", "fingerprint"],
+      "properties": {
+        "kind": { "enum": ["image", "brief", "license", "approval", "report", "manifest"] },
+        "locator": { "$ref": "#/$defs/nonEmpty" },
+        "fingerprint": { "$ref": "#/$defs/fingerprint" }
+      }
+    },
+    "cropTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "aspectRatio", "minWidth", "minHeight", "focalSafety"],
+      "properties": {
+        "id": { "$ref": "#/$defs/nonEmpty" },
+        "aspectRatio": { "type": "string", "pattern": "^[1-9][0-9]*:[1-9][0-9]*$" },
+        "minWidth": { "type": "integer", "minimum": 1 },
+        "minHeight": { "type": "integer", "minimum": 1 },
+        "focalSafety": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "brief": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "subject",
+        "artDirection",
+        "palette",
+        "composition",
+        "negativeConstraints",
+        "textPolicy",
+        "cropTargets",
+        "evidence"
+      ],
+      "properties": {
+        "subject": { "$ref": "#/$defs/nonEmpty" },
+        "artDirection": { "$ref": "#/$defs/nonEmpty" },
+        "palette": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/nonEmpty" }
+        },
+        "composition": { "$ref": "#/$defs/nonEmpty" },
+        "negativeConstraints": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/nonEmpty" }
+        },
+        "textPolicy": { "enum": ["text_free", "intentional_verified"] },
+        "textEvidence": { "$ref": "#/$defs/evidence" },
+        "cropTargets": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/cropTarget" }
+        },
+        "evidence": { "$ref": "#/$defs/evidence" }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "evidence"],
+      "properties": {
+        "kind": { "enum": ["generated", "supplied", "licensed", "css_svg"] },
+        "tool": { "$ref": "#/$defs/nonEmpty" },
+        "version": { "$ref": "#/$defs/nonEmpty" },
+        "evidence": { "$ref": "#/$defs/evidence" },
+        "licenseEvidence": { "$ref": "#/$defs/evidence" }
+      }
+    },
+    "scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["subjectAccuracy", "brandFit", "composition", "artifactQuality", "accessibility", "familyConsistency"],
+      "properties": {
+        "subjectAccuracy": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "brandFit": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "composition": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "artifactQuality": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "accessibility": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "familyConsistency": { "type": "integer", "minimum": 1, "maximum": 5 }
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "evidence", "scores", "result"],
+      "properties": {
+        "id": { "$ref": "#/$defs/nonEmpty" },
+        "evidence": { "$ref": "#/$defs/evidence" },
+        "scores": { "$ref": "#/$defs/scores" },
+        "result": { "enum": ["selected", "rejected"] },
+        "reason": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "deliverable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "cropTargetId", "format", "width", "height", "fingerprint", "evidence", "result", "issues"],
+      "properties": {
+        "id": { "$ref": "#/$defs/nonEmpty" },
+        "cropTargetId": { "$ref": "#/$defs/nonEmpty" },
+        "format": { "enum": ["avif", "webp", "jpeg", "png", "svg"] },
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "fingerprint": { "$ref": "#/$defs/fingerprint" },
+        "evidence": { "$ref": "#/$defs/evidence" },
+        "result": { "enum": ["pass", "fail", "blocked"] },
+        "issues": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/nonEmpty" }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["createdBy", "createdAt", "rights", "evidence"],
+      "properties": {
+        "createdBy": { "$ref": "#/$defs/nonEmpty" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "rights": { "$ref": "#/$defs/nonEmpty" },
+        "evidence": { "$ref": "#/$defs/evidence" }
+      }
+    },
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": { "enum": ["approved", "rejected", "pending"] },
+        "reviewer": { "$ref": "#/$defs/nonEmpty" },
+        "evidence": { "$ref": "#/$defs/evidence" },
+        "reason": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "optimization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["responsiveVariants", "metadataPolicy", "performanceEvidence"],
+      "properties": {
+        "responsiveVariants": { "type": "boolean" },
+        "metadataPolicy": { "enum": ["stripped", "preserved_with_reason"] },
+        "metadataReason": { "$ref": "#/$defs/nonEmpty" },
+        "performanceEvidence": { "$ref": "#/$defs/evidence" }
+      }
+    }
+  }
+}

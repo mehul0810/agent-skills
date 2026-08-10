@@ -495,6 +495,12 @@ validate_visual_wordpress_rules() {
   else
     log_error "Visual proof receipt validator failed"
   fi
+
+  if node "$repo_root/wp-expert/scripts/validate-asset-production.mjs" --self-test; then
+    log_success "Asset production receipt validator is valid"
+  else
+    log_error "Asset production receipt validator failed"
+  fi
 }
 
 validate_quality_reviewer_rules() {

@@ -32,6 +32,7 @@ cat > "$output_path" <<'TEMPLATE'
 - Candidate revision, artifact path, and SHA-256 fingerprint:
 - Distribution target (WordPress.org Theme Directory, commercial, private/client/VIP):
 - Target WordPress/Gutenberg/browser policy:
+- Required surface/state capture IDs, workflow IDs, and environment IDs:
 
 ## Evidence Confidence
 
@@ -125,6 +126,7 @@ cat > "$output_path" <<'TEMPLATE'
 - Missing assets:
 - Generate/source/license/placeholder decisions:
 - Asset briefs and approval state:
+- Structured asset-production receipt paths and validator results:
 - Crops, focal points, aspect ratios, responsive variants:
 - Provenance, alt-text intent, formats, dimensions, optimization:
 
@@ -189,8 +191,12 @@ cat > "$output_path" <<'TEMPLATE'
 - Performance checks:
 - Matched viewport/zoom/content/font/data state:
 - Capture fingerprint (build, WP/Gutenberg/theme, browser/OS/DPR, locale/timezone, color scheme, font/media readiness, volatile-input policy):
+- Per-surface narrow/intermediate/desktop coverage and declared browser/device matrix:
+- Material accessibility browser/assistive-technology task and evidence:
 - Overlay or perceptual-diff method:
-- Structured visual proof receipt path and validator result (required for exact/regression/release-critical/previously failed work):
+- Structured visual proof receipt path and validator result (schema v2; required for exact/regression/release-critical/previously failed work):
+- Design-risk review and elevated semantic-token lineage evidence:
+- Defect observed/fixed reproof lineage and accepted P3 decision evidence:
 - Region-level parity tolerance:
 - Accepted, constrained, and unresolved deviations:
 - WCAG 2.2 checks, including reflow/focus/target/dragging where applicable:

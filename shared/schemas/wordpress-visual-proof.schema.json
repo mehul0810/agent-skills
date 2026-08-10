@@ -12,6 +12,10 @@
     "source",
     "candidate",
     "scope",
+    "designReview",
+    "designSystem",
+    "accessibility",
+    "assetReceipts",
     "captures",
     "workflows",
     "gates",
@@ -19,13 +23,20 @@
     "proofGaps"
   ],
   "properties": {
-    "schemaVersion": { "const": 1 },
+    "schemaVersion": { "const": 2 },
     "proofId": { "$ref": "#/$defs/nonEmpty" },
     "status": { "enum": ["pass", "fail", "blocked"] },
     "surfaceKind": { "enum": ["site", "theme", "plugin_admin", "plugin_frontend", "editor"] },
     "source": { "$ref": "#/$defs/source" },
     "candidate": { "$ref": "#/$defs/candidate" },
     "scope": { "$ref": "#/$defs/scope" },
+    "designReview": { "$ref": "#/$defs/designReview" },
+    "designSystem": { "$ref": "#/$defs/designSystem" },
+    "accessibility": { "$ref": "#/$defs/accessibility" },
+    "assetReceipts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/assetReceipt" }
+    },
     "captures": {
       "type": "array",
       "minItems": 1,
@@ -38,7 +49,7 @@
     },
     "gates": {
       "type": "array",
-      "minItems": 7,
+      "minItems": 9,
       "items": { "$ref": "#/$defs/gate" }
     },
     "defects": {
@@ -52,7 +63,42 @@
   },
   "$defs": {
     "nonEmpty": { "type": "string", "minLength": 1 },
-    "fingerprint": { "type": "string", "minLength": 8 },
+    "fingerprint": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "locator", "fingerprint"],
+      "properties": {
+        "kind": {
+          "enum": [
+            "screenshot",
+            "comparison",
+            "report",
+            "trace",
+            "video",
+            "manual_record",
+            "package",
+            "accessibility_report",
+            "performance_report",
+            "design_review",
+            "token_map",
+            "asset_receipt"
+          ]
+        },
+        "locator": { "$ref": "#/$defs/nonEmpty" },
+        "fingerprint": { "$ref": "#/$defs/fingerprint" }
+      }
+    },
+    "disposition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["result"],
+      "properties": {
+        "result": { "enum": ["pass", "fail", "blocked", "not_applicable"] },
+        "evidence": { "$ref": "#/$defs/evidence" },
+        "reason": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
     "source": {
       "type": "object",
       "additionalProperties": false,
@@ -61,36 +107,67 @@
         "kind": { "enum": ["screenshot", "image", "figma", "mockup", "approved_direction", "baseline"] },
         "classification": { "enum": ["exact", "directional", "inspiration"] },
         "identity": { "$ref": "#/$defs/nonEmpty" },
-        "fingerprint": { "$ref": "#/$defs/fingerprint" }
+        "fingerprint": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "wordpress", "product", "browser", "operatingSystem", "locale"],
+      "properties": {
+        "id": { "$ref": "#/$defs/nonEmpty" },
+        "wordpress": { "$ref": "#/$defs/nonEmpty" },
+        "gutenberg": { "$ref": "#/$defs/nonEmpty" },
+        "product": { "$ref": "#/$defs/nonEmpty" },
+        "browser": { "$ref": "#/$defs/nonEmpty" },
+        "operatingSystem": { "$ref": "#/$defs/nonEmpty" },
+        "device": { "$ref": "#/$defs/nonEmpty" },
+        "locale": { "$ref": "#/$defs/nonEmpty" }
       }
     },
     "candidate": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["revision", "artifact", "fingerprint", "environment"],
+      "required": ["revision", "artifact", "fingerprint", "environments"],
       "properties": {
-        "revision": { "type": "string", "minLength": 7 },
-        "artifact": { "$ref": "#/$defs/nonEmpty" },
+        "revision": { "$ref": "#/$defs/nonEmpty" },
+        "artifact": { "$ref": "#/$defs/evidence" },
         "fingerprint": { "$ref": "#/$defs/fingerprint" },
-        "environment": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": ["wordpress", "product", "browser", "operatingSystem", "locale"],
-          "properties": {
-            "wordpress": { "$ref": "#/$defs/nonEmpty" },
-            "gutenberg": { "$ref": "#/$defs/nonEmpty" },
-            "product": { "$ref": "#/$defs/nonEmpty" },
-            "browser": { "$ref": "#/$defs/nonEmpty" },
-            "operatingSystem": { "$ref": "#/$defs/nonEmpty" },
-            "locale": { "$ref": "#/$defs/nonEmpty" }
-          }
+        "environments": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/environment" }
+        }
+      }
+    },
+    "stateCoverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["surface", "states"],
+      "properties": {
+        "surface": { "$ref": "#/$defs/nonEmpty" },
+        "states": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/nonEmpty" }
         }
       }
     },
     "scope": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["surfaces", "requiredWorkflowRoles", "responsiveRequired"],
+      "required": [
+        "surfaces",
+        "requiredStateCoverage",
+        "requiredCaptureIds",
+        "requiredWorkflowIds",
+        "requiredEnvironmentIds",
+        "requiredAssetIds",
+        "responsiveRequired",
+        "designRisk",
+        "tokenRisk"
+      ],
       "properties": {
         "surfaces": {
           "type": "array",
@@ -98,13 +175,37 @@
           "uniqueItems": true,
           "items": { "$ref": "#/$defs/nonEmpty" }
         },
-        "requiredWorkflowRoles": {
+        "requiredStateCoverage": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/stateCoverage" }
+        },
+        "requiredCaptureIds": {
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
-          "items": { "enum": ["visitor", "author", "operator", "customer"] }
+          "items": { "$ref": "#/$defs/nonEmpty" }
         },
-        "responsiveRequired": { "type": "boolean" }
+        "requiredWorkflowIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/nonEmpty" }
+        },
+        "requiredEnvironmentIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/nonEmpty" }
+        },
+        "requiredAssetIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/nonEmpty" }
+        },
+        "responsiveRequired": { "type": "boolean" },
+        "designRisk": { "enum": ["baseline", "material", "brand_critical"] },
+        "tokenRisk": { "enum": ["baseline", "elevated"] }
       }
     },
     "viewport": {
@@ -120,17 +221,31 @@
     "capture": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "surface", "state", "viewport", "browser", "sourceEvidence", "candidateEvidence", "comparison", "result", "deviations"],
+      "required": [
+        "id",
+        "surface",
+        "state",
+        "viewportClass",
+        "viewport",
+        "environmentId",
+        "sourceEvidence",
+        "candidateEvidence",
+        "comparison",
+        "result",
+        "deviations"
+      ],
       "properties": {
         "id": { "$ref": "#/$defs/nonEmpty" },
         "surface": { "$ref": "#/$defs/nonEmpty" },
         "state": { "$ref": "#/$defs/nonEmpty" },
+        "viewportClass": { "enum": ["narrow", "intermediate", "desktop"] },
         "viewport": { "$ref": "#/$defs/viewport" },
-        "browser": { "$ref": "#/$defs/nonEmpty" },
-        "sourceEvidence": { "$ref": "#/$defs/nonEmpty" },
-        "candidateEvidence": { "$ref": "#/$defs/nonEmpty" },
+        "environmentId": { "$ref": "#/$defs/nonEmpty" },
+        "sourceEvidence": { "$ref": "#/$defs/evidence" },
+        "candidateEvidence": { "$ref": "#/$defs/evidence" },
+        "comparisonEvidence": { "$ref": "#/$defs/evidence" },
         "comparison": { "enum": ["overlay", "perceptual", "manual", "not_applicable"] },
-        "result": { "enum": ["pass", "accepted", "fail", "blocked"] },
+        "result": { "enum": ["pass", "fail", "blocked"] },
         "deviations": {
           "type": "array",
           "items": { "$ref": "#/$defs/nonEmpty" }
@@ -140,12 +255,14 @@
     "workflow": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["role", "task", "result"],
+      "required": ["id", "role", "surface", "task", "result"],
       "properties": {
+        "id": { "$ref": "#/$defs/nonEmpty" },
         "role": { "enum": ["visitor", "author", "operator", "customer"] },
+        "surface": { "$ref": "#/$defs/nonEmpty" },
         "task": { "$ref": "#/$defs/nonEmpty" },
         "result": { "enum": ["pass", "fail", "blocked", "not_applicable"] },
-        "evidence": { "$ref": "#/$defs/nonEmpty" },
+        "evidence": { "$ref": "#/$defs/evidence" },
         "reason": { "$ref": "#/$defs/nonEmpty" }
       }
     },
@@ -154,21 +271,134 @@
       "additionalProperties": false,
       "required": ["name", "result"],
       "properties": {
-        "name": { "enum": ["responsive", "accessibility", "editor_frontend_parity", "workflow", "content_stress", "performance", "browser_compatibility"] },
+        "name": {
+          "enum": [
+            "responsive",
+            "accessibility",
+            "editor_frontend_parity",
+            "workflow",
+            "content_stress",
+            "performance",
+            "browser_compatibility",
+            "design_quality",
+            "asset_quality"
+          ]
+        },
         "result": { "enum": ["pass", "fail", "blocked", "not_applicable"] },
-        "evidence": { "$ref": "#/$defs/nonEmpty" },
+        "evidence": { "$ref": "#/$defs/evidence" },
         "reason": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "designReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required", "result"],
+      "properties": {
+        "required": { "type": "boolean" },
+        "result": { "enum": ["pass", "fail", "blocked", "not_applicable"] },
+        "reviewer": { "$ref": "#/$defs/nonEmpty" },
+        "evidence": { "$ref": "#/$defs/evidence" },
+        "reason": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "tokenLineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["token", "canonicalSource", "implementations", "result", "evidence"],
+      "properties": {
+        "token": { "$ref": "#/$defs/nonEmpty" },
+        "canonicalSource": { "$ref": "#/$defs/nonEmpty" },
+        "implementations": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/nonEmpty" }
+        },
+        "result": { "enum": ["aligned", "intentional_deviation", "drift"] },
+        "evidence": { "$ref": "#/$defs/evidence" },
+        "rationale": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "designSystem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["risk", "lineage", "unownedValues"],
+      "properties": {
+        "risk": { "enum": ["baseline", "elevated"] },
+        "contractEvidence": { "$ref": "#/$defs/evidence" },
+        "lineage": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/tokenLineage" }
+        },
+        "unownedValues": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/nonEmpty" }
+        },
+        "reason": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "assistiveTechnology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["browser", "technology", "task", "result"],
+      "properties": {
+        "browser": { "$ref": "#/$defs/nonEmpty" },
+        "technology": { "$ref": "#/$defs/nonEmpty" },
+        "task": { "$ref": "#/$defs/nonEmpty" },
+        "result": { "enum": ["pass", "fail", "blocked"] },
+        "evidence": { "$ref": "#/$defs/evidence" },
+        "reason": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "accessibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["risk", "keyboard", "contrast", "zoomReflow", "forcedColors", "reducedMotion", "assistiveTechnology"],
+      "properties": {
+        "risk": { "enum": ["baseline", "material"] },
+        "keyboard": { "$ref": "#/$defs/disposition" },
+        "contrast": { "$ref": "#/$defs/disposition" },
+        "zoomReflow": { "$ref": "#/$defs/disposition" },
+        "forcedColors": { "$ref": "#/$defs/disposition" },
+        "reducedMotion": { "$ref": "#/$defs/disposition" },
+        "assistiveTechnology": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/assistiveTechnology" }
+        }
+      }
+    },
+    "assetReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assetId", "result", "evidence"],
+      "properties": {
+        "assetId": { "$ref": "#/$defs/nonEmpty" },
+        "result": { "enum": ["pass", "fail", "blocked"] },
+        "evidence": { "$ref": "#/$defs/evidence" }
+      }
+    },
+    "acceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["approvedBy", "rationale", "decisionEvidence"],
+      "properties": {
+        "approvedBy": { "$ref": "#/$defs/nonEmpty" },
+        "rationale": { "$ref": "#/$defs/nonEmpty" },
+        "decisionEvidence": { "$ref": "#/$defs/evidence" }
       }
     },
     "defect": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["description", "status"],
+      "required": ["id", "severity", "description", "status", "observedEvidence"],
       "properties": {
+        "id": { "$ref": "#/$defs/nonEmpty" },
+        "severity": { "enum": ["P1", "P2", "P3"] },
         "description": { "$ref": "#/$defs/nonEmpty" },
         "status": { "enum": ["fixed", "accepted", "unresolved"] },
-        "evidence": { "$ref": "#/$defs/nonEmpty" },
-        "rationale": { "$ref": "#/$defs/nonEmpty" }
+        "observedEvidence": { "$ref": "#/$defs/evidence" },
+        "fixedEvidence": { "$ref": "#/$defs/evidence" },
+        "acceptance": { "$ref": "#/$defs/acceptance" }
       }
     }
   }

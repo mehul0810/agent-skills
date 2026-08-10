@@ -67,7 +67,7 @@ Score every serious design or UI implementation against these dimensions:
 - Visual density: enough information for expert users without crowding; enough whitespace for clarity without looking empty.
 - Color: semantic use, accessible contrast, restrained palette, clear affordances, and no unjustified purple/dark/glass defaults.
 - Components: consistent borders, radii, elevation, icons, focus states, hover states, disabled states, loading states, and error states.
-- Motion: meaningful cause/effect, 150-300ms for common transitions, transform/opacity preferred, and reduced-motion support.
+- Motion: meaningful cause/effect, product motion tokens or task evidence, the shortest effective duration, transform/opacity where practical, and reduced-motion support.
 - Brand fidelity: matches the project's visual language, imagery, tone, and design-token model.
 - WordPress fit: admin/editor surfaces feel native unless a branded app surface is intentional and isolated.
 - Engineering fit: tokenized, scoped, performant, accessible, maintainable, and not dependent on fragile one-off CSS.

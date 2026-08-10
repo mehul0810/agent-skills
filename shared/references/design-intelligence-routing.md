@@ -31,9 +31,10 @@ Use design QA only after a prototype/build has both a source visual and a render
 
 - CTO/PO decides whether a design pass is needed based on product risk and context, not by default.
 - Apply the compact product-experience lens already present in the issue or product brief. Load `product-experience-principles.md` as the one support only when defaults, onboarding, or advanced-user controls remain a confirmed decision risk.
-- Load `enterprise-design-judgment.md` as the one support only for a confirmed premium/enterprise, AI/workflow, buyer-facing, or governance risk. Never stack it with frontend taste or another support reference.
+- Load `enterprise-design-judgment.md` as the one support only for a confirmed premium/enterprise, AI/workflow, buyer-facing, or governance risk. When frontend taste already owns the support slot, use its compact accountability read rather than stacking references.
 - If UI changed, require screenshot proof.
 - If layout, workflow quality, or UX clarity changed materially, add a design audit.
+- For exact, regression, release-critical, or previously failed work, require visual-proof schema v2; generated or materially art-directed imagery also requires the asset-production receipt.
 - If a large redesign has no chosen direction, ideate before implementation.
 - For brand-critical greenfield, major overhaul, or multi-page work, validate one representative direction artifact before scaling the design; do not require this gate for exact targets or bounded polish.
 - For material onboarding, conversion, settings, publishing, or repeated operational journeys, use risk-tiered usability evidence before claiming excellent UX.

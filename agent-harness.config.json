@@ -9,8 +9,10 @@
     "scripts/behavior-evidence-audit.mjs",
     "scripts/validate-behavior-run-records.mjs",
     "shared/schemas/wordpress-engineering-graph.schema.json",
+    "shared/schemas/wordpress-asset-production.schema.json",
     "shared/schemas/wordpress-visual-proof.schema.json",
     "shared/schemas/wp-quality-review.schema.json",
+    "wp-expert/scripts/validate-asset-production.mjs",
     "wp-expert/scripts/validate-visual-proof.mjs",
     "wp-quality-reviewer/scripts/validate-review-report.mjs"
   ],
