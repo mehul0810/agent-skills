@@ -52,24 +52,67 @@
       ]
     },
     {
-      "name": "site-visual-routing",
+      "name": "design-experience-routing",
       "files": [
         "shared/references/design-intelligence-routing.md",
         "shared/references/enterprise-design-judgment.md",
         "shared/references/frontend-design-taste.md",
         "shared/references/product-experience-principles.md",
+        "wp-expert/references/ui-ux-pro-for-wordpress.md",
+        "wp-expert/references/ux-product-strategy-design-qa.md",
+        "wp-expert/references/wordpress-design-system.md"
+      ],
+      "sha256": "5addf58e080e4e340e95d358ff866bb0def8868eb9980ea3ed0a252125c349a1",
+      "scenario": {
+        "id": "premium-enterprise-design-experience",
+        "files": [
+          "skill-evals/visual-wordpress-scenarios.md"
+        ],
+        "anchors": [
+          "Generic SaaS Composition Without A Target",
+          "Operational Dashboard Rejects Marketing Taste",
+          "Preserve Redesign Without Contract Drift",
+          "Motion Proposal Needs A Contract",
+          "Excellent UX Requires Outcome Evidence",
+          "Material Greenfield Direction Checkpoint"
+        ],
+        "sha256": "1f0d0f96d2280f11cf213e2e6041cc3b282d8fd2d545bac83a2dd984f9fefdc4"
+      },
+      "requiredChecks": [
+        "greenfield-taste-route",
+        "design-read-and-four-dials",
+        "operational-dashboard-route-boundary",
+        "preserve-redesign-contracts",
+        "motivated-motion-and-reduced-motion",
+        "anti-template-composition",
+        "usability-outcome-evidence-boundary",
+        "material-direction-checkpoint",
+        "plug-and-play-defaults-advanced-controls",
+        "enterprise-accountability-failure-proof"
+      ],
+      "evidence": [
+        {
+          "runRecord": "skill-evals/run-records/design-experience-routing-2026-08-10.json",
+          "sha256": "9543c53323bd68955e2514d6ab5d0af256afcf3f13a288574ca2d46b03d58940",
+          "testedRevision": "0d219eb3d3c952c0a8a2c96d63beab92e9c75f7a",
+          "testedSourceSha256": "5addf58e080e4e340e95d358ff866bb0def8868eb9980ea3ed0a252125c349a1",
+          "testedScenarioSha256": "1f0d0f96d2280f11cf213e2e6041cc3b282d8fd2d545bac83a2dd984f9fefdc4",
+          "runtime": {
+            "host": "codex-desktop",
+            "isolation": "fresh-agent",
+            "harnessRevision": "24ffe6e5481aebe33f403df9b72f0de7214f019a"
+          }
+        }
+      ]
+    },
+    {
+      "name": "wordpress-visual-execution",
+      "files": [
         "shared/references/visual-to-wordpress-implementation.md",
-        "shared/schemas/wordpress-asset-production.schema.json",
-        "shared/schemas/wordpress-visual-proof.schema.json",
         "wp-expert/references/accessibility-i18n-global-readiness.md",
         "wp-expert/references/interactivity-api-frontend.md",
         "wp-expert/references/theme-and-block-editor.md",
-        "wp-expert/references/ui-ux-pro-for-wordpress.md",
-        "wp-expert/references/ux-product-strategy-design-qa.md",
-        "wp-expert/references/wordpress-design-system.md",
         "wp-expert/scripts/fse-design-map.sh",
-        "wp-expert/scripts/validate-asset-production.mjs",
-        "wp-expert/scripts/validate-visual-proof.mjs",
         "wp-plugin-expert/SKILL.md",
         "wp-plugin-expert/references/router.md",
         "wp-quality-reviewer/references/accessibility-review-fix.md",
@@ -78,72 +121,89 @@
         "wp-theme-expert/SKILL.md",
         "wp-theme-expert/references/router.md"
       ],
-      "sha256": "8082b064571bf0ac92376ff8e1271a02ff6c886b9c672085f540aa6861d5bfab",
+      "sha256": "7008ae867fb532b116bd7a8f1d84bfa665337fa61a0b5c78248b04b5539f210a",
       "scenario": {
-        "id": "frontend-design-taste-routing",
+        "id": "wordpress-visual-execution",
         "files": [
           "skill-evals/visual-wordpress-scenarios.md"
         ],
         "anchors": [
           "Exact Target Must Not Be Reinterpreted",
-          "Generic SaaS Composition Without A Target",
-          "Operational Dashboard Rejects Marketing Taste",
-          "Preserve Redesign Without Contract Drift",
-          "Motion Proposal Needs A Contract",
-          "Sparse Brief Cannot Create Proof",
-          "Polished But Repetitive Candidate",
           "Taste Proof Across Intermediate Widths",
           "Plugin-Owned Product Surface Routing",
           "Exact Plugin Customer Surface",
           "Structured Figma Source",
-          "Visual Receipt Rejects Broken Candidate",
           "Interactive Block Client Navigation",
-          "Multi-Step WCAG Flow",
+          "Multi-Step WCAG Flow"
+        ],
+        "sha256": "b11cc8607bde196a63dd15948c9b61d4bb570bd10a9486a909d08dcf8c452ae8"
+      },
+      "requiredChecks": [
+        "WordPress-native-ownership",
+        "truthful-assets-and-claims",
+        "exact-target-parity-authority",
+        "responsive-accessibility-workflow-proof",
+        "plugin-admin-customer-surface-routing",
+        "plugin-exact-visual-routing",
+        "structured-figma-source",
+        "interactive-client-navigation-lifecycle",
+        "wcag-multistep-flow",
+        "WordPress-design-system-component-first"
+      ],
+      "evidence": [
+        {
+          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-08-10.json",
+          "sha256": "55df956e38b7c3b54d53ad429bc43a7300a680a36c6458ee67d9be4d82d2b772",
+          "testedRevision": "0d219eb3d3c952c0a8a2c96d63beab92e9c75f7a",
+          "testedSourceSha256": "7008ae867fb532b116bd7a8f1d84bfa665337fa61a0b5c78248b04b5539f210a",
+          "testedScenarioSha256": "b11cc8607bde196a63dd15948c9b61d4bb570bd10a9486a909d08dcf8c452ae8",
+          "runtime": {
+            "host": "codex-desktop",
+            "isolation": "fresh-agent",
+            "harnessRevision": "24ffe6e5481aebe33f403df9b72f0de7214f019a"
+          }
+        }
+      ]
+    },
+    {
+      "name": "visual-evidence-assets",
+      "files": [
+        "shared/schemas/wordpress-asset-production.schema.json",
+        "shared/schemas/wordpress-visual-proof.schema.json",
+        "wp-expert/scripts/validate-asset-production.mjs",
+        "wp-expert/scripts/validate-visual-proof.mjs"
+      ],
+      "sha256": "e9da25bfaac97abc1017385d07f997b5b34bdaec2bd614e14fd742f19bb66936",
+      "scenario": {
+        "id": "visual-evidence-and-assets",
+        "files": [
+          "skill-evals/visual-wordpress-scenarios.md"
+        ],
+        "anchors": [
+          "Visual Receipt Rejects Broken Candidate",
           "Multi-Surface Coverage Cannot Be Inferred",
           "Vague Evidence Cannot Pass",
           "Generated Asset Receipt Rejects A Near Miss",
           "Elevated Design Token Drift",
-          "Fixed Defect Requires Reproof",
-          "Excellent UX Requires Outcome Evidence",
-          "Material Greenfield Direction Checkpoint"
+          "Fixed Defect Requires Reproof"
         ],
-        "sha256": "c3c4468254ca56484031022d22adf7bdac66354e763af74d5ad68742ff8c7f82"
+        "sha256": "d630239c0bb4d4c4b1a2dec9a9a538c01ffebb5df4924a13a1057f243b064239"
       },
       "requiredChecks": [
-        "greenfield-taste-route",
-        "design-read-and-four-dials",
-        "WordPress-native-ownership",
-        "truthful-assets-and-claims",
-        "operational-dashboard-route-boundary",
-        "exact-target-parity-authority",
-        "responsive-accessibility-workflow-proof",
-        "preserve-redesign-contracts",
-        "motivated-motion-and-reduced-motion",
-        "anti-template-composition",
-        "plugin-admin-customer-surface-routing",
-        "plugin-exact-visual-routing",
-        "structured-figma-source",
         "structured-visual-proof-rejection",
-        "interactive-client-navigation-lifecycle",
-        "wcag-multistep-flow",
         "per-surface-proof-coverage",
         "concrete-evidence-binding",
         "asset-production-receipt",
         "design-token-lineage",
-        "visual-defect-reproof",
-        "WordPress-design-system-component-first",
-        "usability-outcome-evidence-boundary",
-        "material-direction-checkpoint",
-        "plug-and-play-defaults-advanced-controls",
-        "enterprise-accountability-failure-proof"
+        "visual-defect-reproof"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/site-visual-routing-2026-08-10-r5.json",
-          "sha256": "81f4fa490b1cbd71756da6b8f347c85fbd0903efc5f8826e2794e4e7808d8065",
+          "runRecord": "skill-evals/run-records/visual-evidence-assets-2026-08-10.json",
+          "sha256": "4702f6c4b8f8aa255cd1574fcd7a9879dd56a3310f10cb0b5b4a6adcda637046",
           "testedRevision": "0d219eb3d3c952c0a8a2c96d63beab92e9c75f7a",
-          "testedSourceSha256": "8082b064571bf0ac92376ff8e1271a02ff6c886b9c672085f540aa6861d5bfab",
-          "testedScenarioSha256": "c3c4468254ca56484031022d22adf7bdac66354e763af74d5ad68742ff8c7f82",
+          "testedSourceSha256": "e9da25bfaac97abc1017385d07f997b5b34bdaec2bd614e14fd742f19bb66936",
+          "testedScenarioSha256": "d630239c0bb4d4c4b1a2dec9a9a538c01ffebb5df4924a13a1057f243b064239",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
@@ -159,7 +219,7 @@
         "shared/schemas/wordpress-engineering-graph.schema.json",
         "wp-expert/scripts/validate-engineering-graph.mjs"
       ],
-      "sha256": "1e51f6e93956e62e51c8a3465e788abad5c2138a6188ac05c7af9a241b9cfda3",
+      "sha256": "481cc9d03a1962a2be29d9fd78ba848bb4431eb5c846050bb59185dce23e501d",
       "scenario": {
         "id": "bounded-questions-and-deterministic-graph-closure",
         "files": [
@@ -167,24 +227,30 @@
         ],
         "anchors": [
           "Bounded graph decision brief",
-          "Deterministic graph closure"
+          "Deterministic graph closure",
+          "Downstream graph invalidation",
+          "Conflicting mutable ownership"
         ],
-        "sha256": "af1ee50d3183bb6c24c2eca1e6380ff7269f00d77ca7c788b3e7977b3df63f0b"
+        "sha256": "a6323a350ffda471cd170d6223edbf75316cb206b146cc55f9281156955f33ca"
       },
       "requiredChecks": [
         "one-brief-maximum-three-questions",
         "recommendation-impact-safe-default",
         "no-placeholder-policy",
         "bundled-validator-executed",
-        "incomplete-critical-graph-rejected"
+        "incomplete-critical-graph-rejected",
+        "acceptance-proof-mapping",
+        "typed-evidence-identity",
+        "dependency-invalidation",
+        "exclusive-ownership-and-byte-evidence"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/engineering-graph-2026-07-26.json",
-          "sha256": "7a6b2653aad0c52f0abf7b663e87646f9aa1cfbff697c6001bf31c140949342c",
-          "testedRevision": "8a391aab4b2e945dfe83a3b4647145d4d2952072",
-          "testedSourceSha256": "1e51f6e93956e62e51c8a3465e788abad5c2138a6188ac05c7af9a241b9cfda3",
-          "testedScenarioSha256": "af1ee50d3183bb6c24c2eca1e6380ff7269f00d77ca7c788b3e7977b3df63f0b",
+          "runRecord": "skill-evals/run-records/engineering-graph-2026-08-10-v2.json",
+          "sha256": "5eca4c7686a603249acccc75154f53bbc781ade89a23044f1a897192c84a5fe1",
+          "testedRevision": "d224bc81f9a3c7ef1363c211a4c021cd14e8400a",
+          "testedSourceSha256": "481cc9d03a1962a2be29d9fd78ba848bb4431eb5c846050bb59185dce23e501d",
+          "testedScenarioSha256": "a6323a350ffda471cd170d6223edbf75316cb206b146cc55f9281156955f33ca",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",

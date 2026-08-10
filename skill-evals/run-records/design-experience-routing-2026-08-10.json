@@ -1,0 +1,75 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "design-experience-routing-2026-08-10",
+  "scenario": "premium-enterprise-design-experience",
+  "result": "succeeded",
+  "startedAt": "2026-08-10T11:05:56.000Z",
+  "durationMs": 0,
+  "checks": [
+    {
+      "name": "greenfield-taste-route",
+      "result": "pass"
+    },
+    {
+      "name": "design-read-and-four-dials",
+      "result": "pass"
+    },
+    {
+      "name": "operational-dashboard-route-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "preserve-redesign-contracts",
+      "result": "pass"
+    },
+    {
+      "name": "motivated-motion-and-reduced-motion",
+      "result": "pass"
+    },
+    {
+      "name": "anti-template-composition",
+      "result": "pass"
+    },
+    {
+      "name": "usability-outcome-evidence-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "material-direction-checkpoint",
+      "result": "pass"
+    },
+    {
+      "name": "plug-and-play-defaults-advanced-controls",
+      "result": "pass"
+    },
+    {
+      "name": "enterprise-accountability-failure-proof",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 10
+  },
+  "lineage": {
+    "verificationId": "design-experience-routing-2026-08-10",
+    "artifactPointer": "codex-fresh-agents:/root/design_ux_eval,/root/asset_token_eval,/root/visual_receipt_eval#2026-08-10"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-10T11:05:56.000Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "A source-blind design evaluator selected the correct greenfield, operational, preserve-redesign, motion, usability, product-experience, and enterprise-accountability boundaries."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "design",
+    "frontend",
+    "ux",
+    "enterprise",
+    "wordpress"
+  ]
+}

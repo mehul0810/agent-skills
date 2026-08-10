@@ -14,13 +14,15 @@ const REVISION = /^[a-f0-9]{40}$/;
 const DAY = 86_400_000;
 const MANDATORY_BASELINES = [
   "automatic-specialist-routing",
+  "design-experience-routing",
   "engineering-graph",
   "enterprise-runtime-assurance",
   "owner-correction-learning",
   "product-release-authority",
   "product-video-truth-and-assets",
-  "site-visual-routing",
   "source-blind-behavior-proof",
+  "visual-evidence-assets",
+  "wordpress-visual-execution",
   "wp-quality-reviewer",
 ];
 

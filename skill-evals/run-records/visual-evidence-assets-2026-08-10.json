@@ -1,0 +1,59 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "visual-evidence-assets-2026-08-10",
+  "scenario": "visual-evidence-and-assets",
+  "result": "succeeded",
+  "startedAt": "2026-08-10T11:05:56.000Z",
+  "durationMs": 0,
+  "checks": [
+    {
+      "name": "structured-visual-proof-rejection",
+      "result": "pass"
+    },
+    {
+      "name": "per-surface-proof-coverage",
+      "result": "pass"
+    },
+    {
+      "name": "concrete-evidence-binding",
+      "result": "pass"
+    },
+    {
+      "name": "asset-production-receipt",
+      "result": "pass"
+    },
+    {
+      "name": "design-token-lineage",
+      "result": "pass"
+    },
+    {
+      "name": "visual-defect-reproof",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 6
+  },
+  "lineage": {
+    "verificationId": "visual-evidence-assets-2026-08-10",
+    "artifactPointer": "codex-fresh-agents:/root/design_ux_eval,/root/asset_token_eval,/root/visual_receipt_eval#2026-08-10"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-10T11:05:56.000Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "Source-blind evaluators rejected stale or fabricated proof bytes, incomplete multi-surface evidence, broken generated assets, nested receipt drift, design-token drift, and defect closure without reproof."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "design",
+    "frontend",
+    "ux",
+    "enterprise",
+    "wordpress"
+  ]
+}
