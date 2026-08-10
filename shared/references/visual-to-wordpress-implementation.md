@@ -54,7 +54,7 @@ When generation is needed:
 5. Inspect target crops/resolutions; revise a miss instead of compensating with CSS.
 6. Record provenance, approval status, alt-text intent, focal point, responsive crops, format, dimensions, and optimization status.
 
-For generated, licensed, or materially art-directed assets, write `../schemas/wordpress-asset-production.schema.json` and run `node wp-expert/scripts/validate-asset-production.mjs <receipt.json>`. Bind each required asset receipt into the visual proof; approval, target crops, provenance, and optimization must be evidence, not prose claims.
+For generated, licensed, or materially art-directed assets, write `../schemas/wordpress-asset-production.schema.json` and run `node wp-expert/scripts/validate-asset-production.mjs <receipt.json>`. Bind each required asset receipt into the visual proof; approval, target crops, provenance, and optimization must be evidence, not prose claims. Keep proof artifacts local to the receipt: the validator hashes their actual bytes, and remote evidence must first be downloaded as an immutable artifact.
 
 Prefer responsive WordPress media handling and appropriate WebP/AVIF/JPEG/PNG/SVG output. Do not claim licensing, authorship, brand approval, or factual depiction without evidence.
 

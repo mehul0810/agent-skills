@@ -1,10 +1,16 @@
 #!/usr/bin/env node
 
+import crypto from "node:crypto";
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import process from "node:process";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import Ajv2020 from "ajv/dist/2020.js";
+import {
+  validateAssetProduction,
+  verifyAssetEvidenceFiles,
+} from "./validate-asset-production.mjs";
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const SCHEMA_PATH = path.resolve(
@@ -74,6 +80,63 @@ function evidenceObjects(value, pointer = "proof", output = []) {
     if (child && typeof child === "object") evidenceObjects(child, `${pointer}.${key}`, output);
   }
   return output;
+}
+
+function evidencePath(locator, proofPath) {
+  if (/^https?:\/\//i.test(locator)) return null;
+  if (path.isAbsolute(locator)) return locator;
+  const fromCwd = path.resolve(process.cwd(), locator);
+  if (fs.existsSync(fromCwd)) return fromCwd;
+  return path.resolve(path.dirname(path.resolve(proofPath)), locator);
+}
+
+export function verifyVisualEvidenceFiles(proof, proofPath) {
+  const errors = [];
+  const checked = new Set();
+  for (const [pointer, evidence] of evidenceObjects(proof)) {
+    const key = `${evidence.locator}\0${evidence.fingerprint}`;
+    if (checked.has(key)) continue;
+    checked.add(key);
+    const resolved = evidencePath(evidence.locator, proofPath);
+    if (!resolved) {
+      errors.push(`${pointer}.locator must be downloaded to a local verifiable artifact`);
+      continue;
+    }
+    if (!fs.existsSync(resolved) || !fs.statSync(resolved).isFile()) {
+      errors.push(`${pointer}.locator does not resolve to a file: ${evidence.locator}`);
+      continue;
+    }
+    const actual = `sha256:${crypto.createHash("sha256").update(fs.readFileSync(resolved)).digest("hex")}`;
+    if (actual !== evidence.fingerprint) {
+      errors.push(`${pointer}.fingerprint does not match evidence bytes: ${evidence.locator}`);
+    }
+  }
+  return errors;
+}
+
+function validateLinkedAssetReceipts(proof, proofPath) {
+  const errors = [];
+  for (const [index, link] of proof.assetReceipts.entries()) {
+    const resolved = evidencePath(link.evidence.locator, proofPath);
+    if (!resolved || !fs.existsSync(resolved)) continue;
+    let receipt;
+    try {
+      receipt = JSON.parse(fs.readFileSync(resolved, "utf8"));
+    } catch (error) {
+      errors.push(`assetReceipts[${index}] is not valid JSON: ${error.message}`);
+      continue;
+    }
+    for (const error of validateAssetProduction(receipt)) {
+      errors.push(`assetReceipts[${index}]: ${error}`);
+    }
+    for (const error of verifyAssetEvidenceFiles(receipt, resolved)) {
+      errors.push(`assetReceipts[${index}]: ${error}`);
+    }
+    if (receipt.assetId !== link.assetId || receipt.status !== link.result) {
+      errors.push(`assetReceipts[${index}] identity or result does not match linked receipt`);
+    }
+  }
+  return errors;
 }
 
 function validateDisposition(item, label, errors) {
@@ -304,6 +367,9 @@ export function validateVisualProof(proof) {
       errors.push(`assetReceipts must include exactly one required assetId: ${assetId}`);
     } else if (proof.status === "pass" && matching[0].result !== "pass") {
       errors.push(`required asset receipt ${assetId} must pass when proof status is pass`);
+    }
+    if (matching[0]?.evidence.kind !== "asset_receipt") {
+      errors.push(`required asset receipt ${assetId} must use asset_receipt evidence`);
     }
   }
 
@@ -546,6 +612,29 @@ function selfTest() {
       throw new Error(`visual proof self-test failed: ${name}: ${validateVisualProof(proof).join("; ")}`);
     }
   }
+  const evidenceRoot = fs.mkdtempSync(path.join(os.tmpdir(), "visual-proof-"));
+  const hydrated = structuredClone(valid);
+  const seen = new WeakSet();
+  let index = 0;
+  for (const [, evidence] of evidenceObjects(hydrated)) {
+    if (seen.has(evidence)) continue;
+    seen.add(evidence);
+    const bytes = Buffer.from(`visual-evidence-${index}`);
+    const locator = path.join(evidenceRoot, `evidence-${index}.json`);
+    fs.writeFileSync(locator, bytes);
+    evidence.locator = locator;
+    evidence.fingerprint = `sha256:${crypto.createHash("sha256").update(bytes).digest("hex")}`;
+    index += 1;
+  }
+  hydrated.candidate.fingerprint = hydrated.candidate.artifact.fingerprint;
+  if (verifyVisualEvidenceFiles(hydrated, path.join(evidenceRoot, "proof.json")).length > 0) {
+    throw new Error("valid local visual evidence failed byte verification");
+  }
+  fs.writeFileSync(hydrated.captures[0].candidateEvidence.locator, "changed");
+  if (!verifyVisualEvidenceFiles(hydrated, path.join(evidenceRoot, "proof.json")).some((error) => error.includes("does not match"))) {
+    throw new Error("changed local visual evidence was accepted");
+  }
+  fs.rmSync(evidenceRoot, { recursive: true, force: true });
   console.log("visual proof validator self-test passed");
 }
 
@@ -570,7 +659,11 @@ async function main() {
     process.exitCode = 1;
     return;
   }
-  const errors = validateVisualProof(proof);
+  const errors = [
+    ...validateVisualProof(proof),
+    ...verifyVisualEvidenceFiles(proof, argument),
+    ...validateLinkedAssetReceipts(proof, argument),
+  ];
   if (errors.length > 0) {
     for (const error of errors) console.error(`ERROR: ${error}`);
     process.exitCode = 1;

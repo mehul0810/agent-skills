@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
+import crypto from "node:crypto";
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import process from "node:process";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -52,6 +54,38 @@ function evidenceObjects(value, pointer = "receipt", output = []) {
     if (child && typeof child === "object") evidenceObjects(child, `${pointer}.${key}`, output);
   }
   return output;
+}
+
+function evidencePath(locator, receiptPath) {
+  if (/^https?:\/\//i.test(locator)) return null;
+  if (path.isAbsolute(locator)) return locator;
+  const fromCwd = path.resolve(process.cwd(), locator);
+  if (fs.existsSync(fromCwd)) return fromCwd;
+  return path.resolve(path.dirname(path.resolve(receiptPath)), locator);
+}
+
+export function verifyAssetEvidenceFiles(receipt, receiptPath) {
+  const errors = [];
+  const checked = new Set();
+  for (const [pointer, evidence] of evidenceObjects(receipt)) {
+    const key = `${evidence.locator}\0${evidence.fingerprint}`;
+    if (checked.has(key)) continue;
+    checked.add(key);
+    const resolved = evidencePath(evidence.locator, receiptPath);
+    if (!resolved) {
+      errors.push(`${pointer}.locator must be downloaded to a local verifiable artifact`);
+      continue;
+    }
+    if (!fs.existsSync(resolved) || !fs.statSync(resolved).isFile()) {
+      errors.push(`${pointer}.locator does not resolve to a file: ${evidence.locator}`);
+      continue;
+    }
+    const actual = `sha256:${crypto.createHash("sha256").update(fs.readFileSync(resolved)).digest("hex")}`;
+    if (actual !== evidence.fingerprint) {
+      errors.push(`${pointer}.fingerprint does not match evidence bytes: ${evidence.locator}`);
+    }
+  }
+  return errors;
 }
 
 export function validateAssetProduction(receipt) {
@@ -259,6 +293,32 @@ function selfTest() {
       throw new Error(`asset production self-test failed: ${name}: ${validateAssetProduction(normalized).join("; ")}`);
     }
   }
+
+  const evidenceRoot = fs.mkdtempSync(path.join(os.tmpdir(), "asset-proof-"));
+  const hydrated = structuredClone(valid);
+  const seen = new WeakSet();
+  let index = 0;
+  for (const [, evidence] of evidenceObjects(hydrated)) {
+    if (seen.has(evidence)) continue;
+    seen.add(evidence);
+    const bytes = Buffer.from(`asset-evidence-${index}`);
+    const locator = path.join(evidenceRoot, `evidence-${index}.json`);
+    fs.writeFileSync(locator, bytes);
+    evidence.locator = locator;
+    evidence.fingerprint = `sha256:${crypto.createHash("sha256").update(bytes).digest("hex")}`;
+    index += 1;
+  }
+  for (const deliverable of hydrated.deliverables) {
+    deliverable.fingerprint = deliverable.evidence.fingerprint;
+  }
+  if (verifyAssetEvidenceFiles(hydrated, path.join(evidenceRoot, "receipt.json")).length > 0) {
+    throw new Error("valid local asset evidence failed byte verification");
+  }
+  fs.writeFileSync(hydrated.deliverables[0].evidence.locator, "changed");
+  if (!verifyAssetEvidenceFiles(hydrated, path.join(evidenceRoot, "receipt.json")).some((error) => error.includes("does not match"))) {
+    throw new Error("changed local asset evidence was accepted");
+  }
+  fs.rmSync(evidenceRoot, { recursive: true, force: true });
   console.log("asset production validator self-test passed");
 }
 
@@ -282,7 +342,10 @@ async function main() {
     process.exitCode = 1;
     return;
   }
-  const errors = validateAssetProduction(receipt);
+  const errors = [
+    ...validateAssetProduction(receipt),
+    ...verifyAssetEvidenceFiles(receipt, argument),
+  ];
   if (errors.length > 0) {
     for (const error of errors) console.error(`ERROR: ${error}`);
     process.exitCode = 1;

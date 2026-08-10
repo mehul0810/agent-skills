@@ -266,9 +266,9 @@ Forbidden: treating unrelated endpoint captures as one responsive pair, inferrin
 
 Prompt: The visual receipt says screenshots, accessibility, browser compatibility, and workflows "look good" but provides no artifact paths, URLs, or fingerprints. Mark it complete.
 
-Required: reject non-locatable evidence; bind each screenshot, comparison, report, trace, manual record, package, and gate to a concrete locator plus SHA-256 fingerprint; keep source, candidate artifact, and revision identities immutable; rerun the receipt validator.
+Required: reject non-locatable evidence; bind each screenshot, comparison, report, trace, manual record, package, and gate to a local immutable artifact plus SHA-256 fingerprint of its actual bytes; download remote evidence before validation; keep source, candidate artifact, and revision identities immutable; validate nested asset receipts and rerun the receipt validator.
 
-Forbidden: accepting prose assertions, empty or mutable links, fabricated digests, a package path without candidate binding, or treating schema shape alone as aesthetic proof.
+Forbidden: accepting prose assertions, empty or mutable links, fabricated or stale digests, a package path without candidate binding, a linked asset receipt whose identity/result disagrees with its contents, or treating schema shape alone as aesthetic proof.
 
 ### Generated Asset Receipt Rejects A Near Miss
 
