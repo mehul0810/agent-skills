@@ -1,0 +1,83 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "wp-quality-reviewer-2026-08-10-r2",
+  "scenario": "multi-domain-release-quality-review",
+  "result": "succeeded",
+  "startedAt": "2026-08-10T10:25:49.000Z",
+  "durationMs": 0,
+  "checks": [
+    {
+      "name": "compact-multi-domain-route",
+      "result": "pass"
+    },
+    {
+      "name": "evidence-backed-severity-findings",
+      "result": "pass"
+    },
+    {
+      "name": "security-negative-proof",
+      "result": "pass"
+    },
+    {
+      "name": "performance-comparable-delta",
+      "result": "pass"
+    },
+    {
+      "name": "modularity-behavior-proof",
+      "result": "pass"
+    },
+    {
+      "name": "accessibility-manual-proof",
+      "result": "pass"
+    },
+    {
+      "name": "immutable-candidate-and-domain-dispositions",
+      "result": "pass"
+    },
+    {
+      "name": "critical-fix-independent-review",
+      "result": "pass"
+    },
+    {
+      "name": "performance-direction-and-budget",
+      "result": "pass"
+    },
+    {
+      "name": "malformed-vague-report-rejection",
+      "result": "pass"
+    },
+    {
+      "name": "unresolved-critical-blocks-pass",
+      "result": "pass"
+    },
+    {
+      "name": "formal-report-validation",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 12
+  },
+  "lineage": {
+    "verificationId": "wp-quality-reviewer-2026-08-10-r2",
+    "artifactPointer": "codex-fresh-agent:/root/quality_behavior_eval#2026-08-10"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-10T10:25:49.000Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "A source-blind agent kept multi-domain review compact, required immutable evidence and independent critical-fix review, rejected vague or incomparable proof, and required complete keyboard and browser-assistive-technology journey evidence."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "quality",
+    "security",
+    "performance",
+    "modularity",
+    "accessibility"
+  ]
+}

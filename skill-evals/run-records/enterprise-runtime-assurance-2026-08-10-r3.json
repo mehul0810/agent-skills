@@ -1,0 +1,53 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "enterprise-runtime-assurance-2026-08-10-r3",
+  "scenario": "elevated-enterprise-runtime-assurance",
+  "result": "succeeded",
+  "startedAt": "2026-08-10T10:25:49.000Z",
+  "durationMs": 0,
+  "checks": [
+    {
+      "name": "elevated-risk-classification",
+      "result": "pass"
+    },
+    {
+      "name": "compatibility-matrix-and-adaptive-docs",
+      "result": "pass"
+    },
+    {
+      "name": "artifact-sbom-license-vulnerability-provenance",
+      "result": "pass"
+    },
+    {
+      "name": "operations-observation-rollback-recovery",
+      "result": "pass"
+    },
+    {
+      "name": "missing-release-evidence-fails-closed",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 5
+  },
+  "lineage": {
+    "verificationId": "enterprise-runtime-assurance-2026-08-10-r3",
+    "artifactPointer": "codex-fresh-agent:/root/enterprise_behavior_eval#2026-08-10"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-10T10:25:49.000Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "A source-blind agent classified the commercial data plugin as elevated risk, required compatibility, artifact, supply-chain, operations, rollback and recovery proof, and blocked readiness when evidence was absent."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "enterprise",
+    "release",
+    "regression"
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "site-visual-routing-2026-08-10-r4",
+  "scenario": "frontend-design-taste-routing",
+  "result": "succeeded",
+  "startedAt": "2026-08-10T10:25:49.000Z",
+  "durationMs": 0,
+  "checks": [
+    {
+      "name": "greenfield-taste-route",
+      "result": "pass"
+    },
+    {
+      "name": "design-read-and-four-dials",
+      "result": "pass"
+    },
+    {
+      "name": "WordPress-native-ownership",
+      "result": "pass"
+    },
+    {
+      "name": "truthful-assets-and-claims",
+      "result": "pass"
+    },
+    {
+      "name": "operational-dashboard-route-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "exact-target-parity-authority",
+      "result": "pass"
+    },
+    {
+      "name": "responsive-accessibility-workflow-proof",
+      "result": "pass"
+    },
+    {
+      "name": "preserve-redesign-contracts",
+      "result": "pass"
+    },
+    {
+      "name": "motivated-motion-and-reduced-motion",
+      "result": "pass"
+    },
+    {
+      "name": "anti-template-composition",
+      "result": "pass"
+    },
+    {
+      "name": "plugin-admin-customer-surface-routing",
+      "result": "pass"
+    },
+    {
+      "name": "plugin-exact-visual-routing",
+      "result": "pass"
+    },
+    {
+      "name": "structured-figma-source",
+      "result": "pass"
+    },
+    {
+      "name": "structured-visual-proof-rejection",
+      "result": "pass"
+    },
+    {
+      "name": "interactive-client-navigation-lifecycle",
+      "result": "pass"
+    },
+    {
+      "name": "wcag-multistep-flow",
+      "result": "pass"
+    },
+    {
+      "name": "WordPress-design-system-component-first",
+      "result": "pass"
+    },
+    {
+      "name": "usability-outcome-evidence-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "material-direction-checkpoint",
+      "result": "pass"
+    },
+    {
+      "name": "plug-and-play-defaults-advanced-controls",
+      "result": "pass"
+    },
+    {
+      "name": "enterprise-accountability-failure-proof",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 21
+  },
+  "lineage": {
+    "verificationId": "site-visual-routing-2026-08-10-r4",
+    "artifactPointer": "codex-fresh-agent:/root/frontend_behavior_eval#2026-08-10"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-10T10:25:49.000Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "A source-blind agent routed plugin and site visuals correctly, required structured Figma identity and editable WordPress ownership, rejected known responsive defects, covered client-navigation lifecycle, and rejected onboarding friction without journey evidence."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "design",
+    "frontend",
+    "ux",
+    "enterprise",
+    "wordpress"
+  ]
+}

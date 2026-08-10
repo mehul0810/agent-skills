@@ -18,7 +18,7 @@
         "wp-plugin-expert/SKILL.md",
         "wp-plugin-expert/references/router.md"
       ],
-      "sha256": "495be6dce60d019015151855770c82fb02f5e469a13fcecfaa88ac7fb7effbef",
+      "sha256": "525835ba86c14a5d21524b23e82085727cafe60aaa636743fbfb74d5756af0b5",
       "scenario": {
         "id": "elevated-enterprise-runtime-assurance",
         "files": [
@@ -38,10 +38,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-08-03-r2.json",
-          "sha256": "c9527dbb1a38c5fc9dfda1ce3de650f7c8e4504cd884d68f323718aefb15fbfe",
-          "testedRevision": "bb18a7f86c161b4bb4efaf23cb5737eca39c9073",
-          "testedSourceSha256": "495be6dce60d019015151855770c82fb02f5e469a13fcecfaa88ac7fb7effbef",
+          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-08-10-r3.json",
+          "sha256": "8cea99401e8791f114d6bc9836bfb41186a0b0962089dad90d97fd9f113ac26d",
+          "testedRevision": "ab34bc4eb0b4d0911434af84d4f72ea8c37fb2ce",
+          "testedSourceSha256": "525835ba86c14a5d21524b23e82085727cafe60aaa636743fbfb74d5756af0b5",
           "testedScenarioSha256": "3d842125a654c717b1b68f1fe273d32f8bf4ac54bae26ac39dbacefb0f92eb84",
           "runtime": {
             "host": "codex-desktop",
@@ -76,7 +76,7 @@
         "wp-theme-expert/SKILL.md",
         "wp-theme-expert/references/router.md"
       ],
-      "sha256": "d820841a8dd6975932709bae0f09239f604599ed6350a7abae21bbf8c80d8305",
+      "sha256": "af060ed81e6aee22649d98999564e5abe73414b38e2c1dfc06cb488396b8e660",
       "scenario": {
         "id": "frontend-design-taste-routing",
         "files": [
@@ -100,7 +100,7 @@
           "Excellent UX Requires Outcome Evidence",
           "Material Greenfield Direction Checkpoint"
         ],
-        "sha256": "5d645542cbc594191163432ee8a7edeb9f4f54f3b81a703da4c1255255f57415"
+        "sha256": "d9d236220074678ea9908a73324302642a59217f8e966c520e2cb38ab028503a"
       },
       "requiredChecks": [
         "greenfield-taste-route",
@@ -127,11 +127,11 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/site-visual-routing-2026-08-03-r3.json",
-          "sha256": "1a5e0293cd930f9b9ff89a7e64c2712a0d3db9610135423ffc76067e6c121537",
-          "testedRevision": "bb18a7f86c161b4bb4efaf23cb5737eca39c9073",
-          "testedSourceSha256": "d820841a8dd6975932709bae0f09239f604599ed6350a7abae21bbf8c80d8305",
-          "testedScenarioSha256": "5d645542cbc594191163432ee8a7edeb9f4f54f3b81a703da4c1255255f57415",
+          "runRecord": "skill-evals/run-records/site-visual-routing-2026-08-10-r4.json",
+          "sha256": "326acd20105027ee4b77722a64844167ccd7c8979a5e51d99d5077bd964ac40e",
+          "testedRevision": "ab34bc4eb0b4d0911434af84d4f72ea8c37fb2ce",
+          "testedSourceSha256": "af060ed81e6aee22649d98999564e5abe73414b38e2c1dfc06cb488396b8e660",
+          "testedScenarioSha256": "d9d236220074678ea9908a73324302642a59217f8e966c520e2cb38ab028503a",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
@@ -193,7 +193,7 @@
         "shared/schemas/wp-quality-review.schema.json",
         "wp-quality-reviewer/scripts/validate-review-report.mjs"
       ],
-      "sha256": "83fc2fb253396609690a1c0b2cdbd481b43ab5af355822aceed4f9adaadced1f",
+      "sha256": "9234e9e1ff46478f20334b524080f98aae0624993dd875eac75f1e9e42775cb8",
       "scenario": {
         "id": "multi-domain-release-quality-review",
         "files": [
@@ -220,10 +220,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-07-26.json",
-          "sha256": "49c9f923b6500cb51c76f3be8ae764bcf2c5c0526a4b3c4dcf61e0b0be15ba40",
-          "testedRevision": "8a391aab4b2e945dfe83a3b4647145d4d2952072",
-          "testedSourceSha256": "83fc2fb253396609690a1c0b2cdbd481b43ab5af355822aceed4f9adaadced1f",
+          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-08-10-r2.json",
+          "sha256": "a1346839c874ded84d1119838b4c454d3586abd34ef66b5c9538fd650fbc1bce",
+          "testedRevision": "ab34bc4eb0b4d0911434af84d4f72ea8c37fb2ce",
+          "testedSourceSha256": "9234e9e1ff46478f20334b524080f98aae0624993dd875eac75f1e9e42775cb8",
           "testedScenarioSha256": "efe8d0daeec1a7c4653642b0dec40f89b93f78e04ff40f81f445353c511252ca",
           "runtime": {
             "host": "codex-desktop",
