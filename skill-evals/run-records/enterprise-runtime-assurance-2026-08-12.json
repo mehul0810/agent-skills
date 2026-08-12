@@ -1,0 +1,28 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "enterprise-runtime-assurance-2026-08-12",
+  "scenario": "elevated-enterprise-runtime-assurance",
+  "result": "succeeded",
+  "startedAt": "2026-08-12T14:48:37.000Z",
+  "durationMs": 0,
+  "checks": [
+    { "name": "elevated-risk-classification", "result": "pass" },
+    { "name": "compatibility-matrix-and-adaptive-docs", "result": "pass" },
+    { "name": "artifact-sbom-license-vulnerability-provenance", "result": "pass" },
+    { "name": "operations-observation-rollback-recovery", "result": "pass" },
+    { "name": "missing-release-evidence-fails-closed", "result": "pass" }
+  ],
+  "metrics": { "checks_passed": 5 },
+  "lineage": {
+    "verificationId": "enterprise-runtime-assurance-2026-08-12",
+    "artifactPointer": "codex-fresh-agents:/root/enterprise_route_regression_eval#2026-08-12"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-12T14:48:37.000Z",
+    "metricNames": ["checks_passed"],
+    "summary": "A source-blind evaluator preserved elevated enterprise compatibility, supply-chain, migration, multisite, operations, recovery, packaged-proof, and owner release boundaries."
+  },
+  "tags": ["fresh-agent", "sanitized", "enterprise", "runtime", "release", "wordpress"]
+}
