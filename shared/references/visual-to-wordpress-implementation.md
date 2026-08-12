@@ -1,6 +1,6 @@
 # Visual To WordPress Implementation Contract
 
-Use this as primary when translating an approved visual into WordPress. Add one support only for a confirmed architecture, conversion, accessibility, performance, vendor, interaction, or proof risk.
+Use for approved visual-to-WordPress work. Add one support only for a confirmed architecture, conversion, accessibility, performance, interaction, or proof risk.
 
 ## 1. Qualify The Source
 
@@ -24,11 +24,11 @@ For Figma, discover file/frame/node/version, variables, components, assets, font
 
 Before code, map:
 
-- regions, hierarchy, copy, semantics, measurements, typography, treatment, and layering,
+- regions, hierarchy, copy, semantics, measurements, type, and layering,
 - reusable component contracts: role, variants, states, bounds, tokens, and WordPress primitive,
-- assets, crops, focal points, responsive variants, and supplied/inferred interaction behavior,
-- content owner, editing surface, visitor and author golden workflows,
-- distribution, WordPress/Gutenberg/browser targets, required surface/state/environment captures and workflows, parity tolerance, performance budget, and deviations.
+- assets, crops, focal points, responsive variants, and supplied/inferred behavior,
+- owner, editing surface, visitor and author workflows,
+- distribution/runtime targets, required captures/workflows, parity tolerance, performance budget, and deviations.
 
 Use `wp-expert/scripts/fse-design-map.sh` for theme/FSE work. Keep the manifest compact and update it when implementation evidence disproves an assumption.
 
