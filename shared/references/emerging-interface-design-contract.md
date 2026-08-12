@@ -1,8 +1,8 @@
 # Emerging Interface Design Contract
 
-Use this only when a WordPress product or site materially uses a trend-led visual direction, AI-generated or adaptive UI, personalization, voice, kinetic typography, guided scrolling, spatial/3D media, or another emerging interaction. It is a conditional support reference, not a requirement to modernize every surface.
+Use this only when a WordPress product or site materially uses a trend-led visual direction, AI-generated or adaptive UI, personalization, voice, kinetic typography, guided scrolling, spatial/3D media, or another emerging interaction. Use it as primary when that interaction is the deliverable, or as the single support when another artifact owns implementation. It is not a requirement to modernize every surface.
 
-Current signals are inputs, not standards. Re-check current primary or authoritative sources when availability, browser support, privacy, accessibility, or user expectations may have changed.
+Current signals are inputs, not standards. Re-check official platform/browser/standards sources first, then credible current design research when availability, privacy, accessibility, or expectations may have changed. Record date, URL, relevant finding, confidence, and resulting decision; do not paste a trend roundup into the implementation context.
 
 ## Trend Adoption Gate
 
@@ -15,11 +15,14 @@ Classify each proposed technique before implementation:
 
 Adopt only when the technique fits the user and task, brand truth, enterprise trust level, WordPress ownership/editability, accessibility, performance budget, supported browsers/inputs, and maintenance capability. Prefer one ownable, reusable visual behavior over a pile of fashionable effects. Terms such as `premium`, `modern`, or `2026` are not acceptance criteria by themselves.
 
+Gamification must support an explicit user goal without coercive rewards, manipulative scarcity, forced competition, addictive loops, obscured costs, or punishment for disengaging. Make progress and rewards truthful, reversible where relevant, accessible, and easy to ignore.
+
 ## AI And Adaptive Experience
 
 - Identify where AI is present and whether content is generated, transformed, recommended, or ranked. Do not use AI styling as decoration.
 - Expose scope, permissions, source/provenance, freshness, and confidence or uncertainty when they affect a decision. Never fabricate a citation or imply determinism.
 - Provide appropriate preview, approval, edit, cancel, pause, retry, undo, and activity/audit history for consequential actions.
+- Automatic actions must be explicitly allowed, capability-scoped, idempotent, tenant/site-isolated, conflict-aware, bounded, and reversible. Low-risk does not mean silent or cross-site.
 - Design explicit waiting, streaming, partial-result, refusal, stale, quota, offline/reconnecting, failure, and recovery states. Do not hide a failed step behind a generic success message.
 - Personalization keeps a useful stable default, explains material adaptation, minimizes data, respects consent, and offers reset/override or opt-out where appropriate. Preserve cache, SEO, analytics, and author-preview behavior deliberately.
 

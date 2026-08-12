@@ -8,7 +8,7 @@ For each scenario record route, references loaded, avoidable loads, classificati
 
 Prompt: Make this enterprise WordPress site look 2026: use maximalism, 3D, experimental navigation, kinetic type, glass effects, and gamification.
 
-Required: inspect product, audience, brand, task, content, and runtime; classify each technique as durable, experimental, campaign-only, or decorative; choose only evidence-backed techniques; define fallback, success measure, and removal path for experiments; preserve WordPress editability, navigation, accessibility, and performance.
+Required: inspect product, audience, brand, task, content, and runtime; classify each technique as durable, experimental, campaign-only, or decorative; choose only evidence-backed techniques; reject coercive rewards and dark patterns; define fallback, success measure, and removal path for experiments; preserve WordPress editability, navigation, accessibility, and performance.
 
 Forbidden: treating `2026` as acceptance criteria, applying every named trend, installing an aesthetic stack by default, or calling novelty premium.
 
@@ -16,7 +16,7 @@ Forbidden: treating `2026` as acceptance criteria, applying every named trend, i
 
 Prompt: Personalize this plugin dashboard with AI recommendations and let the agent apply changes automatically.
 
-Required: identify AI presence and output type; define scope/permissions, source/provenance/freshness, uncertainty, stable default, consent/data boundary, explain/reset/override, preview/approval proportional to consequence, cancel/undo/retry, audit history, and streaming/partial/failure states; preserve a deterministic admin and author experience.
+Required: identify AI presence and output type; define scope/permissions, source/provenance/freshness, uncertainty, stable default, consent/data boundary, explain/reset/override, preview/approval proportional to consequence, cancel/undo/retry, audit history, and streaming/partial/failure states; require automatic actions to be allowlisted, idempotent, conflict-aware, tenant-isolated, bounded, and reversible; preserve a deterministic admin and author experience.
 
 Forbidden: hidden personalization, decorative AI styling, unexplained ranking, fabricated citations/confidence, silent execution, generic success after partial failure, or public disclosure of sensitive internals.
 

@@ -55,6 +55,7 @@
       "name": "design-experience-routing",
       "files": [
         "shared/references/design-intelligence-routing.md",
+        "shared/references/emerging-interface-design-contract.md",
         "shared/references/enterprise-design-judgment.md",
         "shared/references/frontend-design-taste.md",
         "shared/references/product-experience-principles.md",
@@ -66,9 +67,16 @@
       "scenario": {
         "id": "premium-enterprise-design-experience",
         "files": [
+          "skill-evals/emerging-interface-design-scenarios.md",
           "skill-evals/visual-wordpress-scenarios.md"
         ],
         "anchors": [
+          "Trend Pile-On Is Not A Direction",
+          "Governed Adaptive AI Dashboard",
+          "Kinetic Variable Typography",
+          "Voice Workflow Requires An Equivalent Path",
+          "Immersive Product Story With Enterprise Constraints",
+          "Enterprise Overview Before Selective Depth",
           "Generic SaaS Composition Without A Target",
           "Operational Dashboard Rejects Marketing Taste",
           "Preserve Redesign Without Contract Drift",
@@ -88,7 +96,13 @@
         "usability-outcome-evidence-boundary",
         "material-direction-checkpoint",
         "plug-and-play-defaults-advanced-controls",
-        "enterprise-accountability-failure-proof"
+        "enterprise-accountability-failure-proof",
+        "trend-adoption-and-removal-path",
+        "adaptive-ai-transparency-and-control",
+        "voice-equivalent-path-and-privacy",
+        "typography-loading-and-reduced-motion",
+        "immersive-fallback-and-performance",
+        "enterprise-progressive-depth"
       ],
       "evidence": [
         {
@@ -108,6 +122,7 @@
     {
       "name": "wordpress-visual-execution",
       "files": [
+        "shared/references/emerging-interface-design-contract.md",
         "shared/references/visual-to-wordpress-implementation.md",
         "wp-expert/references/accessibility-i18n-global-readiness.md",
         "wp-expert/references/interactivity-api-frontend.md",
@@ -125,9 +140,12 @@
       "scenario": {
         "id": "wordpress-visual-execution",
         "files": [
+          "skill-evals/emerging-interface-design-scenarios.md",
           "skill-evals/visual-wordpress-scenarios.md"
         ],
         "anchors": [
+          "Governed Adaptive AI Dashboard",
+          "Immersive Product Story With Enterprise Constraints",
           "Exact Target Must Not Be Reinterpreted",
           "Taste Proof Across Intermediate Widths",
           "Plugin-Owned Product Surface Routing",
@@ -148,7 +166,9 @@
         "structured-figma-source",
         "interactive-client-navigation-lifecycle",
         "wcag-multistep-flow",
-        "WordPress-design-system-component-first"
+        "WordPress-design-system-component-first",
+        "emerging-interface-route-preserves-exact-proof",
+        "immersive-editor-and-fallback-proof"
       ],
       "evidence": [
         {
