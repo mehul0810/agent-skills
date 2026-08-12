@@ -14,7 +14,7 @@ Classify it as:
 
 Record dimensions, viewport/state, fonts/assets, and supplied responsive/interaction behavior. Mark important values `supplied`, `measured`, or `inferred`; never present inference as fact.
 
-Record unknowns, evidence, reversible inference, and validation. Ask only about brand-critical, irreversible, unsafe, or journey-changing choices; otherwise use an accessible WordPress-native default and label it inferred.
+Keep an ambiguity ledger: unknown, evidence, reversible inference, and validation. Ask only about brand-critical, irreversible, unsafe, or journey-changing choices; otherwise use an accessible WordPress-native default and label it inferred.
 
 ### Figma Source Preflight
 
@@ -80,19 +80,19 @@ For exact/regression work, use `../../wp-expert/references/visual-parity-regress
 
 For `Exact`, regression, release-critical, or failed work, use visual-proof schema v2 at `../schemas/wordpress-visual-proof.schema.json` and run `node wp-expert/scripts/validate-visual-proof.mjs <proof.json>`. Declare required capture, workflow, environment, and asset IDs before proof. For release-bound work, install the packaged ZIP/artifact and bind its digest, version/build identity, and environment to every candidate capture; working-tree or development-server screenshots are supplementary, not release proof. The receipt binds immutable evidence, per-surface coverage, risk-aware design/accessibility review, token lineage, defects, and reproof. Validation proves receipt integrity, not aesthetic correctness.
 
-Compare source and candidate by overlay/perceptual diff when available across geometry, type, color, crops, responsive behavior, interactions, and editing surfaces. Use project tolerances; otherwise investigate hard-edge deltas above 2 CSS px after capture is deterministic. Treat font rasterization separately instead of adding fragile compensation.
+Compare source and candidate by overlay or perceptual diff when available across geometry, type, color, crops, responsive behavior, interactions, and editing surfaces. Use project tolerances; otherwise investigate hard-edge geometry deltas above 2 CSS px after capture is deterministic. Treat font rasterization separately instead of adding fragile compensation.
 
-Use the smallest risk matrix: narrow/mobile, target desktop, and an intermediate resize sweep; add engines, devices, locales, content, and roles only when evidence warrants them. Bind required environments to captures and name material browser/assistive-technology tasks. Without a mobile target, prove coherent accessible inference, not pixel parity.
+Use the smallest risk matrix: narrow/mobile, target desktop, and an intermediate resize sweep; add engines, devices, locales, content, and roles only when evidence warrants them. Bind required environments to captures. Material accessibility names the tested browser/assistive-technology task. Without a mobile target, mobile proof covers accessible, coherent inferred behavior, not pixel parity.
 
 For multi-surface or elevated design-system changes, bind `DESIGN.md` or the equivalent contract and trace affected semantic tokens through Figma/WPDS, `theme.json`, CSS variables, block styles, and rendered output. A pass cannot retain token drift or unowned raw values; intentional deviations need evidence and rationale.
 
 ### Failed Proof Recovery Gate
 
-Visual proof is executable. Any reproducible in-scope overlap, clipping, overflow, wrong hierarchy/asset, responsive failure, inaccessible interaction, or editor/frontend divergence sets `FAIL` and reopens implementation. Do not declare completion or return only an apology while safe recovery exists.
+Visual proof is executable. Any reproducible in-scope overlap, clipping, overflow, wrong hierarchy/asset, responsive failure, inaccessible interaction, or editor/frontend divergence sets the work to `FAIL` and reopens implementation. Do not declare completion or return only an apology while safe recovery exists.
 
 Classify the owning cause first: asset/font/data readiness; ownership/block hierarchy; tokens/components; cascade, Global Styles, or Site Editor overrides; intrinsic layout/breakpoints; runtime state; or capture contamination. Fix that layer, not symptoms with page/viewport selectors, magic offsets, or frontend-only CSS.
 
-Re-render the failure and smallest affected editor/frontend set. Keep observed and fixed evidence under one defect ID. P1/P2 defects cannot pass; only an approved, evidenced P3 deviation may remain. After two failed repair cycles, recheck source, manifest, ownership, and architecture. Escalate only an external blocker or material design decision with evidence and the best recovery. Missing evidence never converts observed failure into a pass.
+Re-render the failure and smallest affected editor/frontend set. Keep observed and fixed evidence under one defect ID. P1/P2 defects cannot be accepted into a pass; only an approved, evidenced P3 deviation may remain. After two failed repair cycles, recheck source, manifest, ownership, and architecture. Escalate only an external blocker or material design decision with evidence and the best recovery. Unavailable evidence cannot convert an observed failure into a pass.
 
 Completion requires:
 
