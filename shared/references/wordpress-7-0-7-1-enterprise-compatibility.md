@@ -1,6 +1,6 @@
 # WordPress 7.0 And 7.1 Enterprise Compatibility
 
-Use this reference only when work targets WordPress 7.0/7.1, changes `Tested up to`, adopts a release-specific API, or assesses an upgrade. It is a dated compatibility snapshot, not a substitute for live Core verification.
+Use when work targets WordPress 7.0/7.1, changes `Tested up to`, adopts an API, or assesses an upgrade. This dated snapshot does not replace live Core verification.
 
 ## Evidence State
 
@@ -10,20 +10,20 @@ Checked 2026-08-12 against official WordPress sources:
 - 7.1 release candidate: [7.1 release page](https://make.wordpress.org/core/7-1/), [7.1 Field Guide](https://make.wordpress.org/core/2026/08/05/wordpress-7-1-field-guide/), and [Help Test 7.1](https://make.wordpress.org/test/2026/07/15/help-test-wordpress-7-1/).
 - Roadmap context only: [Roadmap to 7.1](https://make.wordpress.org/core/2026/06/19/roadmap-to-7-1/).
 
-At execution time, recheck the release page, Field Guide/dev notes, latest security release, and runtime registry. Classify every relied-on capability as `production`, `release-candidate`, `experimental/deferred`, or `unverified`. A roadmap, Gutenberg experiment, proposal, ticket, or documentation page does not prove that an API/block shipped.
+Recheck official release/security/dev sources and the runtime registry. Classify every relied-on capability as `production`, `release-candidate`, `experimental/deferred`, or `unverified`. Roadmaps, experiments, proposals, tickets, and documentation do not prove shipment.
 
-At the snapshot date, final 7.1 was scheduled for 2026-08-19 and the RC sequence had changed after the 7.0.3 security release; 7.1 RC2 carried applicable fixes. Treat both candidate number and release date as live facts, never durable assumptions.
+At this snapshot, final 7.1 was scheduled for 2026-08-19; 7.1 RC2 carried applicable 7.0.3 fixes. Candidate number and date remain live facts.
 
 ## WordPress 7.0 Production Baseline
 
 Relevant shipped surfaces include:
 
 - WP AI Client, client-side Abilities, the Connectors screen/API, and provider-agnostic model routing. Treat connector credentials as secrets; require capability checks, consent/data-flow disclosure, quotas, timeouts, redaction, and deterministic non-AI fallbacks.
-- Modern admin styling, margin-free editor components, view transitions, command palette access, Font Library, Visual Revisions, navigation overlays, viewport visibility, and broader `contentOnly` pattern editing. Test existing admin CSS/DOM/spacing assumptions and editor workflows rather than copying Core internals.
+- Modern admin styling, margin-free components, view transitions, command palette, Font Library, Visual Revisions, navigation overlays, viewport visibility, and broader `contentOnly` editing. Test admin CSS/DOM/spacing assumptions and workflows; do not copy Core internals.
 - Icon, Headings, and Breadcrumbs blocks; Gallery lightbox/slideshow; video Cover backgrounds; paragraph text columns/indent; dimension presets; block-level custom CSS; button pseudo-state support in `theme.json`. Prefer native author controls, but verify the exact registered block/support at runtime.
 - Pattern Overrides for custom blocks and wider `contentOnly` use. Mark content attributes with `role: "content"` where required; prove List View discoverability and non-technical editing.
 - PHP-only block registration with `autoRegister`, generated DataForm inspector controls, Interactivity API `watch()`/`data-wp-watch`, DataViews/DataForms additions, block-binding iterations, plugin-list filters, and Site Editor build/routing foundations. Feature-detect and retain fallbacks when supporting older WordPress versions.
-- Script modules may depend on scripts; HTML5 script theme support was removed; CodeMirror 5-era tooling, Backbone 1.6.1, Requests 2.0.17, PHPMailer 7.0.2, and registration hardening changed compatibility surfaces. Audit dependency handles, removed theme declarations, admin/editor snapshots, mail/account flows, and bundled-library assumptions rather than shipping replacement copies of Core libraries.
+- Script modules may depend on scripts; HTML5 script theme support was removed; CodeMirror 5-era tooling, Backbone 1.6.1, Requests 2.0.17, PHPMailer 7.0.2, and registration hardening changed compatibility. Audit handles, theme declarations, snapshots, mail/account flows, and bundled-library assumptions; do not ship replacement Core libraries.
 - Core's minimum PHP floor changed to 7.4. This is a compatibility floor, not an enterprise recommendation: new enterprise work still follows the active-runtime policy and must not select an EOL PHP version merely because Core accepts it.
 
 Production operations must target the latest patched 7.0.x, not 7.0.0. WordPress 7.0.3 is a security release and official guidance says to update immediately. Do not reproduce exploit details in public product issues; use sanitized hardening language and private disclosure paths.
