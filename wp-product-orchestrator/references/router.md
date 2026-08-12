@@ -18,6 +18,7 @@ Use one primary mode. Open only the named reference and relevant `##` section; a
 - Product `AGENTS.md`, `DESIGN.md`, `TESTING.md`, `RELEASE.md`, and self-improving docs: `../../shared/references/repo-product-docs-contract.md`.
 - Evidence-backed authority, SEO/AEO/GEO, AI citation, conversion, and measurement work: `../../shared/references/authority-growth-lane.md`.
 - Current WordPress ecosystem changes affecting the product: `../../shared/references/weekly-wordpress-intelligence.md`.
+- WordPress 7.0/7.1 compatibility intake, security baseline, `Tested up to`, and release evidence: `../../shared/references/wordpress-7-0-7-1-enterprise-compatibility.md`.
 - Repeatable failure, evidence-backed proactive pattern, durable placement, and outcome lineage: `../../shared/references/self-improvement-loop.md`.
 
 Route implementation to the narrow specialist; this router governs product state and proof, not code details.

@@ -9,6 +9,7 @@ Use this router only after `wp-contributor` is selected. Load the smallest relev
 - `../../shared/references/project-subagent-routing.md`: project-level subagent profiles, model routing, bounded parallel mapping, and parent-owned commits/PRs.
 - `../../shared/references/production-dependency-discipline.md`: Composer/npm production artifact hygiene, `require-dev`/`devDependencies` boundaries, production installs, and release ZIP/deploy checks.
 - `../../shared/references/enterprise-code-quality-gate.md`: enterprise-grade code creation and review gate for modularity, performance, security, maintainability, observability, and rare-scenario tests.
+- `../../shared/references/wordpress-7-0-7-1-enterprise-compatibility.md`: dated 7.0/7.1 shipped, RC, deferred, compatibility, and enterprise proof boundaries; recheck live Core sources before contribution decisions.
 - `official-anchors.md`: current official source links and what must be rechecked before relying on process details.
 - `contribution-map.md`: WordPress project areas, where to file issues, and how Core, Meta, Gutenberg, Docs, Test, Accessibility, Performance, and i18n differ.
 - `core-workflow.md`: `wordpress-develop`, trunk-first work, SVN/Git mirrors, patch files, Core Trac, GitHub PR linkage, and patch refreshes.

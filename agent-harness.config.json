@@ -206,6 +206,15 @@
       ]
     },
     {
+      "name": "WordPress 7 compatibility",
+      "maxWords": 2050,
+      "warningPercent": 85,
+      "files": [
+        "wp-plugin-expert/SKILL.md",
+        "shared/references/wordpress-7-0-7-1-enterprise-compatibility.md"
+      ]
+    },
+    {
       "name": "Quality security review",
       "maxWords": 2400,
       "warningPercent": 85,
@@ -432,6 +441,11 @@
       "name": "WP Contributor",
       "file": "skill-evals/wp-contributor-scenarios.md",
       "requiredPhrases": ["# WP Contributor Scenarios"]
+    },
+    {
+      "name": "WordPress 7 compatibility",
+      "file": "skill-evals/wordpress-7-compatibility-scenarios.md",
+      "requiredPhrases": ["# WordPress 7.0 And 7.1 Compatibility Scenarios", "Roadmap hallucination", "Always-iframed editor", "Unicode email integration"]
     },
     {
       "name": "Routing collisions",

@@ -7,6 +7,7 @@ Use this router only after `wp-plugin-expert` is selected. Load one primary refe
 - Focused independent security, performance, modularity/maintainability, or accessibility review or review-led remediation: route to `wp-quality-reviewer`; routine feature constraints and fixes stay with this plugin specialist.
 - Cross-boundary engineering graph, missing project knowledge/docs, graph closure, and durable failure learning: `../../shared/references/wordpress-engineering-graph.md`.
 - Compatibility, supply chain, production observation, recovery, and adaptive enterprise contracts: `../../shared/references/enterprise-runtime-assurance.md`.
+- WordPress 7.0/7.1 APIs, editor changes, security baseline, compatibility testing, or `Tested up to`: `../../shared/references/wordpress-7-0-7-1-enterprise-compatibility.md`.
 - Isolated source-of-truth, ownership, public-contract, release, security, performance, or proof decision: `../../wp-expert/references/architecture-decision-gate.md`.
 - Plugin architecture/features/refactors: `../../wp-expert/references/plugin-architecture.md`.
 - Plugin-owned portable custom blocks, `block.json`, static/dynamic rendering, attributes, transforms/deprecations, block bindings, and Interactivity API: `../../wp-expert/references/theme-and-block-editor.md`.

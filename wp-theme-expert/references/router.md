@@ -7,6 +7,7 @@ Use this router only after `wp-theme-expert` is selected. Load one primary refer
 - Focused independent security, performance, modularity/maintainability, or accessibility review or review-led remediation: route to `wp-quality-reviewer`; routine theme/FSE constraints and fixes stay with this specialist.
 - Cross-boundary engineering graph, missing project knowledge/docs, graph closure, and durable failure learning: `../../shared/references/wordpress-engineering-graph.md`.
 - Compatibility, supply chain, production observation, recovery, and adaptive enterprise contracts: `../../shared/references/enterprise-runtime-assurance.md`.
+- WordPress 7.0/7.1 blocks, Global Styles, iframed editor, theme compatibility, or `Tested up to`: `../../shared/references/wordpress-7-0-7-1-enterprise-compatibility.md`.
 - Theme/plugin/content ownership, public-contract, release, performance, or proof decisions: `../../wp-expert/references/architecture-decision-gate.md`.
 - Block themes, FSE architecture, `theme.json`, templates, parts, patterns: `../../wp-expert/references/block-theme-architecture.md`.
 - Runtime block inventory, core-first composition, editable render proof, and Site Editor override promotion/precedence: `../../shared/references/core-first-site-theme-workflow.md`.

@@ -7,6 +7,7 @@ Use this router only after `wp-site-expert` is selected. Load one primary refere
 - Focused independent security, performance, modularity/maintainability, or accessibility review or review-led remediation: route to `wp-quality-reviewer`; routine site delivery constraints and fixes stay with this specialist.
 - Cross-boundary engineering graph, missing project knowledge/docs, graph closure, and durable failure learning: `../../shared/references/wordpress-engineering-graph.md`.
 - Compatibility, supply chain, production observation, recovery, and adaptive enterprise contracts: `../../shared/references/enterprise-runtime-assurance.md`.
+- WordPress 7.0/7.1 site upgrade, editor/media behavior, runtime block inventory, or compatibility proof: `../../shared/references/wordpress-7-0-7-1-enterprise-compatibility.md`.
 - Source-of-truth, ownership, public-contract, release, performance, privacy, or proof decisions: `../../wp-expert/references/architecture-decision-gate.md`.
 - Conversion-focused landing pages, funnels, CRO-safe implementation: `../../wp-expert/references/conversion-focused-website-engineering.md`.
 - UX discovery, IA, user journeys, UX writing, design QA: `../../wp-expert/references/ux-product-strategy-design-qa.md`.
