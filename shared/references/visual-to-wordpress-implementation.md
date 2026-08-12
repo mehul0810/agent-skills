@@ -108,4 +108,4 @@ Completion requires:
 
 ## Output
 
-Report source classification, ambiguity decisions, ownership and component maps, assets, capture fingerprint, visitor/author workflows, validation surfaces, parity deviations, and unresolved decisions. Keep raw measurements and screenshot paths in the manifest rather than repeating them in chat.
+Report source class, decisions, ownership/components, assets, capture fingerprint, workflows, validation surfaces, deviations, and unresolved items. Keep raw measurements and screenshot paths in the manifest, not chat.
