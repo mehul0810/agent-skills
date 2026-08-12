@@ -1,6 +1,6 @@
 # Visual To WordPress Implementation Contract
 
-Use this as primary for translating an approved visual into a WordPress theme, page, pattern, block, plugin surface, or site. Add one support only for a confirmed architecture, conversion, accessibility, performance, vendor, interaction, or proof risk.
+Use this as primary when translating an approved visual into WordPress. Add one support only for a confirmed architecture, conversion, accessibility, performance, vendor, interaction, or proof risk.
 
 ## 1. Qualify The Source
 
@@ -14,11 +14,11 @@ Classify it as:
 
 Record dimensions, viewport/state, fonts/assets, and supplied responsive/interaction behavior. Mark important values `supplied`, `measured`, or `inferred`; never present inference as fact.
 
-Keep an ambiguity ledger: unknown, evidence, reversible inference, and validation. Ask only for brand-critical, irreversible, unsafe, or journey-changing decisions; otherwise use the strongest accessible WordPress-native default and label it inferred.
+Record unknowns, evidence, reversible inference, and validation. Ask only about brand-critical, irreversible, unsafe, or journey-changing choices; otherwise use an accessible WordPress-native default and label it inferred.
 
 ### Figma Source Preflight
 
-For Figma, discover structured context before using a screenshot: file/frame/node/version, variables, components, assets, fonts, constraints, and interactions. Use `figma-implement-design` when available; WordPress ownership stays with the specialist. Fingerprint the source. If access fails, declare it and inspect an owner-supplied export; never invent hidden values.
+For Figma, discover file/frame/node/version, variables, components, assets, fonts, constraints, and interactions before using a screenshot. Use `figma-implement-design` when available; ownership stays with the WordPress specialist. Fingerprint the source. If access fails, inspect an owner-supplied export and declare the gap; never invent values.
 
 ## 2. Build A Visual And Behavior Manifest
 
@@ -41,6 +41,8 @@ Use `wp-expert/scripts/fse-design-map.sh` for theme/FSE work. Keep the manifest 
 
 For block themes, map through `theme.json`, verified blocks/supports, patterns, templates/parts, variations, bindings, custom blocks, then Interactivity API. Structural templates render Post Content when Pages > Edit owns the body. Build saved content, not a pattern-only or frontend-CSS simulation. Never use Custom HTML/Shortcode shortcuts. Apply the distribution gate in `../../wp-expert/references/block-theme-architecture.md` before theme-owned functionality.
 
+Before designing a custom control, inventory stable Core and WordPress Design System components in the supported runtime. Reuse the accessible primitive and adapt it with product tokens when it meets the interaction contract. A bespoke replacement needs a recorded functional gap, ownership, state/accessibility contract, and maintenance rationale; visual novelty alone is insufficient.
+
 ## 4. Handle Image Assets Deliberately
 
 Inventory each asset: reuse, generate, source/license, recreate appropriately, or mark a temporary placeholder.
@@ -54,7 +56,7 @@ When generation is needed:
 5. Inspect target crops/resolutions; revise a miss instead of compensating with CSS.
 6. Record provenance, approval status, alt-text intent, focal point, responsive crops, format, dimensions, and optimization status.
 
-For generated, licensed, or materially art-directed assets, write `../schemas/wordpress-asset-production.schema.json` and run `node wp-expert/scripts/validate-asset-production.mjs <receipt.json>`. Bind each required asset receipt into the visual proof; approval, target crops, provenance, and optimization must be evidence, not prose claims. Keep proof artifacts local to the receipt: the validator hashes their actual bytes, and remote evidence must first be downloaded as an immutable artifact.
+For generated, licensed, or art-directed assets, write `../schemas/wordpress-asset-production.schema.json` and run `node wp-expert/scripts/validate-asset-production.mjs <receipt.json>`. Bind each receipt into visual proof with evidenced approval, crops, provenance, and optimization. Keep proof artifacts local; download remote evidence before byte hashing.
 
 Prefer responsive WordPress media handling and appropriate WebP/AVIF/JPEG/PNG/SVG output. Do not claim licensing, authorship, brand approval, or factual depiction without evidence.
 
@@ -70,25 +72,27 @@ Prefer responsive WordPress media handling and appropriate WebP/AVIF/JPEG/PNG/SV
 
 Do not start with cosmetic nudges before ownership, structure, fonts, and real assets are stable. Create a custom block only when native primitives cannot preserve the editing and design contract.
 
+For immersive, adaptive, motion-led, or media-dependent behavior, define the meaningful static state, reduced-motion and reduced-data behavior, unsupported-browser and failed-media fallback, measurable user value, lifecycle cleanup, and removal/rollback path before implementation. Failure of enhancement must preserve content, navigation, task completion, and authoring.
+
 ## 6. Prove The Result
 
 For exact/regression work, use `../../wp-expert/references/visual-parity-regression.md` only when no other confirmed support risk owns the support slot. Establish a capture fingerprint: build, runtime, browser/OS/DPR, viewport/zoom/scroll, locale, preferences, loaded media/fonts, and volatile-input treatment.
 
-For `Exact`, regression, release-critical, or failed work, use visual-proof schema v2 at `../schemas/wordpress-visual-proof.schema.json` and run `node wp-expert/scripts/validate-visual-proof.mjs <proof.json>`. Declare required capture, workflow, environment, and asset IDs before proof. It binds immutable evidence, per-surface coverage, risk-aware design/accessibility review, token lineage, defects, and reproof. Validation proves receipt integrity, not aesthetic correctness.
+For `Exact`, regression, release-critical, or failed work, use visual-proof schema v2 at `../schemas/wordpress-visual-proof.schema.json` and run `node wp-expert/scripts/validate-visual-proof.mjs <proof.json>`. Declare required capture, workflow, environment, and asset IDs before proof. For release-bound work, install the packaged ZIP/artifact and bind its digest, version/build identity, and environment to every candidate capture; working-tree or development-server screenshots are supplementary, not release proof. The receipt binds immutable evidence, per-surface coverage, risk-aware design/accessibility review, token lineage, defects, and reproof. Validation proves receipt integrity, not aesthetic correctness.
 
-Compare source and candidate by overlay or perceptual diff when available. Evaluate geometry, typography, color, asset crop, responsive behavior, interactions, and editing surfaces. Use project or region-specific tolerances. Without one, investigate hard-edge geometry deltas above 2 CSS px only after the capture environment is deterministic; treat font rasterization and anti-aliasing separately rather than forcing fragile compensation.
+Compare source and candidate by overlay/perceptual diff when available across geometry, type, color, crops, responsive behavior, interactions, and editing surfaces. Use project tolerances; otherwise investigate hard-edge deltas above 2 CSS px after capture is deterministic. Treat font rasterization separately instead of adding fragile compensation.
 
-Use the smallest declared risk matrix: narrow/mobile, target desktop, and intermediate resize sweep for every changed surface; add browser engines, real devices, locales, content, and roles only when support/risk evidence requires them. Bind every required environment to a capture. Material accessibility names the tested browser/assistive-technology task. When no mobile visual exists, mobile proof covers accessible, coherent inferred behavior, not pixel parity.
+Use the smallest risk matrix: narrow/mobile, target desktop, and an intermediate resize sweep; add engines, devices, locales, content, and roles only when evidence warrants them. Bind required environments to captures and name material browser/assistive-technology tasks. Without a mobile target, prove coherent accessible inference, not pixel parity.
 
 For multi-surface or elevated design-system changes, bind `DESIGN.md` or the equivalent contract and trace affected semantic tokens through Figma/WPDS, `theme.json`, CSS variables, block styles, and rendered output. A pass cannot retain token drift or unowned raw values; intentional deviations need evidence and rationale.
 
 ### Failed Proof Recovery Gate
 
-Visual proof is an executable test. Any reproducible in-scope candidate defect, including overlap, clipping, overflow, wrong hierarchy or assets, broken responsiveness, inaccessible interaction, or editor/frontend divergence, sets the work to `FAIL` and reopens implementation. Do not declare completion or return an apology plus a promise while safe recovery exists.
+Visual proof is executable. Any reproducible in-scope overlap, clipping, overflow, wrong hierarchy/asset, responsive failure, inaccessible interaction, or editor/frontend divergence sets `FAIL` and reopens implementation. Do not declare completion or return only an apology while safe recovery exists.
 
-Classify the highest owning cause before more code: asset/font/data readiness; WordPress ownership or block hierarchy; tokens or component constraints; cascade, Global Styles, or Site Editor overrides; intrinsic layout or breakpoints; runtime state; or capture contamination. Fix that layer, not symptoms with page/viewport selectors, magic offsets, or frontend-only CSS.
+Classify the owning cause first: asset/font/data readiness; ownership/block hierarchy; tokens/components; cascade, Global Styles, or Site Editor overrides; intrinsic layout/breakpoints; runtime state; or capture contamination. Fix that layer, not symptoms with page/viewport selectors, magic offsets, or frontend-only CSS.
 
-Re-render the failing state and smallest affected editor/frontend regression set. Record observed and fixed evidence under one defect ID so the receipt proves reproof, not replacement. P1/P2 defects cannot be accepted into a pass; only an explicitly approved, evidenced P3 deviation may remain. After two repair-and-proof cycles without convergence, stop tweaking and recheck source classification, manifest, ownership, and architecture. Escalate only a genuine external blocker or material design decision, with failed evidence and the best recovery path. Unavailable evidence may be a proof gap; it cannot convert an observed failure into a pass.
+Re-render the failure and smallest affected editor/frontend set. Keep observed and fixed evidence under one defect ID. P1/P2 defects cannot pass; only an approved, evidenced P3 deviation may remain. After two failed repair cycles, recheck source, manifest, ownership, and architecture. Escalate only an external blocker or material design decision with evidence and the best recovery. Missing evidence never converts observed failure into a pass.
 
 Completion requires:
 

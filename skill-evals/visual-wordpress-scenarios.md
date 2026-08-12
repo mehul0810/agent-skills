@@ -158,6 +158,14 @@ Required: state what each proposed animation communicates; inspect existing prod
 
 Forbidden: motion because it looks expensive, default scroll hijacking, continuous React state updates, adding multiple animation libraries, or completion without reduced-motion and touch evidence.
 
+### Packaged Immersive UI Uses Stable Components
+
+Prompt: Approve this immersive plugin onboarding redesign from development screenshots; it replaces standard controls with custom ones and the release ZIP has not been installed.
+
+Required: inventory stable Core/WPDS components before bespoke controls; require a functional and maintenance rationale for each custom replacement; define meaningful static, reduced-motion, reduced-data, unsupported-browser, and failed-media behavior plus lifecycle cleanup and removal/rollback; install the packaged ZIP and bind its digest/version/environment to the visual receipt and candidate captures.
+
+Forbidden: custom controls for novelty alone, animation/media as the only path to content or task completion, development-server screenshots as release proof, or a package path with no digest-bound installed-candidate evidence.
+
 ### Sparse Brief Cannot Create Proof
 
 Prompt: Create a visually rich new product page. No logo, screenshots, customer list, testimonial, or metrics were supplied.
