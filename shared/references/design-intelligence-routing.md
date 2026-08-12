@@ -19,6 +19,8 @@ Use `product-design:index` as the router only. Then pick the narrowest Product D
 - `product-design:image-to-code`: only after a source visual direction is selected.
 - `imagegen`: generate or edit production raster assets after an asset brief exists; it does not replace WordPress implementation or visual QA.
 
+When the material design risk is AI-generated/adaptive UI, personalization, voice, kinetic typography, guided scrolling, spatial/3D media, or trend-led composition, use `emerging-interface-design-contract.md` as the single support reference. It supplies the adoption, fallback, trust, and proof gate; do not treat a trend label as direction approval.
+
 For a Figma URL/file/node, discover the Figma context capability and obtain structured node, variable, component, asset, font, constraint, and interaction evidence before using image-to-code. Do not substitute a screenshot when live structured context is available; if access fails, use an inspected export and state the proof gap.
 
 When a greenfield or redesigned frontend has no selected visual target, or a rendered result is coherent but still generic/template-like, use `frontend-design-taste.md` as the one supporting judgment reference. It provides a WordPress-native design read, expressiveness/motion/density/trust dials, anti-repetition review, and taste preflight. Do not stack it onto exact screenshot/Figma implementation, routine admin UX, or a second confirmed support risk.

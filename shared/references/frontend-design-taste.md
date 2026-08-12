@@ -4,6 +4,8 @@ Use this as the one supporting reference when a WordPress site, theme, landing p
 
 Do not load it for tiny polish, exact screenshot/Figma implementation, routine wp-admin conventions, or dense operational UI. With a supplied target, keep `visual-to-wordpress-implementation.md` primary. For admin workflows, keep `ui-ux-pro-for-wordpress.md` primary. Never add a design system or animation dependency only to obtain an aesthetic.
 
+When the brief is trend-led or materially proposes AI adaptation, personalization, voice, kinetic typography, guided scrolling, or immersive/3D media, load `emerging-interface-design-contract.md` as the one support reference. Apply its adoption and fallback gate before choosing a direction; `premium`, `modern`, or a year label is not a visual specification.
+
 ## 1. Establish The Design Read
 
 Before code, state a compact internal design read:

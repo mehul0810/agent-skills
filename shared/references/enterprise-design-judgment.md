@@ -53,6 +53,7 @@ For AI, automation, and workflow-heavy products:
 - Show where human review exists, what permissions apply, what gets logged, and how failure or retry is handled.
 - Prefer screenshots or state diagrams that show controls, approvals, and outcomes instead of generic AI chat visuals.
 - Avoid implying autonomy without guardrails, review boundaries, or recovery behavior.
+- When AI presence, generated/adaptive output, personalization, or multimodal input is material, use `emerging-interface-design-contract.md` as the one support for labeling, explainability, control, fallback, and proof rather than inventing a decorative AI language.
 
 ## UX And UI Review Lens
 

@@ -2,7 +2,7 @@
 
 Use this for UX strategy, UI improvement, visual QA, product flows, interaction design, responsive polish, conversion-oriented WordPress screens, admin/editor experiences, frontend feature pages, dashboards, onboarding, forms, tables, and design-to-code implementation.
 
-This reference fuses product-grade UI/UX reasoning with WordPress-native constraints. Use it as primary for UI implementation without a supplied visual target. For screenshot/Figma/image implementation, use `../../shared/references/visual-to-wordpress-implementation.md` instead. Add only one supporting reference for a confirmed WPDS, enterprise-judgment, style-system, discovery, or delivery risk; do not load the whole design stack.
+This reference fuses product-grade UI/UX reasoning with WordPress-native constraints. Use it as primary for UI implementation without a supplied visual target. For screenshot/Figma/image implementation, use `../../shared/references/visual-to-wordpress-implementation.md` instead. Add only one supporting reference for a confirmed WPDS, enterprise-judgment, emerging-interface, style-system, discovery, or delivery risk; do not load the whole design stack.
 
 ## UX Triage
 
@@ -88,8 +88,8 @@ If the request is exploratory, return 2-3 design directions with tradeoffs and a
 Cover applicable states:
 
 - Empty: no records, no settings, no connected account, no search results.
-- Loading: initial load, partial refresh, button-level async, long-running jobs.
-- Success: saved, connected, imported, exported, queued, copied.
+- Loading/in progress: initial or partial refresh, button async, queued/streaming, paused/cancelled, stale/offline/reconnecting, and retrying.
+- Success/partial success: distinguish completed and failed items, keep recovery available, and never summarize partial work as total success.
 - Error: validation, permission, network, API quota, timeout, malformed data.
 - Disabled: unavailable action with reason.
 - Permission denied: role/capability limitations without exposing sensitive data.

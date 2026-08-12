@@ -13,6 +13,7 @@ Use this router only after `wp-theme-expert` is selected. Load one primary refer
 - Page/post briefs, Core/plugin block selection, patterns/styles/variations, author guardrails, CSS governance, and WYSIWYG proof: `../../shared/references/block-editor-page-composition.md`.
 - Screenshot/Figma/image/mockup to editable WordPress implementation: `../../shared/references/visual-to-wordpress-implementation.md`.
 - Distinctive greenfield/redesign frontend direction or anti-template composition review without a selected target: `../../shared/references/frontend-design-taste.md`.
+- Trend-led composition, AI-generated/adaptive UI, personalization, voice, kinetic typography, guided scrolling, or immersive/3D interaction: `../../shared/references/emerging-interface-design-contract.md`.
 - Detailed custom block-theme/FSE architecture after a confirmed ownership or block-mapping risk: `../../wp-expert/references/custom-block-theme-from-design.md`.
 - Classic themes, child themes, block editor compatibility: `../../wp-expert/references/theme-and-block-editor.md`.
 - Stateful block or frontend interaction, Interactivity API directives, hydration, client-side navigation, or interaction lifecycle proof: `../../wp-expert/references/interactivity-api-frontend.md`.
