@@ -1,0 +1,28 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "enterprise-runtime-assurance-2026-08-20-visual-routing",
+  "scenario": "elevated-enterprise-runtime-assurance",
+  "result": "succeeded",
+  "startedAt": "2026-08-20T06:43:11.000Z",
+  "durationMs": 0,
+  "checks": [
+    { "name": "elevated-risk-classification", "result": "pass" },
+    { "name": "compatibility-matrix-and-adaptive-docs", "result": "pass" },
+    { "name": "artifact-sbom-license-vulnerability-provenance", "result": "pass" },
+    { "name": "operations-observation-rollback-recovery", "result": "pass" },
+    { "name": "missing-release-evidence-fails-closed", "result": "pass" }
+  ],
+  "metrics": { "checks_passed": 5 },
+  "lineage": {
+    "verificationId": "enterprise-runtime-assurance-2026-08-20-visual-routing",
+    "artifactPointer": "codex-fresh-agent:/root/enterprise_evidence_final#2026-08-20"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-20T06:43:11.000Z",
+    "metricNames": ["checks_passed"],
+    "summary": "A source-blind evaluator selected enterprise quality as primary and runtime assurance as the single support, then preserved elevated compatibility, supply-chain, operations, rollback, and fail-closed evidence gates."
+  },
+  "tags": ["fresh-agent", "sanitized", "enterprise", "runtime", "routing"]
+}

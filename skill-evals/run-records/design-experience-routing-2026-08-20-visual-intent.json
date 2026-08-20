@@ -1,0 +1,42 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "design-experience-routing-2026-08-20-visual-intent",
+  "scenario": "premium-enterprise-design-experience",
+  "result": "succeeded",
+  "startedAt": "2026-08-20T06:45:54.000Z",
+  "durationMs": 0,
+  "checks": [
+    { "name": "greenfield-taste-route", "result": "pass" },
+    { "name": "design-read-and-four-dials", "result": "pass" },
+    { "name": "operational-dashboard-route-boundary", "result": "pass" },
+    { "name": "preserve-redesign-contracts", "result": "pass" },
+    { "name": "motivated-motion-and-reduced-motion", "result": "pass" },
+    { "name": "anti-template-composition", "result": "pass" },
+    { "name": "usability-outcome-evidence-boundary", "result": "pass" },
+    { "name": "material-direction-checkpoint", "result": "pass" },
+    { "name": "plug-and-play-defaults-advanced-controls", "result": "pass" },
+    { "name": "enterprise-accountability-failure-proof", "result": "pass" },
+    { "name": "trend-adoption-and-removal-path", "result": "pass" },
+    { "name": "adaptive-ai-transparency-and-control", "result": "pass" },
+    { "name": "voice-equivalent-path-and-privacy", "result": "pass" },
+    { "name": "typography-loading-and-reduced-motion", "result": "pass" },
+    { "name": "immersive-fallback-and-performance", "result": "pass" },
+    { "name": "enterprise-progressive-depth", "result": "pass" },
+    { "name": "source-visual-intent-routing", "result": "pass" },
+    { "name": "design-understanding-evidence-boundary", "result": "pass" },
+    { "name": "growth-redesign-evidence-before-generation", "result": "pass" }
+  ],
+  "metrics": { "checks_passed": 19 },
+  "lineage": {
+    "verificationId": "design-experience-routing-2026-08-20-visual-intent",
+    "artifactPointer": "codex-fresh-agent:/root/design_visual_evidence_final#2026-08-20"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-20T06:45:54.000Z",
+    "metricNames": ["checks_passed"],
+    "summary": "A source-blind evaluator passed premium design, emerging interface, visual-intent, source-understanding, and growth-led redesign routes while preserving one-primary/one-support fan-out and evidence-qualified claims."
+  },
+  "tags": ["fresh-agent", "sanitized", "design", "frontend", "growth", "wordpress"]
+}

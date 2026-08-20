@@ -18,7 +18,7 @@
         "wp-plugin-expert/SKILL.md",
         "wp-plugin-expert/references/router.md"
       ],
-      "sha256": "f2c498fd70256bc5c15654ae8d5d7027ddc13079abd9c19507e0e82026647d0e",
+      "sha256": "4dc98f0fe0accfcab49ecbc56630dadf041b12a21253b4db0ba9f03d9e922e93",
       "scenario": {
         "id": "elevated-enterprise-runtime-assurance",
         "files": [
@@ -38,10 +38,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-08-12-wp7.json",
-          "sha256": "eef6c728c15e8ee0fd6e00ea7072385a4f31bb0a53894959edb7a28c4086574c",
-          "testedRevision": "2dd31b8363ef679672cb3d965245fb06869a4590",
-          "testedSourceSha256": "f2c498fd70256bc5c15654ae8d5d7027ddc13079abd9c19507e0e82026647d0e",
+          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-08-20-visual-routing.json",
+          "sha256": "5694998c693f6787b95cdf4ebc9e04fb29a93b0523e202e5f1c2f33e1142d322",
+          "testedRevision": "e9cb48e17cafe36e3721a334b52b4034f642eb18",
+          "testedSourceSha256": "4dc98f0fe0accfcab49ecbc56630dadf041b12a21253b4db0ba9f03d9e922e93",
           "testedScenarioSha256": "3d842125a654c717b1b68f1fe273d32f8bf4ac54bae26ac39dbacefb0f92eb84",
           "runtime": {
             "host": "codex-desktop",
@@ -63,7 +63,7 @@
         "wp-expert/references/ux-product-strategy-design-qa.md",
         "wp-expert/references/wordpress-design-system.md"
       ],
-      "sha256": "a3d6c574af75c13c1fca230d9b8f68494493dac64c43dc138c710c2d39e5f36a",
+      "sha256": "e72d161b0aef6fccfa3d1214bdde4a67204b3dd2dfbc501e86ef130930242b1d",
       "scenario": {
         "id": "premium-enterprise-design-experience",
         "files": [
@@ -82,9 +82,14 @@
           "Preserve Redesign Without Contract Drift",
           "Motion Proposal Needs A Contract",
           "Excellent UX Requires Outcome Evidence",
-          "Material Greenfield Direction Checkpoint"
+          "Material Greenfield Direction Checkpoint",
+          "Inspiration Image Requires Direction Before Build",
+          "Ambiguous Improve Request Audits First",
+          "Growth-Led Redesign Before Image Generation",
+          "Cropped Reference Cannot Prove A System",
+          "Existing Design Language Extension"
         ],
-        "sha256": "a4475529895839d3bf33584f9688295ac8d226c723b319c084aa65841d650537"
+        "sha256": "fd698a116b3dbce367e09efd780e24f9bc49bc95bca1ec7c4e92f92b38c71629"
       },
       "requiredChecks": [
         "greenfield-taste-route",
@@ -102,15 +107,18 @@
         "voice-equivalent-path-and-privacy",
         "typography-loading-and-reduced-motion",
         "immersive-fallback-and-performance",
-        "enterprise-progressive-depth"
+        "enterprise-progressive-depth",
+        "source-visual-intent-routing",
+        "design-understanding-evidence-boundary",
+        "growth-redesign-evidence-before-generation"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/design-experience-routing-2026-08-12.json",
-          "sha256": "d613ef962e6be0b55f035781b609397cf7c6cb8e909f538eae345e04b7125de0",
-          "testedRevision": "ecba740e9e3465972939f525c7d1ce56c7909f8d",
-          "testedSourceSha256": "a3d6c574af75c13c1fca230d9b8f68494493dac64c43dc138c710c2d39e5f36a",
-          "testedScenarioSha256": "a4475529895839d3bf33584f9688295ac8d226c723b319c084aa65841d650537",
+          "runRecord": "skill-evals/run-records/design-experience-routing-2026-08-20-visual-intent.json",
+          "sha256": "cdf5a60f2c5f14c47d0b1b194d24ac505bfbcd2a26a7023720fa41e27b1af119",
+          "testedRevision": "e9cb48e17cafe36e3721a334b52b4034f642eb18",
+          "testedSourceSha256": "e72d161b0aef6fccfa3d1214bdde4a67204b3dd2dfbc501e86ef130930242b1d",
+          "testedScenarioSha256": "fd698a116b3dbce367e09efd780e24f9bc49bc95bca1ec7c4e92f92b38c71629",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
@@ -136,7 +144,7 @@
         "wp-theme-expert/SKILL.md",
         "wp-theme-expert/references/router.md"
       ],
-      "sha256": "e87b2b19903f02f5599f3c07fbb68fb81fda46e298c1b59560957550cceb0703",
+      "sha256": "74915d82310565deb76d83dccfcb482f18e896d01b8e289a29cb5c5195d0e1a2",
       "scenario": {
         "id": "wordpress-visual-execution",
         "files": [
@@ -152,9 +160,14 @@
           "Exact Plugin Customer Surface",
           "Structured Figma Source",
           "Interactive Block Client Navigation",
-          "Multi-Step WCAG Flow"
+          "Multi-Step WCAG Flow",
+          "Inspiration Image Requires Direction Before Build",
+          "Ambiguous Improve Request Audits First",
+          "Growth-Led Redesign Before Image Generation",
+          "Cropped Reference Cannot Prove A System",
+          "Existing Design Language Extension"
         ],
-        "sha256": "107cb7a417471b460d4b9c9bd716b99abb82b244fc1ad0f630c8655032ef5333"
+        "sha256": "c01654d7f2c920e553bc85d5536b1a3c1d692286b3480020a687e327d5382dd8"
       },
       "requiredChecks": [
         "WordPress-native-ownership",
@@ -168,15 +181,18 @@
         "wcag-multistep-flow",
         "WordPress-design-system-component-first",
         "emerging-interface-route-preserves-exact-proof",
-        "immersive-editor-and-fallback-proof"
+        "immersive-editor-and-fallback-proof",
+        "source-visual-intent-classification",
+        "selected-target-source-model-before-code",
+        "growth-redesign-brief-before-generation"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-08-12-wp7.json",
-          "sha256": "c46390b2a3930842321d2ff2150db88fd94992850ed354019b6c46d395648895",
-          "testedRevision": "592a896524ddd9b2a103b2224ad835d632efe4a3",
-          "testedSourceSha256": "e87b2b19903f02f5599f3c07fbb68fb81fda46e298c1b59560957550cceb0703",
-          "testedScenarioSha256": "107cb7a417471b460d4b9c9bd716b99abb82b244fc1ad0f630c8655032ef5333",
+          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-08-20-visual-intent.json",
+          "sha256": "9c734a1b073ca71180588ba74f9a408fb5c0d114f9c13d87bbc28e5d8006856e",
+          "testedRevision": "e9cb48e17cafe36e3721a334b52b4034f642eb18",
+          "testedSourceSha256": "74915d82310565deb76d83dccfcb482f18e896d01b8e289a29cb5c5195d0e1a2",
+          "testedScenarioSha256": "c01654d7f2c920e553bc85d5536b1a3c1d692286b3480020a687e327d5382dd8",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
