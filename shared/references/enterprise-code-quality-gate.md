@@ -17,7 +17,7 @@ Classify runtime assurance before substantial work:
 - `baseline`: ordinary maintained WordPress behavior with reversible scope and no material distribution, data, scale, compatibility, or operational exposure.
 - `elevated`: public/commercial/VIP distribution; sensitive or regulated data; custom storage/migrations; authentication, payments, uploads, webhooks, public APIs, external providers, queues, multisite, high traffic, or release-critical workflows.
 
-For elevated work, use `enterprise-runtime-assurance.md` to define the applicable compatibility matrix, supply-chain evidence, post-release observation, rollback signals, and adaptive repo contracts. Do not impose elevated artifacts on a low-risk change without a named reason.
+When this file is primary and work is elevated, use `enterprise-runtime-assurance.md` as its single support for the compatibility matrix, supply-chain evidence, post-release observation, rollback signals, and adaptive repo contracts. Do not load this gate as support merely to restate quality when a launch/readiness primary already owns those checks, and do not impose elevated artifacts on a low-risk change without a named reason.
 
 ## Before Writing Code
 

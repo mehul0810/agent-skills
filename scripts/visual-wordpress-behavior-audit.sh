@@ -80,6 +80,8 @@ require_text "wp-expert/references/style-guide-theme-translation.md" "CSS And Ca
 require_text "wp-expert/references/style-guide-theme-translation.md" "user Global Styles" "Global Styles precedence"
 require_text "shared/references/design-intelligence-routing.md" "Discover the named capability" "design capability discovery"
 require_text "shared/references/design-intelligence-routing.md" "Source-Visual Intent Gate" "source visual intent routing"
+require_text "wp-expert/references/ux-product-strategy-design-qa.md" "A supplied visual is evidence, not automatically the build target" "UX visual intent alignment"
+forbid_text "wp-expert/references/ux-product-strategy-design-qa.md" "treat it as the visual source of truth unless" "unclassified screenshot authority"
 require_text "shared/references/design-intelligence-routing.md" "Design Understanding Readiness" "image design understanding readiness"
 require_text "shared/references/design-intelligence-routing.md" "Redesign Growth Gate" "redesign growth direction gate"
 require_text "shared/references/design-intelligence-routing.md" 'Never call a tactic or redesign `proven` without applicable experiment or outcome evidence' "redesign evidence boundary"

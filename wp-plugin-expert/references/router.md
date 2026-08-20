@@ -4,6 +4,7 @@ Use this router only after `wp-plugin-expert` is selected. Load one primary refe
 
 ## Primary Routes
 
+- Enterprise implementation/review preparation, hardening, or quality classification: `../../shared/references/enterprise-code-quality-gate.md`; when it classifies risk as elevated, use `../../shared/references/enterprise-runtime-assurance.md` as its single support.
 - Focused independent security, performance, modularity/maintainability, or accessibility review or review-led remediation: route to `wp-quality-reviewer`; routine feature constraints and fixes stay with this plugin specialist.
 - Cross-boundary engineering graph, missing project knowledge/docs, graph closure, and durable failure learning: `../../shared/references/wordpress-engineering-graph.md`.
 - Compatibility, supply chain, production observation, recovery, and adaptive enterprise contracts: `../../shared/references/enterprise-runtime-assurance.md`.
@@ -21,7 +22,7 @@ Use this router only after `wp-plugin-expert` is selected. Load one primary refe
 - Privacy, consent, telemetry, retention, exporter/eraser support: `../../wp-expert/references/privacy-consent-data-governance.md`.
 - Multisite/network activation, tenant scope, and large-fleet operations: `../../wp-expert/references/advanced-multisite-network-engineering.md`.
 - Incidents, SLOs, monitoring, logs, and operational recovery: `../../wp-expert/references/observability-incident-response.md`.
-- VIP/enterprise launch readiness and disaster recovery: `../../wp-expert/references/vip-enterprise-launch-readiness.md` or `../../wp-expert/references/disaster-recovery-business-continuity.md`.
+- Explicit VIP/enterprise candidate go/no-go and disaster recovery: `../../wp-expert/references/vip-enterprise-launch-readiness.md` or `../../wp-expert/references/disaster-recovery-business-continuity.md`; do not use this route for general enterprise implementation preparation.
 - Third-party APIs, SDKs, OAuth, webhooks, retries, rate limits: `../../wp-expert/references/third-party-api-integrations.md`.
 - React admin/editor apps: `../../wp-expert/references/react-wordpress-enterprise.md`.
 - Screenshot/Figma/image/mockup to plugin-owned admin, editor, onboarding, or customer-facing implementation: `../../shared/references/visual-to-wordpress-implementation.md`.

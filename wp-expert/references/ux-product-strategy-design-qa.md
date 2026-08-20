@@ -1,6 +1,6 @@
 # UX Product Strategy And Design QA
 
-Use this for UX discovery, product strategy, information architecture, UX writing, conversion flows, critique, usability testing, and enterprise/premium design QA. For implementation from an image, screenshot, mockup, Figma frame, or visual reference, use `../../shared/references/visual-to-wordpress-implementation.md` as primary and load this only when a confirmed journey/IA/UX risk needs support.
+Use this for UX discovery, product strategy, information architecture, UX writing, conversion flows, critique, usability testing, and enterprise/premium design QA. Classify a supplied visual with `../../shared/references/design-intelligence-routing.md`; use `visual-to-wordpress-implementation.md` as primary only after a reproduction target is selected, with this reference supporting a confirmed journey/IA/UX risk.
 
 Keep this primary for journey and design QA. Load at most one support only for a confirmed UI implementation, conversion, measurement, WPDS, token, visual-proof, or brainstorming-convergence risk.
 
@@ -8,7 +8,7 @@ Keep this primary for journey and design QA. Load at most one support only for a
 
 - Understand the user's job before implementing UI. A polished wrong workflow is still wrong.
 - Never compromise on premium and enterprise feel when the project positioning requires it.
-- If a design image, screenshot, Figma frame, or visual reference is provided, treat it as the visual source of truth unless the user says it is conceptual only.
+- A supplied visual is evidence, not automatically the build target. Its classified role and selected direction determine authority.
 - Match provided designs as closely as practical while preserving accessibility, responsive behavior, WordPress editability, performance, and maintainability.
 - Do not invent generic AI-looking layouts when a brand, style guide, design system, or reference image exists.
 - Do not use visual polish to hide unclear requirements, missing states, poor hierarchy, inaccessible contrast, or fragile implementation.
@@ -88,7 +88,7 @@ When the user provides a design image or screenshot:
 2. Extract measurable details: canvas size, grid, breakpoints, spacing rhythm, content width, typography, colors, radii, shadows, borders, icons, imagery ratios, and interaction states visible in the image.
 3. Map visual elements to WordPress primitives before custom code: `theme.json`, core blocks, WPDS components, patterns, template parts, block styles, variations, or scoped CSS.
 4. Preserve the design's hierarchy, alignment, spacing, typography, and component states unless accessibility or responsive constraints require a documented adjustment.
-5. Use pixel-perfect as the default target for static visual states, but do not sacrifice accessibility, responsive behavior, editor editability, performance, or semantic markup to chase brittle coordinates.
+5. Use pixel parity for explicitly selected exact/reproduction states, but do not sacrifice accessibility, responsive behavior, editor editability, performance, or semantic markup to chase brittle coordinates.
 6. For raster-only images, infer missing states and breakpoints explicitly; do not pretend the image defines hover, focus, mobile, error, empty, or loading states unless visible or specified.
 7. Capture candidate screenshots at matching viewport and zoom. Compare against the reference and classify differences as intentional, constrained, or regression.
 8. If exact visual matching cannot be verified, state what was implemented, what evidence exists, and what remains user-review-only.
