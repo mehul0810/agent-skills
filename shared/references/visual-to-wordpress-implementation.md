@@ -1,10 +1,10 @@
 # Visual To WordPress Implementation Contract
 
-Use for approved visual-to-WordPress work. Add one support only for a confirmed architecture, conversion, accessibility, performance, interaction, or proof risk.
+Use only for a selected visual target. Route creation, critique, redesign, or unresolved direction to `design-intelligence-routing.md`. Add one support for a confirmed risk.
 
 ## 1. Qualify The Source
 
-Inspect the actual source visual; never infer it from a filename, summary, or chat memory.
+Inspect the actual source visual, then confirm exact target identity and source model before code. Never build from a filename, memory, thumbnail, verbal description, or unresolved mixed references.
 
 Classify it as:
 
@@ -12,23 +12,22 @@ Classify it as:
 - `Directional`: hierarchy and visual language matter; composition may adapt.
 - `Inspiration`: extract principles, not layout.
 
-Record dimensions, viewport/state, fonts/assets, and supplied responsive/interaction behavior. Mark important values `supplied`, `measured`, or `inferred`; never present inference as fact.
+Record dimensions, state, fonts/assets, and supplied responsive/interaction behavior. Mark values `supplied`, `measured`, or `inferred`.
 
 Keep an ambiguity ledger: unknown, evidence, reversible inference, and validation. Ask only about brand-critical, irreversible, unsafe, or journey-changing choices; otherwise use an accessible WordPress-native default and label it inferred.
 
 ### Figma Source Preflight
 
-For Figma, discover file/frame/node/version, variables, components, assets, fonts, constraints, and interactions before using a screenshot. Use `figma-implement-design` when available; ownership stays with the WordPress specialist. Fingerprint the source. If access fails, inspect an owner-supplied export and declare the gap; never invent values.
+For Figma, discover frame/version, variables, components, assets, fonts, constraints, and interactions. Use `figma-implement-design` when available; WordPress ownership stays with the specialist. Fingerprint the source or declare why an inspected export was used.
 
 ## 2. Build A Visual And Behavior Manifest
 
 Before code, map:
 
-- regions, hierarchy, copy, semantics, measurements, type, and layering,
-- reusable component contracts: role, variants, states, bounds, tokens, and WordPress primitive,
-- assets, crops, focal points, responsive variants, and supplied/inferred behavior,
-- owner, editing surface, visitor and author workflows,
-- distribution/runtime targets, required captures/workflows, parity tolerance, performance budget, and deviations.
+- regions, hierarchy, semantics, measurements, type, and layering;
+- reusable component contracts: roles, variants, states, bounds, tokens, and WordPress primitives;
+- assets, crops, focal points, and responsive behavior;
+- owner, editing surface, visitor/author workflows, runtime, captures, tolerance, budget, and deviations.
 
 Use `wp-expert/scripts/fse-design-map.sh` for theme/FSE work. Keep the manifest compact and update it when implementation evidence disproves an assumption.
 
@@ -37,7 +36,7 @@ Use `wp-expert/scripts/fse-design-map.sh` for theme/FSE work. Keep the manifest 
 - Site strategy, journey, IA, conversion, SEO, analytics, and page outcomes belong to `wp-site-expert`.
 - Theme tokens, templates, patterns, blocks, editor ownership, and visual implementation belong to `wp-theme-expert`.
 - Plugin-owned admin, editor, onboarding, and customer-facing product surfaces belong to `wp-plugin-expert`.
-- For mixed site/theme work, produce one site brief for theme implementation; do not load both specialist contexts unless one worker owns both boundaries.
+- For mixed site/theme work, hand one site brief to theme implementation; load both specialists only when one worker owns both boundaries.
 
 For block themes, map through `theme.json`, verified blocks/supports, patterns, templates/parts, variations, bindings, custom blocks, then Interactivity API. Structural templates render Post Content when Pages > Edit owns the body. Build saved content, not a pattern-only or frontend-CSS simulation. Never use Custom HTML/Shortcode shortcuts. Apply the distribution gate in `../../wp-expert/references/block-theme-architecture.md` before theme-owned functionality.
 
@@ -45,18 +44,18 @@ Before designing a custom control, inventory stable Core and WordPress Design Sy
 
 ## 4. Handle Image Assets Deliberately
 
-Inventory each asset: reuse, generate, source/license, recreate appropriately, or mark a temporary placeholder.
+Classify each asset: reuse, generate, license, recreate, or placeholder.
 
 When generation is needed:
 
 1. Brief purpose, subject, art direction, palette, composition, negative constraints, crop safety, ratios, and resolutions.
 2. Use `product-design:ideate` for alternative directions and `imagegen` for production raster assets or edits. Do not guess a supplied logo, factual product screenshot, identity, or exact copyrighted artwork.
-3. Score a small candidate set for accuracy, brand, composition/crops, artifacts, accessibility, and family consistency.
+3. Score a small candidate set for accuracy, brand, crops, artifacts, accessibility, and consistency.
 4. Generate text-free imagery unless embedded text is intentional and verified; render interface copy in HTML/blocks.
 5. Inspect target crops/resolutions; revise a miss instead of compensating with CSS.
 6. Record provenance, approval status, alt-text intent, focal point, responsive crops, format, dimensions, and optimization status.
 
-For generated, licensed, or art-directed assets, write `../schemas/wordpress-asset-production.schema.json` and run `node wp-expert/scripts/validate-asset-production.mjs <receipt.json>`. Bind each receipt into visual proof with evidenced approval, crops, provenance, and optimization. Keep proof artifacts local; download remote evidence before byte hashing.
+For generated, licensed, or art-directed assets, validate `../schemas/wordpress-asset-production.schema.json` with `node wp-expert/scripts/validate-asset-production.mjs <receipt.json>`. Bind approval, crops, provenance, and optimization into visual proof; download remote evidence before hashing.
 
 Prefer responsive WordPress media handling and appropriate WebP/AVIF/JPEG/PNG/SVG output. Do not claim licensing, authorship, brand approval, or factual depiction without evidence.
 

@@ -16,8 +16,8 @@ Operate as a principal WordPress theme and block/FSE engineer. Build editable, p
 - For unresolved ownership, public-contract, release, performance, or proof decisions, use the architecture route.
 - For substantial or review-critical work, use `../shared/references/enterprise-code-quality-gate.md` to classify baseline versus elevated enterprise risk and apply code, compatibility, supply-chain, operations, and proof controls proportionally.
 - Use `../shared/references/worker-execution-discipline.md` for assumption, recovery, hallucination, owner-correction, or completion-claim risk.
-- For audit/ideation without a selected target, use `../shared/references/design-intelligence-routing.md`; implementation stays here.
-- With a source visual, use `../shared/references/visual-to-wordpress-implementation.md` as primary; prove visitor/author tasks; observed defects are `FAIL` and reopen implementation. Do not stack UI/FSE references.
+- For audit, design understanding, reference-led creation, or ideation without a selected target, use `../shared/references/design-intelligence-routing.md`; implementation stays here.
+- When a source visual is the selected implementation target, use `../shared/references/visual-to-wordpress-implementation.md` as primary; prove visitor/author tasks; observed defects are `FAIL` and reopen implementation. Do not stack UI/FSE references.
 - For page/post composition without a source visual, use `../shared/references/block-editor-page-composition.md`; with a visual source, load it only as the single support reference when authoring architecture is the confirmed risk.
 - For out-of-scope problems noticed during scoped work, use `../shared/references/adjacent-finding-protocol.md`; detect, report, preserve scope, and let the PO triage.
 - Preserve editability: structural templates render Post Content; page-specific content belongs in page content, patterns, bindings, or intentional data sources.

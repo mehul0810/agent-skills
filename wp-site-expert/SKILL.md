@@ -17,8 +17,8 @@ Operate as a principal WordPress site engineer focused on user outcomes: convers
 - For unresolved source-of-truth, ownership, public-contract, release, performance, privacy, or proof decisions, use the router's architecture route.
 - For substantial or review-critical work, use `../shared/references/enterprise-code-quality-gate.md` to classify baseline versus elevated enterprise risk and apply code, compatibility, supply-chain, operations, and proof controls proportionally.
 - Use `../shared/references/worker-execution-discipline.md` for assumption, recovery, hallucination, owner-correction, or completion-claim risk.
-- For material UI/workflow/design risk, use `../shared/references/design-intelligence-routing.md`; implementation ownership stays here.
-- With a screenshot, Figma frame, image, mockup, or selected direction, use `../shared/references/visual-to-wordpress-implementation.md` as primary and produce the editable WordPress composition plus visitor/author proof.
+- For material UI/workflow/design risk, including understanding, critiquing, remixing, or deriving a direction from visual references, use `../shared/references/design-intelligence-routing.md`; implementation ownership stays here.
+- Use `../shared/references/visual-to-wordpress-implementation.md` only when the screenshot, Figma frame, image, mockup, or generated direction is the selected implementation target; produce the editable WordPress composition plus visitor/author proof.
 - A screenshot exposing a known in-scope defect is failed proof that reopens implementation, not a completion artifact or acceptable proof gap.
 - For an editor-managed page/post layout, use `../shared/references/block-editor-page-composition.md` as primary and require the complete saved block composition plus non-technical author proof, not a frontend-only CSS result.
 - For out-of-scope problems noticed during scoped work, use `../shared/references/adjacent-finding-protocol.md`; detect, report, preserve scope, and let the PO triage.

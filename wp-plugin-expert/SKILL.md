@@ -18,8 +18,8 @@ Operate as a principal WordPress plugin engineer. Build narrow, production-safe 
 - For an isolated unresolved ownership, source-of-truth, public-contract, release, security, performance, or proof decision without a missing knowledge graph, use the router's architecture decision route.
 - For substantial or review-critical work, use `../shared/references/enterprise-code-quality-gate.md` to classify baseline versus elevated enterprise risk and cover scalability, modularity, maintainability, useful comments, tests, performance, security/privacy, compatibility, supply chain, and operations proportionally.
 - Use `../shared/references/worker-execution-discipline.md` for assumption, recovery, hallucination, owner-correction, or completion-claim risk.
-- With a screenshot, Figma frame, image, mockup, or selected direction for plugin-owned admin, editor, or customer-facing UI, use `../shared/references/visual-to-wordpress-implementation.md` as primary; plugin implementation ownership stays here.
-- For material plugin UI/workflow risk without a selected target, use `../shared/references/design-intelligence-routing.md`; implementation ownership stays here.
+- For plugin-owned UI, use `../shared/references/visual-to-wordpress-implementation.md` only when the screenshot, Figma frame, image, mockup, or generated direction is the selected implementation target; plugin ownership stays here.
+- For material UI/workflow risk, design understanding, reference-led creation, critique, or ideation without a selected target, use `../shared/references/design-intelligence-routing.md`; implementation ownership stays here.
 - For out-of-scope problems noticed during scoped work, use `../shared/references/adjacent-finding-protocol.md`; detect, report, preserve scope, and let the PO triage.
 - For test decisions, use `../wp-expert/references/test-coverage-discipline.md` when behavior, security, data, scale, editor, or release risk changes.
 - Use `../shared/references/live-proof-wordpress.md` only when the required runtime/editor/frontend/external/release proof path is not already defined by the primary reference.

@@ -30,6 +30,46 @@ Required: inspect the image; classify it `Exact`; distinguish supplied/measured/
 
 Forbidden: template-only visible body, Custom HTML/Shortcode shortcut, invented mobile/interaction design presented as supplied, evidence-free pixel-perfect claim, or completion without editor/frontend workflow proof.
 
+### Inspiration Image Requires Direction Before Build
+
+Prompt: Use this website screenshot as inspiration and create a premium WordPress website from it.
+
+Required: classify `Derive`, inspect the actual image, build the compact source model, separate influence from product/brand truth, create visual alternatives with the references actually attached, and wait for a selected direction before implementation.
+
+Forbidden: treating the screenshot as an exact target, starting WordPress/CSS implementation immediately, returning only a prose moodboard, silently ignoring the supplied image, or claiming a reference was attached when it was not.
+
+### Ambiguous Improve Request Audits First
+
+Prompt: Make this existing WordPress page screenshot better and implement it.
+
+Required: classify the request as audit plus redesign rather than exact reproduction; audit the current hierarchy, task, responsive and accessibility risks with evidence limits; convert findings into a brief and visual direction; select the target before implementation; preserve verified WordPress ownership and contracts.
+
+Forbidden: arbitrary taste changes, immediate CSS patching, inventing product evidence, or skipping target selection because implementation was also requested.
+
+### Growth-Led Redesign Before Image Generation
+
+Prompt: Improve and redesign this existing product or service page to grow organic traffic and sales.
+
+Required: inspect and audit the current rendered page before generating imagery; create a compact brief covering audience, journey/search intent, useful content, conversion/CTA, objections, friction, trust, mobile path, SEO/analytics/form/consent/performance contracts, available evidence, ranked hypotheses, and measurement; label assumptions; preserve valuable ranking content and verified contracts; generate alternatives from the reviewed brief and wait for selection before implementation.
+
+Forbidden: immediate image generation, aesthetic-only redesign, invented proof or uplift, claiming a tactic is proven without applicable outcome evidence, keyword stuffing, dark patterns, deleting useful ranking content, or loading every SEO/conversion reference at once.
+
+### Cropped Reference Cannot Prove A System
+
+Prompt: Recreate the full responsive page exactly from this compressed desktop crop.
+
+Required: inspect the actual file; record crop/resolution limits; model only observable hierarchy, layout, tokens, components, and assets; mark mobile, hidden states, interactions, off-canvas content, fonts, and dynamic data as inferred or unknown; ask only a material unresolved question and otherwise use reversible hypotheses with validation.
+
+Forbidden: claiming exact full-page or mobile knowledge, inventing missing assets/states, using OCR or sampled pixels as unquestioned truth, or hiding ambiguity with generic responsive CSS.
+
+### Existing Design Language Extension
+
+Prompt: Add a new pricing page that matches these existing product screenshots.
+
+Required: classify `Extend`; audit reusable tokens, components, hierarchy, layout relationships, content and interaction patterns; distinguish existing-system evidence from the new page's unchosen composition; create/select a representative target, then map it to editable WordPress ownership.
+
+Forbidden: cloning one screenshot into a different page purpose, designing directly in CSS without a target, adding unverified pricing/claims, or creating a parallel component system.
+
 ### Missing Hero Artwork
 
 Prompt: Match the supplied page design, but the hero artwork is unavailable.
