@@ -19,6 +19,7 @@ Use this map to choose references with low context cost.
 - Package/deploy/artifact work: load `production-dependency-discipline.md` when Composer, npm, release ZIP/SVN, deploy, or production dependency boundaries matter.
 - Web-heavy or current-policy lookup: load `research-token-discipline.md` when source selection or freshness can affect the answer.
 - UI/theme/FSE/design work: keep premium/enterprise UX and editor ownership proof visible; load deeper design references only when the visual/editing contract is not obvious.
+- Ambiguous, conflicting, temporary, or corrective owner direction that could be mistaken for authorization: load `../../shared/references/owner-decision-resolution.md`; do not load it for clear bounded work.
 
 ## Task To Reference Map
 
@@ -26,6 +27,7 @@ Use this map to choose references with low context cost.
 | --- | --- | --- |
 | Skill behavior audit, routing regression, eval scenarios, prompt drift after skill edits | `agent-behavior-eval-scenarios.md` | `architecture-decision-gate.md` when ownership or authority is unclear |
 | Architecture decision gate, ownership/source-of-truth choice, public contract, release state, validation proof, project policy precedence | `architecture-decision-gate.md` | `enterprise-code-quality-gate.md`, `live-proof-wordpress.md` |
+| Owner instruction or correction with unclear scope, durability, negative constraint, or authority | `owner-decision-resolution.md` | `architecture-decision-gate.md` only when an artifact or public-contract owner is also unclear |
 | New chat/session continuity, branch creation, issue milestone to PR release branch, PR base selection, release branch drift | `session-continuity-pr-discipline.md` | `standards-ci-github.md`, `delivery-excellence.md` |
 | Project-level Codex subagents, skill routing, availability-first model/reasoning allocation | `project-subagent-routing.md` | `thinking-brainstorming-engineering-discipline.md` for unresolved planning ambiguity |
 | PRD, SOW, estimates, milestones, mobile-first planning | `delivery-excellence.md` | `review-checklists.md`, `runtime-toolchain-version-policy.md` |

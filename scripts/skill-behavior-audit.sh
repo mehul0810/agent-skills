@@ -34,6 +34,8 @@ require_text "wp-expert/SKILL.md" "push only when explicitly asked or repo-local
 require_text "wp-expert/SKILL.md" "../shared/references/live-proof-wordpress.md" "wp-expert live proof routing"
 require_text "wp-expert/SKILL.md" "../shared/references/context-window-discipline.md" "wp-expert context window discipline routing"
 require_text "wp-expert/SKILL.md" "references/architecture-decision-gate.md" "wp-expert architecture gate routing"
+require_text "wp-expert/references/reference-routing-map.md" "owner-decision-resolution.md" "wp-expert owner decision routing"
+require_text "skill-evals/wp-expert-scenarios.md" "Scoped owner direction" "wp-expert scoped direction scenario"
 require_text "wp-expert/SKILL.md" "Stop after routing when the specialist is clear" "wp-expert no broad load after auto route"
 require_text "wp-expert/SKILL.md" "wp-plugin-expert" "wp-expert plugin specialist routing"
 require_text "wp-expert/SKILL.md" "wp-theme-expert" "wp-expert theme specialist routing"

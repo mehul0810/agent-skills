@@ -48,4 +48,6 @@ For owner-managed `agent-*` repositories, the standing publication path is valid
 
 Read `../shared/references/self-improvement-loop.md` before promoting a repeated failure or retiring stale guidance.
 
+Read `../shared/references/owner-decision-resolution.md` when owner direction changes publication, review, authority, or durable policy. An exact review or merge exception is not reusable permission for another change.
+
 Read `../shared/references/disposable-proof-environment-lifecycle.md` before reviewing an orphaned proof environment or a cleanup policy change. Report unmarked, owner-created, pinned, active, or ambiguous sites; do not delete them.

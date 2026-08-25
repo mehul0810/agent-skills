@@ -25,6 +25,7 @@ Mismatch | immediate fix | evidence | repeatability | dedupe | privacy | destina
 ```
 
 - A worker records a candidate only; it does not mutate shared skills or policy from its own classification.
+- Preserve the correction's decision envelope from `owner-decision-resolution.md`; task-specific approval is evidence of the correction, never reusable authorization.
 - The PO or CTO dedupes and routes the candidate. A Skill PO, explicit owner, or designated reviewer admits a shared-skill change.
 - Promote after two independent occurrences, or one high-confidence failure that disproves an explicit safety, authority, release, proof, or editing invariant.
 - Keep one-off preferences local, but record the no-artifact reason instead of silently dropping the correction.

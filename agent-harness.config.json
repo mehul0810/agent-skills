@@ -12,6 +12,7 @@
     "shared/schemas/wordpress-asset-production.schema.json",
     "shared/schemas/wordpress-visual-proof.schema.json",
     "shared/schemas/wp-quality-review.schema.json",
+    "shared/references/owner-decision-resolution.md",
     "wp-expert/scripts/validate-asset-production.mjs",
     "wp-expert/scripts/validate-visual-proof.mjs",
     "wp-quality-reviewer/scripts/validate-review-report.mjs"
@@ -23,6 +24,14 @@
     }
   ],
   "routeBudgets": [
+    {
+      "name": "Owner decision resolution",
+      "maxWords": 850,
+      "warningPercent": 85,
+      "files": [
+        "shared/references/owner-decision-resolution.md"
+      ]
+    },
     {
       "name": "WP ambiguous routing",
       "maxWords": 2400,
