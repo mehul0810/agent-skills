@@ -400,7 +400,7 @@
         "shared/references/release-train-discipline.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "caf13707df612d1ddf6516b3997904bec602aea51dea5724f0522cb390f37a03",
+      "sha256": "82f8679bfbe92b1208cd9a00bd95abcb935b10da06c797b9ec926cfe6aba2264",
       "scenario": {
         "id": "product-release-authority",
         "files": [
@@ -444,10 +444,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-release-authority-2026-08-25-owner-intent.json",
-          "sha256": "0459d9417bc8c9f816305d97560f5590cd8f8b1ca4b203a5b7ea69f5f5efb424",
-          "testedRevision": "0ff56739f26e972e9a550579d50edcf6ef794c58",
-          "testedSourceSha256": "caf13707df612d1ddf6516b3997904bec602aea51dea5724f0522cb390f37a03",
+          "runRecord": "skill-evals/run-records/product-release-authority-2026-08-25-owner-aligned.json",
+          "sha256": "70d9cba05bf9c538e9479ece7fc19823009c4524ae69605a17e0e2d4cd590460",
+          "testedRevision": "5f39d50d90979e9b3ae913656b631f1234887a17",
+          "testedSourceSha256": "82f8679bfbe92b1208cd9a00bd95abcb935b10da06c797b9ec926cfe6aba2264",
           "testedScenarioSha256": "9c26d278b01a66a8b11a0c8fc06f7800e89367b0be82c158d297503e44b7924e",
           "runtime": {
             "host": "codex-desktop",
@@ -464,7 +464,7 @@
         "shared/references/self-improvement-loop.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "3f25b97b00b3f2833ea832e7281a5e838ddc07d2bfe1a816c61a89d581097c3f",
+      "sha256": "924aa9674a1eea54077da3311c4cdd47dcf0f1805f93b239d5517aef3ec2e239",
       "scenario": {
         "id": "owner-correction-learning",
         "files": [
@@ -487,11 +487,59 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/owner-correction-learning-2026-08-25-decision-fidelity.json",
-          "sha256": "eeb87796dc6dc121e3cfb5c75288acbcf1fba628834093effbc188e74b7ca732",
-          "testedRevision": "0ff56739f26e972e9a550579d50edcf6ef794c58",
-          "testedSourceSha256": "3f25b97b00b3f2833ea832e7281a5e838ddc07d2bfe1a816c61a89d581097c3f",
+          "runRecord": "skill-evals/run-records/owner-correction-learning-2026-08-25-calibration.json",
+          "sha256": "ad1102ef62b68c6c57b2c959605f0ad2e5bd0bf65fee1b4f79a63be99e107fde",
+          "testedRevision": "5f39d50d90979e9b3ae913656b631f1234887a17",
+          "testedSourceSha256": "924aa9674a1eea54077da3311c4cdd47dcf0f1805f93b239d5517aef3ec2e239",
           "testedScenarioSha256": "b73d82e24abe107bee6eca83f4cfb99e0cb14d7bee22ea956c19d298093f7ca4",
+          "runtime": {
+            "host": "codex-desktop",
+            "isolation": "fresh-agent",
+            "harnessRevision": "24ffe6e5481aebe33f403df9b72f0de7214f019a"
+          }
+        }
+      ]
+    },
+    {
+      "name": "owner-aligned-judgment",
+      "files": [
+        "wp-portfolio-cto/SKILL.md",
+        "wp-product-orchestrator/SKILL.md",
+        "shared/references/owner-decision-resolution.md"
+      ],
+      "sha256": "2c8b828579260724baa68a0b78b0daa508533bb0305bfc6f9124daf98a00d8cd",
+      "scenario": {
+        "id": "owner-aligned-judgment",
+        "files": [
+          "skill-evals/wp-portfolio-cto-scenarios.md",
+          "skill-evals/wp-product-orchestrator-scenarios.md"
+        ],
+        "anchors": [
+          "Owner-aligned portfolio tradeoff",
+          "Low-confidence strategy boundary",
+          "Owner-aligned implementation choice",
+          "Exact supplied values",
+          "Enterprise without overengineering"
+        ],
+        "sha256": "54b4ae2bce4d363eecee4fad87a2b5e39ae29e0c98c722ac773dc9447afc6d02"
+      },
+      "requiredChecks": [
+        "live-product-contract-precedence",
+        "high-confidence-reversible-action",
+        "low-confidence-strategy-escalation",
+        "root-cause-over-patch",
+        "exact-value-proportional-proof",
+        "enterprise-stopping-rule",
+        "profile-not-authority",
+        "private-sanitized-calibration"
+      ],
+      "evidence": [
+        {
+          "runRecord": "skill-evals/run-records/owner-aligned-judgment-2026-08-25.json",
+          "sha256": "d274c2fcf87a74276942222c2129d6013074c770f8fbb7a2ef4f79f809d754a2",
+          "testedRevision": "5f39d50d90979e9b3ae913656b631f1234887a17",
+          "testedSourceSha256": "2c8b828579260724baa68a0b78b0daa508533bb0305bfc6f9124daf98a00d8cd",
+          "testedScenarioSha256": "54b4ae2bce4d363eecee4fad87a2b5e39ae29e0c98c722ac773dc9447afc6d02",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",

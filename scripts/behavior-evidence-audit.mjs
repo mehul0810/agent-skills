@@ -18,6 +18,7 @@ const MANDATORY_BASELINES = [
   "engineering-graph",
   "enterprise-runtime-assurance",
   "owner-correction-learning",
+  "owner-aligned-judgment",
   "product-release-authority",
   "product-video-truth-and-assets",
   "source-blind-behavior-proof",
