@@ -404,12 +404,12 @@
     {
       "name": "WP Portfolio CTO",
       "file": "skill-evals/wp-portfolio-cto-scenarios.md",
-      "requiredPhrases": ["# WP Portfolio CTO Evaluation Scenarios"]
+      "requiredPhrases": ["# WP Portfolio CTO Evaluation Scenarios", "Owner-aligned portfolio tradeoff", "Low-confidence strategy boundary"]
     },
     {
       "name": "WP Product Orchestrator",
       "file": "skill-evals/wp-product-orchestrator-scenarios.md",
-      "requiredPhrases": ["# WP Product Orchestrator Evaluation Scenarios"]
+      "requiredPhrases": ["# WP Product Orchestrator Evaluation Scenarios", "Owner-aligned implementation choice", "Exact supplied values", "Enterprise without overengineering"]
     },
     {
       "name": "Visual WordPress",
