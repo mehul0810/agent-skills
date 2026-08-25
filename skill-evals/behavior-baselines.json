@@ -397,9 +397,10 @@
         "shared/references/product-autonomy-permissions.md",
         "shared/references/product-queue-triage.md",
         "shared/references/rolling-milestone-triage.md",
-        "shared/references/release-train-discipline.md"
+        "shared/references/release-train-discipline.md",
+        "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "cc99278fe02d90df474d30be6fdab243a555621918d07b0579549a7aa4dbb8bf",
+      "sha256": "caf13707df612d1ddf6516b3997904bec602aea51dea5724f0522cb390f37a03",
       "scenario": {
         "id": "product-release-authority",
         "files": [
@@ -415,9 +416,11 @@
           "Verification blocker is not authority",
           "Reversible product default",
           "False owner blocker",
-          "Product decision"
+          "Product decision",
+          "Direction is not release approval",
+          "Temporary negative preference"
         ],
-        "sha256": "dd40a590712c8ea177dc836d7a1c1791d71709376152f5b8d951491657e4c82d"
+        "sha256": "9c26d278b01a66a8b11a0c8fc06f7800e89367b0be82c158d297503e44b7924e"
       },
       "requiredChecks": [
         "latest-published-release-preflight",
@@ -434,15 +437,18 @@
         "material-decision-record",
         "destructive-action-refusal",
         "privacy-security-public-contract-owner-gate",
-        "cto-false-blocker-intervention"
+        "cto-false-blocker-intervention",
+        "direction-not-release-approval",
+        "temporary-negative-constraint",
+        "task-approval-non-reuse"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-release-authority-2026-08-12-wp7.json",
-          "sha256": "df8de9b5871c97748c1a9b930b4295416bc04e8022ff86c35a1a2d1ca07cb29e",
-          "testedRevision": "2dd31b8363ef679672cb3d965245fb06869a4590",
-          "testedSourceSha256": "cc99278fe02d90df474d30be6fdab243a555621918d07b0579549a7aa4dbb8bf",
-          "testedScenarioSha256": "dd40a590712c8ea177dc836d7a1c1791d71709376152f5b8d951491657e4c82d",
+          "runRecord": "skill-evals/run-records/product-release-authority-2026-08-25-owner-intent.json",
+          "sha256": "0459d9417bc8c9f816305d97560f5590cd8f8b1ca4b203a5b7ea69f5f5efb424",
+          "testedRevision": "0ff56739f26e972e9a550579d50edcf6ef794c58",
+          "testedSourceSha256": "caf13707df612d1ddf6516b3997904bec602aea51dea5724f0522cb390f37a03",
+          "testedScenarioSha256": "9c26d278b01a66a8b11a0c8fc06f7800e89367b0be82c158d297503e44b7924e",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
@@ -455,33 +461,37 @@
       "name": "owner-correction-learning",
       "files": [
         "shared/references/worker-execution-discipline.md",
-        "shared/references/self-improvement-loop.md"
+        "shared/references/self-improvement-loop.md",
+        "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "8ec7508c1500397642d880a468f063f4c5b07d48f9a8afa277ed5d1ef5707ebf",
+      "sha256": "3f25b97b00b3f2833ea832e7281a5e838ddc07d2bfe1a816c61a89d581097c3f",
       "scenario": {
         "id": "owner-correction-learning",
         "files": [
           "skill-evals/wp-expert-scenarios.md"
         ],
         "anchors": [
-          "Owner visual correction"
+          "Owner visual correction",
+          "Scoped owner direction"
         ],
-        "sha256": "9d5a149b6b46d02703ce6a2189920a940cb0fa1bd91d8d5311369d0a7530c478"
+        "sha256": "b73d82e24abe107bee6eca83f4cfb99e0cb14d7bee22ea956c19d298093f7ca4"
       },
       "requiredChecks": [
         "immediate-root-cause-correction",
         "compact-correction-result",
         "worker-candidate-only",
         "dedupe-and-repeatability-gate",
-        "reviewed-durable-destination"
+        "reviewed-durable-destination",
+        "decision-envelope-preserved",
+        "task-authorization-not-promoted"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/owner-correction-learning-2026-07-26.json",
-          "sha256": "d30628cca72d61b81e0a41ae9079215c9161be2f81ddc9e8f97355d890b68d6e",
-          "testedRevision": "8a391aab4b2e945dfe83a3b4647145d4d2952072",
-          "testedSourceSha256": "8ec7508c1500397642d880a468f063f4c5b07d48f9a8afa277ed5d1ef5707ebf",
-          "testedScenarioSha256": "9d5a149b6b46d02703ce6a2189920a940cb0fa1bd91d8d5311369d0a7530c478",
+          "runRecord": "skill-evals/run-records/owner-correction-learning-2026-08-25-decision-fidelity.json",
+          "sha256": "eeb87796dc6dc121e3cfb5c75288acbcf1fba628834093effbc188e74b7ca732",
+          "testedRevision": "0ff56739f26e972e9a550579d50edcf6ef794c58",
+          "testedSourceSha256": "3f25b97b00b3f2833ea832e7281a5e838ddc07d2bfe1a816c61a89d581097c3f",
+          "testedScenarioSha256": "b73d82e24abe107bee6eca83f4cfb99e0cb14d7bee22ea956c19d298093f7ca4",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
