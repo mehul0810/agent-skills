@@ -1,0 +1,37 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "product-development-governance-2026-08-26",
+  "scenario": "product-development-governance",
+  "result": "succeeded",
+  "startedAt": "2026-08-26T05:40:00.000Z",
+  "durationMs": 180000,
+  "checks": [
+    { "name": "planner-discovery-packet", "result": "pass" },
+    { "name": "po-train-and-post-release-learning", "result": "pass" },
+    { "name": "independent-engineering-review", "result": "pass" },
+    { "name": "exact-candidate-release-readiness", "result": "pass" },
+    { "name": "cto-escalation-only", "result": "pass" },
+    { "name": "sibling-product-identity", "result": "pass" },
+    { "name": "outcome-named-temporary-tasks", "result": "pass" },
+    { "name": "stable-production-mainline", "result": "pass" },
+    { "name": "tag-derived-package", "result": "pass" },
+    { "name": "primary-studio-safe-first", "result": "pass" },
+    { "name": "disposable-isolation-fallback", "result": "pass" },
+    { "name": "new-studio-owner-approval", "result": "pass" },
+    { "name": "unapproved-studio-proof-gap", "result": "pass" },
+    { "name": "existing-studio-inventory-only", "result": "pass" }
+  ],
+  "metrics": { "checks_passed": 14 },
+  "lineage": {
+    "verificationId": "product-development-governance-2026-08-26",
+    "artifactPointer": "codex-fresh-agent:/root/product_role_topology_eval+/root/stable_release_lineage_eval+/root/proof_environment_preflight_eval#2026-08-26"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-26T05:43:00.000Z",
+    "metricNames": ["checks_passed"],
+    "summary": "Three source-blind evaluators preserved four-role accountability without thread clutter, enforced mainline stable-release ancestry, and selected approved proof environments without expanding authority."
+  },
+  "tags": ["fresh-agent", "sanitized", "product-orchestrator", "release-authority", "proof-environment"]
+}

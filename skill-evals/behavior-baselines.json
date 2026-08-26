@@ -387,6 +387,67 @@
       ]
     },
     {
+      "name": "product-development-governance",
+      "files": [
+        "wp-portfolio-cto/SKILL.md",
+        "wp-product-orchestrator/SKILL.md",
+        "wp-portfolio-cto/references/router.md",
+        "wp-product-orchestrator/references/router.md",
+        "shared/references/product-development-role-topology.md",
+        "shared/references/disposable-proof-environment-lifecycle.md",
+        "shared/references/release-train-discipline.md",
+        "shared/references/delegation-protocol.md"
+      ],
+      "sha256": "349758359ce06ae55108640555708dc3b27d0f4bd444136ed53279e3947258ee",
+      "scenario": {
+        "id": "product-development-governance",
+        "files": [
+          "skill-evals/wp-portfolio-cto-scenarios.md",
+          "skill-evals/wp-product-orchestrator-scenarios.md"
+        ],
+        "anchors": [
+          "Four-role product topology",
+          "Shared parent product identity",
+          "Stable mainline lineage",
+          "Proof environment preflight",
+          "Unapproved Studio proof",
+          "Post-release product learning",
+          "CTO escalation-only boundary"
+        ],
+        "sha256": "74a078a82f5dcb9a8de15e8b17db4163d77468b945782a276fc1b293780fc03c"
+      },
+      "requiredChecks": [
+        "planner-discovery-packet",
+        "po-train-and-post-release-learning",
+        "independent-engineering-review",
+        "exact-candidate-release-readiness",
+        "cto-escalation-only",
+        "sibling-product-identity",
+        "outcome-named-temporary-tasks",
+        "stable-production-mainline",
+        "tag-derived-package",
+        "primary-studio-safe-first",
+        "disposable-isolation-fallback",
+        "new-studio-owner-approval",
+        "unapproved-studio-proof-gap",
+        "existing-studio-inventory-only"
+      ],
+      "evidence": [
+        {
+          "runRecord": "skill-evals/run-records/product-development-governance-2026-08-26.json",
+          "sha256": "a1279f5ffa4bfbc82d7365cffc0bb4d90e259673eedfa48e38e4037e11c7555e",
+          "testedRevision": "b548d94806b8f18091c2d33d4c043638a70827e1",
+          "testedSourceSha256": "349758359ce06ae55108640555708dc3b27d0f4bd444136ed53279e3947258ee",
+          "testedScenarioSha256": "74a078a82f5dcb9a8de15e8b17db4163d77468b945782a276fc1b293780fc03c",
+          "runtime": {
+            "host": "codex-desktop",
+            "isolation": "fresh-agent",
+            "harnessRevision": "24ffe6e5481aebe33f403df9b72f0de7214f019a"
+          }
+        }
+      ]
+    },
+    {
       "name": "product-release-authority",
       "files": [
         "wp-portfolio-cto/SKILL.md",
@@ -400,7 +461,7 @@
         "shared/references/release-train-discipline.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "82f8679bfbe92b1208cd9a00bd95abcb935b10da06c797b9ec926cfe6aba2264",
+      "sha256": "e7dc226391d799689ce46740d19c1527030305a75d93ec818c385776285ec8e6",
       "scenario": {
         "id": "product-release-authority",
         "files": [
@@ -444,10 +505,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-release-authority-2026-08-25-owner-aligned.json",
-          "sha256": "70d9cba05bf9c538e9479ece7fc19823009c4524ae69605a17e0e2d4cd590460",
-          "testedRevision": "5f39d50d90979e9b3ae913656b631f1234887a17",
-          "testedSourceSha256": "82f8679bfbe92b1208cd9a00bd95abcb935b10da06c797b9ec926cfe6aba2264",
+          "runRecord": "skill-evals/run-records/product-release-authority-2026-08-26-governance.json",
+          "sha256": "325d7c003c71664c93c3b90719d3836dc78f211b72df69770c8bdcddda11d526",
+          "testedRevision": "b548d94806b8f18091c2d33d4c043638a70827e1",
+          "testedSourceSha256": "e7dc226391d799689ce46740d19c1527030305a75d93ec818c385776285ec8e6",
           "testedScenarioSha256": "9c26d278b01a66a8b11a0c8fc06f7800e89367b0be82c158d297503e44b7924e",
           "runtime": {
             "host": "codex-desktop",
@@ -507,7 +568,7 @@
         "wp-product-orchestrator/SKILL.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "2c8b828579260724baa68a0b78b0daa508533bb0305bfc6f9124daf98a00d8cd",
+      "sha256": "9408f6ba0dadedfef9138c60e12679d8cc5667cb1ec66d111db3eb14ace507be",
       "scenario": {
         "id": "owner-aligned-judgment",
         "files": [
@@ -535,10 +596,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/owner-aligned-judgment-2026-08-25.json",
-          "sha256": "d274c2fcf87a74276942222c2129d6013074c770f8fbb7a2ef4f79f809d754a2",
-          "testedRevision": "5f39d50d90979e9b3ae913656b631f1234887a17",
-          "testedSourceSha256": "2c8b828579260724baa68a0b78b0daa508533bb0305bfc6f9124daf98a00d8cd",
+          "runRecord": "skill-evals/run-records/owner-aligned-judgment-2026-08-26-governance.json",
+          "sha256": "8d0564c85f7490e0a0a08858aa84a55cf756c982597aa9502a0804576abfcc46",
+          "testedRevision": "b548d94806b8f18091c2d33d4c043638a70827e1",
+          "testedSourceSha256": "9408f6ba0dadedfef9138c60e12679d8cc5667cb1ec66d111db3eb14ace507be",
           "testedScenarioSha256": "54b4ae2bce4d363eecee4fad87a2b5e39ae29e0c98c722ac773dc9447afc6d02",
           "runtime": {
             "host": "codex-desktop",
