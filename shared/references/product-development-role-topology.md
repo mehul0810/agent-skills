@@ -6,11 +6,11 @@ Use this reference to turn product work into explicit decision, execution, revie
 
 ### Product Planner
 
-Validate discovery before implementation: user/problem evidence, current workflow, expected outcome, UX and WordPress ownership, constraints, non-goals, dependencies, risks, and cheapest useful proof. Return an implementation-ready packet with exact product/repo, milestone, recommended branch/base, acceptance criteria, proof-environment choice, and unresolved contract questions. Research findings without actionable evidence stay in a research lane, not the release backlog.
+Validate discovery before implementation: user/problem evidence, current workflow, expected outcome, UX and WordPress ownership, constraints, non-goals, dependencies, risks, and cheapest useful proof. For feature, UX, growth, or product-research recommendations, use `product-value-decision.md` and include its compact user/business value case. Return an implementation-ready packet with exact product/repo, milestone, recommended branch/base, acceptance criteria, proof-environment choice, and unresolved contract questions. Research findings without actionable evidence stay in a research lane, not the release backlog.
 
 ### Product Operations / PO
 
-Own one product's issues, milestones/due dates, priority, accepted scope, labels, assignment, branch/train state, worker coordination, and acceptance reconciliation. Convert the Planner packet into duplicate-screened PR-sized issues. After release, reconcile issue outcomes and capture measured support, usage, proof, regression, and release-process learning; route reusable lessons to product docs or the cross-product learning loop.
+Own one product's issues, milestones/due dates, priority, accepted scope, labels, assignment, branch/train state, worker coordination, and acceptance reconciliation. Convert the Planner packet and value case into duplicate-screened PR-sized issues. After release, compare the stated outcome/decision threshold with measured or qualitative evidence, classify the bet `validated|mixed|disproved|unmeasured`, and capture support, usage, proof, regression, and release-process learning; route reusable lessons to product docs or the cross-product learning loop.
 
 ### Engineering Review
 

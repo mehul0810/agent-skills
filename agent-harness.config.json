@@ -14,6 +14,7 @@
     "shared/schemas/wp-quality-review.schema.json",
     "shared/references/owner-decision-resolution.md",
     "shared/references/product-development-role-topology.md",
+    "shared/references/product-value-decision.md",
     "wp-expert/scripts/validate-asset-production.mjs",
     "wp-expert/scripts/validate-visual-proof.mjs",
     "wp-quality-reviewer/scripts/validate-review-report.mjs"
@@ -39,6 +40,14 @@
       "warningPercent": 85,
       "files": [
         "shared/references/product-development-role-topology.md"
+      ]
+    },
+    {
+      "name": "Product value decision",
+      "maxWords": 900,
+      "warningPercent": 85,
+      "files": [
+        "shared/references/product-value-decision.md"
       ]
     },
     {
@@ -418,7 +427,7 @@
     {
       "name": "WP Product Orchestrator",
       "file": "skill-evals/wp-product-orchestrator-scenarios.md",
-      "requiredPhrases": ["# WP Product Orchestrator Evaluation Scenarios", "Owner-aligned implementation choice", "Exact supplied values", "Enterprise without overengineering", "Four-role product topology", "Stable mainline lineage", "Proof environment preflight", "Unapproved Studio proof"]
+      "requiredPhrases": ["# WP Product Orchestrator Evaluation Scenarios", "Owner-aligned implementation choice", "Exact supplied values", "Enterprise without overengineering", "Four-role product topology", "Feature value recommendation", "Mandatory work is not score-gated", "Stable mainline lineage", "Proof environment preflight", "Unapproved Studio proof"]
     },
     {
       "name": "Visual WordPress",
