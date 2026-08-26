@@ -29,6 +29,26 @@ Then assess:
 
 Size, complexity scores, and copy/paste detectors are signals, not automatic findings. Prove maintenance risk through divergent behavior, multiple owners, hidden dependency, regression history, or blocked testing.
 
+## Portable Modularity Contract
+
+Use repository policy when it is stricter. Otherwise apply these default logical-code budgets, excluding generated, vendored, fixture, and migration files only when the repository path inventory says so:
+
+| Shape | Review threshold | Hard threshold for new or growing code |
+|---|---:|---:|
+| Thin WordPress adapter, controller, hook, route, or view boundary | 250 lines/file or 40 lines/method | 500 lines/file or 80 lines/method |
+| General application, domain, infrastructure, or UI module | 400 lines/file or 60 lines/method | 800 lines/file or 100 lines/method |
+
+- A review threshold requires a cohesion and extraction decision with evidence; it does not automatically require a split.
+- A hard-threshold violation blocks new or expanded code unless an approved exception exists. Do not game the budget with fragments, wrappers, traits, partials, or generated-looking files that preserve the same ownership problem.
+- Measure changed files and changed methods. For legacy debt already above a hard threshold, use a no-growth ratchet: the file's logical lines, oversized-method count, and largest changed method must not grow. Put new behavior behind a narrow tested boundary and leave only the minimum compatibility seam or wiring in the legacy file.
+- A focused defect fix in a 9,000-line legacy file does not require an unrelated whole-file rewrite. It does require characterization proof, no-growth evidence, and an issue-backed reduction target when safe extraction cannot fit the task.
+
+Check dependency direction, not directory names. WordPress entry points, admin/UI, REST, CLI, cron, and block adapters may call application use cases; application code depends on domain policies and ports; infrastructure implements those ports. Domain code must not depend on WordPress globals, UI, HTTP clients, storage adapters, or provider SDKs. Reject cycles, inward layers constructing outward adapters, and callers bypassing a port to reach a database/provider directly.
+
+Every exception records: approving owner, issue or dated reduction target, measured value and allowed budget, affected path/method, rationale and risk, plus either a reduction plan or an explicit no-growth posture. Missing or expired metadata is not an exception.
+
+The product repository owns the executable checker because CI runs from that checkout: path inventory and exclusions, language-specific counters or dependency rules, baseline snapshots, exception registry, and local/CI commands. This skill owns the portable review policy, threshold interpretation, evidence requirements, and disposition model. Report measured current/baseline values, threshold class, dependency-direction result, exception metadata, proof, and `pass`, `fix`, `exception`, or `blocked` disposition.
+
 ## Finding Threshold
 
 Refactor when at least one is true:
