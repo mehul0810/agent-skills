@@ -307,16 +307,17 @@
         "shared/schemas/wp-quality-review.schema.json",
         "wp-quality-reviewer/scripts/validate-review-report.mjs"
       ],
-      "sha256": "9234e9e1ff46478f20334b524080f98aae0624993dd875eac75f1e9e42775cb8",
+      "sha256": "ae86d5d6d7fd20856239cec8ebdfec1d1ff9ed3e3c6260d5040f79d2e48fceac",
       "scenario": {
         "id": "multi-domain-release-quality-review",
         "files": [
           "skill-evals/wp-quality-reviewer-scenarios.md"
         ],
         "anchors": [
-          "Multi-domain release audit"
+          "Multi-domain release audit",
+          "Legacy modularity ratchet and adapter boundary"
         ],
-        "sha256": "efe8d0daeec1a7c4653642b0dec40f89b93f78e04ff40f81f445353c511252ca"
+        "sha256": "0b687cdd1d1f68fad871ed01d47f97bdd4ed7094cf6000d620e87742bdd1759c"
       },
       "requiredChecks": [
         "compact-multi-domain-route",
@@ -330,15 +331,19 @@
         "performance-direction-and-budget",
         "malformed-vague-report-rejection",
         "unresolved-critical-blocks-pass",
-        "formal-report-validation"
+        "formal-report-validation",
+        "proportional-modularity-thresholds",
+        "legacy-no-growth-ratchet",
+        "dependency-direction-adapter-boundary",
+        "exception-metadata-and-repo-checker-ownership"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-08-10-r2.json",
-          "sha256": "a1346839c874ded84d1119838b4c454d3586abd34ef66b5c9538fd650fbc1bce",
-          "testedRevision": "ab34bc4eb0b4d0911434af84d4f72ea8c37fb2ce",
-          "testedSourceSha256": "9234e9e1ff46478f20334b524080f98aae0624993dd875eac75f1e9e42775cb8",
-          "testedScenarioSha256": "efe8d0daeec1a7c4653642b0dec40f89b93f78e04ff40f81f445353c511252ca",
+          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-08-26-r3.json",
+          "sha256": "e6197f78e4945de7512580c437bc26d49b550d60d649c0534a6b9407f9fd219e",
+          "testedRevision": "75d4ac43034f52268e7669f4f20462c035adcc43",
+          "testedSourceSha256": "ae86d5d6d7fd20856239cec8ebdfec1d1ff9ed3e3c6260d5040f79d2e48fceac",
+          "testedScenarioSha256": "0b687cdd1d1f68fad871ed01d47f97bdd4ed7094cf6000d620e87742bdd1759c",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
