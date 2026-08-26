@@ -1,4 +1,4 @@
-# React With WordPress Enterprise Standards
+# JavaScript And React With WordPress Enterprise Standards
 
 Use this for React apps, admin screens, block editor UI, frontend interactive blocks, headless/decoupled UI, data stores, build tooling, and enterprise review of React shipped inside WordPress.
 
@@ -12,6 +12,12 @@ Use this for React apps, admin screens, block editor UI, frontend interactive bl
 - `@wordpress/scripts`: https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/
 - Dependency extraction webpack plugin: https://developer.wordpress.org/block-editor/reference-guides/packages/packages-dependency-extraction-webpack-plugin/
 - Interactivity API: https://developer.wordpress.org/block-editor/reference-guides/interactivity-api/
+- WordPress JavaScript Coding Standards: https://developer.wordpress.org/coding-standards/wordpress-coding-standards/javascript/
+- WordPress JavaScript documentation standards: https://developer.wordpress.org/coding-standards/inline-documentation-standards/javascript/
+- Gutenberg coding guidelines: https://developer.wordpress.org/block-editor/contributors/code/coding-guidelines/
+- `@wordpress/eslint-plugin`: https://developer.wordpress.org/block-editor/reference-guides/packages/packages-eslint-plugin/
+- Rules of React: https://react.dev/reference/rules
+- Avoid unnecessary Effects: https://react.dev/learn/you-might-not-need-an-effect
 
 ## First Decision: Where React Belongs
 
@@ -32,6 +38,17 @@ Pick the smallest React surface that solves the product problem.
 - Load `wp-components` styles when using `@wordpress/components`; keep plugin CSS dependent on it where load order matters.
 - Avoid mixing manual webpack `externals` with dependency extraction unless the conflict is understood and tested.
 - Treat WordPress script modules and Interactivity API support as version-sensitive; verify target WordPress/VIP version before adopting.
+
+## JavaScript And React Coding Contract
+
+- Preserve repository format, modules, browser targets, and contracts. New WordPress code follows WordPress JavaScript standards and compatible `@wordpress/eslint-plugin` flat config; do not reformat unrelated legacy code.
+- Prefer cohesive ES modules, explicit imports/exports, stable shapes, and clear dependency direction. Avoid kitchen-sink utilities, globals, hidden mutation, duplicated state, and speculative abstractions.
+- Choose JavaScript, JSDoc types, or TypeScript from repo policy, contract risk, and build support. Gutenberg Core prefers TypeScript for new typed files; that does not justify migrating every plugin/theme or adding a compiler for a narrow change.
+- Verify syntax against the build/browser matrix and React APIs against WordPress packages or the decoupled lockfile. Avoid proposals below Stage 4 and assumed future APIs.
+- Keep React components/Hooks pure: immutable props/state, top-level Hooks, stable semantic keys, and no render side effects or direct component calls. Derive values instead of synchronizing duplicate state.
+- Use Effects only to synchronize external systems, with complete dependencies, cleanup, and stale-request protection; user-caused work belongs in handlers. Add memoization, global state, context, reducers, or component libraries only for measured or structural need.
+- Isolate DOM/legacy integration behind refs or adapters; clean up listeners and mounts and prevent duplicate roots. Handle promises, cancellation, errors, redaction, retries, and mutation idempotency deliberately.
+- Document public/non-obvious contracts and complex shapes with useful JSDoc or types. Remove obvious narration, commented-out code, and debug residue.
 
 ## Architecture Boundaries
 
@@ -84,17 +101,7 @@ Pick the smallest React surface that solves the product problem.
 - Unit-test reducers, selectors, transforms, utility functions, and REST contract adapters.
 - Component-test critical UI states: loading, empty, error, permission denied, dirty form, saved, optimistic rollback, and validation failure.
 - E2E-test editor/admin/frontend flows with realistic roles and data volume.
-- Run lint/type/build gates: `wp-scripts lint-js`, `wp-scripts test-unit-js`, TypeScript if configured, `npm run build`, and project equivalents.
+- Run the repository's canonical lint/type/test/build gates. For `@wordpress/scripts`, use `wp-scripts lint-js`, `wp-scripts test-unit-js`, TypeScript checks when configured, and the production build; `node --check` alone does not validate JSX or TypeScript.
 - Verify generated `*.asset.php` dependency lists, built files, source maps policy, and release artifact contents.
 - Smoke-test with a lower-privilege role to prove the UI does not merely hide unauthorized actions while REST still blocks them.
 - Validate accessibility with keyboard, screen reader smoke, reduced motion, zoom, RTL/translation, and automated checks where available.
-
-## Review Checklist
-
-- Is React necessary for this surface, or would PHP/block markup plus small behavior be simpler and faster?
-- Is WordPress-owned React used instead of bundling duplicate React in admin/editor contexts?
-- Are scripts scoped, versioned, dependency-extracted, and included in the release artifact?
-- Are REST permissions, schemas, pagination, and error states complete?
-- Does the UI use WPDS/components where appropriate and meet accessibility expectations?
-- Are large data, remote calls, and expensive computations kept off initial render?
-- Are tests covering roles, failures, build artifacts, and high-volume data states?

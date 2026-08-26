@@ -150,6 +150,15 @@
       ]
     },
     {
+      "name": "JavaScript React engineering",
+      "maxWords": 2300,
+      "warningPercent": 85,
+      "files": [
+        "wp-plugin-expert/SKILL.md",
+        "wp-expert/references/react-wordpress-enterprise.md"
+      ]
+    },
+    {
       "name": "Plugin engineering graph",
       "maxWords": 1700,
       "warningPercent": 85,
@@ -417,7 +426,7 @@
     {
       "name": "WP Expert",
       "file": "skill-evals/wp-expert-scenarios.md",
-      "requiredPhrases": ["# WP Expert Skill Evaluation Scenarios"]
+      "requiredPhrases": ["# WP Expert Skill Evaluation Scenarios", "WordPress React correctness", "Plain JavaScript standards"]
     },
     {
       "name": "WP Portfolio CTO",
