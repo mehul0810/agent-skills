@@ -1,0 +1,76 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "product-value-decision-2026-08-26",
+  "scenario": "product-value-decision",
+  "result": "succeeded",
+  "startedAt": "2026-08-26T15:08:00.000Z",
+  "durationMs": 60000,
+  "checks": [
+    {
+      "name": "user-outcome-specificity",
+      "result": "pass"
+    },
+    {
+      "name": "business-outcome-specificity",
+      "result": "pass"
+    },
+    {
+      "name": "evidence-assumption-separation",
+      "result": "pass"
+    },
+    {
+      "name": "confidence-and-reach",
+      "result": "pass"
+    },
+    {
+      "name": "lifetime-cost-and-risk",
+      "result": "pass"
+    },
+    {
+      "name": "proportional-decision",
+      "result": "pass"
+    },
+    {
+      "name": "measurable-threshold-window",
+      "result": "pass"
+    },
+    {
+      "name": "no-invented-uplift",
+      "result": "pass"
+    },
+    {
+      "name": "mandatory-work-not-score-gated",
+      "result": "pass"
+    },
+    {
+      "name": "post-release-outcome-disposition",
+      "result": "pass"
+    },
+    {
+      "name": "quality-and-authority-boundary",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 11
+  },
+  "lineage": {
+    "verificationId": "product-value-decision-2026-08-26",
+    "artifactPointer": "codex-fresh-agent:/root/product_value_eval#2026-08-26"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-26T15:09:00.000Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "A source-blind evaluator required an evidence-backed user and business value case, proportional prioritization and measurement, protected mandatory work, and preserved quality and authority boundaries."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "product-orchestrator",
+    "product-value"
+  ]
+}

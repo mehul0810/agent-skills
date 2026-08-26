@@ -398,7 +398,7 @@
         "shared/references/release-train-discipline.md",
         "shared/references/delegation-protocol.md"
       ],
-      "sha256": "349758359ce06ae55108640555708dc3b27d0f4bd444136ed53279e3947258ee",
+      "sha256": "fafbc87d9fc44c54155b62b33c73e767e5bcf437e22413782accf2903946297d",
       "scenario": {
         "id": "product-development-governance",
         "files": [
@@ -434,11 +434,58 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-development-governance-2026-08-26.json",
-          "sha256": "a1279f5ffa4bfbc82d7365cffc0bb4d90e259673eedfa48e38e4037e11c7555e",
-          "testedRevision": "b548d94806b8f18091c2d33d4c043638a70827e1",
-          "testedSourceSha256": "349758359ce06ae55108640555708dc3b27d0f4bd444136ed53279e3947258ee",
+          "runRecord": "skill-evals/run-records/product-development-governance-2026-08-26-value.json",
+          "sha256": "3773a818e4bb5e9ecaa5ec73b35d1bf0aacb5021c211f470a287e365b4b6bbc4",
+          "testedRevision": "72da3a611c4c225214791e664360adbe2276ec6c",
+          "testedSourceSha256": "fafbc87d9fc44c54155b62b33c73e767e5bcf437e22413782accf2903946297d",
           "testedScenarioSha256": "74a078a82f5dcb9a8de15e8b17db4163d77468b945782a276fc1b293780fc03c",
+          "runtime": {
+            "host": "codex-desktop",
+            "isolation": "fresh-agent",
+            "harnessRevision": "24ffe6e5481aebe33f403df9b72f0de7214f019a"
+          }
+        }
+      ]
+    },
+    {
+      "name": "product-value-decision",
+      "files": [
+        "shared/references/product-value-decision.md",
+        "shared/references/product-development-role-topology.md",
+        "wp-product-orchestrator/references/router.md"
+      ],
+      "scenario": {
+        "id": "product-value-decision",
+        "files": [
+          "skill-evals/wp-product-orchestrator-scenarios.md"
+        ],
+        "anchors": [
+          "Feature value recommendation",
+          "Mandatory work is not score-gated"
+        ],
+        "sha256": "52c0b2cb69237e9f1d472448ca912993d5e549eb4c6fc8602cab15beff2581c8"
+      },
+      "requiredChecks": [
+        "user-outcome-specificity",
+        "business-outcome-specificity",
+        "evidence-assumption-separation",
+        "confidence-and-reach",
+        "lifetime-cost-and-risk",
+        "proportional-decision",
+        "measurable-threshold-window",
+        "no-invented-uplift",
+        "mandatory-work-not-score-gated",
+        "post-release-outcome-disposition",
+        "quality-and-authority-boundary"
+      ],
+      "sha256": "e181ccb4bff74e91e22996127dee111a5427e178479124d3ef50ee7543cdfd1a",
+      "evidence": [
+        {
+          "runRecord": "skill-evals/run-records/product-value-decision-2026-08-26.json",
+          "sha256": "598b0df1a5cadc2ede80c3a258fb4d28b1d4492e99cf6e217d43117b471374a5",
+          "testedRevision": "72da3a611c4c225214791e664360adbe2276ec6c",
+          "testedSourceSha256": "e181ccb4bff74e91e22996127dee111a5427e178479124d3ef50ee7543cdfd1a",
+          "testedScenarioSha256": "52c0b2cb69237e9f1d472448ca912993d5e549eb4c6fc8602cab15beff2581c8",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
@@ -461,7 +508,7 @@
         "shared/references/release-train-discipline.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "e7dc226391d799689ce46740d19c1527030305a75d93ec818c385776285ec8e6",
+      "sha256": "1700228f4d74cf73034937fe707a5dff645a34ee8e573460dcc319c0898f089a",
       "scenario": {
         "id": "product-release-authority",
         "files": [
@@ -505,10 +552,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-release-authority-2026-08-26-governance.json",
-          "sha256": "325d7c003c71664c93c3b90719d3836dc78f211b72df69770c8bdcddda11d526",
-          "testedRevision": "b548d94806b8f18091c2d33d4c043638a70827e1",
-          "testedSourceSha256": "e7dc226391d799689ce46740d19c1527030305a75d93ec818c385776285ec8e6",
+          "runRecord": "skill-evals/run-records/product-release-authority-2026-08-26-value.json",
+          "sha256": "bf4f10556fafa239a4001e12b1fe5b5ea18003a134f62698bf8c0189b5f421e5",
+          "testedRevision": "72da3a611c4c225214791e664360adbe2276ec6c",
+          "testedSourceSha256": "1700228f4d74cf73034937fe707a5dff645a34ee8e573460dcc319c0898f089a",
           "testedScenarioSha256": "9c26d278b01a66a8b11a0c8fc06f7800e89367b0be82c158d297503e44b7924e",
           "runtime": {
             "host": "codex-desktop",
