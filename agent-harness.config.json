@@ -15,6 +15,7 @@
     "shared/references/owner-decision-resolution.md",
     "shared/references/product-development-role-topology.md",
     "shared/references/product-value-decision.md",
+    "shared/references/enterprise-language-coding-standards.md",
     "wp-expert/scripts/validate-asset-production.mjs",
     "wp-expert/scripts/validate-visual-proof.mjs",
     "wp-quality-reviewer/scripts/validate-review-report.mjs"
@@ -156,6 +157,14 @@
       "files": [
         "wp-plugin-expert/SKILL.md",
         "wp-expert/references/react-wordpress-enterprise.md"
+      ]
+    },
+    {
+      "name": "Enterprise language standards",
+      "maxWords": 1400,
+      "warningPercent": 85,
+      "files": [
+        "shared/references/enterprise-language-coding-standards.md"
       ]
     },
     {
@@ -426,7 +435,7 @@
     {
       "name": "WP Expert",
       "file": "skill-evals/wp-expert-scenarios.md",
-      "requiredPhrases": ["# WP Expert Skill Evaluation Scenarios", "WordPress React correctness", "Plain JavaScript standards"]
+      "requiredPhrases": ["# WP Expert Skill Evaluation Scenarios", "WordPress React correctness", "Plain JavaScript standards", "Enterprise TypeScript boundary", "Multi-language enterprise review", "Legacy typing restraint"]
     },
     {
       "name": "WP Portfolio CTO",

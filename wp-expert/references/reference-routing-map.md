@@ -26,19 +26,20 @@ Use this map to choose references with low context cost.
 | Task signal | Primary reference | Common supporting references |
 | --- | --- | --- |
 | Skill behavior audit, routing regression, eval scenarios, prompt drift after skill edits | `agent-behavior-eval-scenarios.md` | `architecture-decision-gate.md` when ownership or authority is unclear |
-| Architecture decision gate, ownership/source-of-truth choice, public contract, release state, validation proof, project policy precedence | `architecture-decision-gate.md` | `enterprise-code-quality-gate.md`, `live-proof-wordpress.md` |
-| Owner instruction or correction with unclear scope, durability, negative constraint, or authority | `owner-decision-resolution.md` | `architecture-decision-gate.md` only when an artifact or public-contract owner is also unclear |
-| New chat/session continuity, branch creation, issue milestone to PR release branch, PR base selection, release branch drift | `session-continuity-pr-discipline.md` | `standards-ci-github.md`, `delivery-excellence.md` |
-| Project-level Codex subagents, skill routing, availability-first model/reasoning allocation | `project-subagent-routing.md` | `thinking-brainstorming-engineering-discipline.md` for unresolved planning ambiguity |
-| PRD, SOW, estimates, milestones, mobile-first planning | `delivery-excellence.md` | `review-checklists.md`, `runtime-toolchain-version-policy.md` |
-| Enterprise acceptance criteria or definition of done for plugin/theme/API/migration/security/performance/conversion work | `enterprise-acceptance-criteria-templates.md` | `test-coverage-discipline.md`, `validation-commands.md` |
-| Planning drift control, scope guard, exact CSS/value change, calibrated validation | `planning-drift-control.md` | `delivery-excellence.md`, `validation-commands.md` |
-| Brainstorming convergence, anti-overengineering, premium polish stopping rule, thinking/token budget | `thinking-brainstorming-engineering-discipline.md` | `planning-drift-control.md`, `delivery-excellence.md` |
+| Ownership, source of truth, public contract, release, or proof decision | `architecture-decision-gate.md` | `enterprise-code-quality-gate.md`, `live-proof-wordpress.md` |
+| Ambiguous owner scope, durability, constraint, or authority | `owner-decision-resolution.md` | `architecture-decision-gate.md` only when artifact ownership is also unclear |
+| Session continuity, PR base, release branch, or milestone drift | `session-continuity-pr-discipline.md` | `standards-ci-github.md`, `delivery-excellence.md` |
+| Subagents and model/reasoning allocation | `project-subagent-routing.md` | `thinking-brainstorming-engineering-discipline.md` for unresolved planning ambiguity |
+| PRD, SOW, estimates, or milestones | `delivery-excellence.md` | `review-checklists.md`, `runtime-toolchain-version-policy.md` |
+| Enterprise acceptance criteria | `enterprise-acceptance-criteria-templates.md` | `test-coverage-discipline.md`, `validation-commands.md` |
+| Scope drift or exact-value change | `planning-drift-control.md` | `delivery-excellence.md`, `validation-commands.md` |
+| Brainstorming convergence and stopping rule | `thinking-brainstorming-engineering-discipline.md` | `planning-drift-control.md`, `delivery-excellence.md` |
 | Code creation/review quality gate, enterprise/WPVIP engineering bar | `enterprise-code-quality-gate.md` | `review-checklists.md`, `validation-commands.md` |
-| Compatibility matrix, SBOM/provenance, dependency/license assurance, post-release signals, RPO/RTO, operational recovery | `enterprise-runtime-assurance.md` | `enterprise-code-quality-gate.md`, `production-dependency-discipline.md` |
-| Test coverage decision, missing coverage review, PR/change test plan | `test-coverage-discipline.md` | `validation-commands.md`, `review-checklists.md` |
+| TypeScript or cross-language enterprise coding standards for PHP, JavaScript/React, CSS/SCSS, HTML/templates, SQL, JSON/YAML, shell, or Markdown | `../../shared/references/enterprise-language-coding-standards.md` | one artifact-specific or security reference only when a confirmed risk requires it |
+| Compatibility, supply chain, operations, or recovery assurance | `enterprise-runtime-assurance.md` | `enterprise-code-quality-gate.md`, `production-dependency-discipline.md` |
+| Test coverage decision or gap | `test-coverage-discipline.md` | `validation-commands.md`, `review-checklists.md` |
 | Plugin architecture, new feature, refactor, service boundaries | `plugin-architecture.md` | `implementation-patterns.md`, `enterprise-code-quality-gate.md` |
-| Plugin product architecture, add-ons/pro, public hooks/filters, feature flags, diagnostics contracts | `plugin-product-architecture.md` | `plugin-architecture.md`, `release-contract-compatibility.md` |
+| Plugin product/add-on/public extension architecture | `plugin-product-architecture.md` | `plugin-architecture.md`, `release-contract-compatibility.md` |
 | Plugin debuggability, support bundle, Site Health, recovery controls, support diagnostics | `plugin-debuggability-supportability.md` | `plugin-product-architecture.md`, `observability-incident-response.md` |
 | Third-party API integration | `third-party-api-integrations.md` | `performance-and-security.md`, `implementation-patterns.md` |
 | WooCommerce, commerce, checkout, HPOS, payments, subscriptions, order operations | `woocommerce-commerce-engineering.md` | `performance-and-security.md`, `privacy-consent-data-governance.md` |
@@ -53,25 +54,25 @@ Use this map to choose references with low context cost.
 | Backward compatibility and launch-state decisions | `release-contract-compatibility.md` | `changelog-release-notes.md`, `plugin-architecture.md` |
 | Technical SEO, canonicals, redirects, robots, sitemaps, structured data, crawl risk | `technical-seo-engineering.md` | `content-migration-editorial-scale.md`, `headless-decoupled-wordpress.md` |
 | Style guide, design system, design tokens, custom theme, or child theme | `style-guide-theme-translation.md` | `block-theme-architecture.md`, `visual-parity-regression.md` |
-| Screenshot, Figma, image, mockup, or chosen visual direction to WordPress | `../../shared/references/visual-to-wordpress-implementation.md` | one confirmed architecture, conversion, accessibility, performance, interaction, or vendor risk only |
+| Chosen visual target to WordPress | `../../shared/references/visual-to-wordpress-implementation.md` | one confirmed architecture, conversion, accessibility, performance, interaction, or vendor risk only |
 | Custom FSE architecture without a supplied visual target | `block-theme-architecture.md` | `custom-block-theme-from-design.md` |
-| Classic-to-block theme migration, page-builder migration, child-theme modernization, WooCommerce template cleanup | `hybrid-theme-migration-modernization.md` | `theme-and-block-editor.md`, `technical-seo-engineering.md` |
-| Theme/block editor behavior or block implementation | `block-theme-architecture.md` | `theme-and-block-editor.md`, `validation-commands.md` |
-| Interactivity API, directives, script modules, stateful block frontend, hydration, or client-side navigation | `interactivity-api-frontend.md` | one confirmed visual, architecture, accessibility, or performance risk only |
+| Legacy/theme-builder modernization | `hybrid-theme-migration-modernization.md` | `theme-and-block-editor.md`, `technical-seo-engineering.md` |
+| Theme/block implementation | `block-theme-architecture.md` | `theme-and-block-editor.md`, `validation-commands.md` |
+| Interactivity API or stateful block frontend | `interactivity-api-frontend.md` | one confirmed visual, architecture, accessibility, or performance risk only |
 | Theme/frontend performance, Core Web Vitals, fonts/images/assets/CLS/INP/LCP quality gate | `theme-frontend-performance-quality-gate.md` | `performance-profiling-scale-budgets.md`, `visual-parity-regression.md` |
 | JavaScript/React in WordPress (admin/editor/block/frontend/headless) | `react-wordpress-enterprise.md` | `wordpress-design-system.md`, `standards-ci-github.md` |
-| UX discovery, product strategy, information architecture, UX writing, conversion UX, or image/pixel design QA | `ux-product-strategy-design-qa.md` | `ui-ux-pro-for-wordpress.md`, `visual-parity-regression.md` |
+| UX strategy, IA, writing, or design QA | `ux-product-strategy-design-qa.md` | `ui-ux-pro-for-wordpress.md`, `visual-parity-regression.md` |
 | Conversion-focused website, landing page, lead funnel, CRO, checkout/booking funnel | `conversion-focused-website-engineering.md` | `ux-product-strategy-design-qa.md`, `analytics-measurement-engineering.md` |
 | Analytics, measurement, GA4/GTM/data layer, consent-aware tracking, funnel events | `analytics-measurement-engineering.md` | `privacy-consent-data-governance.md`, `conversion-focused-website-engineering.md` |
 | UI/UX implementation, premium feel, or admin UX | `ui-ux-pro-for-wordpress.md` | `ux-product-strategy-design-qa.md`, `admin-ux-and-ui.md` |
 | WordPress Design System implementation | `wordpress-design-system.md` | `admin-ux-and-ui.md`, `ui-ux-pro-for-wordpress.md` |
 | Focused security, performance, modularity, or accessibility audit/profiling/remediation | route to `wp-quality-reviewer` | selected reviewer mode only |
-| Performance architecture and implementation constraints for queries, cache, Core Web Vitals, or admin/editor speed | `performance-profiling-scale-budgets.md` | `edge-caching-cdn-architecture.md` or `load-testing-capacity-planning.md` for a confirmed scale risk |
+| Performance architecture and budgets | `performance-profiling-scale-budgets.md` | `edge-caching-cdn-architecture.md` or `load-testing-capacity-planning.md` for confirmed scale risk |
 | Security architecture and threat modeling before sensitive REST/admin/upload/webhook/OAuth/MCP implementation | `security-threat-modeling-review.md` | `security-operations-compliance.md` or `privacy-consent-data-governance.md` for a confirmed risk |
 | Privacy, consent, telemetry, PII, data retention, exporter/eraser support | `privacy-consent-data-governance.md` | `security-operations-compliance.md`, `plugin-guidelines-review.md` |
 | VIP/high-scale architecture decisions | `vip-scale-playbook.md` | `edge-caching-cdn-architecture.md`, `load-testing-capacity-planning.md` |
 | VIP/enterprise launch readiness, go/no-go review, launch matrix, post-launch checks | `vip-enterprise-launch-readiness.md` | `deployment-release-resilience.md`, `observability-incident-response.md` |
-| Advanced multisite, network activation, domain mapping, cross-site data, tenant governance | `advanced-multisite-network-engineering.md` | `enterprise-architecture.md`, `content-migration-editorial-scale.md` |
+| Multisite and tenant governance | `advanced-multisite-network-engineering.md` | `enterprise-architecture.md`, `content-migration-editorial-scale.md` |
 | Incident, reliability, production debugging | `troubleshooting-operations.md` | `observability-incident-response.md`, `performance-and-security.md` |
 | Advanced troubleshooting decision tree, conflict isolation, cache/CDN debugging, production triage | `advanced-troubleshooting-decision-tree.md` | `troubleshooting-operations.md`, `validation-commands.md` |
 | Duplicate code, modularity, maintainability, shared behavior extraction | `duplicate-code-modularity-review.md` | `implementation-patterns.md`, `test-coverage-discipline.md` |
