@@ -122,7 +122,7 @@ require_text "shared/references/worker-execution-discipline.md" "Never invent Wo
 require_text "shared/references/worker-execution-discipline.md" "Owner Correction To Learning" "worker learning trigger"
 require_text "shared/references/worker-execution-discipline.md" "Failed Visual Evidence Recovery" "worker visual convergence recovery"
 require_text "wp-product-orchestrator/SKILL.md" "invoke the self-improvement loop" "PO learning routing"
-require_text "wp-product-orchestrator/SKILL.md" "observed in-scope visual defect is failed proof" "PO rejects broken visual proof"
+require_text "wp-product-orchestrator/SKILL.md" "Observed defects fail proof" "PO rejects broken visual proof"
 require_text "wp-expert/scripts/fse-design-map.sh" "Visual Region Measurements" "FSE visual measurements"
 require_text "wp-expert/scripts/fse-design-map.sh" "Asset Inventory" "FSE asset inventory"
 require_text "skill-evals/visual-wordpress-scenarios.md" "Skills loaded" "eval context telemetry"

@@ -4,12 +4,12 @@ Use this reference before committing, pushing, opening a PR, updating a PR body,
 
 ## Branch Discipline
 
-- Product repositories keep `main` as production release space and must not receive development work directly.
+- Product repositories keep the verified `main` or documented `master` production branch as stable release space; it must not receive development work directly.
 - Owner-managed `agent-*` control-plane repositories are the exception: validated changes commit and push directly to `main` by default. Do not create a feature branch or PR unless the owner explicitly asks for review or repository protection requires that path.
 - `develop` is for unmilestoned development integration or as the verified source for creating missing milestone branches.
 - Milestone-based work must create or use `release/<release-version>` branches from the verified development base and target issue PRs into that release branch. `<release-version>` is the version/milestone title, not the GitHub milestone ID or sequence number; do not create `release/3` unless the documented release version is literally `3`.
-- Release branches merge to `main` only after explicit owner release approval.
-- Production release approval must identify the exact release PR and candidate SHA. Merge that PR into `main` before creating the stable tag/release, then tag the verified production SHA; never release from `release/*` and reconcile `main` afterward.
+- Release branches merge to the production branch only after explicit owner release approval.
+- Production release approval must identify the exact release PR and candidate SHA. Merge that PR into verified `main`/`master` before creating the stable tag/release, then tag that merged SHA; never release from `release/*` and reconcile the production branch afterward.
 - Never rely on GitHub's default base; prove and set the PR base explicitly.
 - If a wrong milestone-ID branch was created, preserve commits by replaying or reconciling them into the correct release-version branch, retarget open PRs, and do not delete the wrong branch without explicit owner approval.
 
@@ -60,7 +60,7 @@ Every PR must include:
 PRs must not:
 
 - Rely on GitHub's default base.
-- Target `main` for development or milestone work.
+- Target `main`/`master` for development or milestone work.
 - Close issues accidentally when targeting a branch that will not auto-close them.
 - Claim release readiness without release-train verification.
 - Omit screenshot evidence when the PR changes design-visible output unless the proof gap is explicit.

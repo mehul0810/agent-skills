@@ -24,9 +24,9 @@ Do not use source-blind validation for static lint, architecture review, release
 
 Before beta/production readiness for any release that touches admin UI, frontend UI, consent screens, setup flows, editor surfaces, or other visual output, test the release-candidate package/ZIP or release branch build, not only a dev checkout. Use focused screenshots or Playwright/browser evidence from the packaged artifact.
 
-Prefer disposable localhost `wp-proof` environments for routine release readiness, browser/admin smoke, screenshots, package validation, and golden workflow proof when they are available. Use long-lived Studio environments when parity, existing local data, custom domain URLs, integration reproduction, or owner manual/visual review is the reason.
+Apply `disposable-proof-environment-lifecycle.md` before proof. Use the product's primary Studio site for safe read-only UI proof or reversible task-owned fixtures. Use localhost `wp-proof`, Playground, `wp-env`, or a container for isolation, compatibility, destructive/fixture-heavy checks, package installation, or golden workflows that should not touch the primary site. A new Studio site requires explicit owner approval after both routes are shown insufficient.
 
-When changed behavior or a critical golden workflow has material user risk, run the packaged candidate through a source-blind `$behavior-validator` in `wp-proof`. Its clause matrix supplements code review and automated tests; it does not approve the release.
+When changed behavior or a critical golden workflow has material user risk, run the packaged candidate through a source-blind `$behavior-validator` in the declared safe environment. Its clause matrix supplements code review and automated tests; it does not approve the release.
 
 Cover changed UI plus critical existing UI workflows at desktop and narrow/mobile/admin-constrained widths when relevant. If automation is unavailable, require manual screenshot evidence or state an explicit proof gap in the release brief.
 

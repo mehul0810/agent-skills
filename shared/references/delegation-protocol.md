@@ -4,7 +4,7 @@ Use before creating worker threads, worktrees, or subagent prompts. `wp-portfoli
 
 ## Plan Before Delegation
 
-Plan before delegation. No worker starts without strategy, scope, acceptance criteria, non-goals, branch/base, validation, risks, and owner decision needs.
+Plan before delegation. No worker starts without role contract, exact product/repo identity, strategy, scope, acceptance criteria, non-goals, branch/base, validation, proof environment/mutation level, risks, and owner decision needs.
 
 Use one PR per issue unless scope crosses release or validation boundaries. Push planning into the issue body and delegated prompt so workers replan less.
 
@@ -93,11 +93,13 @@ Prefer multi-agent/subagent delegation for subtasks inside the current request. 
 
 Every delegated thread prompt must include:
 
-- Product/repo name, task scope, and repo path.
+- Assigned role (`Planner`, implementation worker, `Engineering Review`, or `Release Readiness`) plus outcome name.
+- Exact product/repo name, task scope, and repo path; do not collapse sibling products into a shared parent identity.
 - Or explicit no-edit boundary when read-only.
 - GitHub issue URL plus milestone and branch/base evidence.
 - Issue branch name and PR base; never direct `main` for development work.
 - Allowed/forbidden scope, files, and validation commands.
+- Declared proof environment, exact target, mutation level, allowed fixtures, and cleanup owner; new Studio creation is owner-gated.
 - Screenshot requirement when admin, editor, frontend, style, layout, UX, or other design-visible output changes; include evidence or exact proof gap.
 - Suggested model/reasoning when useful.
 - Hard gates: no merge, release, issue close, milestone retarget, push to `main`, protected archive, product decision, or subdelegation unless the parent CTO thread asks.

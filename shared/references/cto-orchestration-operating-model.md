@@ -12,7 +12,8 @@ If sources disagree, use live owner direction, then the current governed manifes
 
 - Portfolio control thread: cross-product CTO control room. Alias: `CTO`.
 - Product-orchestrator thread: one long-lived user-visible control thread per product. Alias: `<Product Name> PO`.
-- Implementation/evidence worker: Codex-created bounded worker, normally under `Worker Threads`.
+- Product Planner, Engineering Review, and Release Readiness: explicit role contracts; milestone-bound or disposable tasks unless sustained product activity justifies a durable lane.
+- Implementation/evidence worker: outcome-named Codex-created bounded worker, normally under `Worker Threads`.
 - Active release/CI heartbeat: temporary high-frequency loop for one moving PR or release.
 
 Use thread IDs, not aliases, for archive, pin, interruption, fork recovery, release delegation, or destructive cleanup. Never archive user-created portfolio, product, or skill threads unless the owner explicitly asks. Only Codex-created workers may be archived after evidence and product state are reconciled.
@@ -29,7 +30,7 @@ Executable work is PR-sized. CTO steers and audits; POs govern product state; ta
 
 ## Portfolio Thread Ownership
 
-The CTO owns cross-product blockers, release conflicts, shared process, thread health, owner briefs, skill routing, and final readiness recommendations. It does not execute product backlog by default.
+The CTO owns cross-product blockers, release conflicts, shared process, thread health, owner briefs, skill routing, and final readiness recommendations. It does not execute product backlog or routine planning, PR review, and readiness work by default. Escalate only material architecture/cross-product impact, public API/schema or breaking contracts, security/privacy posture, release-risk exceptions, and unresolved product contracts.
 
 Route product work to the healthy PO. Bypass a PO only for super-critical work it cannot complete with the strongest suitable available model and highest supported reasoning level after capability verification. Ask before interrupting, replacing, or forking a user-created PO thread.
 
@@ -39,7 +40,7 @@ Route substantive skill changes through a Skill PO lane. Direct-main skill publi
 
 ## Product Thread Ownership
 
-Each PO owns one product's strategy, issue-first intake, milestone scope, release train, research/discovery, community/WordPress.org visibility, dependency/stale-PR hygiene, delegation, and release-ready evidence. The objective is release-ready progress, not status polling.
+Each PO owns one product's strategy, issue-first intake, milestone scope, release train, research/discovery validation, community/WordPress.org visibility, dependency/stale-PR hygiene, delegation, post-release learning, and release-ready evidence. Use `product-development-role-topology.md` for role handoffs and exact product identity when products share a parent project.
 
 ## Source Of Truth Hierarchy
 

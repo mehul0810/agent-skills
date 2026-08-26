@@ -6,17 +6,17 @@ Use this reference before beta, prerelease, stable, deploy, version, tag, WordPr
 
 Do not create a next milestone prerelease before the previous production release. Milestone closure is not release proof.
 
-`main` is production release space only. It receives release branches only after owner approval/testing. Milestone release work must target `release/<release-version>`, never the GitHub milestone ID; `develop` is unmilestoned integration or verified branch source.
+The repo's verified production branch, normally `main` and sometimes documented `master`, is stable release authority only. It receives release branches only after owner approval/testing. Milestone release work must target `release/<release-version>`, never the GitHub milestone ID; `develop` is unmilestoned integration or verified branch source.
 
 ## Main-First Production Release Transaction
 
-A stable release is one transaction. Approval names the exact release PR/candidate SHA and production merge, tag, release, and publish/deploy actions; it does not transfer to another SHA. Never publish before syncing `main`. Beta requires approval for the exact version and candidate SHA, stays on `release/<version>`, and never advances `main`.
+A stable release is one transaction: issue branch -> `release/<version>` integration -> PR to the verified `main`/`master` production branch -> required CI and exact owner approval -> merge -> tag/package/publish from that merged production SHA. The release branch is integration/staging, never stable production authority unless an owner-approved documented exception names the exact risk and recovery. Approval does not transfer to another SHA. Beta requires approval for the exact version and candidate SHA, stays on `release/<version>`, and never advances the production branch.
 
 1. Live-fetch main/release refs, releases/tags/PRs/checks; pin approved PR/SHA.
 2. After approval, merge the approved release PR into `main` before creating the stable tag or GitHub release. Fetch the production SHA, prove it on `origin/main`, and verify metadata.
 3. Revalidate the artifact from that SHA when merge, generated output, or metadata can differ.
 4. Tag the production SHA, then run `gh release create <tag> --verify-tag`. Do not use `--target release/*`; select the existing tag in GitHub UI.
-5. Prove the tag equals the approved SHA, is an ancestor of `origin/main`, and matches package metadata; `targetCommitish` is not proof.
+5. Prove the tag equals the merged production SHA, is an ancestor of the verified `origin/main` or `origin/master`, and the package derives from that tag with matching metadata; `targetCommitish` is not proof.
 6. Forward-sync production-only metadata/hotfixes from `main` into `develop` or the next train when present; verify remaining divergence.
 
 Any failed step stops publish, closure, and the next prerelease.
@@ -27,7 +27,7 @@ For an already-published off-main release, freeze releases, verify the tag, and 
 
 ## Release Automation Contract
 
-POs audit workflows and `RELEASE.md`. Production automation resolves the approved SHA from full history, requires it on `origin/main` with valid metadata/package, pushes the exact tag, releases with `--verify-tag`, and repeats ancestry/artifact checks. Never tag production from `release/*`. Use `wp-product-orchestrator/scripts/release-mainline-audit.sh <tag-or-sha> [main-ref] [expected-sha]`; issue-track missing enforcement.
+POs audit workflows and `RELEASE.md`. Production automation resolves the approved SHA from full history, requires it on the verified production branch with valid metadata/package, pushes the exact tag, releases with `--verify-tag`, and repeats ancestry/artifact checks. Never tag production from `release/*`. Use `wp-product-orchestrator/scripts/release-mainline-audit.sh <tag-or-sha> [production-ref] [expected-sha]`; issue-track missing enforcement.
 
 ### Hosted Automation Economy
 
@@ -95,8 +95,9 @@ When the train is release-ready, request exact approval with merged/open work, c
 
 After release/deploy/publish, keep the train open until a compact check proves:
 
-- Approved commit, tag/release, and package/artifact align.
-- For production, the exact release tag is an ancestor of `origin/main`, main metadata matches, and prerelease tags did not advance `main`.
+- Approved commit, merged production SHA, tag/release, and tag-derived package/artifact align.
+- For production, the exact release tag is an ancestor of the verified `origin/main` or `origin/master`, production metadata matches, and prerelease tags did not advance the production branch.
+- Release-branch lifecycle is explicit: retained for supported maintenance with owner/review trigger, or cleanup proposed separately without destructive action.
 - Public version/docs/assets/`Tested up to` signals are current.
 - Installed-package golden workflow passes or accepted gap.
 - The defined post-release observation window, signals, thresholds, owner, and rollback trigger are checked when runtime assurance requires them.

@@ -3,6 +3,7 @@
 Use one primary mode. Open only the named reference and relevant `##` section; add one supporting reference only after a concrete cross-product risk appears.
 
 - Topology, role authority, source hierarchy, protected threads, live-check fallback: `../../shared/references/cto-orchestration-operating-model.md`.
+- Cross-product enforcement of Planner, PO, Engineering Review, and Release Readiness boundaries: `../../shared/references/product-development-role-topology.md`.
 - Delta-first heartbeat, quiet evidence, partial exits, CTO intervention: `../../shared/references/heartbeat-checkin-discipline.md`.
 - Cross-product release conflict, hosted-CI economy, or readiness: `../../shared/references/release-train-discipline.md`.
 - Worker/worktree/thread topology and recovery: `../../shared/references/delegation-protocol.md`; for cross-product storage pressure use `../../shared/references/worktree-storage-lifecycle.md`.

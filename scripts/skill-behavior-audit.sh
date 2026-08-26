@@ -132,7 +132,7 @@ require_text "behavior-validator/references/wordpress-behavior-contract.md" "ins
 require_text "behavior-validator/references/wordpress-behavior-contract.md" "Settings/admin" "behavior validator settings persistence"
 require_text "behavior-validator/references/wordpress-behavior-contract.md" "Block editor/FSE" "behavior validator editor persistence"
 require_text "shared/references/live-proof-wordpress.md" "Independent Source-Blind Proof" "live proof source-blind route"
-require_text "shared/references/live-proof-wordpress.md" 'source-blind `$behavior-validator` in `wp-proof`' "live proof packaged behavior route"
+require_text "shared/references/live-proof-wordpress.md" 'source-blind `$behavior-validator` in the declared safe environment' "live proof packaged behavior route"
 require_text "wp-plugin-expert/SKILL.md" '$behavior-validator' "plugin behavior validator route"
 require_text "wp-theme-expert/SKILL.md" '$behavior-validator' "theme behavior validator route"
 require_text "wp-site-expert/SKILL.md" '$behavior-validator' "site behavior validator route"

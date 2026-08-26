@@ -3,6 +3,7 @@
 Use one primary mode. Open only the named reference and relevant `##` section; add one supporting reference only for a confirmed risk.
 
 - Queue rehydration, issue-first intake, discovery, dependency/stale PR triage: `../../shared/references/product-queue-triage.md`.
+- Planner, PO, independent Engineering Review, Release Readiness, and role handoffs: `../../shared/references/product-development-role-topology.md`.
 - Reversible autonomy and owner hard gates: `../../shared/references/product-autonomy-permissions.md`.
 - Release train, local-first/hosted automation economy, metadata, quality matrix, package/browser proof: `../../shared/references/release-train-discipline.md`.
 - Temporary proof runner selection and Studio lifecycle: `../../shared/references/disposable-proof-environment-lifecycle.md`.
