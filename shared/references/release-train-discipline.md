@@ -51,7 +51,7 @@ Release-ready recommendations and owner approval requests require fresh live ver
 
 A train is quiet only when scoped work is merged, owner-gated, failing, draft, wrong-base, blocked, or deferred. Action clean PRs or escalate repeated executable work.
 
-The due date is release exit. At T-1, require implementation on `release/<version>`, freeze scope, and allow proof fixes only. One issue/branch/worktree/PR; parallel scope cannot overlap. User-visible work needs packaged browser proof and fresh source-blind `$behavior-validator`.
+The due date is release exit. At T-1, require implementation on `release/<version>`, freeze scope, and allow proof fixes only. One issue/branch/worktree/PR; parallel scope cannot overlap. User-visible work needs packaged browser proof and fresh source-blind `$behavior-validator`. For plugin-only milestone, changelog, and candidate-channel choreography, read `plugin-release-workflow.md`.
 
 ## Milestone Discipline
 

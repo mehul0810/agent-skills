@@ -38,6 +38,7 @@ Use this router only after `wp-plugin-expert` is selected. Load one primary refe
 - Production dependency classification, package/ZIP/SVN contents, CI artifacts, and dev-package exclusion: `../../shared/references/production-dependency-discipline.md`.
 - CI/CD, standards, GitHub workflows: `../../wp-expert/references/standards-ci-github.md`.
 - Changelog or launch-state compatibility: `../../wp-expert/references/changelog-release-notes.md` or `../../wp-expert/references/release-contract-compatibility.md`.
+- Plugin milestone/release branch choreography, per-PR changelog field, candidate channels, and mainline release handoff: `../../shared/references/plugin-release-workflow.md`.
 - Troubleshooting: `../../wp-expert/references/advanced-troubleshooting-decision-tree.md`.
 - If the primary artifact changes or another lane owns the outcome, return a compact evidence handoff to `wp-expert` or the owning specialist; do not load another broad router.
 

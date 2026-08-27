@@ -57,6 +57,8 @@ Every PR must include:
 - Delegated thread/worktree reference when applicable.
 - Owner decisions needed, if any.
 
+For a milestone issue PR, also include `Changelog:` with one verified audience-facing item, or `Not applicable - internal only: <reason>`. Do not place a release date in the final changelog until the owner has selected it; release preparation then updates the date and reruns affected metadata/package checks.
+
 PRs must not:
 
 - Rely on GitHub's default base.

@@ -7,6 +7,7 @@ Use one primary mode. Open only the named reference and relevant `##` section; a
 - Feature, UX, integration, growth, or product-research recommendations that need user/business value and measurement: `../../shared/references/product-value-decision.md`.
 - Reversible autonomy and owner hard gates: `../../shared/references/product-autonomy-permissions.md`.
 - Release train, local-first/hosted automation economy, metadata, quality matrix, package/browser proof: `../../shared/references/release-train-discipline.md`.
+- Plugin milestone scope, per-issue PR changelog fields, candidate channels, and release-date preparation: `../../shared/references/plugin-release-workflow.md`.
 - Temporary proof runner selection and Studio lifecycle: `../../shared/references/disposable-proof-environment-lifecycle.md`.
 - Worker/thread/worktree creation, delegation, and recovery: `../../shared/references/delegation-protocol.md`.
 - Merged/reconciled worktree cleanup or local-storage pressure: `../../shared/references/worktree-storage-lifecycle.md`.
