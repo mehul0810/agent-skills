@@ -18,7 +18,7 @@
         "wp-plugin-expert/SKILL.md",
         "wp-plugin-expert/references/router.md"
       ],
-      "sha256": "4dc98f0fe0accfcab49ecbc56630dadf041b12a21253b4db0ba9f03d9e922e93",
+      "sha256": "d7c9aa9fed58bfbe493161201492c2a67c9dc6ad6602f20f934e46d0a09aa10d",
       "scenario": {
         "id": "elevated-enterprise-runtime-assurance",
         "files": [
@@ -38,10 +38,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-08-20-visual-routing.json",
-          "sha256": "5694998c693f6787b95cdf4ebc9e04fb29a93b0523e202e5f1c2f33e1142d322",
-          "testedRevision": "e9cb48e17cafe36e3721a334b52b4034f642eb18",
-          "testedSourceSha256": "4dc98f0fe0accfcab49ecbc56630dadf041b12a21253b4db0ba9f03d9e922e93",
+          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-08-27-plugin-release.json",
+          "sha256": "092c9d279aeefbe449532e63dfe41d71efa8918f679c618cc5273c98ac7d7fff",
+          "testedRevision": "62f89df6be634d9879cb9d6fa1f2b60729b1398a",
+          "testedSourceSha256": "d7c9aa9fed58bfbe493161201492c2a67c9dc6ad6602f20f934e46d0a09aa10d",
           "testedScenarioSha256": "3d842125a654c717b1b68f1fe273d32f8bf4ac54bae26ac39dbacefb0f92eb84",
           "runtime": {
             "host": "codex-desktop",
@@ -144,7 +144,7 @@
         "wp-theme-expert/SKILL.md",
         "wp-theme-expert/references/router.md"
       ],
-      "sha256": "74915d82310565deb76d83dccfcb482f18e896d01b8e289a29cb5c5195d0e1a2",
+      "sha256": "bd6e09982b67f888b4039fcfd18b3b6b9c3c6793a6cbd5a1be5c94c49dcce5db",
       "scenario": {
         "id": "wordpress-visual-execution",
         "files": [
@@ -188,10 +188,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-08-20-visual-intent.json",
-          "sha256": "9c734a1b073ca71180588ba74f9a408fb5c0d114f9c13d87bbc28e5d8006856e",
-          "testedRevision": "e9cb48e17cafe36e3721a334b52b4034f642eb18",
-          "testedSourceSha256": "74915d82310565deb76d83dccfcb482f18e896d01b8e289a29cb5c5195d0e1a2",
+          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-08-27-plugin-release.json",
+          "sha256": "9336f7dc245e86581e752200377eda50d58b3e48518da83bf42a93c63189cdbf",
+          "testedRevision": "62f89df6be634d9879cb9d6fa1f2b60729b1398a",
+          "testedSourceSha256": "bd6e09982b67f888b4039fcfd18b3b6b9c3c6793a6cbd5a1be5c94c49dcce5db",
           "testedScenarioSha256": "c01654d7f2c920e553bc85d5536b1a3c1d692286b3480020a687e327d5382dd8",
           "runtime": {
             "host": "codex-desktop",
@@ -401,9 +401,10 @@
         "shared/references/product-development-role-topology.md",
         "shared/references/disposable-proof-environment-lifecycle.md",
         "shared/references/release-train-discipline.md",
+        "shared/references/plugin-release-workflow.md",
         "shared/references/delegation-protocol.md"
       ],
-      "sha256": "fafbc87d9fc44c54155b62b33c73e767e5bcf437e22413782accf2903946297d",
+      "sha256": "12347583c7a8d1fb228098f271bfa96c16cba8e9a4228f5dfb6a066a2e6cc2ab",
       "scenario": {
         "id": "product-development-governance",
         "files": [
@@ -414,12 +415,13 @@
           "Four-role product topology",
           "Shared parent product identity",
           "Stable mainline lineage",
+          "Plugin milestone release contract",
           "Proof environment preflight",
           "Unapproved Studio proof",
           "Post-release product learning",
           "CTO escalation-only boundary"
         ],
-        "sha256": "74a078a82f5dcb9a8de15e8b17db4163d77468b945782a276fc1b293780fc03c"
+        "sha256": "ce6aafe5feced0c533a85c233d8eef22d75c093f4c28dcc4460656981db8bf81"
       },
       "requiredChecks": [
         "planner-discovery-packet",
@@ -431,6 +433,8 @@
         "outcome-named-temporary-tasks",
         "stable-production-mainline",
         "tag-derived-package",
+        "plugin-milestone-scope-and-branch",
+        "solo-owner-independent-review",
         "primary-studio-safe-first",
         "disposable-isolation-fallback",
         "new-studio-owner-approval",
@@ -439,11 +443,11 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-development-governance-2026-08-26-value.json",
-          "sha256": "3773a818e4bb5e9ecaa5ec73b35d1bf0aacb5021c211f470a287e365b4b6bbc4",
-          "testedRevision": "72da3a611c4c225214791e664360adbe2276ec6c",
-          "testedSourceSha256": "fafbc87d9fc44c54155b62b33c73e767e5bcf437e22413782accf2903946297d",
-          "testedScenarioSha256": "74a078a82f5dcb9a8de15e8b17db4163d77468b945782a276fc1b293780fc03c",
+          "runRecord": "skill-evals/run-records/product-development-governance-2026-08-27-plugin-release.json",
+          "sha256": "82242d2a8649710118f9088ecb9e2de78ebb4113f034a75cae6487e54c8cea97",
+          "testedRevision": "62f89df6be634d9879cb9d6fa1f2b60729b1398a",
+          "testedSourceSha256": "12347583c7a8d1fb228098f271bfa96c16cba8e9a4228f5dfb6a066a2e6cc2ab",
+          "testedScenarioSha256": "ce6aafe5feced0c533a85c233d8eef22d75c093f4c28dcc4460656981db8bf81",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
@@ -483,13 +487,13 @@
         "post-release-outcome-disposition",
         "quality-and-authority-boundary"
       ],
-      "sha256": "e181ccb4bff74e91e22996127dee111a5427e178479124d3ef50ee7543cdfd1a",
+      "sha256": "ea27da2272d6e9f397756e2de8f63db62e0a79747888986076a7e8532d8f1d89",
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-value-decision-2026-08-26.json",
-          "sha256": "598b0df1a5cadc2ede80c3a258fb4d28b1d4492e99cf6e217d43117b471374a5",
-          "testedRevision": "72da3a611c4c225214791e664360adbe2276ec6c",
-          "testedSourceSha256": "e181ccb4bff74e91e22996127dee111a5427e178479124d3ef50ee7543cdfd1a",
+          "runRecord": "skill-evals/run-records/product-value-decision-2026-08-27-plugin-release.json",
+          "sha256": "68d2e34080c6dac25f7a402201c4450a1117477bd661b0bb7df4d71a9cd02c5a",
+          "testedRevision": "62f89df6be634d9879cb9d6fa1f2b60729b1398a",
+          "testedSourceSha256": "ea27da2272d6e9f397756e2de8f63db62e0a79747888986076a7e8532d8f1d89",
           "testedScenarioSha256": "52c0b2cb69237e9f1d472448ca912993d5e549eb4c6fc8602cab15beff2581c8",
           "runtime": {
             "host": "codex-desktop",
@@ -511,9 +515,10 @@
         "shared/references/product-queue-triage.md",
         "shared/references/rolling-milestone-triage.md",
         "shared/references/release-train-discipline.md",
+        "shared/references/plugin-release-workflow.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "1700228f4d74cf73034937fe707a5dff645a34ee8e573460dcc319c0898f089a",
+      "sha256": "cb6cef1ec8e2b81b42a46693eacd94500e608f0b9ac4661f496d142f3bc9b766",
       "scenario": {
         "id": "product-release-authority",
         "files": [
@@ -531,9 +536,10 @@
           "False owner blocker",
           "Product decision",
           "Direction is not release approval",
+          "Plugin milestone release contract",
           "Temporary negative preference"
         ],
-        "sha256": "9c26d278b01a66a8b11a0c8fc06f7800e89367b0be82c158d297503e44b7924e"
+        "sha256": "0cdf1320fe0853e34624faf2e33ab3e196a38236a42c1e1378ffc7b8bf196327"
       },
       "requiredChecks": [
         "latest-published-release-preflight",
@@ -553,15 +559,18 @@
         "cto-false-blocker-intervention",
         "direction-not-release-approval",
         "temporary-negative-constraint",
-        "task-approval-non-reuse"
+        "task-approval-non-reuse",
+        "plugin-per-pr-changelog",
+        "candidate-channel-policy",
+        "release-action-tag-lineage"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-release-authority-2026-08-26-value.json",
-          "sha256": "bf4f10556fafa239a4001e12b1fe5b5ea18003a134f62698bf8c0189b5f421e5",
-          "testedRevision": "72da3a611c4c225214791e664360adbe2276ec6c",
-          "testedSourceSha256": "1700228f4d74cf73034937fe707a5dff645a34ee8e573460dcc319c0898f089a",
-          "testedScenarioSha256": "9c26d278b01a66a8b11a0c8fc06f7800e89367b0be82c158d297503e44b7924e",
+          "runRecord": "skill-evals/run-records/product-release-authority-2026-08-27-plugin-release.json",
+          "sha256": "03c3b8c0e52a6682f934f08f44c87e334f73d10930606b1c11bac859025b8d04",
+          "testedRevision": "62f89df6be634d9879cb9d6fa1f2b60729b1398a",
+          "testedSourceSha256": "cb6cef1ec8e2b81b42a46693eacd94500e608f0b9ac4661f496d142f3bc9b766",
+          "testedScenarioSha256": "0cdf1320fe0853e34624faf2e33ab3e196a38236a42c1e1378ffc7b8bf196327",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",

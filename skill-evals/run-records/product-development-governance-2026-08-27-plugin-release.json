@@ -1,0 +1,96 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "product-development-governance-2026-08-27-plugin-release",
+  "scenario": "product-development-governance",
+  "result": "succeeded",
+  "startedAt": "2026-08-27T16:12:25.838Z",
+  "durationMs": 1000,
+  "checks": [
+    {
+      "name": "cto-escalation-only",
+      "result": "pass"
+    },
+    {
+      "name": "disposable-isolation-fallback",
+      "result": "pass"
+    },
+    {
+      "name": "exact-candidate-release-readiness",
+      "result": "pass"
+    },
+    {
+      "name": "existing-studio-inventory-only",
+      "result": "pass"
+    },
+    {
+      "name": "independent-engineering-review",
+      "result": "pass"
+    },
+    {
+      "name": "new-studio-owner-approval",
+      "result": "pass"
+    },
+    {
+      "name": "outcome-named-temporary-tasks",
+      "result": "pass"
+    },
+    {
+      "name": "planner-discovery-packet",
+      "result": "pass"
+    },
+    {
+      "name": "plugin-milestone-scope-and-branch",
+      "result": "pass"
+    },
+    {
+      "name": "po-train-and-post-release-learning",
+      "result": "pass"
+    },
+    {
+      "name": "primary-studio-safe-first",
+      "result": "pass"
+    },
+    {
+      "name": "sibling-product-identity",
+      "result": "pass"
+    },
+    {
+      "name": "solo-owner-independent-review",
+      "result": "pass"
+    },
+    {
+      "name": "stable-production-mainline",
+      "result": "pass"
+    },
+    {
+      "name": "tag-derived-package",
+      "result": "pass"
+    },
+    {
+      "name": "unapproved-studio-proof-gap",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 16
+  },
+  "lineage": {
+    "verificationId": "product-development-governance-2026-08-27-plugin-release",
+    "artifactPointer": "codex-fresh-agent:/root/plugin_release_fresh_eval#2026-08-27"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-27T16:12:26.839Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "A fresh source-blind evaluator confirmed all 16 registered product-development-governance checks after the plugin release workflow update."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "product-development-governance",
+    "release"
+  ]
+}

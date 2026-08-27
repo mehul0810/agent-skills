@@ -1,0 +1,52 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "enterprise-runtime-assurance-2026-08-27-plugin-release",
+  "scenario": "elevated-enterprise-runtime-assurance",
+  "result": "succeeded",
+  "startedAt": "2026-08-27T16:12:25.838Z",
+  "durationMs": 1000,
+  "checks": [
+    {
+      "name": "artifact-sbom-license-vulnerability-provenance",
+      "result": "pass"
+    },
+    {
+      "name": "compatibility-matrix-and-adaptive-docs",
+      "result": "pass"
+    },
+    {
+      "name": "elevated-risk-classification",
+      "result": "pass"
+    },
+    {
+      "name": "missing-release-evidence-fails-closed",
+      "result": "pass"
+    },
+    {
+      "name": "operations-observation-rollback-recovery",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 5
+  },
+  "lineage": {
+    "verificationId": "enterprise-runtime-assurance-2026-08-27-plugin-release",
+    "artifactPointer": "codex-fresh-agent:/root/plugin_release_fresh_eval#2026-08-27"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-27T16:12:26.839Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "A fresh source-blind evaluator confirmed all 5 registered enterprise-runtime-assurance checks after the plugin release workflow update."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "enterprise-runtime-assurance",
+    "release"
+  ]
+}

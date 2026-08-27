@@ -1,0 +1,76 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "product-value-decision-2026-08-27-plugin-release",
+  "scenario": "product-value-decision",
+  "result": "succeeded",
+  "startedAt": "2026-08-27T16:12:25.838Z",
+  "durationMs": 1000,
+  "checks": [
+    {
+      "name": "business-outcome-specificity",
+      "result": "pass"
+    },
+    {
+      "name": "confidence-and-reach",
+      "result": "pass"
+    },
+    {
+      "name": "evidence-assumption-separation",
+      "result": "pass"
+    },
+    {
+      "name": "lifetime-cost-and-risk",
+      "result": "pass"
+    },
+    {
+      "name": "mandatory-work-not-score-gated",
+      "result": "pass"
+    },
+    {
+      "name": "measurable-threshold-window",
+      "result": "pass"
+    },
+    {
+      "name": "no-invented-uplift",
+      "result": "pass"
+    },
+    {
+      "name": "post-release-outcome-disposition",
+      "result": "pass"
+    },
+    {
+      "name": "proportional-decision",
+      "result": "pass"
+    },
+    {
+      "name": "quality-and-authority-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "user-outcome-specificity",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 11
+  },
+  "lineage": {
+    "verificationId": "product-value-decision-2026-08-27-plugin-release",
+    "artifactPointer": "codex-fresh-agent:/root/plugin_release_fresh_eval#2026-08-27"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-27T16:12:26.839Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "A fresh source-blind evaluator confirmed all 11 registered product-value-decision checks after the plugin release workflow update."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "product-value-decision",
+    "release"
+  ]
+}
