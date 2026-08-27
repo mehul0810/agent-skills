@@ -10,7 +10,7 @@ Use with `release-train-discipline.md` for a plugin milestone through GitHub rel
 
 ## Candidate And Approval Contract
 
-- Patch releases skip beta/RC by default after full quality, package, and golden-workflow proof.
+- Patch releases do not use beta/RC candidates; after full quality, package, and golden-workflow proof, prepare the stable candidate directly.
 - Minor and major releases require at least one beta or RC: use beta for tester feedback and RC for a frozen candidate; high-risk work may use both. Each candidate needs exact owner approval.
-- A solo owner does not need collaborator approval, but a dedicated project Code Reviewer independently reviews issue PRs and the final release PR. CTO/Release Readiness checks lineage and release gates; the owner reviews and approves the protected merge/release.
+- A solo owner does not need collaborator approval, but a dedicated project Code Reviewer independently reviews issue PRs and the final release PR. Product Release Readiness checks exact lineage and gates; CTO performs a bounded governance review of the final release PR, and the owner reviews and approves the protected merge/release.
 - After approval, merge the release PR into `main`, create the tag/GitHub release from that merged SHA, and verify the repository release Action consumes that tag rather than `release/*`. Keep the train open until post-release reconciliation passes.
