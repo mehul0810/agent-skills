@@ -18,6 +18,7 @@ require_text "wp-quality-reviewer/SKILL.md" "Own the review, remediation, and pr
 require_text "wp-quality-reviewer/SKILL.md" "Do not depend on an external Codex plugin or scanner for judgment" "no external plugin dependency"
 require_text "wp-quality-reviewer/SKILL.md" "instead of all four detailed references" "multi-mode token discipline"
 require_text "wp-quality-reviewer/references/multi-domain-release-review.md" "Load one detailed mode reference only when" "multi-mode selective escalation"
+require_text "wp-quality-reviewer/references/multi-domain-release-review.md" "apply the non-breaking checkpoint" "release matrix compatibility checkpoint"
 require_text "wp-quality-reviewer/SKILL.md" "A fix is not complete until its original failure clause is rerun" "failure-clause reproof"
 require_text "wp-quality-reviewer/SKILL.md" "If owner evidence contradicts a pass" "owner correction recovery"
 require_text "wp-quality-reviewer/SKILL.md" "owns the technical quality evidence and gate dispositions" "reviewer technical release evidence ownership"
