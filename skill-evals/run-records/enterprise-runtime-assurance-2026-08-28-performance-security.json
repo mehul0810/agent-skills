@@ -1,0 +1,37 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "enterprise-runtime-assurance-2026-08-28-performance-security",
+  "scenario": "elevated-enterprise-runtime-assurance",
+  "result": "succeeded",
+  "startedAt": "2026-08-28T14:28:00.000Z",
+  "durationMs": 153,
+  "checks": [
+    { "name": "elevated-risk-classification", "result": "pass" },
+    { "name": "compatibility-matrix-and-adaptive-docs", "result": "pass" },
+    { "name": "artifact-sbom-license-vulnerability-provenance", "result": "pass" },
+    { "name": "operations-observation-rollback-recovery", "result": "pass" },
+    { "name": "missing-release-evidence-fails-closed", "result": "pass" }
+  ],
+  "metrics": {
+    "checks_passed": 5
+  },
+  "lineage": {
+    "verificationId": "enterprise-runtime-assurance-2026-08-28-performance-security",
+    "artifactPointer": "codex-fresh-agent:/root/enterprise_runtime_eval#2026-08-28"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-28T14:28:00.153Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "A fresh source-blind evaluator confirmed elevated runtime assurance remains proportional after the performance and security micro-checkpoints were added."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "quality",
+    "enterprise-runtime"
+  ]
+}

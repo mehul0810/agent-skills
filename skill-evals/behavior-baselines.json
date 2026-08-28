@@ -18,7 +18,7 @@
         "wp-plugin-expert/SKILL.md",
         "wp-plugin-expert/references/router.md"
       ],
-      "sha256": "75f1635f49a7db224ba7a44118407fc829f7ec4b2eddcaa7254f1cffc1066c51",
+      "sha256": "e5476533de1abfb942223e8583e664c77dd99f5fc437e2dbef9283237bd60bd1",
       "scenario": {
         "id": "elevated-enterprise-runtime-assurance",
         "files": [
@@ -38,10 +38,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-08-28-modularity.json",
-          "sha256": "e23827bd37a38b5801a220bfd0f025061f3ce828cfbdaadf9e00317907cfb458",
-          "testedRevision": "e68aa8b819264463262f4ffb1a17d9f3ddcec1ad",
-          "testedSourceSha256": "75f1635f49a7db224ba7a44118407fc829f7ec4b2eddcaa7254f1cffc1066c51",
+          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-08-28-performance-security.json",
+          "sha256": "46c6450692a369607f46f28c892aaa0e908fe3b9a6cade3111d65854304f2c0c",
+          "testedRevision": "f7704e0681546dfa83577c720e87c6b38ef77112",
+          "testedSourceSha256": "e5476533de1abfb942223e8583e664c77dd99f5fc437e2dbef9283237bd60bd1",
           "testedScenarioSha256": "3d842125a654c717b1b68f1fe273d32f8bf4ac54bae26ac39dbacefb0f92eb84",
           "runtime": {
             "host": "codex-desktop",
@@ -307,7 +307,7 @@
         "shared/schemas/wp-quality-review.schema.json",
         "wp-quality-reviewer/scripts/validate-review-report.mjs"
       ],
-      "sha256": "9bd82b65876faa49e9d6116b2749a5f88a440d4c84154669136dd944a6f7a2d7",
+      "sha256": "eb74f709e8376a02b73ebd8fbf6a4b7d3eabf3722373885034374720f6c8c4ec",
       "scenario": {
         "id": "multi-domain-release-quality-review",
         "files": [
@@ -317,9 +317,12 @@
           "Multi-domain release audit",
           "Legacy modularity ratchet and adapter boundary",
           "Non-breaking launched-contract refactor",
-          "Additive custom-table migration"
+          "Additive custom-table migration",
+          "Performance tail, overload, and cache proof",
+          "Security authorization matrix and abuse budget",
+          "Formal report validation"
         ],
-        "sha256": "318916851b260a777807b85abb707d790d73e245877cccee360e2bb09275f1de"
+        "sha256": "afe44a18a817725af6b399e14f4aa5010b79551b7e6edd940b1d4d12a0b30cca"
       },
       "requiredChecks": [
         "compact-multi-domain-route",
@@ -331,6 +334,11 @@
         "immutable-candidate-and-domain-dispositions",
         "critical-fix-independent-review",
         "performance-direction-and-budget",
+        "performance-tail-distribution-evidence",
+        "performance-overload-retry-bound",
+        "cache-consistency-proof",
+        "security-authorization-matrix",
+        "security-resource-abuse-budget",
         "malformed-vague-report-rejection",
         "unresolved-critical-blocks-pass",
         "formal-report-validation",
@@ -345,11 +353,11 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-08-28-modularity.json",
-          "sha256": "57c6267e2ae9f471c4627640fa8d24d03ffcce2478b518727cb07138662c2d0c",
-          "testedRevision": "e68aa8b819264463262f4ffb1a17d9f3ddcec1ad",
-          "testedSourceSha256": "9bd82b65876faa49e9d6116b2749a5f88a440d4c84154669136dd944a6f7a2d7",
-          "testedScenarioSha256": "318916851b260a777807b85abb707d790d73e245877cccee360e2bb09275f1de",
+          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-08-28-performance-security.json",
+          "sha256": "6b00b8bf5b9d1d8fe9cdcba68dcadfe0810e7a1a83fb76690cd5cb44d835fa30",
+          "testedRevision": "f7704e0681546dfa83577c720e87c6b38ef77112",
+          "testedSourceSha256": "eb74f709e8376a02b73ebd8fbf6a4b7d3eabf3722373885034374720f6c8c4ec",
+          "testedScenarioSha256": "afe44a18a817725af6b399e14f4aa5010b79551b7e6edd940b1d4d12a0b30cca",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
