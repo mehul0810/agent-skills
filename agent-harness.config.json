@@ -500,7 +500,7 @@
     {
       "name": "WP Quality Reviewer",
       "file": "skill-evals/wp-quality-reviewer-scenarios.md",
-      "requiredPhrases": ["# WP Quality Reviewer Scenarios", "Security review and fix", "Performance review and fix", "Contradicted pass", "Formal report validation"]
+      "requiredPhrases": ["# WP Quality Reviewer Scenarios", "Security review and fix", "Performance review and fix", "Performance tail, overload, and cache proof", "Security authorization matrix and abuse budget", "Contradicted pass", "Formal report validation"]
     },
     {
       "name": "Command and CI approval",

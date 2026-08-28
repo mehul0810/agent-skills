@@ -78,7 +78,62 @@
         "after": { "type": "number" },
         "budget": { "type": "number" },
         "conditions": { "type": "string", "minLength": 12 },
-        "sampleSize": { "type": "integer", "minimum": 1 }
+        "sampleSize": { "type": "integer", "minimum": 1 },
+        "distribution": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": false,
+          "properties": {
+            "p50": { "type": "number", "minimum": 0 },
+            "p75": { "type": "number", "minimum": 0 },
+            "p95": { "type": "number", "minimum": 0 },
+            "p99": { "type": "number", "minimum": 0 }
+          }
+        },
+        "variance": { "type": "number", "minimum": 0 },
+        "errorRate": { "type": "number", "minimum": 0, "maximum": 1 },
+        "cacheState": { "enum": ["cold", "warm", "mixed", "not_applicable"] },
+        "fieldOrLab": { "enum": ["field", "lab", "both"] },
+        "runCount": { "type": "integer", "minimum": 1 },
+        "provenance": { "type": "string", "minLength": 8 },
+        "limitations": { "type": "string", "minLength": 8 }
+      }
+    },
+    "authorizationCheck": {
+      "type": "object",
+      "required": ["actor", "action", "resource", "expected", "observed", "evidence"],
+      "additionalProperties": false,
+      "properties": {
+        "actor": { "type": "string", "minLength": 3 },
+        "action": { "type": "string", "minLength": 3 },
+        "resource": { "type": "string", "minLength": 3 },
+        "expected": { "enum": ["allow", "deny"] },
+        "observed": { "enum": ["allow", "deny"] },
+        "evidence": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/evidenceReceipt" } }
+      }
+    },
+    "resourceBudget": {
+      "type": "object",
+      "required": ["scope", "limits", "failureBehavior", "evidence"],
+      "additionalProperties": false,
+      "properties": {
+        "scope": { "type": "string", "minLength": 8 },
+        "limits": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["name", "value", "unit"],
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string", "minLength": 3 },
+              "value": { "type": "number", "minimum": 0 },
+              "unit": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "failureBehavior": { "type": "string", "minLength": 12 },
+        "evidence": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/evidenceReceipt" } }
       }
     },
     "independentReview": {
@@ -105,13 +160,19 @@
         "riskFlags": {
           "type": "array",
           "uniqueItems": true,
-          "items": { "enum": ["release_critical", "migration", "public_contract"] }
+          "items": { "enum": ["release_critical", "migration", "public_contract", "authorization_boundary", "resource_abuse"] }
         },
         "evidence": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/evidenceReceipt" } },
         "impact": { "type": "string", "minLength": 12 },
         "remediation": { "type": "string", "minLength": 12 },
         "validation": { "type": "array", "items": { "$ref": "#/$defs/validationReceipt" } },
         "performanceMeasurement": { "$ref": "#/$defs/performanceMeasurement" },
+        "authorizationMatrix": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/authorizationCheck" }
+        },
+        "resourceBudget": { "$ref": "#/$defs/resourceBudget" },
         "negativeTests": { "type": "array", "items": { "$ref": "#/$defs/validationReceipt" } },
         "behaviorChecks": { "type": "array", "items": { "$ref": "#/$defs/validationReceipt" } },
         "manualChecks": { "type": "array", "items": { "$ref": "#/$defs/validationReceipt" } },
@@ -142,6 +203,27 @@
         {
           "if": { "properties": { "status": { "const": "fixed" }, "area": { "const": "performance" } }, "required": ["status", "area"] },
           "then": { "required": ["performanceMeasurement"] }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": { "const": "fixed" },
+              "area": { "const": "security" },
+              "riskFlags": { "contains": { "const": "authorization_boundary" } }
+            },
+            "required": ["status", "area", "riskFlags"]
+          },
+          "then": { "required": ["authorizationMatrix"] }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": { "const": "fixed" },
+              "riskFlags": { "contains": { "const": "resource_abuse" } }
+            },
+            "required": ["status", "riskFlags"]
+          },
+          "then": { "required": ["resourceBudget"] }
         },
         {
           "if": { "properties": { "status": { "const": "fixed" }, "area": { "const": "modularity" } }, "required": ["status", "area"] },

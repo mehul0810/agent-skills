@@ -18,6 +18,8 @@ Load only the primary mode that matches the requested outcome:
 
 For a multi-domain enterprise/release audit, load `references/multi-domain-release-review.md` instead of all four detailed references. Load one detailed mode only when the compact pass confirms a material or ambiguous risk.
 
+For elevated or release-critical performance/security work, use the mode's structured tail/resilience or authorization/abuse receipt; routine low-risk work records a compact baseline or `Not applicable - reason`.
+
 ## Routing Boundary
 
 - A focused quality review or remediation belongs here even when the artifact is a plugin, theme, or site.

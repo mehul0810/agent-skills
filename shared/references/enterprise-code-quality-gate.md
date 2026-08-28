@@ -42,6 +42,8 @@ For every implementation, apply a changed-surface check even when no refactor wa
 - Use deterministic cache keys with the right dimensions and invalidation near the data owner.
 - Keep admin/editor/frontend assets scoped to the screens, blocks, templates, or routes that need them.
 - Preserve launched contracts/data; reshape unreleased drafts rather than adding shims. Comment only non-obvious security, compatibility, cache, migration, concurrency, or platform decisions; remove stale/debug/commented-out code.
+- Performance checkpoint: name the changed hot path, bounded cost, cache/remote/asset/job effect, and comparable baseline or `Not applicable - reason`; do not claim speed without evidence. For elevated or release-critical paths, use the tail/resilience receipt in `performance-review-fix.md`.
+- Security checkpoint: name the changed entry point/trust boundary, server authorization/validation/output controls, and negative proof or `Not applicable - reason`; do not claim security from a scanner alone. For authorization or abuse-prone paths, use the matrix/budget receipt in `security-review-fix.md`.
 
 ## Test Expectations
 

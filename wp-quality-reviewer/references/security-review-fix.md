@@ -9,7 +9,8 @@ Use for WordPress application-security review and remediation. This contract own
 - REST endpoint requirements: https://developer.wordpress.org/rest-api/extending-the-rest-api/adding-custom-endpoints/
 - WordPress VIP PHPCS errors and warnings: https://docs.wpvip.com/php_codesniffer/errors/ and https://docs.wpvip.com/php_codesniffer/warnings/
 - OWASP ASVS: https://owasp.org/www-project-application-security-verification-standard/
-- OWASP API Security: https://owasp.org/www-project-api-security/
+- OWASP API Security: https://owasp.org/API-Security/editions/2023/en/0x11-t10/
+- OWASP headers, sessions, logging, and denial of service: https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html, https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html, https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html, and https://cheatsheetseries.owasp.org/cheatsheets/Denial_of_Service_Cheat_Sheet.html
 
 Verify drift-prone platform policy or standard versions from official sources. Do not copy an entire generic checklist when the changed trust boundary is smaller.
 
@@ -39,6 +40,16 @@ Map before judging:
    - Vulnerable/abandoned dependencies, risky install scripts, and production packages containing dev tooling or secrets.
 5. Establish actor, precondition, reachable path, affected data/action, exploitability, and confidence. Keep speculative items labeled as hypotheses.
 
+## Authorization And Abuse Contracts
+
+For a route or action that reads or mutates objects, sites, tenants, or privileged functions, record a compact actor x action x resource matrix with expected and observed allow/deny decisions and concrete proof. Cover REST, admin, CLI, webhook, and AI/tool surfaces; test object-property and function-level authorization, not only whether a user is logged in.
+
+For public, expensive, bulk, import/export, payment, email, AI/provider, or otherwise abuse-prone paths, define quantitative limits for payload, items, recursion, concurrency, execution time, retries, queue depth, and cost as applicable. Prove over-limit behavior, per-actor/site/IP fairness, 429 or safe rejection/backoff, dependency failure handling, and no retry amplification. Platform edge limits do not replace application authorization or workload controls.
+
+Maintain an inventory for public REST, GraphQL, Abilities, MCP, webhook, and legacy AJAX surfaces: owner, version, permission callback, schema, exposed data, lifecycle/deprecation state, and removal risk. Use conditional browser checks for responses or cookies the product actually owns: CSP/frame ancestors, HSTS, `Secure`/`HttpOnly`/`SameSite`, `Referrer-Policy`, and content-type protections; do not add blanket headers without host ownership and compatibility proof.
+
+When introducing PII, audit logs, diagnostics, or exports, record classification, retention, erase/export behavior, access and alerting, log-injection handling, redaction, and tamper/access monitoring. For multisite or concurrent mutations, prove blog switching/restoration, site-aware cache keys, authorization recheck at mutation time, and race/TOCTOU behavior. For auth or signed callbacks, record token expiry/audience/scope/storage/rotation/revocation and constant-time signature comparison where relevant.
+
 ## WordPress Remediation Rules
 
 - Authorize at the server-side action and resource boundary with meaningful capabilities and ownership checks.
@@ -51,6 +62,7 @@ Map before judging:
 - Verify webhook signature, canonical payload, timestamp/age, replay key, sender/account binding, and idempotency before side effects.
 - Store secrets server-side with least privilege and rotation/revocation paths. Redact logs, UI, analytics, screenshots, issue/PR text, cache keys, URLs, cron args, and client data.
 - Preserve public compatibility only when it does not preserve the vulnerability. Document migrations, revocations, and rollback.
+- For elevated dependency/package work, reuse `../../shared/references/enterprise-runtime-assurance.md` for lockfiles, provenance/SBOM, artifact contents, and production-only dependencies.
 
 ## Proof
 
@@ -63,6 +75,7 @@ Every fixed security finding needs the smallest relevant negative proof:
 - Unsafe upload or archive member.
 - Secret/PII redaction from response, log, cache, error, export, and release package.
 - Dependency/package scan against the exact candidate.
+- Authorization matrix decisions and resource-budget/over-limit behavior when those contracts apply.
 
 Use unit tests for validators and policies; WordPress integration tests for capabilities, REST, persistence, hooks, and multisite; browser tests only where UI state matters. A scanner pass cannot replace boundary-specific negative tests.
 

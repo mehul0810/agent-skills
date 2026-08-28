@@ -10,7 +10,13 @@ const DISPOSITIONS = new Set(['pass', 'fail', 'partial', 'not_applicable']);
 const SEVERITIES = new Set(['P0', 'P1', 'P2', 'P3']);
 const STATUSES = new Set(['open', 'fixed', 'accepted']);
 const CONCLUSIONS = new Set(['pass', 'fail', 'partial', 'blocked']);
-const RISK_FLAGS = new Set(['release_critical', 'migration', 'public_contract']);
+const RISK_FLAGS = new Set([
+	'release_critical',
+	'migration',
+	'public_contract',
+	'authorization_boundary',
+	'resource_abuse',
+]);
 const EVIDENCE_KINDS = new Set(['code', 'git', 'github', 'runtime', 'test', 'browser', 'profile', 'dependency', 'document', 'package', 'public', 'owner']);
 const VALIDATION_KINDS = new Set(['static', 'test', 'runtime', 'browser', 'manual', 'profile', 'package']);
 const VALIDATION_RESULTS = new Set(['pass', 'fail', 'blocked']);
@@ -27,10 +33,31 @@ const KEYS = {
 	artifact: new Set(['path', 'sha256']),
 	scope: new Set(['targets', 'exclusions']),
 	domain: new Set(['disposition', 'evidence', 'reason']),
-	finding: new Set(['id', 'area', 'severity', 'status', 'riskFlags', 'evidence', 'impact', 'remediation', 'validation', 'performanceMeasurement', 'negativeTests', 'behaviorChecks', 'manualChecks', 'independentReview', 'riskAcceptance']),
+	finding: new Set(['id', 'area', 'severity', 'status', 'riskFlags', 'evidence', 'impact', 'remediation', 'validation', 'performanceMeasurement', 'authorizationMatrix', 'resourceBudget', 'negativeTests', 'behaviorChecks', 'manualChecks', 'independentReview', 'riskAcceptance']),
 	evidence: new Set(['kind', 'pointer', 'observation', 'environment', 'identity']),
 	validation: new Set(['kind', 'check', 'expected', 'observed', 'result', 'environment', 'artifact']),
-	measurement: new Set(['metric', 'unit', 'direction', 'before', 'after', 'budget', 'conditions', 'sampleSize']),
+	measurement: new Set([
+		'metric',
+		'unit',
+		'direction',
+		'before',
+		'after',
+		'budget',
+		'conditions',
+		'sampleSize',
+		'distribution',
+		'variance',
+		'errorRate',
+		'cacheState',
+		'fieldOrLab',
+		'runCount',
+		'provenance',
+		'limitations',
+	]),
+	distribution: new Set(['p50', 'p75', 'p95', 'p99']),
+	authorizationMatrix: new Set(['actor', 'action', 'resource', 'expected', 'observed', 'evidence']),
+	resourceBudget: new Set(['scope', 'limits', 'failureBehavior', 'evidence']),
+	resourceLimit: new Set(['name', 'value', 'unit']),
 	independentReview: new Set(['kind', 'runId', 'reviewedCommitSha', 'result', 'evidence']),
 };
 
@@ -118,6 +145,79 @@ function validateReceiptList(value, prefix, errors, validator, minimum = 0, must
 	}
 }
 
+function validateDistribution(distribution, prefix, errors) {
+	if (!isObject(distribution)) {
+		errors.push(`${prefix} must be an object`);
+		return;
+	}
+	checkKeys(distribution, KEYS.distribution, prefix, errors);
+	const entries = Object.entries(distribution);
+	if (entries.length === 0) errors.push(`${prefix} requires at least one percentile`);
+	for (const [percentile, value] of entries) {
+		if (!Number.isFinite(value) || value < 0) errors.push(`${prefix}.${percentile} must be a non-negative number`);
+	}
+	const ordered = ['p50', 'p75', 'p95', 'p99'];
+	let previousName;
+	let previousValue;
+	for (const percentile of ordered) {
+		const value = distribution[percentile];
+		if (value === undefined) continue;
+		if (previousName !== undefined && value < previousValue) {
+			errors.push(`${prefix}.${percentile} must not be below ${previousName}`);
+		}
+		previousName = percentile;
+		previousValue = value;
+	}
+}
+
+function validateAuthorizationMatrix(matrix, prefix, errors, requireMatch = false) {
+	if (!Array.isArray(matrix) || matrix.length === 0) {
+		errors.push(`${prefix} requires at least one authorization check`);
+		return;
+	}
+	for (const [index, check] of matrix.entries()) {
+		const checkPrefix = `${prefix}[${index}]`;
+		if (!isObject(check)) {
+			errors.push(`${checkPrefix} must be an object`);
+			continue;
+		}
+		checkKeys(check, KEYS.authorizationMatrix, checkPrefix, errors);
+		for (const key of ['actor', 'action', 'resource']) {
+			if (!meaningfulText(check[key], 3, 1)) errors.push(`${checkPrefix}.${key} is required`);
+		}
+		if (!['allow', 'deny'].includes(check.expected)) errors.push(`${checkPrefix}.expected is invalid`);
+		if (!['allow', 'deny'].includes(check.observed)) errors.push(`${checkPrefix}.observed is invalid`);
+		if (requireMatch && check.expected !== check.observed) errors.push(`${checkPrefix} observed decision does not match expected decision`);
+		validateReceiptList(check.evidence, `${checkPrefix}.evidence`, errors, validateEvidenceReceipt, 1);
+	}
+}
+
+function validateResourceBudget(budget, prefix, errors) {
+	if (!isObject(budget)) {
+		errors.push(`${prefix} must be an object`);
+		return;
+	}
+	checkKeys(budget, KEYS.resourceBudget, prefix, errors);
+	if (!meaningfulText(budget.scope, 8, 2)) errors.push(`${prefix}.scope is required`);
+	if (!meaningfulText(budget.failureBehavior, 12, 3)) errors.push(`${prefix}.failureBehavior must describe bounded failure behavior`);
+	if (!Array.isArray(budget.limits) || budget.limits.length === 0) {
+		errors.push(`${prefix}.limits requires at least one limit`);
+	} else {
+		for (const [index, limit] of budget.limits.entries()) {
+			const limitPrefix = `${prefix}.limits[${index}]`;
+			if (!isObject(limit)) {
+				errors.push(`${limitPrefix} must be an object`);
+				continue;
+			}
+			checkKeys(limit, KEYS.resourceLimit, limitPrefix, errors);
+			if (!meaningfulText(limit.name, 3, 1)) errors.push(`${limitPrefix}.name is required`);
+			if (!Number.isFinite(limit.value) || limit.value < 0) errors.push(`${limitPrefix}.value must be a non-negative number`);
+			if (!nonEmpty(limit.unit)) errors.push(`${limitPrefix}.unit is required`);
+		}
+	}
+	validateReceiptList(budget.evidence, `${prefix}.evidence`, errors, validateEvidenceReceipt, 1);
+}
+
 function validatePerformanceMeasurement(measurement, prefix, errors) {
 	if (!isObject(measurement)) {
 		errors.push(`${prefix} must be a structured measurement`);
@@ -141,6 +241,36 @@ function validatePerformanceMeasurement(measurement, prefix, errors) {
 	if (!meaningfulText(measurement.conditions)) errors.push(`${prefix}.conditions must identify comparable conditions`);
 	if (measurement.sampleSize !== undefined && (!Number.isInteger(measurement.sampleSize) || measurement.sampleSize < 1)) {
 		errors.push(`${prefix}.sampleSize must be a positive integer when present`);
+	}
+	if (measurement.runCount !== undefined && (!Number.isInteger(measurement.runCount) || measurement.runCount < 1)) {
+		errors.push(`${prefix}.runCount must be a positive integer when present`);
+	}
+	if (measurement.variance !== undefined && (!Number.isFinite(measurement.variance) || measurement.variance < 0)) {
+		errors.push(`${prefix}.variance must be a non-negative number when present`);
+	}
+	if (measurement.errorRate !== undefined && (!Number.isFinite(measurement.errorRate) || measurement.errorRate < 0 || measurement.errorRate > 1)) {
+		errors.push(`${prefix}.errorRate must be a ratio from 0 to 1 when present`);
+	}
+	if (measurement.cacheState !== undefined && !['cold', 'warm', 'mixed', 'not_applicable'].includes(measurement.cacheState)) {
+		errors.push(`${prefix}.cacheState is invalid`);
+	}
+	if (measurement.fieldOrLab !== undefined && !['field', 'lab', 'both'].includes(measurement.fieldOrLab)) {
+		errors.push(`${prefix}.fieldOrLab is invalid`);
+	}
+	if (measurement.provenance !== undefined && !meaningfulText(measurement.provenance, 8, 2)) {
+		errors.push(`${prefix}.provenance must identify the measurement source when present`);
+	}
+	if (measurement.limitations !== undefined && !meaningfulText(measurement.limitations, 8, 2)) {
+		errors.push(`${prefix}.limitations must state material limitations when present`);
+	}
+	if (measurement.distribution !== undefined) {
+		validateDistribution(measurement.distribution, `${prefix}.distribution`, errors);
+		if (measurement.sampleSize === undefined && measurement.runCount === undefined) {
+			errors.push(`${prefix}.distribution requires sampleSize or runCount`);
+		}
+	}
+	if (measurement.fieldOrLab !== undefined && measurement.provenance === undefined) {
+		errors.push(`${prefix}.provenance is required when fieldOrLab is present`);
 	}
 }
 
@@ -252,6 +382,20 @@ export function validate(report) {
 
 		if (finding.status === 'fixed' && finding.area === 'security') validateReceiptList(finding.negativeTests, `${prefix}.negativeTests`, errors, validateValidationReceipt, 1, true);
 		if (finding.status === 'fixed' && finding.area === 'performance') validatePerformanceMeasurement(finding.performanceMeasurement, `${prefix}.performanceMeasurement`, errors);
+		if (finding.authorizationMatrix !== undefined) {
+			if (finding.area !== 'security') errors.push(`${prefix}.authorizationMatrix is only valid for security findings`);
+			validateAuthorizationMatrix(finding.authorizationMatrix, `${prefix}.authorizationMatrix`, errors, finding.status === 'fixed');
+		}
+		if (finding.resourceBudget !== undefined) {
+			if (!['security', 'performance'].includes(finding.area)) errors.push(`${prefix}.resourceBudget is only valid for security or performance findings`);
+			validateResourceBudget(finding.resourceBudget, `${prefix}.resourceBudget`, errors);
+		}
+		if (finding.status === 'fixed' && finding.area === 'security' && finding.riskFlags?.includes('authorization_boundary') && finding.authorizationMatrix === undefined) {
+			errors.push(`${prefix}.authorizationMatrix is required for an authorization_boundary finding`);
+		}
+		if (finding.status === 'fixed' && finding.riskFlags?.includes('resource_abuse') && finding.resourceBudget === undefined) {
+			errors.push(`${prefix}.resourceBudget is required for a resource_abuse finding`);
+		}
 		if (finding.status === 'fixed' && finding.area === 'modularity') validateReceiptList(finding.behaviorChecks, `${prefix}.behaviorChecks`, errors, validateValidationReceipt, 1, true);
 		if (finding.status === 'fixed' && finding.area === 'accessibility') {
 			validateReceiptList(finding.manualChecks, `${prefix}.manualChecks`, errors, validateValidationReceipt, 1, true);
@@ -320,6 +464,19 @@ function runSelfTest() {
 		kind: 'fresh_source_aware', runId: 'review-run-1', reviewedCommitSha: commitSha, result: 'pass',
 		evidence: [evidence('artifacts/fresh-review.md', 'A separate reviewer verified the corrected candidate')],
 	};
+	const authorizationMatrix = [{
+		actor: 'subscriber', action: 'read report', resource: 'site-owned report', expected: 'deny', observed: 'deny',
+		evidence: [evidence('tests/authz.md', 'A subscriber request was denied before the report was disclosed')],
+	}];
+	const resourceBudget = {
+		scope: 'public report export request',
+		limits: [
+			{ name: 'items', value: 100, unit: 'items/request' },
+			{ name: 'timeout', value: 5000, unit: 'milliseconds' },
+		],
+		failureBehavior: 'Requests over the limit are rejected without starting background work',
+		evidence: [evidence('tests/abuse-budget.md', 'Over-limit export requests were rejected and did not grow the queue')],
+	};
 	const cases = [
 		['valid report', base, true],
 		['malformed findings', { ...base, findings: {} }, false],
@@ -340,6 +497,15 @@ function runSelfTest() {
 		['independent review wrong commit', { ...base, findings: [{ ...finding, severity: 'P1', independentReview: { ...independentReview, reviewedCommitSha: 'c'.repeat(40) } }] }, false],
 		['performance regression', { ...base, findings: [{ ...finding, area: 'performance', performanceMeasurement: { metric: 'query duration', unit: 'ms', direction: 'lower_is_better', before: 180, after: 3200, budget: 250, conditions: 'same fixture and cache state' } }] }, false],
 		['performance misses budget', { ...base, findings: [{ ...finding, area: 'performance', performanceMeasurement: { metric: 'query duration', unit: 'ms', direction: 'lower_is_better', before: 3200, after: 300, budget: 250, conditions: 'same fixture and cache state' } }] }, false],
+		['performance distribution with provenance', { ...base, findings: [{ ...finding, area: 'performance', performanceMeasurement: { metric: 'request duration', unit: 'ms', direction: 'lower_is_better', before: 900, after: 320, budget: 500, conditions: 'same fixture and warm cache', sampleSize: 20, distribution: { p50: 280, p75: 340, p95: 480 }, variance: 40, errorRate: 0, cacheState: 'warm', fieldOrLab: 'lab', provenance: 'Server-Timing benchmark artifact', limitations: 'Synthetic fixture does not represent field traffic' } }] }, true],
+		['performance distribution without sample', { ...base, findings: [{ ...finding, area: 'performance', performanceMeasurement: { metric: 'request duration', unit: 'ms', direction: 'lower_is_better', before: 900, after: 320, budget: 500, conditions: 'same fixture and warm cache', distribution: { p50: 280, p95: 480 } } }] }, false],
+		['performance distribution out of order', { ...base, findings: [{ ...finding, area: 'performance', performanceMeasurement: { metric: 'request duration', unit: 'ms', direction: 'lower_is_better', before: 900, after: 320, budget: 500, conditions: 'same fixture and warm cache', sampleSize: 20, distribution: { p50: 500, p95: 480 } } }] }, false],
+		['security authorization matrix', { ...base, findings: [{ ...finding, area: 'security', riskFlags: ['authorization_boundary'], negativeTests: [validation({ check: 'Exercise lower capability and wrong object' })], authorizationMatrix, independentReview }] }, true],
+		['security authorization mismatch', { ...base, findings: [{ ...finding, area: 'security', riskFlags: ['authorization_boundary'], negativeTests: [validation({ check: 'Exercise lower capability and wrong object' })], authorizationMatrix: [{ ...authorizationMatrix[0], observed: 'allow' }] }] }, false],
+		['open security authorization mismatch', { ...base, conclusion: 'partial', findings: [{ ...finding, area: 'security', status: 'open', riskFlags: ['authorization_boundary'], authorizationMatrix: [{ ...authorizationMatrix[0], observed: 'allow' }] }] }, true],
+		['security authorization flag without matrix', { ...base, findings: [{ ...finding, area: 'security', riskFlags: ['authorization_boundary'], negativeTests: [validation({ check: 'Exercise lower capability and wrong object' })] }] }, false],
+		['resource abuse budget', { ...base, findings: [{ ...finding, area: 'security', riskFlags: ['resource_abuse'], negativeTests: [validation({ check: 'Exercise over-limit request' })], resourceBudget, independentReview }] }, true],
+		['resource abuse flag without budget', { ...base, findings: [{ ...finding, area: 'performance', riskFlags: ['resource_abuse'], performanceMeasurement: { metric: 'request duration', unit: 'ms', direction: 'lower_is_better', before: 900, after: 320, budget: 500, conditions: 'same fixture and warm cache' } }] }, false],
 		['package empty digest', { ...base, targetIdentity: { ...base.targetIdentity, artifact: { path: 'dist/plugin.zip', sha256: '' } } }, false],
 		['pass with partial domain', { ...base, domains: { ...base.domains, security: { ...base.domains.security, disposition: 'partial' } } }, false],
 	];
