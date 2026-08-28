@@ -1,0 +1,92 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "wordpress-visual-execution-2026-08-28-modularity",
+  "scenario": "wordpress-visual-execution",
+  "result": "succeeded",
+  "startedAt": "2026-08-28T13:55:15.232Z",
+  "durationMs": 1000,
+  "checks": [
+    {
+      "name": "WordPress-native-ownership",
+      "result": "pass"
+    },
+    {
+      "name": "truthful-assets-and-claims",
+      "result": "pass"
+    },
+    {
+      "name": "exact-target-parity-authority",
+      "result": "pass"
+    },
+    {
+      "name": "responsive-accessibility-workflow-proof",
+      "result": "pass"
+    },
+    {
+      "name": "plugin-admin-customer-surface-routing",
+      "result": "pass"
+    },
+    {
+      "name": "plugin-exact-visual-routing",
+      "result": "pass"
+    },
+    {
+      "name": "structured-figma-source",
+      "result": "pass"
+    },
+    {
+      "name": "interactive-client-navigation-lifecycle",
+      "result": "pass"
+    },
+    {
+      "name": "wcag-multistep-flow",
+      "result": "pass"
+    },
+    {
+      "name": "WordPress-design-system-component-first",
+      "result": "pass"
+    },
+    {
+      "name": "emerging-interface-route-preserves-exact-proof",
+      "result": "pass"
+    },
+    {
+      "name": "immersive-editor-and-fallback-proof",
+      "result": "pass"
+    },
+    {
+      "name": "source-visual-intent-classification",
+      "result": "pass"
+    },
+    {
+      "name": "selected-target-source-model-before-code",
+      "result": "pass"
+    },
+    {
+      "name": "growth-redesign-brief-before-generation",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 15
+  },
+  "lineage": {
+    "verificationId": "wordpress-visual-execution-2026-08-28-modularity",
+    "artifactPointer": "codex-fresh-agent:/root/modularity_publish_eval#2026-08-28"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-28T13:55:16.232Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "A fresh source-blind evaluator confirmed visual ownership, exact-target and responsive proof, WordPress-native implementation routing, accessibility, package evidence, and plugin/theme/site specialist boundaries."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "visual",
+    "wordpress"
+  ]
+}

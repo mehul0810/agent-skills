@@ -1,0 +1,53 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "enterprise-runtime-assurance-2026-08-28-modularity",
+  "scenario": "elevated-enterprise-runtime-assurance",
+  "result": "succeeded",
+  "startedAt": "2026-08-28T13:55:15.232Z",
+  "durationMs": 1000,
+  "checks": [
+    {
+      "name": "elevated-risk-classification",
+      "result": "pass"
+    },
+    {
+      "name": "compatibility-matrix-and-adaptive-docs",
+      "result": "pass"
+    },
+    {
+      "name": "artifact-sbom-license-vulnerability-provenance",
+      "result": "pass"
+    },
+    {
+      "name": "operations-observation-rollback-recovery",
+      "result": "pass"
+    },
+    {
+      "name": "missing-release-evidence-fails-closed",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 5
+  },
+  "lineage": {
+    "verificationId": "enterprise-runtime-assurance-2026-08-28-modularity",
+    "artifactPointer": "codex-fresh-agent:/root/modularity_publish_eval#2026-08-28"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-28T13:55:16.232Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "A fresh source-blind evaluator confirmed the elevated enterprise runtime route, compatibility evidence, supply-chain proof, operational recovery, and fail-closed release evidence gate."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "enterprise",
+    "runtime",
+    "modularity"
+  ]
+}

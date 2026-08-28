@@ -18,7 +18,7 @@
         "wp-plugin-expert/SKILL.md",
         "wp-plugin-expert/references/router.md"
       ],
-      "sha256": "d7c9aa9fed58bfbe493161201492c2a67c9dc6ad6602f20f934e46d0a09aa10d",
+      "sha256": "75f1635f49a7db224ba7a44118407fc829f7ec4b2eddcaa7254f1cffc1066c51",
       "scenario": {
         "id": "elevated-enterprise-runtime-assurance",
         "files": [
@@ -38,10 +38,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-08-27-plugin-release.json",
-          "sha256": "092c9d279aeefbe449532e63dfe41d71efa8918f679c618cc5273c98ac7d7fff",
-          "testedRevision": "62f89df6be634d9879cb9d6fa1f2b60729b1398a",
-          "testedSourceSha256": "d7c9aa9fed58bfbe493161201492c2a67c9dc6ad6602f20f934e46d0a09aa10d",
+          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-08-28-modularity.json",
+          "sha256": "e23827bd37a38b5801a220bfd0f025061f3ce828cfbdaadf9e00317907cfb458",
+          "testedRevision": "e68aa8b819264463262f4ffb1a17d9f3ddcec1ad",
+          "testedSourceSha256": "75f1635f49a7db224ba7a44118407fc829f7ec4b2eddcaa7254f1cffc1066c51",
           "testedScenarioSha256": "3d842125a654c717b1b68f1fe273d32f8bf4ac54bae26ac39dbacefb0f92eb84",
           "runtime": {
             "host": "codex-desktop",
@@ -144,7 +144,7 @@
         "wp-theme-expert/SKILL.md",
         "wp-theme-expert/references/router.md"
       ],
-      "sha256": "bd6e09982b67f888b4039fcfd18b3b6b9c3c6793a6cbd5a1be5c94c49dcce5db",
+      "sha256": "f22603d61aed450d59d2fffd65095505703721c592f52040121c49922b2d00ed",
       "scenario": {
         "id": "wordpress-visual-execution",
         "files": [
@@ -188,10 +188,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-08-27-plugin-release.json",
-          "sha256": "9336f7dc245e86581e752200377eda50d58b3e48518da83bf42a93c63189cdbf",
-          "testedRevision": "62f89df6be634d9879cb9d6fa1f2b60729b1398a",
-          "testedSourceSha256": "bd6e09982b67f888b4039fcfd18b3b6b9c3c6793a6cbd5a1be5c94c49dcce5db",
+          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-08-28-modularity.json",
+          "sha256": "302034091c8e9c4d5fba376bec03238b550db12f94988f90e7f265c66852d06d",
+          "testedRevision": "e68aa8b819264463262f4ffb1a17d9f3ddcec1ad",
+          "testedSourceSha256": "f22603d61aed450d59d2fffd65095505703721c592f52040121c49922b2d00ed",
           "testedScenarioSha256": "c01654d7f2c920e553bc85d5536b1a3c1d692286b3480020a687e327d5382dd8",
           "runtime": {
             "host": "codex-desktop",
@@ -307,7 +307,7 @@
         "shared/schemas/wp-quality-review.schema.json",
         "wp-quality-reviewer/scripts/validate-review-report.mjs"
       ],
-      "sha256": "ae86d5d6d7fd20856239cec8ebdfec1d1ff9ed3e3c6260d5040f79d2e48fceac",
+      "sha256": "9bd82b65876faa49e9d6116b2749a5f88a440d4c84154669136dd944a6f7a2d7",
       "scenario": {
         "id": "multi-domain-release-quality-review",
         "files": [
@@ -315,9 +315,11 @@
         ],
         "anchors": [
           "Multi-domain release audit",
-          "Legacy modularity ratchet and adapter boundary"
+          "Legacy modularity ratchet and adapter boundary",
+          "Non-breaking launched-contract refactor",
+          "Additive custom-table migration"
         ],
-        "sha256": "0b687cdd1d1f68fad871ed01d47f97bdd4ed7094cf6000d620e87742bdd1759c"
+        "sha256": "318916851b260a777807b85abb707d790d73e245877cccee360e2bb09275f1de"
       },
       "requiredChecks": [
         "compact-multi-domain-route",
@@ -335,15 +337,19 @@
         "proportional-modularity-thresholds",
         "legacy-no-growth-ratchet",
         "dependency-direction-adapter-boundary",
-        "exception-metadata-and-repo-checker-ownership"
+        "exception-metadata-and-repo-checker-ownership",
+        "non-breaking-contract-inventory",
+        "before-after-contract-proof",
+        "additive-migration-sequencing",
+        "intentional-break-approval-gate"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-08-26-r3.json",
-          "sha256": "e6197f78e4945de7512580c437bc26d49b550d60d649c0534a6b9407f9fd219e",
-          "testedRevision": "75d4ac43034f52268e7669f4f20462c035adcc43",
-          "testedSourceSha256": "ae86d5d6d7fd20856239cec8ebdfec1d1ff9ed3e3c6260d5040f79d2e48fceac",
-          "testedScenarioSha256": "0b687cdd1d1f68fad871ed01d47f97bdd4ed7094cf6000d620e87742bdd1759c",
+          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-08-28-modularity.json",
+          "sha256": "57c6267e2ae9f471c4627640fa8d24d03ffcce2478b518727cb07138662c2d0c",
+          "testedRevision": "e68aa8b819264463262f4ffb1a17d9f3ddcec1ad",
+          "testedSourceSha256": "9bd82b65876faa49e9d6116b2749a5f88a440d4c84154669136dd944a6f7a2d7",
+          "testedScenarioSha256": "318916851b260a777807b85abb707d790d73e245877cccee360e2bb09275f1de",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
