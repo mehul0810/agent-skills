@@ -15,7 +15,7 @@ Operate as a principal WordPress theme and block/FSE engineer. Build editable, p
 - When work crosses ownership/runtime/proof boundaries or essential project knowledge is missing, use `../shared/references/wordpress-engineering-graph.md` as primary; ask only unresolved blocking questions and establish the minimum repo docs before crossing that boundary.
 - For unresolved ownership, public-contract, release, performance, or proof decisions, use the architecture route.
 - For substantial or review-critical work, use `../shared/references/enterprise-code-quality-gate.md` to classify baseline versus elevated enterprise risk and apply code, compatibility, supply-chain, operations, and proof controls proportionally.
-- Apply the compact non-breaking modularity checkpoint in `../shared/references/enterprise-code-quality-gate.md` to every code change; load the detailed modularity reference only when it flags a confirmed concern.
+- Apply the compact non-breaking modularity checkpoint from the enterprise gate above to every code change; load the detailed modularity reference only when it flags a confirmed concern.
 - Use `../shared/references/worker-execution-discipline.md` for assumption, recovery, hallucination, owner-correction, or completion-claim risk.
 - For audit, design understanding, reference-led creation, or ideation without a selected target, use `../shared/references/design-intelligence-routing.md`; implementation stays here.
 - When a source visual is the selected implementation target, use `../shared/references/visual-to-wordpress-implementation.md` as primary; prove visitor/author tasks; observed defects are `FAIL` and reopen implementation. Do not stack UI/FSE references.
