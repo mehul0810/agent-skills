@@ -33,6 +33,12 @@ require_text "wp-quality-reviewer/references/modularity-review-fix.md" "no-growt
 require_text "wp-quality-reviewer/references/modularity-review-fix.md" "approving owner, issue or dated reduction target" "modularity exception metadata"
 require_text "wp-quality-reviewer/references/modularity-review-fix.md" "product repository owns the executable checker" "repo-local modularity checker ownership"
 require_text "wp-quality-reviewer/references/modularity-review-fix.md" "The stop condition is simpler ownership" "modularity anti-overengineering"
+require_text "wp-quality-reviewer/references/modularity-review-fix.md" "Non-Breaking Modularity Checkpoint" "non-breaking modularity checkpoint"
+require_text "wp-quality-reviewer/references/modularity-review-fix.md" "launched/public and real-data contracts" "modularity contract inventory"
+require_text "wp-quality-reviewer/references/modularity-review-fix.md" "characterization or consumer proof" "modularity before-after proof"
+require_text "wp-quality-reviewer/references/modularity-review-fix.md" "expand -> migrate/backfill -> contract" "additive migration sequencing"
+require_text "wp-quality-reviewer/references/modularity-review-fix.md" "intentional public or stored-contract break" "intentional break gate"
+require_text "wp-quality-reviewer/SKILL.md" "compact non-breaking modularity checkpoint" "reviewer task-level modularity checkpoint"
 require_text "wp-quality-reviewer/references/accessibility-review-fix.md" "no automated tool alone determines accessibility" "accessibility manual judgment"
 require_text "wp-quality-reviewer/references/accessibility-review-fix.md" "Fix semantics and DOM order before adding ARIA" "accessibility native semantics"
 require_text "wp-quality-reviewer/references/accessibility-review-fix.md" "zero-violation automated scan is not an accessibility pass" "accessibility no scanner-only pass"
@@ -51,10 +57,14 @@ require_text "wp-expert/SKILL.md" "use \`wp-quality-reviewer\`" "wp-expert quali
 require_text "wp-product-orchestrator/SKILL.md" "wp-quality-reviewer" "product quality worker routing"
 require_text "skill-evals/wp-quality-reviewer-scenarios.md" "Contradicted pass" "quality correction scenario"
 require_text "skill-evals/wp-quality-reviewer-scenarios.md" "Legacy modularity ratchet and adapter boundary" "legacy modularity behavior scenario"
+require_text "skill-evals/wp-quality-reviewer-scenarios.md" "Non-breaking launched-contract refactor" "launched contract modularity scenario"
+require_text "skill-evals/wp-quality-reviewer-scenarios.md" "Additive custom-table migration" "additive migration modularity scenario"
 require_text "skill-evals/routing-collision-scenarios.md" "Feature delivery vs focused quality review" "quality routing collision"
 require_text "skill-evals/routing-collision-scenarios.md" "Critical fix vs independent re-review" "critical fix separation collision"
 require_text "skill-evals/routing-collision-scenarios.md" "Release evidence vs PO" "release evidence ownership collision"
 require_text "shared/references/release-train-discipline.md" "The PO must not infer a technical pass" "PO technical pass boundary"
+require_text "shared/references/enterprise-code-quality-gate.md" "Compact Non-Breaking Modularity Checkpoint" "shared task-level modularity checkpoint"
+require_text "shared/references/enterprise-code-quality-gate.md" "preserve observable behavior with characterization or consumer proof" "shared compatibility proof checkpoint"
 
 if [ "$errors" -gt 0 ]; then
   echo "quality reviewer behavior audit failed: $errors issue(s)" >&2

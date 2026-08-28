@@ -27,6 +27,10 @@ When this file is primary and work is elevated, use `enterprise-runtime-assuranc
 - Identify supported environment cells and the exact commit/package/runtime identity needed for proof.
 - Avoid premature abstraction, but do not duplicate rules that can drift across entry points, providers, migrations, or tests.
 
+### Compact Non-Breaking Modularity Checkpoint
+
+For every implementation, apply a changed-surface check even when no refactor was requested: inventory launched/public contracts and real data, preserve observable behavior with characterization or consumer proof, keep a no-growth posture for legacy code, and stop for an intentional public or stored-contract break. Load [`modularity-review-fix.md`](../../wp-quality-reviewer/references/modularity-review-fix.md) only when the check finds a confirmed duplication, coupling, boundary, migration, or testability concern.
+
 ## Implementation Bar
 
 - Keep bootstraps thin, composition explicit, dependencies visible, and modules/functions focused. Limit globals to WordPress boundaries.

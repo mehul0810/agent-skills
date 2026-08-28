@@ -36,6 +36,8 @@ For a multi-domain enterprise/release audit, load `references/multi-domain-relea
 7. For `P0`/`P1`, release-critical, migration, or public-contract fixes, require a fresh source-aware re-review of the changed code and evidence before passing the gate. Add separate source-blind behavior proof when the claim is observable at runtime.
 8. Run a finish pass for adjacent risks, tests, docs, dead/debug code, and release impact. Preserve scope; route validated adjacent findings through the existing issue protocol.
 
+Every code review applies the compact non-breaking modularity checkpoint; the detailed modularity mode expands it only when a confirmed boundary, duplication, migration, or testability concern exists.
+
 ## Evidence And Severity
 
 - `P0`: active exploitation, destructive data loss, or production-wide availability failure.

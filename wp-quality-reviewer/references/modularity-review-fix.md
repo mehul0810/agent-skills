@@ -49,6 +49,17 @@ Every exception records: approving owner, issue or dated reduction target, measu
 
 The product repository owns the executable checker because CI runs from that checkout: path inventory and exclusions, language-specific counters or dependency rules, baseline snapshots, exception registry, and local/CI commands. This skill owns the portable review policy, threshold interpretation, evidence requirements, and disposition model. Report measured current/baseline values, threshold class, dependency-direction result, exception metadata, proof, and `pass`, `fix`, `exception`, or `blocked` disposition.
 
+## Non-Breaking Modularity Checkpoint
+
+Apply this gate to every code change that edits existing behavior, including non-refactors. Inspect changed files and callers/consumers first; do not turn a focused task into repository-wide cleanup.
+
+1. Record the launched/public and real-data contracts touched: hooks/filters and priorities; REST/AJAX routes and schemas; block names, attributes, deprecations, and saved markup; options/meta/custom-table schemas and migrations; WP-CLI commands; template paths; asset handles; CSS/JS selectors/events; and serialized payloads.
+2. Capture characterization or consumer proof before moving ownership. After the change, compare defaults, outputs, error semantics, side effects/order, permissions, cache/performance behavior, and each reachable admin, editor, frontend, CLI, or cron path.
+3. Keep the public boundary stable while extracting one clear owner behind it. For stored data, prefer additive `expand -> migrate/backfill -> contract` steps with resume and rollback behavior; do not delete or rename a launched field, route, hook, column, option, or saved block attribute in the first migration step.
+4. If an intentional public or stored-contract break is necessary, stop the routine refactor and record the target version, deprecation/migration, rollback, and owner/release approval. Otherwise report an explicit compatibility result; passing tests alone is not compatibility proof.
+
+Keep opportunistic improvements inside the changed behavior's dependency neighborhood. Route unrelated findings through the adjacent-finding protocol instead of expanding the current PR. The final review reports the contract inventory, before/after behavior result, migration posture, budget/no-growth result, tests, and any deferred issue.
+
 ## Finding Threshold
 
 Refactor when at least one is true:
