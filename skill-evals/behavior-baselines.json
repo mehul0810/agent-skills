@@ -862,7 +862,7 @@
         "content-writer/references/router.md",
         "shared/references/search-visibility-and-ai-discovery.md"
       ],
-      "sha256": "2926b63d0c53a540cc01a6cf62ec60508b854c525081457d6f857914fbf266de",
+      "sha256": "7e5c52241e8724c1b441939941e2d53298b3443ba5a62f0d7be249c3f16b76e3",
       "scenario": {
         "id": "content-writer-search-visibility",
         "files": [
@@ -890,10 +890,56 @@
       "evidence": [
         {
           "runRecord": "skill-evals/run-records/content-writer-search-visibility-2026-08-29.json",
-          "sha256": "80115d33639c5ddc7b2d274e91908a4ddb6792177176d65e13e9371bd45f4f7d",
-          "testedRevision": "9406e2e42594f86c138f33c1d1f76eb2865d047d",
-          "testedSourceSha256": "2926b63d0c53a540cc01a6cf62ec60508b854c525081457d6f857914fbf266de",
+          "sha256": "d5bf978305b103e188711d29abd03592ed9f658a3f4331e4f768904af07c3e53",
+          "testedRevision": "7be64b08d06673ced5b5ef14561b38713f764c58",
+          "testedSourceSha256": "7e5c52241e8724c1b441939941e2d53298b3443ba5a62f0d7be249c3f16b76e3",
           "testedScenarioSha256": "7fc19d19e43a3fa241c4de6dd606b4cc808b765d2ec0a0f85a0093f685906d22",
+          "runtime": {
+            "host": "codex-desktop",
+            "isolation": "fresh-agent",
+            "harnessRevision": "24ffe6e5481aebe33f403df9b72f0de7214f019a"
+          }
+        }
+      ]
+    },
+    {
+      "name": "content-writer-readability",
+      "files": [
+        "content-writer/SKILL.md",
+        "content-writer/references/router.md",
+        "content-writer/references/readability-and-clarity.md"
+      ],
+      "sha256": "5f5a46d13f5770a8b4e4de94167c1cbe53216fe4b216e269668afdac19735662",
+      "scenario": {
+        "id": "content-writer-readability",
+        "files": [
+          "skill-evals/content-writer-scenarios.md"
+        ],
+        "anchors": [
+          "Audience-Calibrated Readability",
+          "Enterprise Precision And Progressive Disclosure",
+          "Accessible Copy And Localization",
+          "Reading-Level Diagnostic",
+          "Complex Or High-Stakes Content"
+        ],
+        "sha256": "54458ccdfabb020567115971ac32810d3a18eb1872c95e6b71686dbd61fb0fec"
+      },
+      "requiredChecks": [
+        "audience-task-calibration",
+        "plain-language-structure",
+        "accessible-localized-copy",
+        "reading-level-diagnostic",
+        "complex-high-stakes-precision",
+        "progressive-disclosure-precision",
+        "no-blanket-readability-gate"
+      ],
+      "evidence": [
+        {
+          "runRecord": "skill-evals/run-records/content-writer-readability-2026-08-29.json",
+          "sha256": "8cc8f9a803713894500095e5b80abb976ac8e0e97a6af18db4701d597edbc856",
+          "testedRevision": "7be64b08d06673ced5b5ef14561b38713f764c58",
+          "testedSourceSha256": "5f5a46d13f5770a8b4e4de94167c1cbe53216fe4b216e269668afdac19735662",
+          "testedScenarioSha256": "54458ccdfabb020567115971ac32810d3a18eb1872c95e6b71686dbd61fb0fec",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",

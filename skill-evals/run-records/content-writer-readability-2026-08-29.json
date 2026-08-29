@@ -1,0 +1,60 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "content-writer-readability-2026-08-29",
+  "scenario": "content-writer-readability",
+  "result": "succeeded",
+  "startedAt": "2026-08-29T07:20:29.000Z",
+  "durationMs": 0,
+  "checks": [
+    {
+      "name": "audience-task-calibration",
+      "result": "pass"
+    },
+    {
+      "name": "plain-language-structure",
+      "result": "pass"
+    },
+    {
+      "name": "accessible-localized-copy",
+      "result": "pass"
+    },
+    {
+      "name": "reading-level-diagnostic",
+      "result": "pass"
+    },
+    {
+      "name": "complex-high-stakes-precision",
+      "result": "pass"
+    },
+    {
+      "name": "progressive-disclosure-precision",
+      "result": "pass"
+    },
+    {
+      "name": "no-blanket-readability-gate",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 7
+  },
+  "lineage": {
+    "verificationId": "content-writer-readability-2026-08-29",
+    "artifactPointer": "codex-fresh-agent:/root/quality_runtime_eval#content-writer-readability-and-search"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-29T07:20:29.300Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "A fresh source-blind evaluator confirmed audience calibration, plain-language structure, accessibility and localization, diagnostic reading-level use, progressive disclosure, and high-stakes precision."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "content",
+    "readability"
+  ]
+}

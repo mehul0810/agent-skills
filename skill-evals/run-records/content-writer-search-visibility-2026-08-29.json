@@ -4,7 +4,7 @@
   "runId": "content-writer-search-visibility-2026-08-29",
   "scenario": "content-writer-search-visibility",
   "result": "succeeded",
-  "startedAt": "2026-08-29T06:57:58.000Z",
+  "startedAt": "2026-08-29T07:20:29.000Z",
   "durationMs": 0,
   "checks": [
     {
@@ -49,11 +49,11 @@
   },
   "lineage": {
     "verificationId": "content-writer-search-visibility-2026-08-29",
-    "artifactPointer": "codex-fresh-agent:/root/quality_runtime_eval#content-writer-search-visibility"
+    "artifactPointer": "codex-fresh-agent:/root/quality_runtime_eval#content-writer-readability-and-search"
   },
   "measurement": {
     "status": "met",
-    "verifiedAt": "2026-08-29T06:57:58.571Z",
+    "verifiedAt": "2026-08-29T07:20:29.300Z",
     "metricNames": [
       "checks_passed"
     ],
