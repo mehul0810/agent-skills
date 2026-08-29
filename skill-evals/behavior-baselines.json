@@ -854,6 +854,53 @@
           }
         }
       ]
+    },
+    {
+      "name": "content-writer-search-visibility",
+      "files": [
+        "content-writer/SKILL.md",
+        "content-writer/references/router.md",
+        "shared/references/search-visibility-and-ai-discovery.md"
+      ],
+      "sha256": "a07f1e8360809028e142d220fe1473bc2aacad13b71cda49236a86cca0ff6065",
+      "scenario": {
+        "id": "content-writer-search-visibility",
+        "files": [
+          "skill-evals/content-writer-scenarios.md"
+        ],
+        "anchors": [
+          "AEO/GEO Provider Boundary",
+          "AI Search Visibility Measurement",
+          "Programmatic Content Scale",
+          "Crawler And Training Privacy"
+        ],
+        "sha256": "7fc19d19e43a3fa241c4de6dd606b4cc808b765d2ec0a0f85a0093f685906d22"
+      },
+      "requiredChecks": [
+        "terminology-provider-boundary",
+        "provider-crawl-index-controls",
+        "citation-sourceworthiness",
+        "structured-data-visible-content",
+        "programmatic-content-quality",
+        "privacy-training-controls",
+        "visibility-measurement-boundary",
+        "wordpress-search-handoff",
+        "query-fanout-intent-plan"
+      ],
+      "evidence": [
+        {
+          "runRecord": "skill-evals/run-records/content-writer-search-visibility-2026-08-29.json",
+          "sha256": "9f776431f492847bcc6ab83d6ad5dd8590ae205b0adad8d9c7e8e7008f81bd1a",
+          "testedRevision": "796bbe304f2b7d764a04d12570ecd1c1af63e238",
+          "testedSourceSha256": "a07f1e8360809028e142d220fe1473bc2aacad13b71cda49236a86cca0ff6065",
+          "testedScenarioSha256": "7fc19d19e43a3fa241c4de6dd606b4cc808b765d2ec0a0f85a0093f685906d22",
+          "runtime": {
+            "host": "codex-desktop",
+            "isolation": "fresh-agent",
+            "harnessRevision": "24ffe6e5481aebe33f403df9b72f0de7214f019a"
+          }
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,68 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "content-writer-search-visibility-2026-08-29",
+  "scenario": "content-writer-search-visibility",
+  "result": "succeeded",
+  "startedAt": "2026-08-29T06:52:44.000Z",
+  "durationMs": 0,
+  "checks": [
+    {
+      "name": "terminology-provider-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "provider-crawl-index-controls",
+      "result": "pass"
+    },
+    {
+      "name": "citation-sourceworthiness",
+      "result": "pass"
+    },
+    {
+      "name": "structured-data-visible-content",
+      "result": "pass"
+    },
+    {
+      "name": "programmatic-content-quality",
+      "result": "pass"
+    },
+    {
+      "name": "privacy-training-controls",
+      "result": "pass"
+    },
+    {
+      "name": "visibility-measurement-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "wordpress-search-handoff",
+      "result": "pass"
+    },
+    {
+      "name": "query-fanout-intent-plan",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 9
+  },
+  "lineage": {
+    "verificationId": "content-writer-search-visibility-2026-08-29",
+    "artifactPointer": "codex-fresh-agent:/root/quality_runtime_eval#content-writer-search-visibility"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-29T06:52:44.397Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "A fresh source-blind evaluator confirmed provider boundaries, eligibility, privacy, measurement, scaled-content, and WordPress handoff rules."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "content",
+    "search"
+  ]
+}
