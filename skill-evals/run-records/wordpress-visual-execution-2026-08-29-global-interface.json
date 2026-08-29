@@ -1,0 +1,39 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "wordpress-visual-execution-2026-08-29-global-interface",
+  "scenario": "wordpress-visual-execution",
+  "result": "succeeded",
+  "startedAt": "2026-08-29T06:24:00.000Z",
+  "durationMs": 1131,
+  "checks": [
+    { "name": "WordPress-native-ownership", "result": "pass" },
+    { "name": "truthful-assets-and-claims", "result": "pass" },
+    { "name": "exact-target-parity-authority", "result": "pass" },
+    { "name": "responsive-accessibility-workflow-proof", "result": "pass" },
+    { "name": "plugin-admin-customer-surface-routing", "result": "pass" },
+    { "name": "plugin-exact-visual-routing", "result": "pass" },
+    { "name": "structured-figma-source", "result": "pass" },
+    { "name": "interactive-client-navigation-lifecycle", "result": "pass" },
+    { "name": "wcag-multistep-flow", "result": "pass" },
+    { "name": "WordPress-design-system-component-first", "result": "pass" },
+    { "name": "emerging-interface-route-preserves-exact-proof", "result": "pass" },
+    { "name": "immersive-editor-and-fallback-proof", "result": "pass" },
+    { "name": "source-visual-intent-classification", "result": "pass" },
+    { "name": "selected-target-source-model-before-code", "result": "pass" },
+    { "name": "growth-redesign-brief-before-generation", "result": "pass" },
+    { "name": "globalized-adaptive-interface-contract", "result": "pass" }
+  ],
+  "metrics": { "checks_passed": 16 },
+  "lineage": {
+    "verificationId": "wordpress-visual-execution-2026-08-29-global-interface",
+    "artifactPointer": "codex-fresh-agent:/root/quality_runtime_eval#2026-08-29-global-interface-visual"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-29T06:24:01.131Z",
+    "metricNames": ["checks_passed"],
+    "summary": "A fresh source-blind evaluator passed WordPress visual execution with globalized, adaptive interface, editor/admin/frontend parity, and packaged proof requirements."
+  },
+  "tags": ["fresh-agent", "sanitized", "visual", "wordpress", "globalization"]
+}

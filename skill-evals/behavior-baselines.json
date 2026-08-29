@@ -18,7 +18,7 @@
         "wp-plugin-expert/SKILL.md",
         "wp-plugin-expert/references/router.md"
       ],
-      "sha256": "e5476533de1abfb942223e8583e664c77dd99f5fc437e2dbef9283237bd60bd1",
+      "sha256": "fc3906199e96260ac008de3df4ddb9b4b951e873e36233f0235bfe7a50c7227e",
       "scenario": {
         "id": "elevated-enterprise-runtime-assurance",
         "files": [
@@ -38,10 +38,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-08-28-performance-security.json",
-          "sha256": "46c6450692a369607f46f28c892aaa0e908fe3b9a6cade3111d65854304f2c0c",
-          "testedRevision": "f7704e0681546dfa83577c720e87c6b38ef77112",
-          "testedSourceSha256": "e5476533de1abfb942223e8583e664c77dd99f5fc437e2dbef9283237bd60bd1",
+          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-08-29-global-interface.json",
+          "sha256": "9376a6101825b926a991f098ff7bc5e851267949e1234d8529c67371f34d23e5",
+          "testedRevision": "9839f1cee1d3456f6106a73a15d16db85f9deaed",
+          "testedSourceSha256": "fc3906199e96260ac008de3df4ddb9b4b951e873e36233f0235bfe7a50c7227e",
           "testedScenarioSha256": "3d842125a654c717b1b68f1fe273d32f8bf4ac54bae26ac39dbacefb0f92eb84",
           "runtime": {
             "host": "codex-desktop",
@@ -87,9 +87,10 @@
           "Ambiguous Improve Request Audits First",
           "Growth-Led Redesign Before Image Generation",
           "Cropped Reference Cannot Prove A System",
-          "Existing Design Language Extension"
+          "Existing Design Language Extension",
+          "Globalized And Adaptive Interface"
         ],
-        "sha256": "fd698a116b3dbce367e09efd780e24f9bc49bc95bca1ec7c4e92f92b38c71629"
+        "sha256": "0b8b3ebc686dd581d5d1dd240ad8af3e69f4d4711f5449f6299955a581676cc4"
       },
       "requiredChecks": [
         "greenfield-taste-route",
@@ -110,15 +111,16 @@
         "enterprise-progressive-depth",
         "source-visual-intent-routing",
         "design-understanding-evidence-boundary",
-        "growth-redesign-evidence-before-generation"
+        "growth-redesign-evidence-before-generation",
+        "globalized-adaptive-interface-contract"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/design-experience-routing-2026-08-20-visual-intent.json",
-          "sha256": "cdf5a60f2c5f14c47d0b1b194d24ac505bfbcd2a26a7023720fa41e27b1af119",
-          "testedRevision": "e9cb48e17cafe36e3721a334b52b4034f642eb18",
+          "runRecord": "skill-evals/run-records/design-experience-routing-2026-08-29-global-interface.json",
+          "sha256": "3650ee9fdcd566bdb2f6f30480235e8f2bc31f85b6c56de239d1bbe05752e7cf",
+          "testedRevision": "9839f1cee1d3456f6106a73a15d16db85f9deaed",
           "testedSourceSha256": "e72d161b0aef6fccfa3d1214bdde4a67204b3dd2dfbc501e86ef130930242b1d",
-          "testedScenarioSha256": "fd698a116b3dbce367e09efd780e24f9bc49bc95bca1ec7c4e92f92b38c71629",
+          "testedScenarioSha256": "0b8b3ebc686dd581d5d1dd240ad8af3e69f4d4711f5449f6299955a581676cc4",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
@@ -144,7 +146,7 @@
         "wp-theme-expert/SKILL.md",
         "wp-theme-expert/references/router.md"
       ],
-      "sha256": "f22603d61aed450d59d2fffd65095505703721c592f52040121c49922b2d00ed",
+      "sha256": "db2ff19c15be19037b3d63999b044bd9987f69fb18c3d74e6debb765849682ad",
       "scenario": {
         "id": "wordpress-visual-execution",
         "files": [
@@ -165,9 +167,10 @@
           "Ambiguous Improve Request Audits First",
           "Growth-Led Redesign Before Image Generation",
           "Cropped Reference Cannot Prove A System",
-          "Existing Design Language Extension"
+          "Existing Design Language Extension",
+          "Globalized And Adaptive Interface"
         ],
-        "sha256": "c01654d7f2c920e553bc85d5536b1a3c1d692286b3480020a687e327d5382dd8"
+        "sha256": "86d6fdb1ae19797418439058bf78b469b5d426e2a340a5532af601fd6895a326"
       },
       "requiredChecks": [
         "WordPress-native-ownership",
@@ -184,15 +187,16 @@
         "immersive-editor-and-fallback-proof",
         "source-visual-intent-classification",
         "selected-target-source-model-before-code",
-        "growth-redesign-brief-before-generation"
+        "growth-redesign-brief-before-generation",
+        "globalized-adaptive-interface-contract"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-08-28-modularity.json",
-          "sha256": "302034091c8e9c4d5fba376bec03238b550db12f94988f90e7f265c66852d06d",
-          "testedRevision": "e68aa8b819264463262f4ffb1a17d9f3ddcec1ad",
-          "testedSourceSha256": "f22603d61aed450d59d2fffd65095505703721c592f52040121c49922b2d00ed",
-          "testedScenarioSha256": "c01654d7f2c920e553bc85d5536b1a3c1d692286b3480020a687e327d5382dd8",
+          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-08-29-global-interface.json",
+          "sha256": "68fbbfcc2a1f6c6ac9c35792909acbee653e6d1aea910df644bf17feb4b0fb8b",
+          "testedRevision": "9839f1cee1d3456f6106a73a15d16db85f9deaed",
+          "testedSourceSha256": "db2ff19c15be19037b3d63999b044bd9987f69fb18c3d74e6debb765849682ad",
+          "testedScenarioSha256": "86d6fdb1ae19797418439058bf78b469b5d426e2a340a5532af601fd6895a326",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",

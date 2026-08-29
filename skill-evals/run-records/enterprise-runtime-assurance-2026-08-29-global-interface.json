@@ -1,0 +1,28 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "enterprise-runtime-assurance-2026-08-29-global-interface",
+  "scenario": "elevated-enterprise-runtime-assurance",
+  "result": "succeeded",
+  "startedAt": "2026-08-29T06:25:00.000Z",
+  "durationMs": 65,
+  "checks": [
+    { "name": "elevated-risk-classification", "result": "pass" },
+    { "name": "compatibility-matrix-and-adaptive-docs", "result": "pass" },
+    { "name": "artifact-sbom-license-vulnerability-provenance", "result": "pass" },
+    { "name": "operations-observation-rollback-recovery", "result": "pass" },
+    { "name": "missing-release-evidence-fails-closed", "result": "pass" }
+  ],
+  "metrics": { "checks_passed": 5 },
+  "lineage": {
+    "verificationId": "enterprise-runtime-assurance-2026-08-29-global-interface",
+    "artifactPointer": "codex-fresh-agent:/root/enterprise_runtime_eval#2026-08-29-global-interface"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-29T06:25:00.065Z",
+    "metricNames": ["checks_passed"],
+    "summary": "A fresh source-blind evaluator confirmed elevated runtime assurance and adaptive global-readiness gates remain fail-closed."
+  },
+  "tags": ["fresh-agent", "sanitized", "enterprise", "globalization"]
+}
