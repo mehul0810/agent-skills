@@ -21,6 +21,23 @@ Start with a traffic model before choosing a test tool:
 - Content freshness needs: publish spikes, cache purge behavior, and pre-warming expectations.
 - Failure thresholds: latency, 5xx rate, origin saturation, DB time, slow queries, queue backlog, cache hit-rate drop, and third-party timeout rate.
 
+## Capacity Envelope And Scale Lifecycle
+
+Use this overlay for high-traffic, multisite, persistent-state, provider, queue, import/export, or release-critical work. It extends the traffic model; do not invent host-independent limits.
+
+Record a compact capacity envelope:
+
+- Workload identity: request mix, average and peak rate, concurrency, origin/cache-miss share, site or tenant distribution, data cardinality, and dependency/provider mix.
+- Growth horizon: launch, near-term, and agreed forecast cardinality/traffic; state confidence and the assumptions that would invalidate it.
+- Budgets and headroom: latency/error/DB/worker/cache/queue/provider/storage budgets, measured saturation point, remaining headroom, and the signal that triggers scaling or scope reduction.
+- Fairness and admission: per-site/tenant/actor quotas or concurrency caps, priority classes, noisy-neighbor isolation, load shedding, and bounded degradation. State `Not applicable - reason` when the surface is single-tenant and non-shared.
+- Queue capacity: arrival rate versus service rate, worker concurrency, maximum age/depth, drain-time target, retry/dead-letter behavior, pause/resume, and duplicate or poison-work handling.
+- Data lifecycle: write amplification, hot-key/partition risk, storage and index growth, retention/archive/compaction, migration and reindex limits, backup size, and restore time at the forecast point.
+- Distributed behavior: primary/replica consistency, cache invalidation, lock ownership, failover, dependency outage, and recovery or graceful-degradation behavior where applicable.
+- Action ownership: the next scale action, trigger, owner, deadline, and rollback or capacity-reduction path.
+
+For elevated or release-critical work, the receipt must include the tested revision/package, environment, workload and forecast, budgets, headroom/saturation evidence, fairness/admission result, queue and storage results, failure/recovery behavior, provenance, and limitations. A single median, a green load-test command, or a platform autoscaling claim is not a capacity guarantee. For low-volume work, record a concise non-applicable reason instead of running a speculative load test.
+
 ## VIP-Specific Guardrails
 
 When testing VIP-hosted environments, verify current VIP docs and coordinate with VIP Support before load or stress testing. The current VIP guidance includes notifying Support with objectives and methodology, using baseline tests before/after changes, ramping traffic gradually, stopping at fail thresholds, avoiding artificial cache-busting, and focusing on realistic origin traffic.

@@ -68,6 +68,7 @@ Use this map to choose references with low context cost.
 | WordPress Design System implementation | `wordpress-design-system.md` | `admin-ux-and-ui.md`, `ui-ux-pro-for-wordpress.md` |
 | Focused security, performance, modularity, or accessibility audit/profiling/remediation | route to `wp-quality-reviewer` | selected reviewer mode only |
 | Performance architecture and budgets | `performance-profiling-scale-budgets.md` | `edge-caching-cdn-architecture.md` or `load-testing-capacity-planning.md` for confirmed scale risk |
+| Capacity planning, growth forecast, saturation, fairness, queue or storage headroom | `load-testing-capacity-planning.md` | `performance-profiling-scale-budgets.md`, `vip-scale-playbook.md`, or `advanced-multisite-network-engineering.md` for the confirmed scale boundary |
 | Security architecture and threat modeling before sensitive REST/admin/upload/webhook/OAuth/MCP implementation | `security-threat-modeling-review.md` | `security-operations-compliance.md` or `privacy-consent-data-governance.md` for a confirmed risk |
 | Privacy, consent, telemetry, PII, data retention, exporter/eraser support | `privacy-consent-data-governance.md` | `security-operations-compliance.md`, `plugin-guidelines-review.md` |
 | VIP/high-scale architecture decisions | `vip-scale-playbook.md` | `edge-caching-cdn-architecture.md`, `load-testing-capacity-planning.md` |

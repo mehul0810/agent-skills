@@ -44,6 +44,8 @@ For public, expensive, paid, import/export, AI/provider, or high-volume paths, d
 
 For shared or mutable caches, prove key dimensions, read-after-write behavior, concurrent updates, multi-node/replica consistency, targeted invalidation, and acceptable stale behavior when those conditions are part of the contract. For third-party scripts, embeds, fonts, or APIs, record a per-provider budget, consent/load policy, timeout/fallback, and a disable or kill path when the resource can affect a critical journey.
 
+For elevated, high-volume, multisite, persistent-state, provider, queue, import/export, or release-critical work, also use `wp-expert/references/load-testing-capacity-planning.md` for a compact capacity envelope: forecast horizon, workload mix, budgets/headroom, saturation trigger, tenant fairness/admission, queue drain, storage/restore lifecycle, distributed failure behavior, action owner, provenance, and limitations. Keep it risk-triggered; do not require speculative load tests for a small non-shared change.
+
 ## Fix Ladder
 
 Prefer structural fixes in this order:
