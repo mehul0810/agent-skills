@@ -1,0 +1,57 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "wp-quality-reviewer-2026-08-29-capacity-scale",
+  "scenario": "multi-domain-release-quality-review",
+  "result": "succeeded",
+  "startedAt": "2026-08-29T02:53:33.000Z",
+  "durationMs": 329,
+  "checks": [
+    { "name": "compact-multi-domain-route", "result": "pass" },
+    { "name": "evidence-backed-severity-findings", "result": "pass" },
+    { "name": "security-negative-proof", "result": "pass" },
+    { "name": "performance-comparable-delta", "result": "pass" },
+    { "name": "modularity-behavior-proof", "result": "pass" },
+    { "name": "accessibility-manual-proof", "result": "pass" },
+    { "name": "immutable-candidate-and-domain-dispositions", "result": "pass" },
+    { "name": "critical-fix-independent-review", "result": "pass" },
+    { "name": "performance-direction-and-budget", "result": "pass" },
+    { "name": "performance-tail-distribution-evidence", "result": "pass" },
+    { "name": "performance-overload-retry-bound", "result": "pass" },
+    { "name": "cache-consistency-proof", "result": "pass" },
+    { "name": "capacity-envelope-lifecycle", "result": "pass" },
+    { "name": "security-authorization-matrix", "result": "pass" },
+    { "name": "security-resource-abuse-budget", "result": "pass" },
+    { "name": "malformed-vague-report-rejection", "result": "pass" },
+    { "name": "unresolved-critical-blocks-pass", "result": "pass" },
+    { "name": "formal-report-validation", "result": "pass" },
+    { "name": "proportional-modularity-thresholds", "result": "pass" },
+    { "name": "legacy-no-growth-ratchet", "result": "pass" },
+    { "name": "dependency-direction-adapter-boundary", "result": "pass" },
+    { "name": "exception-metadata-and-repo-checker-ownership", "result": "pass" },
+    { "name": "non-breaking-contract-inventory", "result": "pass" },
+    { "name": "before-after-contract-proof", "result": "pass" },
+    { "name": "additive-migration-sequencing", "result": "pass" },
+    { "name": "intentional-break-approval-gate", "result": "pass" }
+  ],
+  "metrics": {
+    "checks_passed": 26
+  },
+  "lineage": {
+    "verificationId": "wp-quality-reviewer-2026-08-29-capacity-scale",
+    "artifactPointer": "codex-fresh-agent:/root/quality_runtime_eval#2026-08-29-capacity-scale"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-29T02:53:33.329Z",
+    "metricNames": ["checks_passed"],
+    "summary": "A fresh source-blind evaluator confirmed the capacity envelope, growth lifecycle, fairness, queue, storage, recovery, and existing quality controls."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "quality",
+    "performance",
+    "scalability"
+  ]
+}

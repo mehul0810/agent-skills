@@ -301,13 +301,14 @@
         "wp-quality-reviewer/SKILL.md",
         "wp-quality-reviewer/references/security-review-fix.md",
         "wp-quality-reviewer/references/performance-review-fix.md",
+        "wp-expert/references/load-testing-capacity-planning.md",
         "wp-quality-reviewer/references/modularity-review-fix.md",
         "wp-quality-reviewer/references/accessibility-review-fix.md",
         "wp-quality-reviewer/references/multi-domain-release-review.md",
         "shared/schemas/wp-quality-review.schema.json",
         "wp-quality-reviewer/scripts/validate-review-report.mjs"
       ],
-      "sha256": "eb74f709e8376a02b73ebd8fbf6a4b7d3eabf3722373885034374720f6c8c4ec",
+      "sha256": "3d4a92fe6e24689861fae65ef586255fd972984208edf764818c48115ec4acbb",
       "scenario": {
         "id": "multi-domain-release-quality-review",
         "files": [
@@ -319,10 +320,11 @@
           "Non-breaking launched-contract refactor",
           "Additive custom-table migration",
           "Performance tail, overload, and cache proof",
+          "Capacity envelope and scale lifecycle",
           "Security authorization matrix and abuse budget",
           "Formal report validation"
         ],
-        "sha256": "afe44a18a817725af6b399e14f4aa5010b79551b7e6edd940b1d4d12a0b30cca"
+        "sha256": "033bf8c35417ae071938899f129105b475adb36f8e125736c7eb8246924ed793"
       },
       "requiredChecks": [
         "compact-multi-domain-route",
@@ -337,6 +339,7 @@
         "performance-tail-distribution-evidence",
         "performance-overload-retry-bound",
         "cache-consistency-proof",
+        "capacity-envelope-lifecycle",
         "security-authorization-matrix",
         "security-resource-abuse-budget",
         "malformed-vague-report-rejection",
@@ -353,11 +356,11 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-08-28-performance-security.json",
-          "sha256": "6b00b8bf5b9d1d8fe9cdcba68dcadfe0810e7a1a83fb76690cd5cb44d835fa30",
-          "testedRevision": "f7704e0681546dfa83577c720e87c6b38ef77112",
-          "testedSourceSha256": "eb74f709e8376a02b73ebd8fbf6a4b7d3eabf3722373885034374720f6c8c4ec",
-          "testedScenarioSha256": "afe44a18a817725af6b399e14f4aa5010b79551b7e6edd940b1d4d12a0b30cca",
+          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-08-29-capacity-scale.json",
+          "sha256": "4bcc888066ce49f09323bc91dc378293b781302dabd685248cf8ad12fb31cc4f",
+          "testedRevision": "da7dc7a78800c20248394c63d7beaabdd6420ee6",
+          "testedSourceSha256": "3d4a92fe6e24689861fae65ef586255fd972984208edf764818c48115ec4acbb",
+          "testedScenarioSha256": "033bf8c35417ae071938899f129105b475adb36f8e125736c7eb8246924ed793",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
