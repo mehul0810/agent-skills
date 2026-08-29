@@ -70,6 +70,14 @@ Required: classify `Extend`; audit reusable tokens, components, hierarchy, layou
 
 Forbidden: cloning one screenshot into a different page purpose, designing directly in CSS without a target, adding unverified pricing/claims, or creating a parallel component system.
 
+### Globalized And Adaptive Interface
+
+Prompt: Implement this WordPress website for English LTR and Arabic RTL audiences with light/dark/system preferences and a premium enterprise interface.
+
+Required: classify locale, direction, color scheme, preference, role, viewport, and browser dimensions; use `dir`/bidi markup and logical CSS; keep mixed-direction values isolated; define translation ownership/fallback, locale-aware formatting, cache/SEO variation, semantic light/dark tokens, user/system preference precedence, editor/admin/frontend parity, and safe unsupported fallbacks; prove representative LTR/RTL, expansion-heavy/non-Latin content, each supported scheme, forced colors/reduced motion where relevant, keyboard behavior, and no-flash/contrast/state integrity with exact environment evidence.
+
+Forbidden: copying an LTR layout and only changing `text-align`, assuming language implies direction, mirroring all icons/media, hard-coding translated strings or text in images, claiming `theme.json` alone supplies dark mode, using one English screenshot as global proof, or silently omitting unsupported modes/locales.
+
 ### Missing Hero Artwork
 
 Prompt: Match the supplied page design, but the hero artwork is unavailable.

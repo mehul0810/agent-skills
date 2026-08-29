@@ -450,7 +450,7 @@
     {
       "name": "Visual WordPress",
       "file": "skill-evals/visual-wordpress-scenarios.md",
-      "requiredPhrases": ["# Visual To WordPress Forward-Test Scenarios"]
+      "requiredPhrases": ["# Visual To WordPress Forward-Test Scenarios", "Globalized And Adaptive Interface"]
     },
     {
       "name": "Core-first site theme",

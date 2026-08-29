@@ -25,6 +25,7 @@ Use this router only after `wp-plugin-expert` is selected. Load one primary refe
 - Explicit VIP/enterprise candidate go/no-go and disaster recovery: `../../wp-expert/references/vip-enterprise-launch-readiness.md` or `../../wp-expert/references/disaster-recovery-business-continuity.md`; do not use this route for general enterprise implementation preparation.
 - Third-party APIs, SDKs, OAuth, webhooks, retries, rate limits: `../../wp-expert/references/third-party-api-integrations.md`.
 - React admin/editor apps: `../../wp-expert/references/react-wordpress-enterprise.md`.
+- Accessibility implementation constraints plus i18n, RTL/bidi, multilingual, light/dark/system, forced-colors, browser, and input-mode readiness: `../../wp-expert/references/accessibility-i18n-global-readiness.md`; use the reviewer for a focused accessibility audit.
 - Screenshot/Figma/image/mockup to plugin-owned admin, editor, onboarding, or customer-facing implementation: `../../shared/references/visual-to-wordpress-implementation.md`.
 - Stateful block or frontend interaction, Interactivity API directives, hydration, client-side navigation, or interaction lifecycle proof: `../../wp-expert/references/interactivity-api-frontend.md`.
 - Premium plugin admin/editor UI, onboarding, settings, forms, state coverage, and operational UX: `../../wp-expert/references/ui-ux-pro-for-wordpress.md`.

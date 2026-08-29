@@ -24,7 +24,7 @@ Use this router only after `wp-site-expert` is selected. Load one primary refere
 - Runtime block inventory, core-first page composition, editable render proof, and Site Editor override precedence: `../../shared/references/core-first-site-theme-workflow.md`.
 - Stateful block or site interaction, Interactivity API behavior, client-side navigation, or interaction lifecycle proof: `../../wp-expert/references/interactivity-api-frontend.md`.
 - Content migration, editorial scale, redirects, launch cutovers: `../../wp-expert/references/content-migration-editorial-scale.md`.
-- Accessibility implementation constraints plus i18n, RTL, and multilingual readiness: `../../wp-expert/references/accessibility-i18n-global-readiness.md`; use the reviewer for a focused accessibility audit.
+- Accessibility implementation constraints plus i18n, RTL/bidi, multilingual, light/dark/system, forced-colors, browser, and input-mode readiness: `../../wp-expert/references/accessibility-i18n-global-readiness.md`; use the reviewer for a focused accessibility audit.
 - Performance budgets and implementation constraints for Core Web Vitals and scale: `../../wp-expert/references/performance-profiling-scale-budgets.md`; use the reviewer for focused profiling or reassessment.
 - Local-first validation, standards, GitHub Actions, and release automation: `../../wp-expert/references/standards-ci-github.md`.
 - Edge caching/CDN and personalization: `../../wp-expert/references/edge-caching-cdn-architecture.md`.

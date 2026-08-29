@@ -11,6 +11,9 @@ Use this for WCAG/accessibility review, keyboard/screen-reader support, WordPres
 - WordPress Design Handbook: https://make.wordpress.org/design/handbook/
 - WCAG 2.2: https://www.w3.org/TR/WCAG22/
 - WCAG 2.2 additions: https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/
+- W3C HTML bidi authoring practices: https://www.w3.org/International/docs/bp-html-bidi/
+- WordPress light and dark mode block themes: https://developer.wordpress.org/news/2024/12/mastering-light-and-dark-mode-styling-in-block-themes/
+- CSS `color-scheme`: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme
 
 ## Accessibility Standard
 
@@ -63,14 +66,33 @@ Operationalize WCAG 2.2 AA where applicable:
 - Account for regional privacy/consent requirements and data residency constraints when the client operates globally.
 - Test on mobile-first layouts with translated strings that are longer than English.
 
+## Direction, Locale, And Color-Scheme Contract
+
+Treat direction, locale, and color scheme as independent runtime dimensions. Do not infer direction only from a language label.
+
+- Set the document base direction with `dir="rtl"` on the `html` element when the document is RTL. Use `dir="auto"` or `bdi` for unknown or mixed-direction values; do not use CSS or Unicode control characters to establish the document direction.
+- Prefer logical CSS (`margin-inline`, `padding-block`, `inset-inline`, `text-align: start/end`, flow-relative borders and transforms). Mirror directional affordances such as arrows, drawers, breadcrumbs, and progress indicators only when their meaning is directional; do not mirror logos, branded artwork, charts, or data whose meaning would change.
+- Isolate mixed-direction usernames, IDs, domains, URLs, code, numbers, dates, and currency with appropriate markup and formatting. Verify tables, forms, validation messages, menus, sticky regions, dialogs, charts, and keyboard/focus order in both directions.
+- Define translation ownership, supported locales, fallback behavior, plural/context rules, and how translated block attributes, patterns, slugs, media text, errors, and emails are updated. Never leave a partially translated critical flow or place essential copy only in an image.
+- Exercise short and expanded strings, non-Latin/CJK scripts, plural and grammatical variants, locale time zones, number/date/currency formats, sorting, search, forms, and language switching. Include locale and direction in cache, preview, analytics, and API variation keys when output differs.
+- Decide explicitly whether a surface supports `light`, `dark`, `system`, or a documented single scheme. Use semantic token pairs for surfaces, text, borders, links, focus, status, controls, code, media, and shadows; validate contrast and state distinctions in every supported scheme.
+- If both schemes are supported, expose `color-scheme`/`prefers-color-scheme` or an equivalent product preference without a flash of the wrong theme, define preference precedence (user choice, then system, then product default), persist it safely, and keep editor, admin, frontend, embeds, and third-party controls coherent. Verify target WordPress/Gutenberg support; `theme.json` alone does not guarantee a mode switch.
+
+## Adaptive Enterprise Matrix
+
+For material user-facing work, record only the applicable dimensions and their supported, degraded, or unavailable behavior: LTR/RTL, locale/script, light/dark/system, forced colors/high contrast, reduced motion/data/transparency, zoom/text reflow, viewport/orientation/safe area, coarse pointer/no hover, browser/assistive technology, role/tenant/multisite, network/offline, and content density. Define a safe fallback and owner for each unsupported dimension. Use `Not applicable - reason` rather than silently omitting a dimension; do not expand a low-risk change into an exhaustive matrix without evidence.
+
 ## Validation
 
 - Keyboard pass: tab order, focus trap, escape behavior, and no keyboard dead ends.
 - Screen-reader smoke: labels, names, roles, status announcements, and modal behavior; report the actual supported browser/assistive-technology pair rather than an unspecified pass.
 - Automated checks: axe/Playwright, pa11y, eslint-jsx-a11y, or project equivalent where available.
 - WordPress checks: PHPCS accessibility rules when configured, WPCS escaping/i18n sniffs, JS i18n extraction.
-- RTL and translation smoke: enable RTL locale, long strings, plural forms, and non-Latin content.
+- RTL and translation smoke: enable an RTL locale, mixed-direction values, long strings, plural/context forms, non-Latin/CJK content, translated slugs/routes, and locale-specific dates/numbers/currency.
+- Color and preference smoke: capture each supported light/dark/system mode plus forced-colors/high-contrast and reduced-motion/data behavior where relevant; check editor/admin/frontend parity, no theme flash, focus, controls, status, charts, images, embeds, and user override persistence.
 - Responsive checks: 200% text resize, reflow at 320 CSS pixels without two-dimensional scrolling except essential content, orientation changes, and no keyboard obstruction.
 - Input checks: keyboard, touch/coarse pointer, no-hover operation, dragging alternative, target size, visible unobscured focus, autofill/autocomplete, retained multi-step input, and consistent help when applicable.
 - Visual adaptation: reduced motion, forced-colors/high-contrast mode, user color/spacing overrides where relevant, and no information conveyed by color alone.
 - Manual assistive-technology smoke remains required for critical journeys; automated tools cannot prove task usability.
+
+For a material global or mode change, the compact proof receipt names the exact WordPress/theme/plugin build, locale/direction, color scheme, preference flags, browser/assistive-technology pair, viewport, fixtures, and unsupported dimensions. Capture at least one representative LTR and RTL state, one expansion-heavy locale/script, and every supported color scheme; a non-supported dimension must carry its reason and fallback. Do not claim global readiness from a stylesheet, translation extraction, or automated scan alone.

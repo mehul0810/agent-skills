@@ -21,7 +21,7 @@ Use this router only after `wp-theme-expert` is selected. Load one primary refer
 - Style guides, design tokens, custom themes, child-theme translation: `../../wp-expert/references/style-guide-theme-translation.md`.
 - Deterministic visual parity, visitor/author workflows, content stress, responsive/browser evidence, and release proof: `../../wp-expert/references/visual-parity-regression.md`.
 - Theme/frontend performance implementation budgets for Core Web Vitals, fonts/images/assets: `../../wp-expert/references/theme-frontend-performance-quality-gate.md`; use the reviewer for focused profiling or reassessment.
-- Accessibility implementation constraints plus i18n, RTL, multilingual, browser, and input-mode readiness: `../../wp-expert/references/accessibility-i18n-global-readiness.md`; use the reviewer for a focused accessibility audit.
+- Accessibility implementation constraints plus i18n, RTL/bidi, multilingual, light/dark/system, forced-colors, browser, and input-mode readiness: `../../wp-expert/references/accessibility-i18n-global-readiness.md`; use the reviewer for a focused accessibility audit.
 - Enterprise launch, rollback, observability, or continuity: `../../wp-expert/references/vip-enterprise-launch-readiness.md`, `../../wp-expert/references/observability-incident-response.md`, or `../../wp-expert/references/disaster-recovery-business-continuity.md`.
 - Local-first validation, standards, GitHub Actions, and release automation: `../../wp-expert/references/standards-ci-github.md`.
 - WordPress Design System and block editor components: `../../wp-expert/references/wordpress-design-system.md`.

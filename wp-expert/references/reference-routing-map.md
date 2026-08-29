@@ -83,7 +83,7 @@ Use this map to choose references with low context cost.
 | Build tooling choices (webpack/composer/npm) | `build-tooling.md` | `runtime-toolchain-version-policy.md`, `production-dependency-discipline.md` |
 | WP-CLI automation, runtime probes, scripted admin/data operations | `wp-cli-automation.md` | `validation-commands.md`, `troubleshooting-operations.md` |
 | Migrations and editorial-scale launches | `content-migration-editorial-scale.md` | `deployment-release-resilience.md`, `enterprise-search-content-scale.md` |
-| Accessibility, i18n, global readiness | `accessibility-i18n-global-readiness.md` | `ui-ux-pro-for-wordpress.md`, `validation-commands.md` |
+| Accessibility, i18n, RTL, multilingual, color schemes, adaptive preferences, and global readiness | `accessibility-i18n-global-readiness.md` | `ui-ux-pro-for-wordpress.md`, `validation-commands.md` |
 | Local HTTPS domain blocked in browser | `local-https-testing.md` | `validation-commands.md`, `troubleshooting-operations.md` |
 
 ## Theme-Specific Overlays
