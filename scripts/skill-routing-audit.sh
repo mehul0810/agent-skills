@@ -161,6 +161,7 @@ check_router_discipline() {
   require_text "wp-product-docs-writer/SKILL.md" "../wp-expert/references/changelog-release-notes.md" "product docs reuses changelog expertise"
   require_text "content-writer/references/router.md" "wp-product-docs-writer" "content and factual docs boundary"
   require_text "content-writer/references/router.md" "search-visibility-and-ai-discovery.md" "content provider-aware search route"
+  require_text "content-writer/references/router.md" "readability-and-clarity.md" "content readability route"
   require_text "wp-plugin-expert/references/router.md" "plugin-product-architecture.md" "plugin expertise preserved in router"
   require_text "wp-plugin-expert/references/router.md" "Plugin-owned portable custom blocks" "plugin custom block ownership route"
   require_text "wp-plugin-expert/references/router.md" "routine feature constraints and fixes stay with this plugin specialist" "plugin routine quality ownership"

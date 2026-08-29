@@ -355,6 +355,16 @@
       ]
     },
     {
+      "name": "Content readability",
+      "maxWords": 2200,
+      "warningPercent": 85,
+      "files": [
+        "content-writer/SKILL.md",
+        "content-writer/references/router.md",
+        "content-writer/references/readability-and-clarity.md"
+      ]
+    },
+    {
       "name": "Content enterprise",
       "maxWords": 1900,
       "warningPercent": 85,
@@ -491,7 +501,7 @@
     {
       "name": "Content Writer",
       "file": "skill-evals/content-writer-scenarios.md",
-      "requiredPhrases": ["# Content Writer Scenarios", "AEO/GEO Provider Boundary", "AI Search Visibility Measurement", "Programmatic Content Scale", "Crawler And Training Privacy"]
+      "requiredPhrases": ["# Content Writer Scenarios", "AEO/GEO Provider Boundary", "AI Search Visibility Measurement", "Programmatic Content Scale", "Crawler And Training Privacy", "Audience-Calibrated Readability", "Enterprise Precision And Progressive Disclosure", "Accessible Copy And Localization", "Reading-Level Diagnostic", "Complex Or High-Stakes Content"]
     },
     {
       "name": "WP Contributor",
