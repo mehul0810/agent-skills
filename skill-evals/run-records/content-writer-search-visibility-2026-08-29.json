@@ -4,7 +4,7 @@
   "runId": "content-writer-search-visibility-2026-08-29",
   "scenario": "content-writer-search-visibility",
   "result": "succeeded",
-  "startedAt": "2026-08-29T06:52:44.000Z",
+  "startedAt": "2026-08-29T06:57:58.000Z",
   "durationMs": 0,
   "checks": [
     {
@@ -53,7 +53,7 @@
   },
   "measurement": {
     "status": "met",
-    "verifiedAt": "2026-08-29T06:52:44.397Z",
+    "verifiedAt": "2026-08-29T06:57:58.571Z",
     "metricNames": [
       "checks_passed"
     ],

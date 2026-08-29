@@ -862,7 +862,7 @@
         "content-writer/references/router.md",
         "shared/references/search-visibility-and-ai-discovery.md"
       ],
-      "sha256": "a07f1e8360809028e142d220fe1473bc2aacad13b71cda49236a86cca0ff6065",
+      "sha256": "2926b63d0c53a540cc01a6cf62ec60508b854c525081457d6f857914fbf266de",
       "scenario": {
         "id": "content-writer-search-visibility",
         "files": [
@@ -890,9 +890,9 @@
       "evidence": [
         {
           "runRecord": "skill-evals/run-records/content-writer-search-visibility-2026-08-29.json",
-          "sha256": "9f776431f492847bcc6ab83d6ad5dd8590ae205b0adad8d9c7e8e7008f81bd1a",
-          "testedRevision": "796bbe304f2b7d764a04d12570ecd1c1af63e238",
-          "testedSourceSha256": "a07f1e8360809028e142d220fe1473bc2aacad13b71cda49236a86cca0ff6065",
+          "sha256": "80115d33639c5ddc7b2d274e91908a4ddb6792177176d65e13e9371bd45f4f7d",
+          "testedRevision": "9406e2e42594f86c138f33c1d1f76eb2865d047d",
+          "testedSourceSha256": "2926b63d0c53a540cc01a6cf62ec60508b854c525081457d6f857914fbf266de",
           "testedScenarioSha256": "7fc19d19e43a3fa241c4de6dd606b4cc808b765d2ec0a0f85a0093f685906d22",
           "runtime": {
             "host": "codex-desktop",
