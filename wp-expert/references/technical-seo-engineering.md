@@ -12,7 +12,7 @@ Use this for WordPress technical SEO: canonicals, redirects, robots, sitemaps, s
 - Core Web Vitals: https://web.dev/vitals/
 - WordPress sitemaps developer note: https://make.wordpress.org/core/2020/07/22/new-xml-sitemaps-functionality-in-wordpress-5-5/
 
-Search behavior and eligibility are drift-prone. Verify official search docs before making exact claims.
+Search behavior and eligibility are drift-prone. Verify official search docs before making exact claims. For provider-specific AI discovery controls, citation measurement, query fan-out, or AI-assisted content quality, route to `../../shared/references/search-visibility-and-ai-discovery.md`.
 
 ## SEO Contract Surfaces
 

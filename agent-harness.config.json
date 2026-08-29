@@ -344,6 +344,17 @@
       ]
     },
     {
+      "name": "Content AI search visibility",
+      "maxWords": 2800,
+      "warningPercent": 85,
+      "files": [
+        "content-writer/SKILL.md",
+        "content-writer/references/router.md",
+        "shared/references/search-visibility-and-ai-discovery.md",
+        "shared/references/research-token-discipline.md"
+      ]
+    },
+    {
       "name": "Content enterprise",
       "maxWords": 1900,
       "warningPercent": 85,
@@ -480,7 +491,7 @@
     {
       "name": "Content Writer",
       "file": "skill-evals/content-writer-scenarios.md",
-      "requiredPhrases": ["# Content Writer Scenarios"]
+      "requiredPhrases": ["# Content Writer Scenarios", "AEO/GEO Provider Boundary", "AI Search Visibility Measurement", "Programmatic Content Scale", "Crawler And Training Privacy"]
     },
     {
       "name": "WP Contributor",
