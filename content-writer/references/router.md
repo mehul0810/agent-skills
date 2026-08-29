@@ -5,7 +5,7 @@ Use this router after `content-writer` is selected. Load one primary reference, 
 ## Primary Routes
 
 - SEO, AEO, GEO, AI Overviews, content briefs, search intent, schema-aware copy, and content refreshes: `organic-search-content.md`.
-- Provider-specific crawler/indexing controls, AI-search citation/visibility measurement, query fan-out planning, or AI-assisted content scale/privacy: `../../shared/references/search-visibility-and-ai-discovery.md`.
+- Provider AI-search controls, visibility, fan-out, or scale/privacy: `../../shared/references/search-visibility-and-ai-discovery.md`.
 - Voice-preserving edits or evidence-based detection of generic AI-writing patterns: `human-writing-quality-gate.md`.
 - Enterprise product pages, buyer-facing messaging, security/privacy copy, case studies, comparisons, and WordPress VIP positioning: `enterprise-product-writing.md`.
 
