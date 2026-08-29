@@ -58,12 +58,14 @@
         "shared/references/emerging-interface-design-contract.md",
         "shared/references/enterprise-design-judgment.md",
         "shared/references/frontend-design-taste.md",
+        "shared/references/interaction-and-form-resilience.md",
         "shared/references/product-experience-principles.md",
         "wp-expert/references/ui-ux-pro-for-wordpress.md",
         "wp-expert/references/ux-product-strategy-design-qa.md",
+        "wp-expert/references/visual-parity-regression.md",
         "wp-expert/references/wordpress-design-system.md"
       ],
-      "sha256": "e72d161b0aef6fccfa3d1214bdde4a67204b3dd2dfbc501e86ef130930242b1d",
+      "sha256": "6d12c95ae855bda5fed561483c863d8af3737c8ef536a536dc5a23c71ea915ec",
       "scenario": {
         "id": "premium-enterprise-design-experience",
         "files": [
@@ -88,9 +90,14 @@
           "Growth-Led Redesign Before Image Generation",
           "Cropped Reference Cannot Prove A System",
           "Existing Design Language Extension",
-          "Globalized And Adaptive Interface"
+          "Globalized And Adaptive Interface",
+          "WordPress Design System Package Transition",
+          "Custom Widget Interaction Contract",
+          "Enterprise Form Recovery",
+          "Browser And Assistive Technology Matrix",
+          "Token Integrity And Proof Provenance"
         ],
-        "sha256": "0b8b3ebc686dd581d5d1dd240ad8af3e69f4d4711f5449f6299955a581676cc4"
+        "sha256": "168416f3f9957a78a16ab3339fa253bfee79efd81d322b10c662d9244b63e12d"
       },
       "requiredChecks": [
         "greenfield-taste-route",
@@ -112,15 +119,20 @@
         "source-visual-intent-routing",
         "design-understanding-evidence-boundary",
         "growth-redesign-evidence-before-generation",
-        "globalized-adaptive-interface-contract"
+        "globalized-adaptive-interface-contract",
+        "wordpress-design-system-package-transition",
+        "custom-interaction-pattern-contract",
+        "enterprise-form-recovery",
+        "browser-assistive-technology-matrix",
+        "token-integrity-proof-provenance"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/design-experience-routing-2026-08-29-global-interface.json",
-          "sha256": "3650ee9fdcd566bdb2f6f30480235e8f2bc31f85b6c56de239d1bbe05752e7cf",
-          "testedRevision": "9839f1cee1d3456f6106a73a15d16db85f9deaed",
-          "testedSourceSha256": "e72d161b0aef6fccfa3d1214bdde4a67204b3dd2dfbc501e86ef130930242b1d",
-          "testedScenarioSha256": "0b8b3ebc686dd581d5d1dd240ad8af3e69f4d4711f5449f6299955a581676cc4",
+          "runRecord": "skill-evals/run-records/design-experience-routing-2026-08-29-interaction-resilience.json",
+          "sha256": "5f21a8203fe5fecb857b2796f9c574c80d0b13a1941d162c57f850ae8642528b",
+          "testedRevision": "27c63edf4039aa841725c8ba2b64f578c81897e1",
+          "testedSourceSha256": "6d12c95ae855bda5fed561483c863d8af3737c8ef536a536dc5a23c71ea915ec",
+          "testedScenarioSha256": "168416f3f9957a78a16ab3339fa253bfee79efd81d322b10c662d9244b63e12d",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
@@ -133,10 +145,15 @@
       "name": "wordpress-visual-execution",
       "files": [
         "shared/references/emerging-interface-design-contract.md",
+        "shared/references/enterprise-design-judgment.md",
+        "shared/references/interaction-and-form-resilience.md",
         "shared/references/visual-to-wordpress-implementation.md",
         "wp-expert/references/accessibility-i18n-global-readiness.md",
         "wp-expert/references/interactivity-api-frontend.md",
         "wp-expert/references/theme-and-block-editor.md",
+        "wp-expert/references/ui-ux-pro-for-wordpress.md",
+        "wp-expert/references/visual-parity-regression.md",
+        "wp-expert/references/wordpress-design-system.md",
         "wp-expert/scripts/fse-design-map.sh",
         "wp-plugin-expert/SKILL.md",
         "wp-plugin-expert/references/router.md",
@@ -146,7 +163,7 @@
         "wp-theme-expert/SKILL.md",
         "wp-theme-expert/references/router.md"
       ],
-      "sha256": "db2ff19c15be19037b3d63999b044bd9987f69fb18c3d74e6debb765849682ad",
+      "sha256": "0c2631a2fce8b074d787df29fa034dc3324832b019cd0689c617a054bb8f22ef",
       "scenario": {
         "id": "wordpress-visual-execution",
         "files": [
@@ -168,9 +185,14 @@
           "Growth-Led Redesign Before Image Generation",
           "Cropped Reference Cannot Prove A System",
           "Existing Design Language Extension",
-          "Globalized And Adaptive Interface"
+          "Globalized And Adaptive Interface",
+          "WordPress Design System Package Transition",
+          "Custom Widget Interaction Contract",
+          "Enterprise Form Recovery",
+          "Browser And Assistive Technology Matrix",
+          "Token Integrity And Proof Provenance"
         ],
-        "sha256": "86d6fdb1ae19797418439058bf78b469b5d426e2a340a5532af601fd6895a326"
+        "sha256": "a741c2200c777e620cf4990035346cbd5054732de74c069a097149e1c75544b9"
       },
       "requiredChecks": [
         "WordPress-native-ownership",
@@ -188,15 +210,19 @@
         "source-visual-intent-classification",
         "selected-target-source-model-before-code",
         "growth-redesign-brief-before-generation",
-        "globalized-adaptive-interface-contract"
+        "globalized-adaptive-interface-contract",
+        "custom-interaction-pattern-contract",
+        "enterprise-form-recovery",
+        "browser-assistive-technology-matrix",
+        "token-integrity-proof-provenance"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-08-29-global-interface.json",
-          "sha256": "68fbbfcc2a1f6c6ac9c35792909acbee653e6d1aea910df644bf17feb4b0fb8b",
-          "testedRevision": "9839f1cee1d3456f6106a73a15d16db85f9deaed",
-          "testedSourceSha256": "db2ff19c15be19037b3d63999b044bd9987f69fb18c3d74e6debb765849682ad",
-          "testedScenarioSha256": "86d6fdb1ae19797418439058bf78b469b5d426e2a340a5532af601fd6895a326",
+          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-08-29-interaction-resilience.json",
+          "sha256": "1e99592c306055ff6e254c3e5399a5cc3b98f2fa67e69e1e7f7b5e7e8a5f2985",
+          "testedRevision": "27c63edf4039aa841725c8ba2b64f578c81897e1",
+          "testedSourceSha256": "0c2631a2fce8b074d787df29fa034dc3324832b019cd0689c617a054bb8f22ef",
+          "testedScenarioSha256": "a741c2200c777e620cf4990035346cbd5054732de74c069a097149e1c75544b9",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",

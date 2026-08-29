@@ -1,0 +1,134 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "design-experience-routing-2026-08-29-interaction-resilience",
+  "scenario": "premium-enterprise-design-experience",
+  "result": "succeeded",
+  "startedAt": "2026-08-29T07:54:07.778Z",
+  "durationMs": 6100,
+  "checks": [
+    {
+      "name": "greenfield-taste-route",
+      "result": "pass"
+    },
+    {
+      "name": "design-read-and-four-dials",
+      "result": "pass"
+    },
+    {
+      "name": "operational-dashboard-route-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "preserve-redesign-contracts",
+      "result": "pass"
+    },
+    {
+      "name": "motivated-motion-and-reduced-motion",
+      "result": "pass"
+    },
+    {
+      "name": "anti-template-composition",
+      "result": "pass"
+    },
+    {
+      "name": "usability-outcome-evidence-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "material-direction-checkpoint",
+      "result": "pass"
+    },
+    {
+      "name": "plug-and-play-defaults-advanced-controls",
+      "result": "pass"
+    },
+    {
+      "name": "enterprise-accountability-failure-proof",
+      "result": "pass"
+    },
+    {
+      "name": "trend-adoption-and-removal-path",
+      "result": "pass"
+    },
+    {
+      "name": "adaptive-ai-transparency-and-control",
+      "result": "pass"
+    },
+    {
+      "name": "voice-equivalent-path-and-privacy",
+      "result": "pass"
+    },
+    {
+      "name": "typography-loading-and-reduced-motion",
+      "result": "pass"
+    },
+    {
+      "name": "immersive-fallback-and-performance",
+      "result": "pass"
+    },
+    {
+      "name": "enterprise-progressive-depth",
+      "result": "pass"
+    },
+    {
+      "name": "source-visual-intent-routing",
+      "result": "pass"
+    },
+    {
+      "name": "design-understanding-evidence-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "growth-redesign-evidence-before-generation",
+      "result": "pass"
+    },
+    {
+      "name": "globalized-adaptive-interface-contract",
+      "result": "pass"
+    },
+    {
+      "name": "wordpress-design-system-package-transition",
+      "result": "pass"
+    },
+    {
+      "name": "custom-interaction-pattern-contract",
+      "result": "pass"
+    },
+    {
+      "name": "enterprise-form-recovery",
+      "result": "pass"
+    },
+    {
+      "name": "browser-assistive-technology-matrix",
+      "result": "pass"
+    },
+    {
+      "name": "token-integrity-proof-provenance",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 25
+  },
+  "lineage": {
+    "verificationId": "design-experience-routing-2026-08-29-interaction-resilience",
+    "artifactPointer": "codex-fresh-agent:/root/ui_design_eval#2026-08-29-design-interaction-resilience"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-29T07:54:13.878Z",
+    "metricNames": [
+      "checks_passed"
+    ],
+    "summary": "Source-blind fresh-agent evaluation passed the existing and new premium design contracts, including package transition, interaction semantics, mutation recovery, browser/assistive technology coverage, token integrity, and proof provenance."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "design",
+    "frontend",
+    "interaction",
+    "wordpress"
+  ]
+}
