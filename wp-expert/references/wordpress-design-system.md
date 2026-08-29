@@ -9,22 +9,25 @@ Use this for WordPress-native admin/product UI, editor controls, component selec
 - Block Editor Component Reference: https://developer.wordpress.org/block-editor/reference-guides/components/
 - Block Editor Reference Guides: https://developer.wordpress.org/block-editor/reference-guides/
 - Gutenberg Storybook: https://wordpress.github.io/gutenberg/
+- Working with WordPress Design System packages: https://developer.wordpress.org/block-editor/contributors/design/design-system-packages/
 
-WordPress UI patterns and component APIs evolve with Gutenberg and WordPress releases. Re-check official component docs and Storybook for exact props, deprecations, and examples before implementing non-trivial UI.
+WordPress UI patterns and component APIs evolve with Gutenberg and WordPress releases. Re-check official component docs, package guidance, and Storybook for exact props, deprecations, recommendations, and examples before implementing non-trivial UI.
 
 If a WPDS MCP server is available in the environment, prefer it for canonical component and token details before falling back to web docs or local package inspection.
 
 ## Design System Mental Model
 
-WordPress UI work should usually start from existing primitives:
+WordPress UI work should usually start from existing public primitives:
 
-- `@wordpress/components` for common dashboard/editor UI elements.
+- `@wordpress/components` for supported common dashboard/editor UI elements; compare it component-by-component with `@wordpress/ui` and `@wordpress/theme` rather than migrating mechanically.
 - `@wordpress/icons` for WordPress-native iconography.
 - `@wordpress/element`, `@wordpress/data`, `@wordpress/i18n`, `@wordpress/notices`, and editor packages for app behavior.
 - `theme.json`, block supports, and global styles for site/editor design tokens.
 - WordPress admin CSS variables/classes only when they are stable in the target context.
 
 Do not invent a custom design system inside a plugin or block when WordPress components and patterns already solve the problem.
+
+Public package consumers must not import package-private source paths, CSS modules, Base UI internals, private API bridges, or a Gutenberg checkout. An `__experimental` name is not enough to classify an API: verify its public compatibility obligation and the target runtime.
 
 ## Component Selection
 
@@ -37,7 +40,23 @@ Prefer WordPress components for admin/editor UIs:
 - Navigation: `TabPanel`, `Navigator`, `Navigation`, `MenuGroup`.
 - Editor controls: `InspectorControls`, `PanelBody`, `ToolsPanel`, block supports, and SlotFills where appropriate.
 
-Before using a component, confirm it exists and is stable in the installed WordPress/Gutenberg package version.
+Before using a component, confirm it exists and is stable in the installed WordPress/Gutenberg package version. The deployed runtime is authoritative for externalized exports, styles, and behavior; an installed package proves compile-time types only.
+
+## Recommendation And Runtime Evidence
+
+Select a component from current maintained evidence, in this order:
+
+1. If available, query the WordPress Design System MCP with `get_components` and `get_component_details`.
+2. Otherwise inspect the maintained `use-recommended-components` ESLint `ALLOWLIST`/`DENYLIST` for the target version.
+3. If neither covers the component, inspect its Storybook `*.story.*` source and `componentStatus`; use rendered Storybook as a companion, not as proof that an older runtime exports it.
+
+Record the target source (Gutenberg checkout, bundled package, or WordPress-provided runtime), installed/minimum version, dependency-extraction mode, script/style handles, and the reason for the selected package. Verify exports, types, generated asset metadata, styles, semantics, and deprecations in that target. When a public component cannot meet the need, document the attempted composition and consumer contract before using a local control.
+
+Use semantic `--wpds-*` properties for Design System interface styling and `--wp--preset--*` properties for `theme.json` presets and block-facing styles. Do not copy a current token inventory into a skill or application convention; keep the canonical source and ownership in the product contract.
+
+## Document And Overlay Setup
+
+Styles and theming depend on the document that renders the component. Inventory standard admin/editor screens, iframes, portals, popups, and separate application documents, then apply only the package setup required in each document. If `@wordpress/components` and `@wordpress/ui` are bundled together, follow the current `@wordpress/ui` overlay compatibility guidance and test overlays, scroll locking, and focus in the actual document. Do not assume editor styles cover a plugin iframe or portal.
 
 ## Admin And Editor Consistency
 
@@ -85,7 +104,7 @@ When translating designs into WordPress UI:
 
 ## Implementation Notes
 
-- Many `@wordpress/components` require the package stylesheet. In WordPress, ensure `wp-components` is a dependency of plugin/editor styles when needed.
+- Many `@wordpress/components` require the package stylesheet. In WordPress, ensure `wp-components` or the target package stylesheet is a dependency of plugin/editor styles when needed; verify the generated handle and document rather than guessing.
 - Use generated asset metadata or dependency extraction so WordPress package dependencies are enqueued correctly.
 - Avoid bundling React, ReactDOM, WordPress packages, or large UI libraries into admin/editor bundles unless isolation is intentional.
 - Keep custom CSS scoped to the plugin/block/admin page to avoid leaking styles into core screens.

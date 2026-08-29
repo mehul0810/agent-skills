@@ -170,6 +170,8 @@ check_router_discipline() {
   require_text "wp-plugin-expert/SKILL.md" "visual-to-wordpress-implementation.md" "plugin direct visual trigger"
   require_text "wp-plugin-expert/references/router.md" "visual-to-wordpress-implementation.md" "plugin visual implementation route"
   require_text "wp-plugin-expert/references/router.md" "interactivity-api-frontend.md" "plugin interactive frontend route"
+  require_text "wp-expert/references/reference-routing-map.md" "interaction-and-form-resilience.md" "interaction and form resilience route"
+  require_text "wp-expert/references/accessibility-i18n-global-readiness.md" "interaction-and-form-resilience.md" "accessibility interaction resilience support route"
   require_text "wp-theme-expert/references/router.md" "custom-block-theme-from-design.md" "theme design-to-FSE expertise preserved in router"
   require_text "wp-theme-expert/references/router.md" "wordpress-engineering-graph.md" "theme graph route"
   require_text "wp-theme-expert/references/router.md" "enterprise-runtime-assurance.md" "theme enterprise runtime route"

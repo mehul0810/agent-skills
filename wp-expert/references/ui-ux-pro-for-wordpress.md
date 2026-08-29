@@ -2,7 +2,7 @@
 
 Use this for UX strategy, UI improvement, visual QA, product flows, interaction design, responsive polish, conversion-oriented WordPress screens, admin/editor experiences, frontend feature pages, dashboards, onboarding, forms, tables, and design-to-code implementation.
 
-This reference fuses product-grade UI/UX reasoning with WordPress-native constraints. Use it as primary for UI implementation without a supplied visual target. For screenshot/Figma/image implementation, use `../../shared/references/visual-to-wordpress-implementation.md` instead. Add only one supporting reference for a confirmed WPDS, enterprise-judgment, emerging-interface, style-system, discovery, or delivery risk; do not load the whole design stack.
+This reference fuses product-grade UI/UX reasoning with WordPress-native constraints. Use it as primary for UI implementation without a supplied visual target. For screenshot/Figma/image implementation, use `../../shared/references/visual-to-wordpress-implementation.md` instead. Add only one supporting reference for a confirmed WPDS, interaction/form-resilience (`../../shared/references/interaction-and-form-resilience.md`), enterprise-judgment, emerging-interface, style-system, discovery, or delivery risk; do not load the whole design stack.
 
 ## UX Triage
 

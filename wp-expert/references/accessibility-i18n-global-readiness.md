@@ -1,6 +1,6 @@
 # Accessibility, I18n, And Global Readiness
 
-Use this for WCAG/accessibility review, keyboard/screen-reader support, WordPress admin/editor accessibility, internationalization, localization, RTL, multilingual/global sites, and locale-aware performance.
+Use this for WCAG/accessibility review, keyboard/screen-reader support, WordPress admin/editor accessibility, internationalization, localization, RTL, multilingual/global sites, and locale-aware performance. For a custom widget or consequential save/retry flow, load `../../shared/references/interaction-and-form-resilience.md` as the single support; do not load it for static or native controls.
 
 ## Current Official Anchors
 
@@ -36,6 +36,8 @@ Operationalize WCAG 2.2 AA where applicable:
 - Keep repeated help mechanisms in a consistent relative order across a journey (`3.2.6 Consistent Help`).
 - In a multi-step process, reuse or offer information already entered instead of requiring users to remember and retype it unless a documented exception applies (`3.3.7 Redundant Entry`).
 - Do not require memory, transcription, or puzzle-only steps for authentication when an accessible alternative is possible (`3.3.8 Accessible Authentication`).
+- Make the focus indicator sufficiently visible and distinguishable under the adopted conformance target (`2.4.13 Focus Appearance`) instead of relying on a color-only change.
+- For legal, financial, permission, or other high-consequence data entry, provide review, confirmation, correction, or reversible recovery as applicable (`3.3.4 Error Prevention`).
 - Treat these as acceptance checks, not wording-only compliance claims.
 
 ## WordPress UI Guidance
@@ -81,6 +83,10 @@ Treat direction, locale, and color scheme as independent runtime dimensions. Do 
 ## Adaptive Enterprise Matrix
 
 For material user-facing work, record only the applicable dimensions and their supported, degraded, or unavailable behavior: LTR/RTL, locale/script, light/dark/system, forced colors/high contrast, reduced motion/data/transparency, zoom/text reflow, viewport/orientation/safe area, coarse pointer/no hover, browser/assistive technology, role/tenant/multisite, network/offline, and content density. Define a safe fallback and owner for each unsupported dimension. Use `Not applicable - reason` rather than silently omitting a dimension; do not expand a low-risk change into an exhaustive matrix without evidence.
+
+## Browser And Assistive-Technology Support Matrix
+
+For a material interface, own a concise support matrix in `COMPATIBILITY.md` or `DESIGN.md`: browser engine/version, operating system/device/input mode, browser/assistive-technology pair, WordPress/Gutenberg/editor surface, and any required locale or color scheme. Mark each cell `supported`, `best-effort`, or `unsupported` with its fallback, owner, and last verification. A Chromium screenshot or automated scan is one evidence cell, not a cross-browser or task-usability claim. Test the packaged/release candidate on every supported cell affected by the change; report skipped or unsupported cells explicitly.
 
 ## Validation
 

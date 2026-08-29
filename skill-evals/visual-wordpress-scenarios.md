@@ -78,6 +78,46 @@ Required: classify locale, direction, color scheme, preference, role, viewport, 
 
 Forbidden: copying an LTR layout and only changing `text-align`, assuming language implies direction, mirroring all icons/media, hard-coding translated strings or text in images, claiming `theme.json` alone supplies dark mode, using one English screenshot as global proof, or silently omitting unsupported modes/locales.
 
+### WordPress Design System Package Transition
+
+Prompt: Add a new admin control while the target WordPress/Gutenberg versions expose different `@wordpress/components`, `@wordpress/ui`, and `@wordpress/theme` packages.
+
+Required: identify whether the package is bundled or externalized; verify the target runtime exports, styles, and document; use Design System MCP, the maintained recommendation allowlist/denylist, or component story status in that order; preserve semantics, keyboard behavior, compatibility, and generated dependency metadata; use the correct `--wpds-*` or `--wp--preset--*` token family; test iframe/portal overlays where relevant.
+
+Forbidden: mechanically migrating packages, importing private source paths, treating Storybook or installed types as runtime proof, copying a stale token inventory, or claiming editor styles cover another document.
+
+### Custom Widget Interaction Contract
+
+Prompt: Build a searchable combobox inside a React WordPress admin modal with a tabbed results view.
+
+Required: prefer native/WordPress primitives; if a custom widget is necessary, apply the relevant APG semantics and keyboard model, accessible naming, focus entry/trap/return, Escape behavior, popup ownership, selected state, loading/error/no-results states, portal/inert handling, and actual browser/assistive-technology proof.
+
+Forbidden: click-only behavior, ARIA added to non-semantic markup without a contract, focus loss after close, hover-only access, or treating an axe report/screenshot as task proof.
+
+### Enterprise Form Recovery
+
+Prompt: Add a settings save flow that must survive slow networks, retries, two browser tabs, and a partially failed multi-step update.
+
+Required: classify consequence; preserve dirty input; prevent duplicate submission; use server idempotency for retryable remote writes; detect stale versions/ETags and surface conflicts; report partial success per step; define timeout/offline/cancel/refresh recovery; require review/confirmation for high-consequence actions; prove default, pending, error, retry, conflict, and recovery states.
+
+Forbidden: silent last-write-wins, false global success after partial failure, discarded input, client-only authorization, or adding concurrency ceremony to a low-risk local-only control without evidence.
+
+### Browser And Assistive Technology Matrix
+
+Prompt: Declare this admin redesign enterprise-compatible after one passing Chromium screenshot.
+
+Required: locate or create the concise repo support matrix; name supported/best-effort/unsupported browser-engine and browser/assistive-technology cells, WordPress/editor surface, fallback, owner, and verification date; capture the packaged candidate for each affected supported cell and state skipped-cell risk.
+
+Forbidden: inferring Firefox, WebKit, mobile, screen-reader, or editor compatibility from Chromium-only proof, or hiding unsupported cells in a generic pass claim.
+
+### Token Integrity And Proof Provenance
+
+Prompt: Add a premium case-study section with a product screenshot, security metric, and customer outcome.
+
+Required: trace tokens/components from their canonical source to rendered output; classify each visual/proof element as real, controlled demo/fixture, or illustrative; record source owner, measurement window, audience/role, claim scope, and limitations; fail unowned token drift or unsupported enterprise claims.
+
+Forbidden: near-duplicate raw tokens, invented scale/certification/customer identity, or using a polished fixture to imply production evidence.
+
 ### Missing Hero Artwork
 
 Prompt: Match the supplied page design, but the hero artwork is unavailable.

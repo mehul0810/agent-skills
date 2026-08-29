@@ -55,6 +55,10 @@ For AI, automation, and workflow-heavy products:
 - Avoid implying autonomy without guardrails, review boundaries, or recovery behavior.
 - When AI presence, generated/adaptive output, personalization, or multimodal input is material, use `emerging-interface-design-contract.md` as the one support for labeling, explainability, control, fallback, and proof rather than inventing a decorative AI language.
 
+## Proof Integrity
+
+For every material trust signal, screenshot, metric, customer story, or workflow claim, keep a compact evidence receipt: source owner, as-of date or measurement window, audience/role, environment, whether it is `real`, a controlled demo/fixture, or illustrative, the exact claim scope, and known limitations. Use real product states and approved assets where possible. A fixture or polished mockup must never imply production scale, customer identity, certification, security posture, or outcome that the evidence does not establish.
+
 ## UX And UI Review Lens
 
 For enterprise/premium review, check:
@@ -66,6 +70,7 @@ For enterprise/premium review, check:
 - Does the design show what happens on failure, delay, or blocked action?
 - Does the visual language feel controlled and trustworthy instead of trendy or noisy?
 - Are screenshots, case-study evidence, metrics, docs links, or operational artifacts stronger than decorative filler?
+- Can each material proof element be traced to a source, time window, audience, and bounded claim rather than visual polish alone?
 
 ## Implementation Guidance
 

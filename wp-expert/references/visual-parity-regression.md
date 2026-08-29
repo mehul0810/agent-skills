@@ -58,6 +58,15 @@ Do not run the full matrix for a one-line scoped change. Record why omitted surf
 - Use the documented browser support policy. Add WebKit/Firefox or a real touch device when CSS, input, sticky positioning, forms, navigation, or media behavior makes Chromium-only proof insufficient.
 - Verify WCAG 2.2 AA criteria relevant to the change, including focus not obscured, target size, pointer alternatives to dragging, labels/errors, contrast, landmarks, and accessible authentication.
 
+For material UI, keep the support policy in `COMPATIBILITY.md` or `DESIGN.md`, not only in a screenshot folder. Name supported, best-effort, and unsupported browser/assistive-technology cells, the fallback, owner, and last verification. A Chromium capture is not evidence for every engine or assistive-technology task. Capture the packaged candidate on each affected supported cell and state skipped cells and their release impact.
+
+## Design-System Integrity And Proof Provenance
+
+- Name the canonical design source and owner for each changed token/component, then trace it through the implementation surface (`theme.json`, WordPress component, CSS variable, block style, or approved asset) to the rendered capture.
+- Prefer semantic tokens. A raw color, spacing, type, or elevation value is allowed only with a short reason, scope, owner, and review trigger; do not create near-duplicate tokens or hide drift with page/viewport selectors.
+- Use the existing visual-proof receipt's `aligned`, `intentional_deviation`, or `drift` disposition. Elevated work fails on unowned values or unexplained drift; run a lightweight token/style lint or focused static check when the repository provides one, otherwise record the sample review and limitation.
+- For screenshots, metrics, customer/use-case proof, or trust claims, record source owner, as-of date/measurement window, audience or role, environment, `real`, `controlled demo`, or `illustrative` status, claim scope, and limitations. Do not let a polished fixture imply production scale, customer identity, certification, or outcome that is not evidenced.
+
 ## Performance And Release Evidence
 
 Measure against repo-specific budgets from `DESIGN.md`, `TESTING.md`, or the issue: LCP/CLS/INP risk, CSS/JS/font/image weight, request count, critical rendering, and editor responsiveness where relevant. Lab evidence is not field evidence; report RUM separately when available.

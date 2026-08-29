@@ -67,6 +67,7 @@ Use this map to choose references with low context cost.
 | Analytics, measurement, GA4/GTM/data layer, consent-aware tracking, funnel events | `analytics-measurement-engineering.md` | `privacy-consent-data-governance.md`, `conversion-focused-website-engineering.md` |
 | UI/UX implementation, premium feel, or admin UX | `ui-ux-pro-for-wordpress.md` | `ux-product-strategy-design-qa.md`, `admin-ux-and-ui.md` |
 | WordPress Design System implementation | `wordpress-design-system.md` | `admin-ux-and-ui.md`, `ui-ux-pro-for-wordpress.md` |
+| Custom widget semantics, keyboard/focus behavior, or consequential save/retry recovery | `interaction-and-form-resilience.md` | `accessibility-i18n-global-readiness.md`, `ui-ux-pro-for-wordpress.md` |
 | Focused security, performance, modularity, or accessibility audit/profiling/remediation | route to `wp-quality-reviewer` | selected reviewer mode only |
 | Performance architecture and budgets | `performance-profiling-scale-budgets.md` | `edge-caching-cdn-architecture.md` or `load-testing-capacity-planning.md` for confirmed scale risk |
 | Capacity planning, growth forecast, saturation, fairness, queue or storage headroom | `load-testing-capacity-planning.md` | `performance-profiling-scale-budgets.md`, `vip-scale-playbook.md`, or `advanced-multisite-network-engineering.md` for the confirmed scale boundary |
