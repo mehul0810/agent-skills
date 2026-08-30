@@ -21,7 +21,7 @@ Useful sources include:
 
 Use web search or direct official URLs when the topic is drift-prone. Do not use stale WordPress ecosystem knowledge for architecture or release decisions when current policy or version state may have changed.
 
-For WordPress 7.0/7.1 product impact, use `wordpress-7-0-7-1-enterprise-compatibility.md` as the dated baseline, then refresh its release/security/candidate facts from official sources instead of copying weekly summaries into skill hot paths.
+For WordPress 7.0/7.1 product impact, use `wordpress-7-0-7-1-enterprise-compatibility.md` as the dated baseline, then refresh its release/security/API facts from official sources instead of copying weekly summaries into skill hot paths. Recheck the live 7.1.x maintenance line and newer 7.2/trunk notes before making compatibility or release decisions.
 
 ## Storage Location
 

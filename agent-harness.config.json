@@ -527,7 +527,7 @@
     {
       "name": "WordPress 7 compatibility",
       "file": "skill-evals/wordpress-7-compatibility-scenarios.md",
-      "requiredPhrases": ["# WordPress 7.0 And 7.1 Compatibility Scenarios", "Roadmap hallucination", "Always-iframed editor", "Unicode email integration"]
+      "requiredPhrases": ["# WordPress 7.0 And 7.1 Compatibility Scenarios", "7.1 production plugin compatibility", "Roadmap hallucination", "Always-iframed editor", "Abilities filtering is not authorization", "Media Library accessibility fallback", "Stable editor API migrations", "Release metadata exactness", "Unicode email integration"]
     },
     {
       "name": "Routing collisions",
