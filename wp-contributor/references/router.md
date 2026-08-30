@@ -8,6 +8,7 @@ Use this router only after `wp-contributor` is selected. Load the smallest relev
 - `../../shared/references/session-continuity-pr-discipline.md`: new-chat context rehydration, branch creation discipline, release/backport branch detection, explicit PR base selection, and post-create PR verification.
 - `../../shared/references/project-subagent-routing.md`: project-level subagent profiles, model routing, bounded parallel mapping, and parent-owned commits/PRs.
 - `../../shared/references/production-dependency-discipline.md`: Composer/npm production artifact hygiene, `require-dev`/`devDependencies` boundaries, production installs, and release ZIP/deploy checks.
+- `../../wp-expert/references/standards-ci-github.md`: WordPress contribution lint/test and workflow standards; route Actions minute/cache/artifact design to `../../shared/references/github-actions-economy.md`.
 - `../../shared/references/enterprise-code-quality-gate.md`: enterprise-grade code creation and review gate for modularity, performance, security, maintainability, observability, and rare-scenario tests.
 - `../../shared/references/wordpress-7-0-7-1-enterprise-compatibility.md`: dated 7.0/7.1 shipped, RC, deferred, compatibility, and enterprise proof boundaries; recheck live Core sources before contribution decisions.
 - `official-anchors.md`: current official source links and what must be rechecked before relying on process details.

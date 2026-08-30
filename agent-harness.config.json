@@ -268,6 +268,14 @@
       ]
     },
     {
+      "name": "GitHub Actions economy",
+      "maxWords": 1200,
+      "warningPercent": 85,
+      "files": [
+        "shared/references/github-actions-economy.md"
+      ]
+    },
+    {
       "name": "Quality security review",
       "maxWords": 2400,
       "warningPercent": 85,
@@ -528,6 +536,11 @@
       "name": "WordPress 7 compatibility",
       "file": "skill-evals/wordpress-7-compatibility-scenarios.md",
       "requiredPhrases": ["# WordPress 7.0 And 7.1 Compatibility Scenarios", "7.1 production plugin compatibility", "Roadmap hallucination", "Always-iframed editor", "Abilities filtering is not authorization", "Media Library accessibility fallback", "Stable editor API migrations", "Release metadata exactness", "Unicode email integration"]
+    },
+    {
+      "name": "GitHub Actions economy",
+      "file": "skill-evals/github-actions-economy-scenarios.md",
+      "requiredPhrases": ["# GitHub Actions Economy Scenarios", "Local deterministic checks", "Release-only hosted gate", "Hosted exception", "Required check and path filters", "Cache, artifact, and concurrency hygiene", "Least privilege and immutable actions"]
     },
     {
       "name": "Routing collisions",

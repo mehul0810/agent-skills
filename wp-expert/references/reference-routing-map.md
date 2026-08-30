@@ -81,6 +81,7 @@ Use this map to choose references with low context cost.
 | Duplicate code, modularity, maintainability, shared behavior extraction | `duplicate-code-modularity-review.md` | `implementation-patterns.md`, `test-coverage-discipline.md` |
 | Disaster recovery, business continuity, backups, restore drill, RPO/RTO, release backout | `disaster-recovery-business-continuity.md` | `deployment-release-resilience.md`, `observability-incident-response.md` |
 | CI/CD, linting, standards, GitHub workflows | `standards-ci-github.md` | `build-tooling.md`, `validation-commands.md` |
+| GitHub Actions minute economy, local-vs-hosted split, triggers, caching, artifacts, and release workflow shape | `../../shared/references/github-actions-economy.md` | `standards-ci-github.md`, `release-train-discipline.md` |
 | Monorepo structure and multi-package release flow | `monorepo-engineering.md` | `build-tooling.md`, `standards-ci-github.md` |
 | Build tooling choices (webpack/composer/npm) | `build-tooling.md` | `runtime-toolchain-version-policy.md`, `production-dependency-discipline.md` |
 | WP-CLI automation, runtime probes, scripted admin/data operations | `wp-cli-automation.md` | `validation-commands.md`, `troubleshooting-operations.md` |

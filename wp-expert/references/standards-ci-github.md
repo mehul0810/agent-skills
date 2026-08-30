@@ -2,6 +2,8 @@
 
 Use this for standards, linting, static analysis, tests, GitHub Actions, PR workflows, release pipelines, and CI troubleshooting. Add only one supporting reference for the confirmed risk: session continuity/PR base, test coverage, duplicate code, changelog, tool versions, or delivery planning.
 
+For detailed Actions trigger, matrix, cache, artifact, retention, concurrency, and minute-saving design, route to `../../shared/references/github-actions-economy.md` only when CI/CD topology is the task's primary risk.
+
 ## Official Anchors
 
 - WordPress Coding Standards for PHP_CodeSniffer: https://github.com/WordPress/WordPress-Coding-Standards
