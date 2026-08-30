@@ -276,6 +276,14 @@
       ]
     },
     {
+      "name": "Universal code-change planning",
+      "maxWords": 1100,
+      "warningPercent": 85,
+      "files": [
+        "wp-expert/references/planning-drift-control.md"
+      ]
+    },
+    {
       "name": "Quality security review",
       "maxWords": 2400,
       "warningPercent": 85,
@@ -541,6 +549,11 @@
       "name": "GitHub Actions economy",
       "file": "skill-evals/github-actions-economy-scenarios.md",
       "requiredPhrases": ["# GitHub Actions Economy Scenarios", "Local deterministic checks", "Release-only hosted gate", "Hosted exception", "Required check and path filters", "Cache, artifact, and concurrency hygiene", "Least privilege and immutable actions"]
+    },
+    {
+      "name": "Universal code-change planning",
+      "file": "skill-evals/code-change-planning-scenarios.md",
+      "requiredPhrases": ["# Code-Change Planning Scenarios", "Tiny isolated edit", "Normal behavior change", "Elevated enterprise change", "Ambiguous ownership", "Quality receipt"]
     },
     {
       "name": "Routing collisions",

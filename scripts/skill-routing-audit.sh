@@ -158,6 +158,8 @@ check_router_discipline() {
   require_text "shared/references/project-subagent-routing.md" 'Theme/FSE: `$wp-theme-expert`' "subagent theme specialist profile"
   require_text "shared/references/project-subagent-routing.md" 'Product/release documentation: `$wp-product-docs-writer`' "subagent product docs specialist profile"
   require_text "wp-expert/references/reference-routing-map.md" "github-actions-economy.md" "Actions economy reference routing map"
+  require_text "wp-expert/references/reference-routing-map.md" "Universal code-change quality plan" "universal code-change plan routing map"
+  require_text "shared/references/project-subagent-routing.md" "proportional quality contract" "subagent quality plan routing"
   require_text "wp-contributor/references/router.md" "github-actions-economy.md" "contributor Actions economy routing"
   require_text "wp-product-docs-writer/SKILL.md" "Load only the primary mode" "product docs single-mode routing"
   require_text "wp-product-docs-writer/SKILL.md" "../wp-expert/references/changelog-release-notes.md" "product docs reuses changelog expertise"

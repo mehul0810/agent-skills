@@ -72,6 +72,8 @@ Front-load scope into the issue and delegation prompt so execution does not spen
 - validation and screenshot/live-proof needs,
 - risks, hard gates, output format, and stop condition.
 
+For code work, include the proportional quality contract from `../../wp-expert/references/planning-drift-control.md`: ownership/contracts, modularity/maintainability and scalability boundary, performance hot path/budget, security/privacy boundary, tests/proof, and rollback. Workers execute that contract and return a quality receipt; they do not spend the execution turn rebuilding an omitted plan.
+
 Fully planned bounded work uses the lowest sufficient tier; decision-shaping work stays with parent or a stronger tier.
 
 ## Skill Routing

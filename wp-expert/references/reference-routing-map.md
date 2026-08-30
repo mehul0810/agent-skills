@@ -29,6 +29,7 @@ Use this map to choose references with low context cost.
 | Ownership, source of truth, public contract, release, or proof decision | `architecture-decision-gate.md` | `enterprise-code-quality-gate.md`, `live-proof-wordpress.md` |
 | Ambiguous owner scope, durability, constraint, or authority | `owner-decision-resolution.md` | `architecture-decision-gate.md` only when artifact ownership is also unclear |
 | Session continuity, PR base, release branch, or milestone drift | `session-continuity-pr-discipline.md` | `standards-ci-github.md`, `delivery-excellence.md` |
+| Universal code-change quality plan, proportional risk contract, and completion receipt | `planning-drift-control.md` | `enterprise-code-quality-gate.md`, `enterprise-acceptance-criteria-templates.md` |
 | Subagents and model/reasoning allocation | `project-subagent-routing.md` | `thinking-brainstorming-engineering-discipline.md` for unresolved planning ambiguity |
 | PRD, SOW, estimates, or milestones | `delivery-excellence.md` | `review-checklists.md`, `runtime-toolchain-version-policy.md` |
 | Enterprise acceptance criteria | `enterprise-acceptance-criteria-templates.md` | `test-coverage-discipline.md`, `validation-commands.md` |

@@ -23,6 +23,20 @@ For substantial or ambiguous work, produce or mentally confirm:
 
 Keep this short. Use a written plan when the task is cross-cutting, security-sensitive, data-affecting, UI/UX ambiguous, or likely to span multiple files. Use a mental plan for trivial direct edits.
 
+## Universal Code-Change Quality Plan
+
+Every code change needs a proportional quality contract before editing, not only substantial work:
+
+- Tiny isolated edit: one sentence naming the outcome, ownership/boundary, quality risk, and proof.
+- Normal behavior change: record goal/non-goals, owner/source of truth/contracts, modularity/maintainability and scalability boundary, performance hot path/budget, security/privacy boundary, tests/proof, and rollback.
+- Elevated public, high-traffic, sensitive-data, migration, or release work: use the architecture and enterprise gates as the written plan, including compatibility, observability, operational limits, and backout evidence.
+
+Unknowns are assumptions to resolve before implementation; `Not applicable - reason` is required for an irrelevant dimension. The plan constrains scope and proof; it never authorizes release, destructive, public-contract, or other protected actions.
+
+## Quality Receipt
+
+Before calling code complete or opening a PR, compare the diff with the plan and report each quality dimension as evidenced, not applicable with reason, or a named residual risk. Include the exact tests/proof run, changed boundary, compatibility/backout status, and any adjacent finding routed separately. Do not claim scalable, performant, maintainable, or secure from intent or a single tool result.
+
 ## Scope Drift Guard
 
 Before editing:
