@@ -506,6 +506,11 @@
       ]
     },
     {
+      "name": "Plugin admin header",
+      "file": "skill-evals/plugin-admin-header-scenarios.md",
+      "requiredPhrases": ["# Plugin Admin Header Scenarios", "Two-tier product-admin header", "Single-screen settings fallback", "Header state and proof"]
+    },
+    {
       "name": "Core-first site theme",
       "file": "skill-evals/core-first-site-theme-scenarios.md",
       "requiredPhrases": ["# Core-First Site And Theme Scenarios"]

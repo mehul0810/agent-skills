@@ -99,6 +99,17 @@ A plugin intended for serious clients should include, where useful:
 - Admin recovery controls for retrying jobs, clearing safe caches, reconnecting providers, and pausing integrations.
 - Clear privacy and data retention documentation for logs, diagnostics, telemetry, and exports.
 
+## Product Admin Shell Pattern
+
+When a plugin has multiple admin or settings destinations, prefer one reusable two-tier product shell, using the supplied header as directional unless marked exact:
+
+- Identity row: real product icon, name, and version badge from verified plugin/package metadata; documentation/support action and a verified status/entitlement pill.
+- Navigation row: route-level links for major sections with a visible active treatment and `aria-current="page"`. Use `role="tab"` only for in-page panels, not route navigation.
+- Keep WordPress admin chrome, notices, capabilities, and deep links intact. Use WordPress Design System primitives/tokens and a shared component/partial; do not duplicate markup or patch screens with page-ID selectors.
+- Cover missing/long identity, unavailable docs, loading/stale/error/offline status, long labels, RTL, zoom, keyboard/focus, and narrow admin widths. Wrap or provide accessible overflow; never clip controls.
+- Show `license active` or similar claims only after entitlement verification and never expose keys. A single-screen settings page may keep the identity row and omit redundant navigation.
+- Prove the packaged plugin at desktop and narrow admin widths, including keyboard navigation and relevant states. Compare to the image only when it is the declared exact target.
+
 ## Review Checklist
 
 - Are public contracts inventoried and protected?

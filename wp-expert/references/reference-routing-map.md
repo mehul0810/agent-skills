@@ -41,6 +41,7 @@ Use this map to choose references with low context cost.
 | Test coverage decision or gap | `test-coverage-discipline.md` | `validation-commands.md`, `review-checklists.md` |
 | Plugin architecture, new feature, refactor, service boundaries | `plugin-architecture.md` | `implementation-patterns.md`, `enterprise-code-quality-gate.md` |
 | Plugin product/add-on/public extension architecture | `plugin-product-architecture.md` | `plugin-architecture.md`, `release-contract-compatibility.md` |
+| Plugin admin/settings product header shell | `plugin-product-architecture.md` | `ui-ux-pro-for-wordpress.md`, `wordpress-design-system.md` |
 | Plugin debuggability, support bundle, Site Health, recovery controls, support diagnostics | `plugin-debuggability-supportability.md` | `plugin-product-architecture.md`, `observability-incident-response.md` |
 | Third-party API integration | `third-party-api-integrations.md` | `performance-and-security.md`, `implementation-patterns.md` |
 | WooCommerce, commerce, checkout, HPOS, payments, subscriptions, order operations | `woocommerce-commerce-engineering.md` | `performance-and-security.md`, `privacy-consent-data-governance.md` |

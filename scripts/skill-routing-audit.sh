@@ -167,6 +167,8 @@ check_router_discipline() {
   require_text "content-writer/references/router.md" "search-visibility-and-ai-discovery.md" "content provider-aware search route"
   require_text "content-writer/references/router.md" "readability-and-clarity.md" "content readability route"
   require_text "wp-plugin-expert/references/router.md" "plugin-product-architecture.md" "plugin expertise preserved in router"
+  require_text "wp-expert/references/reference-routing-map.md" "Plugin admin/settings product header shell" "plugin admin header route"
+  require_text "wp-expert/references/plugin-product-architecture.md" "Product Admin Shell Pattern" "plugin admin header contract"
   require_text "wp-plugin-expert/references/router.md" "Plugin-owned portable custom blocks" "plugin custom block ownership route"
   require_text "wp-plugin-expert/references/router.md" "routine feature constraints and fixes stay with this plugin specialist" "plugin routine quality ownership"
   require_text "wp-plugin-expert/references/router.md" "wordpress-engineering-graph.md" "plugin graph route"
