@@ -68,6 +68,7 @@ const invalid = [
 	['invalid calendar date', (r) => { r.accessibilityAudit.evaluatedOn = '2026-02-31'; }],
 	['AA failure called AAA advisory', (r) => { r.findings = [{ ...openFinding(), severity: 'P3', aaaAdvisoryCriteria: ['2.4.11'] }]; }],
 	['unknown AAA advisory', (r) => { r.findings = [{ ...openFinding(), severity: 'P3', aaaAdvisoryCriteria: ['9.9.9'] }]; }],
+	['sparse AAA advisory in programmatic input', (r) => { r.findings = [{ ...openFinding(), severity: 'P3', aaaAdvisoryCriteria: new Array(1) }]; }],
 	['missing criterion', (r) => { delete r.accessibilityAudit.criteria['1.2.5']; }],
 	['AAA substituted for AA', (r) => { r.accessibilityAudit.criteria['2.4.13'] = r.accessibilityAudit.criteria['2.4.11']; delete r.accessibilityAudit.criteria['2.4.11']; }],
 	['missing keyboard proof', (r) => { delete r.accessibilityAudit.checks.keyboard; }],
@@ -103,7 +104,7 @@ for (const [name, mutate] of invalid) test(`rejects ${name}`, () => {
 });
 test('optional AAA focus appearance advice does not fail an AA audit', () => {
 	const report = fixture();
-	report.findings = [{ ...openFinding(), severity: 'P3', aaaAdvisoryCriteria: ['2.4.13'], impact: 'Optional AAA indicator area exceeds the adopted AA target', remediation: 'Consider increasing the indicator area as optional AAA polish' }];
+	report.findings = [{ ...openFinding(), severity: 'P3', aaaAdvisoryCriteria: ['2.4.13'], evidence: [{ kind: 'browser', pointer: 'fixtures/focus-area.png', environment: 'Synthetic Safari focus fixture', observation: 'Visible unobscured focus passes AA contrast but misses optional AAA indicator area' }], impact: 'Optional AAA indicator area exceeds the adopted AA target', remediation: 'Consider increasing the indicator area as optional AAA polish' }];
 	assert.ok(schemaValid(report)); assert.deepEqual(validate(report), []);
 });
 test('incomplete audit may truthfully report blocked, not conformant', () => {

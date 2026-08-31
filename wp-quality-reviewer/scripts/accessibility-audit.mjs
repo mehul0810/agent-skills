@@ -19,7 +19,7 @@ export function validateAccessibilityAudit(report, validateReceipt) {
 	const isAdvisory = (finding) => finding?.area === 'accessibility' && finding.severity === 'P3'
 		&& Array.isArray(finding.aaaAdvisoryCriteria) && finding.aaaAdvisoryCriteria.length > 0
 		&& new Set(finding.aaaAdvisoryCriteria).size === finding.aaaAdvisoryCriteria.length
-		&& finding.aaaAdvisoryCriteria.every((id) => AAA_IDS.has(id));
+		&& Array.from(finding.aaaAdvisoryCriteria).every((id) => AAA_IDS.has(id));
 	for (const finding of findings) {
 		if (finding?.aaaAdvisoryCriteria !== undefined && !isAdvisory(finding)) errors.push('AAA-only advisory criteria require a P3 accessibility finding and valid unique AAA IDs');
 	}
