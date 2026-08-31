@@ -25,7 +25,7 @@ Design and code for:
 - Semantic headings, landmarks, labels, descriptions, status messages, and form errors.
 - Screen-reader usable dynamic updates with appropriate ARIA only when native semantics are insufficient.
 - Color contrast, motion reduction, zoom/reflow, touch targets, and responsive layouts.
-- Accessible media: alt text, captions/transcripts, decorative image handling, and meaningful link text.
+- Accessible media: alt text, captions, audio description where required, decorative handling, and meaningful links; transcripts alone do not satisfy AA video description.
 - Admin/editor parity: components must work inside WordPress admin, block editor sidebars, modals, notices, and list tables.
 
 Operationalize WCAG 2.2 AA where applicable:
@@ -35,10 +35,12 @@ Operationalize WCAG 2.2 AA where applicable:
 - Keep pointer targets at least `24x24` CSS pixels or satisfy the spacing/equivalent-control exceptions (`2.5.8 Target Size`).
 - Keep repeated help mechanisms in a consistent relative order across a journey (`3.2.6 Consistent Help`).
 - In a multi-step process, reuse or offer information already entered instead of requiring users to remember and retype it unless a documented exception applies (`3.3.7 Redundant Entry`).
-- Do not require memory, transcription, or puzzle-only steps for authentication when an accessible alternative is possible (`3.3.8 Accessible Authentication`).
-- Make the focus indicator sufficiently visible and distinguishable under the adopted conformance target (`2.4.13 Focus Appearance`) instead of relying on a color-only change.
+- Support password managers/paste throughout login, OTP/MFA, and recovery; cognitive tests need a permitted alternative, assistance, or exception (`3.3.8 Accessible Authentication`).
+- Require visible focus (`2.4.7`) and applicable non-text contrast. `2.4.13 Focus Appearance` is optional AAA, not AA.
 - For legal, financial, permission, or other high-consequence data entry, provide review, confirmation, correction, or reversible recovery as applicable (`3.3.4 Error Prevention`).
 - Treat these as acceptance checks, not wording-only compliance claims.
+
+For an accessibility audit, use `../../wp-quality-reviewer/references/accessibility-review-fix.md` as the primary mode: it owns measurable contrast/reflow/text-spacing/target tests, speech/pointer/hover contracts, authentication exceptions, and formal AA evidence. A scoped change review or clean axe scan is not WCAG conformance.
 
 ## WordPress UI Guidance
 

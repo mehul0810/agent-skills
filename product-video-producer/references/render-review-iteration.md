@@ -43,7 +43,7 @@ The manifest records immutable project/job/output identity, source/timeline line
 - Prioritize intelligible dialogue, consistent perspective, clean edits, controlled noise, deliberate music/SFX, sync, mono compatibility, and sensible dynamics. Review on reference headphones, laptop speakers, and a mobile device; do not rely on platform enhancement to rescue the mix.
 - Normalize and grade through an explicit color-managed path, inspect scopes, and verify representative target displays. Do not relabel SDR/P3 media as HDR or apply LUTs without source/output interpretation.
 - Human-review caption wording, timing, line breaks, speaker changes, and meaningful non-speech cues. Never rely on auto-captions as final proof.
-- Decide whether essential visual/UI information is already spoken. Otherwise supply integrated narration, audio description, or a descriptive transcript appropriate to the destination.
+- For WCAG 2.2 AA prerecorded synchronized video, convey important visuals in existing audio or add integrated narration/audio description (`1.2.5`); a descriptive transcript alone is not a substitute. Provide prerecorded captions (`1.2.2`) and live captions (`1.2.4`) when applicable. Record the destination, visual-information coverage, and manual review evidence.
 - Check that captions do not obscure UI, no sequence exceeds the applicable flash threshold, and embedded/autoplay usage has a poster, player controls, and reduced-motion fallback when relevant.
 - For locale variants, preserve separate text, caption, and audio tracks; identify locale-specific UI; and check text expansion, glyph/RTL behavior, pronunciation, timing, and crop safety before deriving localized outputs.
 

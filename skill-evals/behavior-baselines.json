@@ -344,7 +344,8 @@
         "wp-quality-reviewer/references/accessibility-review-fix.md",
         "wp-quality-reviewer/references/multi-domain-release-review.md",
         "shared/schemas/wp-quality-review.schema.json",
-        "wp-quality-reviewer/scripts/validate-review-report.mjs"
+        "wp-quality-reviewer/scripts/validate-review-report.mjs",
+        "wp-quality-reviewer/scripts/accessibility-audit.mjs"
       ],
       "sha256": "3d4a92fe6e24689861fae65ef586255fd972984208edf764818c48115ec4acbb",
       "scenario": {
@@ -360,7 +361,10 @@
           "Performance tail, overload, and cache proof",
           "Capacity envelope and scale lifecycle",
           "Security authorization matrix and abuse budget",
-          "Formal report validation"
+          "Formal report validation",
+          "Formal AA evidence boundary",
+          "AA input and authentication exceptions",
+          "Measurable AA visual and media proof"
         ],
         "sha256": "033bf8c35417ae071938899f129105b475adb36f8e125736c7eb8246924ed793"
       },
@@ -390,7 +394,10 @@
         "non-breaking-contract-inventory",
         "before-after-contract-proof",
         "additive-migration-sequencing",
-        "intentional-break-approval-gate"
+        "intentional-break-approval-gate",
+        "formal-aa-scope-criteria-and-manual-evidence",
+        "aa-authentication-input-exceptions",
+        "aa-measurable-visual-media-proof"
       ],
       "evidence": [
         {

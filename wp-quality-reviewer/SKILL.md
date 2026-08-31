@@ -49,7 +49,7 @@ Every code review applies the compact non-breaking modularity checkpoint; the de
 
 A finding needs an observable or code-path cause, not style preference. A fix is not complete until its original failure clause is rerun. Never claim “secure,” “fast,” “accessible,” or “maintainable” from a single tool score.
 
-For release-critical or formal multi-mode work, materialize the compact JSON contract defined by `../shared/schemas/wp-quality-review.schema.json` and run:
+For release-critical, formal multi-mode, or WCAG conformance audits, materialize `../shared/schemas/wp-quality-review.schema.json` (including `accessibilityAudit` for formal AA) and run:
 
 ```bash
 node wp-quality-reviewer/scripts/validate-review-report.mjs path/to/quality-review.json

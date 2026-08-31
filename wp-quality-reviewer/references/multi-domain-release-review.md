@@ -23,6 +23,8 @@ Inspect the diff plus enough owners/callers/runtime evidence to avoid local-only
 
 For each area, record `pass`, `fail`, `partial`, or `not applicable - reason`. Never omit a dimension.
 
+For applicable accessibility, set `accessibilityClaim: scoped_review`; a release review is not WCAG certification. Explicit AA conformance audits use the detailed accessibility mode and its formal evidence matrix instead.
+
 For the formal report, bind `targetIdentity.commitSha` to an immutable 40-character commit and add the package path/digest when reviewing a build. `multi` mode includes all four domain dispositions; a focused mode includes only its named domain. An applicable domain needs concrete evidence, while `not_applicable` needs a specific reason. A fixed `P0`/`P1`, release-critical, migration, or public-contract finding needs a passing fresh source-aware review receipt for the same commit. The JSON schema defines the portable shape; the bundled validator also enforces cross-field, pass-only, and numeric semantics.
 
 ## Escalate Deliberately

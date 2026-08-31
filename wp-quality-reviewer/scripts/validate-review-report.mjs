@@ -2,6 +2,7 @@
 
 import fs from 'node:fs';
 import { pathToFileURL } from 'node:url';
+import { validateAccessibilityAudit } from './accessibility-audit.mjs';
 
 const MODES = new Set(['security', 'performance', 'modularity', 'accessibility', 'multi']);
 const AREAS = ['security', 'performance', 'modularity', 'accessibility'];
@@ -28,12 +29,12 @@ const LOCATOR = /(?:https?:\/\/|[\/:#@]|^[a-f0-9]{40}$)/i;
 const VAGUE = /^(?:all|everything|it|tests?|validation|checks?)\s+(?:good|ok|pass(?:ed)?|work(?:s|ed)?)\.?$/i;
 
 const KEYS = {
-	top: new Set(['schemaVersion', 'mode', 'targetIdentity', 'scope', 'qualityTarget', 'domains', 'findings', 'proofGaps', 'conclusion']),
+	top: new Set(['schemaVersion', 'mode', 'targetIdentity', 'scope', 'qualityTarget', 'accessibilityClaim', 'accessibilityAudit', 'domains', 'findings', 'proofGaps', 'conclusion']),
 	target: new Set(['kind', 'repository', 'commitSha', 'baseCommitSha', 'artifact']),
 	artifact: new Set(['path', 'sha256']),
 	scope: new Set(['targets', 'exclusions']),
 	domain: new Set(['disposition', 'evidence', 'reason']),
-	finding: new Set(['id', 'area', 'severity', 'status', 'riskFlags', 'evidence', 'impact', 'remediation', 'validation', 'performanceMeasurement', 'authorizationMatrix', 'resourceBudget', 'negativeTests', 'behaviorChecks', 'manualChecks', 'independentReview', 'riskAcceptance']),
+	finding: new Set(['id', 'area', 'severity', 'status', 'riskFlags', 'evidence', 'impact', 'remediation', 'validation', 'performanceMeasurement', 'authorizationMatrix', 'resourceBudget', 'negativeTests', 'behaviorChecks', 'manualChecks', 'aaaAdvisoryCriteria', 'independentReview', 'riskAcceptance']),
 	evidence: new Set(['kind', 'pointer', 'observation', 'environment', 'identity']),
 	validation: new Set(['kind', 'check', 'expected', 'observed', 'result', 'environment', 'artifact']),
 	measurement: new Set([
@@ -422,6 +423,7 @@ export function validate(report) {
 			if (!['pass', 'not_applicable'].includes(domains[area]?.disposition)) errors.push(`pass requires domains.${area} to pass or be justified not_applicable`);
 		}
 	}
+	errors.push(...validateAccessibilityAudit(report, validateValidationReceipt));
 	return [...new Set(errors)];
 }
 
@@ -455,6 +457,7 @@ function runSelfTest() {
 		targetIdentity: { kind: 'package', repository: 'owner/plugin', commitSha, artifact: { path: 'dist/plugin.zip', sha256: 'b'.repeat(64) } },
 		scope: { targets: ['plugin release candidate'], exclusions: [] },
 		qualityTarget: 'Enterprise release quality gate',
+		accessibilityClaim: 'scoped_review',
 		domains: Object.fromEntries(AREAS.map((area) => [area, domain(area)])),
 		findings: [finding],
 		proofGaps: [],
@@ -539,7 +542,9 @@ async function main() {
 		process.exitCode = 1;
 		return;
 	}
-	console.log(`quality review valid: ${arg}`);
+	const scope = report.accessibilityClaim === 'scoped_review' ? ' (scoped accessibility review, not WCAG conformance)'
+		: report.accessibilityClaim === 'wcag22_aa_conformance' ? ' (formal AA evidence record; inspect artifacts before any conformance claim)' : '';
+	console.log(`quality review valid: ${arg}${scope}`);
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) await main();
