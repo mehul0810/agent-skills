@@ -4,6 +4,8 @@ import fs from "node:fs";
 import crypto from "node:crypto";
 import path from "node:path";
 import process from "node:process";
+import { fileURLToPath } from "node:url";
+import Ajv from "ajv/dist/2020.js";
 
 const allowedTypes = new Set([
   "intent",
@@ -55,8 +57,30 @@ const allowedIdentityKeys = new Set([
   "actor",
   "viewport",
   "dataFixture",
+  "observedAt",
+  "trustClass",
+  "privacyClass",
 ]);
 const fingerprintPattern = /^sha256:[a-f0-9]{64}$/;
+const shaPattern = /^[a-f0-9]{40}$/;
+const schemaPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../shared/schemas/wordpress-engineering-graph.schema.json");
+
+function canonicalSchemaErrors(graph) {
+  try {
+    const schema = JSON.parse(fs.readFileSync(schemaPath, "utf8"));
+    const validator = new Ajv({
+      allErrors: true,
+      strict: false,
+      formats: {
+        "date-time": (value) => typeof value === "string" && Number.isFinite(Date.parse(value)),
+      },
+    }).compile(schema);
+    if (validator(graph)) return [];
+    return (validator.errors ?? []).map((error) => `schema: ${error.instancePath || "graph"} ${error.message}`);
+  } catch (error) {
+    return [`schema validator unavailable: ${error.message}`];
+  }
+}
 
 function isObject(value) {
   return value !== null && typeof value === "object" && !Array.isArray(value);
@@ -68,6 +92,7 @@ function validateGraph(graph, { graphPath = null } = {}) {
   if (!isObject(graph)) {
     return ["graph must be a JSON object"];
   }
+  errors.push(...canonicalSchemaErrors(graph));
   if (graph.schemaVersion !== 2) {
     errors.push("schemaVersion must be 2");
   }
@@ -85,6 +110,18 @@ function validateGraph(graph, { graphPath = null } = {}) {
   }
   if (!Array.isArray(graph.acceptanceCriteria) || graph.acceptanceCriteria.length === 0) {
     errors.push("acceptanceCriteria must be a non-empty array");
+  }
+  if (graph.source !== undefined) {
+    if (!isObject(graph.source) || typeof graph.source.repository !== "string" || !graph.source.repository.trim()) {
+      errors.push("source must identify a repository when present");
+    } else {
+      if (graph.source.revision !== undefined && !shaPattern.test(graph.source.revision)) errors.push("source.revision must be a full commit SHA");
+      if (graph.source.packageSha256 !== undefined && !fingerprintPattern.test(graph.source.packageSha256)) errors.push("source.packageSha256 must be sha256:<64 lowercase hex>");
+      if (graph.source.observedAt !== undefined && !Number.isFinite(Date.parse(graph.source.observedAt))) errors.push("source.observedAt must be an ISO date-time");
+    }
+  }
+  if (graph.requiredNodeTypes !== undefined && (!Array.isArray(graph.requiredNodeTypes) || graph.requiredNodeTypes.some((type) => !allowedTypes.has(type)))) {
+    errors.push("requiredNodeTypes must contain only known graph node types");
   }
 
   const ids = new Set();
@@ -153,8 +190,18 @@ function validateGraph(graph, { graphPath = null } = {}) {
         for (const key of Object.keys(evidence.identity)) {
           if (!allowedIdentityKeys.has(key)) errors.push(`${evidenceLabel}.identity uses unsupported key ${key}`);
         }
-        if (evidence.identity.revision !== undefined && !/^[a-f0-9]{40}$/.test(evidence.identity.revision)) errors.push(`${evidenceLabel}.identity.revision must be a full commit SHA`);
+        if (evidence.identity.revision !== undefined && !shaPattern.test(evidence.identity.revision)) errors.push(`${evidenceLabel}.identity.revision must be a full commit SHA`);
         if (evidence.identity.packageSha256 !== undefined && !fingerprintPattern.test(evidence.identity.packageSha256)) errors.push(`${evidenceLabel}.identity.packageSha256 must be sha256:<64 lowercase hex>`);
+        if (evidence.identity.observedAt !== undefined && !Number.isFinite(Date.parse(evidence.identity.observedAt))) errors.push(`${evidenceLabel}.identity.observedAt must be an ISO date-time`);
+        if (evidence.identity.trustClass !== undefined && !["instruction-authority", "trusted-data", "untrusted-data", "mixed"].includes(evidence.identity.trustClass)) errors.push(`${evidenceLabel}.identity.trustClass is invalid`);
+        if (evidence.identity.privacyClass !== undefined && !["public", "internal", "restricted"].includes(evidence.identity.privacyClass)) errors.push(`${evidenceLabel}.identity.privacyClass is invalid`);
+        if (graph.source) {
+          for (const key of ["repository", "revision", "packageSha256", "environment"]) {
+            if (graph.source[key] !== undefined && evidence.identity[key] !== undefined && graph.source[key] !== evidence.identity[key]) {
+              errors.push(`${evidenceLabel}.identity.${key} does not match graph source`);
+            }
+          }
+        }
       }
       if (evidence.fingerprint !== undefined) {
         if (!fingerprintPattern.test(evidence.fingerprint)) {
@@ -171,6 +218,12 @@ function validateGraph(graph, { graphPath = null } = {}) {
           }
         }
       }
+    }
+  }
+
+  for (const requiredType of graph.requiredNodeTypes ?? []) {
+    if (!graph.nodes.some((node) => isObject(node) && node.type === requiredType)) {
+      errors.push(`required node type missing: ${requiredType}`);
     }
   }
 
@@ -278,11 +331,27 @@ function validateGraph(graph, { graphPath = null } = {}) {
       }
     }
     if (node.type === "proof" && node.critical && node.state === "verified") {
-      const hasIdentity = node.evidence?.some(
-        (evidence) => isObject(evidence.identity) && Object.keys(evidence.identity).some((key) => allowedIdentityKeys.has(key)),
-      );
+      const identities = node.evidence?.map((evidence) => evidence.identity).filter(isObject) ?? [];
+      const hasIdentity = identities.some((identity) => Object.keys(identity).some((key) => allowedIdentityKeys.has(key)));
       if (!hasIdentity) {
         errors.push(`${node.id} is critical proof without commit/package/environment identity`);
+      } else {
+        const hasRevisionOrTag = identities.some((identity) => identity.revision || identity.tag);
+        const hasEnvironment = identities.some((identity) => identity.environment);
+        const hasRun = identities.some((identity) => identity.runId);
+        const hasObservedAt = identities.some((identity) => identity.observedAt);
+        const hasTrust = identities.some((identity) => identity.trustClass);
+        const hasPrivacy = identities.some((identity) => identity.privacyClass);
+        if (!hasRevisionOrTag) errors.push(`${node.id} critical proof lacks revision or tag identity`);
+        if (!hasEnvironment) errors.push(`${node.id} critical proof lacks environment identity`);
+        if (!hasObservedAt) errors.push(`${node.id} critical proof lacks observed-at identity`);
+        if (!hasTrust) errors.push(`${node.id} critical proof lacks trust identity`);
+        if (!hasPrivacy) errors.push(`${node.id} critical proof lacks privacy identity`);
+        if (node.proofKind === "regression" && !hasRun) errors.push(`${node.id} regression proof lacks run identity`);
+        if (graph.assuranceLevel === "elevated" && node.evidence.some((evidence) => evidence.kind === "package")
+          && !identities.some((identity) => identity.packageSha256)) {
+          errors.push(`${node.id} elevated package proof lacks package identity`);
+        }
       }
     }
   }
@@ -491,6 +560,7 @@ function selfTest() {
     schemaVersion: 2,
     task: "Prove a packaged settings workflow",
     assuranceLevel: "baseline",
+    source: { repository: "example/repo", revision: "c".repeat(40), environment: "wp-proof" },
     acceptanceCriteria: [{
       id: "ac.settings",
       statement: "The packaged settings workflow passes.",
@@ -509,7 +579,7 @@ function selfTest() {
         dependencyFingerprints: { "intent.settings": fp("a") },
         evidence: [{
           kind: "package", pointer: "proof.txt", fingerprint: proofBytes,
-          identity: { revision: "c".repeat(40), packageSha256: fp("d"), environment: "wp-proof" },
+          identity: { repository: "example/repo", revision: "c".repeat(40), packageSha256: fp("d"), environment: "wp-proof", observedAt: "2026-07-17T00:00:00Z", trustClass: "trusted-data", privacyClass: "internal" },
         }],
       },
       {
@@ -523,6 +593,7 @@ function selfTest() {
 
   const validLearning = structuredClone(valid);
   validLearning.task = "Learn from a settings regression";
+  delete validLearning.source;
   validLearning.acceptanceCriteria[0].proofNodeIds = ["proof.settings-regression"];
   validLearning.nodes = [validLearning.nodes[0],
     {
@@ -539,7 +610,7 @@ function selfTest() {
       id: "proof.settings-regression", type: "proof", proofKind: "regression", owner: "behavior-validator",
       state: "verified", critical: true, dependsOn: ["correction.settings-owner"], fingerprint: fp("3"),
       dependencyFingerprints: { "correction.settings-owner": fp("1") },
-      evidence: [{ kind: "browser", pointer: "fixed.png", identity: { revision: "2".repeat(40), runId: "settings-regression" } }],
+      evidence: [{ kind: "browser", pointer: "fixed.png", identity: { revision: "2".repeat(40), runId: "settings-regression", environment: "wp-proof", observedAt: "2026-07-17T00:00:00Z", trustClass: "trusted-data", privacyClass: "internal" } }],
     },
     {
       id: "learning.settings-regression", type: "learning", owner: "repo-doc", state: "verified",
@@ -578,6 +649,10 @@ function selfTest() {
   cases.push(["ownership conflict", conflictingOwner, (errors) => errors.some((error) => error.includes("conflicting exclusive owners"))]);
   const badBytes = structuredClone(valid); badBytes.nodes[1].evidence[0].fingerprint = fp("8");
   cases.push(["local byte mismatch", badBytes, (errors) => errors.some((error) => error.includes("does not match local evidence bytes"))]);
+  const mismatchedSource = structuredClone(valid); mismatchedSource.nodes[1].evidence[0].identity.revision = "d".repeat(40);
+  cases.push(["source identity mismatch", mismatchedSource, (errors) => errors.some((error) => error.includes("does not match graph source"))]);
+  const missingTrust = structuredClone(valid); delete missingTrust.nodes[1].evidence[0].identity.trustClass;
+  cases.push(["proof trust metadata", missingTrust, (errors) => errors.some((error) => error.includes("lacks trust identity"))]);
 
   const failures = [];
   for (const [name, graph, expected] of cases) {
