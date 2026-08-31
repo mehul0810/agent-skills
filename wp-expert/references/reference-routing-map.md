@@ -57,6 +57,7 @@ Use this map to choose references with low context cost.
 | Technical SEO, canonicals, redirects, robots, sitemaps, structured data, crawl risk | `technical-seo-engineering.md` | `content-migration-editorial-scale.md`, `headless-decoupled-wordpress.md` |
 | SEO/AEO/GEO/AI SEO provider controls, AI citation measurement, crawler/training privacy, query fan-out, or programmatic content quality | `search-visibility-and-ai-discovery.md` | `technical-seo-engineering.md`, `content-migration-editorial-scale.md` |
 | Style guide, design system, design tokens, custom theme, or child theme | `style-guide-theme-translation.md` | `block-theme-architecture.md`, `visual-parity-regression.md` |
+| Existing Tailwind CSS, utility-class build, v3/v4 migration, source discovery, Preflight scope, or isolated app-surface evaluation | `../../shared/references/tailwind-informed-frontend-engineering.md` | `style-guide-theme-translation.md`, `wordpress-design-system.md`, or the selected visual reference only for a confirmed risk |
 | Chosen visual target to WordPress | `../../shared/references/visual-to-wordpress-implementation.md` | one confirmed architecture, conversion, accessibility, performance, interaction, or vendor risk only |
 | Custom FSE architecture without a supplied visual target | `block-theme-architecture.md` | `custom-block-theme-from-design.md` |
 | Legacy/theme-builder modernization | `hybrid-theme-migration-modernization.md` | `theme-and-block-editor.md`, `technical-seo-engineering.md` |

@@ -105,6 +105,13 @@ require_text "wp-quality-reviewer/references/accessibility-review-fix.md" "autho
 require_text "wp-expert/references/theme-frontend-performance-quality-gate.md" "Measurable Budget Contract" "theme performance budget contract"
 require_text "wp-expert/references/style-guide-theme-translation.md" "CSS And Cascade Governance" "enterprise CSS cascade contract"
 require_text "wp-expert/references/style-guide-theme-translation.md" "user Global Styles" "Global Styles precedence"
+require_text "shared/references/tailwind-informed-frontend-engineering.md" "Tailwind is an implementation vocabulary, not a visual direction" "Tailwind design-boundary contract"
+require_text "shared/references/tailwind-informed-frontend-engineering.md" "Do not globally inject Preflight" "Tailwind Preflight WordPress boundary"
+require_text "shared/references/tailwind-informed-frontend-engineering.md" "Never construct class names from runtime or user-controlled data" "Tailwind class-discovery safety"
+require_text "shared/references/tailwind-informed-frontend-engineering.md" "v3 or v4" "Tailwind version verification"
+require_text "wp-plugin-expert/references/router.md" "tailwind-informed-frontend-engineering.md" "plugin Tailwind route"
+require_text "wp-theme-expert/references/router.md" "tailwind-informed-frontend-engineering.md" "theme Tailwind route"
+require_text "wp-site-expert/references/router.md" "tailwind-informed-frontend-engineering.md" "site Tailwind route"
 require_text "shared/references/design-intelligence-routing.md" "Discover the named capability" "design capability discovery"
 require_text "shared/references/design-intelligence-routing.md" "Source-Visual Intent Gate" "source visual intent routing"
 require_text "wp-expert/references/ux-product-strategy-design-qa.md" "A supplied visual is evidence, not automatically the build target" "UX visual intent alignment"
@@ -251,6 +258,7 @@ require_text "skill-evals/visual-wordpress-scenarios.md" "Vague Evidence Cannot 
 require_text "skill-evals/visual-wordpress-scenarios.md" "Generated Asset Receipt Rejects A Near Miss" "asset receipt scenario"
 require_text "skill-evals/visual-wordpress-scenarios.md" "Elevated Design Token Drift" "design token lineage scenario"
 require_text "skill-evals/visual-wordpress-scenarios.md" "Fixed Defect Requires Reproof" "visual defect lineage scenario"
+require_text "skill-evals/visual-wordpress-scenarios.md" "Existing Tailwind Surface Must Preserve WordPress Ownership" "Tailwind WordPress boundary scenario"
 
 node "$repo_root/wp-expert/scripts/validate-visual-proof.mjs" --self-test
 echo "ok: visual proof validator"

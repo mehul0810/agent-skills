@@ -86,6 +86,14 @@ Required: identify whether the package is bundled or externalized; verify the ta
 
 Forbidden: mechanically migrating packages, importing private source paths, treating Storybook or installed types as runtime proof, copying a stale token inventory, or claiming editor styles cover another document.
 
+### Existing Tailwind Surface Must Preserve WordPress Ownership
+
+Prompt: Recreate the approved onboarding screenshot in a plugin React panel that already compiles Tailwind. Make it feel like a high-end modern app.
+
+Required: inspect the installed Tailwind version, actual CSS entrypoint, build/source discovery, generated artifact, token owner, and Preflight scope; treat Tailwind as implementation vocabulary rather than the visual direction; keep the approved screenshot and product/design brief authoritative; use WordPress-native semantics and WPDS where the panel intersects wp-admin/editor; keep utility CSS isolated; use finite reviewed variant maps instead of runtime class construction; prove packaged desktop, narrow, and admin/editor coexistence with no reset leakage or missing production classes.
+
+Forbidden: asking image generation for a `Tailwind-like` design, adding Tailwind only for aesthetics, assuming v3/v4 configuration, globally injecting Preflight, duplicating React/WordPress packages, replacing `theme.json`/block ownership with frozen utility markup, or claiming a development build proves the release candidate.
+
 ### Custom Widget Interaction Contract
 
 Prompt: Build a searchable combobox inside a React WordPress admin modal with a tabbed results view.

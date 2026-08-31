@@ -15,6 +15,7 @@ Use this router only after `wp-site-expert` is selected. Load one primary refere
 - Distinctive greenfield/redesign frontend direction or anti-template composition review without a selected target: `../../shared/references/frontend-design-taste.md`.
 - Trend-led composition, AI-generated/adaptive UI, personalization, voice, kinetic typography, guided scrolling, or immersive/3D interaction: `../../shared/references/emerging-interface-design-contract.md`.
 - Direct visual-to-WordPress implementation from screenshot/Figma/image/mockup to an editable site/page: `../../shared/references/visual-to-wordpress-implementation.md`.
+- Existing Tailwind utility CSS, Tailwind v3/v4 migration, utility build/source discovery, or Preflight scope: `../../shared/references/tailwind-informed-frontend-engineering.md`; use it only as the support reference when implementation stack behavior is the confirmed risk.
 - Plug-and-play product experience and advanced-user controls: `../../shared/references/product-experience-principles.md`.
 - Enterprise proof, accountable IA, governance, and failure behavior: `../../shared/references/enterprise-design-judgment.md`.
 - Technical SEO, canonicals, redirects, sitemaps, schema, crawl risk: `../../wp-expert/references/technical-seo-engineering.md`.
