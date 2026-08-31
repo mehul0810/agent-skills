@@ -1,0 +1,30 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "enterprise-runtime-assurance-2026-08-31-tailwind-router",
+  "scenario": "elevated-enterprise-runtime-assurance",
+  "result": "succeeded",
+  "startedAt": "2026-08-31T07:27:00.000Z",
+  "durationMs": 140000,
+  "checks": [
+    { "name": "elevated-risk-classification", "result": "pass" },
+    { "name": "compatibility-matrix-and-adaptive-docs", "result": "pass" },
+    { "name": "artifact-sbom-license-vulnerability-provenance", "result": "pass" },
+    { "name": "operations-observation-rollback-recovery", "result": "pass" },
+    { "name": "missing-release-evidence-fails-closed", "result": "pass" }
+  ],
+  "metrics": {
+    "checks_passed": 5
+  },
+  "lineage": {
+    "verificationId": "enterprise-runtime-assurance-2026-08-31-tailwind-router",
+    "artifactPointer": "codex-fresh-agent:/root/enterprise_route_clean_eval#2026-08-31-tailwind-router"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-31T07:29:20.000Z",
+    "metricNames": ["checks_passed"],
+    "summary": "Fresh-agent evaluation confirmed that the conditional Tailwind route does not displace elevated enterprise runtime assurance, compatibility, artifact, operations, or fail-closed release evidence gates."
+  },
+  "tags": ["fresh-agent", "sanitized", "enterprise", "frontend", "routing"]
+}

@@ -18,7 +18,7 @@
         "wp-plugin-expert/SKILL.md",
         "wp-plugin-expert/references/router.md"
       ],
-      "sha256": "fc3906199e96260ac008de3df4ddb9b4b951e873e36233f0235bfe7a50c7227e",
+      "sha256": "5707a121fdee84e0b8dfeab6a3c84c2fc7cb0781c877eb3007d78622256c7b67",
       "scenario": {
         "id": "elevated-enterprise-runtime-assurance",
         "files": [
@@ -38,10 +38,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-08-29-global-interface.json",
-          "sha256": "9376a6101825b926a991f098ff7bc5e851267949e1234d8529c67371f34d23e5",
-          "testedRevision": "9839f1cee1d3456f6106a73a15d16db85f9deaed",
-          "testedSourceSha256": "fc3906199e96260ac008de3df4ddb9b4b951e873e36233f0235bfe7a50c7227e",
+          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-08-31-tailwind-router.json",
+          "sha256": "1a77b4f6163df52779f0649a762fc7294164cd787dc2806cf766edce332534cd",
+          "testedRevision": "ba4537fd923627d11142a79dade5334146e57878",
+          "testedSourceSha256": "5707a121fdee84e0b8dfeab6a3c84c2fc7cb0781c877eb3007d78622256c7b67",
           "testedScenarioSha256": "3d842125a654c717b1b68f1fe273d32f8bf4ac54bae26ac39dbacefb0f92eb84",
           "runtime": {
             "host": "codex-desktop",
@@ -147,9 +147,11 @@
         "shared/references/emerging-interface-design-contract.md",
         "shared/references/enterprise-design-judgment.md",
         "shared/references/interaction-and-form-resilience.md",
+        "shared/references/tailwind-informed-frontend-engineering.md",
         "shared/references/visual-to-wordpress-implementation.md",
         "wp-expert/references/accessibility-i18n-global-readiness.md",
         "wp-expert/references/interactivity-api-frontend.md",
+        "wp-expert/references/reference-routing-map.md",
         "wp-expert/references/theme-and-block-editor.md",
         "wp-expert/references/ui-ux-pro-for-wordpress.md",
         "wp-expert/references/visual-parity-regression.md",
@@ -163,7 +165,7 @@
         "wp-theme-expert/SKILL.md",
         "wp-theme-expert/references/router.md"
       ],
-      "sha256": "0c2631a2fce8b074d787df29fa034dc3324832b019cd0689c617a054bb8f22ef",
+      "sha256": "c0d9a412afba1b0c0b207e2d3373d27bc71aa8ae78beda2fafe2876c81c0e149",
       "scenario": {
         "id": "wordpress-visual-execution",
         "files": [
@@ -187,12 +189,13 @@
           "Existing Design Language Extension",
           "Globalized And Adaptive Interface",
           "WordPress Design System Package Transition",
+          "Existing Tailwind Surface Must Preserve WordPress Ownership",
           "Custom Widget Interaction Contract",
           "Enterprise Form Recovery",
           "Browser And Assistive Technology Matrix",
           "Token Integrity And Proof Provenance"
         ],
-        "sha256": "a741c2200c777e620cf4990035346cbd5054732de74c069a097149e1c75544b9"
+        "sha256": "6943cc6f45cc10d00a90f94b904c05c494b1b6a963d5c3c024ea574429f332a2"
       },
       "requiredChecks": [
         "WordPress-native-ownership",
@@ -214,15 +217,16 @@
         "custom-interaction-pattern-contract",
         "enterprise-form-recovery",
         "browser-assistive-technology-matrix",
-        "token-integrity-proof-provenance"
+        "token-integrity-proof-provenance",
+        "tailwind-wordpress-ownership-and-build-boundary"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-08-29-interaction-resilience.json",
-          "sha256": "1e99592c306055ff6e254c3e5399a5cc3b98f2fa67e69e1e7f7b5e7e8a5f2985",
-          "testedRevision": "27c63edf4039aa841725c8ba2b64f578c81897e1",
-          "testedSourceSha256": "0c2631a2fce8b074d787df29fa034dc3324832b019cd0689c617a054bb8f22ef",
-          "testedScenarioSha256": "a741c2200c777e620cf4990035346cbd5054732de74c069a097149e1c75544b9",
+          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-08-31-tailwind-informed.json",
+          "sha256": "5032c74999b64dbba9af64afaa09e3994b6f78ff2aa01ad6b4b089eb5df5524b",
+          "testedRevision": "ba4537fd923627d11142a79dade5334146e57878",
+          "testedSourceSha256": "c0d9a412afba1b0c0b207e2d3373d27bc71aa8ae78beda2fafe2876c81c0e149",
+          "testedScenarioSha256": "6943cc6f45cc10d00a90f94b904c05c494b1b6a963d5c3c024ea574429f332a2",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
