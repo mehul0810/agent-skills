@@ -165,7 +165,7 @@
         "wp-theme-expert/SKILL.md",
         "wp-theme-expert/references/router.md"
       ],
-      "sha256": "c0d9a412afba1b0c0b207e2d3373d27bc71aa8ae78beda2fafe2876c81c0e149",
+      "sha256": "dd76c3355b33cb360c66edaca28abb72b34dcd96d61916095141c52c6865d051",
       "scenario": {
         "id": "wordpress-visual-execution",
         "files": [
@@ -222,10 +222,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-08-31-tailwind-informed.json",
-          "sha256": "5032c74999b64dbba9af64afaa09e3994b6f78ff2aa01ad6b4b089eb5df5524b",
-          "testedRevision": "ba4537fd923627d11142a79dade5334146e57878",
-          "testedSourceSha256": "c0d9a412afba1b0c0b207e2d3373d27bc71aa8ae78beda2fafe2876c81c0e149",
+          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-08-31-wcag-aa.json",
+          "sha256": "2486abd38f2efd69967211ec23bdd70ce4a418a4fc41b9d644ad604cbdfe3834",
+          "testedRevision": "0ba8683d79e826ad7acaf6e2fd04e49b53d68ab6",
+          "testedSourceSha256": "dd76c3355b33cb360c66edaca28abb72b34dcd96d61916095141c52c6865d051",
           "testedScenarioSha256": "6943cc6f45cc10d00a90f94b904c05c494b1b6a963d5c3c024ea574429f332a2",
           "runtime": {
             "host": "codex-desktop",
@@ -347,7 +347,7 @@
         "wp-quality-reviewer/scripts/validate-review-report.mjs",
         "wp-quality-reviewer/scripts/accessibility-audit.mjs"
       ],
-      "sha256": "3d4a92fe6e24689861fae65ef586255fd972984208edf764818c48115ec4acbb",
+      "sha256": "0b48f9da5b72ecb64b56040514ace6d1b651e12727dc29f40d62e5b91dc9a098",
       "scenario": {
         "id": "multi-domain-release-quality-review",
         "files": [
@@ -366,7 +366,7 @@
           "AA input and authentication exceptions",
           "Measurable AA visual and media proof"
         ],
-        "sha256": "033bf8c35417ae071938899f129105b475adb36f8e125736c7eb8246924ed793"
+        "sha256": "b1fe191e665a0d2994da79494a09758a8639fcc84c029d4abdc694f4bd40bb8a"
       },
       "requiredChecks": [
         "compact-multi-domain-route",
@@ -401,11 +401,11 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-08-29-capacity-scale.json",
-          "sha256": "4bcc888066ce49f09323bc91dc378293b781302dabd685248cf8ad12fb31cc4f",
-          "testedRevision": "da7dc7a78800c20248394c63d7beaabdd6420ee6",
-          "testedSourceSha256": "3d4a92fe6e24689861fae65ef586255fd972984208edf764818c48115ec4acbb",
-          "testedScenarioSha256": "033bf8c35417ae071938899f129105b475adb36f8e125736c7eb8246924ed793",
+          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-08-31-wcag-aa.json",
+          "sha256": "1a04a53697750962914d9ffdf3edcf22cd2dc7760809015a8fb2d1248832aec3",
+          "testedRevision": "d0923ea458fc2bc8dee67803af198e7c7c4ba500",
+          "testedSourceSha256": "0b48f9da5b72ecb64b56040514ace6d1b651e12727dc29f40d62e5b91dc9a098",
+          "testedScenarioSha256": "b1fe191e665a0d2994da79494a09758a8639fcc84c029d4abdc694f4bd40bb8a",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
@@ -783,7 +783,7 @@
         "product-video-producer/assets/video-manifest.schema.json",
         "product-video-producer/scripts/validate-video-manifest.mjs"
       ],
-      "sha256": "d8bccecedf83437ffc02870b48f209ad05562e18df7b5fd9e78fd3d682ff5bbb",
+      "sha256": "34ea2270ac710906d7ef203d6a507debe418acee2377797b1bb6d3afe1fa0b7b",
       "scenario": {
         "id": "product-video-truth-and-assets",
         "files": [
@@ -809,7 +809,7 @@
           "Evidence-led YouTube learning",
           "Publication boundary"
         ],
-        "sha256": "b24dd7ab1f08bcafe660d90578186a40a57f7774abbf16bf1072c1e8aac13339"
+        "sha256": "f2d692d2d23ba1e720d928a4937611cd127ff320982077bbb53f8899578602a4"
       },
       "requiredChecks": [
         "automatic-specialist-routing",
@@ -834,11 +834,11 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-07-26-r2.json",
-          "sha256": "418f15b495d66f91437881a2c0e3a37b5419157c833c81f499b6a888a202b74b",
-          "testedRevision": "3212cd4a704e14a24825d2036f8630124727d654",
-          "testedSourceSha256": "d8bccecedf83437ffc02870b48f209ad05562e18df7b5fd9e78fd3d682ff5bbb",
-          "testedScenarioSha256": "b24dd7ab1f08bcafe660d90578186a40a57f7774abbf16bf1072c1e8aac13339",
+          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-08-31-wcag-aa.json",
+          "sha256": "0e4c37b9cc3c4f9166ad920336450e9ac09c40a15956d24e10fa445b160408af",
+          "testedRevision": "d0923ea458fc2bc8dee67803af198e7c7c4ba500",
+          "testedSourceSha256": "34ea2270ac710906d7ef203d6a507debe418acee2377797b1bb6d3afe1fa0b7b",
+          "testedScenarioSha256": "f2d692d2d23ba1e720d928a4937611cd127ff320982077bbb53f8899578602a4",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",

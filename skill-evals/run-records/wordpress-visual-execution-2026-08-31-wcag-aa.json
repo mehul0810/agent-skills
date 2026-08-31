@@ -1,0 +1,111 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "wordpress-visual-execution-2026-08-31-wcag-aa",
+  "scenario": "wordpress-visual-execution",
+  "result": "succeeded",
+  "startedAt": "2026-08-31T11:37:29.000Z",
+  "durationMs": 300452,
+  "checks": [
+    {
+      "name": "WordPress-native-ownership",
+      "result": "pass"
+    },
+    {
+      "name": "truthful-assets-and-claims",
+      "result": "pass"
+    },
+    {
+      "name": "exact-target-parity-authority",
+      "result": "pass"
+    },
+    {
+      "name": "responsive-accessibility-workflow-proof",
+      "result": "pass"
+    },
+    {
+      "name": "plugin-admin-customer-surface-routing",
+      "result": "pass"
+    },
+    {
+      "name": "plugin-exact-visual-routing",
+      "result": "pass"
+    },
+    {
+      "name": "structured-figma-source",
+      "result": "pass"
+    },
+    {
+      "name": "interactive-client-navigation-lifecycle",
+      "result": "pass"
+    },
+    {
+      "name": "wcag-multistep-flow",
+      "result": "pass"
+    },
+    {
+      "name": "WordPress-design-system-component-first",
+      "result": "pass"
+    },
+    {
+      "name": "emerging-interface-route-preserves-exact-proof",
+      "result": "pass"
+    },
+    {
+      "name": "immersive-editor-and-fallback-proof",
+      "result": "pass"
+    },
+    {
+      "name": "source-visual-intent-classification",
+      "result": "pass"
+    },
+    {
+      "name": "selected-target-source-model-before-code",
+      "result": "pass"
+    },
+    {
+      "name": "growth-redesign-brief-before-generation",
+      "result": "pass"
+    },
+    {
+      "name": "globalized-adaptive-interface-contract",
+      "result": "pass"
+    },
+    {
+      "name": "custom-interaction-pattern-contract",
+      "result": "pass"
+    },
+    {
+      "name": "enterprise-form-recovery",
+      "result": "pass"
+    },
+    {
+      "name": "browser-assistive-technology-matrix",
+      "result": "pass"
+    },
+    {
+      "name": "token-integrity-proof-provenance",
+      "result": "pass"
+    },
+    {
+      "name": "tailwind-wordpress-ownership-and-build-boundary",
+      "result": "pass"
+    }
+  ],
+  "metrics": { "checks_passed": 21 },
+  "lineage": {
+    "verificationId": "wordpress-visual-execution-2026-08-31-wcag-aa",
+    "artifactPointer": "codex-fresh-agent:/root/wcag_visual_forward#2026-08-31-wcag-aa"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-31T11:42:29.452Z",
+    "metricNames": ["checks_passed"],
+    "summary": "Fresh-agent synthetic tasks preserved WordPress ownership, exact visual authority, editable content, adaptive interaction, authentication, recovery, truthful claims and scoped browser/AT evidence. No product runtime conformance was claimed."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "accessibility"
+  ]
+}
