@@ -1,0 +1,35 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "engineering-graph-2026-08-31-v3",
+  "scenario": "bounded-questions-and-deterministic-graph-closure",
+  "result": "succeeded",
+  "startedAt": "2026-08-31T06:08:00.000Z",
+  "durationMs": 1000,
+  "checks": [
+    { "name": "one-brief-maximum-three-questions", "result": "pass" },
+    { "name": "recommendation-impact-safe-default", "result": "pass" },
+    { "name": "no-placeholder-policy", "result": "pass" },
+    { "name": "bundled-validator-executed", "result": "pass" },
+    { "name": "incomplete-critical-graph-rejected", "result": "pass" },
+    { "name": "acceptance-proof-mapping", "result": "pass" },
+    { "name": "typed-evidence-identity", "result": "pass" },
+    { "name": "dependency-invalidation", "result": "pass" },
+    { "name": "exclusive-ownership-and-byte-evidence", "result": "pass" },
+    { "name": "canonical-schema-validation", "result": "pass" },
+    { "name": "source-identity-match", "result": "pass" },
+    { "name": "critical-proof-trust-and-freshness", "result": "pass" }
+  ],
+  "metrics": { "checks_passed": 12 },
+  "lineage": {
+    "verificationId": "engineering-graph-2026-08-31-v3",
+    "artifactPointer": "codex-fresh-agent:/root/engineering-graph#2026-08-31-v3"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-08-31T06:08:01.000Z",
+    "metricNames": ["checks_passed"],
+    "summary": "A fresh source-blind run validated canonical schema, graph source identity, typed critical proof freshness/trust/privacy, acceptance mapping, byte evidence, dependency invalidation, and learning closure."
+  },
+  "tags": ["fresh-agent", "sanitized", "engineering-graph", "wordpress", "enterprise"]
+}

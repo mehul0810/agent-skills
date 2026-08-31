@@ -285,7 +285,7 @@
         "shared/schemas/wordpress-engineering-graph.schema.json",
         "wp-expert/scripts/validate-engineering-graph.mjs"
       ],
-      "sha256": "481cc9d03a1962a2be29d9fd78ba848bb4431eb5c846050bb59185dce23e501d",
+      "sha256": "1cd920505c76df3a73801240fa887653d0bafa350d291ff14ebd52163f689cf8",
       "scenario": {
         "id": "bounded-questions-and-deterministic-graph-closure",
         "files": [
@@ -295,9 +295,10 @@
           "Bounded graph decision brief",
           "Deterministic graph closure",
           "Downstream graph invalidation",
-          "Conflicting mutable ownership"
+          "Conflicting mutable ownership",
+          "Graph source identity"
         ],
-        "sha256": "a6323a350ffda471cd170d6223edbf75316cb206b146cc55f9281156955f33ca"
+        "sha256": "513e36bc69a163829208f34b75e66e5b37ae9ba2c9621a3f54f729c51e740681"
       },
       "requiredChecks": [
         "one-brief-maximum-three-questions",
@@ -308,15 +309,18 @@
         "acceptance-proof-mapping",
         "typed-evidence-identity",
         "dependency-invalidation",
-        "exclusive-ownership-and-byte-evidence"
+        "exclusive-ownership-and-byte-evidence",
+        "canonical-schema-validation",
+        "source-identity-match",
+        "critical-proof-trust-and-freshness"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/engineering-graph-2026-08-10-v2.json",
-          "sha256": "5eca4c7686a603249acccc75154f53bbc781ade89a23044f1a897192c84a5fe1",
-          "testedRevision": "d224bc81f9a3c7ef1363c211a4c021cd14e8400a",
-          "testedSourceSha256": "481cc9d03a1962a2be29d9fd78ba848bb4431eb5c846050bb59185dce23e501d",
-          "testedScenarioSha256": "a6323a350ffda471cd170d6223edbf75316cb206b146cc55f9281156955f33ca",
+          "runRecord": "skill-evals/run-records/engineering-graph-2026-08-31-v3.json",
+          "sha256": "8ddf6e264b3a468a4897cde6aa70e3079a8ef420e2fb5b3b44f39f4f41ba5bd2",
+          "testedRevision": "826ab97501e927ff86669a7c5de2dc855f52dfe8",
+          "testedSourceSha256": "1cd920505c76df3a73801240fa887653d0bafa350d291ff14ebd52163f689cf8",
+          "testedScenarioSha256": "513e36bc69a163829208f34b75e66e5b37ae9ba2c9621a3f54f729c51e740681",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
