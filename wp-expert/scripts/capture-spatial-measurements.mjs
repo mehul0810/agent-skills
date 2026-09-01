@@ -90,10 +90,13 @@ async function inspectCheck(page, check) {
       return box[edge];
     };
     const baselineValue = (node) => {
-      const range = document.createRange();
-      range.selectNodeContents(node);
-      const first = [...range.getClientRects()].find((item) => item.width > 0 && item.height > 0);
-      return first?.bottom ?? node.getBoundingClientRect().bottom;
+      const probe = document.createElement("span");
+      probe.setAttribute("aria-hidden", "true");
+      probe.style.cssText = "display:inline-block;width:0;height:0;margin:0;padding:0;border:0;vertical-align:baseline;pointer-events:none";
+      node.prepend(probe);
+      const baseline = probe.getBoundingClientRect().top;
+      probe.remove();
+      return baseline;
     };
 
     if (["computed_style", "gap", "inset"].includes(input.kind)) {
@@ -126,7 +129,11 @@ async function inspectCheck(page, check) {
       return { value, unit: "px" };
     }
     if (input.kind === "baseline_alignment") {
-      return { value: Math.abs(baselineValue(element) - baselineValue(reference)), unit: "px" };
+      return {
+        value: Math.abs(baselineValue(element) - baselineValue(reference)),
+        unit: "px",
+        captureMethod: "inline_zero_size_baseline_probe",
+      };
     }
     if (input.kind === "relationship") {
       const tighter = numericOrText(style.getPropertyValue(input.property));
@@ -191,7 +198,7 @@ async function capture(config) {
           });
           continue;
         }
-        const { relationshipValues, ...actual } = inspected;
+        const { relationshipValues, captureMethod, ...actual } = inspected;
         const passed = evaluateExpected(actual.value, check.expected);
         results.push({
           id: `${check.id}-${viewport.id}`,
@@ -203,6 +210,7 @@ async function capture(config) {
           expected: check.expected,
           actual,
           ...(relationshipValues ? { relationshipValues } : {}),
+          ...(captureMethod ? { captureMethod } : {}),
           result: passed ? "pass" : "fail",
           ...(passed ? {} : { reason: "Measured geometry did not meet the declared expectation." }),
         });

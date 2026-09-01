@@ -28,6 +28,15 @@ const DESIGN_CRITERIA = new Set([
   "functionality",
   "wordpress_ownership",
 ]);
+const ANCHOR_MEASUREMENT_KINDS = new Map([
+  ["logical_start", new Set(["edge_alignment"])],
+  ["logical_end", new Set(["edge_alignment"])],
+  ["shared_edge", new Set(["edge_alignment"])],
+  ["media_edge", new Set(["edge_alignment"])],
+  ["text_baseline", new Set(["baseline_alignment"])],
+  ["center_axis", new Set(["center_alignment"])],
+  ["optical", SPATIAL_ALIGNMENT_KINDS],
+]);
 const MAX_EVIDENCE_BYTES = 100 * 1024 * 1024;
 
 let compiledSchema;
@@ -179,6 +188,7 @@ export function validateSpatialProof(proof) {
   const rolesByToken = new Map(proof.contract.roles.map((item) => [item.token, item]));
   const hierarchyIds = proof.contract.hierarchy.map((item) => item.id);
   const anchorIds = proof.contract.anchors.map((item) => item.id);
+  const anchorsById = new Map(proof.contract.anchors.map((item) => [item.id, item]));
   const exceptionIds = proof.contract.exceptions.map((item) => item.id);
   for (const [label, values] of [
     ["role token", roleTokens],
@@ -217,6 +227,9 @@ export function validateSpatialProof(proof) {
     if (measurement.expected.unit !== measurement.actual.unit) {
       errors.push(`${pointer} expected and actual units must match`);
     }
+    if (measurement.acceptance && measurement.expected.unit === "px" && (measurement.expected.tolerance ?? 0) > 2) {
+      errors.push(`${pointer} acceptance tolerance cannot exceed 2 CSS pixels; use a range or documented exception`);
+    }
     for (const error of spatialExpectationErrors(measurement.expected, measurement.actual.value)) {
       errors.push(`${pointer} ${error}`);
     }
@@ -243,13 +256,12 @@ export function validateSpatialProof(proof) {
     if (measurement.expected.token && roleTokens.includes(measurement.expected.token)) {
       const role = rolesByToken.get(measurement.expected.token);
       const resolved = role.resolvedValues.find((item) => item.environmentId === measurement.environmentId);
-      const tolerance = measurement.expected.tolerance ?? 0;
       if (
         !resolved ||
         measurement.expected.operator !== "eq" ||
         typeof measurement.expected.value !== "number" ||
         resolved?.unit !== measurement.expected.unit ||
-        Math.abs(resolved?.value - measurement.expected.value) > tolerance
+        resolved?.value !== measurement.expected.value
       ) {
         errors.push(`${pointer}.expected must equal the declared semantic token value and unit for its environment`);
       }
@@ -265,6 +277,16 @@ export function validateSpatialProof(proof) {
     if (measurement.expected.anchorId && !anchorIds.includes(measurement.expected.anchorId)) {
       errors.push(`${pointer}.expected.anchorId is not defined by the spatial contract`);
     }
+    if (measurement.expected.anchorId && anchorIds.includes(measurement.expected.anchorId)) {
+      const anchor = anchorsById.get(measurement.expected.anchorId);
+      const measuredSubjects = measurement.subject.split(/\s*->\s*/).filter(Boolean);
+      if (!ANCHOR_MEASUREMENT_KINDS.get(anchor.type)?.has(measurement.kind)) {
+        errors.push(`${pointer}.kind does not match the declared anchor type ${anchor.type}`);
+      }
+      if (anchor.subjects.some((subject) => !measuredSubjects.includes(subject))) {
+        errors.push(`${pointer}.subject does not cover every subject in anchor ${anchor.id}`);
+      }
+    }
     if (measurement.kind === "relationship") {
       if (!measurement.expected.hierarchyId || !hierarchyIds.includes(measurement.expected.hierarchyId)) {
         errors.push(`${pointer} must reference a defined hierarchy invariant`);
@@ -279,14 +301,13 @@ export function validateSpatialProof(proof) {
         const looserRole = rolesByToken.get(hierarchy?.looser);
         const tighterResolved = tighterRole?.resolvedValues.find((item) => item.environmentId === measurement.environmentId);
         const looserResolved = looserRole?.resolvedValues.find((item) => item.environmentId === measurement.environmentId);
-        const tolerance = measurement.expected.tolerance ?? 0;
         if (
           !tighterResolved ||
           !looserResolved ||
           tighterResolved?.unit !== measurement.relationshipValues.unit ||
           looserResolved?.unit !== measurement.relationshipValues.unit ||
-          Math.abs(tighterResolved?.value - measurement.relationshipValues.tighter) > tolerance ||
-          Math.abs(looserResolved?.value - measurement.relationshipValues.looser) > tolerance
+          tighterResolved?.value !== measurement.relationshipValues.tighter ||
+          looserResolved?.value !== measurement.relationshipValues.looser
         ) {
           errors.push(`${pointer} relationship values do not match the declared role tokens`);
         }
@@ -444,6 +465,14 @@ export function validateSpatialProof(proof) {
           !proof.measurements.some((item) => item.environmentId === environmentId && item.kind === "relationship" && item.expected.hierarchyId === hierarchyId)
         ) {
           errors.push(`passing selected-target environment lacks hierarchy measurement ${hierarchyId}: ${environmentId}`);
+        }
+      }
+      for (const anchorId of anchorIds) {
+        if (
+          selectedTarget &&
+          !proof.measurements.some((item) => item.environmentId === environmentId && SPATIAL_ALIGNMENT_KINDS.has(item.kind) && item.expected.anchorId === anchorId)
+        ) {
+          errors.push(`passing selected-target environment lacks anchor measurement ${anchorId}: ${environmentId}`);
         }
       }
     }
@@ -608,6 +637,7 @@ function selfTest() {
     ["false pass", { ...valid, measurements: valid.measurements.map((item, index) => index === 0 ? { ...item, actual: { value: 40, unit: "px" } } : item) }, false],
     ["string lte coercion", { ...valid, measurements: valid.measurements.map((item, index) => index === 0 ? { ...item, expected: { ...item.expected, operator: "lte", value: "2", token: undefined }, actual: { value: 10, unit: "px" } } : item) }, false],
     ["token value drift", { ...valid, measurements: valid.measurements.map((item, index) => index === 0 ? { ...item, expected: { ...item.expected, value: 40 }, actual: { value: 40, unit: "px" } } : item) }, false],
+    ["token drift hidden by tolerance", { ...valid, measurements: valid.measurements.map((item, index) => index === 0 ? { ...item, expected: { ...item.expected, tolerance: 16 }, actual: { value: 40, unit: "px" } } : item) }, false],
     ["string role resolution", { ...valid, contract: { ...valid.contract, roles: valid.contract.roles.map((item, index) => index === 0 ? { ...item, resolvedValues: item.resolvedValues.map((resolved, resolvedIndex) => resolvedIndex === 0 ? { ...resolved, value: "24" } : resolved) } : item) } }, false],
     ["self review", { ...valid, designEvaluation: { ...valid.designEvaluation, independent: false } }, false],
     ["same reviewer and implementer", { ...valid, designEvaluation: { ...valid.designEvaluation, reviewer: valid.candidate.implementedBy } }, false],
@@ -621,6 +651,9 @@ function selfTest() {
     ["responsive downgrade", { ...valid, contract: { ...valid.contract, responsiveRequired: false } }, false],
     ["parent risk downgrade", { ...valid, contract: { ...valid.contract, parentLayoutRisk: false } }, false],
     ["missing alignment anchor", { ...valid, contract: { ...valid.contract, anchors: [] } }, false],
+    ["unmeasured declared anchor", { ...valid, contract: { ...valid.contract, anchors: [...valid.contract.anchors, { id: "card-center", type: "center_axis", subjects: [".feature-card", ".feature-card__title"] }] } }, false],
+    ["anchor type mismatch", { ...valid, contract: { ...valid.contract, anchors: valid.contract.anchors.map((item) => ({ ...item, type: "text_baseline" })) } }, false],
+    ["anchor subject mismatch", { ...valid, contract: { ...valid.contract, anchors: valid.contract.anchors.map((item) => ({ ...item, subjects: [".unmeasured", ".feature-card"] })) } }, false],
     ["missing hierarchy contract", { ...valid, contract: { ...valid.contract, hierarchy: [] }, measurements: valid.measurements.filter((item) => item.kind !== "relationship") }, false],
     ["second patch cycle continues", { ...valid, repair: { failedCycles: 2, action: "focused_repair", reason: "Try again" } }, false],
     ["proof gap in pass", { ...valid, proofGaps: ["WebKit not checked"] }, false],
