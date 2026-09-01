@@ -23,7 +23,7 @@
     "proofGaps"
   ],
   "properties": {
-    "schemaVersion": { "const": 2 },
+    "schemaVersion": { "const": 3 },
     "proofId": { "$ref": "#/$defs/nonEmpty" },
     "status": { "enum": ["pass", "fail", "blocked"] },
     "surfaceKind": { "enum": ["site", "theme", "plugin_admin", "plugin_frontend", "editor"] },
@@ -311,12 +311,30 @@
         "implementations": {
           "type": "array",
           "minItems": 1,
-          "uniqueItems": true,
-          "items": { "$ref": "#/$defs/nonEmpty" }
+          "items": { "$ref": "#/$defs/tokenImplementation" }
         },
         "result": { "enum": ["aligned", "intentional_deviation", "drift"] },
         "evidence": { "$ref": "#/$defs/evidence" },
         "rationale": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "tokenImplementation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["layer", "location", "value", "surfaces", "evidence"],
+      "properties": {
+        "layer": {
+          "enum": ["design_source", "theme_json", "css_variable", "block_style", "component", "rendered"]
+        },
+        "location": { "$ref": "#/$defs/nonEmpty" },
+        "value": { "$ref": "#/$defs/nonEmpty" },
+        "surfaces": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/nonEmpty" }
+        },
+        "evidence": { "$ref": "#/$defs/evidence" }
       }
     },
     "designSystem": {
@@ -398,6 +416,24 @@
         "status": { "enum": ["fixed", "accepted", "unresolved"] },
         "observedEvidence": { "$ref": "#/$defs/evidence" },
         "fixedEvidence": { "$ref": "#/$defs/evidence" },
+        "affectedCaptureIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/nonEmpty" }
+        },
+        "affectedWorkflowIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/nonEmpty" }
+        },
+        "affectedEnvironmentIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/nonEmpty" }
+        },
         "acceptance": { "$ref": "#/$defs/acceptance" }
       }
     }

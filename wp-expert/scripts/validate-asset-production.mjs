@@ -5,8 +5,13 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import process from "node:process";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
 import Ajv2020 from "ajv/dist/2020.js";
+import {
+  collectProofEvidence,
+  isProofCliEntrypoint,
+  verifyProofEvidenceFiles,
+} from "./proof-evidence-files.mjs";
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const SCHEMA_PATH = path.resolve(
@@ -40,59 +45,15 @@ function duplicateValues(values) {
   return values.filter((value) => seen.has(value) || !seen.add(value));
 }
 
-function evidenceObjects(value, pointer = "receipt", output = []) {
-  if (!value || typeof value !== "object") return output;
-  if (
-    !Array.isArray(value) &&
-    Object.hasOwn(value, "kind") &&
-    Object.hasOwn(value, "locator") &&
-    Object.hasOwn(value, "fingerprint")
-  ) {
-    output.push([pointer, value]);
-  }
-  for (const [key, child] of Object.entries(value)) {
-    if (child && typeof child === "object") evidenceObjects(child, `${pointer}.${key}`, output);
-  }
-  return output;
-}
-
-function evidencePath(locator, receiptPath) {
-  if (/^https?:\/\//i.test(locator)) return null;
-  if (path.isAbsolute(locator)) return locator;
-  const fromCwd = path.resolve(process.cwd(), locator);
-  if (fs.existsSync(fromCwd)) return fromCwd;
-  return path.resolve(path.dirname(path.resolve(receiptPath)), locator);
-}
-
-export function verifyAssetEvidenceFiles(receipt, receiptPath) {
-  const errors = [];
-  const checked = new Set();
-  for (const [pointer, evidence] of evidenceObjects(receipt)) {
-    const key = `${evidence.locator}\0${evidence.fingerprint}`;
-    if (checked.has(key)) continue;
-    checked.add(key);
-    const resolved = evidencePath(evidence.locator, receiptPath);
-    if (!resolved) {
-      errors.push(`${pointer}.locator must be downloaded to a local verifiable artifact`);
-      continue;
-    }
-    if (!fs.existsSync(resolved) || !fs.statSync(resolved).isFile()) {
-      errors.push(`${pointer}.locator does not resolve to a file: ${evidence.locator}`);
-      continue;
-    }
-    const actual = `sha256:${crypto.createHash("sha256").update(fs.readFileSync(resolved)).digest("hex")}`;
-    if (actual !== evidence.fingerprint) {
-      errors.push(`${pointer}.fingerprint does not match evidence bytes: ${evidence.locator}`);
-    }
-  }
-  return errors;
+export function verifyAssetEvidenceFiles(receipt, receiptPath, evidenceRoot = process.cwd()) {
+  return verifyProofEvidenceFiles(receipt, { evidenceRoot, pointer: "receipt" });
 }
 
 export function validateAssetProduction(receipt) {
   const errors = schemaErrors(receipt);
   if (errors.length > 0) return errors;
 
-  for (const [pointer, evidence] of evidenceObjects(receipt)) {
+  for (const [pointer, evidence] of collectProofEvidence(receipt, "receipt")) {
     if (!LOCATOR.test(evidence.locator)) {
       errors.push(`${pointer}.locator must be a concrete path or URL`);
     }
@@ -298,12 +259,12 @@ function selfTest() {
   const hydrated = structuredClone(valid);
   const seen = new WeakSet();
   let index = 0;
-  for (const [, evidence] of evidenceObjects(hydrated)) {
+  for (const [, evidence] of collectProofEvidence(hydrated, "receipt")) {
     if (seen.has(evidence)) continue;
     seen.add(evidence);
     const bytes = Buffer.from(`asset-evidence-${index}`);
-    const locator = path.join(evidenceRoot, `evidence-${index}.json`);
-    fs.writeFileSync(locator, bytes);
+    const locator = `evidence-${index}.json`;
+    fs.writeFileSync(path.join(evidenceRoot, locator), bytes);
     evidence.locator = locator;
     evidence.fingerprint = `sha256:${crypto.createHash("sha256").update(bytes).digest("hex")}`;
     index += 1;
@@ -311,11 +272,11 @@ function selfTest() {
   for (const deliverable of hydrated.deliverables) {
     deliverable.fingerprint = deliverable.evidence.fingerprint;
   }
-  if (verifyAssetEvidenceFiles(hydrated, path.join(evidenceRoot, "receipt.json")).length > 0) {
+  if (verifyAssetEvidenceFiles(hydrated, path.join(evidenceRoot, "receipt.json"), evidenceRoot).length > 0) {
     throw new Error("valid local asset evidence failed byte verification");
   }
-  fs.writeFileSync(hydrated.deliverables[0].evidence.locator, "changed");
-  if (!verifyAssetEvidenceFiles(hydrated, path.join(evidenceRoot, "receipt.json")).some((error) => error.includes("does not match"))) {
+  fs.writeFileSync(path.join(evidenceRoot, hydrated.deliverables[0].evidence.locator), "changed");
+  if (!verifyAssetEvidenceFiles(hydrated, path.join(evidenceRoot, "receipt.json"), evidenceRoot).some((error) => error.includes("does not match"))) {
     throw new Error("changed local asset evidence was accepted");
   }
   fs.rmSync(evidenceRoot, { recursive: true, force: true });
@@ -354,4 +315,4 @@ async function main() {
   console.log(`asset production receipt valid: ${argument}`);
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) await main();
+if (isProofCliEntrypoint(import.meta.url)) await main();

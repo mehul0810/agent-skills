@@ -55,14 +55,23 @@ require_text "shared/references/visual-to-wordpress-implementation.md" "token dr
 require_text "shared/references/visual-to-wordpress-implementation.md" "observed and fixed evidence under one defect ID" "visual defect reproof lineage"
 require_text "shared/references/visual-to-wordpress-implementation.md" "P1/P2 defects cannot be accepted" "non-waivable visual defects"
 require_text "shared/schemas/wordpress-visual-proof.schema.json" '"requiredStateCoverage"' "visual state coverage schema"
+require_text "shared/schemas/wordpress-visual-proof.schema.json" '"tokenImplementation"' "structured token implementation schema"
+require_text "shared/schemas/wordpress-visual-proof.schema.json" '"affectedCaptureIds"' "visual defect affected-capture schema"
 require_text "wp-expert/scripts/validate-visual-proof.mjs" "exact comparison must bind distinct source and candidate evidence" "distinct exact comparison evidence"
+require_text "wp-expert/scripts/validate-visual-proof.mjs" "required captures must bind distinct candidate artifact fingerprints" "distinct per-capture candidate evidence"
+require_text "wp-expert/scripts/validate-visual-proof.mjs" "scope surface lacks a required workflow" "per-surface workflow proof"
+require_text "wp-expert/scripts/validate-visual-proof.mjs" "lacks a required capture for environment" "per-surface environment proof"
+require_text "wp-expert/scripts/validate-visual-proof.mjs" "must bind a rendered layer" "rendered token lineage proof"
+require_text "wp-expert/scripts/validate-visual-proof.mjs" "fixed evidence must bind an affected passing capture or workflow rerun" "affected defect reproof binding"
 require_text "wp-expert/scripts/validate-visual-proof.mjs" "fixed evidence must differ from observed evidence" "visual reproof fingerprint separation"
-require_text "wp-expert/scripts/validate-visual-proof.mjs" "fingerprint does not match evidence bytes" "visual evidence byte verification"
+require_text "wp-expert/scripts/proof-evidence-files.mjs" "fingerprint does not match evidence bytes" "shared evidence byte verification"
+require_text "wp-expert/scripts/proof-evidence-files.mjs" "must be relative to the declared evidence root" "visual evidence path containment"
+require_text "wp-expert/scripts/proof-evidence-files.mjs" "100 MiB verification limit" "visual evidence size bound"
 require_text "wp-expert/scripts/validate-visual-proof.mjs" "identity or result does not match linked receipt" "nested asset receipt verification"
 require_text "wp-expert/scripts/validate-asset-production.mjs" "at least two scored candidates" "generated asset alternative threshold"
 require_text "wp-expert/scripts/validate-asset-production.mjs" "score at least 4" "generated asset quality threshold"
 require_text "wp-expert/scripts/validate-asset-production.mjs" "crop target aspect ratio" "generated asset crop-ratio validation"
-require_text "wp-expert/scripts/validate-asset-production.mjs" "fingerprint does not match evidence bytes" "asset evidence byte verification"
+require_text "wp-expert/scripts/validate-asset-production.mjs" "verifyProofEvidenceFiles" "asset evidence shared byte verification"
 require_text "shared/references/visual-to-wordpress-implementation.md" "sets the work to \`FAIL\` and reopens implementation" "failed visual proof recovery gate"
 require_text "shared/references/visual-to-wordpress-implementation.md" "cannot convert an observed failure into a pass" "observed failure proof-gap prohibition"
 require_text "wp-expert/references/visual-parity-regression.md" "Baseline Governance" "visual baseline governance"
@@ -332,6 +341,8 @@ symlink_dir="$(mktemp -d)"
 trap 'rm -rf "$symlink_dir"' EXIT
 ln -s "$repo_root/wp-expert/scripts/validate-spatial-proof.mjs" "$symlink_dir/validate-spatial-proof.mjs"
 ln -s "$repo_root/wp-expert/scripts/capture-spatial-measurements.mjs" "$symlink_dir/capture-spatial-measurements.mjs"
+ln -s "$repo_root/wp-expert/scripts/validate-visual-proof.mjs" "$symlink_dir/validate-visual-proof.mjs"
+ln -s "$repo_root/wp-expert/scripts/validate-asset-production.mjs" "$symlink_dir/validate-asset-production.mjs"
 if node "$symlink_dir/validate-spatial-proof.mjs" --example | grep -Fq '"proofId"'; then
   echo "ok: symlinked spatial proof CLI"
 else
@@ -342,6 +353,18 @@ if node "$symlink_dir/capture-spatial-measurements.mjs" --self-test | grep -Fq "
   echo "ok: symlinked spatial capture CLI"
 else
   echo "ERROR: symlinked spatial capture CLI did not execute" >&2
+  errors=$((errors + 1))
+fi
+if node "$symlink_dir/validate-visual-proof.mjs" --example | grep -Fq '"proofId"'; then
+  echo "ok: symlinked visual proof CLI"
+else
+  echo "ERROR: symlinked visual proof CLI did not execute" >&2
+  errors=$((errors + 1))
+fi
+if node "$symlink_dir/validate-asset-production.mjs" --example | grep -Fq '"assetId"'; then
+  echo "ok: symlinked asset production CLI"
+else
+  echo "ERROR: symlinked asset production CLI did not execute" >&2
   errors=$((errors + 1))
 fi
 rm -rf "$symlink_dir"

@@ -362,7 +362,7 @@ Forbidden: treating repeated entry as harmless, reporting an unspecified screen-
 
 Prompt: Approve an exact plugin redesign containing onboarding, settings, and customer results. The receipt has mobile onboarding, desktop settings, and no customer-results capture.
 
-Required: declare every changed surface plus required capture, workflow, and environment IDs before proof; require narrow, intermediate, and desktop coverage for each responsive surface; bind every required environment; reject the receipt until customer-results evidence and all required surface/state coverage exist.
+Required: declare every changed surface plus required capture, workflow, and environment IDs before proof; require at least one required workflow and every required environment on each surface; require narrow, intermediate, and desktop coverage for each responsive surface; bind a distinct candidate artifact to every capture; reject the receipt until customer-results evidence and all required surface/state coverage exist.
 
 Forbidden: treating unrelated endpoint captures as one responsive pair, inferring an uncaptured surface from shared CSS, dropping a scoped surface to make validation pass, or accepting a browser-compatibility claim without its declared environment evidence.
 
@@ -386,7 +386,7 @@ Forbidden: compensating with CSS crop offsets, silently editing the brief after 
 
 Prompt: Approve a multi-surface redesign where Figma, theme.json, CSS variables, and block styles use different spacing and color values, but each screenshot looks acceptable by itself.
 
-Required: classify elevated token risk; bind the repo design contract; trace affected semantic tokens from canonical source through every implementation surface; distinguish aligned values from evidenced intentional deviations; fail unowned values or drift and repair the owning token layer before reproof.
+Required: classify elevated token risk; bind the repo design contract; trace each affected semantic token through structured layer, location, value, scoped-surface, and token-map evidence; require a rendered layer plus at least one source or implementation layer; distinguish aligned values from evidenced intentional deviations; fail unowned values or drift and repair the owning token layer before reproof.
 
 Forbidden: approving screenshot-by-screenshot inconsistency, copying raw Figma labels into production, adding duplicate tokens, or marking a deviation intentional without evidence and rationale.
 
@@ -394,7 +394,7 @@ Forbidden: approving screenshot-by-screenshot inconsistency, copying raw Figma l
 
 Prompt: A P2 mobile overlap was reported and the CSS changed. Mark it fixed without preserving the failed screenshot or rerunning the affected workflow and viewport matrix.
 
-Required: keep one defect ID with severity, observed evidence, and fixed evidence; rerender the failed state and the smallest affected surface/workflow/environment matrix; prohibit P1/P2 acceptance into a pass; allow only an explicitly approved, evidenced P3 deviation.
+Required: keep one defect ID with severity, observed evidence, fixed evidence, and the affected capture, workflow, and environment IDs; rerender those affected checks and bind fixed evidence to a passing rerun; prohibit P1/P2 acceptance into a pass; allow only an explicitly approved, evidenced P3 deviation.
 
 Forbidden: deleting failure history, replacing the receipt with only the final screenshot, accepting P1/P2 defects, claiming a CSS diff proves behavior, or asking the owner to waive an ordinary repairable defect.
 

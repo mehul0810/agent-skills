@@ -5,12 +5,18 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import process from "node:process";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
 import Ajv2020 from "ajv/dist/2020.js";
 import {
   validateAssetProduction,
   verifyAssetEvidenceFiles,
 } from "./validate-asset-production.mjs";
+import {
+  collectProofEvidence,
+  isProofCliEntrypoint,
+  resolveProofEvidenceFile,
+  verifyProofEvidenceFiles,
+} from "./proof-evidence-files.mjs";
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const SCHEMA_PATH = path.resolve(
@@ -66,62 +72,18 @@ function duplicateValues(values) {
   return values.filter((value) => seen.has(value) || !seen.add(value));
 }
 
-function evidenceObjects(value, pointer = "proof", output = []) {
-  if (!value || typeof value !== "object") return output;
-  if (
-    !Array.isArray(value) &&
-    Object.hasOwn(value, "kind") &&
-    Object.hasOwn(value, "locator") &&
-    Object.hasOwn(value, "fingerprint")
-  ) {
-    output.push([pointer, value]);
-  }
-  for (const [key, child] of Object.entries(value)) {
-    if (child && typeof child === "object") evidenceObjects(child, `${pointer}.${key}`, output);
-  }
-  return output;
+export function verifyVisualEvidenceFiles(proof, proofPath, evidenceRoot = process.cwd()) {
+  return verifyProofEvidenceFiles(proof, { evidenceRoot, pointer: "proof" });
 }
 
-function evidencePath(locator, proofPath) {
-  if (/^https?:\/\//i.test(locator)) return null;
-  if (path.isAbsolute(locator)) return locator;
-  const fromCwd = path.resolve(process.cwd(), locator);
-  if (fs.existsSync(fromCwd)) return fromCwd;
-  return path.resolve(path.dirname(path.resolve(proofPath)), locator);
-}
-
-export function verifyVisualEvidenceFiles(proof, proofPath) {
-  const errors = [];
-  const checked = new Set();
-  for (const [pointer, evidence] of evidenceObjects(proof)) {
-    const key = `${evidence.locator}\0${evidence.fingerprint}`;
-    if (checked.has(key)) continue;
-    checked.add(key);
-    const resolved = evidencePath(evidence.locator, proofPath);
-    if (!resolved) {
-      errors.push(`${pointer}.locator must be downloaded to a local verifiable artifact`);
-      continue;
-    }
-    if (!fs.existsSync(resolved) || !fs.statSync(resolved).isFile()) {
-      errors.push(`${pointer}.locator does not resolve to a file: ${evidence.locator}`);
-      continue;
-    }
-    const actual = `sha256:${crypto.createHash("sha256").update(fs.readFileSync(resolved)).digest("hex")}`;
-    if (actual !== evidence.fingerprint) {
-      errors.push(`${pointer}.fingerprint does not match evidence bytes: ${evidence.locator}`);
-    }
-  }
-  return errors;
-}
-
-function validateLinkedAssetReceipts(proof, proofPath) {
+function validateLinkedAssetReceipts(proof, proofPath, evidenceRoot = process.cwd()) {
   const errors = [];
   for (const [index, link] of proof.assetReceipts.entries()) {
-    const resolved = evidencePath(link.evidence.locator, proofPath);
-    if (!resolved || !fs.existsSync(resolved)) continue;
+    const resolved = resolveProofEvidenceFile(link.evidence.locator, evidenceRoot);
+    if (resolved.error) continue;
     let receipt;
     try {
-      receipt = JSON.parse(fs.readFileSync(resolved, "utf8"));
+      receipt = JSON.parse(fs.readFileSync(resolved.path, "utf8"));
     } catch (error) {
       errors.push(`assetReceipts[${index}] is not valid JSON: ${error.message}`);
       continue;
@@ -129,7 +91,7 @@ function validateLinkedAssetReceipts(proof, proofPath) {
     for (const error of validateAssetProduction(receipt)) {
       errors.push(`assetReceipts[${index}]: ${error}`);
     }
-    for (const error of verifyAssetEvidenceFiles(receipt, resolved)) {
+    for (const error of verifyAssetEvidenceFiles(receipt, resolved.path, evidenceRoot)) {
       errors.push(`assetReceipts[${index}]: ${error}`);
     }
     if (receipt.assetId !== link.assetId || receipt.status !== link.result) {
@@ -184,7 +146,7 @@ export function validateVisualProof(proof) {
     errors.push("candidate fingerprint must match the bound artifact fingerprint");
   }
 
-  for (const [pointer, evidence] of evidenceObjects(proof)) {
+  for (const [pointer, evidence] of collectProofEvidence(proof, "proof")) {
     if (!LOCATOR.test(evidence.locator)) {
       errors.push(`${pointer}.locator must be a concrete path or URL`);
     }
@@ -236,6 +198,18 @@ export function validateVisualProof(proof) {
       errors.push(`captures[${index}] desktop viewport must be 1024 CSS pixels or above`);
     }
   }
+  const requiredCaptures = proof.captures.filter((capture) =>
+    proof.scope.requiredCaptureIds.includes(capture.id));
+  for (const duplicate of duplicateValues(
+    requiredCaptures.map((capture) => capture.candidateEvidence.locator),
+  )) {
+    errors.push(`required captures must bind distinct candidate artifact locators: ${duplicate}`);
+  }
+  for (const duplicate of duplicateValues(
+    requiredCaptures.map((capture) => capture.candidateEvidence.fingerprint),
+  )) {
+    errors.push(`required captures must bind distinct candidate artifact fingerprints: ${duplicate}`);
+  }
   for (const surface of proof.scope.surfaces) {
     const stateCoverage = proof.scope.requiredStateCoverage.filter((entry) => entry.surface === surface);
     if (stateCoverage.length !== 1) {
@@ -245,6 +219,17 @@ export function validateVisualProof(proof) {
       (capture) => proof.scope.requiredCaptureIds.includes(capture.id) && capture.surface === surface,
     );
     if (required.length === 0) errors.push(`scope surface lacks a required capture: ${surface}`);
+    const requiredWorkflows = proof.workflows.filter(
+      (workflow) => proof.scope.requiredWorkflowIds.includes(workflow.id) && workflow.surface === surface,
+    );
+    if (requiredWorkflows.length === 0) {
+      errors.push(`scope surface lacks a required workflow: ${surface}`);
+    }
+    for (const environmentId of proof.scope.requiredEnvironmentIds) {
+      if (!required.some((capture) => capture.environmentId === environmentId)) {
+        errors.push(`scope surface ${surface} lacks a required capture for environment: ${environmentId}`);
+      }
+    }
     for (const state of stateCoverage[0]?.states ?? []) {
       if (!required.some((capture) => capture.state === state)) {
         errors.push(`required state ${surface}/${state} lacks a required capture`);
@@ -315,9 +300,28 @@ export function validateVisualProof(proof) {
   if (proof.designSystem.risk !== proof.scope.tokenRisk) {
     errors.push("designSystem.risk must match scope.tokenRisk");
   }
+  const tokenImplementationSurfaces = new Set();
   for (const [index, lineage] of proof.designSystem.lineage.entries()) {
     if (lineage.result === "intentional_deviation" && !lineage.rationale) {
       errors.push(`designSystem.lineage[${index}].rationale is required for intentional deviation`);
+    }
+    const implementationKeys = lineage.implementations.map(
+      (implementation) => `${implementation.layer}\0${implementation.location}`,
+    );
+    for (const duplicate of duplicateValues(implementationKeys)) {
+      errors.push(`designSystem.lineage[${index}] contains duplicate implementation layer/location: ${duplicate.replace("\0", "/")}`);
+    }
+    for (const [implementationIndex, implementation] of lineage.implementations.entries()) {
+      if (implementation.evidence.kind !== "token_map") {
+        errors.push(`designSystem.lineage[${index}].implementations[${implementationIndex}] must use token_map evidence`);
+      }
+      for (const surface of implementation.surfaces) {
+        if (!proof.scope.surfaces.includes(surface)) {
+          errors.push(`designSystem.lineage[${index}].implementations[${implementationIndex}] surface is outside scope: ${surface}`);
+        } else {
+          tokenImplementationSurfaces.add(surface);
+        }
+      }
     }
   }
   if (proof.scope.tokenRisk === "elevated") {
@@ -331,7 +335,18 @@ export function validateVisualProof(proof) {
       errors.push("pass cannot contain unowned design values under elevated token risk");
     }
     if (proof.designSystem.lineage.some((item) => item.implementations.length < 2)) {
-      errors.push("elevated token lineage must bind at least two implementation surfaces per token");
+      errors.push("elevated token lineage must bind at least two implementation layers per token");
+    }
+    for (const [index, lineage] of proof.designSystem.lineage.entries()) {
+      const layers = new Set(lineage.implementations.map((implementation) => implementation.layer));
+      if (layers.size < 2 || !layers.has("rendered")) {
+        errors.push(`elevated token lineage[${index}] must bind a rendered layer and at least one source or implementation layer`);
+      }
+    }
+    for (const surface of proof.scope.surfaces) {
+      if (!tokenImplementationSurfaces.has(surface)) {
+        errors.push(`elevated token lineage lacks an implementation binding for scoped surface: ${surface}`);
+      }
     }
   }
 
@@ -386,6 +401,42 @@ export function validateVisualProof(proof) {
       defect.fixedEvidence?.fingerprint === defect.observedEvidence.fingerprint
     ) {
       errors.push(`defects[${index}] fixed evidence must differ from observed evidence`);
+    }
+    if (defect.status === "fixed") {
+      const affectedCaptureIds = defect.affectedCaptureIds ?? [];
+      const affectedWorkflowIds = defect.affectedWorkflowIds ?? [];
+      const affectedEnvironmentIds = defect.affectedEnvironmentIds ?? [];
+      if (affectedCaptureIds.length === 0 || affectedWorkflowIds.length === 0 || affectedEnvironmentIds.length === 0) {
+        errors.push(`defects[${index}] fixed status requires affected captures, workflows, and environments`);
+      }
+      const affectedCaptures = affectedCaptureIds.map((id) =>
+        proof.captures.find((capture) => capture.id === id));
+      const affectedWorkflows = affectedWorkflowIds.map((id) =>
+        proof.workflows.find((workflow) => workflow.id === id));
+      for (const id of affectedCaptureIds) {
+        const capture = proof.captures.find((item) => item.id === id);
+        if (!capture) errors.push(`defects[${index}] affected capture is undefined: ${id}`);
+        else if (capture.result !== "pass") errors.push(`defects[${index}] affected capture did not pass reproof: ${id}`);
+      }
+      for (const id of affectedWorkflowIds) {
+        const workflow = proof.workflows.find((item) => item.id === id);
+        if (!workflow) errors.push(`defects[${index}] affected workflow is undefined: ${id}`);
+        else if (workflow.result !== "pass") errors.push(`defects[${index}] affected workflow did not pass reproof: ${id}`);
+      }
+      for (const environmentId of affectedEnvironmentIds) {
+        if (!affectedCaptures.some((capture) => capture?.environmentId === environmentId)) {
+          errors.push(`defects[${index}] affected environment lacks a passing capture: ${environmentId}`);
+        }
+      }
+      const currentFingerprints = new Set([
+        ...affectedCaptures.flatMap((capture) => capture
+          ? [capture.candidateEvidence.fingerprint, capture.comparisonEvidence?.fingerprint]
+          : []),
+        ...affectedWorkflows.map((workflow) => workflow?.evidence?.fingerprint),
+      ].filter(Boolean));
+      if (defect.fixedEvidence && !currentFingerprints.has(defect.fixedEvidence.fingerprint)) {
+        errors.push(`defects[${index}] fixed evidence must bind an affected passing capture or workflow rerun`);
+      }
     }
     if (defect.status === "accepted") {
       if (defect.severity !== "P3") errors.push(`defects[${index}] only P3 may be accepted`);
@@ -451,7 +502,6 @@ function exampleProof() {
     fingerprint: fingerprint(character),
   });
   const sourceEvidence = evidence("screenshot", "design/home-desktop.png", "4");
-  const candidateEvidence = evidence("screenshot", "artifacts/visual-proof/home.png", "d");
   const comparisonEvidence = evidence("comparison", "artifacts/visual-proof/home-overlay.png", "5");
   const reportEvidence = evidence("report", "artifacts/visual-proof/report.json", "e");
   const accessibilityEvidence = evidence(
@@ -461,7 +511,7 @@ function exampleProof() {
   );
   const passDisposition = { result: "pass", evidence: reportEvidence };
   return {
-    schemaVersion: 2,
+    schemaVersion: 3,
     proofId: "home-page-visual-proof",
     status: "pass",
     surfaceKind: "site",
@@ -522,7 +572,7 @@ function exampleProof() {
       ["home-narrow", "narrow", 375, "manual"],
       ["home-intermediate", "intermediate", 768, "manual"],
       ["home-desktop", "desktop", 1440, "overlay"],
-    ].map(([id, viewportClass, width, comparison]) => ({
+    ].map(([id, viewportClass, width, comparison], index) => ({
       id,
       surface: "home",
       state: "default",
@@ -530,7 +580,11 @@ function exampleProof() {
       viewport: { width, height: 900, devicePixelRatio: 2 },
       environmentId: "chromium-macos",
       sourceEvidence,
-      candidateEvidence,
+      candidateEvidence: evidence(
+        "screenshot",
+        `artifacts/visual-proof/${id}.png`,
+        ["6", "7", "8"][index],
+      ),
       ...(comparison === "overlay" ? { comparisonEvidence } : {}),
       comparison,
       result: "pass",
@@ -572,7 +626,11 @@ function selfTest() {
     severity: "P2",
     description: "Hero overlaps navigation",
     status: "unresolved",
-    observedEvidence: valid.captures[0].candidateEvidence,
+    observedEvidence: {
+      kind: "screenshot",
+      locator: "artifacts/visual-proof/home-narrow-before.png",
+      fingerprint: `sha256:${"0".repeat(64)}`,
+    },
   };
   const acceptedP2 = {
     ...unresolved,
@@ -583,20 +641,81 @@ function selfTest() {
       decisionEvidence: valid.captures[0].candidateEvidence,
     },
   };
+  const fixed = {
+    ...unresolved,
+    status: "fixed",
+    fixedEvidence: valid.captures[0].candidateEvidence,
+    affectedCaptureIds: ["home-narrow"],
+    affectedWorkflowIds: ["visitor-cta"],
+    affectedEnvironmentIds: ["chromium-macos"],
+  };
+  const tokenEvidence = {
+    kind: "token_map",
+    locator: "artifacts/visual-proof/tokens.json",
+    fingerprint: `sha256:${"9".repeat(64)}`,
+  };
+  const elevated = {
+    ...valid,
+    scope: { ...valid.scope, tokenRisk: "elevated" },
+    designSystem: {
+      risk: "elevated",
+      contractEvidence: tokenEvidence,
+      lineage: [{
+        token: "space.section",
+        canonicalSource: "DESIGN.md#spacing",
+        implementations: [
+          { layer: "theme_json", location: "settings.spacing.spacingSizes.50", value: "48px", surfaces: ["home"], evidence: tokenEvidence },
+          { layer: "rendered", location: "[data-proof=home-section]", value: "48px", surfaces: ["home"], evidence: tokenEvidence },
+        ],
+        result: "aligned",
+        evidence: tokenEvidence,
+      }],
+      unownedValues: [],
+    },
+  };
   const cases = [
     ["valid proof", valid, true],
+    ["fixed defect with affected reproof", { ...valid, defects: [fixed] }, true],
     ["unresolved defect", { ...valid, defects: [unresolved] }, false],
     ["accepted P2 defect", { ...valid, defects: [acceptedP2] }, false],
     ["fixed defect without reproof", { ...valid, defects: [{ ...unresolved, status: "fixed" }] }, false],
+    ["fixed defect with unrelated evidence", { ...valid, defects: [{ ...fixed, fixedEvidence: valid.captures[1].candidateEvidence }] }, false],
     ["missing scoped surface", { ...valid, scope: { ...valid.scope, surfaces: ["home", "pricing"] } }, false],
+    ["scoped surface without required workflow", {
+      ...valid,
+      scope: {
+        ...valid.scope,
+        surfaces: ["home", "pricing"],
+        requiredStateCoverage: [...valid.scope.requiredStateCoverage, { surface: "pricing", states: ["default"] }],
+        requiredCaptureIds: [...valid.scope.requiredCaptureIds, "pricing-narrow", "pricing-intermediate", "pricing-desktop"],
+      },
+      captures: [...valid.captures, ...valid.captures.map((capture, index) => ({
+        ...capture,
+        id: `pricing-${capture.viewportClass}`,
+        surface: "pricing",
+        candidateEvidence: { ...capture.candidateEvidence, locator: `artifacts/visual-proof/pricing-${capture.viewportClass}.png`, fingerprint: `sha256:${["1", "2", "3"][index].repeat(64)}` },
+      }))],
+    }, false],
     ["missing required state", { ...valid, scope: { ...valid.scope, requiredStateCoverage: [{ surface: "home", states: ["default", "error"] }] } }, false],
     ["missing intermediate capture", { ...valid, captures: valid.captures.filter((capture) => capture.viewportClass !== "intermediate") }, false],
     ["required capture not declared", { ...valid, scope: { ...valid.scope, requiredCaptureIds: ["home-narrow", "home-desktop"] } }, false],
     ["vague evidence locator", { ...valid, captures: [{ ...valid.captures[0], candidateEvidence: { ...valid.captures[0].candidateEvidence, locator: "looks good" } }, ...valid.captures.slice(1)] }, false],
     ["missing required environment", { ...valid, scope: { ...valid.scope, requiredEnvironmentIds: ["webkit-ios"] } }, false],
+    ["reused candidate artifact", { ...valid, captures: valid.captures.map((capture) => ({ ...capture, candidateEvidence: valid.captures[0].candidateEvidence })) }, false],
     ["exact manual only", { ...valid, captures: valid.captures.map((capture) => ({ ...capture, comparison: "manual" })) }, false],
     ["material design without review", { ...valid, scope: { ...valid.scope, designRisk: "material" } }, false],
     ["elevated tokens without lineage", { ...valid, scope: { ...valid.scope, tokenRisk: "elevated" }, designSystem: { ...valid.designSystem, risk: "elevated" } }, false],
+    ["valid elevated token lineage", elevated, true],
+    ["token lineage with meaningless implementation surface", {
+      ...elevated,
+      designSystem: {
+        ...elevated.designSystem,
+        lineage: [{
+          ...elevated.designSystem.lineage[0],
+          implementations: elevated.designSystem.lineage[0].implementations.map((implementation) => ({ ...implementation, surfaces: ["not-a-scoped-surface"] })),
+        }],
+      },
+    }, false],
     ["material accessibility without AT", { ...valid, accessibility: { ...valid.accessibility, risk: "material" } }, false],
     ["required asset missing", { ...valid, scope: { ...valid.scope, requiredAssetIds: ["hero"] } }, false],
     ["browser gate not applicable", { ...valid, gates: valid.gates.map((gate) => gate.name === "browser_compatibility" ? { name: gate.name, result: "not_applicable", reason: "Not checked" } : gate) }, false],
@@ -616,24 +735,53 @@ function selfTest() {
   const hydrated = structuredClone(valid);
   const seen = new WeakSet();
   let index = 0;
-  for (const [, evidence] of evidenceObjects(hydrated)) {
+  for (const [, evidence] of collectProofEvidence(hydrated, "proof")) {
     if (seen.has(evidence)) continue;
     seen.add(evidence);
     const bytes = Buffer.from(`visual-evidence-${index}`);
-    const locator = path.join(evidenceRoot, `evidence-${index}.json`);
-    fs.writeFileSync(locator, bytes);
+    const locator = `evidence-${index}.json`;
+    fs.writeFileSync(path.join(evidenceRoot, locator), bytes);
     evidence.locator = locator;
     evidence.fingerprint = `sha256:${crypto.createHash("sha256").update(bytes).digest("hex")}`;
     index += 1;
   }
   hydrated.candidate.fingerprint = hydrated.candidate.artifact.fingerprint;
-  if (verifyVisualEvidenceFiles(hydrated, path.join(evidenceRoot, "proof.json")).length > 0) {
+  if (verifyVisualEvidenceFiles(hydrated, path.join(evidenceRoot, "proof.json"), evidenceRoot).length > 0) {
     throw new Error("valid local visual evidence failed byte verification");
   }
-  fs.writeFileSync(hydrated.captures[0].candidateEvidence.locator, "changed");
-  if (!verifyVisualEvidenceFiles(hydrated, path.join(evidenceRoot, "proof.json")).some((error) => error.includes("does not match"))) {
+  fs.writeFileSync(path.join(evidenceRoot, hydrated.captures[0].candidateEvidence.locator), "changed");
+  if (!verifyVisualEvidenceFiles(hydrated, path.join(evidenceRoot, "proof.json"), evidenceRoot).some((error) => error.includes("does not match"))) {
     throw new Error("changed local visual evidence was accepted");
   }
+  const outsideRoot = fs.mkdtempSync(path.join(os.tmpdir(), "visual-proof-outside-"));
+  const outsideFile = path.join(outsideRoot, "outside.json");
+  fs.writeFileSync(outsideFile, "outside");
+  const escaped = structuredClone(hydrated);
+  escaped.captures[0].candidateEvidence.locator = path.relative(evidenceRoot, outsideFile);
+  if (!verifyVisualEvidenceFiles(escaped, path.join(evidenceRoot, "proof.json"), evidenceRoot).some((error) => error.includes("remain inside"))) {
+    throw new Error("visual evidence traversal outside the declared root was accepted");
+  }
+  const absolute = structuredClone(hydrated);
+  absolute.captures[0].candidateEvidence.locator = outsideFile;
+  if (!verifyVisualEvidenceFiles(absolute, path.join(evidenceRoot, "proof.json"), evidenceRoot).some((error) => error.includes("relative"))) {
+    throw new Error("absolute visual evidence locator was accepted");
+  }
+  const symlink = path.join(evidenceRoot, "outside-link.json");
+  fs.symlinkSync(outsideFile, symlink);
+  const linked = structuredClone(hydrated);
+  linked.captures[0].candidateEvidence.locator = path.basename(symlink);
+  if (!verifyVisualEvidenceFiles(linked, path.join(evidenceRoot, "proof.json"), evidenceRoot).some((error) => error.includes("symlink"))) {
+    throw new Error("visual evidence symlink escape was accepted");
+  }
+  const oversizedFile = path.join(evidenceRoot, "oversized.bin");
+  fs.writeFileSync(oversizedFile, "x");
+  fs.truncateSync(oversizedFile, 100 * 1024 * 1024 + 1);
+  const oversized = structuredClone(hydrated);
+  oversized.captures[0].candidateEvidence.locator = path.basename(oversizedFile);
+  if (!verifyVisualEvidenceFiles(oversized, path.join(evidenceRoot, "proof.json"), evidenceRoot).some((error) => error.includes("100 MiB"))) {
+    throw new Error("oversized visual evidence was accepted");
+  }
+  fs.rmSync(outsideRoot, { recursive: true, force: true });
   fs.rmSync(evidenceRoot, { recursive: true, force: true });
   console.log("visual proof validator self-test passed");
 }
@@ -672,4 +820,4 @@ async function main() {
   console.log(`visual proof valid: ${argument}`);
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) await main();
+if (isProofCliEntrypoint(import.meta.url)) await main();

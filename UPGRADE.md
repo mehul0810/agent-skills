@@ -42,6 +42,10 @@ Formal `wp-quality-reviewer` reports now use `schemaVersion: 2`. Replace free-fo
 
 The bundled validator rejects v1 reports rather than silently upgrading evidence claims.
 
+## Unreleased: WordPress Visual Proof Schema v3
+
+Visual proof receipts now require distinct candidate artifacts per capture, a required workflow and environment coverage for every scoped surface, structured token implementations through rendered output, and affected capture/workflow/environment IDs when a defect is marked fixed. Evidence locators must be relative to the declared root and cannot escape it through traversal or symlinks. Regenerate v2 receipts with `node wp-expert/scripts/validate-visual-proof.mjs --example`; the validator rejects v2 rather than upgrading evidence claims.
+
 ---
 
 ## Upgrading to 1.1.0 (When Released)
