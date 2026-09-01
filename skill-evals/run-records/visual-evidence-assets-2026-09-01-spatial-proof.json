@@ -1,0 +1,33 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "visual-evidence-assets-2026-09-01-spatial-proof",
+  "scenario": "visual-evidence-and-assets",
+  "result": "succeeded",
+  "startedAt": "2026-09-01T10:21:06.000Z",
+  "durationMs": 0,
+  "checks": [
+    { "name": "structured-visual-proof-rejection", "result": "pass" },
+    { "name": "per-surface-proof-coverage", "result": "pass" },
+    { "name": "concrete-evidence-binding", "result": "pass" },
+    { "name": "asset-production-receipt", "result": "pass" },
+    { "name": "design-token-lineage", "result": "pass" },
+    { "name": "visual-defect-reproof", "result": "pass" },
+    { "name": "structured-spatial-proof-rejection", "result": "pass" },
+    { "name": "browser-geometry-capture", "result": "pass" }
+  ],
+  "metrics": {
+    "checks_passed": 8
+  },
+  "lineage": {
+    "verificationId": "visual-evidence-assets-2026-09-01-spatial-proof",
+    "artifactPointer": "codex-fresh-agent:/root/spatial_evidence_recheck#831c36f"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-01T10:21:06.000Z",
+    "metricNames": ["checks_passed"],
+    "summary": "Source-blind adversarial evaluation rejected incomplete surface and role proof, reused evidence, path escape, token drift, false defect closure, incomplete spatial proof, and unavailable browser capture."
+  },
+  "tags": ["fresh-agent", "sanitized", "design", "evidence", "assets", "spatial"]
+}
