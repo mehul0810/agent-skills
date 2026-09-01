@@ -3,32 +3,18 @@
 import fs from "node:fs";
 import process from "node:process";
 import { pathToFileURL } from "node:url";
+import {
+  evaluateSpatialExpectation,
+  SPATIAL_MEASUREMENT_KINDS,
+  SPATIAL_OPERATORS,
+  spatialExpectationErrors,
+} from "./spatial-proof-contract.mjs";
 
-const OPERATORS = new Set(["eq", "lte", "gte", "range"]);
-const KINDS = new Set([
-  "computed_style",
-  "edge_alignment",
-  "center_alignment",
-  "size",
-  "line_count",
-  "overflow",
-  "wrap",
-  "parent_layout",
-]);
+const OPERATORS = new Set(SPATIAL_OPERATORS);
+const KINDS = new Set(SPATIAL_MEASUREMENT_KINDS);
 
 export function evaluateExpected(actual, expected) {
-  const tolerance = expected.tolerance ?? 0;
-  if (!OPERATORS.has(expected.operator)) return false;
-  if (expected.operator === "eq") {
-    if (typeof actual === "number" && typeof expected.value === "number") {
-      return Math.abs(actual - expected.value) <= tolerance;
-    }
-    return actual === expected.value;
-  }
-  if (typeof actual !== "number") return false;
-  if (expected.operator === "lte") return actual <= expected.value + tolerance;
-  if (expected.operator === "gte") return actual >= expected.value - tolerance;
-  return actual >= expected.min - tolerance && actual <= expected.max + tolerance;
+  return evaluateSpatialExpectation(actual, expected);
 }
 
 function validateConfig(config) {
@@ -61,20 +47,14 @@ function validateConfig(config) {
     checkIds.add(check.id);
     if (!KINDS.has(check.kind)) errors.push(`checks[${index}].kind is unsupported`);
     if (!check.selector) errors.push(`checks[${index}].selector is required`);
-    if (["edge_alignment", "center_alignment"].includes(check.kind) && !check.referenceSelector) {
+    if (["edge_alignment", "baseline_alignment", "center_alignment", "relationship"].includes(check.kind) && !check.referenceSelector) {
       errors.push(`checks[${index}].referenceSelector is required for ${check.kind}`);
     }
-    if (["computed_style", "parent_layout"].includes(check.kind) && !check.property) {
+    if (["computed_style", "gap", "inset", "parent_layout", "relationship"].includes(check.kind) && !check.property) {
       errors.push(`checks[${index}].property is required for ${check.kind}`);
     }
     if (!OPERATORS.has(check.expected?.operator)) errors.push(`checks[${index}].expected.operator is invalid`);
-    if (check.expected?.operator === "range") {
-      if (typeof check.expected.min !== "number" || typeof check.expected.max !== "number") {
-        errors.push(`checks[${index}] range requires numeric min and max`);
-      }
-    } else if (!Object.hasOwn(check.expected ?? {}, "value")) {
-      errors.push(`checks[${index}] expected.value is required`);
-    }
+    for (const error of spatialExpectationErrors(check.expected)) errors.push(`checks[${index}] ${error}`);
   }
   return errors;
 }
@@ -109,9 +89,16 @@ async function inspectCheck(page, check) {
       if (edge === "logical_end") return direction === "rtl" ? box.left : box.right;
       return box[edge];
     };
+    const baselineValue = (node) => {
+      const range = document.createRange();
+      range.selectNodeContents(node);
+      const first = [...range.getClientRects()].find((item) => item.width > 0 && item.height > 0);
+      return first?.bottom ?? node.getBoundingClientRect().bottom;
+    };
 
-    if (input.kind === "computed_style") {
-      return { value: numericOrText(style.getPropertyValue(input.property)), unit: input.unit ?? "string" };
+    if (["computed_style", "gap", "inset"].includes(input.kind)) {
+      const unit = ["gap", "inset"].includes(input.kind) ? "px" : "string";
+      return { value: numericOrText(style.getPropertyValue(input.property)), unit: input.unit ?? unit };
     }
     if (input.kind === "parent_layout") {
       const parent = element.parentElement;
@@ -137,6 +124,21 @@ async function inspectCheck(page, check) {
         ? Math.abs((rect.top + rect.height / 2) - (referenceRect.top + referenceRect.height / 2))
         : Math.abs((rect.left + rect.width / 2) - (referenceRect.left + referenceRect.width / 2));
       return { value, unit: "px" };
+    }
+    if (input.kind === "baseline_alignment") {
+      return { value: Math.abs(baselineValue(element) - baselineValue(reference)), unit: "px" };
+    }
+    if (input.kind === "relationship") {
+      const tighter = numericOrText(style.getPropertyValue(input.property));
+      const looser = numericOrText(getComputedStyle(reference).getPropertyValue(input.referenceProperty ?? input.property));
+      if (typeof tighter !== "number" || typeof looser !== "number") {
+        return { error: `relationship properties must resolve to numeric geometry: ${input.property}` };
+      }
+      return {
+        value: tighter < looser,
+        unit: "boolean",
+        relationshipValues: { tighter, looser, unit: input.relationshipUnit ?? "px" },
+      };
     }
     if (input.kind === "size") {
       return { value: input.axis === "height" ? rect.height : rect.width, unit: "px" };
@@ -189,7 +191,8 @@ async function capture(config) {
           });
           continue;
         }
-        const passed = evaluateExpected(inspected.value, check.expected);
+        const { relationshipValues, ...actual } = inspected;
+        const passed = evaluateExpected(actual.value, check.expected);
         results.push({
           id: `${check.id}-${viewport.id}`,
           checkId: check.id,
@@ -198,7 +201,8 @@ async function capture(config) {
           subject: check.selector,
           acceptance: check.acceptance !== false,
           expected: check.expected,
-          actual: inspected,
+          actual,
+          ...(relationshipValues ? { relationshipValues } : {}),
           result: passed ? "pass" : "fail",
           ...(passed ? {} : { reason: "Measured geometry did not meet the declared expectation." }),
         });
@@ -224,6 +228,7 @@ function selfTest() {
     ["numeric equality outside tolerance", 26, { operator: "eq", value: 24, tolerance: 1 }, false],
     ["range", 48, { operator: "range", min: 44, max: 52 }, true],
     ["maximum", 2, { operator: "lte", value: 2 }, true],
+    ["string maximum is invalid", 10, { operator: "lte", value: "2" }, false],
     ["boolean", false, { operator: "eq", value: false }, true],
     ["string", "grid", { operator: "eq", value: "grid" }, true],
   ];

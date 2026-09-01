@@ -93,7 +93,7 @@ Visual proof is executable. Any reproducible in-scope overlap, clipping, overflo
 
 Classify the owning cause first: asset/font/data readiness; ownership/block hierarchy; tokens/components; cascade, Global Styles, or Site Editor overrides; intrinsic layout/breakpoints; runtime state; or capture contamination. Fix that layer, not symptoms with page/viewport selectors, magic offsets, or frontend-only CSS.
 
-Re-render the failure and smallest affected editor/frontend set. Keep observed and fixed evidence under one defect ID. P1/P2 defects cannot be accepted into a pass; only an approved, evidenced P3 deviation may remain. After two failed repair cycles, recheck source, manifest, ownership, and architecture. Escalate only an external blocker or material design decision with evidence and the best recovery. Unavailable evidence cannot convert an observed failure into a pass.
+Re-render the failure and smallest affected editor/frontend set. Keep observed and fixed evidence under one defect ID. P1/P2 defects cannot be accepted into a pass; only an approved, evidenced P3 deviation may remain. After two failed repair cycles, stop patching, reopen source, manifest, ownership, or architecture, and replace the contract and proof run before passing. Escalate only an external blocker or material design decision with evidence and the best recovery. Unavailable evidence cannot convert an observed failure into a pass.
 
 Completion requires:
 

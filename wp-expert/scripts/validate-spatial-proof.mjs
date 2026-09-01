@@ -7,6 +7,13 @@ import path from "node:path";
 import process from "node:process";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import Ajv2020 from "ajv/dist/2020.js";
+import {
+  evaluateSpatialExpectation,
+  SPATIAL_ALIGNMENT_KINDS,
+  SPATIAL_MEASUREMENT_KINDS,
+  SPATIAL_TOKEN_KINDS,
+  spatialExpectationErrors,
+} from "./spatial-proof-contract.mjs";
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const SCHEMA_PATH = path.resolve(
@@ -15,8 +22,6 @@ const SCHEMA_PATH = path.resolve(
 );
 const REVISION = /^(?:[a-f0-9]{40}|working-tree:sha256:[a-f0-9]{64})$/;
 const LOCATOR = /(?:https?:\/\/|\/|\\|\.(?:png|webp|jpe?g|json|zip|md|html|txt|log|trace)$)/i;
-const SPATIAL_TOKEN_KINDS = new Set(["gap", "inset", "size"]);
-const ALIGNMENT_KINDS = new Set(["edge_alignment", "baseline_alignment", "center_alignment"]);
 const DESIGN_CRITERIA = new Set([
   "design_coherence",
   "spatial_craft",
@@ -130,18 +135,7 @@ export function verifySpatialEvidenceFiles(proof, proofPath, evidenceRoot = proc
 }
 
 function computedResult(measurement) {
-  const { expected, actual } = measurement;
-  const tolerance = expected.tolerance ?? 0;
-  if (expected.operator === "eq") {
-    if (typeof expected.value === "number" && typeof actual.value === "number") {
-      return Math.abs(actual.value - expected.value) <= tolerance;
-    }
-    return actual.value === expected.value;
-  }
-  if (typeof actual.value !== "number") return false;
-  if (expected.operator === "lte") return actual.value <= expected.value + tolerance;
-  if (expected.operator === "gte") return actual.value >= expected.value - tolerance;
-  return actual.value >= expected.min - tolerance && actual.value <= expected.max + tolerance;
+  return evaluateSpatialExpectation(measurement.actual.value, measurement.expected);
 }
 
 function validateEvidenceDisposition(item, pointer, errors) {
@@ -199,6 +193,17 @@ export function validateSpatialProof(proof) {
       errors.push(`contract.hierarchy[${index}] must reference defined role tokens`);
     }
   }
+  for (const [index, role] of proof.contract.roles.entries()) {
+    const resolvedEnvironmentIds = role.resolvedValues.map((item) => item.environmentId);
+    for (const duplicate of duplicateValues(resolvedEnvironmentIds)) {
+      errors.push(`contract.roles[${index}] contains duplicate resolved environment: ${duplicate}`);
+    }
+    for (const resolved of role.resolvedValues) {
+      if (!environmentIds.includes(resolved.environmentId)) {
+        errors.push(`contract.roles[${index}] resolved value references an undefined environment: ${resolved.environmentId}`);
+      }
+    }
+  }
 
   const measurementIds = proof.measurements.map((item) => item.id);
   for (const duplicate of duplicateValues(measurementIds)) {
@@ -211,6 +216,9 @@ export function validateSpatialProof(proof) {
     }
     if (measurement.expected.unit !== measurement.actual.unit) {
       errors.push(`${pointer} expected and actual units must match`);
+    }
+    for (const error of spatialExpectationErrors(measurement.expected, measurement.actual.value)) {
+      errors.push(`${pointer} ${error}`);
     }
     if (
       measurement.expected.operator === "range" &&
@@ -232,10 +240,24 @@ export function validateSpatialProof(proof) {
     if (measurement.expected.token && !roleTokens.includes(measurement.expected.token)) {
       errors.push(`${pointer}.expected.token is not defined by the spatial contract`);
     }
+    if (measurement.expected.token && roleTokens.includes(measurement.expected.token)) {
+      const role = rolesByToken.get(measurement.expected.token);
+      const resolved = role.resolvedValues.find((item) => item.environmentId === measurement.environmentId);
+      const tolerance = measurement.expected.tolerance ?? 0;
+      if (
+        !resolved ||
+        measurement.expected.operator !== "eq" ||
+        typeof measurement.expected.value !== "number" ||
+        resolved?.unit !== measurement.expected.unit ||
+        Math.abs(resolved?.value - measurement.expected.value) > tolerance
+      ) {
+        errors.push(`${pointer}.expected must equal the declared semantic token value and unit for its environment`);
+      }
+    }
     if (measurement.expected.exceptionId && !exceptionIds.includes(measurement.expected.exceptionId)) {
       errors.push(`${pointer}.expected.exceptionId is not defined by the spatial contract`);
     }
-    if (ALIGNMENT_KINDS.has(measurement.kind)) {
+    if (SPATIAL_ALIGNMENT_KINDS.has(measurement.kind)) {
       if (!measurement.expected.anchorId && !measurement.expected.exceptionId) {
         errors.push(`${pointer} requires an alignment anchor or documented exception`);
       }
@@ -255,16 +277,16 @@ export function validateSpatialProof(proof) {
         const hierarchy = proof.contract.hierarchy.find((item) => item.id === measurement.expected.hierarchyId);
         const tighterRole = rolesByToken.get(hierarchy?.tighter);
         const looserRole = rolesByToken.get(hierarchy?.looser);
+        const tighterResolved = tighterRole?.resolvedValues.find((item) => item.environmentId === measurement.environmentId);
+        const looserResolved = looserRole?.resolvedValues.find((item) => item.environmentId === measurement.environmentId);
         const tolerance = measurement.expected.tolerance ?? 0;
         if (
-          typeof tighterRole?.value === "number" &&
-          typeof looserRole?.value === "number" &&
-          tighterRole.unit === measurement.relationshipValues.unit &&
-          looserRole.unit === measurement.relationshipValues.unit &&
-          (
-            Math.abs(tighterRole.value - measurement.relationshipValues.tighter) > tolerance ||
-            Math.abs(looserRole.value - measurement.relationshipValues.looser) > tolerance
-          )
+          !tighterResolved ||
+          !looserResolved ||
+          tighterResolved?.unit !== measurement.relationshipValues.unit ||
+          looserResolved?.unit !== measurement.relationshipValues.unit ||
+          Math.abs(tighterResolved?.value - measurement.relationshipValues.tighter) > tolerance ||
+          Math.abs(looserResolved?.value - measurement.relationshipValues.looser) > tolerance
         ) {
           errors.push(`${pointer} relationship values do not match the declared role tokens`);
         }
@@ -303,7 +325,7 @@ export function validateSpatialProof(proof) {
   if (selectedTarget && proof.contract.hierarchy.length === 0) {
     errors.push("a selected visual target requires at least one measured spacing hierarchy");
   }
-  if (selectedTarget && !proof.measurements.some((item) => ALIGNMENT_KINDS.has(item.kind))) {
+  if (selectedTarget && !proof.measurements.some((item) => SPATIAL_ALIGNMENT_KINDS.has(item.kind))) {
     errors.push("a selected visual target requires at least one alignment measurement");
   }
   if (selectedTarget && !proof.contract.parentLayoutRisk) {
@@ -410,6 +432,20 @@ export function validateSpatialProof(proof) {
       if (!proof.stressCases.some((item) => item.environmentId === environmentId)) {
         errors.push(`passing environment lacks a content stress case: ${environmentId}`);
       }
+      if (selectedTarget && !proof.measurements.some((item) => item.environmentId === environmentId && SPATIAL_ALIGNMENT_KINDS.has(item.kind))) {
+        errors.push(`passing selected-target environment lacks an alignment measurement: ${environmentId}`);
+      }
+      if (selectedTarget && !proof.measurements.some((item) => item.environmentId === environmentId && item.kind === "parent_layout")) {
+        errors.push(`passing selected-target environment lacks a parent_layout diagnostic: ${environmentId}`);
+      }
+      for (const hierarchyId of hierarchyIds) {
+        if (
+          selectedTarget &&
+          !proof.measurements.some((item) => item.environmentId === environmentId && item.kind === "relationship" && item.expected.hierarchyId === hierarchyId)
+        ) {
+          errors.push(`passing selected-target environment lacks hierarchy measurement ${hierarchyId}: ${environmentId}`);
+        }
+      }
     }
     if (proof.contract.responsiveRequired) {
       for (const viewportClass of ["narrow", "intermediate", "desktop"]) {
@@ -455,51 +491,53 @@ function exampleProof() {
     fontState: "document.fonts.ready",
     contentFixture: "representative long-copy fixture",
   }));
-  const measurements = environments.map((environment) => ({
-    id: `card-gap-${environment.viewportClass}`,
-    environmentId: environment.id,
-    kind: "gap",
-    subject: ".feature-grid",
-    acceptance: true,
-    expected: { source: "measured", operator: "eq", value: 24, unit: "px", tolerance: 1, token: "space.group" },
-    actual: { value: 24, unit: "px" },
-    result: "pass",
-    evidence: report,
-  }));
-  measurements.push({
-    id: "group-before-section",
-    environmentId: "chromium-desktop",
-    kind: "relationship",
-    subject: ".feature-grid -> .next-section",
-    acceptance: true,
-    expected: { source: "measured", operator: "eq", value: true, unit: "boolean", hierarchyId: "group-section" },
-    actual: { value: true, unit: "boolean" },
-    relationshipValues: { tighter: 24, looser: 64, unit: "px" },
-    result: "pass",
-    evidence: report,
-  });
-  measurements.push({
-    id: "card-start-alignment",
-    environmentId: "chromium-desktop",
-    kind: "edge_alignment",
-    subject: ".feature-card__title -> .feature-card",
-    acceptance: true,
-    expected: { source: "measured", operator: "eq", value: 0, unit: "px", tolerance: 1, anchorId: "card-start" },
-    actual: { value: 0, unit: "px" },
-    result: "pass",
-    evidence: report,
-  });
-  measurements.push({
-    id: "card-parent-display",
-    environmentId: "chromium-desktop",
-    kind: "parent_layout",
-    subject: ".feature-card",
-    acceptance: false,
-    expected: { source: "derived", operator: "eq", value: "grid", unit: "string" },
-    actual: { value: "grid", unit: "string" },
-    result: "pass",
-    evidence: report,
-  });
+  const measurements = environments.flatMap((environment) => [
+    {
+      id: `card-gap-${environment.viewportClass}`,
+      environmentId: environment.id,
+      kind: "gap",
+      subject: ".feature-grid",
+      acceptance: true,
+      expected: { source: "measured", operator: "eq", value: 24, unit: "px", tolerance: 1, token: "space.group" },
+      actual: { value: 24, unit: "px" },
+      result: "pass",
+      evidence: report,
+    },
+    {
+      id: `group-before-section-${environment.viewportClass}`,
+      environmentId: environment.id,
+      kind: "relationship",
+      subject: ".feature-grid -> .next-section",
+      acceptance: true,
+      expected: { source: "measured", operator: "eq", value: true, unit: "boolean", hierarchyId: "group-section" },
+      actual: { value: true, unit: "boolean" },
+      relationshipValues: { tighter: 24, looser: 64, unit: "px" },
+      result: "pass",
+      evidence: report,
+    },
+    {
+      id: `card-start-alignment-${environment.viewportClass}`,
+      environmentId: environment.id,
+      kind: "edge_alignment",
+      subject: ".feature-card__title -> .feature-card",
+      acceptance: true,
+      expected: { source: "measured", operator: "eq", value: 0, unit: "px", tolerance: 1, anchorId: "card-start" },
+      actual: { value: 0, unit: "px" },
+      result: "pass",
+      evidence: report,
+    },
+    {
+      id: `card-parent-display-${environment.viewportClass}`,
+      environmentId: environment.id,
+      kind: "parent_layout",
+      subject: ".feature-card",
+      acceptance: false,
+      expected: { source: "derived", operator: "eq", value: "grid", unit: "string" },
+      actual: { value: "grid", unit: "string" },
+      result: "pass",
+      evidence: report,
+    },
+  ]);
   return {
     schemaVersion: 1,
     proofId: "home-spatial-proof",
@@ -517,8 +555,8 @@ function exampleProof() {
       parentLayoutRisk: true,
       density: "comfortable",
       roles: [
-        { name: "group", token: "space.group", value: 24, unit: "px" },
-        { name: "section", token: "space.section", value: 64, unit: "px" },
+        { name: "group", token: "space.group", resolvedValues: environments.map((item) => ({ environmentId: item.id, value: 24, unit: "px" })) },
+        { name: "section", token: "space.section", resolvedValues: environments.map((item) => ({ environmentId: item.id, value: 64, unit: "px" })) },
       ],
       hierarchy: [{ id: "group-section", tighter: "space.group", looser: "space.section" }],
       anchors: [{ id: "card-start", type: "logical_start", subjects: [".feature-card", ".feature-card__title"] }],
@@ -550,18 +588,35 @@ function exampleProof() {
 
 function selfTest() {
   const valid = exampleProof();
+  const responsiveToken = structuredClone(valid);
+  responsiveToken.contract.roles.find((item) => item.token === "space.group").resolvedValues
+    .find((item) => item.environmentId === "chromium-narrow").value = 16;
+  for (const measurement of responsiveToken.measurements.filter((item) => item.environmentId === "chromium-narrow")) {
+    if (measurement.kind === "gap") {
+      measurement.expected.value = 16;
+      measurement.actual.value = 16;
+    }
+    if (measurement.kind === "relationship") measurement.relationshipValues.tighter = 16;
+  }
   const cases = [
     ["valid receipt", valid, true],
+    ["environment-resolved responsive token", responsiveToken, true],
     ["exact target uses derived geometry", { ...valid, measurements: valid.measurements.map((item, index) => index === 0 ? { ...item, expected: { ...item.expected, source: "derived" } } : item) }, false],
     ["exact target allows derived diagnostic", valid, true],
     ["missing intermediate", { ...valid, environments: valid.environments.filter((item) => item.viewportClass !== "intermediate"), measurements: valid.measurements.filter((item) => item.environmentId !== "chromium-intermediate"), stressCases: valid.stressCases.filter((item) => item.environmentId !== "chromium-intermediate") }, false],
     ["unowned gap", { ...valid, measurements: valid.measurements.map((item, index) => index === 0 ? { ...item, expected: { source: "measured", operator: "eq", value: 24, unit: "px", tolerance: 1 } } : item) }, false],
     ["false pass", { ...valid, measurements: valid.measurements.map((item, index) => index === 0 ? { ...item, actual: { value: 40, unit: "px" } } : item) }, false],
+    ["string lte coercion", { ...valid, measurements: valid.measurements.map((item, index) => index === 0 ? { ...item, expected: { ...item.expected, operator: "lte", value: "2", token: undefined }, actual: { value: 10, unit: "px" } } : item) }, false],
+    ["token value drift", { ...valid, measurements: valid.measurements.map((item, index) => index === 0 ? { ...item, expected: { ...item.expected, value: 40 }, actual: { value: 40, unit: "px" } } : item) }, false],
+    ["string role resolution", { ...valid, contract: { ...valid.contract, roles: valid.contract.roles.map((item, index) => index === 0 ? { ...item, resolvedValues: item.resolvedValues.map((resolved, resolvedIndex) => resolvedIndex === 0 ? { ...resolved, value: "24" } : resolved) } : item) } }, false],
     ["self review", { ...valid, designEvaluation: { ...valid.designEvaluation, independent: false } }, false],
     ["same reviewer and implementer", { ...valid, designEvaluation: { ...valid.designEvaluation, reviewer: valid.candidate.implementedBy } }, false],
     ["unmeasured hierarchy", { ...valid, measurements: valid.measurements.filter((item) => item.kind !== "relationship") }, false],
     ["false hierarchy", { ...valid, measurements: valid.measurements.map((item) => item.kind === "relationship" ? { ...item, relationshipValues: { tighter: 64, looser: 24, unit: "px" } } : item) }, false],
     ["missing parent diagnostic", { ...valid, measurements: valid.measurements.filter((item) => item.kind !== "parent_layout") }, false],
+    ["intermediate lacks alignment", { ...valid, measurements: valid.measurements.filter((item) => !(item.environmentId === "chromium-intermediate" && SPATIAL_ALIGNMENT_KINDS.has(item.kind))) }, false],
+    ["intermediate lacks parent diagnostic", { ...valid, measurements: valid.measurements.filter((item) => !(item.environmentId === "chromium-intermediate" && item.kind === "parent_layout")) }, false],
+    ["intermediate lacks hierarchy", { ...valid, measurements: valid.measurements.filter((item) => !(item.environmentId === "chromium-intermediate" && item.kind === "relationship")) }, false],
     ["risk downgrade", { ...valid, risk: "baseline", designEvaluation: { required: false, independent: false, result: "not_applicable", criteria: [], reason: "Low risk" } }, false],
     ["responsive downgrade", { ...valid, contract: { ...valid.contract, responsiveRequired: false } }, false],
     ["parent risk downgrade", { ...valid, contract: { ...valid.contract, parentLayoutRisk: false } }, false],
@@ -575,6 +630,13 @@ function selfTest() {
     if (passed !== expected) {
       throw new Error(`spatial proof self-test failed: ${name}: ${validateSpatialProof(proof).join("; ")}`);
     }
+  }
+  const schemaKinds = JSON.parse(fs.readFileSync(SCHEMA_PATH, "utf8")).$defs.measurement.properties.kind.enum;
+  if (
+    schemaKinds.length !== SPATIAL_MEASUREMENT_KINDS.length ||
+    schemaKinds.some((kind) => !SPATIAL_MEASUREMENT_KINDS.includes(kind))
+  ) {
+    throw new Error("spatial measurement kinds drifted between schema and shared contract");
   }
 
   const evidenceRoot = fs.mkdtempSync(path.join(os.tmpdir(), "spatial-proof-"));

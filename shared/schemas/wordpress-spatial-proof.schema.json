@@ -88,15 +88,29 @@
         "artifact": { "$ref": "#/$defs/evidence" }
       }
     },
+    "roleResolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["environmentId", "value", "unit"],
+      "properties": {
+        "environmentId": { "$ref": "#/$defs/nonEmpty" },
+        "value": { "type": "number" },
+        "unit": { "const": "px" }
+      }
+    },
     "role": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["name", "token", "value", "unit"],
+      "required": ["name", "token", "resolvedValues"],
       "properties": {
         "name": { "enum": ["inset", "inline", "stack", "group", "section", "gutter", "optical"] },
         "token": { "$ref": "#/$defs/nonEmpty" },
-        "value": { "oneOf": [{ "type": "number" }, { "type": "string" }] },
-        "unit": { "enum": ["px", "rem", "em", "ch", "percent", "fluid"] }
+        "resolvedValues": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/roleResolution" }
+        },
+        "sourceExpression": { "$ref": "#/$defs/nonEmpty" }
       }
     },
     "hierarchy": {

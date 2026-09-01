@@ -1,71 +1,69 @@
 # Spatial Layout And Alignment System
 
-Use this reference only when spacing, alignment, grid, density, or responsive composition is a material implementation risk. Keep the selected visual-target, block-editor, admin-workflow, or frontend-direction reference primary and use this as its single support. Skip it for exact owner-supplied value changes, low-risk copy changes, backend work, and native WordPress screens whose layout is not being customized.
+Use only when spacing, alignment, grid, density, or responsive composition is a material risk. Keep the visual, editor, admin, or frontend reference primary and this as its single support. Skip exact owner-supplied values, low-risk copy, backend work, and uncustomized native screens.
 
 ## 1. Establish Spatial Authority
 
-Inspect the rendered surface, source visual or design file, `DESIGN.md`, `theme.json`, WordPress Design System components, product tokens, block supports, and existing CSS before proposing values. Record each consequential fact as `supplied`, `measured`, or `derived`; do not turn a familiar framework default into design evidence.
+Inspect the rendered surface, source visual, `DESIGN.md`, `theme.json`, WPDS components, tokens, block supports, and CSS before proposing values. Mark consequential facts `supplied`, `measured`, or `derived`; framework defaults are not evidence.
 
-Any selected exact, directional, or inspiration target is at least `material` spatial risk and requires responsive proof; `baseline` is reserved for bounded low-risk work with no selected visual target. Declare whether parent layout behavior can cause the defect before capture.
+A selected exact, directional, or inspiration target is at least `material` risk and needs responsive proof. Reserve `baseline` for bounded work without a selected visual target. Declare parent-layout risk before capture.
 
 Define the smallest spatial contract before CSS:
 
-- canonical token owner and affected surface,
-- layout regions, reading order, container behavior, and responsive transitions,
+- token owner, affected surface, regions, reading order, containers, and responsive transitions,
 - semantic spacing roles: `inset` (inside a boundary), `inline` (same-line separation), `stack` (vertical sequence), `group` (related cluster), `section` (major transition), `gutter` (parallel tracks), and documented `optical` correction,
 - alignment anchors: logical start/end, shared edge, text baseline, center axis, media edge, or deliberate optical anchor,
-- relationship invariants such as `related gap < group gap < section gap`, rather than a list of unrelated numbers,
-- content-first regions versus element-first controls, plus default and dense modes when the workflow genuinely needs both.
+- invariants such as `related gap < group gap < section gap`, not unrelated numbers,
+- content-first regions versus element-first controls and justified density modes.
 
-Use the repository's existing scale when coherent. A 4/8-pixel grid is only a fallback heuristic, not proof of good hierarchy; do not snap every value mechanically or create near-duplicate tokens to hide arbitrary nudges. Optical exceptions need scope, reason, owner, and a review trigger.
+Use a coherent existing scale. A 4/8-pixel grid is fallback, not proof; do not mechanically snap values or hide nudges in near-duplicate tokens. Optical exceptions need scope, reason, owner, and review trigger.
 
 ## 2. Choose Layout By Relationship
 
-- Use Grid for two-dimensional tracks and repeated peers; use Flex/Row for one-dimensional distribution; use normal flow/Stack for reading sequences. Compose axes instead of forcing one layout primitive to solve every relationship.
-- Prefer `gap`, intrinsic sizing, `minmax()`, wrapping, logical properties, and content-owned block supports. Avoid negative-margin repairs, fixed heights for variable content, DOM-order tricks, and viewport-specific offsets.
+- Use Grid for two-dimensional tracks, Flex/Row for one-dimensional distribution, and flow/Stack for reading sequences. Compose axes rather than overloading one primitive.
+- Prefer `gap`, intrinsic sizing, `minmax()`, wrapping, logical properties, and block supports. Avoid negative margins, fixed variable-content heights, DOM-order tricks, and viewport offsets.
 - Use subgrid when supported by the repository's browser policy and repeated child content must share parent tracks. Use container queries when a component responds to its available space rather than the viewport.
-- Use bounded fluid values such as `clamp()` only when the endpoints and interpolation express an approved relationship. Verify browser support and provide a responsible fallback when using newer platform features.
-- In WordPress, keep durable global values in `theme.json` or the product's canonical token layer, reusable variations in block styles/patterns/components, and exceptional local layout in the narrowest owned stylesheet. Do not patch frontend CSS around a wrong block tree, template owner, or Site Editor override.
+- Use `clamp()` only when endpoints and interpolation express an approved relationship. Verify support and fallback for newer features.
+- Keep global values in `theme.json` or the token layer, variations in block styles/patterns/components, and exceptions in the narrowest owned stylesheet. Never patch CSS around a wrong block tree, template owner, or Site Editor override.
 
 ## 3. Design For Real Content And Direction
 
-Treat spacing as a content and workflow constraint, not a screenshot decoration:
+Treat spacing as a content and workflow constraint:
 
 - test short, typical, long, translated, RTL/bidi, missing-media, extreme-media, validation, loading, empty, and permission states that can change geometry,
-- preserve touch targets and readable grouping when a dense desktop workflow collapses,
-- change density because task frequency and information volume require it, not merely because the viewport is smaller,
+- preserve touch targets and grouping as dense workflows collapse; change density for task/information needs, not viewport alone,
 - prefer logical inline/block properties and verify mirrored alignment rather than assuming left/right symmetry,
-- keep the editor representation understandable and close enough to the frontend that a non-technical author can predict the result.
+- keep editor/frontend behavior predictable for non-technical authors.
 
-Repeated cards with different title lengths, actions, media, and metadata must keep intentional shared anchors without reserving brittle empty height. A parent Grid or Flex stretch can create apparent child-padding defects; inspect parent and child computed geometry before changing the child.
+Repeated cards under varied content need shared anchors without brittle empty height. Parent Grid/Flex stretch can mimic child-padding defects; inspect both geometries before changing the child.
 
 ## 4. Capture Browser Geometry
 
-Screenshots communicate composition but do not prove the cause of a spatial defect. For material spatial work, capture a `wordpress-spatial-proof.schema.json` receipt and validate it from the project root with `node wp-expert/scripts/validate-spatial-proof.mjs <receipt.json>`. Keep evidence locators relative to that root; absolute, escaping, remote-only, or oversized artifacts are rejected. Use `capture-spatial-measurements.mjs` inside a project that already provides Playwright, or collect equivalent values with the project's browser harness. A passing spatial receipt permits no proof gaps; record incomplete proof as `blocked` or `FAIL` rather than weakening `responsiveRequired` or risk.
+Screenshots show composition, not cause. For material work, capture a `wordpress-spatial-proof.schema.json` receipt and run `node wp-expert/scripts/validate-spatial-proof.mjs <receipt.json>` from the project root. Evidence paths must stay relative and local; escaping, remote-only, or oversized artifacts fail. Use `capture-spatial-measurements.mjs` where Playwright already exists or the project's browser harness. Incomplete proof is `blocked`/`FAIL`, never reduced risk.
 
-Bind each assertion to a viewport/environment, semantic token or documented exception, expected source (`supplied`, `measured`, or `derived`), actual value, tolerance, and immutable report evidence. Measure only decision-bearing facts:
+Bind assertions to environment, token/exception, source, actual, tolerance, and immutable evidence. Measure only decision-bearing facts:
 
 - bounding rectangles and shared-edge or center-axis deltas,
 - computed `gap`, padding/inset, track, width, and height values,
 - line count, wrap state, overflow, and scroll extent,
 - the parent layout properties when stretching, distribution, or implicit tracks may explain the symptom.
 
-Use narrow, intermediate, and desktop environments when the surface is responsive, plus the smallest content-stress set that can invalidate the contract. Exact visual targets use supplied or measured acceptance geometry; derived values cannot silently redefine exact parity. One screenshot at each endpoint is not evidence that intermediate layout is sound.
+For responsive surfaces use narrow, intermediate, and desktop environments plus the smallest invalidating content stress. Exact targets use supplied/measured acceptance geometry; derived values cannot redefine parity. Endpoint screenshots do not prove intermediate layout.
 
 ## 5. Independent Evaluation And Repair
 
-For material or brand-critical layout work, the implementer must not be the sole design evaluator. Give an available Product Design audit capability or fresh independent reviewer the source/contract, rendered candidate, and evidence without the implementation rationale. Evaluate:
+For material/brand-critical work, give Product Design audit or a fresh reviewer the contract, candidate, and evidence without implementation rationale. The implementer cannot be sole evaluator. Check:
 
 1. design coherence and hierarchy,
 2. spatial craft: rhythm, anchors, density, typography, and responsive transitions,
 3. functionality and state behavior,
 4. WordPress ownership, editability, and editor/frontend predictability.
 
-Convert findings into observable defects or acceptance criteria, not taste adjectives. Record the implementer and a different evaluator identity. Default to one focused repair and reproof. Track failed repair cycles in the receipt; after two, stop patching and reopen the spatial contract, ownership map, or selected direction. A reopened contract cannot pass until a new contract and proof run replace it.
+Convert findings to observable defects/criteria, not taste. Record different implementer/evaluator identities. Default to one focused repair and reproof. After two failed cycles, reopen the contract, ownership, or direction; passing needs replacement contract and proof.
 
 ## 6. Targeted Modern-Web Research
 
-When a confirmed platform question could change the implementation, search the official `modern-web-guidance` repository or primary web documentation and retrieve one matching guide rather than loading the catalog. Treat the catalog as preview guidance; verify browser support against the repository policy and an authoritative live source before adoption. Do not install an unreviewed transient package or add a modern API merely to make the design feel contemporary.
+For a confirmed platform question, retrieve one matching official `modern-web-guidance` guide or primary source, not the catalog. Verify browser support against repo policy and a live authority. Never install an unreviewed transient package or add an API for novelty.
 
 Useful official anchors:
 
@@ -75,4 +73,4 @@ Useful official anchors:
 
 ## Output
 
-Report the spatial authority, semantic roles and anchors, responsive/content invariants, browser measurements, independent evaluation result when required, fixed defect lineage, and remaining proof gaps. A known overlap, unexplained drift, broken hierarchy, or editor/frontend mismatch is `FAIL`, not acceptable visual variance.
+Report authority, roles/anchors, responsive/content invariants, measurements, required independent result, defect lineage, and proof gaps. Known overlap, drift, broken hierarchy, or editor/frontend mismatch is `FAIL`.
