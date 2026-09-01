@@ -2,9 +2,9 @@
 
 import fs from "node:fs";
 import process from "node:process";
-import { pathToFileURL } from "node:url";
 import {
   evaluateSpatialExpectation,
+  isSpatialCliEntrypoint,
   SPATIAL_MEASUREMENT_KINDS,
   SPATIAL_OPERATORS,
   spatialExpectationErrors,
@@ -296,4 +296,4 @@ async function main() {
   }
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) await main();
+if (isSpatialCliEntrypoint(import.meta.url)) await main();

@@ -5,10 +5,11 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import process from "node:process";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
 import Ajv2020 from "ajv/dist/2020.js";
 import {
   evaluateSpatialExpectation,
+  isSpatialCliEntrypoint,
   SPATIAL_ALIGNMENT_KINDS,
   SPATIAL_MEASUREMENT_KINDS,
   SPATIAL_TOKEN_KINDS,
@@ -752,4 +753,4 @@ async function main() {
   console.log(`spatial proof valid: ${argument}`);
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) await main();
+if (isSpatialCliEntrypoint(import.meta.url)) await main();

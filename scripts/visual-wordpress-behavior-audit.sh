@@ -328,6 +328,25 @@ echo "ok: spatial proof validator"
 node "$repo_root/wp-expert/scripts/capture-spatial-measurements.mjs" --self-test
 echo "ok: spatial measurement capture"
 
+symlink_dir="$(mktemp -d)"
+trap 'rm -rf "$symlink_dir"' EXIT
+ln -s "$repo_root/wp-expert/scripts/validate-spatial-proof.mjs" "$symlink_dir/validate-spatial-proof.mjs"
+ln -s "$repo_root/wp-expert/scripts/capture-spatial-measurements.mjs" "$symlink_dir/capture-spatial-measurements.mjs"
+if node "$symlink_dir/validate-spatial-proof.mjs" --example | grep -Fq '"proofId"'; then
+  echo "ok: symlinked spatial proof CLI"
+else
+  echo "ERROR: symlinked spatial proof CLI did not execute" >&2
+  errors=$((errors + 1))
+fi
+if node "$symlink_dir/capture-spatial-measurements.mjs" --self-test | grep -Fq "capture self-test passed"; then
+  echo "ok: symlinked spatial capture CLI"
+else
+  echo "ERROR: symlinked spatial capture CLI did not execute" >&2
+  errors=$((errors + 1))
+fi
+rm -rf "$symlink_dir"
+trap - EXIT
+
 if [ "$errors" -gt 0 ]; then
   echo "visual WordPress behavior audit failed: $errors issue(s)" >&2
   exit 1

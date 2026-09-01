@@ -22,6 +22,15 @@ export const SPATIAL_ALIGNMENT_KINDS = new Set([
   "center_alignment",
 ]);
 
+export function isSpatialCliEntrypoint(moduleUrl, argumentPath = process.argv[1]) {
+  if (!argumentPath) return false;
+  try {
+    return fs.realpathSync(argumentPath) === fs.realpathSync(fileURLToPath(moduleUrl));
+  } catch {
+    return false;
+  }
+}
+
 function finiteNumber(value) {
   return typeof value === "number" && Number.isFinite(value);
 }
@@ -76,3 +85,6 @@ export function evaluateSpatialExpectation(actual, expected) {
   if (expected.operator === "gte") return actual >= expected.value - tolerance;
   return actual >= expected.min - tolerance && actual <= expected.max + tolerance;
 }
+import fs from "node:fs";
+import process from "node:process";
+import { fileURLToPath } from "node:url";
