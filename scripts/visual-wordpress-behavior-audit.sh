@@ -62,6 +62,7 @@ require_text "wp-expert/scripts/validate-visual-proof.mjs" "required captures mu
 require_text "wp-expert/scripts/validate-visual-proof.mjs" "scope surface lacks a required workflow" "per-surface workflow proof"
 require_text "wp-expert/scripts/validate-visual-proof.mjs" "lacks a required capture for environment" "per-surface environment proof"
 require_text "wp-expert/scripts/validate-visual-proof.mjs" "must bind a rendered layer" "rendered token lineage proof"
+require_text "wp-expert/scripts/validate-visual-proof.mjs" "aligned result disagrees with implementation values" "token value drift rejection"
 require_text "wp-expert/scripts/validate-visual-proof.mjs" "fixed evidence must bind an affected passing capture or workflow rerun" "affected defect reproof binding"
 require_text "wp-expert/scripts/validate-visual-proof.mjs" "fixed evidence must differ from observed evidence" "visual reproof fingerprint separation"
 require_text "wp-expert/scripts/proof-evidence-files.mjs" "fingerprint does not match evidence bytes" "shared evidence byte verification"

@@ -308,6 +308,12 @@ export function validateVisualProof(proof) {
     const implementationKeys = lineage.implementations.map(
       (implementation) => `${implementation.layer}\0${implementation.location}`,
     );
+    const implementationValues = new Set(
+      lineage.implementations.map((implementation) => implementation.value.trim()),
+    );
+    if (lineage.result === "aligned" && implementationValues.size > 1) {
+      errors.push(`designSystem.lineage[${index}] aligned result disagrees with implementation values`);
+    }
     for (const duplicate of duplicateValues(implementationKeys)) {
       errors.push(`designSystem.lineage[${index}] contains duplicate implementation layer/location: ${duplicate.replace("\0", "/")}`);
     }
@@ -713,6 +719,19 @@ function selfTest() {
         lineage: [{
           ...elevated.designSystem.lineage[0],
           implementations: elevated.designSystem.lineage[0].implementations.map((implementation) => ({ ...implementation, surfaces: ["not-a-scoped-surface"] })),
+        }],
+      },
+    }, false],
+    ["aligned token lineage with mismatched values", {
+      ...elevated,
+      designSystem: {
+        ...elevated.designSystem,
+        lineage: [{
+          ...elevated.designSystem.lineage[0],
+          implementations: elevated.designSystem.lineage[0].implementations.map((implementation, index) => ({
+            ...implementation,
+            value: index === 0 ? "48px" : "200px",
+          })),
         }],
       },
     }, false],
