@@ -32,7 +32,6 @@ Use this router only after `wp-plugin-expert` is selected. Load one primary refe
 - Premium plugin admin/editor UI, onboarding, settings, forms, state coverage, and operational UX: `../../wp-expert/references/ui-ux-pro-for-wordpress.md`.
 - WordPress-native admin/editor components and tokens: `../../wp-expert/references/wordpress-design-system.md`.
 - Distinctive plugin-owned customer-facing frontend or anti-template composition without a selected target: `../../shared/references/frontend-design-taste.md`.
-- New or materially changed plugin-owned customer typography system, font selection, readable measure, type-scale tokens, or editor/frontend type parity: `../../shared/references/wordpress-typography-system.md`; keep native WordPress typography for routine wp-admin UI.
 - Trend-led product UI, AI-generated/adaptive output, personalization, voice, kinetic typography, guided motion, or immersive/3D interaction: `../../shared/references/emerging-interface-design-contract.md`.
 - Product experience defaults and onboarding lens: `../../shared/references/product-experience-principles.md`.
 - Premium/enterprise workflow accountability and proof: `../../shared/references/enterprise-design-judgment.md`.
