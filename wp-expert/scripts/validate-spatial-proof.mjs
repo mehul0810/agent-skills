@@ -273,6 +273,12 @@ export function validateSpatialProof(proof) {
       if (!measurement.expected.anchorId && !measurement.expected.exceptionId) {
         errors.push(`${pointer} requires an alignment anchor or documented exception`);
       }
+      if (measurement.expected.anchorId && !measurement.expected.alignmentMode) {
+        errors.push(`${pointer} requires alignmentMode for its declared anchor`);
+      }
+      if (measurement.kind === "edge_alignment" && !measurement.expected.edge) {
+        errors.push(`${pointer} edge_alignment requires the measured edge`);
+      }
     }
     if (measurement.expected.anchorId && !anchorIds.includes(measurement.expected.anchorId)) {
       errors.push(`${pointer}.expected.anchorId is not defined by the spatial contract`);
@@ -280,11 +286,22 @@ export function validateSpatialProof(proof) {
     if (measurement.expected.anchorId && anchorIds.includes(measurement.expected.anchorId)) {
       const anchor = anchorsById.get(measurement.expected.anchorId);
       const measuredSubjects = measurement.subject.split(/\s*->\s*/).filter(Boolean);
+      const declaredSubjects = new Set(anchor.subjects);
+      const measuredSubjectSet = new Set(measuredSubjects);
       if (!ANCHOR_MEASUREMENT_KINDS.get(anchor.type)?.has(measurement.kind)) {
         errors.push(`${pointer}.kind does not match the declared anchor type ${anchor.type}`);
       }
-      if (anchor.subjects.some((subject) => !measuredSubjects.includes(subject))) {
-        errors.push(`${pointer}.subject does not cover every subject in anchor ${anchor.id}`);
+      if (measurement.expected.alignmentMode !== anchor.type) {
+        errors.push(`${pointer}.expected.alignmentMode does not match anchor ${anchor.id}`);
+      }
+      if (["logical_start", "logical_end"].includes(anchor.type) && measurement.expected.edge !== anchor.type) {
+        errors.push(`${pointer}.expected.edge does not match logical anchor ${anchor.id}`);
+      }
+      if (
+        declaredSubjects.size !== measuredSubjectSet.size ||
+        [...declaredSubjects].some((subject) => !measuredSubjectSet.has(subject))
+      ) {
+        errors.push(`${pointer}.subject must exactly match the subjects in anchor ${anchor.id}`);
       }
     }
     if (measurement.kind === "relationship") {
@@ -453,6 +470,9 @@ export function validateSpatialProof(proof) {
       if (!proof.stressCases.some((item) => item.environmentId === environmentId)) {
         errors.push(`passing environment lacks a content stress case: ${environmentId}`);
       }
+      if (selectedTarget && !proof.measurements.some((item) => item.environmentId === environmentId && item.acceptance)) {
+        errors.push(`passing selected-target environment lacks acceptance geometry: ${environmentId}`);
+      }
       if (selectedTarget && !proof.measurements.some((item) => item.environmentId === environmentId && SPATIAL_ALIGNMENT_KINDS.has(item.kind))) {
         errors.push(`passing selected-target environment lacks an alignment measurement: ${environmentId}`);
       }
@@ -462,7 +482,7 @@ export function validateSpatialProof(proof) {
       for (const hierarchyId of hierarchyIds) {
         if (
           selectedTarget &&
-          !proof.measurements.some((item) => item.environmentId === environmentId && item.kind === "relationship" && item.expected.hierarchyId === hierarchyId)
+          !proof.measurements.some((item) => item.environmentId === environmentId && item.kind === "relationship" && item.acceptance && item.expected.hierarchyId === hierarchyId)
         ) {
           errors.push(`passing selected-target environment lacks hierarchy measurement ${hierarchyId}: ${environmentId}`);
         }
@@ -470,7 +490,7 @@ export function validateSpatialProof(proof) {
       for (const anchorId of anchorIds) {
         if (
           selectedTarget &&
-          !proof.measurements.some((item) => item.environmentId === environmentId && SPATIAL_ALIGNMENT_KINDS.has(item.kind) && item.expected.anchorId === anchorId)
+          !proof.measurements.some((item) => item.environmentId === environmentId && SPATIAL_ALIGNMENT_KINDS.has(item.kind) && item.acceptance && item.expected.anchorId === anchorId)
         ) {
           errors.push(`passing selected-target environment lacks anchor measurement ${anchorId}: ${environmentId}`);
         }
@@ -550,7 +570,7 @@ function exampleProof() {
       kind: "edge_alignment",
       subject: ".feature-card__title -> .feature-card",
       acceptance: true,
-      expected: { source: "measured", operator: "eq", value: 0, unit: "px", tolerance: 1, anchorId: "card-start" },
+      expected: { source: "measured", operator: "eq", value: 0, unit: "px", tolerance: 1, anchorId: "card-start", alignmentMode: "logical_start", edge: "logical_start" },
       actual: { value: 0, unit: "px" },
       result: "pass",
       evidence: report,
@@ -631,6 +651,7 @@ function selfTest() {
     ["valid receipt", valid, true],
     ["environment-resolved responsive token", responsiveToken, true],
     ["exact target uses derived geometry", { ...valid, measurements: valid.measurements.map((item, index) => index === 0 ? { ...item, expected: { ...item.expected, source: "derived" } } : item) }, false],
+    ["exact target has diagnostics only", { ...valid, measurements: valid.measurements.map((item) => ({ ...item, acceptance: false, expected: { ...item.expected, source: "derived" } })) }, false],
     ["exact target allows derived diagnostic", valid, true],
     ["missing intermediate", { ...valid, environments: valid.environments.filter((item) => item.viewportClass !== "intermediate"), measurements: valid.measurements.filter((item) => item.environmentId !== "chromium-intermediate"), stressCases: valid.stressCases.filter((item) => item.environmentId !== "chromium-intermediate") }, false],
     ["unowned gap", { ...valid, measurements: valid.measurements.map((item, index) => index === 0 ? { ...item, expected: { source: "measured", operator: "eq", value: 24, unit: "px", tolerance: 1 } } : item) }, false],
@@ -654,6 +675,8 @@ function selfTest() {
     ["unmeasured declared anchor", { ...valid, contract: { ...valid.contract, anchors: [...valid.contract.anchors, { id: "card-center", type: "center_axis", subjects: [".feature-card", ".feature-card__title"] }] } }, false],
     ["anchor type mismatch", { ...valid, contract: { ...valid.contract, anchors: valid.contract.anchors.map((item) => ({ ...item, type: "text_baseline" })) } }, false],
     ["anchor subject mismatch", { ...valid, contract: { ...valid.contract, anchors: valid.contract.anchors.map((item) => ({ ...item, subjects: [".unmeasured", ".feature-card"] })) } }, false],
+    ["extra anchor subject", { ...valid, measurements: valid.measurements.map((item) => SPATIAL_ALIGNMENT_KINDS.has(item.kind) ? { ...item, subject: `${item.subject} -> .unrelated` } : item) }, false],
+    ["logical edge mismatch", { ...valid, measurements: valid.measurements.map((item) => item.kind === "edge_alignment" ? { ...item, expected: { ...item.expected, edge: "logical_end" } } : item) }, false],
     ["missing hierarchy contract", { ...valid, contract: { ...valid.contract, hierarchy: [] }, measurements: valid.measurements.filter((item) => item.kind !== "relationship") }, false],
     ["second patch cycle continues", { ...valid, repair: { failedCycles: 2, action: "focused_repair", reason: "Try again" } }, false],
     ["proof gap in pass", { ...valid, proofGaps: ["WebKit not checked"] }, false],

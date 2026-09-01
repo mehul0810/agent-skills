@@ -50,6 +50,12 @@ function validateConfig(config) {
     if (["edge_alignment", "baseline_alignment", "center_alignment", "relationship"].includes(check.kind) && !check.referenceSelector) {
       errors.push(`checks[${index}].referenceSelector is required for ${check.kind}`);
     }
+    if (["edge_alignment", "baseline_alignment", "center_alignment"].includes(check.kind) && !check.expected?.alignmentMode) {
+      errors.push(`checks[${index}].expected.alignmentMode is required for ${check.kind}`);
+    }
+    if (check.kind === "edge_alignment" && !check.expected?.edge) {
+      errors.push(`checks[${index}].expected.edge is required for edge_alignment`);
+    }
     if (["computed_style", "gap", "inset", "parent_layout", "relationship"].includes(check.kind) && !check.property) {
       errors.push(`checks[${index}].property is required for ${check.kind}`);
     }
@@ -114,7 +120,7 @@ async function inspectCheck(page, check) {
     if (input.kind === "edge_alignment") {
       const referenceRect = reference.getBoundingClientRect();
       const direction = style.direction || document.dir || "ltr";
-      const edge = input.edge ?? "logical_start";
+      const edge = input.expected.edge;
       return {
         value: Math.abs(edgeValue(rect, edge, direction) - edgeValue(referenceRect, edge, direction)),
         unit: "px",
@@ -200,12 +206,13 @@ async function capture(config) {
         }
         const { relationshipValues, captureMethod, ...actual } = inspected;
         const passed = evaluateExpected(actual.value, check.expected);
+        const hasReference = ["edge_alignment", "baseline_alignment", "center_alignment", "relationship"].includes(check.kind);
         results.push({
           id: `${check.id}-${viewport.id}`,
           checkId: check.id,
           environmentId: viewport.id,
           kind: check.kind,
-          subject: check.selector,
+          subject: hasReference ? `${check.selector} -> ${check.referenceSelector}` : check.selector,
           acceptance: check.acceptance !== false,
           expected: check.expected,
           actual,

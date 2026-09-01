@@ -218,6 +218,8 @@
         "token": { "$ref": "#/$defs/nonEmpty" },
         "exceptionId": { "$ref": "#/$defs/nonEmpty" },
         "anchorId": { "$ref": "#/$defs/nonEmpty" },
+        "alignmentMode": { "enum": ["logical_start", "logical_end", "shared_edge", "text_baseline", "center_axis", "media_edge", "optical"] },
+        "edge": { "enum": ["logical_start", "logical_end", "left", "right", "top", "bottom"] },
         "hierarchyId": { "$ref": "#/$defs/nonEmpty" }
       }
     },
