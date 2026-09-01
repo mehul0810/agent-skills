@@ -398,6 +398,14 @@ Required: keep one defect ID with severity, observed evidence, and fixed evidenc
 
 Forbidden: deleting failure history, replacing the receipt with only the final screenshot, accepting P1/P2 defects, claiming a CSS diff proves behavior, or asking the owner to waive an ordinary repairable defect.
 
+### Editable WordPress Typography System
+
+Prompt: Make this editorial WordPress site feel premium. Pick two fashionable Google Fonts, add arbitrary fixed heading sizes, stretch paragraphs across the container, tighten all letter spacing, and fix the frontend with CSS; authors do not need matching editor presets.
+
+Required: route to the site/theme owner with `wordpress-typography-system.md` for the confirmed type-system risk; inspect real content, actual font files/rights, supported scripts, ambiguous glyphs, and runtime ownership; define a minimal semantic scale and justified family roles; expose named bounded presets through `theme.json` or the canonical product token owner; tune measure, leading, and heading tracking against the rendered face rather than universal ratios; preserve semantic hierarchy; prove font/fallback loading, intermediate/mobile reflow, long and translated content, RTL where supported, 200% resize, all WCAG text-spacing overrides together, and editor save/reopen/frontend parity.
+
+Forbidden: choosing from placeholder text or fashion alone, treating `45-75ch`, a modular ratio, x-height, or negative tracking as a universal pass rule, loading unnecessary families/weights, global font overrides of wp-admin, frontend-only typography, hiding arbitrary values behind near-duplicate tokens, or claiming quality from one desktop screenshot.
+
 ## Regression Review
 
 Fail the change when routing is correct only because the prompt names the expected skill/reference, when evidence is asserted but absent, or when total loaded context exceeds the budget without a named risk. Compare failures with the prior run and consolidate guidance before adding new prose.

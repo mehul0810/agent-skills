@@ -213,6 +213,15 @@
       ]
     },
     {
+      "name": "WordPress typography system",
+      "maxWords": 2100,
+      "warningPercent": 85,
+      "files": [
+        "wp-theme-expert/SKILL.md",
+        "shared/references/wordpress-typography-system.md"
+      ]
+    },
+    {
       "name": "Plugin visual implementation",
       "maxWords": 2500,
       "warningPercent": 85,
