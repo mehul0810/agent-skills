@@ -7,6 +7,7 @@ Use this as the single primary reference when one candidate needs security, perf
 Establish once:
 
 - Commit/package/build identity and target WordPress/PHP/browser/runtime.
+- `assuranceProfile`: standard, or elevated with explicit high-traffic, sensitive-data, storage/migration, API, queue/webhook, or multi-tenant risks.
 - Changed files, entry points, user journeys, stored/public contracts, data volume, and exclusions.
 - Existing project commands, baseline budgets, accessibility target, and release risk.
 
@@ -17,11 +18,11 @@ Inspect the diff plus enough owners/callers/runtime evidence to avoid local-only
 | Area | Inspect | Release blocker | Minimum proof |
 |---|---|---|---|
 | Security | Auth/capability/ownership, nonces, validation/escaping, SQL/files/URLs, secrets/PII, webhooks/dependencies | Credible unauthorized access, injection, secret/data exposure, unsafe upload/SSRF, or missing sensitive negative proof | Boundary-specific negative tests and exact package/dependency evidence |
-| Performance | Query/cache/options/remote/jobs, admin/editor bootstrap, assets and changed user path | Unbounded hot path, availability/queue risk, known severe regression, or claim without comparable evidence | Same-condition baseline/after or explicit blocked gap |
+| Performance | Query/cache/options/remote/jobs, admin/editor bootstrap, assets and changed user path | Unbounded hot path, availability/queue risk, known severe regression, or claim without comparable evidence | Same-condition baseline/after; scale risks add a measured capacity envelope |
 | Modularity | Entry point to business/data owner, duplicate invariants, coupling/cycles/globals, public contracts, comments/tests/dead code; apply the non-breaking checkpoint for launched contracts and migrations | Multiple owners for critical invariant, unsafe cycle/state, untestable release-critical change, or accidental public/data break | Characterization/behavior tests and evidence that ownership/coupling improved |
-| Accessibility | Critical states, semantics/names, keyboard/focus, errors/status, contrast/reflow/motion, author and visitor flows | Keyboard trap, unusable critical task, missing critical name/error, or inaccessible editor/auth/setup flow | Automated scan plus manual keyboard and named AT/browser proof where applicable |
+| Accessibility | Critical states, semantics/names, keyboard/focus, errors/status, contrast/reflow/motion, author and visitor flows | Keyboard trap, unusable critical task, missing critical name/error, or inaccessible editor/auth/setup flow | Candidate-bound automated scan plus manual keyboard and named AT/browser proof |
 
-For each area, record `pass`, `fail`, `partial`, or `not applicable - reason`. Never omit a dimension.
+For each area, record `pass`, `fail`, `partial`, or `not applicable - reason`. Never omit a dimension. A passing packaged multi-domain release candidate cannot mark a domain not applicable: derive assurance risks from the stated scope instead of omitting inconvenient gates, then bind every domain, authorization, resource, capacity, migration, contract, and independent-review receipt to the target commit and package digest. Typed `security_negative`, `performance_comparable`, `modularity_behavior`, and accessibility proof must include actor/input/resource/boundary negative cases, surface-valid public entry point/consumer and before/after contract cases, structurally identical performance conditions, a digested automated-scan artifact, and named browser/assistive technology rather than self-declared labels, source-file masquerades, TODO artifacts, or prose. Elevated traffic/queue/multi-tenant proof adds numeric workload, headroom, saturation, fairness, queue/drain, storage/restore, failure, tail/error/cache, overload, recovery, and capacity evidence. Migration scopes use staged expand/migrate/contract receipts; legacy-debt scopes record the measured ratchet, owner, issue, budget, and posture. Code inspection alone may support a scoped source review, but cannot pass a packaged release gate.
 
 For applicable accessibility, set `accessibilityClaim: scoped_review`; a release review is not WCAG certification. Explicit AA conformance audits use the detailed accessibility mode and its formal evidence matrix instead.
 
@@ -41,7 +42,7 @@ After resolving that mode, return to this matrix. Do not load a second detailed 
 
 Findings remain evidence-backed and severity ordered. For formal/release-critical work, materialize `shared/schemas/wp-quality-review.schema.json` and run the bundled validator.
 
-Use compact structured receipts, not “passed” prose: evidence records a kind, concrete pointer, observed fact, and runtime environment when relevant; validation records the exact command or journey, expected and observed result, disposition, environment, and artifact when available. Performance fixes state direction, numeric budget, and comparable before/after conditions; a regression or missed budget is not a fix. Accessibility manual proof names the browser and assistive-technology environment.
+Use compact structured receipts, not “passed” prose: evidence records a kind, concrete pointer, observed fact, and runtime environment when relevant; validation records the exact command or journey, expected and observed result, disposition, environment, and artifact. Performance fixes state direction, numeric budget, identical structured before/after conditions, and elevated tail/overload evidence when triggered; a regression or missed budget is not a fix. Accessibility manual proof names a recognizable browser and assistive technology. The validator can reject malformed or semantically incomplete receipts, but a reviewer must still verify that the referenced artifacts exist and support the observation.
 
 Overall `pass` requires:
 

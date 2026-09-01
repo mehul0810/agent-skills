@@ -27,7 +27,11 @@ function fixture() {
 		accessibilityAudit: {
 			standard: 'WCAG 2.2 AA', evaluatedOn: '2026-08-31', technologies: ['HTML', 'CSS', 'JavaScript'],
 			criteria: Object.fromEntries(WCAG22_AA_IDS.map((id) => [id, { status: 'pass', rationale: `Synthetic criterion ${id} was exercised in the fixture`, checks: ['keyboard'] }])),
-			checks: Object.fromEntries(['fullPages', 'completeProcesses', 'accessibilitySupport', 'nonInterference', 'keyboard', 'assistiveTechnology'].map((id) => [id, { ...check }])),
+			checks: {
+				...Object.fromEntries(['fullPages', 'completeProcesses', 'accessibilitySupport', 'nonInterference', 'keyboard'].map((id) => [id, { ...check }])),
+				assistiveTechnology: { ...check, browser: 'Safari 26', assistiveTechnology: 'VoiceOver' },
+				automatedScan: { ...check, kind: 'static', check: 'Run axe-core against every claimed state', artifactSha256: 'b'.repeat(64) },
+			},
 		},
 	};
 }
@@ -75,6 +79,10 @@ const invalid = [
 	['missing AT proof', (r) => { delete r.accessibilityAudit.checks.assistiveTechnology; }],
 	['scanner as AT proof', (r) => { r.accessibilityAudit.checks.assistiveTechnology.kind = 'static'; }],
 	['AT environment absent', (r) => { delete r.accessibilityAudit.checks.assistiveTechnology.environment; }],
+	['placeholder browser and AT', (r) => { r.accessibilityAudit.checks.assistiveTechnology.browser = 'browser'; r.accessibilityAudit.checks.assistiveTechnology.assistiveTechnology = 'screen reader'; }],
+	['missing automated scan', (r) => { delete r.accessibilityAudit.checks.automatedScan; }],
+	['automated scan missing digest', (r) => { delete r.accessibilityAudit.checks.automatedScan.artifactSha256; }],
+	['placeholder automated scan', (r) => { r.accessibilityAudit.checks.automatedScan.artifact = 'fixtures/TODO-a11y.md'; r.accessibilityAudit.checks.automatedScan.observed = 'Placeholder scan will be completed after release'; }],
 	['missing complete process proof', (r) => { delete r.accessibilityAudit.checks.completeProcesses; }],
 	['missing support technology inventory', (r) => { r.accessibilityAudit.technologies = []; }],
 	['criterion dangling check', (r) => { r.accessibilityAudit.criteria['1.2.5'].checks = ['missing']; }],

@@ -55,6 +55,10 @@ export function validateAccessibilityAudit(report, validateReceipt) {
 	}
 	const passing = report.conclusion === 'pass' || domain?.disposition === 'pass';
 	if (passing) {
+		const atCheck = audit.checks.assistiveTechnology;
+		if (!atCheck.browser || !atCheck.assistiveTechnology) errors.push('formal AA pass requires named browser and assistiveTechnology fields');
+		if (audit.checks.automatedScan?.kind !== 'static' || audit.checks.automatedScan?.result !== 'pass') errors.push('formal AA pass requires a passing automatedScan artifact alongside manual proof');
+		if (!/^[a-f0-9]{64}$/.test(audit.checks.automatedScan?.artifactSha256 ?? '')) errors.push('formal AA automatedScan requires an artifactSha256 digest');
 		if (!Object.values(audit.criteria).some((criterion) => criterion.status === 'pass')) errors.push('formal AA cannot mark every criterion not_applicable');
 		if (Object.values(audit.criteria).some((criterion) => ['fail', 'blocked'].includes(criterion.status))) errors.push('formal AA pass cannot contain failed or blocked criteria');
 		if (Object.values(audit.checks).some((check) => check.result !== 'pass')) errors.push('formal AA pass requires all recorded checks to pass');

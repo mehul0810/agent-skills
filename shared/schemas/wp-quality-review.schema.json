@@ -41,7 +41,7 @@
         },
         "checks": {
           "type": "object",
-          "required": ["fullPages", "completeProcesses", "accessibilitySupport", "nonInterference", "keyboard", "assistiveTechnology"],
+          "required": ["fullPages", "completeProcesses", "accessibilitySupport", "nonInterference", "keyboard", "assistiveTechnology", "automatedScan"],
           "propertyNames": { "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$" },
           "properties": {
             "fullPages": { "$ref": "#/$defs/accessibilityManualCheck" },
@@ -49,7 +49,8 @@
             "accessibilitySupport": { "$ref": "#/$defs/accessibilityManualCheck" },
             "nonInterference": { "$ref": "#/$defs/accessibilityManualCheck" },
             "keyboard": { "$ref": "#/$defs/accessibilityManualCheck" },
-            "assistiveTechnology": { "$ref": "#/$defs/accessibilityManualCheck" }
+            "assistiveTechnology": { "$ref": "#/$defs/accessibilityManualCheck" },
+            "automatedScan": { "$ref": "#/$defs/accessibilityAutomatedCheck" }
           },
           "additionalProperties": { "$ref": "#/$defs/validationReceipt" }
         }
@@ -59,6 +60,12 @@
       "allOf": [
         { "$ref": "#/$defs/validationReceipt" },
         { "required": ["artifact"], "properties": { "kind": { "const": "manual" } } }
+      ]
+    },
+    "accessibilityAutomatedCheck": {
+      "allOf": [
+        { "$ref": "#/$defs/validationReceipt" },
+        { "required": ["artifact", "artifactSha256"], "properties": { "kind": { "const": "static" } } }
       ]
     },
     "aaaAdvisoryCriteria": {
@@ -75,11 +82,7 @@
         "pointer": { "type": "string", "minLength": 5 },
         "observation": { "type": "string", "minLength": 12 },
         "environment": { "type": "string", "minLength": 8 },
-        "identity": {
-          "type": "object",
-          "minProperties": 1,
-          "additionalProperties": { "type": "string", "minLength": 1 }
-        }
+        "identity": { "$ref": "#/$defs/candidateIdentity" }
       },
       "allOf": [
         {
@@ -92,6 +95,15 @@
         }
       ]
     },
+    "candidateIdentity": {
+      "type": "object",
+      "required": ["commitSha"],
+      "additionalProperties": false,
+      "properties": {
+        "commitSha": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+        "artifactSha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
     "validationReceipt": {
       "type": "object",
       "required": ["kind", "check", "expected", "observed", "result"],
@@ -101,14 +113,45 @@
         "check": { "type": "string", "minLength": 8 },
         "expected": { "type": "string", "minLength": 12 },
         "observed": { "type": "string", "minLength": 12 },
+        "expectedState": { "enum": ["allow", "deny", "reject", "sanitize", "preserve", "within_budget", "accessible", "success", "failure", "blocked"] },
+        "observedState": { "enum": ["allow", "deny", "reject", "sanitize", "preserve", "within_budget", "accessible", "success", "failure", "blocked"] },
         "result": { "enum": ["pass", "fail", "blocked"] },
         "environment": { "type": "string", "minLength": 8 },
-        "artifact": { "type": "string", "minLength": 5 }
+        "artifact": { "type": "string", "minLength": 5 },
+        "artifactSha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "identity": { "$ref": "#/$defs/candidateIdentity" },
+        "claim": { "enum": ["security_negative", "performance_comparable", "modularity_behavior", "accessibility_manual", "accessibility_automated", "contract_compatibility", "migration_step"] },
+        "browser": { "type": "string", "minLength": 3 },
+        "assistiveTechnology": { "type": "string", "minLength": 3 },
+        "performanceMeasurement": { "$ref": "#/$defs/performanceMeasurement" },
+        "securityCases": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/securityCase" } },
+        "contractCases": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/contractCase" } },
+        "performanceChecks": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/performanceCheck" } }
       },
       "allOf": [
         {
           "if": { "properties": { "kind": { "enum": ["runtime", "browser", "manual", "profile"] } }, "required": ["kind"] },
           "then": { "required": ["environment"] }
+        },
+        {
+          "if": { "properties": { "claim": { "const": "security_negative" } }, "required": ["claim"] },
+          "then": { "required": ["securityCases", "expectedState", "observedState"], "properties": { "expectedState": { "enum": ["deny", "reject", "sanitize"] }, "observedState": { "enum": ["deny", "reject", "sanitize"] } } }
+        },
+        {
+          "if": { "properties": { "claim": { "enum": ["modularity_behavior", "contract_compatibility"] } }, "required": ["claim"] },
+          "then": { "required": ["contractCases", "expectedState", "observedState"], "properties": { "expectedState": { "const": "preserve" }, "observedState": { "const": "preserve" } } }
+        },
+        {
+          "if": { "properties": { "claim": { "const": "performance_comparable" } }, "required": ["claim"] },
+          "then": { "required": ["performanceMeasurement", "expectedState", "observedState"], "properties": { "expectedState": { "const": "within_budget" }, "observedState": { "const": "within_budget" } } }
+        },
+        {
+          "if": { "properties": { "claim": { "const": "accessibility_manual" } }, "required": ["claim"] },
+          "then": { "required": ["browser", "assistiveTechnology", "expectedState", "observedState"], "properties": { "expectedState": { "const": "accessible" }, "observedState": { "const": "accessible" } } }
+        },
+        {
+          "if": { "properties": { "claim": { "const": "accessibility_automated" } }, "required": ["claim"] },
+          "then": { "required": ["expectedState", "observedState", "artifactSha256"], "properties": { "expectedState": { "const": "accessible" }, "observedState": { "const": "accessible" } } }
         }
       ]
     },
@@ -119,12 +162,16 @@
       "properties": {
         "disposition": { "enum": ["pass", "fail", "partial", "not_applicable"] },
         "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidenceReceipt" } },
+        "validation": { "type": "array", "items": { "$ref": "#/$defs/validationReceipt" } },
+        "authorizationMatrix": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/authorizationCheck" } },
+        "resourceBudget": { "$ref": "#/$defs/resourceBudget" },
+        "capacityEnvelope": { "$ref": "#/$defs/capacityEnvelope" },
         "reason": { "type": "string", "minLength": 12 }
       },
       "allOf": [
         {
           "if": { "properties": { "disposition": { "const": "not_applicable" } }, "required": ["disposition"] },
-          "then": { "required": ["reason"], "properties": { "evidence": { "maxItems": 0 } } },
+          "then": { "required": ["reason"], "properties": { "evidence": { "maxItems": 0 }, "validation": { "maxItems": 0 } } },
           "else": { "required": ["evidence"], "properties": { "evidence": { "minItems": 1 } } }
         }
       ]
@@ -141,6 +188,8 @@
         "after": { "type": "number" },
         "budget": { "type": "number" },
         "conditions": { "type": "string", "minLength": 12 },
+        "baselineConditions": { "$ref": "#/$defs/performanceConditions" },
+        "candidateConditions": { "$ref": "#/$defs/performanceConditions" },
         "sampleSize": { "type": "integer", "minimum": 1 },
         "distribution": {
           "type": "object",
@@ -160,6 +209,57 @@
         "runCount": { "type": "integer", "minimum": 1 },
         "provenance": { "type": "string", "minLength": 8 },
         "limitations": { "type": "string", "minLength": 8 }
+      }
+    },
+    "performanceConditions": {
+      "type": "object",
+      "required": ["runtime", "dataset", "cacheState", "concurrency"],
+      "additionalProperties": false,
+      "properties": {
+        "runtime": { "type": "string", "minLength": 4 },
+        "dataset": { "type": "string", "minLength": 4 },
+        "cacheState": { "type": "string", "minLength": 4 },
+        "concurrency": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "securityCase": {
+      "type": "object",
+      "required": ["actorClass", "actor", "input", "resource", "boundary", "expected", "observed", "result"],
+      "additionalProperties": false,
+      "properties": {
+        "actorClass": { "enum": ["anonymous", "low_privilege", "wrong_object", "external_service", "malformed_input"] },
+        "actor": { "type": "string", "minLength": 6 },
+        "input": { "type": "string", "minLength": 6 },
+        "resource": { "type": "string", "minLength": 6 },
+        "boundary": { "enum": ["authentication", "capability", "nonce", "ownership", "validation", "escaping", "rate_limit", "secret_boundary", "tenant_isolation"] },
+        "expected": { "enum": ["deny", "reject", "sanitize"] },
+        "observed": { "enum": ["deny", "reject", "sanitize"] },
+        "result": { "const": "pass" }
+      }
+    },
+    "contractCase": {
+      "type": "object",
+      "required": ["surface", "entryPoint", "consumer", "contract", "before", "after", "result"],
+      "additionalProperties": false,
+      "properties": {
+        "surface": { "enum": ["public_hook", "rest_route", "block_markup", "cli_command", "stored_data", "user_journey"] },
+        "entryPoint": { "type": "string", "minLength": 5 },
+        "consumer": { "enum": ["visitor", "administrator", "editor", "integrator", "cli_user"] },
+        "contract": { "type": "string", "minLength": 6 },
+        "before": { "type": "string", "minLength": 6 },
+        "after": { "type": "string", "minLength": 6 },
+        "result": { "enum": ["preserved", "versioned"] }
+      }
+    },
+    "performanceCheck": {
+      "type": "object",
+      "required": ["kind", "expected", "observed", "result"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "enum": ["tail", "overload", "recovery", "cache", "capacity"] },
+        "expected": { "type": "string", "minLength": 12 },
+        "observed": { "type": "string", "minLength": 12 },
+        "result": { "const": "pass" }
       }
     },
     "authorizationCheck": {
@@ -199,6 +299,53 @@
         "evidence": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/evidenceReceipt" } }
       }
     },
+    "capacityEnvelope": {
+      "type": "object",
+      "required": ["workload", "headroomPercent", "saturation", "fairness", "queue", "storage", "failureBehavior", "evidence"],
+      "additionalProperties": false,
+      "properties": {
+        "workload": {
+          "type": "object", "required": ["description", "concurrency", "dataVolume", "durationSeconds"], "additionalProperties": false,
+          "properties": {
+            "description": { "type": "string", "minLength": 12 },
+            "concurrency": { "type": "number", "exclusiveMinimum": 0 },
+            "dataVolume": { "type": "number", "exclusiveMinimum": 0 },
+            "durationSeconds": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        },
+        "headroomPercent": { "type": "number", "exclusiveMinimum": 0 },
+        "saturation": {
+          "type": "object", "required": ["metric", "observed", "budget", "direction"], "additionalProperties": false,
+          "properties": {
+            "metric": { "type": "string", "minLength": 4 },
+            "observed": { "type": "number" },
+            "budget": { "type": "number" },
+            "direction": { "enum": ["lower_is_better", "higher_is_better"] }
+          }
+        },
+        "fairness": {
+          "type": "object", "required": ["scope", "limit", "unit"], "additionalProperties": false,
+          "properties": { "scope": { "type": "string", "minLength": 4 }, "limit": { "type": "number", "exclusiveMinimum": 0 }, "unit": { "type": "string", "minLength": 1 } }
+        },
+        "queue": {
+          "type": "object", "required": ["arrivalRate", "serviceRate", "maxBacklog", "observedBacklog", "drainSeconds", "drainBudgetSeconds"], "additionalProperties": false,
+          "properties": {
+            "arrivalRate": { "type": "number", "minimum": 0 }, "serviceRate": { "type": "number", "minimum": 0 },
+            "maxBacklog": { "type": "number", "minimum": 0 }, "observedBacklog": { "type": "number", "minimum": 0 },
+            "drainSeconds": { "type": "number", "minimum": 0 }, "drainBudgetSeconds": { "type": "number", "minimum": 0 }
+          }
+        },
+        "storage": {
+          "type": "object", "required": ["currentBytes", "projectedBytes", "restoreSeconds", "restoreBudgetSeconds"], "additionalProperties": false,
+          "properties": {
+            "currentBytes": { "type": "number", "minimum": 0 }, "projectedBytes": { "type": "number", "minimum": 0 },
+            "restoreSeconds": { "type": "number", "minimum": 0 }, "restoreBudgetSeconds": { "type": "number", "minimum": 0 }
+          }
+        },
+        "failureBehavior": { "type": "string", "minLength": 12 },
+        "evidence": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/evidenceReceipt" } }
+      }
+    },
     "independentReview": {
       "type": "object",
       "required": ["kind", "runId", "reviewedCommitSha", "result", "evidence"],
@@ -209,6 +356,36 @@
         "reviewedCommitSha": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
         "result": { "const": "pass" },
         "evidence": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/evidenceReceipt" } }
+      }
+    },
+    "migrationPlan": {
+      "type": "object",
+      "required": ["strategy", "expandCheck", "backfillCheck", "idempotencyCheck", "rollbackCheck", "contractStatus"],
+      "additionalProperties": false,
+      "properties": {
+        "strategy": { "const": "expand_migrate_contract" },
+        "expandCheck": { "$ref": "#/$defs/validationReceipt" },
+        "backfillCheck": { "$ref": "#/$defs/validationReceipt" },
+        "idempotencyCheck": { "$ref": "#/$defs/validationReceipt" },
+        "rollbackCheck": { "$ref": "#/$defs/validationReceipt" },
+        "contractStatus": { "enum": ["deferred", "owner_approved"] },
+        "cleanupIssue": { "type": "string", "minLength": 5 },
+        "ownerApproval": { "$ref": "#/$defs/evidenceReceipt" }
+      }
+    },
+    "modularityRatchet": {
+      "type": "object",
+      "required": ["metric", "baseline", "after", "budget", "posture"],
+      "additionalProperties": false,
+      "properties": {
+        "metric": { "type": "string", "minLength": 4 },
+        "baseline": { "type": "number", "minimum": 0 },
+        "after": { "type": "number", "minimum": 0 },
+        "budget": { "type": "number", "minimum": 0 },
+        "posture": { "enum": ["reduced", "no_growth", "exception"] },
+        "owner": { "type": "string", "minLength": 8 },
+        "issue": { "type": "string", "minLength": 5 },
+        "rationale": { "type": "string", "minLength": 8 }
       }
     },
     "finding": {
@@ -223,7 +400,7 @@
         "riskFlags": {
           "type": "array",
           "uniqueItems": true,
-          "items": { "enum": ["release_critical", "migration", "public_contract", "authorization_boundary", "resource_abuse"] }
+          "items": { "enum": ["release_critical", "migration", "public_contract", "authorization_boundary", "resource_abuse", "legacy_debt"] }
         },
         "evidence": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/evidenceReceipt" } },
         "impact": { "type": "string", "minLength": 12 },
@@ -238,6 +415,9 @@
         "resourceBudget": { "$ref": "#/$defs/resourceBudget" },
         "negativeTests": { "type": "array", "items": { "$ref": "#/$defs/validationReceipt" } },
         "behaviorChecks": { "type": "array", "items": { "$ref": "#/$defs/validationReceipt" } },
+        "contractChecks": { "type": "array", "items": { "$ref": "#/$defs/validationReceipt" } },
+        "migrationPlan": { "$ref": "#/$defs/migrationPlan" },
+        "modularityRatchet": { "$ref": "#/$defs/modularityRatchet" },
         "manualChecks": { "type": "array", "items": { "$ref": "#/$defs/validationReceipt" } },
         "aaaAdvisoryCriteria": { "$ref": "#/$defs/aaaAdvisoryCriteria" },
         "independentReview": { "$ref": "#/$defs/independentReview" },
@@ -292,6 +472,18 @@
         {
           "if": { "properties": { "status": { "const": "fixed" }, "area": { "const": "modularity" } }, "required": ["status", "area"] },
           "then": { "required": ["behaviorChecks"], "properties": { "behaviorChecks": { "minItems": 1 } } }
+        },
+        {
+          "if": { "properties": { "status": { "const": "fixed" }, "riskFlags": { "contains": { "const": "public_contract" } } }, "required": ["status", "riskFlags"] },
+          "then": { "required": ["contractChecks"], "properties": { "contractChecks": { "minItems": 1 } } }
+        },
+        {
+          "if": { "properties": { "riskFlags": { "contains": { "const": "migration" } } }, "required": ["riskFlags"] },
+          "then": { "required": ["migrationPlan"] }
+        },
+        {
+          "if": { "properties": { "riskFlags": { "contains": { "const": "legacy_debt" } } }, "required": ["riskFlags"] },
+          "then": { "required": ["modularityRatchet"] }
         },
         {
           "if": { "properties": { "status": { "const": "fixed" }, "area": { "const": "accessibility" } }, "required": ["status", "area"] },
@@ -380,6 +572,19 @@
       }
     },
     "qualityTarget": { "type": "string", "minLength": 8 },
+    "assuranceProfile": {
+      "type": "object",
+      "required": ["level", "risks"],
+      "additionalProperties": false,
+      "properties": {
+        "level": { "enum": ["standard", "elevated"] },
+        "risks": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "enum": ["high_traffic", "sensitive_data", "custom_storage", "migration", "public_api", "async_queue", "external_webhook", "multi_tenant", "legacy_debt"] }
+        }
+      }
+    },
     "accessibilityClaim": { "enum": ["scoped_review", "wcag22_aa_conformance"] },
     "accessibilityAudit": { "$ref": "#/$defs/accessibilityAudit" },
     "domains": {
