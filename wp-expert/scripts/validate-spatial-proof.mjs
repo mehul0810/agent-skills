@@ -23,6 +23,7 @@ const DESIGN_CRITERIA = new Set([
   "functionality",
   "wordpress_ownership",
 ]);
+const MAX_EVIDENCE_BYTES = 100 * 1024 * 1024;
 
 let compiledSchema;
 
@@ -66,31 +67,61 @@ function evidenceObjects(value, pointer = "proof", output = []) {
   return output;
 }
 
-function evidencePath(locator, proofPath) {
-  if (/^https?:\/\//i.test(locator)) return null;
-  if (path.isAbsolute(locator)) return locator;
-  const fromCwd = path.resolve(process.cwd(), locator);
-  if (fs.existsSync(fromCwd)) return fromCwd;
-  return path.resolve(path.dirname(path.resolve(proofPath)), locator);
+function isInside(root, candidate) {
+  return candidate === root || candidate.startsWith(`${root}${path.sep}`);
 }
 
-export function verifySpatialEvidenceFiles(proof, proofPath) {
+function hashFile(file) {
+  const hash = crypto.createHash("sha256");
+  const descriptor = fs.openSync(file, "r");
+  const buffer = Buffer.allocUnsafe(1024 * 1024);
+  try {
+    let bytesRead;
+    do {
+      bytesRead = fs.readSync(descriptor, buffer, 0, buffer.length, null);
+      if (bytesRead > 0) hash.update(buffer.subarray(0, bytesRead));
+    } while (bytesRead > 0);
+  } finally {
+    fs.closeSync(descriptor);
+  }
+  return `sha256:${hash.digest("hex")}`;
+}
+
+export function verifySpatialEvidenceFiles(proof, proofPath, evidenceRoot = process.cwd()) {
   const errors = [];
   const checked = new Set();
+  const root = fs.realpathSync(path.resolve(evidenceRoot));
   for (const [pointer, evidence] of evidenceObjects(proof)) {
     const key = `${evidence.locator}\0${evidence.fingerprint}`;
     if (checked.has(key)) continue;
     checked.add(key);
-    const resolved = evidencePath(evidence.locator, proofPath);
-    if (!resolved) {
+    if (/^https?:\/\//i.test(evidence.locator)) {
       errors.push(`${pointer}.locator must be downloaded to a local verifiable artifact`);
+      continue;
+    }
+    if (path.isAbsolute(evidence.locator)) {
+      errors.push(`${pointer}.locator must be relative to the declared evidence root`);
+      continue;
+    }
+    const resolved = path.resolve(root, evidence.locator);
+    if (!isInside(root, resolved)) {
+      errors.push(`${pointer}.locator escapes the declared evidence root`);
       continue;
     }
     if (!fs.existsSync(resolved) || !fs.statSync(resolved).isFile()) {
       errors.push(`${pointer}.locator does not resolve to a file: ${evidence.locator}`);
       continue;
     }
-    const actual = `sha256:${crypto.createHash("sha256").update(fs.readFileSync(resolved)).digest("hex")}`;
+    const canonical = fs.realpathSync(resolved);
+    if (!isInside(root, canonical)) {
+      errors.push(`${pointer}.locator resolves outside the declared evidence root`);
+      continue;
+    }
+    if (fs.statSync(canonical).size > MAX_EVIDENCE_BYTES) {
+      errors.push(`${pointer}.locator exceeds the 100 MiB verification limit`);
+      continue;
+    }
+    const actual = hashFile(canonical);
     if (actual !== evidence.fingerprint) {
       errors.push(`${pointer}.fingerprint does not match evidence bytes: ${evidence.locator}`);
     }
@@ -151,6 +182,7 @@ export function validateSpatialProof(proof) {
   }
 
   const roleTokens = proof.contract.roles.map((item) => item.token);
+  const rolesByToken = new Map(proof.contract.roles.map((item) => [item.token, item]));
   const hierarchyIds = proof.contract.hierarchy.map((item) => item.id);
   const anchorIds = proof.contract.anchors.map((item) => item.id);
   const exceptionIds = proof.contract.exceptions.map((item) => item.id);
@@ -215,6 +247,28 @@ export function validateSpatialProof(proof) {
       if (!measurement.expected.hierarchyId || !hierarchyIds.includes(measurement.expected.hierarchyId)) {
         errors.push(`${pointer} must reference a defined hierarchy invariant`);
       }
+      if (!measurement.relationshipValues) {
+        errors.push(`${pointer} must record the measured tighter and looser values`);
+      } else if (measurement.relationshipValues.tighter >= measurement.relationshipValues.looser) {
+        errors.push(`${pointer} must prove the tighter value is smaller than the looser value`);
+      } else {
+        const hierarchy = proof.contract.hierarchy.find((item) => item.id === measurement.expected.hierarchyId);
+        const tighterRole = rolesByToken.get(hierarchy?.tighter);
+        const looserRole = rolesByToken.get(hierarchy?.looser);
+        const tolerance = measurement.expected.tolerance ?? 0;
+        if (
+          typeof tighterRole?.value === "number" &&
+          typeof looserRole?.value === "number" &&
+          tighterRole.unit === measurement.relationshipValues.unit &&
+          looserRole.unit === measurement.relationshipValues.unit &&
+          (
+            Math.abs(tighterRole.value - measurement.relationshipValues.tighter) > tolerance ||
+            Math.abs(looserRole.value - measurement.relationshipValues.looser) > tolerance
+          )
+        ) {
+          errors.push(`${pointer} relationship values do not match the declared role tokens`);
+        }
+      }
     }
     if (
       proof.target.classification === "exact" &&
@@ -235,6 +289,31 @@ export function validateSpatialProof(proof) {
     if (!proof.measurements.some((item) => item.kind === "relationship" && item.expected.hierarchyId === hierarchyId)) {
       errors.push(`hierarchy invariant lacks a relationship measurement: ${hierarchyId}`);
     }
+  }
+  const selectedTarget = proof.target.classification !== "none";
+  if (selectedTarget && proof.risk === "baseline") {
+    errors.push("a selected visual target requires material or brand-critical spatial risk");
+  }
+  if (selectedTarget && !proof.contract.responsiveRequired) {
+    errors.push("a selected visual target requires responsive spatial proof");
+  }
+  if (selectedTarget && proof.contract.anchors.length === 0) {
+    errors.push("a selected visual target requires at least one declared alignment anchor");
+  }
+  if (selectedTarget && proof.contract.hierarchy.length === 0) {
+    errors.push("a selected visual target requires at least one measured spacing hierarchy");
+  }
+  if (selectedTarget && !proof.measurements.some((item) => ALIGNMENT_KINDS.has(item.kind))) {
+    errors.push("a selected visual target requires at least one alignment measurement");
+  }
+  if (selectedTarget && !proof.contract.parentLayoutRisk) {
+    errors.push("a selected visual target requires parent layout risk inspection");
+  }
+  if (
+    (selectedTarget || proof.contract.parentLayoutRisk) &&
+    !proof.measurements.some((item) => item.kind === "parent_layout")
+  ) {
+    errors.push("parent layout risk requires a parent_layout diagnostic measurement");
   }
 
   const stressIds = proof.stressCases.map((item) => item.id);
@@ -259,6 +338,12 @@ export function validateSpatialProof(proof) {
       !proof.designEvaluation.evidence
     ) {
       errors.push("material or brand-critical spatial work requires an identified independent evaluator and evidence");
+    }
+    if (
+      proof.designEvaluation.reviewer?.trim().toLowerCase() ===
+      proof.candidate.implementedBy.trim().toLowerCase()
+    ) {
+      errors.push("the independent evaluator must differ from candidate.implementedBy");
     }
     const criteria = proof.designEvaluation.criteria.map((item) => item.name);
     for (const duplicate of duplicateValues(criteria)) {
@@ -289,6 +374,22 @@ export function validateSpatialProof(proof) {
     if (defect.status === "accepted" && (defect.severity !== "P3" || !defect.acceptanceReason)) {
       errors.push(`defects[${index}] only an explained P3 may be accepted`);
     }
+  }
+
+  if (proof.repair.failedCycles === 0 && proof.repair.action !== "not_needed") {
+    errors.push("zero failed repair cycles must use not_needed");
+  }
+  if (proof.repair.failedCycles === 1 && !["focused_repair", "reopen_contract"].includes(proof.repair.action)) {
+    errors.push("one failed repair cycle must use focused_repair or reopen_contract");
+  }
+  if (proof.repair.failedCycles >= 2 && proof.repair.action !== "reopen_contract") {
+    errors.push("two failed repair cycles require reopening the spatial contract");
+  }
+  if (proof.repair.action !== "not_needed" && !proof.repair.reason) {
+    errors.push("repair.reason is required when repair action is needed");
+  }
+  if (proof.status === "pass" && proof.repair.action === "reopen_contract") {
+    errors.push("a receipt that reopens the spatial contract cannot pass");
   }
 
   if (proof.status === "pass") {
@@ -373,6 +474,29 @@ function exampleProof() {
     acceptance: true,
     expected: { source: "measured", operator: "eq", value: true, unit: "boolean", hierarchyId: "group-section" },
     actual: { value: true, unit: "boolean" },
+    relationshipValues: { tighter: 24, looser: 64, unit: "px" },
+    result: "pass",
+    evidence: report,
+  });
+  measurements.push({
+    id: "card-start-alignment",
+    environmentId: "chromium-desktop",
+    kind: "edge_alignment",
+    subject: ".feature-card__title -> .feature-card",
+    acceptance: true,
+    expected: { source: "measured", operator: "eq", value: 0, unit: "px", tolerance: 1, anchorId: "card-start" },
+    actual: { value: 0, unit: "px" },
+    result: "pass",
+    evidence: report,
+  });
+  measurements.push({
+    id: "card-parent-display",
+    environmentId: "chromium-desktop",
+    kind: "parent_layout",
+    subject: ".feature-card",
+    acceptance: false,
+    expected: { source: "derived", operator: "eq", value: "grid", unit: "string" },
+    actual: { value: "grid", unit: "string" },
     result: "pass",
     evidence: report,
   });
@@ -384,18 +508,20 @@ function exampleProof() {
     target: { classification: "exact", identity: "approved homepage frame" },
     candidate: {
       revision: "d".repeat(40),
+      implementedBy: "implementation worker",
       artifact: evidence("package", "artifacts/theme.zip", "e"),
     },
     contract: {
       canonicalSource: "DESIGN.md and theme.json",
       responsiveRequired: true,
+      parentLayoutRisk: true,
       density: "comfortable",
       roles: [
         { name: "group", token: "space.group", value: 24, unit: "px" },
         { name: "section", token: "space.section", value: 64, unit: "px" },
       ],
       hierarchy: [{ id: "group-section", tighter: "space.group", looser: "space.section" }],
-      anchors: [],
+      anchors: [{ id: "card-start", type: "logical_start", subjects: [".feature-card", ".feature-card__title"] }],
       exceptions: [],
       evidence: contract,
     },
@@ -416,6 +542,7 @@ function exampleProof() {
       criteria: [...DESIGN_CRITERIA].map((name) => ({ name, result: "pass" })),
       evidence: review,
     },
+    repair: { failedCycles: 0, action: "not_needed" },
     defects: [],
     proofGaps: [],
   };
@@ -426,12 +553,21 @@ function selfTest() {
   const cases = [
     ["valid receipt", valid, true],
     ["exact target uses derived geometry", { ...valid, measurements: valid.measurements.map((item, index) => index === 0 ? { ...item, expected: { ...item.expected, source: "derived" } } : item) }, false],
-    ["exact target allows derived diagnostic", { ...valid, measurements: valid.measurements.map((item, index) => index === 0 ? { ...item, acceptance: false, expected: { ...item.expected, source: "derived" } } : item) }, true],
+    ["exact target allows derived diagnostic", valid, true],
     ["missing intermediate", { ...valid, environments: valid.environments.filter((item) => item.viewportClass !== "intermediate"), measurements: valid.measurements.filter((item) => item.environmentId !== "chromium-intermediate"), stressCases: valid.stressCases.filter((item) => item.environmentId !== "chromium-intermediate") }, false],
     ["unowned gap", { ...valid, measurements: valid.measurements.map((item, index) => index === 0 ? { ...item, expected: { source: "measured", operator: "eq", value: 24, unit: "px", tolerance: 1 } } : item) }, false],
     ["false pass", { ...valid, measurements: valid.measurements.map((item, index) => index === 0 ? { ...item, actual: { value: 40, unit: "px" } } : item) }, false],
     ["self review", { ...valid, designEvaluation: { ...valid.designEvaluation, independent: false } }, false],
+    ["same reviewer and implementer", { ...valid, designEvaluation: { ...valid.designEvaluation, reviewer: valid.candidate.implementedBy } }, false],
     ["unmeasured hierarchy", { ...valid, measurements: valid.measurements.filter((item) => item.kind !== "relationship") }, false],
+    ["false hierarchy", { ...valid, measurements: valid.measurements.map((item) => item.kind === "relationship" ? { ...item, relationshipValues: { tighter: 64, looser: 24, unit: "px" } } : item) }, false],
+    ["missing parent diagnostic", { ...valid, measurements: valid.measurements.filter((item) => item.kind !== "parent_layout") }, false],
+    ["risk downgrade", { ...valid, risk: "baseline", designEvaluation: { required: false, independent: false, result: "not_applicable", criteria: [], reason: "Low risk" } }, false],
+    ["responsive downgrade", { ...valid, contract: { ...valid.contract, responsiveRequired: false } }, false],
+    ["parent risk downgrade", { ...valid, contract: { ...valid.contract, parentLayoutRisk: false } }, false],
+    ["missing alignment anchor", { ...valid, contract: { ...valid.contract, anchors: [] } }, false],
+    ["missing hierarchy contract", { ...valid, contract: { ...valid.contract, hierarchy: [] }, measurements: valid.measurements.filter((item) => item.kind !== "relationship") }, false],
+    ["second patch cycle continues", { ...valid, repair: { failedCycles: 2, action: "focused_repair", reason: "Try again" } }, false],
     ["proof gap in pass", { ...valid, proofGaps: ["WebKit not checked"] }, false],
   ];
   for (const [name, proof, expected] of cases) {
@@ -449,17 +585,17 @@ function selfTest() {
     if (seen.has(item)) continue;
     seen.add(item);
     const bytes = Buffer.from(`spatial-evidence-${index}`);
-    const locator = path.join(evidenceRoot, `evidence-${index}.json`);
-    fs.writeFileSync(locator, bytes);
+    const locator = `evidence-${index}.json`;
+    fs.writeFileSync(path.join(evidenceRoot, locator), bytes);
     item.locator = locator;
     item.fingerprint = `sha256:${crypto.createHash("sha256").update(bytes).digest("hex")}`;
     index += 1;
   }
-  if (verifySpatialEvidenceFiles(hydrated, path.join(evidenceRoot, "proof.json")).length > 0) {
+  if (verifySpatialEvidenceFiles(hydrated, path.join(evidenceRoot, "proof.json"), evidenceRoot).length > 0) {
     throw new Error("valid spatial evidence failed byte verification");
   }
-  fs.writeFileSync(hydrated.measurements[0].evidence.locator, "changed");
-  if (!verifySpatialEvidenceFiles(hydrated, path.join(evidenceRoot, "proof.json")).some((error) => error.includes("does not match"))) {
+  fs.writeFileSync(path.join(evidenceRoot, hydrated.measurements[0].evidence.locator), "changed");
+  if (!verifySpatialEvidenceFiles(hydrated, path.join(evidenceRoot, "proof.json"), evidenceRoot).some((error) => error.includes("does not match"))) {
     throw new Error("changed spatial evidence was accepted");
   }
   fs.rmSync(evidenceRoot, { recursive: true, force: true });
@@ -498,4 +634,4 @@ async function main() {
   console.log(`spatial proof valid: ${argument}`);
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) await main();
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) await main();

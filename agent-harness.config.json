@@ -225,11 +225,12 @@
       ]
     },
     {
-      "name": "WordPress spatial layout system",
-      "maxWords": 2100,
+      "name": "WordPress spatial visual implementation",
+      "maxWords": 3600,
       "warningPercent": 85,
       "files": [
         "wp-site-expert/SKILL.md",
+        "shared/references/visual-to-wordpress-implementation.md",
         "shared/references/spatial-layout-and-alignment-system.md"
       ]
     },

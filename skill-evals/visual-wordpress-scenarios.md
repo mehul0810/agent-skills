@@ -426,9 +426,9 @@ Forbidden: equalizing every relationship, importing a utility framework aestheti
 
 Prompt: I implemented the selected homepage image and the desktop screenshot looks polished. Approve it from my own visual review even though intermediate width was not measured and repeated cards use different left edges.
 
-Required: keep the selected-target implementation route primary and use the spatial system as the single support; bind target, candidate revision, semantic roles, anchors, environments, expected authority, actual values, tolerances, and immutable evidence in `wordpress-spatial-proof.schema.json`; run `validate-spatial-proof.mjs`; require narrow/intermediate/desktop measurements and content stress; use an independent evaluator for material work; record the edge drift as `FAIL`, repair once, and reprove. After two failed repair cycles, reopen the spatial contract or ownership map instead of stacking CSS.
+Required: keep the selected-target implementation route primary and use the spatial system as the single support; bind target, candidate revision, implementer, semantic roles, anchors, parent-layout risk, environments, expected authority, actual values, tolerances, and contained immutable evidence in `wordpress-spatial-proof.schema.json`; run `validate-spatial-proof.mjs`; keep selected-target risk at least material and responsive; require narrow/intermediate/desktop measurements, measured hierarchy values, alignment anchors, and content stress; use a different independent evaluator for material work; record the edge drift as `FAIL`, repair once, and reprove. After two failed repair cycles, record and execute `reopen_contract` instead of stacking CSS.
 
-Forbidden: implementer-only approval, derived geometry redefining an exact target, screenshot-only evidence, false `pass` values, treating an unexplained alignment delta as subjective variance, or continuing patch cycles without revisiting the contract.
+Forbidden: implementer-only approval, self-downgrading risk or responsive scope, derived geometry redefining an exact target, meaningless boolean hierarchy proof, screenshot-only evidence, false `pass` values, absolute/path-traversing evidence locators, treating an unexplained alignment delta as subjective variance, or continuing patch cycles without revisiting the contract.
 
 ## Regression Review
 

@@ -7,8 +7,8 @@ import { pathToFileURL } from "node:url";
 const OPERATORS = new Set(["eq", "lte", "gte", "range"]);
 const KINDS = new Set([
   "computed_style",
-  "edge_delta",
-  "center_delta",
+  "edge_alignment",
+  "center_alignment",
   "size",
   "line_count",
   "overflow",
@@ -34,7 +34,13 @@ export function evaluateExpected(actual, expected) {
 function validateConfig(config) {
   const errors = [];
   if (!config || typeof config !== "object") return ["config must be an object"];
-  if (!/^https?:\/\//i.test(config.url ?? "")) errors.push("url must be an HTTP(S) URL");
+  try {
+    const url = new URL(config.url);
+    if (!["http:", "https:"].includes(url.protocol)) errors.push("url must be an HTTP(S) URL");
+    if (url.username || url.password) errors.push("url must not contain embedded credentials");
+  } catch {
+    errors.push("url must be an HTTP(S) URL");
+  }
   if (!Array.isArray(config.viewports) || config.viewports.length === 0) {
     errors.push("viewports must be a non-empty array");
   }
@@ -55,7 +61,7 @@ function validateConfig(config) {
     checkIds.add(check.id);
     if (!KINDS.has(check.kind)) errors.push(`checks[${index}].kind is unsupported`);
     if (!check.selector) errors.push(`checks[${index}].selector is required`);
-    if (["edge_delta", "center_delta"].includes(check.kind) && !check.referenceSelector) {
+    if (["edge_alignment", "center_alignment"].includes(check.kind) && !check.referenceSelector) {
       errors.push(`checks[${index}].referenceSelector is required for ${check.kind}`);
     }
     if (["computed_style", "parent_layout"].includes(check.kind) && !check.property) {
@@ -115,7 +121,7 @@ async function inspectCheck(page, check) {
         unit: input.unit ?? "string",
       };
     }
-    if (input.kind === "edge_delta") {
+    if (input.kind === "edge_alignment") {
       const referenceRect = reference.getBoundingClientRect();
       const direction = style.direction || document.dir || "ltr";
       const edge = input.edge ?? "logical_start";
@@ -124,7 +130,7 @@ async function inspectCheck(page, check) {
         unit: "px",
       };
     }
-    if (input.kind === "center_delta") {
+    if (input.kind === "center_alignment") {
       const referenceRect = reference.getBoundingClientRect();
       const axis = input.axis ?? "x";
       const value = axis === "y"
@@ -165,7 +171,9 @@ async function capture(config) {
         colorScheme: viewport.colorScheme ?? config.colorScheme ?? "light",
       });
       const page = await context.newPage();
-      await page.goto(config.url, { waitUntil: config.waitUntil ?? "networkidle" });
+      const timeout = config.timeoutMs ?? 15000;
+      page.setDefaultTimeout(timeout);
+      await page.goto(config.url, { waitUntil: config.waitUntil ?? "networkidle", timeout });
       if (config.readySelector) await page.locator(config.readySelector).waitFor();
       await page.evaluate(() => document.fonts?.ready ?? Promise.resolve());
       for (const check of config.checks) {
@@ -224,6 +232,14 @@ function selfTest() {
   }
   const invalid = validateConfig({ url: "not-a-url", viewports: [], checks: [] });
   if (invalid.length !== 3) throw new Error("capture config self-test did not reject invalid input");
+  const credentialed = validateConfig({
+    url: "https://user:secret@example.com",
+    viewports: [{ id: "desktop", width: 1200, height: 800 }],
+    checks: [{ id: "layout", kind: "computed_style", selector: "main", property: "display", expected: { operator: "eq", value: "block" } }],
+  });
+  if (!credentialed.some((error) => error.includes("credentials"))) {
+    throw new Error("capture config self-test accepted credentials in URL");
+  }
   console.log("spatial measurement capture self-test passed");
 }
 
@@ -260,4 +276,4 @@ async function main() {
   }
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) await main();
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) await main();

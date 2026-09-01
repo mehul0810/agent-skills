@@ -6,6 +6,8 @@ Use this reference only when spacing, alignment, grid, density, or responsive co
 
 Inspect the rendered surface, source visual or design file, `DESIGN.md`, `theme.json`, WordPress Design System components, product tokens, block supports, and existing CSS before proposing values. Record each consequential fact as `supplied`, `measured`, or `derived`; do not turn a familiar framework default into design evidence.
 
+Any selected exact, directional, or inspiration target is at least `material` spatial risk and requires responsive proof; `baseline` is reserved for bounded low-risk work with no selected visual target. Declare whether parent layout behavior can cause the defect before capture.
+
 Define the smallest spatial contract before CSS:
 
 - canonical token owner and affected surface,
@@ -39,7 +41,7 @@ Repeated cards with different title lengths, actions, media, and metadata must k
 
 ## 4. Capture Browser Geometry
 
-Screenshots communicate composition but do not prove the cause of a spatial defect. For material spatial work, capture a `wordpress-spatial-proof.schema.json` receipt and validate it with `node wp-expert/scripts/validate-spatial-proof.mjs <receipt.json>`. Use `capture-spatial-measurements.mjs` inside a project that already provides Playwright, or collect equivalent values with the project's browser harness.
+Screenshots communicate composition but do not prove the cause of a spatial defect. For material spatial work, capture a `wordpress-spatial-proof.schema.json` receipt and validate it from the project root with `node wp-expert/scripts/validate-spatial-proof.mjs <receipt.json>`. Keep evidence locators relative to that root; absolute, escaping, remote-only, or oversized artifacts are rejected. Use `capture-spatial-measurements.mjs` inside a project that already provides Playwright, or collect equivalent values with the project's browser harness. A passing spatial receipt permits no proof gaps; record incomplete proof as `blocked` or `FAIL` rather than weakening `responsiveRequired` or risk.
 
 Bind each assertion to a viewport/environment, semantic token or documented exception, expected source (`supplied`, `measured`, or `derived`), actual value, tolerance, and immutable report evidence. Measure only decision-bearing facts:
 
@@ -59,11 +61,11 @@ For material or brand-critical layout work, the implementer must not be the sole
 3. functionality and state behavior,
 4. WordPress ownership, editability, and editor/frontend predictability.
 
-Convert findings into observable defects or acceptance criteria, not taste adjectives. Default to one focused repair and reproof. After two failed repair cycles, stop patching and reopen the spatial contract, ownership map, or selected direction; do not accumulate CSS compensations.
+Convert findings into observable defects or acceptance criteria, not taste adjectives. Record the implementer and a different evaluator identity. Default to one focused repair and reproof. Track failed repair cycles in the receipt; after two, stop patching and reopen the spatial contract, ownership map, or selected direction. A reopened contract cannot pass until a new contract and proof run replace it.
 
 ## 6. Targeted Modern-Web Research
 
-When a confirmed platform question could change the implementation, retrieve only the relevant current primary guide. The preview `modern-web-guidance` catalog can be searched with `npx modern-web-guidance@latest search "<specific question>"`; retrieve one matching guide rather than loading the catalog. Verify browser support against the repository policy and an authoritative live source before adoption. Do not add a modern API merely to make the design feel contemporary.
+When a confirmed platform question could change the implementation, search the official `modern-web-guidance` repository or primary web documentation and retrieve one matching guide rather than loading the catalog. Treat the catalog as preview guidance; verify browser support against the repository policy and an authoritative live source before adoption. Do not install an unreviewed transient package or add a modern API merely to make the design feel contemporary.
 
 Useful official anchors:
 

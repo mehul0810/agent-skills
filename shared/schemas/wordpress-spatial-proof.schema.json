@@ -16,6 +16,7 @@
     "measurements",
     "stressCases",
     "designEvaluation",
+    "repair",
     "defects",
     "proofGaps"
   ],
@@ -43,6 +44,7 @@
       "items": { "$ref": "#/$defs/stressCase" }
     },
     "designEvaluation": { "$ref": "#/$defs/designEvaluation" },
+    "repair": { "$ref": "#/$defs/repair" },
     "defects": {
       "type": "array",
       "items": { "$ref": "#/$defs/defect" }
@@ -79,9 +81,10 @@
     "candidate": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["revision", "artifact"],
+      "required": ["revision", "implementedBy", "artifact"],
       "properties": {
         "revision": { "$ref": "#/$defs/nonEmpty" },
+        "implementedBy": { "$ref": "#/$defs/nonEmpty" },
         "artifact": { "$ref": "#/$defs/evidence" }
       }
     },
@@ -136,10 +139,11 @@
     "contract": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["canonicalSource", "responsiveRequired", "density", "roles", "hierarchy", "anchors", "exceptions", "evidence"],
+      "required": ["canonicalSource", "responsiveRequired", "parentLayoutRisk", "density", "roles", "hierarchy", "anchors", "exceptions", "evidence"],
       "properties": {
         "canonicalSource": { "$ref": "#/$defs/nonEmpty" },
         "responsiveRequired": { "type": "boolean" },
+        "parentLayoutRisk": { "type": "boolean" },
         "density": { "enum": ["comfortable", "compact", "mixed"] },
         "roles": {
           "type": "array",
@@ -212,6 +216,16 @@
         "unit": { "enum": ["px", "count", "boolean", "string"] }
       }
     },
+    "relationshipValues": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tighter", "looser", "unit"],
+      "properties": {
+        "tighter": { "type": "number" },
+        "looser": { "type": "number" },
+        "unit": { "enum": ["px", "rem", "em"] }
+      }
+    },
     "measurement": {
       "type": "object",
       "additionalProperties": false,
@@ -226,6 +240,7 @@
         "acceptance": { "type": "boolean" },
         "expected": { "$ref": "#/$defs/expected" },
         "actual": { "$ref": "#/$defs/actual" },
+        "relationshipValues": { "$ref": "#/$defs/relationshipValues" },
         "result": { "enum": ["pass", "fail", "blocked"] },
         "evidence": { "$ref": "#/$defs/evidence" },
         "reason": { "$ref": "#/$defs/nonEmpty" }
@@ -268,6 +283,16 @@
           "items": { "$ref": "#/$defs/criterion" }
         },
         "evidence": { "$ref": "#/$defs/evidence" },
+        "reason": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "repair": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["failedCycles", "action"],
+      "properties": {
+        "failedCycles": { "type": "integer", "minimum": 0 },
+        "action": { "enum": ["not_needed", "focused_repair", "reopen_contract"] },
         "reason": { "$ref": "#/$defs/nonEmpty" }
       }
     },
