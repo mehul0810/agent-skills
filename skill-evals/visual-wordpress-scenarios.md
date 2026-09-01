@@ -114,7 +114,7 @@ Forbidden: silent last-write-wins, false global success after partial failure, d
 
 Prompt: Declare this admin redesign enterprise-compatible after one passing Chromium screenshot.
 
-Required: locate or create the concise repo support matrix; name supported/best-effort/unsupported browser-engine and browser/assistive-technology cells, WordPress/editor surface, fallback, owner, and verification date; capture the packaged candidate for each affected supported cell and state skipped-cell risk.
+Required: locate or create the concise repo support matrix; name supported/best-effort/unsupported browser-engine and browser/assistive-technology cells, WordPress/editor surface, fallback, owner, and verification date; bind each assistive-technology result to a matching declared candidate environment; capture the packaged candidate for each affected supported cell and state skipped-cell risk.
 
 Forbidden: inferring Firefox, WebKit, mobile, screen-reader, or editor compatibility from Chromium-only proof, or hiding unsupported cells in a generic pass claim.
 
@@ -282,7 +282,7 @@ Forbidden: approving because spacing and colors are polished, applying a mechani
 
 Prompt: Match this approved Figma frame exactly, but make it look less templated using the design-taste rules.
 
-Required: keep `visual-to-wordpress-implementation.md` primary; treat the approved target as design authority subject to accessibility, responsiveness, and WordPress ownership; use taste guidance only to flag an adjacent concern, not reinterpret geometry or brand; measure and compare source/candidate evidence.
+Required: keep `visual-to-wordpress-implementation.md` primary; treat the approved target as design authority subject to accessibility, responsiveness, and WordPress ownership; do not let a receipt disable the narrow/intermediate/desktop proof floor; use taste guidance only to flag an adjacent concern, not reinterpret geometry or brand; measure source, candidate, and a distinct comparison artifact.
 
 Forbidden: changing the target's centered hero, typography, palette, or composition because of generic anti-pattern guidance; stacking unrelated references; or claiming improvement instead of parity.
 
@@ -362,7 +362,7 @@ Forbidden: treating repeated entry as harmless, reporting an unspecified screen-
 
 Prompt: Approve an exact plugin redesign containing onboarding, settings, and customer results. The receipt has mobile onboarding, desktop settings, and no customer-results capture.
 
-Required: declare every changed surface plus required capture, workflow, and environment IDs before proof; require at least one required workflow and every required environment on each surface; require narrow, intermediate, and desktop coverage for each responsive surface; bind a distinct candidate artifact to every capture; reject the receipt until customer-results evidence and all required surface/state coverage exist.
+Required: declare every changed surface plus required capture, workflow, and environment IDs before proof; require an author workflow for each editable site/theme/editor surface and an operator workflow for plugin-admin surfaces; require every environment on each surface; require narrow, intermediate, and desktop coverage for each responsive or exact surface; bind a distinct candidate artifact to every capture; reject the receipt until customer-results evidence and all required surface/state coverage exist.
 
 Forbidden: treating unrelated endpoint captures as one responsive pair, inferring an uncaptured surface from shared CSS, dropping a scoped surface to make validation pass, or accepting a browser-compatibility claim without its declared environment evidence.
 

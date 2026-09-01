@@ -184,6 +184,20 @@ export function validateVisualProof(proof) {
       ) {
         errors.push(`captures[${index}] exact comparison must bind distinct source and candidate evidence`);
       }
+      if (capture.comparisonEvidence?.kind !== "comparison") {
+        errors.push(`captures[${index}].comparisonEvidence must use comparison evidence`);
+      }
+      if (
+        capture.comparisonEvidence &&
+        (
+          capture.comparisonEvidence.fingerprint === capture.candidateEvidence.fingerprint ||
+          capture.comparisonEvidence.locator === capture.candidateEvidence.locator ||
+          capture.comparisonEvidence.fingerprint === capture.sourceEvidence.fingerprint ||
+          capture.comparisonEvidence.locator === capture.sourceEvidence.locator
+        )
+      ) {
+        errors.push(`captures[${index}] comparison artifact must be distinct from source and candidate evidence`);
+      }
     }
     if (capture.viewportClass === "narrow" && capture.viewport.width > 480) {
       errors.push(`captures[${index}] narrow viewport must be 480 CSS pixels or below`);
@@ -200,6 +214,9 @@ export function validateVisualProof(proof) {
   }
   const requiredCaptures = proof.captures.filter((capture) =>
     proof.scope.requiredCaptureIds.includes(capture.id));
+  if (proof.source.classification === "exact" && !proof.scope.responsiveRequired) {
+    errors.push("exact visual proof cannot disable responsive coverage");
+  }
   for (const duplicate of duplicateValues(
     requiredCaptures.map((capture) => capture.candidateEvidence.locator),
   )) {
@@ -224,6 +241,18 @@ export function validateVisualProof(proof) {
     );
     if (requiredWorkflows.length === 0) {
       errors.push(`scope surface lacks a required workflow: ${surface}`);
+    }
+    if (
+      ["site", "theme", "editor"].includes(proof.surfaceKind) &&
+      !requiredWorkflows.some((workflow) => workflow.role === "author")
+    ) {
+      errors.push(`editable WordPress surface lacks a required author workflow: ${surface}`);
+    }
+    if (
+      proof.surfaceKind === "plugin_admin" &&
+      !requiredWorkflows.some((workflow) => workflow.role === "operator")
+    ) {
+      errors.push(`plugin admin surface lacks a required operator workflow: ${surface}`);
     }
     for (const environmentId of proof.scope.requiredEnvironmentIds) {
       if (!required.some((capture) => capture.environmentId === environmentId)) {
@@ -367,6 +396,12 @@ export function validateVisualProof(proof) {
     }
   }
   for (const [index, check] of proof.accessibility.assistiveTechnology.entries()) {
+    const environment = proof.candidate.environments.find((item) => item.id === check.environmentId);
+    if (!environment) {
+      errors.push(`accessibility.assistiveTechnology[${index}].environmentId is not defined`);
+    } else if (check.browser !== environment.browser) {
+      errors.push(`accessibility.assistiveTechnology[${index}].browser must match its declared environment`);
+    }
     validateDisposition(check, `accessibility.assistiveTechnology[${index}]`, errors);
   }
   if (proof.accessibility.risk === "material" && proof.status === "pass") {
@@ -679,6 +714,18 @@ function selfTest() {
       unownedValues: [],
     },
   };
+  const materialAccessibility = {
+    ...valid.accessibility,
+    risk: "material",
+    assistiveTechnology: [{
+      environmentId: "chromium-macos",
+      browser: "Chromium 140",
+      technology: "VoiceOver",
+      task: "Navigate the primary call to action",
+      result: "pass",
+      evidence: valid.accessibility.keyboard.evidence,
+    }],
+  };
   const cases = [
     ["valid proof", valid, true],
     ["fixed defect with affected reproof", { ...valid, defects: [fixed] }, true],
@@ -707,7 +754,9 @@ function selfTest() {
     ["required capture not declared", { ...valid, scope: { ...valid.scope, requiredCaptureIds: ["home-narrow", "home-desktop"] } }, false],
     ["vague evidence locator", { ...valid, captures: [{ ...valid.captures[0], candidateEvidence: { ...valid.captures[0].candidateEvidence, locator: "looks good" } }, ...valid.captures.slice(1)] }, false],
     ["missing required environment", { ...valid, scope: { ...valid.scope, requiredEnvironmentIds: ["webkit-ios"] } }, false],
+    ["exact proof disables responsive coverage", { ...valid, scope: { ...valid.scope, responsiveRequired: false, requiredCaptureIds: ["home-desktop"] } }, false],
     ["reused candidate artifact", { ...valid, captures: valid.captures.map((capture) => ({ ...capture, candidateEvidence: valid.captures[0].candidateEvidence })) }, false],
+    ["comparison artifact reuses candidate", { ...valid, captures: valid.captures.map((capture) => capture.comparison === "overlay" ? { ...capture, comparisonEvidence: capture.candidateEvidence } : capture) }, false],
     ["exact manual only", { ...valid, captures: valid.captures.map((capture) => ({ ...capture, comparison: "manual" })) }, false],
     ["material design without review", { ...valid, scope: { ...valid.scope, designRisk: "material" } }, false],
     ["elevated tokens without lineage", { ...valid, scope: { ...valid.scope, tokenRisk: "elevated" }, designSystem: { ...valid.designSystem, risk: "elevated" } }, false],
@@ -736,6 +785,10 @@ function selfTest() {
       },
     }, false],
     ["material accessibility without AT", { ...valid, accessibility: { ...valid.accessibility, risk: "material" } }, false],
+    ["valid material accessibility environment", { ...valid, accessibility: materialAccessibility }, true],
+    ["assistive technology outside candidate environments", { ...valid, accessibility: { ...materialAccessibility, assistiveTechnology: materialAccessibility.assistiveTechnology.map((check) => ({ ...check, environmentId: "firefox-windows" })) } }, false],
+    ["assistive technology browser contradicts environment", { ...valid, accessibility: { ...materialAccessibility, assistiveTechnology: materialAccessibility.assistiveTechnology.map((check) => ({ ...check, browser: "Firefox 142" })) } }, false],
+    ["editable surface without author workflow", { ...valid, scope: { ...valid.scope, requiredWorkflowIds: ["visitor-cta"] }, workflows: valid.workflows.filter((workflow) => workflow.role !== "author") }, false],
     ["required asset missing", { ...valid, scope: { ...valid.scope, requiredAssetIds: ["hero"] } }, false],
     ["browser gate not applicable", { ...valid, gates: valid.gates.map((gate) => gate.name === "browser_compatibility" ? { name: gate.name, result: "not_applicable", reason: "Not checked" } : gate) }, false],
     ["blocked without gap", { ...valid, status: "blocked" }, false],

@@ -358,8 +358,9 @@
     "assistiveTechnology": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["browser", "technology", "task", "result"],
+      "required": ["environmentId", "browser", "technology", "task", "result"],
       "properties": {
+        "environmentId": { "$ref": "#/$defs/nonEmpty" },
         "browser": { "$ref": "#/$defs/nonEmpty" },
         "technology": { "$ref": "#/$defs/nonEmpty" },
         "task": { "$ref": "#/$defs/nonEmpty" },
