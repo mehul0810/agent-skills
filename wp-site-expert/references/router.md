@@ -16,6 +16,7 @@ Use this router only after `wp-site-expert` is selected. Load one primary refere
 - New or materially changed website typography system, font selection, readable measure, type-scale tokens, or editor/frontend type parity: `../../shared/references/wordpress-typography-system.md`.
 - Trend-led composition, AI-generated/adaptive UI, personalization, voice, kinetic typography, guided scrolling, or immersive/3D interaction: `../../shared/references/emerging-interface-design-contract.md`.
 - Direct visual-to-WordPress implementation from screenshot/Figma/image/mockup to an editable site/page: `../../shared/references/visual-to-wordpress-implementation.md`.
+- Material spacing, alignment, grid, density, or responsive-composition risk: `../../shared/references/spatial-layout-and-alignment-system.md`; with a selected visual target, keep visual implementation primary and use this as the single support.
 - Existing Tailwind utility CSS, Tailwind v3/v4 migration, utility build/source discovery, or Preflight scope: `../../shared/references/tailwind-informed-frontend-engineering.md`; use it only as the support reference when implementation stack behavior is the confirmed risk.
 - Plug-and-play product experience and advanced-user controls: `../../shared/references/product-experience-principles.md`.
 - Enterprise proof, accountable IA, governance, and failure behavior: `../../shared/references/enterprise-design-judgment.md`.

@@ -147,6 +147,7 @@
         "shared/references/emerging-interface-design-contract.md",
         "shared/references/enterprise-design-judgment.md",
         "shared/references/interaction-and-form-resilience.md",
+        "shared/references/spatial-layout-and-alignment-system.md",
         "shared/references/tailwind-informed-frontend-engineering.md",
         "shared/references/visual-to-wordpress-implementation.md",
         "shared/references/wordpress-typography-system.md",
@@ -195,7 +196,10 @@
           "Enterprise Form Recovery",
           "Browser And Assistive Technology Matrix",
           "Token Integrity And Proof Provenance",
-          "Editable WordPress Typography System"
+          "Editable WordPress Typography System",
+          "Parent Stretch Is Not Child Padding",
+          "Spatial Hierarchy Is Not A Mechanical Grid",
+          "Independent Spatial Proof Rejects A Polished Near Miss"
         ],
         "sha256": "acf4b2f4c52176175524c18fc4cb82a6e22cb4dbc17f6194b91311c1a2c8d9c0"
       },
@@ -221,7 +225,10 @@
         "browser-assistive-technology-matrix",
         "token-integrity-proof-provenance",
         "tailwind-wordpress-ownership-and-build-boundary",
-        "WordPress-typography-system"
+        "WordPress-typography-system",
+        "parent-layout-before-child-nudge",
+        "semantic-spatial-hierarchy",
+        "independent-spatial-evaluation"
       ],
       "evidence": [
         {
@@ -242,8 +249,11 @@
       "name": "visual-evidence-assets",
       "files": [
         "shared/schemas/wordpress-asset-production.schema.json",
+        "shared/schemas/wordpress-spatial-proof.schema.json",
         "shared/schemas/wordpress-visual-proof.schema.json",
+        "wp-expert/scripts/capture-spatial-measurements.mjs",
         "wp-expert/scripts/validate-asset-production.mjs",
+        "wp-expert/scripts/validate-spatial-proof.mjs",
         "wp-expert/scripts/validate-visual-proof.mjs"
       ],
       "sha256": "e9da25bfaac97abc1017385d07f997b5b34bdaec2bd614e14fd742f19bb66936",
@@ -258,7 +268,8 @@
           "Vague Evidence Cannot Pass",
           "Generated Asset Receipt Rejects A Near Miss",
           "Elevated Design Token Drift",
-          "Fixed Defect Requires Reproof"
+          "Fixed Defect Requires Reproof",
+          "Independent Spatial Proof Rejects A Polished Near Miss"
         ],
         "sha256": "d630239c0bb4d4c4b1a2dec9a9a538c01ffebb5df4924a13a1057f243b064239"
       },
@@ -268,7 +279,9 @@
         "concrete-evidence-binding",
         "asset-production-receipt",
         "design-token-lineage",
-        "visual-defect-reproof"
+        "visual-defect-reproof",
+        "structured-spatial-proof-rejection",
+        "browser-geometry-capture"
       ],
       "evidence": [
         {

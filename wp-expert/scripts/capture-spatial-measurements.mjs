@@ -1,0 +1,263 @@
+#!/usr/bin/env node
+
+import fs from "node:fs";
+import process from "node:process";
+import { pathToFileURL } from "node:url";
+
+const OPERATORS = new Set(["eq", "lte", "gte", "range"]);
+const KINDS = new Set([
+  "computed_style",
+  "edge_delta",
+  "center_delta",
+  "size",
+  "line_count",
+  "overflow",
+  "wrap",
+  "parent_layout",
+]);
+
+export function evaluateExpected(actual, expected) {
+  const tolerance = expected.tolerance ?? 0;
+  if (!OPERATORS.has(expected.operator)) return false;
+  if (expected.operator === "eq") {
+    if (typeof actual === "number" && typeof expected.value === "number") {
+      return Math.abs(actual - expected.value) <= tolerance;
+    }
+    return actual === expected.value;
+  }
+  if (typeof actual !== "number") return false;
+  if (expected.operator === "lte") return actual <= expected.value + tolerance;
+  if (expected.operator === "gte") return actual >= expected.value - tolerance;
+  return actual >= expected.min - tolerance && actual <= expected.max + tolerance;
+}
+
+function validateConfig(config) {
+  const errors = [];
+  if (!config || typeof config !== "object") return ["config must be an object"];
+  if (!/^https?:\/\//i.test(config.url ?? "")) errors.push("url must be an HTTP(S) URL");
+  if (!Array.isArray(config.viewports) || config.viewports.length === 0) {
+    errors.push("viewports must be a non-empty array");
+  }
+  if (!Array.isArray(config.checks) || config.checks.length === 0) {
+    errors.push("checks must be a non-empty array");
+  }
+  const viewportIds = new Set();
+  for (const [index, viewport] of (config.viewports ?? []).entries()) {
+    if (!viewport.id || viewportIds.has(viewport.id)) errors.push(`viewports[${index}].id must be unique`);
+    viewportIds.add(viewport.id);
+    if (!Number.isInteger(viewport.width) || !Number.isInteger(viewport.height)) {
+      errors.push(`viewports[${index}] width and height must be integers`);
+    }
+  }
+  const checkIds = new Set();
+  for (const [index, check] of (config.checks ?? []).entries()) {
+    if (!check.id || checkIds.has(check.id)) errors.push(`checks[${index}].id must be unique`);
+    checkIds.add(check.id);
+    if (!KINDS.has(check.kind)) errors.push(`checks[${index}].kind is unsupported`);
+    if (!check.selector) errors.push(`checks[${index}].selector is required`);
+    if (["edge_delta", "center_delta"].includes(check.kind) && !check.referenceSelector) {
+      errors.push(`checks[${index}].referenceSelector is required for ${check.kind}`);
+    }
+    if (["computed_style", "parent_layout"].includes(check.kind) && !check.property) {
+      errors.push(`checks[${index}].property is required for ${check.kind}`);
+    }
+    if (!OPERATORS.has(check.expected?.operator)) errors.push(`checks[${index}].expected.operator is invalid`);
+    if (check.expected?.operator === "range") {
+      if (typeof check.expected.min !== "number" || typeof check.expected.max !== "number") {
+        errors.push(`checks[${index}] range requires numeric min and max`);
+      }
+    } else if (!Object.hasOwn(check.expected ?? {}, "value")) {
+      errors.push(`checks[${index}] expected.value is required`);
+    }
+  }
+  return errors;
+}
+
+async function inspectCheck(page, check) {
+  return page.evaluate((input) => {
+    const element = document.querySelector(input.selector);
+    if (!element) return { error: `selector not found: ${input.selector}` };
+    const reference = input.referenceSelector ? document.querySelector(input.referenceSelector) : null;
+    if (input.referenceSelector && !reference) {
+      return { error: `reference selector not found: ${input.referenceSelector}` };
+    }
+
+    const rect = element.getBoundingClientRect();
+    const style = getComputedStyle(element);
+    const numericOrText = (value) => {
+      const parsed = Number.parseFloat(value);
+      return Number.isFinite(parsed) && /^-?\d+(?:\.\d+)?(?:px)?$/.test(value.trim()) ? parsed : value;
+    };
+    const lineCount = () => {
+      const range = document.createRange();
+      range.selectNodeContents(element);
+      const tops = new Set(
+        [...range.getClientRects()]
+          .filter((item) => item.width > 0 && item.height > 0)
+          .map((item) => Math.round(item.top * 10) / 10),
+      );
+      return tops.size;
+    };
+    const edgeValue = (box, edge, direction) => {
+      if (edge === "logical_start") return direction === "rtl" ? box.right : box.left;
+      if (edge === "logical_end") return direction === "rtl" ? box.left : box.right;
+      return box[edge];
+    };
+
+    if (input.kind === "computed_style") {
+      return { value: numericOrText(style.getPropertyValue(input.property)), unit: input.unit ?? "string" };
+    }
+    if (input.kind === "parent_layout") {
+      const parent = element.parentElement;
+      if (!parent) return { error: `parent not found for: ${input.selector}` };
+      return {
+        value: numericOrText(getComputedStyle(parent).getPropertyValue(input.property)),
+        unit: input.unit ?? "string",
+      };
+    }
+    if (input.kind === "edge_delta") {
+      const referenceRect = reference.getBoundingClientRect();
+      const direction = style.direction || document.dir || "ltr";
+      const edge = input.edge ?? "logical_start";
+      return {
+        value: Math.abs(edgeValue(rect, edge, direction) - edgeValue(referenceRect, edge, direction)),
+        unit: "px",
+      };
+    }
+    if (input.kind === "center_delta") {
+      const referenceRect = reference.getBoundingClientRect();
+      const axis = input.axis ?? "x";
+      const value = axis === "y"
+        ? Math.abs((rect.top + rect.height / 2) - (referenceRect.top + referenceRect.height / 2))
+        : Math.abs((rect.left + rect.width / 2) - (referenceRect.left + referenceRect.width / 2));
+      return { value, unit: "px" };
+    }
+    if (input.kind === "size") {
+      return { value: input.axis === "height" ? rect.height : rect.width, unit: "px" };
+    }
+    if (input.kind === "line_count") return { value: lineCount(), unit: "count" };
+    if (input.kind === "wrap") return { value: lineCount() > 1, unit: "boolean" };
+    if (input.kind === "overflow") {
+      const horizontal = element.scrollWidth > element.clientWidth + 1;
+      const vertical = element.scrollHeight > element.clientHeight + 1;
+      const value = input.axis === "x" ? horizontal : input.axis === "y" ? vertical : horizontal || vertical;
+      return { value, unit: "boolean" };
+    }
+    return { error: `unsupported check kind: ${input.kind}` };
+  }, check);
+}
+
+async function capture(config) {
+  let chromium;
+  try {
+    ({ chromium } = await import("playwright"));
+  } catch {
+    throw new Error("Playwright is unavailable. Run this adapter inside a product project that already provides Playwright, or use its existing browser harness.");
+  }
+  const browser = await chromium.launch({ headless: true });
+  const results = [];
+  try {
+    for (const viewport of config.viewports) {
+      const context = await browser.newContext({
+        viewport: { width: viewport.width, height: viewport.height },
+        ignoreHTTPSErrors: Boolean(config.ignoreHTTPSErrors),
+        locale: viewport.locale ?? config.locale ?? "en-US",
+        colorScheme: viewport.colorScheme ?? config.colorScheme ?? "light",
+      });
+      const page = await context.newPage();
+      await page.goto(config.url, { waitUntil: config.waitUntil ?? "networkidle" });
+      if (config.readySelector) await page.locator(config.readySelector).waitFor();
+      await page.evaluate(() => document.fonts?.ready ?? Promise.resolve());
+      for (const check of config.checks) {
+        const inspected = await inspectCheck(page, check);
+        if (inspected.error) {
+          results.push({
+            id: `${check.id}-${viewport.id}`,
+            checkId: check.id,
+            environmentId: viewport.id,
+            kind: check.kind,
+            result: "blocked",
+            reason: inspected.error,
+          });
+          continue;
+        }
+        const passed = evaluateExpected(inspected.value, check.expected);
+        results.push({
+          id: `${check.id}-${viewport.id}`,
+          checkId: check.id,
+          environmentId: viewport.id,
+          kind: check.kind,
+          subject: check.selector,
+          acceptance: check.acceptance !== false,
+          expected: check.expected,
+          actual: inspected,
+          result: passed ? "pass" : "fail",
+          ...(passed ? {} : { reason: "Measured geometry did not meet the declared expectation." }),
+        });
+      }
+      await context.close();
+    }
+    return {
+      schemaVersion: 1,
+      generatedAt: new Date().toISOString(),
+      url: config.url,
+      browser: await browser.version(),
+      status: results.every((item) => item.result === "pass") ? "pass" : "fail",
+      results,
+    };
+  } finally {
+    await browser.close();
+  }
+}
+
+function selfTest() {
+  const cases = [
+    ["numeric equality within tolerance", 24.5, { operator: "eq", value: 24, tolerance: 1 }, true],
+    ["numeric equality outside tolerance", 26, { operator: "eq", value: 24, tolerance: 1 }, false],
+    ["range", 48, { operator: "range", min: 44, max: 52 }, true],
+    ["maximum", 2, { operator: "lte", value: 2 }, true],
+    ["boolean", false, { operator: "eq", value: false }, true],
+    ["string", "grid", { operator: "eq", value: "grid" }, true],
+  ];
+  for (const [name, actual, expected, result] of cases) {
+    if (evaluateExpected(actual, expected) !== result) throw new Error(`capture self-test failed: ${name}`);
+  }
+  const invalid = validateConfig({ url: "not-a-url", viewports: [], checks: [] });
+  if (invalid.length !== 3) throw new Error("capture config self-test did not reject invalid input");
+  console.log("spatial measurement capture self-test passed");
+}
+
+async function main() {
+  if (process.argv[2] === "--self-test") return selfTest();
+  const [configPath, outputPath] = process.argv.slice(2);
+  if (!configPath || !outputPath) {
+    console.error("usage: capture-spatial-measurements.mjs <config.json> <report.json> | --self-test");
+    process.exitCode = 2;
+    return;
+  }
+  let config;
+  try {
+    config = JSON.parse(fs.readFileSync(configPath, "utf8"));
+  } catch (error) {
+    console.error(`ERROR: cannot read valid JSON from ${configPath}: ${error.message}`);
+    process.exitCode = 1;
+    return;
+  }
+  const errors = validateConfig(config);
+  if (errors.length > 0) {
+    for (const error of errors) console.error(`ERROR: ${error}`);
+    process.exitCode = 1;
+    return;
+  }
+  try {
+    const report = await capture(config);
+    fs.writeFileSync(outputPath, `${JSON.stringify(report, null, 2)}\n`);
+    console.log(`spatial measurements written: ${outputPath}`);
+    if (report.status !== "pass") process.exitCode = 1;
+  } catch (error) {
+    console.error(`ERROR: ${error.message}`);
+    process.exitCode = 1;
+  }
+}
+
+if (import.meta.url === pathToFileURL(process.argv[1]).href) await main();

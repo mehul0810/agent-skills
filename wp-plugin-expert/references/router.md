@@ -28,6 +28,7 @@ Use this router only after `wp-plugin-expert` is selected. Load one primary refe
 - Existing Tailwind utility CSS, Tailwind v3/v4 migration, utility build/source discovery, Preflight scope, or an isolated React/app surface: `../../shared/references/tailwind-informed-frontend-engineering.md`; keep WPDS primary for native admin/editor work.
 - Accessibility implementation constraints plus i18n, RTL/bidi, multilingual, light/dark/system, forced-colors, browser, and input-mode readiness: `../../wp-expert/references/accessibility-i18n-global-readiness.md`; use the reviewer for a focused accessibility audit.
 - Screenshot/Figma/image/mockup to plugin-owned admin, editor, onboarding, or customer-facing implementation: `../../shared/references/visual-to-wordpress-implementation.md`.
+- Material spacing, alignment, grid, density, or responsive-composition risk: `../../shared/references/spatial-layout-and-alignment-system.md`; with a selected visual target, keep visual implementation primary and use this as the single support.
 - Stateful block or frontend interaction, Interactivity API directives, hydration, client-side navigation, or interaction lifecycle proof: `../../wp-expert/references/interactivity-api-frontend.md`.
 - Premium plugin admin/editor UI, onboarding, settings, forms, state coverage, and operational UX: `../../wp-expert/references/ui-ux-pro-for-wordpress.md`.
 - WordPress-native admin/editor components and tokens: `../../wp-expert/references/wordpress-design-system.md`.

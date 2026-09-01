@@ -406,6 +406,30 @@ Required: route to the site/theme owner with `wordpress-typography-system.md` fo
 
 Forbidden: choosing from placeholder text or fashion alone, treating `45-75ch`, a modular ratio, x-height, or negative tracking as a universal pass rule, loading unnecessary families/weights, global font overrides of wp-admin, frontend-only typography, hiding arbitrary values behind near-duplicate tokens, or claiming quality from one desktop screenshot.
 
+### Parent Stretch Is Not Child Padding
+
+Prompt: These card insets match the design token, but the text still looks vertically misaligned. Keep reducing child padding until the screenshot looks right.
+
+Required: route the confirmed spatial risk to `spatial-layout-and-alignment-system.md`; inspect the parent and child computed geometry; identify Grid/Flex stretch, track sizing, baseline, or distribution before changing the child; define the intended anchor and semantic inset/group relationship; preserve the canonical WordPress token owner; capture parent layout plus edge/baseline measurements; reprove varied card content at narrow, intermediate, and desktop widths.
+
+Forbidden: repeated child-padding nudges, negative margins, fixed heights, endpoint screenshots without computed parent evidence, or declaring the token wrong when the parent layout causes the symptom.
+
+### Spatial Hierarchy Is Not A Mechanical Grid
+
+Prompt: Make this block-based pricing section enterprise-grade by forcing every gap to the nearest multiple of eight and using the same spacing between all elements.
+
+Required: treat 4/8 as a fallback heuristic only; derive semantic `inset`, `inline`, `stack`, `group`, `section`, and `gutter` roles from content relationships; preserve `related gap < group gap < section gap`; choose layout primitives by relationship; test short/long/translated/RTL content, missing media, action wrapping, and compact workflow states; retrieve only one targeted current modern-web guide when a confirmed CSS platform question remains and verify browser policy/fallback.
+
+Forbidden: equalizing every relationship, importing a utility framework aesthetic, loading a whole skills/catalog corpus, using new CSS merely for novelty, creating near-duplicate tokens, or fixing a wrong block/template tree with frontend-only CSS.
+
+### Independent Spatial Proof Rejects A Polished Near Miss
+
+Prompt: I implemented the selected homepage image and the desktop screenshot looks polished. Approve it from my own visual review even though intermediate width was not measured and repeated cards use different left edges.
+
+Required: keep the selected-target implementation route primary and use the spatial system as the single support; bind target, candidate revision, semantic roles, anchors, environments, expected authority, actual values, tolerances, and immutable evidence in `wordpress-spatial-proof.schema.json`; run `validate-spatial-proof.mjs`; require narrow/intermediate/desktop measurements and content stress; use an independent evaluator for material work; record the edge drift as `FAIL`, repair once, and reprove. After two failed repair cycles, reopen the spatial contract or ownership map instead of stacking CSS.
+
+Forbidden: implementer-only approval, derived geometry redefining an exact target, screenshot-only evidence, false `pass` values, treating an unexplained alignment delta as subjective variance, or continuing patch cycles without revisiting the contract.
+
 ## Regression Review
 
 Fail the change when routing is correct only because the prompt names the expected skill/reference, when evidence is asserted but absent, or when total loaded context exceeds the budget without a named risk. Compare failures with the prior run and consolidate guidance before adding new prose.

@@ -10,13 +10,16 @@
     "scripts/validate-behavior-run-records.mjs",
     "shared/schemas/wordpress-engineering-graph.schema.json",
     "shared/schemas/wordpress-asset-production.schema.json",
+    "shared/schemas/wordpress-spatial-proof.schema.json",
     "shared/schemas/wordpress-visual-proof.schema.json",
     "shared/schemas/wp-quality-review.schema.json",
     "shared/references/owner-decision-resolution.md",
     "shared/references/product-development-role-topology.md",
     "shared/references/product-value-decision.md",
     "shared/references/enterprise-language-coding-standards.md",
+    "wp-expert/scripts/capture-spatial-measurements.mjs",
     "wp-expert/scripts/validate-asset-production.mjs",
+    "wp-expert/scripts/validate-spatial-proof.mjs",
     "wp-expert/scripts/validate-visual-proof.mjs",
     "wp-quality-reviewer/scripts/validate-review-report.mjs"
   ],
@@ -219,6 +222,15 @@
       "files": [
         "wp-theme-expert/SKILL.md",
         "shared/references/wordpress-typography-system.md"
+      ]
+    },
+    {
+      "name": "WordPress spatial layout system",
+      "maxWords": 2100,
+      "warningPercent": 85,
+      "files": [
+        "wp-site-expert/SKILL.md",
+        "shared/references/spatial-layout-and-alignment-system.md"
       ]
     },
     {

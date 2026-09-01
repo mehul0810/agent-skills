@@ -81,6 +81,8 @@ For `Exact`, regression, release-critical, or failed work, use visual-proof sche
 
 Compare source and candidate by overlay or perceptual diff when available across geometry, type, color, crops, responsive behavior, interactions, and editing surfaces. Use project tolerances; otherwise investigate hard-edge geometry deltas above 2 CSS px after capture is deterministic. Treat font rasterization separately instead of adding fragile compensation.
 
+When spacing, alignment, grid, density, or responsive composition is a material risk, reserve the support slot for `spatial-layout-and-alignment-system.md`. Link its validated spatial receipt under design-quality evidence so screenshots and computed parent/child geometry agree; do not compensate for a wrong layout owner with child-level CSS.
+
 Use the smallest risk matrix: narrow/mobile, target desktop, and an intermediate resize sweep; add engines, devices, locales, content, and roles only when evidence warrants them. Bind required environments to captures. Material accessibility names the tested browser/assistive-technology task. Without a mobile target, mobile proof covers accessible, coherent inferred behavior, not pixel parity.
 
 For multi-surface or elevated design-system changes, bind `DESIGN.md` or the equivalent contract and trace affected semantic tokens through Figma/WPDS, `theme.json`, CSS variables, block styles, and rendered output. A pass cannot retain token drift or unowned raw values; intentional deviations need evidence and rationale.

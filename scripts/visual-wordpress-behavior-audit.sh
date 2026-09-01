@@ -268,11 +268,33 @@ require_text "skill-evals/visual-wordpress-scenarios.md" "Elevated Design Token 
 require_text "skill-evals/visual-wordpress-scenarios.md" "Fixed Defect Requires Reproof" "visual defect lineage scenario"
 require_text "skill-evals/visual-wordpress-scenarios.md" "Existing Tailwind Surface Must Preserve WordPress Ownership" "Tailwind WordPress boundary scenario"
 require_text "skill-evals/visual-wordpress-scenarios.md" "Editable WordPress Typography System" "WordPress typography system scenario"
+require_text "shared/references/spatial-layout-and-alignment-system.md" "related gap < group gap < section gap" "semantic spatial hierarchy"
+require_text "shared/references/spatial-layout-and-alignment-system.md" "4/8-pixel grid is only a fallback heuristic" "mechanical spacing-scale guard"
+require_text "shared/references/spatial-layout-and-alignment-system.md" "parent and child computed geometry" "parent stretch diagnosis"
+require_text "shared/references/spatial-layout-and-alignment-system.md" "must not be the sole design evaluator" "independent spatial evaluation"
+require_text "shared/references/spatial-layout-and-alignment-system.md" "retrieve one matching guide rather than loading the catalog" "targeted modern-web retrieval"
+require_text "shared/references/visual-to-wordpress-implementation.md" "validated spatial receipt" "visual proof spatial receipt link"
+require_text "shared/schemas/wordpress-spatial-proof.schema.json" '"hierarchyId"' "spatial hierarchy schema"
+require_text "shared/schemas/wordpress-spatial-proof.schema.json" '"independent"' "independent evaluator schema"
+require_text "wp-expert/scripts/validate-spatial-proof.mjs" "cannot use derived acceptance geometry for an exact target" "exact spatial authority enforcement"
+require_text "wp-expert/scripts/validate-spatial-proof.mjs" "result disagrees with its expected and actual values" "spatial false-pass enforcement"
+require_text "wp-expert/scripts/capture-spatial-measurements.mjs" "parent_layout" "parent layout browser capture"
+require_text "wp-expert/scripts/capture-spatial-measurements.mjs" "Playwright is unavailable" "optional Playwright dependency boundary"
+require_text "wp-plugin-expert/references/router.md" "spatial-layout-and-alignment-system.md" "plugin spatial layout route"
+require_text "wp-theme-expert/references/router.md" "spatial-layout-and-alignment-system.md" "theme spatial layout route"
+require_text "wp-site-expert/references/router.md" "spatial-layout-and-alignment-system.md" "site spatial layout route"
+require_text "skill-evals/visual-wordpress-scenarios.md" "Parent Stretch Is Not Child Padding" "parent stretch regression scenario"
+require_text "skill-evals/visual-wordpress-scenarios.md" "Spatial Hierarchy Is Not A Mechanical Grid" "spatial hierarchy regression scenario"
+require_text "skill-evals/visual-wordpress-scenarios.md" "Independent Spatial Proof Rejects A Polished Near Miss" "independent spatial proof scenario"
 
 node "$repo_root/wp-expert/scripts/validate-visual-proof.mjs" --self-test
 echo "ok: visual proof validator"
 node "$repo_root/wp-expert/scripts/validate-asset-production.mjs" --self-test
 echo "ok: asset production validator"
+node "$repo_root/wp-expert/scripts/validate-spatial-proof.mjs" --self-test
+echo "ok: spatial proof validator"
+node "$repo_root/wp-expert/scripts/capture-spatial-measurements.mjs" --self-test
+echo "ok: spatial measurement capture"
 
 if [ "$errors" -gt 0 ]; then
   echo "visual WordPress behavior audit failed: $errors issue(s)" >&2

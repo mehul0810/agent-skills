@@ -1,0 +1,289 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mehulgohil.com/schemas/wordpress-spatial-proof.schema.json",
+  "title": "WordPress Spatial Proof Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "proofId",
+    "status",
+    "risk",
+    "target",
+    "candidate",
+    "contract",
+    "environments",
+    "measurements",
+    "stressCases",
+    "designEvaluation",
+    "defects",
+    "proofGaps"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "proofId": { "$ref": "#/$defs/nonEmpty" },
+    "status": { "enum": ["pass", "fail", "blocked"] },
+    "risk": { "enum": ["baseline", "material", "brand_critical"] },
+    "target": { "$ref": "#/$defs/target" },
+    "candidate": { "$ref": "#/$defs/candidate" },
+    "contract": { "$ref": "#/$defs/contract" },
+    "environments": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/environment" }
+    },
+    "measurements": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/measurement" }
+    },
+    "stressCases": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/stressCase" }
+    },
+    "designEvaluation": { "$ref": "#/$defs/designEvaluation" },
+    "defects": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/defect" }
+    },
+    "proofGaps": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/nonEmpty" }
+    }
+  },
+  "$defs": {
+    "nonEmpty": { "type": "string", "minLength": 1 },
+    "fingerprint": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "locator", "fingerprint"],
+      "properties": {
+        "kind": {
+          "enum": ["report", "screenshot", "comparison", "trace", "manual_record", "design_review", "package"]
+        },
+        "locator": { "$ref": "#/$defs/nonEmpty" },
+        "fingerprint": { "$ref": "#/$defs/fingerprint" }
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["classification", "identity"],
+      "properties": {
+        "classification": { "enum": ["exact", "directional", "inspiration", "none"] },
+        "identity": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["revision", "artifact"],
+      "properties": {
+        "revision": { "$ref": "#/$defs/nonEmpty" },
+        "artifact": { "$ref": "#/$defs/evidence" }
+      }
+    },
+    "role": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "token", "value", "unit"],
+      "properties": {
+        "name": { "enum": ["inset", "inline", "stack", "group", "section", "gutter", "optical"] },
+        "token": { "$ref": "#/$defs/nonEmpty" },
+        "value": { "oneOf": [{ "type": "number" }, { "type": "string" }] },
+        "unit": { "enum": ["px", "rem", "em", "ch", "percent", "fluid"] }
+      }
+    },
+    "hierarchy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "tighter", "looser"],
+      "properties": {
+        "id": { "$ref": "#/$defs/nonEmpty" },
+        "tighter": { "$ref": "#/$defs/nonEmpty" },
+        "looser": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "anchor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "subjects"],
+      "properties": {
+        "id": { "$ref": "#/$defs/nonEmpty" },
+        "type": { "enum": ["logical_start", "logical_end", "shared_edge", "text_baseline", "center_axis", "media_edge", "optical"] },
+        "subjects": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/nonEmpty" }
+        }
+      }
+    },
+    "exception": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "scope", "reason", "owner", "reviewTrigger"],
+      "properties": {
+        "id": { "$ref": "#/$defs/nonEmpty" },
+        "scope": { "$ref": "#/$defs/nonEmpty" },
+        "reason": { "$ref": "#/$defs/nonEmpty" },
+        "owner": { "$ref": "#/$defs/nonEmpty" },
+        "reviewTrigger": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canonicalSource", "responsiveRequired", "density", "roles", "hierarchy", "anchors", "exceptions", "evidence"],
+      "properties": {
+        "canonicalSource": { "$ref": "#/$defs/nonEmpty" },
+        "responsiveRequired": { "type": "boolean" },
+        "density": { "enum": ["comfortable", "compact", "mixed"] },
+        "roles": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/role" }
+        },
+        "hierarchy": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/hierarchy" }
+        },
+        "anchors": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/anchor" }
+        },
+        "exceptions": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/exception" }
+        },
+        "evidence": { "$ref": "#/$defs/evidence" }
+      }
+    },
+    "viewport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height"],
+      "properties": {
+        "width": { "type": "integer", "minimum": 240 },
+        "height": { "type": "integer", "minimum": 240 }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "viewportClass", "viewport", "browser", "locale", "direction", "fontState", "contentFixture"],
+      "properties": {
+        "id": { "$ref": "#/$defs/nonEmpty" },
+        "viewportClass": { "enum": ["narrow", "intermediate", "desktop"] },
+        "viewport": { "$ref": "#/$defs/viewport" },
+        "browser": { "$ref": "#/$defs/nonEmpty" },
+        "locale": { "$ref": "#/$defs/nonEmpty" },
+        "direction": { "enum": ["ltr", "rtl"] },
+        "fontState": { "$ref": "#/$defs/nonEmpty" },
+        "contentFixture": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "expected": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "operator"],
+      "properties": {
+        "source": { "enum": ["supplied", "measured", "derived"] },
+        "operator": { "enum": ["eq", "lte", "gte", "range"] },
+        "value": { "oneOf": [{ "type": "number" }, { "type": "boolean" }, { "type": "string" }] },
+        "min": { "type": "number" },
+        "max": { "type": "number" },
+        "unit": { "enum": ["px", "count", "boolean", "string"] },
+        "tolerance": { "type": "number", "minimum": 0 },
+        "token": { "$ref": "#/$defs/nonEmpty" },
+        "exceptionId": { "$ref": "#/$defs/nonEmpty" },
+        "anchorId": { "$ref": "#/$defs/nonEmpty" },
+        "hierarchyId": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "actual": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "unit"],
+      "properties": {
+        "value": { "oneOf": [{ "type": "number" }, { "type": "boolean" }, { "type": "string" }] },
+        "unit": { "enum": ["px", "count", "boolean", "string"] }
+      }
+    },
+    "measurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "environmentId", "kind", "subject", "acceptance", "expected", "actual", "result", "evidence"],
+      "properties": {
+        "id": { "$ref": "#/$defs/nonEmpty" },
+        "environmentId": { "$ref": "#/$defs/nonEmpty" },
+        "kind": {
+          "enum": ["computed_style", "gap", "inset", "edge_alignment", "baseline_alignment", "center_alignment", "size", "line_count", "overflow", "wrap", "relationship", "parent_layout"]
+        },
+        "subject": { "$ref": "#/$defs/nonEmpty" },
+        "acceptance": { "type": "boolean" },
+        "expected": { "$ref": "#/$defs/expected" },
+        "actual": { "$ref": "#/$defs/actual" },
+        "result": { "enum": ["pass", "fail", "blocked"] },
+        "evidence": { "$ref": "#/$defs/evidence" },
+        "reason": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "stressCase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "environmentId", "case", "result"],
+      "properties": {
+        "id": { "$ref": "#/$defs/nonEmpty" },
+        "environmentId": { "$ref": "#/$defs/nonEmpty" },
+        "case": { "$ref": "#/$defs/nonEmpty" },
+        "result": { "enum": ["pass", "fail", "blocked"] },
+        "evidence": { "$ref": "#/$defs/evidence" },
+        "reason": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "criterion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "result"],
+      "properties": {
+        "name": { "enum": ["design_coherence", "spatial_craft", "functionality", "wordpress_ownership"] },
+        "result": { "enum": ["pass", "fail", "blocked"] },
+        "reason": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "designEvaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required", "independent", "result", "criteria"],
+      "properties": {
+        "required": { "type": "boolean" },
+        "independent": { "type": "boolean" },
+        "reviewer": { "$ref": "#/$defs/nonEmpty" },
+        "result": { "enum": ["pass", "fail", "blocked", "not_applicable"] },
+        "criteria": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/criterion" }
+        },
+        "evidence": { "$ref": "#/$defs/evidence" },
+        "reason": { "$ref": "#/$defs/nonEmpty" }
+      }
+    },
+    "defect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "severity", "status", "description", "observedEvidence"],
+      "properties": {
+        "id": { "$ref": "#/$defs/nonEmpty" },
+        "severity": { "enum": ["P1", "P2", "P3"] },
+        "status": { "enum": ["fixed", "accepted", "unresolved"] },
+        "description": { "$ref": "#/$defs/nonEmpty" },
+        "observedEvidence": { "$ref": "#/$defs/evidence" },
+        "fixedEvidence": { "$ref": "#/$defs/evidence" },
+        "acceptanceReason": { "$ref": "#/$defs/nonEmpty" }
+      }
+    }
+  }
+}

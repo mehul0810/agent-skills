@@ -10,7 +10,7 @@
     "run-record:behavior": "node scripts/validate-behavior-run-records.mjs",
     "validate:behavior-evidence": "node scripts/behavior-evidence-audit.mjs --self-test && node scripts/behavior-evidence-audit.mjs",
     "validate:graph": "node wp-expert/scripts/validate-engineering-graph.mjs --self-test",
-    "validate:visual": "node wp-expert/scripts/validate-visual-proof.mjs --self-test && node wp-expert/scripts/validate-asset-production.mjs --self-test && bash scripts/visual-wordpress-behavior-audit.sh",
+    "validate:visual": "node wp-expert/scripts/validate-visual-proof.mjs --self-test && node wp-expert/scripts/validate-asset-production.mjs --self-test && node wp-expert/scripts/validate-spatial-proof.mjs --self-test && node wp-expert/scripts/capture-spatial-measurements.mjs --self-test && bash scripts/visual-wordpress-behavior-audit.sh",
     "validate:quality": "node wp-quality-reviewer/scripts/validate-review-report.mjs --self-test && bash scripts/quality-reviewer-behavior-audit.sh",
     "validate:video": "node product-video-producer/scripts/validate-video-manifest.mjs --self-test && bash scripts/video-production-behavior-audit.sh",
     "test": "npm run harness && npm run run-record:example && npm run run-record:behavior && npm run validate:behavior-evidence && npm run validate:graph && npm run validate:visual && npm run validate:quality && npm run validate:video"
