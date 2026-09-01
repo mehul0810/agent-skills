@@ -149,6 +149,7 @@
         "shared/references/interaction-and-form-resilience.md",
         "shared/references/tailwind-informed-frontend-engineering.md",
         "shared/references/visual-to-wordpress-implementation.md",
+        "shared/references/wordpress-typography-system.md",
         "wp-expert/references/accessibility-i18n-global-readiness.md",
         "wp-expert/references/interactivity-api-frontend.md",
         "wp-expert/references/reference-routing-map.md",
@@ -165,7 +166,7 @@
         "wp-theme-expert/SKILL.md",
         "wp-theme-expert/references/router.md"
       ],
-      "sha256": "dd76c3355b33cb360c66edaca28abb72b34dcd96d61916095141c52c6865d051",
+      "sha256": "7868b3f3f17ffb0025c10d019d75c479d8b4664ce824438050453cca9fc49d7a",
       "scenario": {
         "id": "wordpress-visual-execution",
         "files": [
@@ -193,9 +194,10 @@
           "Custom Widget Interaction Contract",
           "Enterprise Form Recovery",
           "Browser And Assistive Technology Matrix",
-          "Token Integrity And Proof Provenance"
+          "Token Integrity And Proof Provenance",
+          "Editable WordPress Typography System"
         ],
-        "sha256": "6943cc6f45cc10d00a90f94b904c05c494b1b6a963d5c3c024ea574429f332a2"
+        "sha256": "acf4b2f4c52176175524c18fc4cb82a6e22cb4dbc17f6194b91311c1a2c8d9c0"
       },
       "requiredChecks": [
         "WordPress-native-ownership",
@@ -218,15 +220,16 @@
         "enterprise-form-recovery",
         "browser-assistive-technology-matrix",
         "token-integrity-proof-provenance",
-        "tailwind-wordpress-ownership-and-build-boundary"
+        "tailwind-wordpress-ownership-and-build-boundary",
+        "WordPress-typography-system"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-08-31-wcag-aa.json",
-          "sha256": "2486abd38f2efd69967211ec23bdd70ce4a418a4fc41b9d644ad604cbdfe3834",
-          "testedRevision": "0ba8683d79e826ad7acaf6e2fd04e49b53d68ab6",
-          "testedSourceSha256": "dd76c3355b33cb360c66edaca28abb72b34dcd96d61916095141c52c6865d051",
-          "testedScenarioSha256": "6943cc6f45cc10d00a90f94b904c05c494b1b6a963d5c3c024ea574429f332a2",
+          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-09-01-typography-system.json",
+          "sha256": "bf69c00f2ce9f2e3d6462998cc36b55a25bb0fa04395db61ffe5d87c864f0b7c",
+          "testedRevision": "569277b71571ac8d801d12a533f0ca3f4b9d5147",
+          "testedSourceSha256": "7868b3f3f17ffb0025c10d019d75c479d8b4664ce824438050453cca9fc49d7a",
+          "testedScenarioSha256": "acf4b2f4c52176175524c18fc4cb82a6e22cb4dbc17f6194b91311c1a2c8d9c0",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
