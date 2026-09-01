@@ -347,7 +347,7 @@
         "wp-quality-reviewer/scripts/validate-review-report.mjs",
         "wp-quality-reviewer/scripts/accessibility-audit.mjs"
       ],
-      "sha256": "0b48f9da5b72ecb64b56040514ace6d1b651e12727dc29f40d62e5b91dc9a098",
+      "sha256": "34bfd5752f25e90a9766f30a0564cf07938fe031f85c1f95df1bee9d879729aa",
       "scenario": {
         "id": "multi-domain-release-quality-review",
         "files": [
@@ -366,7 +366,7 @@
           "AA input and authentication exceptions",
           "Measurable AA visual and media proof"
         ],
-        "sha256": "b1fe191e665a0d2994da79494a09758a8639fcc84c029d4abdc694f4bd40bb8a"
+        "sha256": "f0e591cdcda264d4f78e9a35901d4e93d449318caf237509c49b6dbc20eafb7c"
       },
       "requiredChecks": [
         "compact-multi-domain-route",
@@ -397,15 +397,21 @@
         "intentional-break-approval-gate",
         "formal-aa-scope-criteria-and-manual-evidence",
         "aa-authentication-input-exceptions",
-        "aa-measurable-visual-media-proof"
+        "aa-measurable-visual-media-proof",
+        "release-candidate-evidence-binding",
+        "release-domain-execution-proof",
+        "scope-derived-risk-and-capacity-proof",
+        "migration-and-legacy-evidence-proof",
+        "accessibility-automated-manual-proof",
+        "semantic-proof-authenticity"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-08-31-wcag-aa.json",
-          "sha256": "1a04a53697750962914d9ffdf3edcf22cd2dc7760809015a8fb2d1248832aec3",
-          "testedRevision": "d0923ea458fc2bc8dee67803af198e7c7c4ba500",
-          "testedSourceSha256": "0b48f9da5b72ecb64b56040514ace6d1b651e12727dc29f40d62e5b91dc9a098",
-          "testedScenarioSha256": "b1fe191e665a0d2994da79494a09758a8639fcc84c029d4abdc694f4bd40bb8a",
+          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-09-01-release-evidence.json",
+          "sha256": "aa351c96081b7c908013a1ba288291eef1989841760c967b21af0905f592bac5",
+          "testedRevision": "14a377ab8cbc39c0b2d840aa4a50dd3478064f00",
+          "testedSourceSha256": "34bfd5752f25e90a9766f30a0564cf07938fe031f85c1f95df1bee9d879729aa",
+          "testedScenarioSha256": "f0e591cdcda264d4f78e9a35901d4e93d449318caf237509c49b6dbc20eafb7c",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
