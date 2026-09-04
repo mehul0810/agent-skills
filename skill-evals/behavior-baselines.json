@@ -18,7 +18,7 @@
         "wp-plugin-expert/SKILL.md",
         "wp-plugin-expert/references/router.md"
       ],
-      "sha256": "98416135924a4ec9ee37468001c17a3c82f45b955999ca2af2c7ba2fb3eeb9ba",
+      "sha256": "e9aa09941c6f30a53bc63826aa905396b29e16e2b7a5ce719e25c44a7f036298",
       "scenario": {
         "id": "elevated-enterprise-runtime-assurance",
         "files": [
@@ -38,10 +38,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-09-01-spatial-route.json",
-          "sha256": "4a4a04849b1b039a9dcaa4e74ebb99c8aac030ad1b48c518c430776a9080e286",
-          "testedRevision": "879ea060edd86d45e1a11fed85c62ede302ec2fe",
-          "testedSourceSha256": "98416135924a4ec9ee37468001c17a3c82f45b955999ca2af2c7ba2fb3eeb9ba",
+          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-09-04-loose-ends.json",
+          "sha256": "5584f4a3f9f1f5856158a2ae39d9a181349ab454ec2e909f1d5796e443cb6245",
+          "testedRevision": "3d1813238be5232ad5937aa2f029ec11f5587a4e",
+          "testedSourceSha256": "e9aa09941c6f30a53bc63826aa905396b29e16e2b7a5ce719e25c44a7f036298",
           "testedScenarioSha256": "3d842125a654c717b1b68f1fe273d32f8bf4ac54bae26ac39dbacefb0f92eb84",
           "runtime": {
             "host": "codex-desktop",
@@ -65,7 +65,7 @@
         "wp-expert/references/visual-parity-regression.md",
         "wp-expert/references/wordpress-design-system.md"
       ],
-      "sha256": "6d12c95ae855bda5fed561483c863d8af3737c8ef536a536dc5a23c71ea915ec",
+      "sha256": "9e9786bd4e3a1559b9943de70a031b7402d726bbcf6cba1d19e44967de9ab83d",
       "scenario": {
         "id": "premium-enterprise-design-experience",
         "files": [
@@ -128,10 +128,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/design-experience-routing-2026-08-29-interaction-resilience.json",
-          "sha256": "5f21a8203fe5fecb857b2796f9c574c80d0b13a1941d162c57f850ae8642528b",
-          "testedRevision": "27c63edf4039aa841725c8ba2b64f578c81897e1",
-          "testedSourceSha256": "6d12c95ae855bda5fed561483c863d8af3737c8ef536a536dc5a23c71ea915ec",
+          "runRecord": "skill-evals/run-records/design-experience-routing-2026-09-04-loose-ends.json",
+          "sha256": "96eacc66344dc99f03de0671dcf85f92b983530fd351f8a1cc799fb59f7bd18f",
+          "testedRevision": "3d1813238be5232ad5937aa2f029ec11f5587a4e",
+          "testedSourceSha256": "9e9786bd4e3a1559b9943de70a031b7402d726bbcf6cba1d19e44967de9ab83d",
           "testedScenarioSha256": "168416f3f9957a78a16ab3339fa253bfee79efd81d322b10c662d9244b63e12d",
           "runtime": {
             "host": "codex-desktop",
@@ -167,7 +167,7 @@
         "wp-theme-expert/SKILL.md",
         "wp-theme-expert/references/router.md"
       ],
-      "sha256": "f78e7b6f5a52aca5ba8af21e6b5f33ada57e6fda11b8bb976f5f30c6ae769b27",
+      "sha256": "ef665b9fed3f42fb0c3e28dfa671fc7c64986f6fe6ee38a6ecc800652d5b2192",
       "scenario": {
         "id": "wordpress-visual-execution",
         "files": [
@@ -232,10 +232,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-09-01-spatial-proof.json",
-          "sha256": "32d29c72bda8c60d4293fc157bad0f677c74b466a5511b74eb89c9fb1051163e",
-          "testedRevision": "831c36f4a6572a1469e78f88fc07270dc1697983",
-          "testedSourceSha256": "f78e7b6f5a52aca5ba8af21e6b5f33ada57e6fda11b8bb976f5f30c6ae769b27",
+          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-09-04-loose-ends.json",
+          "sha256": "6b366689b81443f4624df5ff1a6395b51c0ff8705334d7bd5092c6378d132d84",
+          "testedRevision": "3d1813238be5232ad5937aa2f029ec11f5587a4e",
+          "testedSourceSha256": "ef665b9fed3f42fb0c3e28dfa671fc7c64986f6fe6ee38a6ecc800652d5b2192",
           "testedScenarioSha256": "a658d9356efcca81704978a8002f28fe55cfeae85d13bc202b064eb78a12836f",
           "runtime": {
             "host": "codex-desktop",
@@ -257,7 +257,7 @@
         "wp-expert/scripts/validate-spatial-proof.mjs",
         "wp-expert/scripts/validate-visual-proof.mjs"
       ],
-      "sha256": "a3affba7b0343debfb79a8d5ba0c6dea9a3a261baaee55962aca05390ff5d295",
+      "sha256": "044f2cf3a387434af45f8ff0c693a9e2e48fb8f617d4d0f604138befbbdd63f7",
       "scenario": {
         "id": "visual-evidence-and-assets",
         "files": [
@@ -286,10 +286,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/visual-evidence-assets-2026-09-01-spatial-proof.json",
-          "sha256": "a252b4c487f7c8f1e3157670ecf31483ec7927c7b68d1a5f475b7c50a89256ad",
-          "testedRevision": "831c36f4a6572a1469e78f88fc07270dc1697983",
-          "testedSourceSha256": "a3affba7b0343debfb79a8d5ba0c6dea9a3a261baaee55962aca05390ff5d295",
+          "runRecord": "skill-evals/run-records/visual-evidence-assets-2026-09-04-loose-ends.json",
+          "sha256": "fd94089b624295b1f859583d7fa73c7518b76b6d96eeff62818affc8cd06389f",
+          "testedRevision": "3d1813238be5232ad5937aa2f029ec11f5587a4e",
+          "testedSourceSha256": "044f2cf3a387434af45f8ff0c693a9e2e48fb8f617d4d0f604138befbbdd63f7",
           "testedScenarioSha256": "970762a1435091dfad3cde6c2de78bcdd5581c016fda2d9ca0bec68d0dac849c",
           "runtime": {
             "host": "codex-desktop",
@@ -306,7 +306,7 @@
         "shared/schemas/wordpress-engineering-graph.schema.json",
         "wp-expert/scripts/validate-engineering-graph.mjs"
       ],
-      "sha256": "1cd920505c76df3a73801240fa887653d0bafa350d291ff14ebd52163f689cf8",
+      "sha256": "754b81a97a323423e0ce793983459e884d13f21156d2f90f857c01e29702d160",
       "scenario": {
         "id": "bounded-questions-and-deterministic-graph-closure",
         "files": [
@@ -319,7 +319,7 @@
           "Conflicting mutable ownership",
           "Graph source identity"
         ],
-        "sha256": "513e36bc69a163829208f34b75e66e5b37ae9ba2c9621a3f54f729c51e740681"
+        "sha256": "146b415525abf0c551e9f8a7e12d118d434e534e368ab728bc8bd921cc23793c"
       },
       "requiredChecks": [
         "one-brief-maximum-three-questions",
@@ -337,11 +337,11 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/engineering-graph-2026-08-31-v3.json",
-          "sha256": "8ddf6e264b3a468a4897cde6aa70e3079a8ef420e2fb5b3b44f39f4f41ba5bd2",
-          "testedRevision": "826ab97501e927ff86669a7c5de2dc855f52dfe8",
-          "testedSourceSha256": "1cd920505c76df3a73801240fa887653d0bafa350d291ff14ebd52163f689cf8",
-          "testedScenarioSha256": "513e36bc69a163829208f34b75e66e5b37ae9ba2c9621a3f54f729c51e740681",
+          "runRecord": "skill-evals/run-records/engineering-graph-2026-09-04-loose-ends.json",
+          "sha256": "8485fa97b3c75948e33425186a478eae0cda26ceba445f1aadf8471a7878e9df",
+          "testedRevision": "27c20bb8a207e89badcf790b50969cc54e354a3f",
+          "testedSourceSha256": "754b81a97a323423e0ce793983459e884d13f21156d2f90f857c01e29702d160",
+          "testedScenarioSha256": "146b415525abf0c551e9f8a7e12d118d434e534e368ab728bc8bd921cc23793c",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
@@ -364,7 +364,7 @@
         "wp-quality-reviewer/scripts/validate-review-report.mjs",
         "wp-quality-reviewer/scripts/accessibility-audit.mjs"
       ],
-      "sha256": "34bfd5752f25e90a9766f30a0564cf07938fe031f85c1f95df1bee9d879729aa",
+      "sha256": "5a2d0e31a2b18c6493bb54e39033b57507d2caad0abcda492bf1b88453d567a4",
       "scenario": {
         "id": "multi-domain-release-quality-review",
         "files": [
@@ -424,10 +424,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-09-01-release-evidence.json",
-          "sha256": "aa351c96081b7c908013a1ba288291eef1989841760c967b21af0905f592bac5",
-          "testedRevision": "14a377ab8cbc39c0b2d840aa4a50dd3478064f00",
-          "testedSourceSha256": "34bfd5752f25e90a9766f30a0564cf07938fe031f85c1f95df1bee9d879729aa",
+          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-09-04-loose-ends.json",
+          "sha256": "0fbce22c4e389e32eda2fd49555c6650e1ccb8df37d77353ee6cfa06ed15bcd2",
+          "testedRevision": "3d1813238be5232ad5937aa2f029ec11f5587a4e",
+          "testedSourceSha256": "5a2d0e31a2b18c6493bb54e39033b57507d2caad0abcda492bf1b88453d567a4",
           "testedScenarioSha256": "f0e591cdcda264d4f78e9a35901d4e93d449318caf237509c49b6dbc20eafb7c",
           "runtime": {
             "host": "codex-desktop",
@@ -489,7 +489,7 @@
         "shared/references/plugin-release-workflow.md",
         "shared/references/delegation-protocol.md"
       ],
-      "sha256": "12347583c7a8d1fb228098f271bfa96c16cba8e9a4228f5dfb6a066a2e6cc2ab",
+      "sha256": "a532510e39387f61d1536ab1bf8776fb5d27f2d481885f58f3942a1f7f6adccb",
       "scenario": {
         "id": "product-development-governance",
         "files": [
@@ -528,10 +528,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-development-governance-2026-08-27-plugin-release.json",
-          "sha256": "82242d2a8649710118f9088ecb9e2de78ebb4113f034a75cae6487e54c8cea97",
-          "testedRevision": "62f89df6be634d9879cb9d6fa1f2b60729b1398a",
-          "testedSourceSha256": "12347583c7a8d1fb228098f271bfa96c16cba8e9a4228f5dfb6a066a2e6cc2ab",
+          "runRecord": "skill-evals/run-records/product-development-governance-2026-09-04-loose-ends.json",
+          "sha256": "69c072a58cb781d1710dcdb34ed715aa535a840e1f50068aea3d0c6044d7a4c7",
+          "testedRevision": "3d1813238be5232ad5937aa2f029ec11f5587a4e",
+          "testedSourceSha256": "a532510e39387f61d1536ab1bf8776fb5d27f2d481885f58f3942a1f7f6adccb",
           "testedScenarioSha256": "ce6aafe5feced0c533a85c233d8eef22d75c093f4c28dcc4460656981db8bf81",
           "runtime": {
             "host": "codex-desktop",
@@ -603,7 +603,7 @@
         "shared/references/plugin-release-workflow.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "cb6cef1ec8e2b81b42a46693eacd94500e608f0b9ac4661f496d142f3bc9b766",
+      "sha256": "aa424bc10259ffcddf78ffbe2c8f63e3691acff41138522fd80b6b6b24cb029f",
       "scenario": {
         "id": "product-release-authority",
         "files": [
@@ -651,10 +651,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-release-authority-2026-08-27-plugin-release.json",
-          "sha256": "03c3b8c0e52a6682f934f08f44c87e334f73d10930606b1c11bac859025b8d04",
-          "testedRevision": "62f89df6be634d9879cb9d6fa1f2b60729b1398a",
-          "testedSourceSha256": "cb6cef1ec8e2b81b42a46693eacd94500e608f0b9ac4661f496d142f3bc9b766",
+          "runRecord": "skill-evals/run-records/product-release-authority-2026-09-04-loose-ends.json",
+          "sha256": "f685d0e1525b51411f3934a41975b3f5aabd4ee078e478483f2cbf8391eec0a1",
+          "testedRevision": "b61e65fa0f25950a7ed6b263f692aec982faa950",
+          "testedSourceSha256": "aa424bc10259ffcddf78ffbe2c8f63e3691acff41138522fd80b6b6b24cb029f",
           "testedScenarioSha256": "0cdf1320fe0853e34624faf2e33ab3e196a38236a42c1e1378ffc7b8bf196327",
           "runtime": {
             "host": "codex-desktop",
@@ -671,7 +671,7 @@
         "shared/references/self-improvement-loop.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "924aa9674a1eea54077da3311c4cdd47dcf0f1805f93b239d5517aef3ec2e239",
+      "sha256": "c0131923f7e87168e3681049c9a8eff946bb766d93317bd9ebe05ca6479cd9ec",
       "scenario": {
         "id": "owner-correction-learning",
         "files": [
@@ -694,10 +694,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/owner-correction-learning-2026-08-25-calibration.json",
-          "sha256": "ad1102ef62b68c6c57b2c959605f0ad2e5bd0bf65fee1b4f79a63be99e107fde",
-          "testedRevision": "5f39d50d90979e9b3ae913656b631f1234887a17",
-          "testedSourceSha256": "924aa9674a1eea54077da3311c4cdd47dcf0f1805f93b239d5517aef3ec2e239",
+          "runRecord": "skill-evals/run-records/owner-correction-learning-2026-09-04-loose-ends.json",
+          "sha256": "a937c167e9dce904c90e135a33a664cf5af70d68f12023983bcf5adfc5187100",
+          "testedRevision": "27c20bb8a207e89badcf790b50969cc54e354a3f",
+          "testedSourceSha256": "c0131923f7e87168e3681049c9a8eff946bb766d93317bd9ebe05ca6479cd9ec",
           "testedScenarioSha256": "b73d82e24abe107bee6eca83f4cfb99e0cb14d7bee22ea956c19d298093f7ca4",
           "runtime": {
             "host": "codex-desktop",
@@ -714,7 +714,7 @@
         "wp-product-orchestrator/SKILL.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "9408f6ba0dadedfef9138c60e12679d8cc5667cb1ec66d111db3eb14ace507be",
+      "sha256": "b5a11a98ee9ab3f28cbda1ef830ea63aef1520584c9a690329f1844c64a03126",
       "scenario": {
         "id": "owner-aligned-judgment",
         "files": [
@@ -742,10 +742,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/owner-aligned-judgment-2026-08-26-governance.json",
-          "sha256": "8d0564c85f7490e0a0a08858aa84a55cf756c982597aa9502a0804576abfcc46",
-          "testedRevision": "b548d94806b8f18091c2d33d4c043638a70827e1",
-          "testedSourceSha256": "9408f6ba0dadedfef9138c60e12679d8cc5667cb1ec66d111db3eb14ace507be",
+          "runRecord": "skill-evals/run-records/owner-aligned-judgment-2026-09-04-loose-ends.json",
+          "sha256": "1ac23dcb6cdd1f7d3c0d00de0a57f592567852dd9e73662c80d35db1edfa5015",
+          "testedRevision": "b61e65fa0f25950a7ed6b263f692aec982faa950",
+          "testedSourceSha256": "b5a11a98ee9ab3f28cbda1ef830ea63aef1520584c9a690329f1844c64a03126",
           "testedScenarioSha256": "54b4ae2bce4d363eecee4fad87a2b5e39ae29e0c98c722ac773dc9447afc6d02",
           "runtime": {
             "host": "codex-desktop",
@@ -1011,6 +1011,102 @@
           }
         }
       ]
+    },
+    {
+      "name": "loop-steward-authority",
+      "files": [
+        "loop-steward/SKILL.md"
+      ],
+      "scenario": {
+        "id": "loop-steward-authority",
+        "files": [
+          "skill-evals/loop-steward-scenarios.md"
+        ],
+        "anchors": [
+          "Missing policy",
+          "Stale pasted policy",
+          "Steward revised head",
+          "Head changed before merge",
+          "Duplicate event",
+          "Missing required check",
+          "Authority expansion"
+        ],
+        "sha256": "ccb431d8dc24dde902d53f9a6b24ca19769efd2ac88e76c46da998490e04955f"
+      },
+      "requiredChecks": [
+        "live-policy-preflight",
+        "missing-policy-fail-closed",
+        "revised-head-independent-review",
+        "premerge-race-recheck",
+        "idempotent-reconciliation",
+        "required-check-fail-closed",
+        "authority-expansion-owner-gate"
+      ],
+      "evidence": [
+        {
+          "runRecord": "skill-evals/run-records/loop-steward-authority-2026-09-04-loose-ends.json",
+          "sha256": "1acacae687ba4904f9cb72c35d24afcd89462c10f0aca21fe1223c92cc99804e",
+          "testedRevision": "3d1813238be5232ad5937aa2f029ec11f5587a4e",
+          "testedSourceSha256": "a41f285ad825e7cbb5fd941c24a433c3821581a7acb8d0138caed51d71558f8b",
+          "testedScenarioSha256": "ccb431d8dc24dde902d53f9a6b24ca19769efd2ac88e76c46da998490e04955f",
+          "runtime": {
+            "host": "codex-desktop",
+            "isolation": "fresh-agent",
+            "harnessRevision": "24ffe6e5481aebe33f403df9b72f0de7214f019a"
+          }
+        }
+      ],
+      "sha256": "a41f285ad825e7cbb5fd941c24a433c3821581a7acb8d0138caed51d71558f8b"
+    },
+    {
+      "name": "wp-contributor-upstream-process",
+      "files": [
+        "wp-contributor/SKILL.md",
+        "wp-contributor/references/ai-guidelines.md",
+        "wp-contributor/references/core-workflow.md",
+        "wp-contributor/references/gutenberg-workflow.md",
+        "wp-contributor/references/meta-workflow.md",
+        "wp-contributor/references/official-anchors.md",
+        "wp-contributor/references/release-backport-security.md",
+        "wp-contributor/references/router.md"
+      ],
+      "scenario": {
+        "id": "wp-contributor-upstream-process",
+        "files": [
+          "skill-evals/wp-contributor-scenarios.md"
+        ],
+        "anchors": [
+          "Core regression",
+          "Gutenberg change",
+          "Meta contribution",
+          "Security report",
+          "AI-assisted contribution"
+        ],
+        "sha256": "47b471dd9c95b853d2807dce0cd76b07480b0d99797b5255128ef8ec8aa508f1"
+      },
+      "requiredChecks": [
+        "live-upstream-state",
+        "trunk-reproduction-and-focused-tests",
+        "gutenberg-current-guidance",
+        "meta-surface-and-privacy",
+        "security-private-disclosure",
+        "ai-human-verification-and-disclosure"
+      ],
+      "evidence": [
+        {
+          "runRecord": "skill-evals/run-records/wp-contributor-upstream-process-2026-09-04-loose-ends.json",
+          "sha256": "5bb16d0b0d68cfae702cf28b6b262185c469939bd21a962d71b88bb7dcb74a50",
+          "testedRevision": "3d1813238be5232ad5937aa2f029ec11f5587a4e",
+          "testedSourceSha256": "99b5d936311dbfcddb49ca8ed13cb43e75a52eb77a80811237392ec76215c87f",
+          "testedScenarioSha256": "47b471dd9c95b853d2807dce0cd76b07480b0d99797b5255128ef8ec8aa508f1",
+          "runtime": {
+            "host": "codex-desktop",
+            "isolation": "fresh-agent",
+            "harnessRevision": "24ffe6e5481aebe33f403df9b72f0de7214f019a"
+          }
+        }
+      ],
+      "sha256": "99b5d936311dbfcddb49ca8ed13cb43e75a52eb77a80811237392ec76215c87f"
     }
   ]
 }

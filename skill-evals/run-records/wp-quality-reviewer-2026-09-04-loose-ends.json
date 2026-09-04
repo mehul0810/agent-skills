@@ -1,0 +1,173 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "wp-quality-reviewer-2026-09-04-loose-ends",
+  "scenario": "multi-domain-release-quality-review",
+  "result": "succeeded",
+  "startedAt": "2026-09-04T06:08:52.000Z",
+  "durationMs": 441000,
+  "checks": [
+    {
+      "name": "compact-multi-domain-route",
+      "result": "pass"
+    },
+    {
+      "name": "evidence-backed-severity-findings",
+      "result": "pass"
+    },
+    {
+      "name": "security-negative-proof",
+      "result": "pass"
+    },
+    {
+      "name": "performance-comparable-delta",
+      "result": "pass"
+    },
+    {
+      "name": "modularity-behavior-proof",
+      "result": "pass"
+    },
+    {
+      "name": "accessibility-manual-proof",
+      "result": "pass"
+    },
+    {
+      "name": "immutable-candidate-and-domain-dispositions",
+      "result": "pass"
+    },
+    {
+      "name": "critical-fix-independent-review",
+      "result": "pass"
+    },
+    {
+      "name": "performance-direction-and-budget",
+      "result": "pass"
+    },
+    {
+      "name": "performance-tail-distribution-evidence",
+      "result": "pass"
+    },
+    {
+      "name": "performance-overload-retry-bound",
+      "result": "pass"
+    },
+    {
+      "name": "cache-consistency-proof",
+      "result": "pass"
+    },
+    {
+      "name": "capacity-envelope-lifecycle",
+      "result": "pass"
+    },
+    {
+      "name": "security-authorization-matrix",
+      "result": "pass"
+    },
+    {
+      "name": "security-resource-abuse-budget",
+      "result": "pass"
+    },
+    {
+      "name": "malformed-vague-report-rejection",
+      "result": "pass"
+    },
+    {
+      "name": "unresolved-critical-blocks-pass",
+      "result": "pass"
+    },
+    {
+      "name": "formal-report-validation",
+      "result": "pass"
+    },
+    {
+      "name": "proportional-modularity-thresholds",
+      "result": "pass"
+    },
+    {
+      "name": "legacy-no-growth-ratchet",
+      "result": "pass"
+    },
+    {
+      "name": "dependency-direction-adapter-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "exception-metadata-and-repo-checker-ownership",
+      "result": "pass"
+    },
+    {
+      "name": "non-breaking-contract-inventory",
+      "result": "pass"
+    },
+    {
+      "name": "before-after-contract-proof",
+      "result": "pass"
+    },
+    {
+      "name": "additive-migration-sequencing",
+      "result": "pass"
+    },
+    {
+      "name": "intentional-break-approval-gate",
+      "result": "pass"
+    },
+    {
+      "name": "formal-aa-scope-criteria-and-manual-evidence",
+      "result": "pass"
+    },
+    {
+      "name": "aa-authentication-input-exceptions",
+      "result": "pass"
+    },
+    {
+      "name": "aa-measurable-visual-media-proof",
+      "result": "pass"
+    },
+    {
+      "name": "release-candidate-evidence-binding",
+      "result": "pass"
+    },
+    {
+      "name": "release-domain-execution-proof",
+      "result": "pass"
+    },
+    {
+      "name": "scope-derived-risk-and-capacity-proof",
+      "result": "pass"
+    },
+    {
+      "name": "migration-and-legacy-evidence-proof",
+      "result": "pass"
+    },
+    {
+      "name": "accessibility-automated-manual-proof",
+      "result": "pass"
+    },
+    {
+      "name": "semantic-proof-authenticity",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 35,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "wp-quality-reviewer-2026-09-04-loose-ends",
+    "artifactPointer": "codex-fresh-agent:/root/fresh_behavior_eval#3d1813238be5232ad5937aa2f029ec11f5587a4e"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-04T06:16:13.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Fresh source-blind review passed focused quality routing, measurable modularity, accessibility proof, and formal report validation."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "wp-quality-reviewer"
+  ]
+}

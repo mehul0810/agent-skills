@@ -1,0 +1,65 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "visual-evidence-assets-2026-09-04-loose-ends",
+  "scenario": "visual-evidence-and-assets",
+  "result": "succeeded",
+  "startedAt": "2026-09-04T06:08:52.000Z",
+  "durationMs": 441000,
+  "checks": [
+    {
+      "name": "structured-visual-proof-rejection",
+      "result": "pass"
+    },
+    {
+      "name": "per-surface-proof-coverage",
+      "result": "pass"
+    },
+    {
+      "name": "concrete-evidence-binding",
+      "result": "pass"
+    },
+    {
+      "name": "asset-production-receipt",
+      "result": "pass"
+    },
+    {
+      "name": "design-token-lineage",
+      "result": "pass"
+    },
+    {
+      "name": "visual-defect-reproof",
+      "result": "pass"
+    },
+    {
+      "name": "structured-spatial-proof-rejection",
+      "result": "pass"
+    },
+    {
+      "name": "browser-geometry-capture",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 8,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "visual-evidence-assets-2026-09-04-loose-ends",
+    "artifactPointer": "codex-fresh-agent:/root/fresh_behavior_eval#3d1813238be5232ad5937aa2f029ec11f5587a4e"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-04T06:16:13.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Fresh source-blind review passed visual evidence binding, asset provenance, candidate scoring, and deterministic validator behavior."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "visual-evidence-assets"
+  ]
+}

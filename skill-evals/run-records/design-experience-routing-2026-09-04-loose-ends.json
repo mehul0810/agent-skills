@@ -1,0 +1,133 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "design-experience-routing-2026-09-04-loose-ends",
+  "scenario": "premium-enterprise-design-experience",
+  "result": "succeeded",
+  "startedAt": "2026-09-04T06:08:52.000Z",
+  "durationMs": 441000,
+  "checks": [
+    {
+      "name": "greenfield-taste-route",
+      "result": "pass"
+    },
+    {
+      "name": "design-read-and-four-dials",
+      "result": "pass"
+    },
+    {
+      "name": "operational-dashboard-route-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "preserve-redesign-contracts",
+      "result": "pass"
+    },
+    {
+      "name": "motivated-motion-and-reduced-motion",
+      "result": "pass"
+    },
+    {
+      "name": "anti-template-composition",
+      "result": "pass"
+    },
+    {
+      "name": "usability-outcome-evidence-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "material-direction-checkpoint",
+      "result": "pass"
+    },
+    {
+      "name": "plug-and-play-defaults-advanced-controls",
+      "result": "pass"
+    },
+    {
+      "name": "enterprise-accountability-failure-proof",
+      "result": "pass"
+    },
+    {
+      "name": "trend-adoption-and-removal-path",
+      "result": "pass"
+    },
+    {
+      "name": "adaptive-ai-transparency-and-control",
+      "result": "pass"
+    },
+    {
+      "name": "voice-equivalent-path-and-privacy",
+      "result": "pass"
+    },
+    {
+      "name": "typography-loading-and-reduced-motion",
+      "result": "pass"
+    },
+    {
+      "name": "immersive-fallback-and-performance",
+      "result": "pass"
+    },
+    {
+      "name": "enterprise-progressive-depth",
+      "result": "pass"
+    },
+    {
+      "name": "source-visual-intent-routing",
+      "result": "pass"
+    },
+    {
+      "name": "design-understanding-evidence-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "growth-redesign-evidence-before-generation",
+      "result": "pass"
+    },
+    {
+      "name": "globalized-adaptive-interface-contract",
+      "result": "pass"
+    },
+    {
+      "name": "wordpress-design-system-package-transition",
+      "result": "pass"
+    },
+    {
+      "name": "custom-interaction-pattern-contract",
+      "result": "pass"
+    },
+    {
+      "name": "enterprise-form-recovery",
+      "result": "pass"
+    },
+    {
+      "name": "browser-assistive-technology-matrix",
+      "result": "pass"
+    },
+    {
+      "name": "token-integrity-proof-provenance",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 25,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "design-experience-routing-2026-09-04-loose-ends",
+    "artifactPointer": "codex-fresh-agent:/root/fresh_behavior_eval#3d1813238be5232ad5937aa2f029ec11f5587a4e"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-04T06:16:13.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Fresh source-blind review passed premium design routing, intent, accountability, proof, failure, and anti-template behavior."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "design-experience-routing"
+  ]
+}

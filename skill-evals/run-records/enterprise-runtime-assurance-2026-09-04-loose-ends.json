@@ -1,0 +1,53 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "enterprise-runtime-assurance-2026-09-04-loose-ends",
+  "scenario": "elevated-enterprise-runtime-assurance",
+  "result": "succeeded",
+  "startedAt": "2026-09-04T06:08:52.000Z",
+  "durationMs": 441000,
+  "checks": [
+    {
+      "name": "elevated-risk-classification",
+      "result": "pass"
+    },
+    {
+      "name": "compatibility-matrix-and-adaptive-docs",
+      "result": "pass"
+    },
+    {
+      "name": "artifact-sbom-license-vulnerability-provenance",
+      "result": "pass"
+    },
+    {
+      "name": "operations-observation-rollback-recovery",
+      "result": "pass"
+    },
+    {
+      "name": "missing-release-evidence-fails-closed",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 5,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "enterprise-runtime-assurance-2026-09-04-loose-ends",
+    "artifactPointer": "codex-fresh-agent:/root/fresh_behavior_eval#3d1813238be5232ad5937aa2f029ec11f5587a4e"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-04T06:16:13.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Fresh source-blind review passed proportional enterprise runtime, compatibility, supply-chain, operations, recovery, and evidence gates."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "enterprise-runtime-assurance"
+  ]
+}

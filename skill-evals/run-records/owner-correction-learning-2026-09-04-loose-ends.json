@@ -1,0 +1,61 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "owner-correction-learning-2026-09-04-loose-ends",
+  "scenario": "owner-correction-learning",
+  "result": "succeeded",
+  "startedAt": "2026-09-04T06:21:20.000Z",
+  "durationMs": 50000,
+  "checks": [
+    {
+      "name": "immediate-root-cause-correction",
+      "result": "pass"
+    },
+    {
+      "name": "compact-correction-result",
+      "result": "pass"
+    },
+    {
+      "name": "worker-candidate-only",
+      "result": "pass"
+    },
+    {
+      "name": "dedupe-and-repeatability-gate",
+      "result": "pass"
+    },
+    {
+      "name": "reviewed-durable-destination",
+      "result": "pass"
+    },
+    {
+      "name": "decision-envelope-preserved",
+      "result": "pass"
+    },
+    {
+      "name": "task-authorization-not-promoted",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 7,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "owner-correction-learning-2026-09-04-loose-ends",
+    "artifactPointer": "codex-fresh-agent:/root/fresh_behavior_eval#27c20bb8a207e89badcf790b50969cc54e354a3f"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-04T06:22:10.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Fresh source-blind review passed immediate root-cause correction, bounded candidate authority, dedupe, reviewed promotion, and decision-envelope preservation."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "owner-correction-learning"
+  ]
+}

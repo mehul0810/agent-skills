@@ -1,0 +1,57 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "wp-contributor-upstream-process-2026-09-04-loose-ends",
+  "scenario": "wp-contributor-upstream-process",
+  "result": "succeeded",
+  "startedAt": "2026-09-04T06:08:52.000Z",
+  "durationMs": 441000,
+  "checks": [
+    {
+      "name": "live-upstream-state",
+      "result": "pass"
+    },
+    {
+      "name": "trunk-reproduction-and-focused-tests",
+      "result": "pass"
+    },
+    {
+      "name": "gutenberg-current-guidance",
+      "result": "pass"
+    },
+    {
+      "name": "meta-surface-and-privacy",
+      "result": "pass"
+    },
+    {
+      "name": "security-private-disclosure",
+      "result": "pass"
+    },
+    {
+      "name": "ai-human-verification-and-disclosure",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 6,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "wp-contributor-upstream-process-2026-09-04-loose-ends",
+    "artifactPointer": "codex-fresh-agent:/root/fresh_behavior_eval#3d1813238be5232ad5937aa2f029ec11f5587a4e"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-04T06:16:13.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Fresh source-blind review passed Core, Gutenberg, Meta, private security, AI disclosure, and upstream validation behavior."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "wp-contributor-upstream-process"
+  ]
+}
