@@ -53,6 +53,11 @@ require_text "shared/references/project-subagent-routing.md" "Impact: <none or e
 require_text "shared/references/project-subagent-routing.md" "Do not downgrade the final reviewer merely for model diversity" "high-risk reviewer tier"
 require_text "shared/references/project-subagent-routing.md" "Capability-check both fields at runtime" "reasoning capability check"
 require_text "shared/references/project-subagent-routing.md" "must not pin transient models/reasoning" "model-free reusable profiles"
+require_text "shared/references/project-subagent-routing.md" "Use the stable Luna/Terra/Sol capability family as the default model boundary" "approved stable model family"
+require_text "shared/references/project-subagent-routing.md" "preview, research-preview, experimental, or separate-capacity models" "preview and separate-capacity exclusion"
+require_text "shared/references/project-subagent-routing.md" "Daybreak Blue-class" "defensive security specialist"
+require_text "shared/references/project-subagent-routing.md" "fixer must not approve its own remediation" "independent security verification"
+require_text "shared/references/project-subagent-routing.md" "Never use a full-history worker fork" "bounded worker context"
 require_text "shared/references/project-subagent-routing.md" "first CTO interaction of their local calendar day" "daily owner capacity signal"
 require_text "shared/references/project-subagent-routing.md" "Missing answer means one worker at a time" "conservative missing capacity"
 require_text "shared/references/project-subagent-routing.md" "one worker at a time" "conservative capacity concurrency"
@@ -67,6 +72,10 @@ require_text "skill-evals/model-routing-scenarios.md" "Routine Evidence Lane" "r
 require_text "skill-evals/model-routing-scenarios.md" "Complex Security And Release Decision" "complex decision scenario"
 require_text "skill-evals/model-routing-scenarios.md" "Unavailable Explicit Request" "unavailable request scenario"
 require_text "skill-evals/model-routing-scenarios.md" "Missing Runtime Classes" "per-class fallback scenario"
+require_text "skill-evals/model-routing-scenarios.md" "Approved Stable Family Boundary" "stable family boundary scenario"
+require_text "skill-evals/model-routing-scenarios.md" "Daybreak Blue Defensive Security" "security specialist scenario"
+require_text "skill-evals/model-routing-scenarios.md" "Routine Security Does Not Use Specialist" "specialist non-trigger scenario"
+require_text "skill-evals/model-routing-scenarios.md" "Bounded Worker Context" "worker context scenario"
 require_text "skill-evals/wp-product-orchestrator-scenarios.md" "Terra-class with medium reasoning as the default execution lane" "PO runtime class mapping"
 
 # Historical records and provider/API integration examples may name models. Current

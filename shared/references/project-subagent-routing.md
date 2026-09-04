@@ -16,6 +16,12 @@ At each delegation: re-check host model/reasoning availability; treat owner choi
 
 Never assume a model ID or that `high`, `xhigh`, `max`, or another reasoning label exists. Capability-check both fields at runtime.
 
+### Approved Stable Family
+
+Use the stable Luna/Terra/Sol capability family as the default model boundary. A future family or successor enters this boundary only after it is available in the active runtime, officially documented, stable rather than preview, and reviewed into the same cost/risk tiers.
+
+Do not select legacy, deprecated, preview, research-preview, experimental, or separate-capacity models merely because the runtime exposes them. They require an explicit owner request for the current task. Daybreak Blue-class is the owner-approved defensive-security exception defined below.
+
 ### Owner Capacity Signal
 
 On the owner's first CTO interaction of their local calendar day, ask once: `Should I plan delegated work around conservative capacity, or do you expect to use available capacity today or this week?`
@@ -38,6 +44,15 @@ When the current host exposes the 5.6 capability family, map its runtime classes
 - Sol-class: release/critical review/security/architecture/migrations/contracts/regressions/conflicts/topology/owner decisions; supported `high`/`xhigh`.
 
 These are current capability-class aliases, not permanent model IDs or reusable configuration values. If the host exposes different names, preserve the same risk/cost tiers. Use reasoning above `xhigh` only when the owner explicitly requests it or concrete failed proof shows `xhigh` is insufficient.
+
+### Defensive Security Specialist
+
+Use Daybreak Blue-class, when exposed, only for authorized defensive vulnerability discovery, attack-path analysis, exploitability validation, remediation implementation, or fix verification. Prefer supported `high` or `xhigh`; use a higher level only for an explicitly requested deep scan or demonstrated complexity.
+
+- Keep routine security lint, dependency review, ordinary hardening, and non-security implementation in the Luna/Terra/Sol lanes.
+- Separate discovery, fixing, and final verification for material findings. The fixer must not approve its own remediation; use a fresh Daybreak Blue-class verifier or an independent Sol-class security review.
+- Preserve private handling and sanitized public reporting. Do not expose actionable exploit details, secrets, personal data, or unsafe reproduction steps.
+- Specialist allocation changes capability, not authority. It does not authorize disclosure, destructive testing, production mutation, release, merge, or security/privacy policy changes.
 
 Allocation changes capability, not authority. A Sol-class assignment for topology recovery or release judgment still inherits protected-thread, mutation, and owner-approval gates from the governing role.
 
@@ -75,6 +90,10 @@ Front-load scope into the issue and delegation prompt so execution does not spen
 For code work, include the proportional quality contract from `../../wp-expert/references/planning-drift-control.md`: ownership/contracts, modularity/maintainability and scalability boundary, performance hot path/budget, security/privacy boundary, tests/proof, and rollback. Workers execute that contract and return a quality receipt; they do not spend the execution turn rebuilding an omitted plan.
 
 Fully planned bounded work uses the lowest sufficient tier; decision-shaping work stays with parent or a stronger tier.
+
+### Worker Context Boundary
+
+Default model-routed workers to no inherited turns and provide a compact task packet. If continuity is necessary, pass only the smallest recent-turn slice that carries required evidence. Never use a full-history worker fork: long control-thread history, tool transcripts, and repeated cached context can exhaust a model-specific allowance without improving the bounded result.
 
 ## Skill Routing
 

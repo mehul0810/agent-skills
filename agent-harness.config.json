@@ -550,7 +550,7 @@
     {
       "name": "Model routing",
       "file": "skill-evals/model-routing-scenarios.md",
-      "requiredPhrases": ["# Availability-First Model Routing Scenarios"]
+      "requiredPhrases": ["# Availability-First Model Routing Scenarios", "Approved Stable Family Boundary", "Daybreak Blue Defensive Security", "Bounded Worker Context"]
     },
     {
       "name": "Loop Steward",
