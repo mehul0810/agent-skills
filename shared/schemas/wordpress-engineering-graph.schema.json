@@ -4,7 +4,7 @@
   "title": "WordPress Engineering Graph",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schemaVersion", "task", "acceptanceCriteria", "nodes"],
+  "required": ["schemaVersion", "task", "assuranceLevel", "acceptanceCriteria", "nodes"],
   "properties": {
     "schemaVersion": { "const": 2 },
     "task": { "type": "string", "minLength": 1 },

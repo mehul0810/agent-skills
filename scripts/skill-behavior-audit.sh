@@ -218,6 +218,7 @@ require_text "wp-expert/scripts/validate-engineering-graph.mjs" "does not match 
 require_text "wp-expert/scripts/validate-engineering-graph.mjs" "canonicalSchemaErrors" "engineering graph canonical schema validation"
 require_text "wp-expert/scripts/validate-engineering-graph.mjs" "does not match graph source" "engineering graph source identity validation"
 require_text "wp-expert/scripts/validate-engineering-graph.mjs" "requires root source identity" "engineering graph root source requirement"
+require_text "shared/references/wordpress-engineering-graph.md" "Every deterministic graph declares" "engineering graph explicit assurance classification"
 require_text "shared/schemas/wordpress-engineering-graph.schema.json" '"release"' "engineering graph release assurance"
 require_text "wp-expert/scripts/validate-engineering-graph.mjs" "not bound to graph source revision or package" "engineering graph immutable source binding"
 require_text "wp-expert/scripts/validate-engineering-graph.mjs" "lacks trust identity" "engineering graph trust metadata validation"

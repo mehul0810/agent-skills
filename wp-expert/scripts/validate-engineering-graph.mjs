@@ -99,10 +99,7 @@ function validateGraph(graph, { graphPath = null } = {}) {
   if (typeof graph.task !== "string" || graph.task.trim() === "") {
     errors.push("task must be a non-empty string");
   }
-  if (
-    graph.assuranceLevel !== undefined &&
-    !["baseline", "elevated", "release"].includes(graph.assuranceLevel)
-  ) {
+  if (!["baseline", "elevated", "release"].includes(graph.assuranceLevel)) {
     errors.push("assuranceLevel must be baseline, elevated, or release");
   }
   if (["elevated", "release"].includes(graph.assuranceLevel)) {
@@ -649,6 +646,8 @@ function selfTest() {
   const cases = [];
   cases.push(["valid", valid, (errors) => errors.length === 0]);
   cases.push(["valid learning", validLearning, (errors) => errors.length === 0]);
+  const missingAssurance = structuredClone(valid); delete missingAssurance.assuranceLevel;
+  cases.push(["explicit assurance required", missingAssurance, (errors) => errors.some((error) => error.includes("assuranceLevel must be"))]);
   const stale = structuredClone(valid); stale.nodes[1].dependencyFingerprints["intent.settings"] = fp("9");
   cases.push(["stale dependency", stale, (errors) => errors.some((error) => error.includes("stale dependency fingerprint"))]);
   const fakeIdentity = structuredClone(valid); fakeIdentity.nodes[1].evidence[0].identity = { commit: "abc123" };
