@@ -1,6 +1,6 @@
 # WordPress 7.0 And 7.1 Enterprise Compatibility
 
-Use for WordPress 7.0/7.1, `Tested up to`, API adoption, or upgrades. This snapshot does not replace live Core verification.
+Use for WordPress 7.0/7.1 compatibility, `Tested up to`, or upgrades; recheck live Core.
 
 ## Evidence State
 
