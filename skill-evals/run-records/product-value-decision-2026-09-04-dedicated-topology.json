@@ -1,0 +1,45 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "product-value-decision-2026-09-04-dedicated-topology",
+  "scenario": "product-value-decision",
+  "result": "succeeded",
+  "startedAt": "2026-09-04T09:26:18.000Z",
+  "durationMs": 81000,
+  "checks": [
+    { "name": "user-outcome-specificity", "result": "pass" },
+    { "name": "business-outcome-specificity", "result": "pass" },
+    { "name": "evidence-assumption-separation", "result": "pass" },
+    { "name": "confidence-and-reach", "result": "pass" },
+    { "name": "lifetime-cost-and-risk", "result": "pass" },
+    { "name": "proportional-decision", "result": "pass" },
+    { "name": "measurable-threshold-window", "result": "pass" },
+    { "name": "no-invented-uplift", "result": "pass" },
+    { "name": "mandatory-work-not-score-gated", "result": "pass" },
+    { "name": "post-release-outcome-disposition", "result": "pass" },
+    { "name": "quality-and-authority-boundary", "result": "pass" }
+  ],
+  "metrics": {
+    "checks_passed": 11,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "product-value-decision-2026-09-04-dedicated-topology",
+    "artifactPointer": "codex-fresh-agent:/root/onesmtp_topology_eval#3127c71a76cda46685b50cb502b909e4034c4e46"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-04T09:27:39.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Fresh source-blind review confirmed the product-value contract remains intact after dedicated product topology and worker lifecycle changes."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "product-value-decision",
+    "dedicated-product-topology"
+  ]
+}

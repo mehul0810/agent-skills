@@ -1,0 +1,57 @@
+{
+  "$schema": "../../node_modules/@mehul0810/agent-harness/schemas/run-record.schema.json",
+  "schemaVersion": 1,
+  "runId": "product-development-governance-2026-09-04-dedicated-topology",
+  "scenario": "product-development-governance",
+  "result": "succeeded",
+  "startedAt": "2026-09-04T09:26:18.000Z",
+  "durationMs": 81000,
+  "checks": [
+    { "name": "planner-discovery-packet", "result": "pass" },
+    { "name": "po-train-and-post-release-learning", "result": "pass" },
+    { "name": "independent-engineering-review", "result": "pass" },
+    { "name": "exact-candidate-release-readiness", "result": "pass" },
+    { "name": "cto-escalation-only", "result": "pass" },
+    { "name": "sibling-product-identity", "result": "pass" },
+    { "name": "outcome-named-temporary-tasks", "result": "pass" },
+    { "name": "stable-production-mainline", "result": "pass" },
+    { "name": "tag-derived-package", "result": "pass" },
+    { "name": "plugin-milestone-scope-and-branch", "result": "pass" },
+    { "name": "solo-owner-independent-review", "result": "pass" },
+    { "name": "primary-studio-safe-first", "result": "pass" },
+    { "name": "disposable-isolation-fallback", "result": "pass" },
+    { "name": "new-studio-owner-approval", "result": "pass" },
+    { "name": "unapproved-studio-proof-gap", "result": "pass" },
+    { "name": "existing-studio-inventory-only", "result": "pass" },
+    { "name": "independent-test-proof", "result": "pass" },
+    { "name": "dedicated-role-tasks-protected", "result": "pass" },
+    { "name": "same-project-disposable-workers", "result": "pass" },
+    { "name": "exact-id-worker-archive", "result": "pass" },
+    { "name": "push-not-completion", "result": "pass" },
+    { "name": "failed-proof-correction", "result": "pass" },
+    { "name": "worktree-cleanup-separate", "result": "pass" }
+  ],
+  "metrics": {
+    "checks_passed": 23,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "product-development-governance-2026-09-04-dedicated-topology",
+    "artifactPointer": "codex-fresh-agent:/root/onesmtp_topology_eval#3127c71a76cda46685b50cb502b909e4034c4e46"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-04T09:27:39.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Fresh source-blind review passed product governance and the dedicated same-project role, worker review, reconciliation, and archive lifecycle."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "product-development-governance",
+    "dedicated-product-topology"
+  ]
+}

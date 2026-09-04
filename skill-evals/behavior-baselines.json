@@ -489,12 +489,13 @@
         "shared/references/plugin-release-workflow.md",
         "shared/references/delegation-protocol.md"
       ],
-      "sha256": "df31562a54f30e66a040a754c1d679232ee4d85749fb71f2e70aa8be702b328f",
+      "sha256": "797a7c2bd6947c55fda9ce74f2972a00f9d44d27fd350589c14cedafc6bc259f",
       "scenario": {
         "id": "product-development-governance",
         "files": [
           "skill-evals/wp-portfolio-cto-scenarios.md",
-          "skill-evals/wp-product-orchestrator-scenarios.md"
+          "skill-evals/wp-product-orchestrator-scenarios.md",
+          "skill-evals/product-role-topology-scenarios.md"
         ],
         "anchors": [
           "Four-role product topology",
@@ -504,9 +505,13 @@
           "Proof environment preflight",
           "Unapproved Studio proof",
           "Post-release product learning",
-          "CTO escalation-only boundary"
+          "CTO escalation-only boundary",
+          "Dedicated product topology lifecycle",
+          "Push is not completion",
+          "Automatic reconciled archive",
+          "Failed proof correction"
         ],
-        "sha256": "ce6aafe5feced0c533a85c233d8eef22d75c093f4c28dcc4460656981db8bf81"
+        "sha256": "adc694ebf95c5e99f1cf6863325e98fcf92a6e14ad7b6bb2f57dca0ae37c469f"
       },
       "requiredChecks": [
         "planner-discovery-packet",
@@ -524,15 +529,22 @@
         "disposable-isolation-fallback",
         "new-studio-owner-approval",
         "unapproved-studio-proof-gap",
-        "existing-studio-inventory-only"
+        "existing-studio-inventory-only",
+        "independent-test-proof",
+        "dedicated-role-tasks-protected",
+        "same-project-disposable-workers",
+        "exact-id-worker-archive",
+        "push-not-completion",
+        "failed-proof-correction",
+        "worktree-cleanup-separate"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-development-governance-2026-09-04-token-compact.json",
-          "sha256": "1e4df2ddddf859adccf6660c3d7369f9953cbc0bea3f187356759e8c77a71335",
-          "testedRevision": "f0424b8876f09ce67b667d4bbe528def0043a319",
-          "testedSourceSha256": "df31562a54f30e66a040a754c1d679232ee4d85749fb71f2e70aa8be702b328f",
-          "testedScenarioSha256": "ce6aafe5feced0c533a85c233d8eef22d75c093f4c28dcc4460656981db8bf81",
+          "runRecord": "skill-evals/run-records/product-development-governance-2026-09-04-dedicated-topology.json",
+          "sha256": "1a4c7368676176c2c7401f86344aea63046c49773713c2835eb5f4afa7ed097a",
+          "testedRevision": "3127c71a76cda46685b50cb502b909e4034c4e46",
+          "testedSourceSha256": "797a7c2bd6947c55fda9ce74f2972a00f9d44d27fd350589c14cedafc6bc259f",
+          "testedScenarioSha256": "adc694ebf95c5e99f1cf6863325e98fcf92a6e14ad7b6bb2f57dca0ae37c469f",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
@@ -572,13 +584,13 @@
         "post-release-outcome-disposition",
         "quality-and-authority-boundary"
       ],
-      "sha256": "ea27da2272d6e9f397756e2de8f63db62e0a79747888986076a7e8532d8f1d89",
+      "sha256": "5e7fd950a835bfe25f37cbe46450299b9a36ef0777b1a64cc44902d3634f7497",
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-value-decision-2026-08-27-plugin-release.json",
-          "sha256": "68d2e34080c6dac25f7a402201c4450a1117477bd661b0bb7df4d71a9cd02c5a",
-          "testedRevision": "62f89df6be634d9879cb9d6fa1f2b60729b1398a",
-          "testedSourceSha256": "ea27da2272d6e9f397756e2de8f63db62e0a79747888986076a7e8532d8f1d89",
+          "runRecord": "skill-evals/run-records/product-value-decision-2026-09-04-dedicated-topology.json",
+          "sha256": "8788ca8af1e6e899aeeba916c22bcd8c1d34db795815888fac63167a08f0edba",
+          "testedRevision": "3127c71a76cda46685b50cb502b909e4034c4e46",
+          "testedSourceSha256": "5e7fd950a835bfe25f37cbe46450299b9a36ef0777b1a64cc44902d3634f7497",
           "testedScenarioSha256": "52c0b2cb69237e9f1d472448ca912993d5e549eb4c6fc8602cab15beff2581c8",
           "runtime": {
             "host": "codex-desktop",
