@@ -517,6 +517,11 @@
       "requiredPhrases": ["# WP Product Orchestrator Evaluation Scenarios", "Owner-aligned implementation choice", "Exact supplied values", "Enterprise without overengineering", "Four-role product topology", "Feature value recommendation", "Mandatory work is not score-gated", "Stable mainline lineage", "Proof environment preflight", "Unapproved Studio proof"]
     },
     {
+      "name": "Dedicated Product Role Topology",
+      "file": "skill-evals/product-role-topology-scenarios.md",
+      "requiredPhrases": ["# Dedicated Product Role Topology Scenarios", "Dedicated product topology lifecycle", "Push is not completion", "Automatic reconciled archive", "Failed proof correction"]
+    },
+    {
       "name": "Visual WordPress",
       "file": "skill-evals/visual-wordpress-scenarios.md",
       "requiredPhrases": [

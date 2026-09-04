@@ -14,6 +14,8 @@ Portfolio control routes product execution to the product PO. User-visible produ
 
 `Worker Threads` is the project for execution rooms. Create `CTO Worker <Task Name>` for small stateful execution. These workers are execution rooms, not control rooms: no roadmap authority, no direct product-thread contact except through CTO reconciliation, and no release/publish/merge/pricing/licensing/privacy/security/public-contract decisions.
 
+When the owner adopts dedicated roles for a product, PO instead creates disposable `<Product> Worker <Issue or Outcome>` tasks in that same saved product project. Record each returned thread ID; project/title matching alone is insufficient for archive or recovery. Keep Planner, PO, Review, Test & Proof, and Release Readiness tasks protected and long-lived.
+
 Worker lifecycle owner is the creator. CTO- or PO-created workers remain that creator's responsibility for scope, proof, reconciliation, and archive/delete. POs report only blockers, release-readiness changes, cross-product/process concerns, or owner decisions.
 
 ## Direct Execution Boundary
@@ -110,6 +112,8 @@ Use worktrees when parallel implementation or CI repair risks branch drift. Pref
 ## Delegated Thread Lifecycle
 
 Document strategy before delegation; use GitHub comments only for durable transitions. On return, the creator verifies diff/proof, reconciles PR/issue/product state and lessons, then archive/delete the disposable worker.
+
+For an owner-approved dedicated product topology, apply the exact-ID automatic archive and proof gates in `product-development-role-topology.md`; never treat push alone as completion.
 
 ## Worker Reconciliation Checklist
 

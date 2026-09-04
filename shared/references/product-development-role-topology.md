@@ -1,6 +1,6 @@
 # Product Development Role Topology
 
-Use this reference to turn product work into explicit decision, execution, review, and release contracts. Roles describe accountability; they do not require four permanent threads.
+Use this reference to turn product work into explicit decision, execution, review, proof, and release contracts. Roles describe accountability; they do not require permanent threads unless the owner adopts the dedicated topology below.
 
 ## Role Contracts
 
@@ -15,6 +15,10 @@ Own one product's issues, milestones/due dates, priority, accepted scope, labels
 ### Engineering Review
 
 Independently review the exact PR/head against the linked issue, product/repo architecture, tests, accessibility, security/privacy, performance, maintainability, compatibility, and declared browser/runtime proof. The reviewer does not silently implement or expand scope. Return findings first, required corrections, proof gaps, and `PASS|FAIL|BLOCKED`. Use `$wp-quality-reviewer` for focused technical domains and a fresh `$behavior-validator` for observable behavior when applicable.
+
+### Test & Proof
+
+Independently exercise the exact PR/head or packaged artifact against acceptance criteria, golden workflows, supported environments, accessibility behavior, and changed UI at relevant widths. Return the runner/environment, fixtures and mutation level, exact artifact/SHA, commands and browser evidence, failures/skips, cleanup state, and `PASS|FAIL|BLOCKED`. Do not repair the implementation inside the proof task; return failures to PO for a bounded worker correction.
 
 ### Release Readiness
 
@@ -31,12 +35,24 @@ CTO is escalation-only for public API/schema or breaking contracts, security/pri
 - Name temporary implementation, proof, docs, design, and review work by outcome. Reconcile evidence and close/archive Codex-created workers when complete; do not create permanent functional silos by habit.
 - One task may carry one role contract. When one person or thread performs multiple roles, record each handoff and preserve independence where review or behavioral proof requires it.
 
+### Owner-Approved Dedicated Product Topology
+
+For an active product where the owner wants durable role control rooms, create protected tasks in the same saved product project named `<Product> Planner`, `<Product> PO`, `<Product> Review`, `<Product> Test & Proof`, and `<Product> Release Readiness`. These tasks retain only their role state; GitHub and repo docs remain source of truth. Do not give every task a heartbeat.
+
+Do not create a permanent Worker task. PO creates outcome-named disposable workers in that same product project only when an issue needs isolated execution, records their thread IDs, and supplies exact repo/worktree paths. Product-project membership does not prove an app-managed worktree root; if the saved project is broader than the Git repo, use a verified manual worktree outside WordPress-scanned paths.
+
+### Disposable Worker Lifecycle
+
+PO or its heartbeat performs lifecycle reconciliation automatically for exact tracked worker IDs. A pushed commit or open PR is not completion. Use `set_thread_archived` only after the Codex-created worker is idle with a final summary, Engineering Review and applicable Test & Proof pass, corrections and current validation match the exact PR/head, the PR plus issue/train are reconciled, and no handoff remains.
+
+Failed review/proof returns a bounded correction to the worker; do not archive it. After archive, clean its worktree separately only when storage-lifecycle safety evidence passes. Automation inspects only tracked completed workers, archives successful reconciliation without noisy notification, and reports a missing archive tool, identity, review, or PR state once. Never auto-archive owner-created role/control tasks.
+
 ## Required Handoffs
 
 1. Planner -> PO: evidence-backed implementation packet or a bounded research decision.
 2. PO -> Worker: issue, scope/non-goals, branch/base, validation, proof environment/mutation level, risks, and stop condition.
-3. Worker -> Engineering Review: exact PR/head, issue, changed contract, tests, proof, and known gaps.
-4. Engineering Review -> PO: disposition and corrections; PO reconciles acceptance and train state.
+3. Worker -> Engineering Review and Test & Proof: exact PR/head, issue, changed contract, tests, package/runtime target, and known gaps.
+4. Engineering Review and Test & Proof -> PO: independent dispositions and corrections; PO reconciles acceptance and train state.
 5. PO -> Release Readiness: exact candidate plus closed/open scope and evidence index.
 6. Release Readiness -> Owner/PO: GO/NO-GO brief; owner approves any protected production merge, beta/stable tag, release, publish, or documented exception.
 
