@@ -101,9 +101,24 @@ function validateGraph(graph, { graphPath = null } = {}) {
   }
   if (
     graph.assuranceLevel !== undefined &&
-    !["baseline", "elevated"].includes(graph.assuranceLevel)
+    !["baseline", "elevated", "release"].includes(graph.assuranceLevel)
   ) {
-    errors.push("assuranceLevel must be baseline or elevated");
+    errors.push("assuranceLevel must be baseline, elevated, or release");
+  }
+  if (["elevated", "release"].includes(graph.assuranceLevel)) {
+    if (!isObject(graph.source)) {
+      errors.push(`${graph.assuranceLevel} graph requires root source identity`);
+    } else {
+      if (!graph.source.revision && !graph.source.packageSha256) {
+        errors.push("root source identity requires revision or package digest");
+      }
+      if (typeof graph.source.environment !== "string" || !graph.source.environment.trim()) {
+        errors.push("root source identity requires environment");
+      }
+      if (!Number.isFinite(Date.parse(graph.source.observedAt))) {
+        errors.push("root source identity requires observed-at time");
+      }
+    }
   }
   if (!Array.isArray(graph.nodes) || graph.nodes.length === 0) {
     return [...errors, "nodes must be a non-empty array"];
@@ -348,7 +363,7 @@ function validateGraph(graph, { graphPath = null } = {}) {
         if (!hasTrust) errors.push(`${node.id} critical proof lacks trust identity`);
         if (!hasPrivacy) errors.push(`${node.id} critical proof lacks privacy identity`);
         if (node.proofKind === "regression" && !hasRun) errors.push(`${node.id} regression proof lacks run identity`);
-        if (graph.assuranceLevel === "elevated" && node.evidence.some((evidence) => evidence.kind === "package")
+        if (["elevated", "release"].includes(graph.assuranceLevel) && node.evidence.some((evidence) => evidence.kind === "package")
           && !identities.some((identity) => identity.packageSha256)) {
           errors.push(`${node.id} elevated package proof lacks package identity`);
         }
@@ -560,7 +575,7 @@ function selfTest() {
     schemaVersion: 2,
     task: "Prove a packaged settings workflow",
     assuranceLevel: "baseline",
-    source: { repository: "example/repo", revision: "c".repeat(40), environment: "wp-proof" },
+    source: { repository: "example/repo", revision: "c".repeat(40), environment: "wp-proof", observedAt: "2026-07-17T00:00:00Z" },
     acceptanceCriteria: [{
       id: "ac.settings",
       statement: "The packaged settings workflow passes.",
@@ -651,6 +666,12 @@ function selfTest() {
   cases.push(["local byte mismatch", badBytes, (errors) => errors.some((error) => error.includes("does not match local evidence bytes"))]);
   const mismatchedSource = structuredClone(valid); mismatchedSource.nodes[1].evidence[0].identity.revision = "d".repeat(40);
   cases.push(["source identity mismatch", mismatchedSource, (errors) => errors.some((error) => error.includes("does not match graph source"))]);
+  const elevatedWithoutSource = structuredClone(valid); elevatedWithoutSource.assuranceLevel = "elevated"; delete elevatedWithoutSource.source;
+  cases.push(["elevated source required", elevatedWithoutSource, (errors) => errors.some((error) => error.includes("requires root source identity"))]);
+  const releaseWithoutIdentity = structuredClone(valid); releaseWithoutIdentity.assuranceLevel = "release"; delete releaseWithoutIdentity.source.revision;
+  cases.push(["release source identity required", releaseWithoutIdentity, (errors) => errors.some((error) => error.includes("requires revision or package digest"))]);
+  const releaseWithoutEnvironment = structuredClone(valid); releaseWithoutEnvironment.assuranceLevel = "release"; delete releaseWithoutEnvironment.source.environment;
+  cases.push(["release source environment required", releaseWithoutEnvironment, (errors) => errors.some((error) => error.includes("requires environment"))]);
   const missingTrust = structuredClone(valid); delete missingTrust.nodes[1].evidence[0].identity.trustClass;
   cases.push(["proof trust metadata", missingTrust, (errors) => errors.some((error) => error.includes("lacks trust identity"))]);
 

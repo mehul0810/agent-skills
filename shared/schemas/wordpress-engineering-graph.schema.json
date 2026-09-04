@@ -8,7 +8,7 @@
   "properties": {
     "schemaVersion": { "const": 2 },
     "task": { "type": "string", "minLength": 1 },
-    "assuranceLevel": { "enum": ["baseline", "elevated"] },
+    "assuranceLevel": { "enum": ["baseline", "elevated", "release"] },
     "source": {
       "type": "object",
       "additionalProperties": false,
@@ -43,6 +43,26 @@
       "items": { "$ref": "#/$defs/node" }
     }
   },
+  "allOf": [
+    {
+      "if": {
+        "required": ["assuranceLevel"],
+        "properties": { "assuranceLevel": { "enum": ["elevated", "release"] } }
+      },
+      "then": {
+        "required": ["source"],
+        "properties": {
+          "source": {
+            "required": ["repository", "environment", "observedAt"],
+            "anyOf": [
+              { "required": ["revision"] },
+              { "required": ["packageSha256"] }
+            ]
+          }
+        }
+      }
+    }
+  ],
   "$defs": {
     "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$" },
     "sha256": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
