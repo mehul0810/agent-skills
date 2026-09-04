@@ -489,7 +489,7 @@
         "shared/references/plugin-release-workflow.md",
         "shared/references/delegation-protocol.md"
       ],
-      "sha256": "a532510e39387f61d1536ab1bf8776fb5d27f2d481885f58f3942a1f7f6adccb",
+      "sha256": "df31562a54f30e66a040a754c1d679232ee4d85749fb71f2e70aa8be702b328f",
       "scenario": {
         "id": "product-development-governance",
         "files": [
@@ -528,10 +528,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-development-governance-2026-09-04-loose-ends.json",
-          "sha256": "69c072a58cb781d1710dcdb34ed715aa535a840e1f50068aea3d0c6044d7a4c7",
-          "testedRevision": "3d1813238be5232ad5937aa2f029ec11f5587a4e",
-          "testedSourceSha256": "a532510e39387f61d1536ab1bf8776fb5d27f2d481885f58f3942a1f7f6adccb",
+          "runRecord": "skill-evals/run-records/product-development-governance-2026-09-04-token-compact.json",
+          "sha256": "1e4df2ddddf859adccf6660c3d7369f9953cbc0bea3f187356759e8c77a71335",
+          "testedRevision": "f0424b8876f09ce67b667d4bbe528def0043a319",
+          "testedSourceSha256": "df31562a54f30e66a040a754c1d679232ee4d85749fb71f2e70aa8be702b328f",
           "testedScenarioSha256": "ce6aafe5feced0c533a85c233d8eef22d75c093f4c28dcc4460656981db8bf81",
           "runtime": {
             "host": "codex-desktop",
@@ -603,7 +603,7 @@
         "shared/references/plugin-release-workflow.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "aa424bc10259ffcddf78ffbe2c8f63e3691acff41138522fd80b6b6b24cb029f",
+      "sha256": "982d3677c2c5712e7193a4c9c6f6de2a0811487b0c5a7c0ff74122b023e68c16",
       "scenario": {
         "id": "product-release-authority",
         "files": [
@@ -651,10 +651,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-release-authority-2026-09-04-loose-ends.json",
-          "sha256": "f685d0e1525b51411f3934a41975b3f5aabd4ee078e478483f2cbf8391eec0a1",
-          "testedRevision": "b61e65fa0f25950a7ed6b263f692aec982faa950",
-          "testedSourceSha256": "aa424bc10259ffcddf78ffbe2c8f63e3691acff41138522fd80b6b6b24cb029f",
+          "runRecord": "skill-evals/run-records/product-release-authority-2026-09-04-token-compact.json",
+          "sha256": "0e4b36f75573fbaa674a85eb5efc21bb145726a7116b83980b9fdfd4a038e9ee",
+          "testedRevision": "f0424b8876f09ce67b667d4bbe528def0043a319",
+          "testedSourceSha256": "982d3677c2c5712e7193a4c9c6f6de2a0811487b0c5a7c0ff74122b023e68c16",
           "testedScenarioSha256": "0cdf1320fe0853e34624faf2e33ab3e196a38236a42c1e1378ffc7b8bf196327",
           "runtime": {
             "host": "codex-desktop",
@@ -714,7 +714,7 @@
         "wp-product-orchestrator/SKILL.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "b5a11a98ee9ab3f28cbda1ef830ea63aef1520584c9a690329f1844c64a03126",
+      "sha256": "1476c7e4d7f59d0cded4fc531a4f47513de4cc1f758b71d8c18b2a4e045011c9",
       "scenario": {
         "id": "owner-aligned-judgment",
         "files": [
@@ -742,10 +742,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/owner-aligned-judgment-2026-09-04-loose-ends.json",
-          "sha256": "1ac23dcb6cdd1f7d3c0d00de0a57f592567852dd9e73662c80d35db1edfa5015",
-          "testedRevision": "b61e65fa0f25950a7ed6b263f692aec982faa950",
-          "testedSourceSha256": "b5a11a98ee9ab3f28cbda1ef830ea63aef1520584c9a690329f1844c64a03126",
+          "runRecord": "skill-evals/run-records/owner-aligned-judgment-2026-09-04-token-compact.json",
+          "sha256": "bce87654b6e77d1e4ddbe4ba5f5f98ca66784c4c9178ce470c773ad48d2aaaae",
+          "testedRevision": "f0424b8876f09ce67b667d4bbe528def0043a319",
+          "testedSourceSha256": "1476c7e4d7f59d0cded4fc531a4f47513de4cc1f758b71d8c18b2a4e045011c9",
           "testedScenarioSha256": "54b4ae2bce4d363eecee4fad87a2b5e39ae29e0c98c722ac773dc9447afc6d02",
           "runtime": {
             "host": "codex-desktop",
