@@ -94,7 +94,7 @@ require_text "wp-product-orchestrator/SKILL.md" "Route by artifact" "orchestrato
 require_text "wp-product-orchestrator/SKILL.md" "Dirty primary checkouts block direct edits, not a clean worktree" "orchestrator clean-worktree recovery"
 require_text "wp-product-orchestrator/SKILL.md" 'release/<release-version>' "orchestrator release-version branch"
 require_text "wp-product-orchestrator/SKILL.md" "Do not start the next train's prerelease" "orchestrator release-train gate"
-require_text "wp-product-orchestrator/SKILL.md" "Require approval for protected/production merge" "orchestrator owner approval boundary"
+require_text "wp-product-orchestrator/SKILL.md" "Gate protected/production merges" "orchestrator owner approval boundary"
 require_text "wp-product-orchestrator/SKILL.md" "issue-side before evidence and PR-side after proof" "orchestrator design proof"
 require_text "wp-product-orchestrator/SKILL.md" "Prefer the product's primary Studio site" "orchestrator primary proof-environment default"
 require_text "wp-product-orchestrator/SKILL.md" "creating a Studio site requires explicit owner approval" "orchestrator new Studio gate"
