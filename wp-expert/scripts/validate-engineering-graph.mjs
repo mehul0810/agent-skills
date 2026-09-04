@@ -363,6 +363,11 @@ function validateGraph(graph, { graphPath = null } = {}) {
         if (!hasTrust) errors.push(`${node.id} critical proof lacks trust identity`);
         if (!hasPrivacy) errors.push(`${node.id} critical proof lacks privacy identity`);
         if (node.proofKind === "regression" && !hasRun) errors.push(`${node.id} regression proof lacks run identity`);
+        if (graph.source && !identities.some((identity) =>
+          (graph.source.revision && identity.revision === graph.source.revision)
+          || (graph.source.packageSha256 && identity.packageSha256 === graph.source.packageSha256))) {
+          errors.push(`${node.id} critical proof is not bound to graph source revision or package`);
+        }
         if (["elevated", "release"].includes(graph.assuranceLevel) && node.evidence.some((evidence) => evidence.kind === "package")
           && !identities.some((identity) => identity.packageSha256)) {
           errors.push(`${node.id} elevated package proof lacks package identity`);
@@ -670,8 +675,14 @@ function selfTest() {
   cases.push(["elevated source required", elevatedWithoutSource, (errors) => errors.some((error) => error.includes("requires root source identity"))]);
   const releaseWithoutIdentity = structuredClone(valid); releaseWithoutIdentity.assuranceLevel = "release"; delete releaseWithoutIdentity.source.revision;
   cases.push(["release source identity required", releaseWithoutIdentity, (errors) => errors.some((error) => error.includes("requires revision or package digest"))]);
+  const releaseWithoutRepository = structuredClone(valid); releaseWithoutRepository.assuranceLevel = "release"; delete releaseWithoutRepository.source.repository;
+  cases.push(["release source repository required", releaseWithoutRepository, (errors) => errors.some((error) => error.includes("identify a repository"))]);
   const releaseWithoutEnvironment = structuredClone(valid); releaseWithoutEnvironment.assuranceLevel = "release"; delete releaseWithoutEnvironment.source.environment;
   cases.push(["release source environment required", releaseWithoutEnvironment, (errors) => errors.some((error) => error.includes("requires environment"))]);
+  const releaseWithoutObservedAt = structuredClone(valid); releaseWithoutObservedAt.assuranceLevel = "release"; delete releaseWithoutObservedAt.source.observedAt;
+  cases.push(["release source time required", releaseWithoutObservedAt, (errors) => errors.some((error) => error.includes("requires observed-at time"))]);
+  const proofWithoutSourceBinding = structuredClone(valid); delete proofWithoutSourceBinding.nodes[1].evidence[0].identity.revision;
+  cases.push(["critical proof source binding", proofWithoutSourceBinding, (errors) => errors.some((error) => error.includes("not bound to graph source revision or package"))]);
   const missingTrust = structuredClone(valid); delete missingTrust.nodes[1].evidence[0].identity.trustClass;
   cases.push(["proof trust metadata", missingTrust, (errors) => errors.some((error) => error.includes("lacks trust identity"))]);
 

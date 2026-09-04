@@ -15,7 +15,7 @@ Resolve the instruction before acting:
 | Evidence | What current repo/runtime facts, non-goals, and success proof bound the decision? |
 | Destination | Does it belong only in the task, a product issue/doc, `agent-book`, or a reviewed shared-skill change? |
 
-Never infer release, publish, destructive, transfer, protected-branch, security/privacy, commercial, or public-contract authority from general direction. Exact action approval is not reusable authorization for another version, target, or candidate.
+Never infer release, publish, destructive, transfer, protected-branch, material security/privacy posture, commercial, or public-contract authority from general direction. Scoped sanitized reversible hardening is not a posture decision. Exact action approval is not reusable authorization for another version, target, or candidate.
 
 ## Precedence And Freshness
 
