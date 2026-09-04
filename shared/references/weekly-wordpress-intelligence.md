@@ -2,6 +2,8 @@
 
 Use this reference for recurring WordPress ecosystem research that informs product strategy, compatibility, security, release, or roadmap decisions.
 
+Use `../source-freshness.json` for the small set of drift-prone upstream contracts with deterministic review windows. Update `checkedAt` only after reading the live primary source, then run `node scripts/source-freshness-audit.mjs`; do not turn it into an exhaustive link checker.
+
 ## Weekly WordPress Ecosystem Intelligence
 
 Every week, check relevant WordPress ecosystem sources and store a concise durable summary so future product prompts use current knowledge instead of stale assumptions.

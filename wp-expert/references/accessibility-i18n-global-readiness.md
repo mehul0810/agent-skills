@@ -7,26 +7,13 @@ Use this for WCAG/accessibility review, keyboard/screen-reader support, WordPres
 - WordPress Accessibility Coding Standards: https://developer.wordpress.org/coding-standards/wordpress-coding-standards/accessibility/
 - WordPress plugin internationalization: https://developer.wordpress.org/plugins/internationalization/
 - WordPress theme internationalization: https://developer.wordpress.org/themes/advanced-topics/internationalization/
-- Block Editor components: https://developer.wordpress.org/block-editor/reference-guides/components/
-- WordPress Design Handbook: https://make.wordpress.org/design/handbook/
 - WCAG 2.2: https://www.w3.org/TR/WCAG22/
-- WCAG 2.2 additions: https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/
 - W3C HTML bidi authoring practices: https://www.w3.org/International/docs/bp-html-bidi/
-- WordPress light and dark mode block themes: https://developer.wordpress.org/news/2024/12/mastering-light-and-dark-mode-styling-in-block-themes/
 - CSS `color-scheme`: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme
 
 ## Accessibility Standard
 
 For WordPress ecosystem work, target WCAG 2.2 Level AA for new and updated interfaces unless the client has a stricter standard.
-
-Design and code for:
-
-- Keyboard-only operation with visible focus and logical focus order.
-- Semantic headings, landmarks, labels, descriptions, status messages, and form errors.
-- Screen-reader usable dynamic updates with appropriate ARIA only when native semantics are insufficient.
-- Color contrast, motion reduction, zoom/reflow, touch targets, and responsive layouts.
-- Accessible media: alt text, captions, audio description where required, decorative handling, and meaningful links; transcripts alone do not satisfy AA video description.
-- Admin/editor parity: components must work inside WordPress admin, block editor sidebars, modals, notices, and list tables.
 
 Operationalize WCAG 2.2 AA where applicable:
 
@@ -38,14 +25,13 @@ Operationalize WCAG 2.2 AA where applicable:
 - Support password managers/paste throughout login, OTP/MFA, and recovery; cognitive tests need a permitted alternative, assistance, or exception (`3.3.8 Accessible Authentication`).
 - Require visible focus (`2.4.7`) and applicable non-text contrast. `2.4.13 Focus Appearance` is optional AAA, not AA.
 - For legal, financial, permission, or other high-consequence data entry, provide review, confirmation, correction, or reversible recovery as applicable (`3.3.4 Error Prevention`).
-- Treat these as acceptance checks, not wording-only compliance claims.
+- Treat these as acceptance checks, not compliance wording.
 
 For an accessibility audit, use `../../wp-quality-reviewer/references/accessibility-review-fix.md` as the primary mode: it owns measurable contrast/reflow/text-spacing/target tests, speech/pointer/hover contracts, authentication exceptions, and formal AA evidence. A scoped change review or clean axe scan is not WCAG conformance.
 
 ## WordPress UI Guidance
 
-- Prefer WordPress-native components for admin/editor UI when available.
-- Use `BaseControl`, `TextControl`, `SelectControl`, `ToggleControl`, `Notice`, `Modal`, `PanelBody`, and related components with proper labels/help text.
+- Prefer accessible WordPress-native components for admin/editor UI when available; validate labels, help, state, and composition.
 - Classic editor metadata UI belongs in meta boxes.
 - Block editor document-level metadata belongs in document/sidebar panels.
 - Block-specific controls belong in inspector/block panels.
@@ -53,22 +39,17 @@ For an accessibility audit, use `../../wp-quality-reviewer/references/accessibil
 
 ## Internationalization Rules
 
-- Wrap user-facing PHP strings with the correct i18n function and project text domain.
-- Escape translated output at the final boundary: `esc_html__()`, `esc_attr__()`, `esc_html_e()`, `esc_attr_e()`, or translate then escape when markup is involved.
-- Use translator comments for placeholders and ambiguous strings.
-- Use plural and context functions where needed: `_n()`, `_nx()`, `_x()`.
+- Wrap user-facing PHP strings with the correct i18n function/text domain and escape at the final boundary.
+- Use translator comments for placeholders/ambiguity and plural/context functions such as `_n()`, `_nx()`, and `_x()`.
 - Do not concatenate translatable sentence fragments that prevent correct grammar in other languages.
 - For JavaScript, use `@wordpress/i18n` and ensure translation extraction/build tooling is configured.
-- Keep text domains consistent with plugin/theme headers and language file generation.
+- Keep text domains consistent with headers and language-file generation.
 
 ## Global Readiness
 
-- Support RTL layouts and avoid directional CSS assumptions.
-- Use locale-aware dates, times, numbers, currency, collation, and sorting.
-- Include locale/site/blog/language in cache keys when output varies by language or region.
-- Validate multilingual routing, canonical URLs, hreflang, sitemaps, and translated slugs for SEO-sensitive projects.
-- Account for regional privacy/consent requirements and data residency constraints when the client operates globally.
-- Test on mobile-first layouts with translated strings that are longer than English.
+- Support RTL without directional assumptions; use locale-aware dates, times, numbers, currency, collation, and sorting.
+- Vary caches by locale/site/blog/language when output differs. Validate multilingual routes, canonicals, hreflang, sitemaps, and translated slugs when SEO-sensitive.
+- Account for regional privacy/data residency and test mobile-first layouts with expanded translations.
 
 ## Direction, Locale, And Color-Scheme Contract
 
@@ -84,11 +65,11 @@ Treat direction, locale, and color scheme as independent runtime dimensions. Do 
 
 ## Adaptive Enterprise Matrix
 
-For material user-facing work, record only the applicable dimensions and their supported, degraded, or unavailable behavior: LTR/RTL, locale/script, light/dark/system, forced colors/high contrast, reduced motion/data/transparency, zoom/text reflow, viewport/orientation/safe area, coarse pointer/no hover, browser/assistive technology, role/tenant/multisite, network/offline, and content density. Define a safe fallback and owner for each unsupported dimension. Use `Not applicable - reason` rather than silently omitting a dimension; do not expand a low-risk change into an exhaustive matrix without evidence.
+For material user-facing work, record applicable dimensions and supported/degraded/unavailable behavior: LTR/RTL, locale/script, light/dark/system, forced colors, reduced motion/data, zoom/reflow, viewport/orientation, pointer/hover, browser/assistive technology, role/multisite, network, and density. Name fallback and owner for unsupported dimensions; use `Not applicable - reason` without expanding low-risk work into an exhaustive matrix.
 
 ## Browser And Assistive-Technology Support Matrix
 
-For a material interface, own a concise support matrix in `COMPATIBILITY.md` or `DESIGN.md`: browser engine/version, operating system/device/input mode, browser/assistive-technology pair, WordPress/Gutenberg/editor surface, and any required locale or color scheme. Mark each cell `supported`, `best-effort`, or `unsupported` with its fallback, owner, and last verification. A Chromium screenshot or automated scan is one evidence cell, not a cross-browser or task-usability claim. Test the packaged/release candidate on every supported cell affected by the change; report skipped or unsupported cells explicitly.
+For a material interface, record in `COMPATIBILITY.md` or `DESIGN.md` the engine/version, OS/device/input, browser/assistive-technology pair, WordPress/editor surface, and relevant locale/scheme. Mark cells `supported`, `best-effort`, or `unsupported` with fallback, owner, and last verification. A Chromium screenshot or scan is one cell, not cross-browser usability proof. Test affected supported cells against the packaged candidate; report gaps.
 
 ## Validation
 

@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "id": "wordpress-runtime-requirements",
+      "url": "https://wordpress.org/about/requirements/",
+      "owner": "WordPress.org",
+      "checkedAt": "2026-09-04",
+      "maxAgeDays": 90,
+      "recheckOn": "WordPress major release or runtime policy change",
+      "consumers": ["SYSTEM_REQUIREMENTS.md", "runtime-toolchain-version-policy.md"]
+    },
+    {
+      "id": "wordpress-current-developer-guidance",
+      "url": "https://make.wordpress.org/core/2026/08/05/wordpress-7-1-field-guide/",
+      "owner": "Make WordPress Core",
+      "checkedAt": "2026-09-04",
+      "maxAgeDays": 45,
+      "recheckOn": "WordPress release candidate, stable release, or security release",
+      "consumers": ["wordpress-7-0-7-1-enterprise-compatibility.md", "weekly-wordpress-intelligence.md"]
+    },
+    {
+      "id": "node-supported-releases",
+      "url": "https://nodejs.org/en/about/previous-releases",
+      "owner": "Node.js",
+      "checkedAt": "2026-09-04",
+      "maxAgeDays": 90,
+      "recheckOn": "Node LTS transition or package engine change",
+      "consumers": ["SYSTEM_REQUIREMENTS.md", "package.json"]
+    },
+    {
+      "id": "php-supported-versions",
+      "url": "https://www.php.net/supported-versions.php",
+      "owner": "PHP",
+      "checkedAt": "2026-09-04",
+      "maxAgeDays": 90,
+      "recheckOn": "PHP support-window or product runtime-floor change",
+      "consumers": ["SYSTEM_REQUIREMENTS.md", "runtime-toolchain-version-policy.md"]
+    },
+    {
+      "id": "wcag-2-2",
+      "url": "https://www.w3.org/TR/WCAG22/",
+      "owner": "W3C",
+      "checkedAt": "2026-09-04",
+      "maxAgeDays": 180,
+      "recheckOn": "WCAG recommendation or errata change",
+      "consumers": ["accessibility-i18n-global-readiness.md", "accessibility-review-fix.md"]
+    },
+    {
+      "id": "playwright-authentication",
+      "url": "https://playwright.dev/docs/auth",
+      "owner": "Playwright",
+      "checkedAt": "2026-09-04",
+      "maxAgeDays": 180,
+      "recheckOn": "Playwright major upgrade or proof adapter change",
+      "consumers": ["capture-spatial-measurements.mjs", "visual-to-wordpress-implementation.md"]
+    },
+    {
+      "id": "json-schema-2020-12",
+      "url": "https://json-schema.org/draft/2020-12",
+      "owner": "JSON Schema",
+      "checkedAt": "2026-09-04",
+      "maxAgeDays": 365,
+      "recheckOn": "Schema dialect or validator change",
+      "consumers": ["shared/schemas"]
+    }
+  ]
+}

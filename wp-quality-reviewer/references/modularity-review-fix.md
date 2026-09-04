@@ -1,15 +1,14 @@
 # Modularity And Maintainability Review And Fix
 
-Use for duplicate code, poor boundaries, excessive coupling, overgrown classes/functions, global state, unclear ownership, weak comments, dead code, brittle tests, or architecture that makes WordPress changes unsafe.
+Use for duplication, weak boundaries/ownership/comments/tests, coupling, global state, dead code, or unsafe WordPress architecture.
 
 ## Authoritative Anchors
 
-- WordPress Plugin best practices: https://developer.wordpress.org/plugins/plugin-basics/best-practices/
-- WordPress PHP Coding Standards: https://developer.wordpress.org/coding-standards/wordpress-coding-standards/php/
-- WordPress PHP documentation standards: https://developer.wordpress.org/coding-standards/inline-documentation-standards/php/
-- WordPress namespaces and scalable organization: https://developer.wordpress.org/news/2025/09/implementing-namespaces-and-coding-standards-in-wordpress-plugin-development/
+- Plugin best practices: https://developer.wordpress.org/plugins/plugin-basics/best-practices/
+- PHP standards/docs: https://developer.wordpress.org/coding-standards/wordpress-coding-standards/php/ and https://developer.wordpress.org/coding-standards/inline-documentation-standards/php/
+- Namespaces/scalable organization: https://developer.wordpress.org/news/2025/09/implementing-namespaces-and-coding-standards-in-wordpress-plugin-development/
 
-Architecture must fit product size. WordPress explicitly notes that small single-purpose plugins gain little from complex class systems, while larger projects benefit from clear classes, files, namespaces, autoloading, and separated assets.
+Fit architecture to product size: small plugins rarely need complex class systems; larger products need clear boundaries, namespaces, autoloading, and separated assets.
 
 ## Review Model
 
@@ -21,17 +20,17 @@ Then assess:
 
 - Single ownership of capability, validation, schema, cache invalidation, data migration, provider, and rendering rules.
 - Direction of dependencies and cycles between admin, REST, CLI, cron, blocks, domain, persistence, and infrastructure.
-- Cohesion: does a class/module change for one reason, or mix hooks, HTTP, SQL, UI, and business decisions?
-- Coupling: globals/singletons/static state, service location, direct construction, cross-module option/meta access, and hidden hook ordering.
+- Cohesion: one change reason versus mixed hooks, HTTP, SQL, UI, and business decisions.
+- Coupling: globals/static state, service location, direct construction, cross-module data access, and hidden hook order.
 - Duplication of behavior contracts, not just similar syntax.
 - Public hooks, REST schemas, block attributes, stored data, CLI commands, extension APIs, and launched compatibility.
 - Test seams, deterministic inputs/outputs, failure handling, comments, dead/debug code, and onboarding clarity.
 
-Size, complexity scores, and copy/paste detectors are signals, not automatic findings. Prove maintenance risk through divergent behavior, multiple owners, hidden dependency, regression history, or blocked testing.
+Size/complexity/duplication metrics are signals. Prove risk through divergent behavior, multiple owners, hidden dependencies, regressions, or blocked tests.
 
 ## Portable Modularity Contract
 
-Use repository policy when it is stricter. Otherwise apply these default logical-code budgets, excluding generated, vendored, fixture, and migration files only when the repository path inventory says so:
+Use stricter repo policy; otherwise apply these logical-code budgets, excluding generated, vendored, fixture, and migration files only when inventoried:
 
 | Shape | Review threshold | Hard threshold for new or growing code |
 |---|---:|---:|
@@ -39,15 +38,15 @@ Use repository policy when it is stricter. Otherwise apply these default logical
 | General application, domain, infrastructure, or UI module | 400 lines/file or 60 lines/method | 800 lines/file or 100 lines/method |
 
 - A review threshold requires a cohesion and extraction decision with evidence; it does not automatically require a split.
-- A hard-threshold violation blocks new or expanded code unless an approved exception exists. Do not game the budget with fragments, wrappers, traits, partials, or generated-looking files that preserve the same ownership problem.
+- A hard-threshold violation blocks growth without an approved exception. Reject fragments/wrappers/traits/partials that preserve the ownership problem.
 - Measure changed files and changed methods. For legacy debt already above a hard threshold, use a no-growth ratchet: the file's logical lines, oversized-method count, and largest changed method must not grow. Put new behavior behind a narrow tested boundary and leave only the minimum compatibility seam or wiring in the legacy file.
-- A focused defect fix in a 9,000-line legacy file does not require an unrelated whole-file rewrite. It does require characterization proof, no-growth evidence, and an issue-backed reduction target when safe extraction cannot fit the task.
+- A fix in a 9,000-line legacy file needs no unrelated rewrite, but does need characterization, no-growth evidence, and an issue-backed reduction target when extraction does not fit.
 
 Check dependency direction, not directory names. WordPress entry points, admin/UI, REST, CLI, cron, and block adapters may call application use cases; application code depends on domain policies and ports; infrastructure implements those ports. Domain code must not depend on WordPress globals, UI, HTTP clients, storage adapters, or provider SDKs. Reject cycles, inward layers constructing outward adapters, and callers bypassing a port to reach a database/provider directly.
 
 Every exception records: approving owner, issue or dated reduction target, measured value and allowed budget, affected path/method, rationale and risk, plus either a reduction plan or an explicit no-growth posture. Missing or expired metadata is not an exception.
 
-The product repository owns the executable checker because CI runs from that checkout: path inventory and exclusions, language-specific counters or dependency rules, baseline snapshots, exception registry, and local/CI commands. This skill owns the portable review policy, threshold interpretation, evidence requirements, and disposition model. Report measured current/baseline values, threshold class, dependency-direction result, exception metadata, proof, and `pass`, `fix`, `exception`, or `blocked` disposition.
+The product repo owns its executable checker, path inventory/exclusions, language rules, baselines, exceptions, and local/CI commands. This skill owns review policy and evidence. Report current/baseline values, threshold, dependency direction, exception, proof, and `pass`, `fix`, `exception`, or `blocked`.
 
 ## Non-Breaking Modularity Checkpoint
 
@@ -58,7 +57,7 @@ Apply this gate to every code change that edits existing behavior, including non
 3. Keep the public boundary stable while extracting one clear owner behind it. For stored data, prefer additive `expand -> migrate/backfill -> contract` steps with resume and rollback behavior; do not delete or rename a launched field, route, hook, column, option, or saved block attribute in the first migration step.
 4. If an intentional public or stored-contract break is necessary, stop the routine refactor and record the target version, deprecation/migration, rollback, and owner/release approval. Otherwise report an explicit compatibility result; passing tests alone is not compatibility proof.
 
-Keep opportunistic improvements inside the changed behavior's dependency neighborhood. Route unrelated findings through the adjacent-finding protocol instead of expanding the current PR. The final review reports the contract inventory, before/after behavior result, migration posture, budget/no-growth result, tests, and any deferred issue.
+Keep improvements within the changed dependency neighborhood; route unrelated findings through the adjacent-finding protocol. Report contracts, before/after behavior, migration, budget/no-growth, tests, and deferrals.
 
 ## Finding Threshold
 
@@ -88,11 +87,11 @@ Leave code alone when extraction would:
    - Repository/gateway for option, meta, table, filesystem, or provider access.
    - DTO/view model for explicit boundary data.
    - Validator/normalizer for one reusable input contract.
-4. Inject unstable boundaries where useful; do not build a container or framework unless the product needs one.
+4. Inject unstable boundaries where useful; add no unneeded container/framework.
 5. Keep hooks/routes/render callbacks thin and named so removal and testing remain possible.
 6. Use namespaces/prefixes and project-compatible autoloading. Avoid catch-all `Helper`, `Utils`, `Common`, `Manager`, or “God service” types.
 7. Preserve or deliberately version public contracts. Do not add compatibility shims for abandoned unreleased intermediate designs.
-8. Delete replaced/dead/debug code. Update concise docs only when the new boundary changes how future contributors must work.
+8. Delete replaced/dead/debug code. Update docs when the new boundary changes future work.
 
 ## Comment Standard
 

@@ -21,6 +21,7 @@
     "output_tokens": 50,
     "tool_calls": 1,
     "retry_count": 0,
+    "host_telemetry_available": 1,
     "checks_passed": 2
   },
   "lineage": {

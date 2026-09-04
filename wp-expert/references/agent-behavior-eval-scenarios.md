@@ -1,24 +1,12 @@
-# Agent Behavior Eval Scenarios
+# Agent Behavior Eval Scenario Pointer
 
-Use this to evaluate whether `wp-expert` still routes decisions correctly after skill edits. Do not load during normal project work unless auditing the skill itself.
+Compatibility pointer for skill maintenance only. Canonical scenarios, evidence rules, and run records live in `../../skill-evals/`; never load this file for project work.
 
-## Required Scenarios
+Legacy audit anchors remain here while their full cases live in the canonical suite:
 
-Each scenario should produce the expected behavior without requiring extra reminders:
+- Block theme page from screenshot
+- Milestone issue PR
+- Plugin REST setting save
+- Unreleased feature rework
 
-1. Block theme page from screenshot: maps design through `theme.json`, templates, patterns, core blocks, and Post Content; page-owned visible content remains editable from Pages > Edit.
-2. Milestone issue PR: verifies repo state, fetches branches when possible, proves the release/milestone base branch, passes an explicit PR base, and verifies the created PR base/head.
-3. Plugin REST setting save: uses REST over new `admin-ajax.php`, validates schema, checks capability/object ownership, handles nonce/CSRF where applicable, redacts secrets, and adds permission-negative tests.
-4. Unreleased feature rework: compares against the last released version, deletes abandoned draft shapes, and avoids backward-compatibility shims for unreleased intermediate work.
-5. Production package/release: excludes dev-only Composer/npm packages, includes runtime vendor/build artifacts, validates generated assets, and states artifact proof.
-6. External API integration: finds official docs or asks for them, isolates provider clients, sets timeouts/retries/idempotency, avoids hot-path sync calls, and redacts credentials/PII.
-7. High-scale query/admin screen: identifies hot path, avoids unbounded meta/query/list-table work, defines cache/index strategy, and adds a regression guard.
-8. Visual-to-WordPress implementation: inspects the source, classifies fidelity, records supplied/measured/inferred values, maps ownership and blocks, handles missing assets deliberately, and produces matched parity evidence.
-9. Owner correction: fixes the immediate scoped problem, classifies a repeatable failure, dedupes durable guidance, and extends an eval rather than leaving the lesson in chat.
-
-## Passing Standard
-
-- The agent chooses one primary reference plus risk-triggered overlays instead of loading every reference.
-- The response names ownership, source of truth, release state, validation proof, and remaining risk for substantial work.
-- The agent commits only intended files when commits are expected and pushes only with explicit user or repo automation authorization.
-- Design forward tests use `skill-evals/visual-wordpress-scenarios.md` and record loaded skills/references so route correctness and context cost can be reviewed together.
+Use `../../skill-evals/README.md` to select the affected scenario file, run a fresh source-blind evaluation, and record the loaded route and context cost. Do not treat phrase checks as behavior proof.

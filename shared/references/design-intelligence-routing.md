@@ -72,7 +72,7 @@ Generate alternatives only from the reviewed brief, then select a direction befo
 - Load `enterprise-design-judgment.md` as the one support only for a confirmed premium/enterprise, AI/workflow, buyer-facing, or governance risk. When frontend taste already owns the support slot, use its compact accountability read rather than stacking references.
 - If UI changed, require screenshot proof.
 - If layout, workflow quality, or UX clarity changed materially, add a design audit.
-- For exact, regression, release-critical, or previously failed work, require visual-proof schema v2; generated or materially art-directed imagery also requires the asset-production receipt.
+- For exact, regression, release-critical, or previously failed work, require the current visual-proof schema v3; generated or materially art-directed imagery also requires the asset-production receipt.
 - If a large redesign has no chosen direction, ideate before implementation.
 - For brand-critical greenfield, major overhaul, or multi-page work, validate one representative direction artifact before scaling the design; do not require this gate for exact targets or bounded polish.
 - For material onboarding, conversion, settings, publishing, or repeated operational journeys, use risk-tiered usability evidence before claiming excellent UX.

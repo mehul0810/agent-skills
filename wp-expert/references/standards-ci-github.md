@@ -14,7 +14,7 @@ For detailed Actions trigger, matrix, cache, artifact, retention, concurrency, a
 
 ## Standards Stack
 
-Choose the stack already used by the repo. If adding standards, do it incrementally.
+Use the repo's stack. Add standards incrementally.
 
 PHP:
 

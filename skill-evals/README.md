@@ -18,6 +18,10 @@ For behavior covered by `behavior-baselines.json`, the manifest binds the exact 
 
 Use the `agent-harness` run-record schema for comparable fresh-agent results. Record only host-reported numeric metrics such as `input_tokens`, `cached_input_tokens`, `output_tokens`, `context_tokens_peak`, `tool_calls`, `retry_count`, and `checks_passed`; omit unavailable metrics rather than estimating them.
 
+For runs starting 2026-09-04 or later, measure a non-zero wall-clock `durationMs` and record numeric `host_telemetry_available` as `1` or `0`. When it is `1`, include at least one portable host metric; when it is `0`, do not estimate tokens or tool counts. This distinguishes missing telemetry from zero usage.
+
+The scenario inventory in `agent-harness.config.json` provides structural coverage. `behavior-baselines.json` is the stricter admission tier for authority, routing, release, proof, correction, and other high-drift contracts; not every structural scenario needs a baseline. Add a baseline when stale behavior could authorize unsafe work, lose specialist routing, or falsely pass material evidence.
+
 Do not store prompts, completions, hidden reasoning, model identifiers, secrets, private product payloads, or user content. Keep raw artifacts in their governed private location and use a pointer in the durable evidence note.
 
 Keep every current behavior record directly in `skill-evals/run-records/` and register it exactly once in the baseline manifest. Move superseded sanitized records to a dated `run-records/archive/` directory so they remain historical evidence without being treated as current. The validator discovers only the current directory, rejects orphan or duplicate current records, and expires records after the manifest freshness window. `npm run run-record:behavior` schema-validates the discovered set; no hardcoded filename list should be maintained.

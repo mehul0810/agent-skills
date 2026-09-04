@@ -2,12 +2,15 @@
 
 All notable changes to the WP Expert skill pack are documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
+The format is based on [Keep a Changelog](https://keepachangelog.com/). The repository currently distributes validated rolling `main`; `VERSION` identifies the development stream and a Git tag/release is authoritative only when it exists.
 
 ## [Unreleased]
 
 ### Added
 
+- **Contract And Freshness Audits**: Added deterministic visual-schema version checks and a selected-primary-source freshness manifest for drift-prone runtime, accessibility, browser-proof, and schema guidance.
+- **Authenticated Visual Proof**: Added secret-safe Playwright storage-state support for wp-admin, editor, and Site Editor spatial evidence.
+- **Product Contract Intake**: Added a bounded evidence-first questionnaire for creating only the repo-local product documents a project actually needs.
 - **WP Product Docs Writer Skill**: Added evidence-based WordPress.org `readme.txt`, repository README, changelog, release-note, upgrade-notice, and release-document synchronization with shipped-claim, metadata, disclosure, and publication-authority gates.
 - **Advanced Troubleshooting Decision Tree**: Added symptom-to-probe debugging, conflict isolation, REST/auth diagnosis, cache/CDN debugging, and rollback-first production triage guidance.
 - **Analytics And Measurement Engineering**: Added consent-aware analytics, GA4/GTM/data layer, WooCommerce and lead-funnel events, duplicate-event prevention, privacy boundaries, and validation guidance.
@@ -45,13 +48,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ### Changed
 
+- Reduced router/reference context fan-out, removed duplicate scenario prose, and strengthened measured fresh-agent run telemetry requirements.
+- Replaced stale repository runtime tables with current source-owned requirements and clarified rolling-main version authority.
+- Added strict behavior-baseline admission for Loop Steward authority and WordPress contribution workflows.
+- Updated the locked `fast-uri` transitive dependency from 3.1.5 to 3.1.7.
 - Contribution guidance now matches the repository contract: validated owner-managed changes publish directly to `main`; branches and pull requests are explicit exceptions.
 - Shortened skill frontmatter descriptions, agent default prompts, and the `wp-expert` hot-path router to reduce always-loaded token usage.
 - Global installer now symlinks `shared/` into Codex and Claude skill roots so shared references resolve consistently from globally linked skills.
 - Global installer now symlinks `templates/` into Codex and Claude skill roots so product repo starter-kit templates are discoverable from global installs.
 - Validation tooling now discovers top-level skill directories dynamically so new skills are covered by reference and script checks.
 
-## [1.0.0] - 2026-05-25
+## [1.0.0] - 2026-05-25 (historical documented snapshot)
 
 ### Added
 

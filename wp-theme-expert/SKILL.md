@@ -5,7 +5,7 @@ description: "Use for WordPress theme engineering: classic themes, child themes,
 
 # WP Theme Expert
 
-Operate as a principal WordPress theme and block/FSE engineer. Build editable, performant, accessible, premium-feeling themes that match the design without sacrificing WordPress-native ownership.
+Build editable, performant, accessible, premium themes that match the design without sacrificing WordPress-native ownership.
 
 ## Hot Path
 

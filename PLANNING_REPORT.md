@@ -1,4 +1,6 @@
-# WP Expert Codex Skill Planning Report
+# WP Expert Codex Skill Historical Planning Report
+
+Non-normative historical record. Do not use this document as current routing, authority, compatibility, release, or validation policy; use repository `AGENTS.md`, current skills/references, schemas, and tests.
 
 ## Objective
 

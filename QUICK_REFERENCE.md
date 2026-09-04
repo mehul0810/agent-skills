@@ -1,5 +1,7 @@
 # Quick Reference Guide
 
+Convenience index only. Current `SKILL.md`, routed references, schemas, scripts, and repository `AGENTS.md` remain authoritative when this file drifts.
+
 Fast lookup for common WordPress tasks and which references to use.
 
 Use `$loop-steward` for policy-gated review, bounded repair, and independent merge decisions in `agent-loop`, `agent-book`, or `agent-skills` control-plane PRs.

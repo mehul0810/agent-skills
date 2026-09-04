@@ -243,9 +243,10 @@ validate_unreferenced_files() {
         continue
       fi
 
-      # Check if referenced in SKILL.md or any first-level reference router/map.
-      if ! grep -q "$ref_file" "$skill_dir/SKILL.md" 2>/dev/null && \
-         ! grep -Rq "$ref_file" "$skill_dir/references" 2>/dev/null; then
+      # A specialist router may intentionally own a reference stored under wp-expert.
+      if ! grep -q "$ref_file" "$repo_root"/*/SKILL.md 2>/dev/null && \
+         ! grep -q "$ref_file" "$repo_root"/*/references/router.md 2>/dev/null && \
+         ! grep -q "$ref_file" "$repo_root"/*/references/reference-routing-map.md 2>/dev/null; then
         log_warning "[$skill_name] Unreferenced file: $ref_file"
       else
         log_success "[$skill_name] Referenced: $ref_file"
@@ -371,6 +372,18 @@ validate_behavior_evidence() {
     log_success "Fresh-agent evidence matches the current behavior sources"
   else
     log_error "Fresh-agent behavior evidence is stale or incomplete"
+  fi
+}
+
+validate_contract_integrity() {
+  echo ""
+  echo "=== Validating contract versions and source freshness ==="
+
+  if node "$repo_root/scripts/contract-integrity-audit.mjs" &&
+    node "$repo_root/scripts/source-freshness-audit.mjs"; then
+    log_success "Contract versions and selected external sources are current"
+  else
+    log_error "Contract integrity or source freshness validation failed"
   fi
 }
 
@@ -616,6 +629,7 @@ main() {
     validate_scripts
     validate_engineering_graph
     validate_behavior_evidence
+    validate_contract_integrity
     validate_metadata
     validate_agent_metadata
     validate_token_budgets

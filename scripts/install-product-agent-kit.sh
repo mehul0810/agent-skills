@@ -18,6 +18,7 @@ Copies the WordPress product autonomy kit into a plugin/theme repository:
   PRODUCT.md
   .codex/product-agent-kit.version
   .codex/product-agent-kit.files
+  .codex/product-docs-intake.md
   .codex/config.toml
   .codex/agents/*.toml
   .codex/prompts/*.md

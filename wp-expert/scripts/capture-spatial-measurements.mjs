@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import fs from "node:fs";
+import path from "node:path";
 import process from "node:process";
 import {
   evaluateSpatialExpectation,
@@ -32,6 +33,12 @@ function validateConfig(config) {
   }
   if (!Array.isArray(config.checks) || config.checks.length === 0) {
     errors.push("checks must be a non-empty array");
+  }
+  if (
+    config.storageStatePath !== undefined &&
+    (typeof config.storageStatePath !== "string" || config.storageStatePath.trim() === "")
+  ) {
+    errors.push("storageStatePath must be a non-empty local file path");
   }
   const viewportIds = new Set();
   for (const [index, viewport] of (config.viewports ?? []).entries()) {
@@ -184,6 +191,9 @@ async function capture(config) {
         ignoreHTTPSErrors: Boolean(config.ignoreHTTPSErrors),
         locale: viewport.locale ?? config.locale ?? "en-US",
         colorScheme: viewport.colorScheme ?? config.colorScheme ?? "light",
+        ...(config.resolvedStorageStatePath
+          ? { storageState: config.resolvedStorageStatePath }
+          : {}),
       });
       const page = await context.newPage();
       const timeout = config.timeoutMs ?? 15000;
@@ -229,6 +239,7 @@ async function capture(config) {
       generatedAt: new Date().toISOString(),
       url: config.url,
       browser: await browser.version(),
+      authentication: config.resolvedStorageStatePath ? "local-storage-state" : "none",
       status: results.every((item) => item.result === "pass") ? "pass" : "fail",
       results,
     };
@@ -260,6 +271,15 @@ function selfTest() {
   if (!credentialed.some((error) => error.includes("credentials"))) {
     throw new Error("capture config self-test accepted credentials in URL");
   }
+  const invalidStorageState = validateConfig({
+    url: "https://example.com",
+    storageStatePath: "",
+    viewports: [{ id: "desktop", width: 1200, height: 800 }],
+    checks: [{ id: "layout", kind: "computed_style", selector: "main", property: "display", expected: { operator: "eq", value: "block" } }],
+  });
+  if (!invalidStorageState.some((error) => error.includes("storageStatePath"))) {
+    throw new Error("capture config self-test accepted an empty storageStatePath");
+  }
   console.log("spatial measurement capture self-test passed");
 }
 
@@ -278,6 +298,15 @@ async function main() {
     console.error(`ERROR: cannot read valid JSON from ${configPath}: ${error.message}`);
     process.exitCode = 1;
     return;
+  }
+  if (typeof config.storageStatePath === "string" && config.storageStatePath.trim() !== "") {
+    const resolvedStorageStatePath = path.resolve(path.dirname(configPath), config.storageStatePath);
+    if (!fs.existsSync(resolvedStorageStatePath) || !fs.statSync(resolvedStorageStatePath).isFile()) {
+      console.error("ERROR: storageStatePath must resolve to an existing local file");
+      process.exitCode = 1;
+      return;
+    }
+    config.resolvedStorageStatePath = resolvedStorageStatePath;
   }
   const errors = validateConfig(config);
   if (errors.length > 0) {

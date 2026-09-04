@@ -1,48 +1,48 @@
 # WordPress 7.0 And 7.1 Enterprise Compatibility
 
-Use when work targets WordPress 7.0/7.1, changes `Tested up to`, adopts an API, or assesses an upgrade. This dated snapshot does not replace live Core verification.
+Use for WordPress 7.0/7.1, `Tested up to`, API adoption, or upgrades. This snapshot does not replace live Core verification.
 
 ## Evidence State
 
-Checked 2026-08-30 against official WordPress sources and the latest 7.1 developer notes:
+Checked 2026-08-30 against official WordPress sources:
 
 - 7.0 production: [7.0 Field Guide](https://make.wordpress.org/core/2026/05/14/wordpress-7-0-field-guide/) and [7.0.3 security release](https://wordpress.org/news/2026/08/wordpress-7-0-3-release/).
-- 7.1 production: [7.1 release page](https://make.wordpress.org/core/7-1/) (released 2026-08-19), [7.1 Field Guide](https://make.wordpress.org/core/2026/08/05/wordpress-7-1-field-guide/), and the latest checked [Accessibility Improvements dev note](https://make.wordpress.org/core/2026/08/13/accessibility-improvements-in-wordpress-7-1/).
-- Focused notes also cover [iframed editor changes](https://make.wordpress.org/core/2026/08/03/iframed-editor-changes-in-wordpress-7-1/) and [Abilities filtering](https://make.wordpress.org/core/2026/08/05/filtering-registered-abilities-with-wp_get_abilities-in-wordpress-7-1/); the Field Guide indexes responsive and pseudo-state changes.
+- 7.1 production: [release page](https://make.wordpress.org/core/7-1/), [Field Guide](https://make.wordpress.org/core/2026/08/05/wordpress-7-1-field-guide/), and [accessibility note](https://make.wordpress.org/core/2026/08/13/accessibility-improvements-in-wordpress-7-1/).
+- Focused notes: [iframed editor](https://make.wordpress.org/core/2026/08/03/iframed-editor-changes-in-wordpress-7-1/) and [Abilities filtering](https://make.wordpress.org/core/2026/08/05/filtering-registered-abilities-with-wp_get_abilities-in-wordpress-7-1/).
 - Roadmap context only: [Roadmap to 7.1](https://make.wordpress.org/core/2026/06/19/roadmap-to-7-1/).
 
-Recheck official release/security/dev sources and the runtime registry. Classify every relied-on capability as `production`, `release-candidate`, `experimental/deferred`, or `unverified`. Roadmaps, experiments, proposals, tickets, and documentation do not prove shipment.
+Recheck official release/security/dev sources and runtime registry. Classify relied-on capabilities as `production`, `release-candidate`, `experimental/deferred`, or `unverified`; documentation does not prove shipment.
 
-At this snapshot, 7.1.0 is production and the 7.1.x maintenance line is live. Treat any later patch, security release, Gutenberg-only behavior, or 7.2/trunk change as a separately verified fact.
+At this snapshot, 7.1.0 is production. Verify later patches, security releases, Gutenberg-only behavior, and 7.2/trunk separately.
 
 ## WordPress 7.0 Production Baseline
 
-Relevant shipped surfaces include:
+Shipped surfaces include:
 
-- WP AI Client, client-side Abilities, the Connectors screen/API, and provider-agnostic model routing. Treat connector credentials as secrets; require capability checks, consent/data-flow disclosure, quotas, timeouts, redaction, and deterministic non-AI fallbacks.
-- Modern admin styling, view transitions, command palette, Font Library, Visual Revisions, navigation overlays, viewport visibility, and broader `contentOnly` editing. Test admin CSS/DOM/spacing and workflows; do not copy Core internals.
+- WP AI Client, client-side Abilities, Connectors, and provider-agnostic routing. Treat credentials as secrets; require capabilities, consent/data-flow disclosure, quotas, timeouts, redaction, and deterministic fallbacks.
+- Modern admin styling, transitions, command palette, Font Library, Visual Revisions, navigation overlays, visibility, and broader `contentOnly` editing. Test admin CSS/DOM/workflows; do not copy internals.
 - Icon, Headings, and Breadcrumbs blocks; Gallery lightbox/slideshow; video Cover backgrounds; paragraph text columns/indent; dimension presets; block-level custom CSS; button pseudo-state support in `theme.json`. Prefer native author controls, but verify the exact registered block/support at runtime.
-- Pattern Overrides for custom blocks and wider `contentOnly` use. Mark content attributes with `role: "content"` where required; prove List View discoverability and non-technical editing.
-- PHP-only block registration with `autoRegister`, generated DataForm controls, Interactivity API `watch()`/`data-wp-watch`, DataViews/DataForms, block bindings, plugin-list filters, and Site Editor foundations. Feature-detect and retain older-Core fallbacks.
-- Script modules may depend on scripts; HTML5 script theme support was removed; CodeMirror 5-era tooling, Backbone 1.6.1, Requests 2.0.17, PHPMailer 7.0.2, and registration hardening changed compatibility. Audit handles, declarations, snapshots, mail/account flows, and bundled-library assumptions; do not ship replacement Core libraries.
-- Core's minimum PHP floor changed to 7.4. This is a compatibility floor, not an enterprise recommendation: new enterprise work still follows the active-runtime policy and must not select an EOL PHP version merely because Core accepts it.
+- Pattern Overrides and wider `contentOnly` use. Mark attributes `role: "content"` where required; prove List View discoverability and non-technical editing.
+- PHP-only `autoRegister`, generated DataForm controls, Interactivity `watch()`/`data-wp-watch`, DataViews/DataForms, bindings, plugin-list filters, and Site Editor foundations. Feature-detect with older-Core fallbacks.
+- Script modules may depend on scripts; HTML5 script theme support was removed; bundled libraries and registration hardening changed. Audit handles, declarations, snapshots, mail/account flows, and library assumptions; never replace Core libraries.
+- Core's PHP floor is 7.4, a compatibility floor, not an enterprise recommendation; active-runtime policy still forbids selecting EOL PHP for new work.
 
-Production operations must target the latest patched 7.0.x, not 7.0.0. WordPress 7.0.3 is a security release and official guidance says to update immediately. Do not reproduce exploit details in public product issues; use sanitized hardening language and private disclosure paths.
+Target the latest patched 7.0.x. WordPress 7.0.3 is a security release; keep exploit detail out of public issues and use private disclosure paths.
 
 ## WordPress 7.1 Production Baseline
 
 WordPress 7.1.0 shipped on 2026-08-19. Test the current patched 7.1.x package in the supported matrix. Keep RC/trunk/Gutenberg-only behavior separate; notes never prove an API is registered in the candidate runtime.
 
-- Client-side media processing, related REST changes, and Media Library infinite scrolling with a user opt-out. Test dimension/size validation, multiple sizes, large/offline/unsupported uploads, quotas, permissions, memory, and server fallback. Verify the `media_library_infinite_scrolling` user option/filter and document a safe fallback before release.
-- Accessible Core tooltips plus admin semantics, focus, contrast, pointer, setup, forced-colors, and list-table improvements. Use supported tooltips, `speak()`, labels, and keyboard behavior; never substitute `title` or hover-only affordances. Check decorative-image/Cover-provider states, Breadcrumb separators, Accordion keys, duplicate IDs, and front-end password/RSS/comment behavior where touched.
-- Abilities API filtering, execution hooks, public exposure, and JSON Schema. In 7.1, category/namespace/meta filters and `wp_get_abilities_item_include`/`wp_get_abilities_result` shape discovery/results (AND semantics); filtering is not authorization. Preserve `permission_callback`, least privilege, strict coercion, schemas, auditability, rate limits, and failure isolation. Use the REST view only for explicitly public abilities and `WP_Abilities_Registry::get_all_registered()` for the raw registry.
-- Responsive Global Styles and configurable viewports, pseudo/custom style states, text shadow, background gradients, and minimum-width support. Prefer `theme.json`/block support over CSS patches, while proving cascade, saved markup, editor/frontend parity, mobile behavior, accessibility, and rollback across supported Core versions.
-- SVG Icon API registration/rendering. Validate SVG allowlists, namespaces, provenance, accessible names/decorative state, collisions, and graceful fallback; never render arbitrary unsanitized SVG.
-- DataViews, DataForm, and View Config; persistent admin-bar/toolbar behavior during client-side navigation; and Design System theming. Use public stable APIs, avoid internal contracts, and test cleanup, permissions, loading/empty/error states, admin color schemes, and Site Editor screen filtering.
-- Block supports include background gradients and minimum width, with an editable Custom HTML preview and `disableContentOnlyForTemplateParts`. Verify registered supports, content-only ownership, saved markup, and editor/frontend parity; this is not a page-building shortcut.
+- Client media processing, REST changes, and opt-out Media Library infinite scrolling. Test sizes, large/offline/unsupported uploads, quotas, permissions, memory, and server fallback. Verify `media_library_infinite_scrolling` and document fallback.
+- Accessible tooltips and admin/list-table improvements. Use supported tooltips, `speak()`, labels, and keyboard behavior, never `title`/hover-only substitutes. Check relevant image/Cover states, Breadcrumb separators, Accordion keys, duplicate IDs, and frontend regressions.
+- Abilities filtering/hooks/public exposure/JSON Schema. Category/namespace/meta filters and `wp_get_abilities_item_include`/`wp_get_abilities_result` shape results; filtering is not authorization. Preserve permissions, least privilege, coercion, schemas, auditability, rate limits, and isolation. Expose REST abilities only deliberately.
+- Responsive Global Styles/viewports, pseudo/custom states, text shadow, gradients, and minimum width. Prefer `theme.json`/block support over CSS patches; prove cascade, saved markup, editor/frontend/mobile parity, accessibility, and rollback.
+- SVG Icon API: validate allowlists, namespaces, provenance, accessible/decorative state, collisions, fallback, and sanitization.
+- DataViews/DataForm/View Config, persistent toolbar navigation, and Design System theming. Use public APIs; test cleanup, permissions, states, color schemes, and Site Editor filtering.
+- Block supports add gradients/minimum width, Custom HTML preview, and `disableContentOnlyForTemplateParts`. Verify registration, ownership, markup, and parity; Custom HTML is not a page-building shortcut.
 - [Always-iframed post editor](https://developer.wordpress.org/block-editor/reference-guides/block-api/block-api-versions/), including legacy meta boxes. Use Block API v3, supported iframe assets, `ownerDocument`/`defaultView` (not global `document`/`window`), and `useRefEffect` cleanup. Test canvas DOM/CSS, save/reopen, frontend parity, document-panel controls, and classic-editor meta-box isolation; suppress incompatible boxes.
 - [Unicode email support](https://make.wordpress.org/core/2026/06/10/call-for-testing-unicode-email-addresses/) on `utf8mb4` sites changes `is_email()`/`sanitize_email()` and adds `WP_Email_Address`. Test normalization/confusables, uniqueness, delivery, imports/exports, authentication/recovery, multisite, charset, and ASCII-dependent services. Do not silently disable Core behavior; gate any fallback.
-- jQuery UI 1.14.2 and focused hook/return/markup changes. Audit the actual loaded version, deprecated behaviors, bundled-library assumptions, snapshots, and third-party integrations; do not vendor a replacement.
+- jQuery UI 1.14.2 and hook/return/markup changes: audit loaded version, deprecations, assumptions, snapshots, and integrations; do not replace Core.
 
 ### API and behavior migrations
 

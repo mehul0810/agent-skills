@@ -1,5 +1,9 @@
 # WP Expert Codex Skill Pack
 
+## Source Of Truth
+
+For current behavior, use repository `AGENTS.md`, the selected `SKILL.md`, its routed reference, schemas/scripts, and registered behavior evidence in that order. `QUICK_REFERENCE.md` is a convenience index; `PLANNING_REPORT.md`, older changelog entries, examples, and chat history are non-normative. Live product and ecosystem facts must be reverified at their owning source.
+
 This repository contains WordPress engineering, product operations, organic-search content, behavior-proof, and media-production Codex skills:
 
 - `wp-expert`: thin umbrella router for ambiguous WordPress engineering that points to the narrow specialist skill.

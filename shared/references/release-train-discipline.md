@@ -4,30 +4,30 @@ Use this reference before beta, prerelease, stable, deploy, version, tag, WordPr
 
 ## Production Gate
 
-Do not create a next milestone prerelease before the previous production release. Milestone closure is not release proof.
+Do not prerelease a later milestone before the previous production release. Milestone closure is not release proof.
 
 The repo's verified production branch, normally `main` and sometimes documented `master`, is stable release authority only. It receives release branches only after owner approval/testing. Milestone release work must target `release/<release-version>`, never the GitHub milestone ID; `develop` is unmilestoned integration or verified branch source.
 
 ## Main-First Production Release Transaction
 
-A stable release is one transaction: issue branch -> `release/<version>` integration -> PR to the verified `main`/`master` production branch -> required CI and exact owner approval -> merge -> tag/package/publish from that merged production SHA. The release branch is integration/staging, never stable production authority unless an owner-approved documented exception names the exact risk and recovery. Approval does not transfer to another SHA. Beta requires approval for the exact version and candidate SHA, stays on `release/<version>`, and never advances the production branch.
+A stable release is one transaction: issue branch -> `release/<version>` -> PR to verified `main`/`master` -> required CI and exact owner approval -> merge -> tag/package/publish from that production SHA. The release branch is integration, never stable authority without an owner-approved documented exception and recovery. Approval is SHA-specific. Beta also requires exact version/SHA approval, stays on `release/<version>`, and never advances production.
 
 1. Live-fetch main/release refs, releases/tags/PRs/checks; pin approved PR/SHA.
-2. After approval, merge the approved release PR into `main` before creating the stable tag or GitHub release. Fetch the production SHA, prove it on `origin/main`, and verify metadata.
+2. After approval, merge the approved release PR before creating the stable tag/release. Fetch the production SHA, prove it on `origin/main`, and verify metadata.
 3. Revalidate the artifact from that SHA when merge, generated output, or metadata can differ.
 4. Tag the production SHA, then run `gh release create <tag> --verify-tag`. Do not use `--target release/*`; select the existing tag in GitHub UI.
-5. Prove the tag equals the merged production SHA, is an ancestor of the verified `origin/main` or `origin/master`, and the package derives from that tag with matching metadata; `targetCommitish` is not proof.
+5. Prove tag equality/production ancestry and a tag-derived package with matching metadata; `targetCommitish` is not proof.
 6. Forward-sync production-only metadata/hotfixes from `main` into `develop` or the next train when present; verify remaining divergence.
 
 Any failed step stops publish, closure, and the next prerelease.
 
 ### Recovery: Production Mainline Reconciliation
 
-For an already-published off-main release, freeze releases, verify the tag, and open an owner-approved PR from a narrow branch at that tag into `main`. Use fast-forward/merge; squash, rebase, or cherry-pick recovery does not satisfy tag ancestry. Never move the tag. Prove ancestry, artifact parity, and forward-sync; meanwhile report `mainline sync missing`.
+For an off-main release, freeze releases, verify the tag, and open an owner-approved PR from that tag into `main`. Use fast-forward/merge; squash/rebase/cherry-pick does not satisfy tag ancestry. Never move the tag. Prove ancestry, artifact parity, and forward-sync; report `mainline sync missing` meanwhile.
 
 ## Release Automation Contract
 
-POs audit workflows and `RELEASE.md`. Production automation resolves the approved SHA from full history, requires it on the verified production branch with valid metadata/package, pushes the exact tag, releases with `--verify-tag`, and repeats ancestry/artifact checks. Never tag production from `release/*`. Use `wp-product-orchestrator/scripts/release-mainline-audit.sh <tag-or-sha> [production-ref] [expected-sha]`; issue-track missing enforcement.
+POs audit workflows and `RELEASE.md`. Production automation resolves the approved SHA from full history, requires it on the production branch with valid metadata/package, pushes the exact tag, releases with `--verify-tag`, and repeats ancestry/artifact checks. Never tag from `release/*`. Use `wp-product-orchestrator/scripts/release-mainline-audit.sh <tag-or-sha> [production-ref] [expected-sha]`; issue-track missing enforcement.
 
 ### Hosted Automation Economy
 

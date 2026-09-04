@@ -1,78 +1,51 @@
 # Visual Parity And Enterprise Theme Proof
 
-Use this as the one supporting reference when theme, FSE, site, block, or UI work needs deterministic visual regression, browser evidence, content stress, or proven visitor/editor workflows. For a supplied visual target, keep `../../shared/references/visual-to-wordpress-implementation.md` primary.
+Use as the one support when theme, FSE, site, block, or UI work needs deterministic regression, browser evidence, content stress, or visitor/editor workflow proof. For a supplied target, keep `../../shared/references/visual-to-wordpress-implementation.md` primary.
 
 Official anchors: `https://developer.wordpress.org/themes/advanced-topics/testing/` and `https://developer.wordpress.org/news/2026/05/getting-started-writing-wordpress-e2e-tests-with-playwright/`.
 
 ## Capture Fingerprint
 
-Before baseline or candidate capture, record:
-
-- exact commit and packaged/build artifact,
-- WordPress, Gutenberg, active theme/child theme, PHP, and relevant plugin versions,
-- browser engine/version, operating system, device-pixel ratio, viewport, zoom, scroll position, and scrollbar behavior,
-- locale, timezone, color scheme, reduced-motion preference, permissions/role, and data fixture,
-- loaded font files/weights, image readiness, network-settle rule, and animation/caret/clock/random-data treatment.
-
-Wait for fonts and critical media. Freeze dates, randomized content, external API data, transitions, animations, carets, and other volatile inputs where possible. Never compare a development checkout against a release artifact while calling the result release proof.
+Record exact commit/package; WordPress, Gutenberg, theme, PHP, and relevant plugins; browser/OS/DPR/viewport/zoom/scroll; locale/timezone/scheme/preferences/role/fixture; and font/media/network/animation stabilization. Freeze volatile inputs. A development checkout is not release-artifact proof.
 
 ## Baseline Governance
 
-- Capture baseline before editing when regression protection is the goal; use the approved source visual as baseline for new exact work.
-- Store deterministic names such as `{surface}-{state}-{viewport}-{engine}.png` with the related artifact or CI output.
-- A baseline update is a reviewed design decision, not a way to make CI green.
-- Record expected masks, region tolerances, and intentional platform differences.
-- Reject stale baselines from another browser profile, content fixture, or build.
+- Capture before editing for regression protection; an approved source visual is the baseline for new exact work.
+- Name artifacts `{surface}-{state}-{viewport}-{engine}.png`; record masks, regional tolerances, and platform differences.
+- Baseline updates are reviewed design decisions, not CI repairs. Reject a different profile, fixture, or build.
 
-## Visual Comparison
+## Comparison And Workflows
 
-Compare geometry, spacing, alignment, typography, colors, borders, shadows, stacking, asset crop, and visible state treatment. Prefer overlays or perceptual/region diffs over memory. Use semantic or DOM assertions alongside screenshots for headings, landmarks, controls, and block structure.
+Compare geometry, spacing, alignment, type, color, borders, shadows, stacking, crops, and states. Prefer overlays or perceptual/region diffs plus semantic/DOM assertions. Use strict hard-edge tolerances and perceptual tolerance for text, shadows, and decoding. Investigate differences; reject viewport-offset patches that break intrinsic layout, accessibility, editor controls, or maintainability.
 
-Apply region-specific tolerance. Hard edges and alignment can be strict; text rasterization, shadows, and image decoding require perceptual tolerance. Investigate unexplained differences instead of adding viewport-specific offsets. Reject fixes that improve one screenshot while breaking intrinsic layout, accessibility, editor controls, or maintainability.
+Define:
 
-## Golden Workflow Proof
+- Visitor workflow: entry, primary action, feedback, completion, and recovery.
+- Author workflow: locate, edit representative content/settings, reorder allowed areas, save, reload, preview, and recover through revisions/rollback where supported.
 
-Every substantial theme/page implementation defines:
+Use Playwright/Cypress for stable critical flows. Screenshots alone do not prove task success.
 
-- Visitor workflow: entry, primary action, feedback, completion, and recovery/failure path.
-- Author workflow: locate the content, edit text/media/settings, reorder only allowed areas, save, reload, preview, and recover through revisions or rollback where supported.
+## Content And Responsive Stress
 
-Use Playwright/Cypress for stable critical flows when available. Keep the suite focused; screenshots alone do not prove task success.
+Use existing fixtures or selected WordPress Theme Unit Test Data cases: expanded/translated copy, missing/extreme media, tables/embeds, changed block supports; query empty/error/high-count; affected templates; and relevant roles/multisite. Do not run the whole matrix for a narrow change; state why omitted surfaces cannot regress.
 
-## Content And Template Stress
+- Start narrow and at target desktop, then resize continuously through the affected range.
+- Prefer intrinsic layout, `minmax()`, `clamp()`, flex/grid wrapping, logical properties, and container queries; device names are not architecture.
+- Test applicable orientation/safe-area/dynamic-viewport, zoom/reflow, localization, coarse pointer/no hover, keyboard, reduced motion, and on-screen keyboard risks.
+- Follow the documented browser policy. Add WebKit/Firefox or real touch proof when CSS/input/sticky/forms/navigation/media risks make Chromium insufficient.
+- Verify applicable WCAG 2.2 AA behavior: focus, target size, dragging alternatives, labels/errors, contrast, landmarks, and authentication.
 
-Use existing fixtures or WordPress Theme Unit Test Data when broad theme behavior matters. Select affected cases from:
-
-- long/short/translated titles and body copy, missing or extreme media, captions, galleries, embeds, tables, and every changed core block support,
-- query empty/loading/error/high-count states, sticky and password-protected content,
-- home, singular, page, archive, taxonomy, author, search, 404, pagination, comments, and navigation,
-- logged-out, author/editor, administrator, permission-limited, and multisite states when relevant.
-
-Do not run the full matrix for a one-line scoped change. Record why omitted surfaces cannot regress.
-
-## Responsive, Input, Browser, And Accessibility Matrix
-
-- Start at the narrow supported width and target desktop, then resize continuously through the affected range to catch intermediate collapse.
-- Prefer intrinsic layout, `minmax()`, `clamp()`, flex/grid wrapping, logical properties, and container queries when component context matters; do not encode device names as architecture.
-- Test portrait/landscape, safe areas, dynamic viewport units, zoom/reflow, long localization, coarse pointer, hover absence, keyboard, reduced motion, and on-screen keyboard risk when applicable.
-- Use the documented browser support policy. Add WebKit/Firefox or a real touch device when CSS, input, sticky positioning, forms, navigation, or media behavior makes Chromium-only proof insufficient.
-- Verify WCAG 2.2 AA criteria relevant to the change, including focus not obscured, target size, pointer alternatives to dragging, labels/errors, contrast, landmarks, and accessible authentication.
-
-For material UI, keep the support policy in `COMPATIBILITY.md` or `DESIGN.md`, not only in a screenshot folder. Name supported, best-effort, and unsupported browser/assistive-technology cells, the fallback, owner, and last verification. A Chromium capture is not evidence for every engine or assistive-technology task. Capture the packaged candidate on each affected supported cell and state skipped cells and their release impact.
+For material UI, record supported, best-effort, and unsupported browser/assistive-technology cells, fallback, owner, and last verification in `COMPATIBILITY.md` or `DESIGN.md`. Capture affected supported cells from the packaged candidate and state gaps.
 
 ## Design-System Integrity And Proof Provenance
 
-- Name the canonical design source and owner for each changed token/component, then trace it through the implementation surface (`theme.json`, WordPress component, CSS variable, block style, or approved asset) to the rendered capture.
-- Prefer semantic tokens. A raw color, spacing, type, or elevation value is allowed only with a short reason, scope, owner, and review trigger; do not create near-duplicate tokens or hide drift with page/viewport selectors.
-- Use the existing visual-proof receipt's `aligned`, `intentional_deviation`, or `drift` disposition. Elevated work fails on unowned values or unexplained drift; run a lightweight token/style lint or focused static check when the repository provides one, otherwise record the sample review and limitation.
-- For screenshots, metrics, customer/use-case proof, or trust claims, record source owner, as-of date/measurement window, audience or role, environment, `real`, `controlled demo`, or `illustrative` status, claim scope, and limitations. Do not let a polished fixture imply production scale, customer identity, certification, or outcome that is not evidenced.
+- Name each changed token/component's canonical source owner and trace it through `theme.json`, WordPress components, CSS variables, block styles, or assets to rendered proof.
+- Prefer semantic tokens. Raw values require reason, scope, owner, and review trigger; reject near-duplicates and selector-hidden drift.
+- Use the visual receipt's `aligned`, `intentional_deviation`, or `drift` disposition. Elevated work fails on unowned values or unexplained drift.
+- For screenshots, metrics, use cases, or trust claims, record source owner, as-of window, audience/role, environment, `real`/`controlled demo`/`illustrative` status, scope, and limitations. A fixture cannot imply unevidenced scale, identity, certification, or outcomes.
 
-## Performance And Release Evidence
+## Performance, Release, And Output
 
-Measure against repo-specific budgets from `DESIGN.md`, `TESTING.md`, or the issue: LCP/CLS/INP risk, CSS/JS/font/image weight, request count, critical rendering, and editor responsiveness where relevant. Lab evidence is not field evidence; report RUM separately when available.
+Measure against repo-specific budgets: LCP/CLS/INP risk, CSS/JS/font/image weight, requests, critical rendering, and editor responsiveness. Separate lab from field evidence.
 
-Before beta/production readiness, repeat critical proof against the packaged ZIP or release-branch build. Report exact environment, passed/failed/skipped workflows, visual deviations, browser gaps, performance gaps, and whether any gap is acceptable for release.
-
-## Output
-
-Report capture fingerprint, baseline provenance, surfaces/states/content/browsers covered, visitor and author workflow results, diff summary, performance evidence, intentional deviations, and remaining risk.
+Before beta/production readiness, repeat critical proof against the packaged ZIP or release-branch build. Report fingerprint, provenance, surfaces/states/content/browsers, workflows, diff, performance, deviations, failed/skipped gaps, and release impact.

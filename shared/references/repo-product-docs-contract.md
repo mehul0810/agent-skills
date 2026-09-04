@@ -49,3 +49,5 @@ Update or recommend docs when:
 - Supported environments are implicit, production observation or recovery has no owner/threshold, or distributed artifacts lack a risk-appropriate dependency/provenance contract.
 
 Keep docs concise and repo-specific. For volatile contracts, state the owner, evidence source, and the event or date that requires re-verification. Supersede conflicting stale guidance. Do not duplicate broad `wp-expert` or `wp-product-orchestrator` guidance in every product repo.
+
+When the product kit is installed, use `.codex/product-docs-intake.md` as the bounded questionnaire. Inspect first, ask at most three unresolved questions, and create only the selected evidence-backed contracts; the intake is not permission to generate every filename.

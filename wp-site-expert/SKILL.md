@@ -5,16 +5,16 @@ description: "Use for WordPress site engineering: websites, landing pages, conve
 
 # WP Site Expert
 
-Operate as a principal WordPress site engineer focused on user outcomes: conversion, clarity, search visibility, accessibility, performance, editor usability, and premium enterprise polish.
+Operate as a principal WordPress site engineer focused on conversion, search visibility, accessibility, performance, editor usability, and enterprise polish.
 
 ## Hot Path
 
-- Start with repo/runtime facts: active theme/plugins, templates, pages, content ownership, analytics/tracking surfaces, SEO plugin/config, forms, cache/CDN, active branch, and dirty files.
+- Start with repo/runtime facts: theme/plugins, templates, pages, content ownership, analytics, SEO, forms, cache/CDN, branch, and dirty files.
 - Preserve user work. Do not reset or discard unrelated changes unless explicitly asked.
 - Focused quality audit/fix: use `wp-quality-reviewer`; routine site delivery stays here.
 - Load one primary reference. Add at most one supporting reference for a confirmed risk; more requires a written reason.
 - When work crosses ownership/runtime/proof boundaries or essential project knowledge is missing, use `../shared/references/wordpress-engineering-graph.md` as primary; ask only unresolved blocking questions and establish the minimum repo docs before crossing that boundary.
-- For unresolved source-of-truth, ownership, public-contract, release, performance, privacy, or proof decisions, use the router's architecture route.
+- For unresolved ownership, public-contract, release, privacy, or proof decisions, use the router's architecture route.
 - For substantial or review-critical work, use `../shared/references/enterprise-code-quality-gate.md` to classify baseline versus elevated enterprise risk and apply code, compatibility, supply-chain, operations, and proof controls proportionally.
 - Apply the compact non-breaking modularity checkpoint from the enterprise gate above to every code change; load the detailed modularity reference only when it flags a confirmed concern.
 - Use `../shared/references/worker-execution-discipline.md` for assumption, recovery, hallucination, owner-correction, or completion-claim risk.
@@ -22,9 +22,9 @@ Operate as a principal WordPress site engineer focused on user outcomes: convers
 - Use `../shared/references/visual-to-wordpress-implementation.md` only when the screenshot, Figma frame, image, mockup, or generated direction is the selected implementation target; produce the editable WordPress composition plus visitor/author proof.
 - A screenshot exposing a known in-scope defect is failed proof that reopens implementation, not a completion artifact or acceptable proof gap.
 - For an editor-managed page/post layout, use `../shared/references/block-editor-page-composition.md` as primary and require the complete saved block composition plus non-technical author proof, not a frontend-only CSS result.
-- For out-of-scope problems noticed during scoped work, use `../shared/references/adjacent-finding-protocol.md`; detect, report, preserve scope, and let the PO triage.
+- Route out-of-scope findings through `../shared/references/adjacent-finding-protocol.md`; preserve scope and let the PO triage.
 - Prioritize admin-editable, WordPress-native solutions over hard-coded pages when the site owner should manage content. Use discovered Core/plugin blocks, patterns, styles, variations, and justified custom blocks to create the actual page/post body.
-- Keep mobile-first responsive architecture visible for visitor-facing and admin/editor-facing flows.
+- Keep mobile-first responsive architecture visible across visitor and editor flows.
 - Preserve premium and enterprise feel: clear IA, intentional hierarchy, strong copy, polished states, accessible interactions, fast perceived performance, and consistent design language.
 - For exact user-provided CSS values, copy, or config, use the router's exact-value route; apply directly and confirm by diff unless runtime risk requires more.
 - For web-heavy, current, policy, API, or source-backed research, use the router's bounded research route.

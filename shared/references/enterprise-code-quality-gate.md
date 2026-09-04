@@ -4,20 +4,20 @@ Use this for WordPress code creation, refactoring, and review when the output sh
 
 ## Principle
 
-Treat generated or reviewed paths as production code unless the user accepts a lower bar. Prefer the simplest modular, performant, secure, maintainable, observable, and testable design.
+Treat generated or reviewed paths as production code unless a lower bar is accepted. Prefer the simplest modular, performant, secure, maintainable, observable, testable design.
 
-Every implementation should explicitly consider these quality dimensions before being called done, merge-ready, or release-ready: scalability; ownership/modularity; maintainability/duplication; meaningful comments; risk-proportional tests; hot-path performance; and security/privacy.
+Before calling work done/merge-ready/release-ready, consider scalability, ownership/modularity, maintainability/duplication, meaningful comments, proportional tests, hot-path performance, and security/privacy.
 
-Do not force a new abstraction or exhaustive test suite when the risk does not justify it. If a dimension is not materially relevant, state `Not applicable - reason` instead of silently skipping it.
+Do not force abstractions or exhaustive tests without risk. Mark immaterial dimensions `Not applicable - reason`.
 
 ## Enterprise Risk Profile
 
-Classify runtime assurance before substantial work:
+Classify runtime assurance:
 
 - `baseline`: ordinary maintained WordPress behavior with reversible scope and no material distribution, data, scale, compatibility, or operational exposure.
 - `elevated`: public/commercial/VIP distribution; sensitive or regulated data; custom storage/migrations; authentication, payments, uploads, webhooks, public APIs, external providers, queues, multisite, high traffic, or release-critical workflows.
 
-When this file is primary and work is elevated, use `enterprise-runtime-assurance.md` as its single support for the compatibility matrix, supply-chain evidence, post-release observation, rollback signals, and adaptive repo contracts. Do not load this gate as support merely to restate quality when a launch/readiness primary already owns those checks, and do not impose elevated artifacts on a low-risk change without a named reason.
+For elevated primary work, use `enterprise-runtime-assurance.md` as the single support for compatibility, supply chain, observation, rollback, and adaptive contracts. Do not restate checks owned by a launch/readiness primary or impose elevated artifacts without a named risk.
 
 ## Before Writing Code
 

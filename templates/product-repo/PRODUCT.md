@@ -20,9 +20,13 @@ Autonomous without asking:
 - Small admin/editor/frontend polish with explicit acceptance criteria.
 - Refactors that preserve behavior and improve maintainability.
 
-Ask first:
+Proceed with evidence and record the rationale:
 
-- New product features or UX direction.
+- Reversible feature intake, UX improvements, issue creation, prioritization, and implementation-ready recommendations that fit verified product principles and release scope.
+- When product direction is not explicit, research the user/problem evidence, choose the smallest reversible path, and surface only material assumptions.
+
+Ask before protected decisions:
+
 - Pricing, licensing, free/pro entitlement, upsell, telemetry, or privacy changes.
 - Public API, REST schema, block attributes, shortcode, WP-CLI, database schema, or migration changes.
 - WordPress.org release, SVN deploy, marketplace submission, or public announcement.

@@ -17,6 +17,7 @@ const MANDATORY_BASELINES = [
   "design-experience-routing",
   "engineering-graph",
   "enterprise-runtime-assurance",
+  "loop-steward-authority",
   "owner-correction-learning",
   "owner-aligned-judgment",
   "product-development-governance",
@@ -26,6 +27,7 @@ const MANDATORY_BASELINES = [
   "source-blind-behavior-proof",
   "visual-evidence-assets",
   "wordpress-visual-execution",
+  "wp-contributor-upstream-process",
   "wp-quality-reviewer",
 ];
 

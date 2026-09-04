@@ -194,7 +194,7 @@ cat > "$output_path" <<'TEMPLATE'
 - Per-surface narrow/intermediate/desktop coverage and declared browser/device matrix:
 - Material accessibility browser/assistive-technology task and evidence:
 - Overlay or perceptual-diff method:
-- Structured visual proof receipt path and validator result (schema v2; required for exact/regression/release-critical/previously failed work):
+- Structured visual proof receipt path and validator result (schema v3; required for exact/regression/release-critical/previously failed work):
 - Design-risk review and elevated semantic-token lineage evidence:
 - Defect observed/fixed reproof lineage and accepted P3 decision evidence:
 - Region-level parity tolerance:

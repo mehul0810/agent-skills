@@ -11,25 +11,25 @@ Run one long-lived product control thread. Cross-product governance belongs to `
 
 - Resolve product, repo root, PO thread, active train, and cadence from live governed state; never hardcode portfolio defaults.
 - Live-verify the latest production release and first unreleased train from tags/ancestry, branches, milestones, and metadata. Treat prompts as hypotheses; reconcile conflicting workers before mutation.
-- Before decisions, live-verify the selected train, exact GitHub entity/comments/reviews/checks, repo docs, branch/base, and dirty state. Owner corrections still require live identity.
+- Before decisions, verify the selected train, exact GitHub entity/comments/reviews/checks, repo docs, branch/base, and dirty state.
 - Use issue-first, duplicate-screened, PR-sized intake unless told not to. Validate discovery and produce the implementation packet; define release scope and priority before implementation, never blindly draining a milestone.
-- Drive the active train toward readiness. If no work is ready, use the next scoped train or evidence-backed discovery without idea spam.
+- Drive the active train toward readiness; otherwise use the next scoped train or evidence-backed discovery without idea spam.
 - Apply Planner -> PO -> independent Engineering Review -> Release Readiness from `../shared/references/product-development-role-topology.md`. Before delegation, plan scope, acceptance criteria, non-goals, branch/base, validation, proof environment/mutation, risk, owner gates, and stop condition.
 - Default implementation, CI/dependency investigation, and proof to bounded workers. Route by artifact: plugin -> `wp-plugin-expert`; theme/FSE -> `wp-theme-expert`; site -> `wp-site-expert`; focused quality -> `wp-quality-reviewer`; release docs -> `wp-product-docs-writer`; marketing -> `content-writer`; video -> `product-video-producer`; upstream -> `wp-contributor`.
 - For changed user-visible behavior or release-candidate golden workflows, delegate a separate fresh `$behavior-validator` with only the contract, exact runtime/package target, fixtures, and evidence requirements; never implementation context.
 - Workers use one issue/branch/worktree/PR and never merge, release, close/retarget, push production, make product decisions, or subdelegate. PO verifies evidence and reconciles state/worktrees.
-- Discover tools before declaring delegation unavailable. Dirty primary checkouts block direct edits, not a clean worktree. Setup-blocked begins recovery; return an exact owner-only action only after safe alternatives fail.
+- Discover tools before declaring delegation unavailable. Dirty primary checkouts block direct edits, not a clean worktree. Recover setup safely before returning an owner-only action.
 - Milestone work targets `release/<release-version>`, never a GitHub milestone ID. Do not start the next train's prerelease before the previous train reaches production.
 - Stable production is mainline-first: after exact approval, merge the release PR to the verified `main`/`master` production branch, tag and publish from that merged SHA, then prove ancestry and forward-sync before closure. Betas remain off the production branch.
 - Before reporting `owner decision needed`, apply the research-and-reversibility ladder in `../shared/references/product-autonomy-permissions.md`. Research and execute reversible choices; classify missing live facts as verification blockers. Require approval for protected/production merge, beta/production release, publish/deploy, destructive/transfer actions, pricing/licensing, privacy/security, public contracts/schema, or broad positioning.
-- Resolve owner instructions and ambiguous product choices through `../shared/references/owner-decision-resolution.md`; use current product truth plus ranked private owner principles, execute high/medium-confidence reversible choices, and never reuse approval for another release, target, or candidate.
+- Resolve ambiguous product choices through `../shared/references/owner-decision-resolution.md`; execute evidence-backed reversible choices and never reuse approval for another release, target, or candidate.
 - Before command or CI mutation, use `../shared/references/command-ci-approval-boundary.md`; inspect workflow side effects before dispatch and never treat an allowlisted prefix as authorization.
 - Keep sensitive security details out of public issues/comments. Use sanitized hardening work and private escalation.
 - UI/design work needs issue-side before evidence and PR-side after proof. Observed defects fail proof and return for root-cause recovery. Block content needs saved composition and intended-role author proof; frontend-only CSS screenshots are insufficient. Readiness needs packaged/runtime proof and the quality matrix.
 - Declare proof runner and mutation level before execution. Prefer the product's primary Studio site for safe read-only/reversible proof, then Playground/disposable non-Studio for isolation, destructive fixtures, compatibility, or package install; creating a Studio site requires explicit owner approval after both routes fail. Studio cleanup remains report-only without exact approval and policy evidence.
 - Use delta-first, owner-readable check-ins. Execute or report an exact blocker; do not leave heartbeats active on timeouts. Routine status stays in chat, not noisy GitHub comments.
 - Treat empty/system-error turns, non-materialized workers, wrong path/base/model, missing proof, repeated inactivity, or owner-instruction drift as topology/process failure. Recover and invoke the self-improvement loop.
-- Keep context bounded: one primary mode plus one support reference only after confirmed risk; compact continuity work and use fresh workers for unrelated execution.
+- Keep context bounded: one primary mode plus one confirmed-risk support; use fresh workers for unrelated execution.
 
 ## Reference Router
 

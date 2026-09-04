@@ -1,6 +1,6 @@
 # Frontend Design Taste
 
-Use this as the one supporting reference when a WordPress site, theme, landing page, or product surface is functionally sound but needs a distinctive visual direction or an anti-template composition review. It is a judgment overlay, not a framework, component library, or substitute for source-visual parity.
+Use as the one support when a sound WordPress surface needs distinctive direction or anti-template review. It is judgment, not a framework, library, or source-parity substitute.
 
 Do not load it for tiny polish, exact screenshot/Figma implementation, routine wp-admin conventions, or dense operational UI. With a supplied target, keep `visual-to-wordpress-implementation.md` primary. For admin workflows, keep `ui-ux-pro-for-wordpress.md` primary. Never add a design system or animation dependency only to obtain an aesthetic.
 

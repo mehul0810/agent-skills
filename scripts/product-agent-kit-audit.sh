@@ -31,6 +31,10 @@ require_text "scripts/install-product-agent-kit.sh" 'Existing files are never ov
 require_text "scripts/install-product-agent-kit.sh" '--stage-update' "versioned update staging"
 require_text "scripts/install-product-agent-kit.sh" 'unsafe symlink in managed path' "symlink escape rejection"
 require_text "scripts/install-product-agent-kit.sh" 'retired managed path (preserved)' "retired managed path reporting"
+require_text "templates/product-repo/PRODUCT.md" "Proceed with evidence and record the rationale" "reversible product autonomy"
+require_text "templates/product-repo/PRODUCT.md" "Ask before protected decisions" "protected product decisions"
+require_text "templates/product-repo/.codex/product-docs-intake.md" "Ask at most three unresolved questions" "bounded product-doc intake"
+require_text "templates/product-repo/.codex/product-docs-intake.md" "do not generate placeholder policy" "evidence-backed product docs"
 
 tmp="$(mktemp -d "${TMPDIR:-/tmp}/product-agent-kit.XXXXXX")"
 trap 'rm -rf "$tmp"' EXIT

@@ -6,6 +6,7 @@
 .codex/config.toml
 .codex/product-agent-kit.files
 .codex/product-agent-kit.version
+.codex/product-docs-intake.md
 .codex/prompts/fixissue.md
 .codex/prompts/handoff.md
 .codex/prompts/landpr.md

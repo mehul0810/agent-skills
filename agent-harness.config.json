@@ -7,12 +7,15 @@
     "skill-evals/run-record.example.json",
     "skill-evals/behavior-baselines.json",
     "scripts/behavior-evidence-audit.mjs",
+    "scripts/contract-integrity-audit.mjs",
+    "scripts/source-freshness-audit.mjs",
     "scripts/validate-behavior-run-records.mjs",
     "shared/schemas/wordpress-engineering-graph.schema.json",
     "shared/schemas/wordpress-asset-production.schema.json",
     "shared/schemas/wordpress-spatial-proof.schema.json",
     "shared/schemas/wordpress-visual-proof.schema.json",
     "shared/schemas/wp-quality-review.schema.json",
+    "shared/source-freshness.json",
     "shared/references/owner-decision-resolution.md",
     "shared/references/product-development-role-topology.md",
     "shared/references/product-value-decision.md",
@@ -88,7 +91,6 @@
       "files": [
         "wp-product-orchestrator/SKILL.md",
         "wp-product-orchestrator/references/router.md",
-        "shared/references/cto-orchestration-operating-model.md",
         "shared/references/delegation-protocol.md"
       ]
     },
@@ -98,7 +100,6 @@
       "warningPercent": 85,
       "files": [
         "wp-product-orchestrator/SKILL.md",
-        "wp-product-orchestrator/references/router.md",
         "shared/references/release-train-discipline.md",
         "shared/references/live-proof-wordpress.md"
       ]
@@ -110,7 +111,6 @@
       "files": [
         "wp-portfolio-cto/SKILL.md",
         "wp-portfolio-cto/references/router.md",
-        "shared/references/cto-orchestration-operating-model.md",
         "shared/references/heartbeat-checkin-discipline.md"
       ]
     },
@@ -149,8 +149,7 @@
       "warningPercent": 85,
       "files": [
         "wp-plugin-expert/SKILL.md",
-        "wp-expert/references/plugin-product-architecture.md",
-        "shared/references/enterprise-code-quality-gate.md"
+        "wp-expert/references/plugin-product-architecture.md"
       ]
     },
     {
@@ -258,7 +257,15 @@
       "warningPercent": 85,
       "files": [
         "wp-plugin-expert/SKILL.md",
-        "wp-expert/references/ui-ux-pro-for-wordpress.md",
+        "wp-expert/references/ui-ux-pro-for-wordpress.md"
+      ]
+    },
+    {
+      "name": "Plugin WordPress Design System",
+      "maxWords": 2200,
+      "warningPercent": 85,
+      "files": [
+        "wp-plugin-expert/SKILL.md",
         "wp-expert/references/wordpress-design-system.md"
       ]
     },
@@ -374,7 +381,6 @@
       "warningPercent": 85,
       "files": [
         "content-writer/SKILL.md",
-        "content-writer/references/router.md",
         "content-writer/references/organic-search-content.md",
         "shared/references/research-token-discipline.md"
       ]
@@ -385,7 +391,6 @@
       "warningPercent": 85,
       "files": [
         "content-writer/SKILL.md",
-        "content-writer/references/router.md",
         "content-writer/references/human-writing-quality-gate.md"
       ]
     },
@@ -395,7 +400,6 @@
       "warningPercent": 85,
       "files": [
         "content-writer/SKILL.md",
-        "content-writer/references/router.md",
         "shared/references/search-visibility-and-ai-discovery.md",
         "shared/references/research-token-discipline.md"
       ]
@@ -406,7 +410,6 @@
       "warningPercent": 85,
       "files": [
         "content-writer/SKILL.md",
-        "content-writer/references/router.md",
         "content-writer/references/readability-and-clarity.md"
       ]
     },
@@ -416,7 +419,6 @@
       "warningPercent": 85,
       "files": [
         "content-writer/SKILL.md",
-        "content-writer/references/router.md",
         "content-writer/references/enterprise-product-writing.md"
       ]
     },
