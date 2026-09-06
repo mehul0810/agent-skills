@@ -55,7 +55,7 @@ Before ideation or implementation, create a compact source model containing:
 
 OCR, color sampling, and measurements are evidence aids, not authority. A cropped, compressed, composite, or single-state image cannot prove hidden behavior. Ask one focused question only when a brand-critical or journey-changing ambiguity cannot be resolved safely; otherwise use a reversible, labeled inference.
 
-The build gate is a concrete selected visual plus a source model sufficient to implement without inventing structure or assets. If design creation is requested, produce the visual direction artifact instead of substituting a prose moodboard. Attach the actual supplied references to ideation/generation when the tool supports them; never claim an attachment was used when it was not.
+The build gate is a selected direction plus sufficient source evidence. An approved existing design system, wireframe, or rendered WordPress prototype can resolve direction without another generated image; record what it establishes and remaining uncertainty. Exact image/Figma work still preserves the supplied target. If image creation is requested, produce that artifact. Attach supplied references when supported; never claim unused attachments.
 
 ## Redesign Growth Gate
 

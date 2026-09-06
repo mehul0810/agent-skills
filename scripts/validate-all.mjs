@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+
+const cwd = fileURLToPath(new URL('..', import.meta.url));
+// The reference gate owns domain audits; do not rerun them in this aggregate.
+const checks = [
+  ['Diff', 'git', ['diff', '--check']],
+  ['References and domain audits', 'bash', ['scripts/validate-references.sh']],
+  ['Example record', 'npm', ['run', 'run-record:example']],
+  ['Behavior records', 'node', ['scripts/validate-behavior-run-records.mjs']],
+  ['Evidence validator regression', 'node', ['scripts/behavior-evidence-audit.mjs', '--self-test']],
+  ['Quality validator regression', 'node', ['wp-quality-reviewer/scripts/validate-review-report.mjs', '--self-test']],
+  ['Install links', 'bash', ['scripts/install-links-smoke.sh']],
+];
+let failed = false;
+for (const [name, command, args] of checks) {
+  const start = performance.now();
+  const result = spawnSync(command, args, { cwd, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
+  const pass = result.status === 0 && !result.error;
+  console.log(`${pass ? 'PASS' : 'FAIL'} ${name} (${Math.round(performance.now() - start)} ms)`);
+  if (!pass) {
+    failed = true;
+    process.stderr.write(result.stdout || '');
+    process.stderr.write(result.stderr || '');
+    if (result.error) console.error(result.error.message);
+  } else {
+    const warnings = `${result.stdout}\n${result.stderr}`.split('\n').filter(line => /WARNING|low headroom/.test(line));
+    for (const warning of warnings) console.log(warning);
+  }
+}
+process.exitCode = failed ? 1 : 0;

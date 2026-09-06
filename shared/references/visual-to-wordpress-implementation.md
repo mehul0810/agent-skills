@@ -67,7 +67,7 @@ Use responsive WordPress media and an appropriate format. Never claim licensing,
 6. Accessibility, performance, and browser compatibility.
 7. Visual parity, editor/frontend parity, and golden workflows.
 
-Stabilize ownership, structure, fonts, and real assets before cosmetic nudges. Create a custom block only when native primitives cannot preserve the editing/design contract.
+Stabilize ownership, structure, fonts, and real assets before cosmetic nudges. Create a custom block only when native primitives cannot preserve the editing/design contract. For multi-page/system work, prove one representative section with real content, fonts/assets, editor controls, and narrow/intermediate/desktop behavior before scaling. Reuse the task packet's component/token/source IDs across the FSE map and proof receipts; reference established decisions instead of recreating briefs. Judge visual craft and task usability separately; neither pass substitutes for the other.
 
 For immersive, adaptive, motion-led, or media-dependent behavior, define the static state, reduced-motion/data behavior, unsupported-browser/failed-media fallback, measurable value, cleanup, and rollback before implementation. Enhancement failure must preserve content, navigation, task completion, and authoring.
 

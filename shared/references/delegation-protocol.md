@@ -6,7 +6,7 @@ Use before creating worker threads, worktrees, or subagent prompts. `wp-portfoli
 
 Plan before delegation. No worker starts without role contract, exact product/repo identity, strategy, scope, acceptance criteria, non-goals, branch/base, validation, proof environment/mutation level, risks, and owner decision needs.
 
-Use one PR per issue unless scope crosses release or validation boundaries. Push planning into the issue body and delegated prompt so workers replan less.
+Use one PR per issue unless scope crosses release or validation boundaries. Maintain one versioned task packet in the issue or repo artifact: scope/AC/non-goals, component ownership, source/design IDs, branch/base, risk, proof matrix, and evidence index. Prompts carry its pointer, revision, role, and delta; workers verify it and replan only invalidated assumptions. Review and proof append dispositions bound to the current head instead of rewriting the plan. A cached packet never replaces current approval or live GitHub state.
 
 ## Thread Boundary
 
