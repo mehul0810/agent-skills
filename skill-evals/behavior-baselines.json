@@ -65,7 +65,7 @@
         "wp-expert/references/visual-parity-regression.md",
         "wp-expert/references/wordpress-design-system.md"
       ],
-      "sha256": "9e9786bd4e3a1559b9943de70a031b7402d726bbcf6cba1d19e44967de9ab83d",
+      "sha256": "30c837298b312f496928e4b89aa6cfafa5fef80ece7a94c052d7d696b2b81d1e",
       "scenario": {
         "id": "premium-enterprise-design-experience",
         "files": [
@@ -128,10 +128,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/design-experience-routing-2026-09-04-loose-ends.json",
-          "sha256": "96eacc66344dc99f03de0671dcf85f92b983530fd351f8a1cc799fb59f7bd18f",
-          "testedRevision": "3d1813238be5232ad5937aa2f029ec11f5587a4e",
-          "testedSourceSha256": "9e9786bd4e3a1559b9943de70a031b7402d726bbcf6cba1d19e44967de9ab83d",
+          "runRecord": "skill-evals/run-records/design-experience-routing-2026-09-06-efficiency.json",
+          "sha256": "27875347765beb43a38907906e88aae9af02c932f70bf39739a84205853b98fb",
+          "testedRevision": "fab930c94c7d61a4bf164665f7a29e6e1905a8a3",
+          "testedSourceSha256": "30c837298b312f496928e4b89aa6cfafa5fef80ece7a94c052d7d696b2b81d1e",
           "testedScenarioSha256": "168416f3f9957a78a16ab3339fa253bfee79efd81d322b10c662d9244b63e12d",
           "runtime": {
             "host": "codex-desktop",
@@ -167,7 +167,7 @@
         "wp-theme-expert/SKILL.md",
         "wp-theme-expert/references/router.md"
       ],
-      "sha256": "ef665b9fed3f42fb0c3e28dfa671fc7c64986f6fe6ee38a6ecc800652d5b2192",
+      "sha256": "8daae654e51b7eceec2ef2d2d2a0cd4c2b34f00eda121d96eae736e2eb7486b1",
       "scenario": {
         "id": "wordpress-visual-execution",
         "files": [
@@ -232,10 +232,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-09-04-loose-ends.json",
-          "sha256": "6b366689b81443f4624df5ff1a6395b51c0ff8705334d7bd5092c6378d132d84",
-          "testedRevision": "3d1813238be5232ad5937aa2f029ec11f5587a4e",
-          "testedSourceSha256": "ef665b9fed3f42fb0c3e28dfa671fc7c64986f6fe6ee38a6ecc800652d5b2192",
+          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-09-06-efficiency.json",
+          "sha256": "a77afa70e12b9e8ec77dfca4dc2263741fcc7104d900180da79079c06f00348d",
+          "testedRevision": "fab930c94c7d61a4bf164665f7a29e6e1905a8a3",
+          "testedSourceSha256": "8daae654e51b7eceec2ef2d2d2a0cd4c2b34f00eda121d96eae736e2eb7486b1",
           "testedScenarioSha256": "a658d9356efcca81704978a8002f28fe55cfeae85d13bc202b064eb78a12836f",
           "runtime": {
             "host": "codex-desktop",
@@ -489,7 +489,7 @@
         "shared/references/plugin-release-workflow.md",
         "shared/references/delegation-protocol.md"
       ],
-      "sha256": "797a7c2bd6947c55fda9ce74f2972a00f9d44d27fd350589c14cedafc6bc259f",
+      "sha256": "299ec2701bfd36cc13abbe7bcb0d5b9753c15a1d2f79da837361952cf645a251",
       "scenario": {
         "id": "product-development-governance",
         "files": [
@@ -540,10 +540,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-development-governance-2026-09-04-dedicated-topology.json",
-          "sha256": "1a4c7368676176c2c7401f86344aea63046c49773713c2835eb5f4afa7ed097a",
-          "testedRevision": "3127c71a76cda46685b50cb502b909e4034c4e46",
-          "testedSourceSha256": "797a7c2bd6947c55fda9ce74f2972a00f9d44d27fd350589c14cedafc6bc259f",
+          "runRecord": "skill-evals/run-records/product-development-governance-2026-09-06-efficiency.json",
+          "sha256": "d4d1bcb76c6b1f623d32809a1fe5fa8a10193f287f83a1d7508b7098bf62c5ac",
+          "testedRevision": "fab930c94c7d61a4bf164665f7a29e6e1905a8a3",
+          "testedSourceSha256": "299ec2701bfd36cc13abbe7bcb0d5b9753c15a1d2f79da837361952cf645a251",
           "testedScenarioSha256": "adc694ebf95c5e99f1cf6863325e98fcf92a6e14ad7b6bb2f57dca0ae37c469f",
           "runtime": {
             "host": "codex-desktop",

@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "runId": "design-experience-routing-2026-09-06-efficiency",
+  "scenario": "premium-enterprise-design-experience",
+  "result": "succeeded",
+  "startedAt": "2026-09-06T14:48:55.000Z",
+  "durationMs": 49000,
+  "checks": [
+    {
+      "name": "greenfield-taste-route",
+      "result": "pass"
+    },
+    {
+      "name": "design-read-and-four-dials",
+      "result": "pass"
+    },
+    {
+      "name": "operational-dashboard-route-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "preserve-redesign-contracts",
+      "result": "pass"
+    },
+    {
+      "name": "motivated-motion-and-reduced-motion",
+      "result": "pass"
+    },
+    {
+      "name": "anti-template-composition",
+      "result": "pass"
+    },
+    {
+      "name": "usability-outcome-evidence-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "material-direction-checkpoint",
+      "result": "pass"
+    },
+    {
+      "name": "plug-and-play-defaults-advanced-controls",
+      "result": "pass"
+    },
+    {
+      "name": "enterprise-accountability-failure-proof",
+      "result": "pass"
+    },
+    {
+      "name": "trend-adoption-and-removal-path",
+      "result": "pass"
+    },
+    {
+      "name": "adaptive-ai-transparency-and-control",
+      "result": "pass"
+    },
+    {
+      "name": "voice-equivalent-path-and-privacy",
+      "result": "pass"
+    },
+    {
+      "name": "typography-loading-and-reduced-motion",
+      "result": "pass"
+    },
+    {
+      "name": "immersive-fallback-and-performance",
+      "result": "pass"
+    },
+    {
+      "name": "enterprise-progressive-depth",
+      "result": "pass"
+    },
+    {
+      "name": "source-visual-intent-routing",
+      "result": "pass"
+    },
+    {
+      "name": "design-understanding-evidence-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "growth-redesign-evidence-before-generation",
+      "result": "pass"
+    },
+    {
+      "name": "globalized-adaptive-interface-contract",
+      "result": "pass"
+    },
+    {
+      "name": "wordpress-design-system-package-transition",
+      "result": "pass"
+    },
+    {
+      "name": "custom-interaction-pattern-contract",
+      "result": "pass"
+    },
+    {
+      "name": "enterprise-form-recovery",
+      "result": "pass"
+    },
+    {
+      "name": "browser-assistive-technology-matrix",
+      "result": "pass"
+    },
+    {
+      "name": "token-integrity-proof-provenance",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 25,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "design-experience-routing-2026-09-06-efficiency",
+    "artifactPointer": "codex-fresh-agent:/root/fresh_contract_eval#fab930c94c7d61a4bf164665f7a29e6e1905a8a3"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-06T14:49:44.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Source-blind decision evaluation passed relevant design, visual ownership/proof, and product governance contracts. This is not executed browser or WordPress proof."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "design-experience-routing"
+  ]
+}

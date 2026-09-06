@@ -158,7 +158,7 @@ require_absent "shared/references/release-train-discipline.md" 'Tested up to` Wo
 require_absent "shared/references/product-queue-triage.md" 'Tested up to` WordPress 7.0' "queue reference has no fixed WordPress target"
 require_absent "shared/references/repo-product-docs-contract.md" "CleanLinks and Aculect first" "repo-doc reference has no transient product priority"
 require_text "shared/references/delegation-protocol.md" "Delegated Thread Prompt" "delegated thread/worktree protocol"
-require_text "shared/references/delegation-protocol.md" "Push planning into the issue body and delegated prompt" "delegation front-loaded planning"
+require_text "shared/references/delegation-protocol.md" "Maintain one versioned task packet" "delegation front-loaded planning"
 require_text "shared/references/delegation-protocol.md" '`CTO Worker <Task Name>`' "delegation worker-thread naming"
 require_text "shared/references/delegation-protocol.md" "Worker lifecycle owner is the creator" "delegation worker lifecycle creator ownership"
 require_text "shared/references/delegation-protocol.md" "CTO- or PO-created workers remain that creator's responsibility" "delegation PO worker cleanup ownership"

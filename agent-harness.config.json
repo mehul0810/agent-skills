@@ -636,6 +636,11 @@
         "Evidence-led YouTube learning",
         "Publication boundary"
       ]
+    },
+    {
+      "name": "Efficient contract reuse",
+      "file": "skill-evals/efficiency-contract-scenarios.md",
+      "requiredPhrases": ["# Efficiency Contract Scenarios", "Review a new PR head", "Build five pages"]
     }
   ]
 }

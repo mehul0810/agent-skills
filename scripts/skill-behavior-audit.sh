@@ -270,7 +270,7 @@ require_text "shared/references/design-intelligence-routing.md" "Design Understa
 require_text "shared/references/design-intelligence-routing.md" "Redesign Growth Gate" "shared redesign growth gate"
 require_text "shared/references/design-intelligence-routing.md" 'Never call a tactic or redesign `proven` without applicable experiment or outcome evidence' "shared redesign evidence boundary"
 require_text "shared/references/design-intelligence-routing.md" "OCR, color sampling, and measurements are evidence aids" "shared image evidence limit"
-require_text "shared/references/design-intelligence-routing.md" "produce the visual direction artifact instead of substituting a prose moodboard" "shared visual ideation artifact gate"
+require_text "shared/references/design-intelligence-routing.md" "If image creation is requested, produce that artifact" "shared visual ideation artifact gate"
 require_text "shared/references/visual-to-wordpress-implementation.md" "confirm target identity" "visual exact target identity gate"
 require_text "skill-evals/visual-wordpress-scenarios.md" "Inspiration Image Requires Direction Before Build" "visual inspiration intent scenario"
 require_text "skill-evals/visual-wordpress-scenarios.md" "Ambiguous Improve Request Audits First" "visual improvement audit scenario"

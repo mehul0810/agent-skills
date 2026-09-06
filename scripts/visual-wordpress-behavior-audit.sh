@@ -134,7 +134,7 @@ forbid_text "wp-expert/references/ux-product-strategy-design-qa.md" "treat it as
 require_text "shared/references/design-intelligence-routing.md" "Design Understanding Readiness" "image design understanding readiness"
 require_text "shared/references/design-intelligence-routing.md" "Redesign Growth Gate" "redesign growth direction gate"
 require_text "shared/references/design-intelligence-routing.md" 'Never call a tactic or redesign `proven` without applicable experiment or outcome evidence' "redesign evidence boundary"
-require_text "shared/references/design-intelligence-routing.md" "produce the visual direction artifact instead of substituting a prose moodboard" "image design visual artifact output"
+require_text "shared/references/design-intelligence-routing.md" "If image creation is requested, produce that artifact" "image design visual artifact output"
 require_text "shared/references/visual-to-wordpress-implementation.md" "target identity" "selected target identity"
 require_text "shared/references/design-intelligence-routing.md" "frontend-design-taste.md" "frontend taste routing"
 require_text "shared/references/design-intelligence-routing.md" "emerging-interface-design-contract.md" "emerging interface routing"

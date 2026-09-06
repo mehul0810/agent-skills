@@ -27,3 +27,9 @@ When the local Skill Creator is installed, also run `quick_validate.py` for ever
 Use `skill-evals/README.md`. Run changed-role scenarios with a fresh agent and raw artifacts for changes affecting authority, routing, release behavior, hallucination controls, design execution, runtime assurance, graph closure, or owner-correction learning. Store a sanitized run record or durable evidence pointer with the changed behavior.
 
 Green grep/structure audits do not prove the behavior is correct.
+
+For design calibration, use `skill-evals/frontend-benchmark/README.md`. Give independent evaluators only its contract and rendered artifacts. Record detected/missed defects separately from deterministic smoke checks; the fixture is not native WordPress or production repair proof.
+
+For shared harness/topology changes, run `node scripts/check-agent-consumers.mjs <skills-root> <loop-root> <book-root>` against explicit local checkouts. Different pins are allowed only with passing consumer contracts; this read-only check does not upgrade dependencies or establish live runtime adoption.
+
+Measure available token usage, elapsed time, handoffs, retries, reopened defects, and accepted completion over a comparable task set. Missing telemetry is unavailable, not zero. Word budgets and faster validators alone do not establish end-to-end token savings.
