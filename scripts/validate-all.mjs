@@ -2,6 +2,11 @@
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
+if (Number(process.versions.node.split('.')[0]) !== 24) {
+  console.error(`Node 24 required by package.json/.nvmrc; found ${process.versions.node}. Activate the repository runtime before validation.`);
+  process.exit(1);
+}
+
 const cwd = fileURLToPath(new URL('..', import.meta.url));
 // The reference gate owns domain audits; do not rerun them in this aggregate.
 const checks = [
