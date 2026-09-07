@@ -69,3 +69,18 @@ Generated or materially altered media needs a receipt: tool and source, human ov
 ## Approval Gate
 
 If the visual direction is open, show a small set of materially different directions, then produce the selected storyboard or low-cost animatic. Full-quality rendering starts only after the direction, claims, copy, logo treatment, and major timing are approved. User-supplied exact direction can proceed without redundant approval, but still requires the preflight and claim gates.
+
+## Motion Direction Contract
+
+Aim for one coherent delivery, not first-render perfection. For new direction, prove a 5-10 second sequence combining typography, product evidence, transition and sound. Reuse approved direction without ceremonial approval; resolve missing assets/claims, never invent UI.
+
+Record a motion sheet: alignment, safe areas, typography, palette, focal hierarchy, camera/depth, entrance/hold/exit, easing and audio. Start with static composition and one dominant target per beat; motion explains relationships, directs attention or bridges scenes, not constant activity.
+
+- Preserve spatial continuity: track the focal element across cuts, retain action/result context, and motivate camera pans or UI crops. Avoid arbitrary zooms, unexplained position jumps and perspective that makes UI unreadable.
+- Use intentional acceleration/deceleration and settling; reserve linear movement for constant-speed intent. Overshoot, springs, blur and parallax are optional, not premium defaults. No camera move during a reading hold unless legibility is proven.
+- Allocate entrance, readable hold and exit separately. Check exact copy at normal speed on the smallest intended display; no universal word-per-second value replaces this test. Do not synchronize every word or cut mechanically to a beat.
+- Choose voice-led or music-led structure before detailed animation. Map narrative beats and sound cues early, leave breathing room, and keep voice, music and effects separately adjustable. A sound cue must support meaning, not conceal a weak transition.
+
+Use composable scene primitives: typographic opening, product reveal, focused UI action, before/after, input-to-result, workflow connection, evidenced metric and CTA. Reuse mechanics rather than copying a reference's distinctive sequence or imposing identical layouts across brands. Parameterize copy, assets, timing and aspect ratio; preserve product-specific visual judgment.
+
+Reference URLs or thumbnails alone are not motion evidence. Sampled frames support composition observations only; mark pacing/easing/audio unreviewed until actual playback is inspected. Record failures with timecodes and named causes instead of vague requests to make it smoother.

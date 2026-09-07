@@ -78,3 +78,19 @@ Stop when the storyboard acceptance criteria and critique ledger pass, required 
 ## Official Anchors
 
 Live-check destination specifics at delivery. Stable anchors: [Adobe color management](https://helpx.adobe.com/premiere/desktop/correct-color/set-up-color-management/configuring-sequence-color-management.html), [EBU loudness measurement](https://tech.ebu.ch/loudness/), [W3C prerecorded captions](https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded), [W3C audio description](https://www.w3.org/WAI/WCAG22/Understanding/audio-description-prerecorded.html), and [W3C flash limits](https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html). Last reviewed: 2026-07-26.
+
+## Programmatic Motion Adapter
+
+For typography/UI video, evaluate Remotion; preserve proven editors for footage/compositing. Verify APIs, licensing, runtime, rendering and budget: [Remotion docs](https://www.remotion.dev/docs/) and [coding-agent workflows](https://www.remotion.dev/docs/ai/), checked 2026-09-07. Do not install globally or buy render services implicitly.
+
+Separate typed scenes, assets and timing manifest. Use frame-driven animation, never wall-clock timers, unseeded randomness or live network content. Pin dependencies/fonts, await assets and test shot boundaries. Capture real UI separately; generation cannot own exact text/logos or workflow proof.
+
+Preview the approved sequence locally before full rendering. Rerender changed ranges; 4K needs justification. Poster-only edits do not rerender video. Measure model/render costs separately. Follow shared model routing: Astra low/light without explicit permission.
+
+## Playback Calibration Gate
+
+Before claiming smooth enterprise quality, review the complete rendered artifact at normal speed with audio, then inspect suspect ranges frame-by-frame. A contact sheet, valid manifest or successful render cannot pass this gate. If playback/audio inspection is unavailable, deliver a clearly labeled draft with the exact gap, not an accepted master.
+
+Use short controlled fixtures for: unreadable title hold, inconsistent easing, competing focal objects, crop/zoom legibility loss, discontinuous transition, audio cue offset, and logo matte artifacts. Include a clean control. Independent review receives the brief and rendered clips without the defect answer key; report detected/missed/false-positive results separately from technical tests. Store the render/toolchain identity and timecoded evidence. Scenarios without rendered fixtures are policy tests only, not motion calibration.
+
+Score narrative, composition, motion, audio and brand/product fidelity pass/fail/blocked. Repair named defects, preserve approved direction and rerender dependencies. Stop when QA passes; never guarantee first-render perfection or polish without an observable defect.

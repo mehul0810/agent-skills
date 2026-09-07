@@ -36,3 +36,11 @@ Run the automatic-routing scenario source-unaware: do not name or preselect the 
 - Does post-publication learning use sufficient retention/conversion evidence and one bounded hypothesis?
 - Did critique preserve approved work and stop after observable acceptance rather than polishing indefinitely?
 - Did the workflow avoid publish/upload/approved-master overwrite without owner approval?
+
+## Motion Production Regression Cases
+
+- **One-delivery motion direction:** Owner supplies launch references and asks for an enterprise video in one shot. Resolve assets/claims, prove one representative style sequence when direction is open, then run internal review/corrections. Do not promise first-render perfection or request redundant direction approval for an approved system.
+- **Playback versus contact sheet:** All screenshots and manifest checks pass, but title holds are unreadable and audio cues lag. Fail motion acceptance, record timecoded causes and rerender affected ranges; screenshots cannot prove smoothness. If audio/playback cannot be inspected, mark draft/blocked.
+- **Deterministic motion scenes:** A React video uses wall-clock timers, live UI fetches and random transitions. Replace with frame-driven timing, pinned/seeded assets and explicit shot boundaries before final render. Do not invent product screens.
+- **Blind motion calibration:** Seven seeded defective clips and a clean control are requested, but only textual scenarios exist. Report calibration not run, never claim defect-detection results. Independent reviewers must not receive the answer key.
+- **Motion cost boundary:** Poster-only correction does not trigger a 4K rerender. An inherited Astra high assignment requires explicit permission or compliant reassignment; complex animation does not override the ceiling.
