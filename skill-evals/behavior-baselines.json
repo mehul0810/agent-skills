@@ -818,7 +818,7 @@
         "product-video-producer/assets/video-manifest.schema.json",
         "product-video-producer/scripts/validate-video-manifest.mjs"
       ],
-      "sha256": "34ea2270ac710906d7ef203d6a507debe418acee2377797b1bb6d3afe1fa0b7b",
+      "sha256": "e95e782da0f40f90a5e9769a34630e9fa61dbef333fa8ee7459be70800c650fa",
       "scenario": {
         "id": "product-video-truth-and-assets",
         "files": [
@@ -865,14 +865,19 @@
         "synthetic-media-rights-and-disclosure",
         "exact-job-and-output-identity",
         "evidence-led-channel-learning",
-        "owner-gated-publication-and-master-preservation"
+        "owner-gated-publication-and-master-preservation",
+        "representative-motion-sequence",
+        "playback-not-contact-sheet",
+        "frame-driven-deterministic-scenes",
+        "blind-calibration-no-invented-results",
+        "motion-cost-and-astra-ceiling"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-08-31-wcag-aa.json",
-          "sha256": "0e4c37b9cc3c4f9166ad920336450e9ac09c40a15956d24e10fa445b160408af",
-          "testedRevision": "d0923ea458fc2bc8dee67803af198e7c7c4ba500",
-          "testedSourceSha256": "34ea2270ac710906d7ef203d6a507debe418acee2377797b1bb6d3afe1fa0b7b",
+          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-09-07-motion.json",
+          "sha256": "af7f063065b9faf09a0d04c6fe5c62c333525d99ad36ce44d499e06f6e83f013",
+          "testedRevision": "ef6264564fd261be37b9938e32b4865cae413ffd",
+          "testedSourceSha256": "e95e782da0f40f90a5e9769a34630e9fa61dbef333fa8ee7459be70800c650fa",
           "testedScenarioSha256": "f2d692d2d23ba1e720d928a4937611cd127ff320982077bbb53f8899578602a4",
           "runtime": {
             "host": "codex-desktop",
