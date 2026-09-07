@@ -81,7 +81,7 @@ Live-check destination specifics at delivery. Stable anchors: [Adobe color manag
 
 ## Programmatic Motion Adapter
 
-For typography/UI video, evaluate Remotion; preserve proven editors for footage/compositing. Verify APIs, licensing, runtime, rendering and budget: [Remotion docs](https://www.remotion.dev/docs/) and [coding-agent workflows](https://www.remotion.dev/docs/ai/), checked 2026-09-07. Do not install globally or buy render services implicitly.
+For typography/UI video, evaluate Remotion; preserve proven editors for footage/compositing. Verify APIs, licensing, runtime, rendering and budget: [Remotion docs](https://www.remotion.dev/docs/) and [coding-agent workflows](https://www.remotion.dev/docs/ai/), checked 2026-09-07. No implicit global installs or paid rendering.
 
 Separate typed scenes, assets and timing manifest. Use frame-driven animation, never wall-clock timers, unseeded randomness or live network content. Pin dependencies/fonts, await assets and test shot boundaries. Capture real UI separately; generation cannot own exact text/logos or workflow proof.
 

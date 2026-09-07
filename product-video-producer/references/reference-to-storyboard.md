@@ -72,9 +72,9 @@ If the visual direction is open, show a small set of materially different direct
 
 ## Motion Direction Contract
 
-Aim for one coherent delivery, not first-render perfection. For new direction, prove a 5-10 second sequence combining typography, product evidence, transition and sound. Reuse approved direction without ceremonial approval; resolve missing assets/claims, never invent UI.
+Do not promise first-render perfection. For new direction, prove a 5-10 second sequence combining typography, product evidence, transition and sound. Reuse approved direction without ceremonial approval; resolve missing assets/claims, never invent UI.
 
-Record a motion sheet: alignment, safe areas, typography, palette, focal hierarchy, camera/depth, entrance/hold/exit, easing and audio. Start with static composition and one dominant target per beat; motion explains relationships, directs attention or bridges scenes, not constant activity.
+Motion sheet: alignment, safe areas, typography, palette, focal hierarchy, camera/depth, entrance/hold/exit, easing and audio. Start with static composition and one dominant target per beat; motion explains relationships, directs attention or bridges scenes, not constant activity.
 
 - Preserve spatial continuity: track the focal element across cuts, retain action/result context, and motivate camera pans or UI crops. Avoid arbitrary zooms, unexplained position jumps and perspective that makes UI unreadable.
 - Use intentional acceleration/deceleration and settling; reserve linear movement for constant-speed intent. Overshoot, springs, blur and parallax are optional, not premium defaults. No camera move during a reading hold unless legibility is proven.
