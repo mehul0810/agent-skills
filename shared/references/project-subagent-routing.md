@@ -18,9 +18,13 @@ Never assume a model ID or that `high`, `xhigh`, `max`, or another reasoning lab
 
 ### Approved Stable Family
 
-Use the stable Luna/Terra/Sol capability family as the default model boundary. A future family or successor enters this boundary only after it is available in the active runtime, officially documented, stable rather than preview, and reviewed into the same cost/risk tiers.
+Default to Luna/Terra/Sol. Admit successors only after runtime availability, stable status and cost/risk-tier review.
 
-Do not select legacy, deprecated, preview, research-preview, experimental, or separate-capacity models merely because the runtime exposes them. They require an explicit owner request for the current task. Daybreak Blue-class is the owner-approved defensive-security exception defined below.
+Do not select legacy, deprecated, preview, research-preview, experimental, or separate-capacity models merely because the runtime exposes them. They require an explicit owner request for the current task. Astra and Daybreak Blue exceptions follow below.
+
+### Astra Reasoning Ceiling
+
+Astra-class is an owner-approved exceptional-complexity option, not the routine default. No task, subagent, reviewer, retry or automation may use Astra above supported `low`/`light` without explicit owner permission for that assignment. This ceiling overrides strongest-tier and failed-proof escalation rules, including inherited settings. If neither level exists, choose a suitable approved non-Astra lane or request permission; never silently use medium/high. Verify actual runtime settings: prose cannot switch a running task. Keep Luna/Terra/Sol defaults and use Daybreak Blue only for authorized defensive security at the lowest sufficient supported reasoning.
 
 ### Owner Capacity Signal
 

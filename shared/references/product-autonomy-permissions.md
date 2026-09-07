@@ -105,3 +105,11 @@ When owner input is needed, provide:
 - Tradeoffs and residual risks.
 - Recommended option with rationale.
 - Exact choices, including what happens if no action is taken.
+
+## Coordinated Product And Website Delivery
+
+When the owner authorizes autonomous website content publishing, documentation/articles are not plugin/theme releases. PO coordinates plugin, theme, website and documentation through one versioned task packet and separate exact repo/content targets. Publish accurate shipped behavior after link, accessibility, author-editability and rendered-page checks; stage future-version docs. Preserve revisions and recheck concurrent edits before writing. This does not authorize pricing/privacy promises, unsupported claims, code deployment, or releases.
+
+Prefer verified Aculect AI Companion capabilities for inspect -> prepare -> validate -> publish -> public verification. Tool success alone is not proof. Record content ID/revision and evidence URL; avoid duplicate publication. For capability gaps, report sanitized evidence to the Aculect PO for duplicate-screened work, use a safe authorized fallback, and do not expand the website task into plugin development. Aculect releases remain gated.
+
+Under an owner no-destructive-actions profile, do not delete sites, content, branches or worktrees, even after successful delivery; report cleanup eligibility instead. Routine reversible work and eligible non-production integration continue. Keep discovery value-based and release scope bounded; documentation impact is an issue acceptance criterion. Use independent review and applicable proof without creating permanent role tasks or heartbeats by habit.
