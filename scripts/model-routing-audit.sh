@@ -53,7 +53,7 @@ require_text "shared/references/project-subagent-routing.md" "Impact: <none or e
 require_text "shared/references/project-subagent-routing.md" "Do not downgrade the final reviewer merely for model diversity" "high-risk reviewer tier"
 require_text "shared/references/project-subagent-routing.md" "Capability-check both fields at runtime" "reasoning capability check"
 require_text "shared/references/project-subagent-routing.md" "must not pin transient models/reasoning" "model-free reusable profiles"
-require_text "shared/references/project-subagent-routing.md" "Use the stable Luna/Terra/Sol capability family as the default model boundary" "approved stable model family"
+require_text "shared/references/project-subagent-routing.md" "Default to Luna/Terra/Sol" "approved stable model family"
 require_text "shared/references/project-subagent-routing.md" "preview, research-preview, experimental, or separate-capacity models" "preview and separate-capacity exclusion"
 require_text "shared/references/project-subagent-routing.md" "Daybreak Blue-class" "defensive security specialist"
 require_text "shared/references/project-subagent-routing.md" "fixer must not approve its own remediation" "independent security verification"
@@ -96,6 +96,9 @@ if [ -n "$matches" ]; then
 else
   echo "ok: no transient Codex model IDs in normative current guidance"
 fi
+
+require_text "shared/references/project-subagent-routing.md" 'No task, subagent, reviewer, retry or automation may use Astra above' "Astra assignment ceiling"
+require_text "shared/references/project-subagent-routing.md" 'including inherited settings' "Astra inheritance gate"
 
 if [ "$errors" -gt 0 ]; then
   echo "model routing audit failed: $errors issue(s)" >&2

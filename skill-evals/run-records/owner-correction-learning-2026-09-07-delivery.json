@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "runId": "owner-correction-learning-2026-09-07-delivery",
+  "scenario": "owner-correction-learning",
+  "result": "succeeded",
+  "startedAt": "2026-09-07T15:16:58.000Z",
+  "durationMs": 17000,
+  "checks": [
+    {
+      "name": "immediate-root-cause-correction",
+      "result": "pass"
+    },
+    {
+      "name": "compact-correction-result",
+      "result": "pass"
+    },
+    {
+      "name": "worker-candidate-only",
+      "result": "pass"
+    },
+    {
+      "name": "dedupe-and-repeatability-gate",
+      "result": "pass"
+    },
+    {
+      "name": "reviewed-durable-destination",
+      "result": "pass"
+    },
+    {
+      "name": "decision-envelope-preserved",
+      "result": "pass"
+    },
+    {
+      "name": "task-authorization-not-promoted",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 7,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "owner-correction-learning-2026-09-07-delivery",
+    "artifactPointer": "codex-fresh-agent:/root/pilot_policy_review#b7c6bf329edb0c068ba7dafe82bade5b15939b52"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-07T15:17:15.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Fresh source-only regression review and final confirmation passed. Policy evaluation only, not live publication or release proof; full qualitative receipt in delivery-pilot-review.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}
