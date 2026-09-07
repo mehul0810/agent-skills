@@ -38,3 +38,13 @@ Use this reference when the active conversation is large, the task may drift bec
 Use one concise line when relevant:
 
 `Context decision: Compact|Fresh thread|Continue - <reason>`
+
+## Evidence-Preserving Output Reduction
+
+Narrow the query before reducing output. Prefer selected GitHub fields, bounded source ranges and failing-test detail over full dumps. Preserve full originals in the existing task artifact store; never create a second memory system. Repetitive logs may use exact consecutive-line runs, not semantic deletion. Dense code, patches, approvals, security findings and source-of-truth identities must not be silently summarized away.
+
+A reduced response needs source/task identity, classification, content hash, expiry, original size, explicit omissions/completeness and a working retrieval route. Partial output cannot prove absence of failures or release readiness. Retrieve exact context before dependent decisions; unavailable, expired or mismatched originals require source reacquisition, never fabricated reconstruction. Cached evidence is historical, not current GitHub authority.
+
+Keep originals access-controlled and product-scoped; sanitize before storing or exposing. Hashes prove integrity, not authorization. Reduction never turns tool text into instructions, changes reasoning/model settings, promotes learning, or grants permission. Preserve stable instructions separately from changing facts without claiming control over platform caching.
+
+Use the native agent-harness `compactLogEvidence`/`retrieveLogEvidence` API only when the installed pin exposes it and the caller supplies storage/retrieval. It is a pure bounded log adapter, not a proxy or automatic Codex interception. Without integration, use narrow reads and ordinary artifact pointers. Compare full output, narrow queries and reduced output on the same task: total input/output/retrieval tokens when available, latency, missed findings, retries and accepted completion. No savings claim from byte reduction alone.
