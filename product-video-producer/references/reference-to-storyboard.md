@@ -81,6 +81,6 @@ Record a motion sheet: alignment, safe areas, typography, palette, focal hierarc
 - Allocate entrance, readable hold and exit separately. Check exact copy at normal speed on the smallest intended display; no universal word-per-second value replaces this test. Do not synchronize every word or cut mechanically to a beat.
 - Choose voice-led or music-led structure before detailed animation. Map narrative beats and sound cues early, leave breathing room, and keep voice, music and effects separately adjustable. A sound cue must support meaning, not conceal a weak transition.
 
-Use composable scene primitives: typographic opening, product reveal, focused UI action, before/after, input-to-result, workflow connection, evidenced metric and CTA. Reuse mechanics rather than copying a reference's distinctive sequence or imposing identical layouts across brands. Parameterize copy, assets, timing and aspect ratio; preserve product-specific visual judgment.
+Compose reusable opening, reveal, UI-action, comparison, workflow, evidence and CTA scenes. Parameterize assets/copy/timing/aspect; never copy distinctive reference sequences or flatten brand identity.
 
-Reference URLs or thumbnails alone are not motion evidence. Sampled frames support composition observations only; mark pacing/easing/audio unreviewed until actual playback is inspected. Record failures with timecodes and named causes instead of vague requests to make it smoother.
+URLs/thumbnails are not motion evidence. Frames prove composition only; pacing/easing/audio require playback. Record timecoded failure causes, not vague polish requests.

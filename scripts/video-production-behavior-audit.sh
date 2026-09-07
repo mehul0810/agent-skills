@@ -87,6 +87,11 @@ else
   errors=$((errors + 1))
 fi
 
+require_text "product-video-producer/references/reference-to-storyboard.md" "Motion Direction Contract" "motion sheet and attention contract"
+require_text "product-video-producer/references/render-review-iteration.md" "Playback Calibration Gate" "actual playback acceptance"
+require_text "product-video-producer/references/render-review-iteration.md" "never wall-clock timers" "deterministic motion adapter"
+require_text "skill-evals/product-video-producer-scenarios.md" "Blind motion calibration" "no fabricated motion calibration"
+
 if [ "$errors" -gt 0 ]; then
   echo "video production behavior audit failed: $errors issue(s)" >&2
   exit 1
