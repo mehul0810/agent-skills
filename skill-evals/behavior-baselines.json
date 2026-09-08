@@ -65,7 +65,7 @@
         "wp-expert/references/visual-parity-regression.md",
         "wp-expert/references/wordpress-design-system.md"
       ],
-      "sha256": "30c837298b312f496928e4b89aa6cfafa5fef80ece7a94c052d7d696b2b81d1e",
+      "sha256": "d03f8f1a294ea0ab772371db1aa97f34af7c81c855f1abaa354a3cdb56cedfcb",
       "scenario": {
         "id": "premium-enterprise-design-experience",
         "files": [
@@ -128,10 +128,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/design-experience-routing-2026-09-06-efficiency.json",
-          "sha256": "27875347765beb43a38907906e88aae9af02c932f70bf39739a84205853b98fb",
-          "testedRevision": "fab930c94c7d61a4bf164665f7a29e6e1905a8a3",
-          "testedSourceSha256": "30c837298b312f496928e4b89aa6cfafa5fef80ece7a94c052d7d696b2b81d1e",
+          "runRecord": "skill-evals/run-records/design-experience-routing-2026-09-08-calibration.json",
+          "sha256": "1a0a1dea1c65f1227c14ef71eaa43e79edf9aae4ddaf914f9d9a86e6e59178c9",
+          "testedRevision": "de1c18adb05e7be5597fe3defe1b8e96faf3e379",
+          "testedSourceSha256": "d03f8f1a294ea0ab772371db1aa97f34af7c81c855f1abaa354a3cdb56cedfcb",
           "testedScenarioSha256": "168416f3f9957a78a16ab3339fa253bfee79efd81d322b10c662d9244b63e12d",
           "runtime": {
             "host": "codex-desktop",
@@ -167,7 +167,7 @@
         "wp-theme-expert/SKILL.md",
         "wp-theme-expert/references/router.md"
       ],
-      "sha256": "8daae654e51b7eceec2ef2d2d2a0cd4c2b34f00eda121d96eae736e2eb7486b1",
+      "sha256": "12d1ec79b083e41eebd76d0f0447960084fcdc9b212b862f50d7121401477ea4",
       "scenario": {
         "id": "wordpress-visual-execution",
         "files": [
@@ -199,9 +199,17 @@
           "Editable WordPress Typography System",
           "Parent Stretch Is Not Child Padding",
           "Spatial Hierarchy Is Not A Mechanical Grid",
-          "Independent Spatial Proof Rejects A Polished Near Miss"
+          "Independent Spatial Proof Rejects A Polished Near Miss",
+          "a 2880-pixel screenshot",
+          "fallback font changes hero",
+          "frontend containers match theme.json",
+          "attractive cards have different borders",
+          "a one-page theme already has working presets",
+          "rename a launched semantic token",
+          "an API failure is displayed",
+          "an agent likes a redesigned checkout"
         ],
-        "sha256": "a658d9356efcca81704978a8002f28fe55cfeae85d13bc202b064eb78a12836f"
+        "sha256": "85be7001fd84adbca587bb6418c1923095a34abccb6b0145ef1abd4f566c78fd"
       },
       "requiredChecks": [
         "WordPress-native-ownership",
@@ -228,15 +236,23 @@
         "WordPress-typography-system",
         "parent-layout-before-child-nudge",
         "semantic-spatial-hierarchy",
-        "independent-spatial-evaluation"
+        "independent-spatial-evaluation",
+        "source-scale-calibration",
+        "font-before-spacing",
+        "global-styles-ownership",
+        "separate-fidelity-gates",
+        "proportional-token-tooling",
+        "launched-token-consumers",
+        "truthful-empty-and-pointer-alternative",
+        "measured-ux-claims"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-09-06-efficiency.json",
-          "sha256": "a77afa70e12b9e8ec77dfca4dc2263741fcc7104d900180da79079c06f00348d",
-          "testedRevision": "fab930c94c7d61a4bf164665f7a29e6e1905a8a3",
-          "testedSourceSha256": "8daae654e51b7eceec2ef2d2d2a0cd4c2b34f00eda121d96eae736e2eb7486b1",
-          "testedScenarioSha256": "a658d9356efcca81704978a8002f28fe55cfeae85d13bc202b064eb78a12836f",
+          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-09-08-calibration.json",
+          "sha256": "a74def33403b87db5ad5c00863238fa021ade2c68a76938cd996e36ca802e01b",
+          "testedRevision": "de1c18adb05e7be5597fe3defe1b8e96faf3e379",
+          "testedSourceSha256": "12d1ec79b083e41eebd76d0f0447960084fcdc9b212b862f50d7121401477ea4",
+          "testedScenarioSha256": "85be7001fd84adbca587bb6418c1923095a34abccb6b0145ef1abd4f566c78fd",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
@@ -489,7 +505,7 @@
         "shared/references/plugin-release-workflow.md",
         "shared/references/delegation-protocol.md"
       ],
-      "sha256": "299ec2701bfd36cc13abbe7bcb0d5b9753c15a1d2f79da837361952cf645a251",
+      "sha256": "8caada2672a89993eae02101055b652041c6ffe95aebbfc2c7df5e9445c98ac4",
       "scenario": {
         "id": "product-development-governance",
         "files": [
@@ -540,10 +556,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-development-governance-2026-09-06-efficiency.json",
-          "sha256": "d4d1bcb76c6b1f623d32809a1fe5fa8a10193f287f83a1d7508b7098bf62c5ac",
-          "testedRevision": "fab930c94c7d61a4bf164665f7a29e6e1905a8a3",
-          "testedSourceSha256": "299ec2701bfd36cc13abbe7bcb0d5b9753c15a1d2f79da837361952cf645a251",
+          "runRecord": "skill-evals/run-records/product-development-governance-2026-09-08-calibration.json",
+          "sha256": "63f4f07f73a9e556092f2840d80187efcc5e89866152ace1ba27f01a6dcf8238",
+          "testedRevision": "de1c18adb05e7be5597fe3defe1b8e96faf3e379",
+          "testedSourceSha256": "8caada2672a89993eae02101055b652041c6ffe95aebbfc2c7df5e9445c98ac4",
           "testedScenarioSha256": "adc694ebf95c5e99f1cf6863325e98fcf92a6e14ad7b6bb2f57dca0ae37c469f",
           "runtime": {
             "host": "codex-desktop",
@@ -584,13 +600,13 @@
         "post-release-outcome-disposition",
         "quality-and-authority-boundary"
       ],
-      "sha256": "5e7fd950a835bfe25f37cbe46450299b9a36ef0777b1a64cc44902d3634f7497",
+      "sha256": "35c04458c34b800f6bb599b7b0f98ad665027e9f5b0b49526c4cf485a9f80a0d",
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-value-decision-2026-09-04-dedicated-topology.json",
-          "sha256": "8788ca8af1e6e899aeeba916c22bcd8c1d34db795815888fac63167a08f0edba",
-          "testedRevision": "3127c71a76cda46685b50cb502b909e4034c4e46",
-          "testedSourceSha256": "5e7fd950a835bfe25f37cbe46450299b9a36ef0777b1a64cc44902d3634f7497",
+          "runRecord": "skill-evals/run-records/product-value-decision-2026-09-08-calibration.json",
+          "sha256": "1bb278463cd7cdf898f5042653d842f55740901f877e1d1718e4fd97bb397813",
+          "testedRevision": "de1c18adb05e7be5597fe3defe1b8e96faf3e379",
+          "testedSourceSha256": "35c04458c34b800f6bb599b7b0f98ad665027e9f5b0b49526c4cf485a9f80a0d",
           "testedScenarioSha256": "52c0b2cb69237e9f1d472448ca912993d5e549eb4c6fc8602cab15beff2581c8",
           "runtime": {
             "host": "codex-desktop",
@@ -615,7 +631,7 @@
         "shared/references/plugin-release-workflow.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "1b742eecc2ce68ab4ea35ac1606bb6160c65f8ba57c809e48a060e52cd22e0fd",
+      "sha256": "d374bb0701bc282ab06dd6835a61fc20f072e9d133a4d9806917979fe58adc94",
       "scenario": {
         "id": "product-release-authority",
         "files": [
@@ -636,7 +652,7 @@
           "Plugin milestone release contract",
           "Temporary negative preference"
         ],
-        "sha256": "0cdf1320fe0853e34624faf2e33ab3e196a38236a42c1e1378ffc7b8bf196327"
+        "sha256": "415eb151638237bf0c9a4cc09f6462e4f028386f88256125e0f3b8369c87f34e"
       },
       "requiredChecks": [
         "latest-published-release-preflight",
@@ -663,11 +679,11 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-release-authority-2026-09-07-delivery.json",
-          "sha256": "68af247f57a81d714feb42779c33675705bd89a962919b3782bd6205bb40c987",
-          "testedRevision": "b7c6bf329edb0c068ba7dafe82bade5b15939b52",
-          "testedSourceSha256": "1b742eecc2ce68ab4ea35ac1606bb6160c65f8ba57c809e48a060e52cd22e0fd",
-          "testedScenarioSha256": "0cdf1320fe0853e34624faf2e33ab3e196a38236a42c1e1378ffc7b8bf196327",
+          "runRecord": "skill-evals/run-records/product-release-authority-2026-09-08-calibration.json",
+          "sha256": "dc72ecb1392dad9d207416d710c9c0f2e98fad4390ae7a6082971fb763480385",
+          "testedRevision": "de1c18adb05e7be5597fe3defe1b8e96faf3e379",
+          "testedSourceSha256": "d374bb0701bc282ab06dd6835a61fc20f072e9d133a4d9806917979fe58adc94",
+          "testedScenarioSha256": "415eb151638237bf0c9a4cc09f6462e4f028386f88256125e0f3b8369c87f34e",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",

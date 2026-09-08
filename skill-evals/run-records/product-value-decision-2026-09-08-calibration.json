@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "runId": "product-value-decision-2026-09-08-calibration",
+  "scenario": "product-value-decision",
+  "result": "succeeded",
+  "startedAt": "2026-09-08T05:31:54.000Z",
+  "durationMs": 13000,
+  "checks": [
+    {
+      "name": "user-outcome-specificity",
+      "result": "pass"
+    },
+    {
+      "name": "business-outcome-specificity",
+      "result": "pass"
+    },
+    {
+      "name": "evidence-assumption-separation",
+      "result": "pass"
+    },
+    {
+      "name": "confidence-and-reach",
+      "result": "pass"
+    },
+    {
+      "name": "lifetime-cost-and-risk",
+      "result": "pass"
+    },
+    {
+      "name": "proportional-decision",
+      "result": "pass"
+    },
+    {
+      "name": "measurable-threshold-window",
+      "result": "pass"
+    },
+    {
+      "name": "no-invented-uplift",
+      "result": "pass"
+    },
+    {
+      "name": "mandatory-work-not-score-gated",
+      "result": "pass"
+    },
+    {
+      "name": "post-release-outcome-disposition",
+      "result": "pass"
+    },
+    {
+      "name": "quality-and-authority-boundary",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 11,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "product-value-decision-2026-09-08-calibration",
+    "artifactPointer": "codex-fresh-agent:/root/baseline_eval#de1c18adb05e7be5597fe3defe1b8e96faf3e379"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-08T05:32:07.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Complete source-blind policy evaluation plus exact-commit confirmation passed. Duration measures final confirmation only; earlier evaluation duration unavailable. Not browser, native runtime, or user outcome proof."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "product-value-decision"
+  ]
+}
