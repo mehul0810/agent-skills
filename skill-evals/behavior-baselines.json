@@ -699,7 +699,7 @@
         "shared/references/self-improvement-loop.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "569bf1a8baabd3675893792a27c1122f04dd2e610007844360b20fbcd4b964af",
+      "sha256": "38cdb7efff1ed840bdd86fc2fd87a8ee55fa82b99d9520afe636c133b3aa9030",
       "scenario": {
         "id": "owner-correction-learning",
         "files": [
@@ -722,10 +722,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/owner-correction-learning-2026-09-07-delivery.json",
-          "sha256": "58dcc36e24dd3a0c57c74eb1a75cd81cbeb33182fdb031e11679ae4980daf18f",
-          "testedRevision": "b7c6bf329edb0c068ba7dafe82bade5b15939b52",
-          "testedSourceSha256": "569bf1a8baabd3675893792a27c1122f04dd2e610007844360b20fbcd4b964af",
+          "runRecord": "skill-evals/run-records/owner-correction-learning-2026-09-08-autonomy.json",
+          "sha256": "a8de53083fb42d2c4565540adc49fb66a102339cce0616d118abb2a9fc1f6cfb",
+          "testedRevision": "a0e52cb57528bdf77176f64cacfe11bfc7af97af",
+          "testedSourceSha256": "38cdb7efff1ed840bdd86fc2fd87a8ee55fa82b99d9520afe636c133b3aa9030",
           "testedScenarioSha256": "b73d82e24abe107bee6eca83f4cfb99e0cb14d7bee22ea956c19d298093f7ca4",
           "runtime": {
             "host": "codex-desktop",
