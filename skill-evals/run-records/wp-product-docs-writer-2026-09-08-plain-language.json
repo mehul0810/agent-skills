@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "runId": "wp-product-docs-writer-2026-09-08-plain-language",
+  "scenario": "wp-product-docs-writer-truth",
+  "result": "succeeded",
+  "startedAt": "2026-09-08T05:51:50.000Z",
+  "durationMs": 13000,
+  "checks": [
+    {
+      "name": "exact-artifact-and-evidence-range",
+      "result": "pass"
+    },
+    {
+      "name": "shipped-planned-conflict-ledger",
+      "result": "pass"
+    },
+    {
+      "name": "release-metadata-mismatch-fails-closed",
+      "result": "pass"
+    },
+    {
+      "name": "unreleased-feature-single-entry",
+      "result": "pass"
+    },
+    {
+      "name": "external-service-privacy-disclosure",
+      "result": "pass"
+    },
+    {
+      "name": "content-writer-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "publication-authority-gate",
+      "result": "pass"
+    },
+    {
+      "name": "compact-mode-routing",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 8,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "wp-product-docs-writer-2026-09-08-plain-language",
+    "artifactPointer": "codex-fresh-agent:/root/writing_eval#889163c584fb880123cd60b68bf54f621e9c42e8"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-08T05:52:03.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Source-blind writing policy evaluation and timed postcommit verification. Does not establish real-reader comprehension, product facts or search outcomes."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "wp-product-docs-writer"
+  ]
+}
