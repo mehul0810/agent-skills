@@ -14,6 +14,8 @@ When registered and semantically suitable, prefer `core/icon`, `core/breadcrumbs
 
 Treat `core/tabs`, `core/table-of-contents`, `core/form`, and every other documented or experimental block as runtime-dependent. Never generate its markup until registration is verified on the target environment. Do not use Custom HTML or Shortcode blocks to imitate an unavailable core block.
 
+For WooCommerce or another Automattic-maintained WordPress product, use the ecosystem section in `../../wp-expert/references/third-party-api-integrations.md` instead of assuming its blocks, plan features, or service connection.
+
 ## 3. Establish The Design Contract
 
 Inspect repo-local `DESIGN.md`. If absent or stale and the gap is durable, create or refresh it within the task only when scope permits; otherwise create a focused issue. Keep it concise and tokenized: content/max widths, spacing scale, alignment rules, typography, colors, radii, responsive breakpoints/behavior, block style/variation conventions, and intentional exceptions. Reuse `theme.json` tokens rather than maintaining competing values.
@@ -58,3 +60,24 @@ Do not call this done from source-site screenshots or a working-tree diff alone.
 ## Output
 
 Report the verified block inventory subset, core/custom mapping, `DESIGN.md` action, saved-content/render proof, desktop/mobile evidence, template/part/Global Styles source precedence, database-to-file promotion, release artifact identity, and migration/rollback status. State unavailable blocks and fallbacks explicitly.
+
+## WordPress 7.1 Block Selection Matrix
+
+After live discovery, choose by meaning, data source, interaction, author task, and ownership: registered semantic Core block; proven active plugin block; style for appearance; variation for preset attributes; pattern for composition; binding for dynamic values; template part for shared structure; custom block only for a missing durable contract. Official catalogs: `https://wordpress.org/documentation/article/blocks-list/` and `https://developer.wordpress.org/block-editor/reference-guides/core-blocks/`.
+
+| Need | Prefer | Boundary |
+|---|---|---|
+| Narrative | Paragraph, Heading, List, Quote | Preserve semantics; Pullquote is emphasis, not structure. |
+| Disclosure/views | Details for one item; Accordion for a related set; Tabs for genuinely parallel views | Require registered child structure, headings/labels, keyboard/focus/mobile behavior, and readable fallback. |
+| Data/paired content | Table for tabular data; Media & Text for a true editorial pair | Never use Table for layout; use Columns/Grid when content is merely adjacent. |
+| Media | Image, Gallery, Audio, Video, Playlist, File, Cover, Icon | Match item/collection/sequence/download/overlay/symbol intent; verify alt/decorative state, captions, dimensions, weight, privacy, and failures. |
+| Layout | Group for owned containment; Stack/Row for one axis; Columns for fixed peers; Grid for repeated responsive peers | Remove anonymous wrappers; prove wrapping, stacking/reading order, translation, and content stress rather than offsets. |
+| Actions/space | Buttons/Button; tokenized gaps/padding; Separator for a real boundary | Avoid false buttons and Spacer/Separator patches. |
+| Site structure | Navigation, Breadcrumbs, identity blocks, Search, Social Icons | Keep shared chrome in templates/parts/entities; prove mobile overlay, keyboard/focus, names, schema, and portability. |
+| Collections | Query Loop, Post Template, No Results, Pagination | Preserve context, author empty states, bound query cost, and avoid copied cards. |
+| Entity data | Title, Excerpt, Featured Image, author/date/terms/comments, Post Content, Template Part | Use in valid context; page body stays in Post Content. |
+| Remote content | Provider Embed, generic Embed/RSS | Verify provider support, consent, sizing, cache/timeouts, sanitization, and unavailable state. |
+
+WordPress 7.1 documents Playlist and Tabs, but registration wins. Table of Contents and Gutenberg-only/experimental blocks remain runtime-dependent. Classic is compatibility-only; do not add deprecated Author, Comment, Comment Author Avatar, or Text Columns. Custom HTML and Shortcode are migration/integration escape hatches, never page-building substitutes.
+
+For substantial work, record the relevant subset in `DESIGN.md`, `AGENTS.md`, or evidence: `name | source/version | purpose/context | supports/styles/variations | dependency/license | data/render owner | accessibility/responsive state | portability/fallback | chosen/rejected reason`. Refresh after upgrades.

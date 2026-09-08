@@ -34,6 +34,8 @@ Inspect the target editor/runtime, not documentation alone. Record:
 
 Use the authenticated editor state when client registrations affect the inserter; server registry results alone may not describe the complete author experience. Prefer a suitable Core block, then a proven existing project/plugin block. Do not create plugin lock-in for presentation that Core plus a pattern/style can express. Do not assume an installed plugin's block is appropriate merely because it exists.
 
+When the exact block choice is uncertain, load the Block Selection Matrix in `core-first-site-theme-workflow.md` as the single supporting reference. It supplies the semantic when/why comparison; this document remains the ownership and authoring contract.
+
 ## Select The Earliest Durable Layer
 
 | Need | Use |

@@ -2,6 +2,8 @@
 
 Use this for WooCommerce stores, commerce plugins, checkout/cart work, payment or shipping integrations, subscriptions, refunds, order operations, high-scale stores, and commerce reviews.
 
+For storefront block choice or an adjacent Automattic-maintained WordPress product/service, load the ecosystem section in `third-party-api-integrations.md` as the single support reference. Keep this document primary for commerce internals.
+
 ## Current Official Anchors
 
 - WooCommerce HPOS: https://developer.woocommerce.com/docs/features/high-performance-order-storage

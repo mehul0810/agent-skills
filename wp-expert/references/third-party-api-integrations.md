@@ -102,3 +102,16 @@ Capture these facts before coding:
 - Are webhook signatures, replay protection, and idempotent processing implemented?
 - Are provider-specific payloads normalized before entering business logic?
 - Are tests covering success, provider failure, auth expiry, duplicate events, and data redaction?
+
+## Automattic WordPress Product Ecosystem
+
+Use this section only for a concrete Automattic-maintained WordPress product/service. Recheck the exact slug, version, edition/plan, activation/connection, modules, blocks, APIs, release notes, and official docs; `https://automattic.com/products/` changes over time. The 2026-09-08 WooCommerce release index showed 11.1.0 as latest stable and warns only the latest version is fully secure; verify `https://developer.woocommerce.com/releases/` live rather than retaining that version as policy.
+
+- WooCommerce: inspect Product Collection/catalog/filter/product-template blocks; Cart, Checkout, Mini Cart, Order Confirmation and all states; Store API/Blocks extensibility; HPOS CRUD; payments, shipping, tax, refunds, subscriptions, webhooks, Action Scheduler, privacy, templates, designated pages, and extension matrix. Prefer Product Collection recipes/context over legacy product grids; never mutate transactional DOM or assume classic checkout hooks affect block checkout.
+- Jetpack/VaultPress/VideoPress/Search/Boost/Protect: verify WordPress.com connection, module/plan, registered blocks, remote data flow, CDN/cache/index/backup behavior, host/VIP overlap, consent, outage, and disconnect behavior.
+- Akismet: verify key/plan, submitted fields, disclosure, false-positive/recovery flow, form/comment integration, and unavailable-service behavior.
+- Sensei/Pro: verify course/lesson/quiz hierarchy, learner/teacher capabilities, progress, required registered blocks, plan-only interactions, Learning Mode/templates, accessible learner proof, migrations, and WooCommerce paid-course integration.
+- MailPoet, WP Job Manager, Parse.ly, Newspack, ActivityPub, Gravatar, Crowdsignal: verify the exact plugin/service contract, blocks/APIs, roles, data leaving the site, queues/webhooks/cache, plan limits, privacy, accessibility, and graceful degradation.
+- WordPress.com, Studio, Pressable, WP Cloud, VIP: verify platform restrictions, source/deployment authority, environments, cache/CDN, filesystem/database access, domains/HTTPS, logs, backups, secrets, and supported-plugin proof.
+
+Before selecting a product block/API, record version and dependencies, free/paid/connection state, registration and public stability, value over Core, data/render ownership, accessibility/mobile/RTL/i18n/performance/privacy/security, and deactivation/downgrade/license-expiry/outage fallback. Use official integration points; do not invent plan capability, copy internals, expose credentials, or create avoidable content lock-in. Products without a concrete WordPress integration are out of scope.
