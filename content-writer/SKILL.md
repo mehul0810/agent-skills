@@ -27,7 +27,7 @@ Create helpful, source-grounded content for search, answer engines, and AI disco
 4. Build a compact brief: primary intent, secondary intents, entity/topic coverage, unique angle, evidence requirements, content structure, and conversion path.
 5. Write with answer-first structure: direct answer, useful depth, clear headings, examples, comparisons, FAQs, and next-step guidance.
 6. Optimize without stuffing: natural keywords, related entities, internal-link targets, descriptive media needs, schema candidates, and metadata.
-7. Validate: factual accuracy, source support, duplicate/thin sections, readability, accessibility, search intent match, and missing trust signals. For public copy editing or pattern detection, load the human-writing gate only after factual review.
+7. Validate facts and clarity: can the reader understand the point, next action and important condition? Preserve precision and voice. Check duplication, accessibility, search intent and trust; load `references/readability-and-clarity.md` for confirmed clarity risk. Use the human-writing gate after factual review when needed.
 
 ## Reference Router
 

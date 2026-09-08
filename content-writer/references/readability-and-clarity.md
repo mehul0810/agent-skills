@@ -41,3 +41,20 @@ Return: audience/task/language; key clarity findings; structural or terminology 
 - [ONS plain-language guidance](https://service-manual.ons.gov.uk/content/writing-for-users/plain-language)
 - [UK Home Office heading guidance](https://design.homeoffice.gov.uk/accessibility/page-structure/headings)
 - [Google AI features and your website](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)
+
+## Explain For The Reader
+
+- Record what the reader knows, what needs explanation and likely misconceptions; a job title alone is not a knowledge assessment. Label assumptions when reader research is absent.
+- Translate features through the smallest useful sequence: what it does, why it matters, what to do and important limitations. Do not force all four into every sentence. Put concrete examples beside unfamiliar ideas; analogies must preserve the mechanism.
+- Prefer familiar equivalent terms, define necessary jargon where it matters, and keep terminology consistent. Preserve verified interface labels so readers can find controls. Omit unnecessary acronyms instead of teaching them; never invent simpler product names or capabilities.
+- Procedures need prerequisite, verified location, action, expected result and recovery. Distinguish optional from required steps; warnings precede risky actions. Unknown labels, permissions or results are evidence gaps, not permission to invent a walkthrough.
+- Use coherent paragraphs and varied sentence rhythm, not compulsory one-sentence paragraphs. Headings should explain the path when scanned alone. Lists serve sets/steps; tables serve comparisons. If UI needs excessive explanation, route the confusing interaction to its owner instead of expanding a writing task into code changes.
+
+## Numbers And Comprehension
+
+- Supply units, timeframe, denominator/comparison baseline and scope when needed to interpret a number. Explain percentages with concrete equivalents where helpful; distinguish relative changes from percentage points.
+- Example: a measured duration changing from 4 seconds to 2 seconds is a 50% reduction in that duration, not proof every page is twice as fast. Never invent missing measurements.
+- Keep eligibility, costs, risks and uncertainty beside the claim/action. Preserve distinctions between can, usually, will and guaranteed; brevity must not remove conditions.
+- Ask a representative reader to explain the main point, identify the next action and name the key condition/risk. An independent agent can flag likely confusion, but does not prove non-technical users understood the text. Record actual reader evidence or mark comprehension unverified. Never fabricate a readability score.
+
+Reviewed 2026-09-08: [GOV.UK interface writing](https://www.gov.uk/service-manual/design/writing-for-user-interfaces), [W3C cognitive clear-content guidance](https://www.w3.org/WAI/WCAG2/supplemental/objectives/o3-clear-content/) and [CDC communication index](https://www.cdc.gov/ccindex/tool/how-to-use.html). W3C cognitive guidance is supplemental, not an additional WCAG conformance requirement; adapt CDC communication principles without imposing its health-material score on all writing.

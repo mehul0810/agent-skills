@@ -76,3 +76,7 @@ Conflicts are findings, not copy-edit opportunities. Do not silently choose the 
 ## Completion Evidence
 
 Report artifact/audience, comparison range, claims excluded or qualified, metadata synchronization, commands/validators run, unresolved conflicts, and whether publication remains gated.
+
+## Reader Clarity
+
+Check meaning, next action and important conditions before developer detail. Keep verified UI labels and technical constraints intact. For confirmed comprehension risk, use the relevant section of `../../content-writer/references/readability-and-clarity.md`; ownership stays here. Procedures need prerequisites, location, action, expected result and recovery, without invented screens or outcomes. Marketing claims remain outside factual release-document work.
