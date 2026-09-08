@@ -12,6 +12,7 @@ const cwd = fileURLToPath(new URL('..', import.meta.url));
 const checks = [
   ['Diff', 'git', ['diff', '--check']],
   ['Agent profiles', 'python3', ['scripts/validate-agent-profiles.py']],
+  ['Agent profile rejection regression', 'python3', ['-O', 'scripts/test-agent-profiles.py']],
   ['References and domain audits', 'bash', ['scripts/validate-references.sh']],
   ['Example record', 'npm', ['run', 'run-record:example']],
   ['Behavior records', 'node', ['scripts/validate-behavior-run-records.mjs']],

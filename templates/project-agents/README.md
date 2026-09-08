@@ -24,6 +24,8 @@ Packet: exact product/repo/path; issue and milestone; branch/base or candidate; 
 
 Parent verifies returned evidence and reconciles product state. Run only independent non-overlapping work concurrently. These profiles have no GitHub mutation or publication authority; authorized PO actions remain parent-owned. Close disposable agents through supported lifecycle tools after reconciliation; user-created control tasks remain protected.
 
+Discovery proof requires a host role listing or actual named-role dispatch event and returned worker identity. Reading a TOML file or a model saying it loaded is insufficient. If the runtime has no custom-role dispatch interface, report activation unproven and use the bounded-prompt fallback only when assigned. Keep pilot logs outside the fixture workspace so the worker cannot recursively read its own transcript. Use a minimal supported tool/context setup; do not treat inherited global integrations as free.
+
 ## Validation
 
 Run `python3 scripts/validate-agent-profiles.py` from the skill repo (Python 3.11+). This checks TOML structure and template boundaries, not live host discovery or sandbox enforcement. Fresh role scenarios supplement it. Compare accepted outcomes, retries, time and available token telemetry before claiming efficiency gains.
