@@ -37,3 +37,9 @@ For actual WordPress proof, import `blocks.html` into a disposable WordPress pag
 ## Captured Smoke Evidence
 
 A local Chrome 152.0.7977.76 run on 2026-09-06 captured ten full-page screenshots and passed all 25 overflow, persistence, and desktop-alignment assertions. Actual browser version is recorded in `/private/tmp/frontend-benchmark-proof/smoke.json`; screenshots are adjacent (`a-1280.png` through `e-390.png`). These temporary files are not portable durable proof and are not committed. Independent screenshot grading is recorded in `evaluation-2026-09-06.md`; interaction and WordPress runtime gates remain pending. The Playwright CLI wrapper could not download from npm (`ENOTFOUND`); capture used the preinstalled bundled Playwright library instead.
+
+## Source-Fidelity Extensions
+
+Variants f-j add oversized heading/hero inset, wrong font metrics, excessive section gap, border/radius drift and intermediate-only overflow respectively. Capture now includes 1280, 768 and 390 widths (30 images). Use variant a as the selected target; retain original image dimensions and compare same-viewport crops. These defects require independent fidelity/design grading, not merely passing the script's geometry assertions.
+
+For native WordPress coverage, use an already authorized proof environment: import the serialized blocks and scoped theme styles, capture the baseline, then introduce a task-owned Global Styles spacing override. Confirm computed style ownership, detect divergence, restore only that task-owned change and reprove. Save/reopen representative heading, media and link edits and compare editor/frontend output. Do not create a Studio site or overwrite existing user styles. Record candidate, environment, before/after artifacts and cleanup/proof gaps. This native procedure is required calibration work, not evidence it has already run.

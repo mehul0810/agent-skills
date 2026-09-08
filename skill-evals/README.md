@@ -25,3 +25,9 @@ The scenario inventory in `agent-harness.config.json` provides structural covera
 Do not store prompts, completions, hidden reasoning, model identifiers, secrets, private product payloads, or user content. Keep raw artifacts in their governed private location and use a pointer in the durable evidence note.
 
 Keep every current behavior record directly in `skill-evals/run-records/` and register it exactly once in the baseline manifest. Move superseded sanitized records to a dated `run-records/archive/` directory so they remain historical evidence without being treated as current. The validator discovers only the current directory, rejects orphan or duplicate current records, and expires records after the manifest freshness window. `npm run run-record:behavior` schema-validates the discovered set; no hardcoded filename list should be maintained.
+
+## Cost-Aware Evidence Refresh
+
+Before dispatch, compute the changed source/scenario-to-baseline dependency set. Run only invalidated baselines, but cover every required check in each. Reuse one independent run across overlapping baselines only when its explicit results cover their complete contracts; register a separate exact-bound record for each. Do not reread unrelated skills or rerun unchanged validators during iteration. Keep one full aggregate publication gate.
+
+Split a broad baseline only after a dependency audit demonstrates separable behavior and an integration scenario still protects cross-route ownership/authority. File churn alone is not grounds to reduce coverage. Research citations are rationale, decision scenarios are policy evidence, rendered artifacts are visual evidence, and native runtime/user outcomes are separate evidence classes; never substitute one for another.

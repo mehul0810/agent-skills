@@ -17,3 +17,5 @@ Use one primary mode. Open only the named reference and relevant `##` section; a
 - Authority, organic visibility, AI citations, conversion, and measurement governance: `../../shared/references/authority-growth-lane.md`.
 
 Resolve products, priorities, repo paths, thread IDs, and cadence from current governed portfolio state, never this skill file.
+
+- System loop/graph health and bounded Astra-low repair review: `../../shared/references/system-health-reviewer.md`.

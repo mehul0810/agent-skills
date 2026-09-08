@@ -14,6 +14,8 @@ Classify it as:
 
 Record dimensions, state, fonts/assets, responsive/interaction behavior, and whether each value is `supplied`, `measured`, or `inferred`. Keep an ambiguity ledger; ask only about irreversible, unsafe, brand-critical, or journey-changing choices. Otherwise use an accessible WordPress-native inferred default.
 
+Calibrate image pixels against the original CSS viewport, DPR, crop and export resizing; never assume a 2x image means 2x CSS sizes. Unknown scale needs confidence and normalized geometry, not invented precision. Preserve exact-target density; no arbitrary enlargement or whole-page zoom/transform correction.
+
 ### Figma Source Preflight
 
 For Figma, discover frame/version, variables, components, assets, fonts, constraints, and interactions. Use `figma-implement-design` when available; WordPress ownership stays with the specialist. Fingerprint the source or explain the inspected export.
@@ -69,6 +71,8 @@ Use responsive WordPress media and an appropriate format. Never claim licensing,
 
 Stabilize ownership, structure, fonts, and real assets before cosmetic nudges. Create a custom block only when native primitives cannot preserve the editing/design contract. For multi-page/system work, prove one representative section with real content, fonts/assets, editor controls, and narrow/intermediate/desktop behavior before scaling. Reuse the task packet's component/token/source IDs across the FSE map and proof receipts; reference established decisions instead of recreating briefs. Judge visual craft and task usability separately; neither pass substitutes for the other.
 
+For every substantial image-to-page task, first prove header, hero, CTA and next-section transition at source and narrow widths. Calibrate loaded fonts and wrapping before spacing. Do not propagate failing proportions. Report fidelity, design quality and visitor/author usability separately; an average cannot conceal a failed gate.
+
 For immersive, adaptive, motion-led, or media-dependent behavior, define the static state, reduced-motion/data behavior, unsupported-browser/failed-media fallback, measurable value, cleanup, and rollback before implementation. Enhancement failure must preserve content, navigation, task completion, and authoring.
 
 ## 6. Prove The Result
@@ -93,7 +97,7 @@ Any reproducible in-scope overlap, clipping, overflow, wrong hierarchy/asset, re
 
 Classify the owning cause first: asset/font/data readiness; ownership/block hierarchy; tokens/components; cascade, Global Styles, or Site Editor overrides; intrinsic layout/breakpoints; runtime state; or capture contamination. Fix that layer, not symptoms with page/viewport selectors, magic offsets, or frontend-only CSS.
 
-Re-render the failure and smallest affected editor/frontend set. Keep observed and fixed evidence under one defect ID. P1/P2 defects cannot be accepted into a pass; only an approved, evidenced P3 deviation may remain. After two failed repair cycles, stop patching, reopen source, manifest, ownership, or architecture, and replace the contract and proof run before passing. Escalate only an external blocker or material design decision with evidence and the best recovery. Unavailable evidence cannot convert an observed failure into a pass.
+Re-render the failure and smallest affected editor/frontend set. Keep observed and fixed evidence under one defect ID. P1/P2 defects cannot be accepted into a pass; only an approved, evidenced P3 deviation reclassified outside the defect set may remain. After two failed repair cycles, stop patching, reopen source, manifest, ownership, or architecture, and replace the contract and proof run before passing. Escalate only an external blocker or material design decision with evidence and the best recovery. Unavailable evidence cannot convert an observed failure into a pass.
 
 Completion requires:
 
@@ -103,7 +107,7 @@ Completion requires:
 - no invented design facts, APIs, blocks, assets, behavior, or proof,
 - source/candidate evidence exists for changed visual surfaces,
 - generated assets pass the approved rubric and target-crop inspection,
-- responsive, accessibility, browser, performance, content-stress, and editor/frontend checks pass or are explicit proof gaps,
+- required responsive, accessibility, browser, performance, content-stress, and editor/frontend gates pass; gaps can be reported but cannot establish completion,
 - no known reproducible in-scope visual defect remains,
 - each meaningful difference is `accepted`, `platform/accessibility constraint`, or `unresolved`.
 

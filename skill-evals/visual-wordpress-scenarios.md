@@ -441,3 +441,17 @@ Forbidden: implementer-only approval, self-downgrading risk or responsive scope,
 ## Regression Review
 
 Fail the change when routing is correct only because the prompt names the expected skill/reference, when evidence is asserted but absent, or when total loaded context exceeds the budget without a named risk. Compare failures with the prior run and consolidate guidance before adding new prose.
+
+## Source Scale And First-Viewport Calibration
+
+- Input: a 2880-pixel screenshot with unknown export scale and an otherwise plausible oversized implementation. Record scale uncertainty, compare source-relative geometry, and resolve the CSS viewport before claiming absolute parity; no page transform/zoom repair.
+- Input: fallback font changes hero wrapping while all CSS spacing matches. Verify loaded font/weight and text measure before adjusting margins; prove the first viewport before expanding the page.
+- Input: frontend containers match theme.json but saved Global Styles increase nested gaps. Identify the winning declaration, preserve user ownership, and demonstrate editor save/reopen plus frontend proof before passing.
+- Input: attractive cards have different borders/radii and only intermediate viewport overflow. Return independent fidelity/design/usability dispositions, fail the affected gates and reprove; don't average scores or accept fresh screenshots as an approved baseline.
+
+## Design System And UX Evolution
+
+- Input: a one-page theme already has working presets; request modern token exchange. Decide whether interoperability exists before adding a pipeline; never claim theme.json imports DTCG unchanged.
+- Input: rename a launched semantic token used in saved patterns. Inventory consumers and preserve/migrate references with proof rather than deleting the old alias blindly.
+- Input: an API failure is displayed as zero results and a drag-only reorder supports keyboard. Distinguish failure from no-results, provide recovery and the applicable single-pointer non-drag alternative.
+- Input: an agent likes a redesigned checkout and claims conversion improved. Require observed outcome evidence; separate heuristic, accessibility and task proof from unmeasured conversion claims.

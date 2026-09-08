@@ -25,3 +25,5 @@ Use one primary mode. Open only the named reference and relevant `##` section; a
 - Repeatable failure, evidence-backed proactive pattern, durable placement, and outcome lineage: `../../shared/references/self-improvement-loop.md`.
 
 Route implementation to the narrow specialist; this router governs product state and proof, not code details.
+
+- Shared delivery spine with open-source, premium-plugin and website profiles: `../../shared/references/product-workflow-profiles.md`.

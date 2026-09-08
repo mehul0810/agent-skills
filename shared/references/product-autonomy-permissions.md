@@ -16,7 +16,7 @@ Treat each level as separate. Permission for one level does not imply the next.
 | PR | Create/update PR body/comments when role/repo policy permits | Protected mutation, release, or action outside role authority |
 | CI repair | Inspect or rerun proven-safe non-production CI and fix scoped failures | Deploy/release-capable or otherwise gated workflow action |
 | Merge/close | Merge safe non-production PRs or close items when role/repo policy permits | Protected/production merge, release/deploy/publish, or ambiguous authority |
-| Release | Version bump, tag, GitHub Release, wp.org SVN, package upload | Must be explicit for target/version |
+| Release | Tag, GitHub Release, wp.org SVN, release publication/upload | Must be explicit for target/version/candidate; local metadata/version preparation is not publication |
 
 ## Autonomous By Default
 

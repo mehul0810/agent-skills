@@ -59,6 +59,16 @@ The build gate is a selected direction plus sufficient source evidence. An appro
 
 ## Redesign Growth Gate
 
+### Task-Based UX Evidence
+
+For material workflow changes, define the user's starting context, primary job, expected outcome, minimum steps and recovery path before visual alternatives. Audit one realistic journey with actual content, keyboard/touch and constrained width; distinguish heuristic findings from observed user research. An agent walkthrough cannot establish real-user usability or conversion lift.
+
+In the existing brief, cover first-use, no-results, permission-denied, loading, partial/stale data, failure and success only where applicable. Each needs truthful status and a useful next action; never render a failed request as an empty dataset. Preserve entered data during recoverable errors, expose validation near the affected field, and verify focus/status announcements. Progressive disclosure must not hide prerequisites, costs or consequences. Drag operations also need a non-drag single-pointer alternative where WCAG requires it, not keyboard support alone.
+
+Set one task-success measure and relevant guardrails (errors, recovery, accessibility, performance); if analytics/user testing are absent, label the outcome unverified. New design-system patterns earn reuse through representative rendered and authoring proof, not novelty or a generic premium score.
+
+Checked 2026-09-08: [Carbon empty-state distinctions](https://carbondesignsystem.com/patterns/empty-states-pattern/) and [WCAG dragging alternatives](https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements.html).
+
 For `improve` or `redesign` work on a growth, product, or service page, do not generate a replacement image first. Audit the current rendered page and create a compact growth brief: audience and journey stage; search intent and useful content; primary conversion and CTA; offer, objections, friction, trust/proof, and mobile path; current URLs, headings, internal links, forms, analytics, consent, structured data, and performance contracts; and available analytics, Search Console, research, or user evidence.
 
 Turn findings into ranked hypotheses for message, IA, content, proof, CTA, form, and layout changes. Label each as observed, evidence-backed hypothesis, or assumption; define the expected user/search/business effect and measurement. Preserve valuable ranking content and verified contracts unless the brief explicitly changes them. Never call a tactic or redesign `proven` without applicable experiment or outcome evidence, invent proof, keyword-stuff, add dark patterns, or trade page experience for conversion pressure.

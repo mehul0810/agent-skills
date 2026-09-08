@@ -20,8 +20,8 @@ const server = createServer((req, res) => {
   browser = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {});
   mkdirSync(output, { recursive: true });
   const evidence = { browser: browser.version(), kind: 'source-aware fixture smoke; independent grading pending', results: [] };
-  for (const variant of ['a','b','c','d','e']) {
-   for (const width of [1280,390]) {
+  for (const variant of ['a','b','c','d','e','f','g','h','i','j']) {
+   for (const width of [1280,768,390]) {
     const page = await browser.newPage({ viewport: { width, height: 900 } });
     await page.goto(`http://127.0.0.1:${server.address().port}/?variant=${variant}`);
     await page.locator('h1').waitFor();
@@ -36,13 +36,13 @@ const server = createServer((req, res) => {
     await page.locator('h1').waitFor();
     const persisted = await page.locator('h1').textContent() === 'A changed routine';
     evidence.results.push({variant, width, ...geometry, persisted});
-    if (geometry.overflow !== (variant === 'd' && width === 390)) throw Error(`Overflow mismatch ${variant} ${width}`);
+    if (geometry.overflow !== ((variant === 'd' && width === 390) || (variant === 'j' && width === 768))) throw Error(`Overflow mismatch ${variant} ${width}`);
     if (persisted !== (variant !== 'e')) throw Error(`Persistence mismatch ${variant} ${width}`);
     if (width === 1280 && (Math.abs(geometry.buttonTops[0]-geometry.buttonTops[1]) > 1) !== (variant === 'c')) throw Error(`Alignment mismatch ${variant}`);
     await page.close();
    }
   }
   writeFileSync(`${output}/smoke.json`, JSON.stringify(evidence,null,2)+'\n');
-  console.log(`Captured 10 screenshots and passed fixture smoke assertions: ${output}`);
+  console.log(`Captured 30 screenshots and passed fixture smoke assertions: ${output}`);
  } finally { if (browser) await browser.close(); server.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; server.close(); });

@@ -64,6 +64,18 @@ Rules:
 
 ## Pattern And Component Translation
 
+### System Contract And Change Control
+
+For material system work, keep one compact component inventory in DESIGN.md: purpose, semantic token aliases, variants, supported states, content limits, responsive/container behavior, keyboard/focus contract, WordPress owner and editing controls. Reuse existing accessible primitives; a visually identical component with different behavior is not equivalent. Do not create a component library for a single bounded page.
+
+If cross-tool token exchange is needed, use a versioned DTCG-compatible source and an explicit adapter to theme.json/CSS. DTCG 2025.10 is a stable Community Group specification, not a W3C Recommendation or a WordPress-native import format. Validate types, units, missing aliases and cycles; declare one source of truth and deterministic generated output. Do not add a token build dependency when native presets already suffice.
+
+Treat semantic token/component changes as consumer changes: inventory affected pages, patterns, editor and frontend states; preserve old aliases or provide a scoped migration for launched consumers. Record owner, replacement and retirement trigger for deprecated tokens. Never globally rename serialized block attributes or delete user styles as a design cleanup.
+
+Test applicable light/dark, RTL, forced-colors and density contexts by semantic role, not mechanical color inversion. Use component-width behavior where it expresses intent better than viewport breakpoints; verify the actual feature against supported browsers, not a blanket claim that all container-query features are supported. Enhancement failure must preserve the primary task.
+
+Checked 2026-09-08: [DTCG 2025.10](https://www.designtokens.org/tr/2025.10/) and [container-query progressive enhancement](https://web.dev/articles/baseline-in-action-container-queries). Recheck implementation-specific compatibility when adopting a feature.
+
 - Convert repeated page sections into patterns first.
 - Convert alternate visual treatments into block styles when only CSS changes.
 - Convert preset compositions into block variations when initial attributes or inner blocks are needed.

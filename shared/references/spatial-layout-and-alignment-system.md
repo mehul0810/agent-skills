@@ -1,6 +1,6 @@
 # Spatial Layout And Alignment System
 
-Use only when spacing, alignment, grid, density, or responsive composition is a material risk. Keep the visual, editor, admin, or frontend reference primary and this as its single support. Skip exact owner-supplied values, low-risk copy, backend work, and uncustomized native screens.
+Use only when spacing, alignment, grid, density, or responsive composition is a material risk. Keep the visual, editor, admin, or frontend reference primary and this as its single support. Skip bounded value-only edits without composition risk, low-risk copy, backend work, and uncustomized native screens.
 
 ## 1. Establish Spatial Authority
 
@@ -17,6 +17,16 @@ Define the smallest spatial contract before CSS:
 - content-first regions versus element-first controls and justified density modes.
 
 Use a coherent existing scale. A 4/8-pixel grid is fallback, not proof; do not mechanically snap values or hide nudges in near-duplicate tokens. Optical exceptions need scope, reason, owner, and review trigger.
+
+### Source-Calibrated Density
+
+In the existing visual manifest, record source/actual/tolerance/confidence for container width, header height, hero proportion, heading bounds and wraps, CTA dimensions, card inset/gap/media ratio and major section starts. Measure ratios when the source viewport is unknown; crop or rescale comparisons only with recorded transforms. A generated image is not evidence of its original CSS viewport. Set acceptance before rendering, never derive the expected values from the implementation being judged.
+
+Choose editorial, expressive marketing or productive interface density from the task and selected target. Enterprise quality is coherent hierarchy and usable controls, not universally large headings, tall heroes or generous padding. Preserve accessible hit areas when reducing visible bulk. Don't shrink the entire page with zoom or transforms.
+
+Calibrate the loaded font/weight first, then text-column width, size, line-height, tracking and wrapping at the reference viewport. Record font substitution instead of claiming exact parity. Do not force desktop line breaks into mobile/translations; fluid endpoints must preserve the intended hierarchy.
+
+Give borders, radius and shadows semantic roles: separation, interactive boundary, status or elevation. Check thickness/contrast, nested-radius consistency, focus/hover/disabled states and whether a box is needed. Generic computed-style checks can measure these; no new parallel proof format is needed.
 
 ## 2. Choose Layout By Relationship
 
@@ -36,6 +46,8 @@ Treat spacing as a content and workflow constraint:
 - keep editor/frontend behavior predictable for non-technical authors.
 
 Repeated cards under varied content need shared anchors without brittle empty height. Parent Grid/Flex stretch can mimic child-padding defects; inspect both geometries before changing the child.
+
+For WordPress, trace root/parent contentSize and wideSize, block gap, nested Group padding, margin and layout constraints, theme/block CSS, user Global Styles and saved template overrides. Identify the winning declaration before editing. Verify the same token and block composition in the editor and frontend; do not overwrite user customizations merely to make a screenshot pass.
 
 ## 4. Capture Browser Geometry
 
