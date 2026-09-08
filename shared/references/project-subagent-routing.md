@@ -127,31 +127,7 @@ Keep output within the requested limit.
 
 ## Reusable Project Profiles
 
-Reusable `.codex/agents/*.toml` must not pin transient models/reasoning. Inherit by default or materialize from live inventory.
-
-Read-only mapper:
-
-```toml
-name = "wp-mapper"
-sandbox_mode = "read-only"
-developer_instructions = "Use the named specialist and one reference. Map entry points, tests, and risks in at most 20 bullets. Do not edit files."
-```
-
-Narrow fixer:
-
-```toml
-name = "wp-narrow-fixer"
-sandbox_mode = "workspace-write"
-developer_instructions = "Use supplied files, acceptance checks, and validation. Make the smallest safe change. Do not broaden scope or commit."
-```
-
-Reviewer:
-
-```toml
-name = "wp-pr-reviewer"
-sandbox_mode = "read-only"
-developer_instructions = "Review changed files only. Findings first with severity, file/line, impact, and missing tests. Do not edit files."
-```
+Use the five optional [project agent templates](../../templates/project-agents/README.md): planner, implementer, reviewer, behavior validator, and release readiness. PO coordinates; CTO escalates. Select only needed roles, pass compact packets, and keep review independent. Templates must not pin transient models/reasoning; verify availability and assign both at dispatch when inheritance is unsuitable. They do not create persistent tasks or automations.
 
 ## Project Configuration
 
