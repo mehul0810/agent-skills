@@ -18,7 +18,9 @@ Before implementing, reviewing, or answering:
 2. Confirm the ownership boundary: plugin, theme/FSE, site, content, or orchestration.
 3. State the changed boundary: code path, UI surface, data contract, release metadata, or runtime behavior.
 4. Choose the cheapest proof level that reaches that boundary: diff, static, runtime, editor, frontend, external, or release.
-5. If two or more materially different implementations are viable, stop and surface the contract decision instead of guessing.
+5. Choose a reasonable reversible implementation inside the approved outcome. Surface a decision only when missing information materially changes scope, correctness, ownership, or a protected contract; multiple viable approaches alone are not a blocker.
+
+Keep routine planning internal and brief. Use outcome, constraints, acceptance criteria, and required evidence to guide execution; do not turn reference examples into mandatory steps. Load only unresolved domain guidance, and reuse an already established plan or proof instead of rebuilding it. Substantial architecture, data, security, release, and ambiguous visual work still need explicit contracts.
 
 ## Assumption And Confidence Gate
 
@@ -76,6 +78,8 @@ Before calling direct worker work done, run a bounded finish pass around touched
 - adjacent findings: separate anything real but out of scope through `adjacent-finding-protocol.md`.
 
 The finish pass is a narrow check around the changed boundary, not an excuse to broaden scope.
+
+Stop verification after applicable required checks pass. Broaden or repeat only after changed inputs, failures, or a named unresolved risk. Do not create tests that merely mirror an exact low-risk substitution. Preserve editor/frontend, accessibility, security, compatibility, and release proof wherever the changed behavior requires it; concise reporting must not conceal a failed or unrun check.
 
 ## Failed Visual Evidence Recovery
 

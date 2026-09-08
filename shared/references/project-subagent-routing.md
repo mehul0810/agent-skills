@@ -1,6 +1,6 @@
 # Project Subagent Routing Discipline
 
-Use this for WordPress project subagents, custom project agents, and model/reasoning allocation. Keep routing at project/runtime level; do not use global hooks or permanent model IDs to simulate dynamic selection.
+Use for project subagents and model/reasoning allocation. Route at runtime; avoid global hooks or permanent model IDs.
 
 ## Goal
 
@@ -83,7 +83,7 @@ If the strongest available fallback cannot meet the evidence or reliability requ
 
 ## Planning Before Allocation
 
-Front-load scope into the issue and delegation prompt so execution does not spend tokens rediscovering the plan:
+Give workers outcomes and constraints; let them choose routine execution steps. Reuse established plans; keep tiny tasks inline. Supply:
 
 - exact repo/path and issue,
 - branch/base and allowed files,
@@ -93,7 +93,7 @@ Front-load scope into the issue and delegation prompt so execution does not spen
 
 For code work, include the proportional quality contract from `../../wp-expert/references/planning-drift-control.md`: ownership/contracts, modularity/maintainability and scalability boundary, performance hot path/budget, security/privacy boundary, tests/proof, and rollback. Workers execute that contract and return a quality receipt; they do not spend the execution turn rebuilding an omitted plan.
 
-Fully planned bounded work uses the lowest sufficient tier; decision-shaping work stays with parent or a stronger tier.
+Fully planned work uses the lowest sufficient tier. Astra needs no duplicated planning scaffold; preserve its reasoning ceiling and required evidence. Compare quality, retries, duration, and available token telemetry before claiming savings.
 
 ### Worker Context Boundary
 

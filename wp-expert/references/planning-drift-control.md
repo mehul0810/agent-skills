@@ -27,15 +27,15 @@ Keep this short. Use a written plan when the task is cross-cutting, security-sen
 
 Every code change needs a proportional quality contract before editing, not only substantial work:
 
-- Tiny isolated edit: one sentence naming the outcome, ownership/boundary, quality risk, and proof.
+- Tiny isolated edit: internally confirm outcome, ownership/boundary, quality risk, and proof; no separate planning document or dimension-by-dimension receipt.
 - Normal behavior change: record goal/non-goals, owner/source of truth/contracts, modularity/maintainability and scalability boundary, performance hot path/budget, security/privacy boundary, tests/proof, and rollback.
 - Elevated public, high-traffic, sensitive-data, migration, or release work: use the architecture and enterprise gates as the written plan, including compatibility, observability, operational limits, and backout evidence.
 
-Unknowns are assumptions to resolve before implementation; `Not applicable - reason` is required for an irrelevant dimension. The plan constrains scope and proof; it never authorizes release, destructive, public-contract, or other protected actions.
+Resolve consequential unknowns before crossing their boundary; use reasonable reversible assumptions for routine details. In formal quality matrices use `Not applicable - reason` for irrelevant dimensions. The plan constrains scope and proof; it never authorizes release, destructive, public-contract, or other protected actions.
 
 ## Quality Receipt
 
-Before calling code complete or opening a PR, compare the diff with the plan and report each quality dimension as evidenced, not applicable with reason, or a named residual risk. Include the exact tests/proof run, changed boundary, compatibility/backout status, and any adjacent finding routed separately. Do not claim scalable, performant, maintainable, or secure from intent or a single tool result.
+Before calling code complete or opening a PR, compare the diff with the plan. For small edits report outcome, applicable checks, and residual risks briefly; normal/elevated work reports quality dimensions as evidenced, not applicable with reason, or a named risk. Include relevant compatibility/backout and adjacent findings. Do not claim scalable, performant, maintainable, or secure from intent or a single tool result.
 
 ## Scope Drift Guard
 
