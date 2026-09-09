@@ -2,6 +2,10 @@
 
 Purpose: catch a polished-looking but behaviorally wrong composition without building a new benchmark framework. This is an offline HTML rendering harness with genuine serialized WordPress core group, heading, paragraph, columns, and button blocks in `blocks.html`. Its CSS approximates a target design; it does not load WordPress or Gutenberg.
 
+For a fresh source-design-to-native-WordPress build and repair attempt, use
+`EXECUTION.md`. That separate execution test requires independent fidelity and
+visible author editing proof; this fixture remains a discrimination test.
+
 ## Run
 
 Serve this directory with any loopback HTTP server, then open `index.html?variant=a`. The page loads `blocks.html` via fetch, so file URLs are unsupported. No network fonts, images, or remote application dependencies are needed.
