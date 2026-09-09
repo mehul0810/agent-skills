@@ -1,0 +1,4 @@
+reading-table.svg: self-authored original geometric illustration for this disposable benchmark on 2026-09-09; fictional, non-factual scene, no logos or endorsements. May be reused for this fixture and implementation.
+Caladea-Regular.ttf: local bundled LibreOffice font; Copyright (c) 2012 Huerta Tipografica; Apache License 2.0.
+Carlito-Regular.ttf: local bundled LibreOffice font; Copyright (c) 2010-2013 tyPoland Lukasz Dziedzic; SIL Open Font License 1.1.
+FONT-LICENSES.txt: bundled LibreOffice license document containing the relevant notices and complete licenses. Font binaries unmodified.

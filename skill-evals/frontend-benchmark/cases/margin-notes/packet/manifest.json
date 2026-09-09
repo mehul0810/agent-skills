@@ -1,0 +1,69 @@
+{
+  "caseId": "margin-notes-heldout-sep09",
+  "status": "authored-target-frozen-before-implementation",
+  "frozenAt": "2026-09-09T13:36:58.894Z",
+  "sourceType": "independently authored local reference",
+  "sourceSha256": "4488ff2b5c87abb457e5321278e9f77b1ab7559cdb3e9c75ceb870a8cce5215c",
+  "sourceDisclosure": "Author HTML/CSS excluded from packet. Implementer receives packet only.",
+  "browser": "Google Chrome 152.0.7977.83 via bundled Playwright",
+  "captures": [
+    {
+      "file": "reference-1280.png",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "deviceScaleFactor": 1,
+      "fullPage": true,
+      "documentHeight": 995
+    },
+    {
+      "file": "reference-768.png",
+      "viewport": {
+        "width": 768,
+        "height": 900
+      },
+      "deviceScaleFactor": 1,
+      "fullPage": true,
+      "documentHeight": 957
+    },
+    {
+      "file": "reference-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "deviceScaleFactor": 1,
+      "fullPage": true,
+      "documentHeight": 1322
+    }
+  ],
+  "sha256": {
+    "brief.md": "f82812771cdf5972bc34588308f0f936f546ec21b77aa632048334fe734b4027",
+    "copy.txt": "4dd63d3ccc1b704e978acd9e9c233c86886854023a98ad47a93e704481b08b28",
+    "reference-1280.png": "a0eb36dcf9119672d149c87d6e38fb402eb1b31cb3c02e6649153a80c99b290a",
+    "reference-390.png": "88527e10b5a534c645c02f1c96d910d9444bf9cb5feb0574d9f04732ebb055b3",
+    "reference-768.png": "bf20bd0fb0ef575b58ec86075a2a851d2636f3cb59ac2afdecbaf5ff3efd3a8a",
+    "assets/ASSET-PROVENANCE.txt": "99b3f275a28ef6e4cd32ae34fe8b729d514cbf61697440d6ca908f863f591838",
+    "assets/Caladea-Regular.ttf": "d2f6cad33f191e65b68bd74e6d4f7708080a41b32db635866109df3090265d91",
+    "assets/Carlito-Regular.ttf": "b4ff23ba370cc95a3c349336b73f9c28514a1371210f89832efc85c4b1ea7131",
+    "assets/FONT-LICENSES.txt": "7b3fed10089170d8e68811e59458d421e11d287c988a2bb58aac9cedf488dbbc",
+    "assets/reading-table.svg": "790528fe23f9dbf1c3d41cc5529f6fd5bd30f2762faaf07b35213b9173da7da5"
+  },
+  "validation": "Source capture only; no implementation or WordPress validation performed.",
+  "sourceCreatedAt": "2026-09-09T19:06:02+05:30",
+  "media": {
+    "file": "assets/reading-table.svg",
+    "intrinsicWidth": 680,
+    "intrinsicHeight": 760,
+    "cropIntent": "Centered fill of the image region shown at each viewport; preserve the supplied artwork."
+  },
+  "actorExposure": {
+    "author": "/root/fidelity_case",
+    "read": [
+      "frontend-benchmark/CONTRACT.md",
+      "frontend-benchmark/EXECUTION.md"
+    ],
+    "notRead": "No skill kernels, optimized skills, or reference implementation were inspected."
+  }
+}

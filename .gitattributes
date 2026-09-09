@@ -1,0 +1,2 @@
+# Preserve the byte-hashed third-party license artifact in the frozen source packet.
+skill-evals/frontend-benchmark/cases/margin-notes/packet/assets/FONT-LICENSES.txt -whitespace

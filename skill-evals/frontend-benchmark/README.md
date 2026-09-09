@@ -5,6 +5,8 @@ Purpose: catch a polished-looking but behaviorally wrong composition without bui
 For a fresh source-design-to-native-WordPress build and repair attempt, use
 `EXECUTION.md`. That separate execution test requires independent fidelity and
 visible author editing proof; this fixture remains a discrimination test.
+The first retained execution case is `cases/margin-notes/README.md`, with its
+initial/repair outcome in `cases/margin-notes/pilot-2026-09-09.md`.
 
 ## Run
 
