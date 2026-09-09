@@ -59,6 +59,8 @@ Every PR must include:
 
 For a milestone issue PR, also include `Changelog:` with one verified audience-facing item, or `Not applicable - internal only: <reason>`. Do not place a release date in the final changelog until the owner has selected it; release preparation then updates the date and reruns affected metadata/package checks.
 
+Keep implementation, validation and proof gaps in the PR body/checks; keep routine progress and worker handoffs in Codex. Before an authorized worker or PO posts an issue/PR comment, apply the novelty/action/duplication gate in `github-communication-protocol.md`. Automatic links, commits and CI do not need a second narration.
+
 PRs must not:
 
 - Rely on GitHub's default base.

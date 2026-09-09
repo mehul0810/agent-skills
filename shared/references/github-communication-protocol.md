@@ -6,21 +6,24 @@ Use this reference when reading GitHub issues/PRs/comments/reviews, applying own
 
 Read GitHub issue and PR comments as part of the CTO control loop. Write GitHub comments sparingly.
 
-Use the CTO control chat thread for routine orchestration notifications, periodic check-ins, CI polling updates, "continuing work" updates, and owner-facing status. Do not post GitHub comments for routine notifications.
+Use the relevant Codex task for routine progress, retries, local tests, handoffs, periodic check-ins and CI polling. Keep implementation summaries, validation results and remaining proof gaps in the PR description/checks. Do not post GitHub comments for routine notifications.
+
+Before posting, inspect the exact issue/PR's existing comments, substantive reviews, PR body, CI and native timeline. Ask: is this new; does someone need to act or does it preserve a necessary durable record; is it already represented elsewhere? Default to skipping duplicates, including automatic PR links, commit notifications and green CI. If current evidence is unavailable, defer nonessential posting rather than guess novelty. This gate does not suppress an explicit owner-requested comment, a direct reply, or required substantive review feedback; keep those concise and specific.
 
 Reserve GitHub comments for durable repo-visible state transitions or decisions that future maintainers need to see:
 
 - Strategy or decision records that affect implementation or release sequencing.
 - Owner questions and answered-decision records.
 - PR link and scope when it helps connect issue state to implementation.
-- Blockers that affect the issue or PR outcome.
+- Blockers requiring action, with the exact question, impact and recommended next step.
 - Deferral, re-scope, or milestone rationale.
-- Completion reconciliation before closing an issue or intentionally leaving it open.
+- Necessary completion reconciliation absent from the existing record.
+- New actionable review feedback and direct replies.
 - Owner decisions that future maintainers need to understand.
 
 For contributor/community closures, comments should be owner-readable and explicit about why the item is closing, what shipped or replaced it, and any canonical PR/issue/release link.
 
-When opening a PR, comment on the linked issue with the PR link and scope only when it adds useful durable context beyond automatic linking. When a PR is merged, reconcile the issue with a completion comment before closing it or leaving it open. If work is deferred or moved to another milestone, explain why in the issue.
+When opening a PR, comment on the linked issue with the PR link and scope only when it adds useful durable context beyond automatic linking. After merge, reconcile issue state; add a completion comment only when the disposition or remaining scope is not already clear. Explain material deferral or milestone changes when their rationale is missing. Preserve contributor courtesy and explicit owner requests. Do not delete or edit historical comments merely to clean up noise.
 
 Do not post comments just to say the orchestrator is checking, polling CI, waiting, continuing, delegating internally, or preparing another update. Keep that status in the CTO control chat thread.
 
