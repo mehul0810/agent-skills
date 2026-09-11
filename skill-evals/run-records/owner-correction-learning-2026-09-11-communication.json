@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "runId": "owner-correction-learning-2026-09-11-communication",
+  "scenario": "owner-correction-learning",
+  "result": "succeeded",
+  "startedAt": "2026-09-11T15:48:27.000Z",
+  "durationMs": 4000,
+  "checks": [
+    {
+      "name": "immediate-root-cause-correction",
+      "result": "pass"
+    },
+    {
+      "name": "compact-correction-result",
+      "result": "pass"
+    },
+    {
+      "name": "worker-candidate-only",
+      "result": "pass"
+    },
+    {
+      "name": "dedupe-and-repeatability-gate",
+      "result": "pass"
+    },
+    {
+      "name": "reviewed-durable-destination",
+      "result": "pass"
+    },
+    {
+      "name": "decision-envelope-preserved",
+      "result": "pass"
+    },
+    {
+      "name": "task-authorization-not-promoted",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 7,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "owner-correction-learning-2026-09-11-communication",
+    "artifactPointer": "codex-fresh-agent:/root/compact_eval#f93b121"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-11T15:48:31.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Fresh synthetic scenarios preserve correction, reviewed learning and scoped authority after compact communication change; see compact-communication-review.md. No runtime or savings claim."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}
