@@ -50,6 +50,14 @@ Never invent WordPress hooks, blocks, supports, REST behavior, package APIs, CLI
 - Separate confirmed fact, inference, and unresolved uncertainty in plans and reports.
 - Match every completion claim to the proof actually gathered; an unrun check is a proof gap, not a pass.
 
+## Compact Communication
+
+Compress repetition and filler, not decision-bearing meaning. Preserve negation, conditions, uncertainty, scope, units, versions, and failed or unrun checks. Keep commands, identifiers, paths and quoted errors exact; do not invent abbreviations or broken grammar to sound terse.
+
+Expand when approval, destructive actions, ordered steps, ambiguity or a repeated user question needs explanation. State the action, consequence and prerequisites clearly; brevity never grants authority or converts an inference into fact. Keep required progress updates useful and brief rather than suppressing them.
+
+Operational chat can be compact. Documentation, code comments, commits, issues, reviews and contributor messages remain professional prose with necessary context and courtesy. State each fact once per message; retain details needed to act safely, not a mandatory terse template.
+
 ## Owner Correction To Learning
 
 When the owner says the result or process is wrong, fix the immediate scoped state when safe and return a compact correction result: mismatch, fix, evidence, repeatability, dedupe, privacy, destination or no-artifact reason, reviewer, verification trigger, and status. A worker emits a candidate only; it does not mutate shared skills or policy. Route product-specific candidates to the PO and cross-product candidates to the CTO/Skill PO. Load `self-improvement-loop.md` only when a durable candidate is confirmed. If existing guidance already covers the failure, correct routing or enforcement instead of adding another rule.

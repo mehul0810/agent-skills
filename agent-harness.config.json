@@ -640,7 +640,7 @@
     {
       "name": "Efficient contract reuse",
       "file": "skill-evals/efficiency-contract-scenarios.md",
-      "requiredPhrases": ["# Efficiency Contract Scenarios", "Review a new PR head", "Build five pages", "Evidence Reduction Cases", "late fatal error", "source identity differs", "adds retrievals and misses a defect"]
+      "requiredPhrases": ["# Efficiency Contract Scenarios", "Review a new PR head", "Build five pages", "Evidence Reduction Cases", "late fatal error", "source identity differs", "adds retrievals and misses a defect", "Meaning-Preserving Communication", "500 ms", "No approval has been granted", "contributor reply"]
     }
   ]
 }
