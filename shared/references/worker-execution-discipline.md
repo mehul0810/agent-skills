@@ -22,6 +22,12 @@ Before implementing, reviewing, or answering:
 
 Keep routine planning internal and brief. Use outcome, constraints, acceptance criteria, and required evidence to guide execution; do not turn reference examples into mandatory steps. Load only unresolved domain guidance, and reuse an already established plan or proof instead of rebuilding it. Substantial architecture, data, security, release, and ambiguous visual work still need explicit contracts.
 
+### Material Approach Choice
+
+Before committing to a material approach, compare the smallest complete solution with a credible alternative, including no change when justified. Consider applicable user/business outcomes, constraints and authority, source confidence, ownership/dependencies, compatibility/data migration, security/privacy, reliability/concurrency, performance/scale, editor/accessibility needs, operations/rollback, maintenance, time/cost and available proof. Do not enumerate immaterial factors for a tiny safe edit.
+
+Resolve the uncertainty most likely to change the choice with the cheapest discriminating check. Record the chosen tradeoff, rejected approach and reason, failure/rollback path, and evidence or trigger that would reverse the choice; a preferred technique is not evidence. Carry this concise decision record into the task checkpoint before expansion or handoff, not an internal reasoning transcript. Revisit only when a constraint, dependency, failure or source fact changes.
+
 ## Assumption And Confidence Gate
 
 Do not proceed on silent assumptions when any of these are true:

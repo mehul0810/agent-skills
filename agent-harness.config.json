@@ -502,6 +502,11 @@
   ],
   "scenarios": [
     {
+      "name": "Context and approach decisions",
+      "file": "skill-evals/context-decision-scenarios.md",
+      "requiredPhrases": ["Material Approach Choice", "Source-Bound Recovery", "Model And Hook Boundaries"]
+    },
+    {
       "name": "WP Expert",
       "file": "skill-evals/wp-expert-scenarios.md",
       "requiredPhrases": ["# WP Expert Skill Evaluation Scenarios", "WordPress React correctness", "Plain JavaScript standards", "Enterprise TypeScript boundary", "Multi-language enterprise review", "Legacy typing restraint"]

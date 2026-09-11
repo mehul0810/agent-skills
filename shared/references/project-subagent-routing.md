@@ -145,6 +145,8 @@ Raise concurrency only after proof; keep depth one unless nested review is delib
 
 Use hooks for deterministic project lifecycle checks such as generated artifacts, formatting, explicit PR base, or validation metadata. Do not use hooks for expertise selection, broad research, or dynamic model assignment.
 
+For compaction/resume, use the context-window contract and optional [project hooks](../../templates/project-hooks/README.md). Verify supported events, trust and observed invocation. Keep hooks bounded, non-recursive and source-preserving; no global install, permission bypass, transcript scraping or silent context/model mutation. A configured hook is not proof it ran.
+
 ## Parent Checklist
 
 Before delegation: verify availability, choose the capability tier, front-load the plan, set one lane/output budget, prefer read-only unless exact fixing is assigned, and avoid duplicate exploration.

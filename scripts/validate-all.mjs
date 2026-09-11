@@ -11,6 +11,7 @@ const cwd = fileURLToPath(new URL('..', import.meta.url));
 // The reference gate owns domain audits; do not rerun them in this aggregate.
 const checks = [
   ['Diff', 'git', ['diff', '--check']],
+  ['Continuity hook regression', 'node', ['scripts/test-continuity-hook.mjs']],
   ['Agent profiles', 'python3', ['scripts/validate-agent-profiles.py']],
   ['Agent profile rejection regression', 'python3', ['-O', 'scripts/test-agent-profiles.py']],
   ['References and domain audits', 'bash', ['scripts/validate-references.sh']],

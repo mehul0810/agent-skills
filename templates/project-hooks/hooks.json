@@ -1,0 +1,32 @@
+{
+  "description": "Read-only task checkpoint verification and post-compaction recovery. Review and trust before use.",
+  "hooks": {
+    "PreCompact": [
+      {
+        "matcher": "manual|auto",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$(git rev-parse --show-toplevel)/scripts/codex-continuity-hook.mjs\"",
+            "timeout": 5,
+            "statusMessage": "Checking task checkpoint"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$(git rev-parse --show-toplevel)/scripts/codex-continuity-hook.mjs\"",
+            "timeout": 5,
+            "additionalContextLimit": 600,
+            "statusMessage": "Restoring task checkpoint pointer"
+          }
+        ]
+      }
+    ]
+  }
+}

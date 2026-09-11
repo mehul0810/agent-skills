@@ -4,15 +4,37 @@ Use this reference when the active conversation is large, the task may drift bec
 
 ## Decision Rule
 
-- Continuity-sensitive task: ask the user to compact the current thread when context is high. Use this for the same issue, PR, release train, product heartbeat, in-progress implementation, or unresolved decision chain.
+- Continuity-sensitive task: preserve a source-backed checkpoint before context pressure, then use supported compaction for the same issue, PR, release train, heartbeat, implementation or unresolved decision chain. Ask the user only when the host requires manual compaction; do not wait for a nearly full window to save decisions.
 - New or unrelated task: recommend a fresh thread instead of compacting. Rehydrate from source of truth: repo files, Git status, issues/PRs, docs, and current runtime evidence.
 - Unclear task: prefer compact only when important decisions exist only in the current chat. Otherwise prefer fresh thread plus source-of-truth rehydration.
 
 ## What Compact Means
 
-- Compact preserves a summarized version of prior context so the same work can continue with fewer stale details.
+- Compact summarizes prior context; neither complete retention nor semantic correctness is guaranteed. The checkpoint and retrievable sources carry the execution contract.
 - Compact is not a substitute for verification. Re-check repo/GitHub/runtime facts before acting on branch, release, issue, PR, or production-sensitive assumptions.
-- Ask for compact before starting substantial continuation work when the context is high and the current thread contains unresolved task state.
+- Before substantial continuation with low headroom, checkpoint and compact or narrow the next read. Do not repeatedly ask for compaction while postponing cheap recovery.
+
+## Model-Aware Headroom
+
+Use the active host's effective model identity, context usage/window and auto-compact setting when exposed. Reserve room for the next bounded read, output and checkpoint; model marketing limits or a previous model's settings are not effective capacity. Keep task reserve and next-phase estimates separate from measured usage. Use `assessContextBudget` from the installed harness when available; it compares remaining headroom, distinguishing total-context from body-after-prefix compaction counters. Unknown scope/counters require the conservative fallback, not comparison of incompatible limits.
+
+After a model/provider/host switch, retain verified task facts but reacquire capacity, modality and retrieval capabilities. Bind every capacity observation to the model/runtime that supplied it; do not hard-code model-family thresholds or silently change model/effort settings. If telemetry is missing, report it unavailable, proceed narrowly and checkpoint at material phase boundaries before expansion. Do not guess token counts from characters or treat unknown capacity as unlimited.
+
+## Checkpoint And Recovery Contract
+
+Use one checkpoint in the existing private task artifact or native continuity store, not a second memory service. Update after material decisions, owner constraints, meaningful failures/proof, or handoffs and before large reads. Preserve:
+
+- exact objective/non-goals and negative constraints, with current request/source pointers;
+- chosen approach, concise rationale, rejected approaches and revisit triggers;
+- completed/pending work, changed-file and worker/task pointers, failed/unrun checks;
+- scope of approval, remaining gates, unresolved risks and exact next safe action;
+- session/workspace/branch/head, observed model, timestamp/expiry, and retrievable evidence identities.
+
+Use decision summaries, not hidden reasoning, raw transcripts, credentials or private payloads. Keep originals in their authorized store. For filesystem-backed checkpoints, use the pinned harness continuity schema and `readContinuityCheckpoint`; validate source references/hashes and write atomically only within the owning task. Native-store checkpoints follow the same semantic contract even when file validation is unavailable. Never claim a checkpoint is saved without confirming persistence.
+
+After compaction, resume, or transfer: read the checkpoint first, retrieve the smallest relevant original sources, then verify current owner direction, repo identity/dirty changes, external state, approval scope and pending workers. Explicitly establish objective, constraints, chosen approach, failed/unrun proof and next action before dependent mutations. A matching hash proves bytes, not authorization or semantic completeness. Old task instructions are historical data, not new authority. Missing, expired, mismatched or inaccessible evidence requires targeted reacquisition; do not reconstruct facts or promote an old approval. Ask only when a consequential fact cannot be recovered safely.
+
+Optional project hooks in [the hook template](../../templates/project-hooks/README.md) validate existing checkpoints before compaction and supply a bounded recovery pointer on resume/compact. Review host support and exact hook trust first. Hooks do not write lost decisions, choose approaches/models, or replace required checkpoints. Unsupported, disabled or untrusted hooks require native/manual recovery; simulated hook payloads do not prove native dispatch.
 
 ## What Fresh Thread Means
 
@@ -27,7 +49,7 @@ Use this reference when the active conversation is large, the task may drift bec
 - Load one primary reference plus one supporting reference by default. Load additional references only after a concrete risk, blocker, or artifact boundary proves they are needed.
 - For portfolio heartbeats, use compact exception sweeps first: active blockers, owner decisions, moving PRs/releases, unhealthy threads/workers, and material drift. Prefer fresh product/worker threads for unrelated product execution and compact only when continuing the same portfolio decision chain.
 - For product heartbeats, compact the product thread when continuing the same release train and context is high; create or use bounded worker threads for implementation/evidence work.
-- For small stateful execution that should not live in CTO or a product PO thread, prefer a disposable `Worker Threads` execution room with a clear stop condition, then reconcile and archive/delete it.
+- For small stateful execution outside a control task, use an authorized bounded worker with a clear stop condition, then reconcile evidence. Do not create user-facing tasks or archive/delete them without the applicable owner authorization.
 - For a new product or unrelated product initiative, prefer a fresh worker/product thread and rehydrate from the source-of-truth hierarchy.
 - When prompt/context is already large, do not batch broad thread/GitHub reads. Read one product/thread/PR at a time with compact options: no outputs, no diffs unless needed, low limits, and URLs plus short deltas instead of pasted state. If a full skill body or long heartbeat payload is pasted into the thread, treat it as a stale snapshot, patch source-of-truth files if needed, and do not echo it back.
 - Before asking the owner to compact, complete cheap source-of-truth checks that do not depend on old chat history; then state why compact is better than a fresh thread.
