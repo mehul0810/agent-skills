@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "runId": "context-approach-continuity-2026-09-11-continuity",
+  "scenario": "context-approach-continuity",
+  "result": "succeeded",
+  "startedAt": "2026-09-11T16:19:47.000Z",
+  "durationMs": 19000,
+  "checks": [
+    {
+      "name": "holistic-probe",
+      "result": "pass"
+    },
+    {
+      "name": "proportional-choice",
+      "result": "pass"
+    },
+    {
+      "name": "source-first-recovery",
+      "result": "pass"
+    },
+    {
+      "name": "negative-constraints-and-failed-proof",
+      "result": "pass"
+    },
+    {
+      "name": "stale-approval-rejected",
+      "result": "pass"
+    },
+    {
+      "name": "model-aware-unknown-fallback",
+      "result": "pass"
+    },
+    {
+      "name": "hook-activation-honesty",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 7,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "context-approach-continuity-2026-09-11-continuity",
+    "artifactPointer": "codex-fresh-agent:/root/continuity_recovery#09a43e519087e48675fe64ce297089947d4ae063"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-11T16:20:06.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Parent-scored fresh synthetic decisions at exact source revision; see context-decision-review.md. Shared batch intervals must not be summed. Native product, native compaction and token savings unverified."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}

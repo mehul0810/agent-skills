@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "runId": "product-value-decision-2026-09-11-continuity",
+  "scenario": "product-value-decision",
+  "result": "succeeded",
+  "startedAt": "2026-09-11T16:17:22.000Z",
+  "durationMs": 240972,
+  "checks": [
+    {
+      "name": "user-outcome-specificity",
+      "result": "pass"
+    },
+    {
+      "name": "business-outcome-specificity",
+      "result": "pass"
+    },
+    {
+      "name": "evidence-assumption-separation",
+      "result": "pass"
+    },
+    {
+      "name": "confidence-and-reach",
+      "result": "pass"
+    },
+    {
+      "name": "lifetime-cost-and-risk",
+      "result": "pass"
+    },
+    {
+      "name": "proportional-decision",
+      "result": "pass"
+    },
+    {
+      "name": "measurable-threshold-window",
+      "result": "pass"
+    },
+    {
+      "name": "no-invented-uplift",
+      "result": "pass"
+    },
+    {
+      "name": "mandatory-work-not-score-gated",
+      "result": "pass"
+    },
+    {
+      "name": "post-release-outcome-disposition",
+      "result": "pass"
+    },
+    {
+      "name": "quality-and-authority-boundary",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 11,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "product-value-decision-2026-09-11-continuity",
+    "artifactPointer": "codex-fresh-agent:/root/continuity_runtime_b#09a43e519087e48675fe64ce297089947d4ae063"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-11T16:21:22.972Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Parent-scored fresh synthetic decisions at exact source revision; see context-decision-review.md. Shared batch intervals must not be summed. Native product, native compaction and token savings unverified."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}

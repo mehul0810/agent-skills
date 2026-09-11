@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "runId": "visual-evidence-assets-2026-09-11-continuity",
+  "scenario": "visual-evidence-and-assets",
+  "result": "succeeded",
+  "startedAt": "2026-09-11T16:17:08.000Z",
+  "durationMs": 416496,
+  "checks": [
+    {
+      "name": "structured-visual-proof-rejection",
+      "result": "pass"
+    },
+    {
+      "name": "per-surface-proof-coverage",
+      "result": "pass"
+    },
+    {
+      "name": "concrete-evidence-binding",
+      "result": "pass"
+    },
+    {
+      "name": "asset-production-receipt",
+      "result": "pass"
+    },
+    {
+      "name": "design-token-lineage",
+      "result": "pass"
+    },
+    {
+      "name": "visual-defect-reproof",
+      "result": "pass"
+    },
+    {
+      "name": "structured-spatial-proof-rejection",
+      "result": "pass"
+    },
+    {
+      "name": "browser-geometry-capture",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 8,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "visual-evidence-assets-2026-09-11-continuity",
+    "artifactPointer": "codex-fresh-agent:/root/continuity_runtime_a#09a43e519087e48675fe64ce297089947d4ae063"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-11T16:24:04.496Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Parent-scored fresh synthetic decisions at exact source revision; see context-decision-review.md. Shared batch intervals must not be summed. Native product, native compaction and token savings unverified."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}

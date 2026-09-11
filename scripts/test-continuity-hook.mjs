@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { handleContinuityHook } from './codex-continuity-hook.mjs';
 
 const base = { hook_event_name: 'SessionStart', source: 'compact', session_id: 'test-session', cwd: '/private/tmp', model: 'fixture-model' };
@@ -40,6 +40,7 @@ for (const input of ['{', 'x'.repeat(65537), json(base)]) {
   checks++;
 }
 const config = JSON.parse(readFileSync('templates/project-hooks/hooks.json', 'utf8'));
+if (existsSync('.codex/hooks.json')) assert.deepEqual(JSON.parse(readFileSync('.codex/hooks.json', 'utf8')), config);
 assert.deepEqual(Object.keys(config.hooks).sort(), ['PreCompact', 'SessionStart']);
 for (const list of Object.values(config.hooks)) for (const group of list) for (const hook of group.hooks) {
   assert.equal(hook.timeout, 5);

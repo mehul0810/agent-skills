@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "runId": "content-writer-readability-2026-09-11-continuity",
+  "scenario": "content-writer-readability",
+  "result": "succeeded",
+  "startedAt": "2026-09-11T16:17:28.000Z",
+  "durationMs": 286556,
+  "checks": [
+    {
+      "name": "audience-task-calibration",
+      "result": "pass"
+    },
+    {
+      "name": "plain-language-structure",
+      "result": "pass"
+    },
+    {
+      "name": "accessible-localized-copy",
+      "result": "pass"
+    },
+    {
+      "name": "reading-level-diagnostic",
+      "result": "pass"
+    },
+    {
+      "name": "complex-high-stakes-precision",
+      "result": "pass"
+    },
+    {
+      "name": "progressive-disclosure-precision",
+      "result": "pass"
+    },
+    {
+      "name": "no-blanket-readability-gate",
+      "result": "pass"
+    },
+    {
+      "name": "reader-knowledge-and-feature-meaning",
+      "result": "pass"
+    },
+    {
+      "name": "verified-procedure-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "numeracy-and-scope",
+      "result": "pass"
+    },
+    {
+      "name": "reader-evidence-not-agent-opinion",
+      "result": "pass"
+    },
+    {
+      "name": "warning-preserving-rewrite",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 12,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "content-writer-readability-2026-09-11-continuity",
+    "artifactPointer": "codex-fresh-agent:/root/continuity_runtime_c#09a43e519087e48675fe64ce297089947d4ae063"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-11T16:22:14.556Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Parent-scored fresh synthetic decisions at exact source revision; see context-decision-review.md. Shared batch intervals must not be summed. Native product, native compaction and token savings unverified."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}
