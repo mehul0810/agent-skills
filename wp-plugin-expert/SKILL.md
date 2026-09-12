@@ -1,6 +1,6 @@
 ---
 name: wp-plugin-expert
-description: "Use for WordPress plugin/product engineering: plugin features, architecture, admin screens, plugin-owned custom blocks, REST APIs, custom tables, WordPress.org releases, Composer/npm tooling, tests, CI, troubleshooting, and product-grade implementation. Use wp-quality-reviewer for a focused quality audit or remediation."
+description: "Build and fix WordPress plugins and plugin-owned UI. For focused security, performance or accessibility audits, use wp-quality-reviewer."
 ---
 
 # WP Plugin Expert
@@ -9,7 +9,7 @@ Operate as a principal WordPress plugin engineer. Build narrow, production-safe 
 
 ## Hot Path
 
-- Start with repo facts: Git root, plugin bootstrap, active branch, dirty files, build scripts, test scripts, WordPress root, and release target.
+- Start with the exact requested artifact, Git root, branch and dirty files. Inspect bootstrap/runtime and build/test commands for affected behavior; inspect release targets only for branch, packaging or publication work.
 - Preserve user work. Do not reset or discard unrelated changes unless explicitly asked.
 - Load one primary reference. Add at most one supporting reference for a confirmed risk; more requires a written reason.
 - Treat this hot path as the standing execution kernel. References below are conditional overlays, not mandatory loads; load one only when its named risk is unresolved.
@@ -17,7 +17,7 @@ Operate as a principal WordPress plugin engineer. Build narrow, production-safe 
 - When work crosses ownership/runtime/proof boundaries or essential project knowledge is missing, use `../shared/references/wordpress-engineering-graph.md` as primary; ask only unresolved blocking questions and establish the minimum repo docs before crossing that boundary.
 - For an isolated unresolved ownership, source-of-truth, public-contract, release, security, performance, or proof decision without a missing knowledge graph, use the router's architecture decision route.
 - For substantial or review-critical work, use `../shared/references/enterprise-code-quality-gate.md` to classify baseline versus elevated enterprise risk and cover scalability, modularity, maintainability, useful comments, tests, performance, security/privacy, compatibility, supply chain, and operations proportionally.
-- Apply the compact non-breaking modularity checkpoint from the enterprise gate above to every code change; load the detailed modularity reference only when it flags a confirmed concern.
+- Apply the compact non-breaking modularity checkpoint when changing ownership, dependencies or launched behavior; literal copy-only substitutions do not need an architecture review. Load detail only for a confirmed concern.
 - Use `../shared/references/worker-execution-discipline.md` for assumption, recovery, hallucination, owner-correction, or completion-claim risk.
 - For plugin-owned UI, use `../shared/references/visual-to-wordpress-implementation.md` only when the screenshot, Figma frame, image, mockup, or generated direction is the selected implementation target; plugin ownership stays here.
 - For material UI/workflow risk, design understanding, reference-led creation, critique, or ideation without a selected target, use `../shared/references/design-intelligence-routing.md`; implementation ownership stays here.

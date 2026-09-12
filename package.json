@@ -17,7 +17,7 @@
     "test": "node scripts/validate-all.mjs"
   },
   "devDependencies": {
-    "@mehul0810/agent-harness": "https://github.com/mehul0810/agent-harness/archive/4fa28f5a6c646dedde4f616dec8ae533df42f5ee.tar.gz"
+    "@mehul0810/agent-harness": "https://github.com/mehul0810/agent-harness/archive/e99c9e29c1d58c23ff1ac656040e289ea321d493.tar.gz"
   },
   "dependencies": {
     "ajv": "8.20.0"

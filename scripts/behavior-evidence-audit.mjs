@@ -7,6 +7,7 @@ import path from "node:path";
 import process from "node:process";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { compatibleValidationRuntime } from './harness-runtime-fingerprint.mjs';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SHA256 = /^[a-f0-9]{64}$/;
@@ -124,10 +125,10 @@ function sameSet(left, right) {
   return left.length === right.length && left.every((value, index) => value === right[index]);
 }
 
-function harnessRevision(root, errors) {
+function harnessRevision(root, errors, revision) {
   try {
-    const packageJson = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
-    const packageLock = JSON.parse(fs.readFileSync(path.join(root, "package-lock.json"), "utf8"));
+    const packageJson = JSON.parse(fileContent(root, "package.json", revision));
+    const packageLock = JSON.parse(fileContent(root, "package-lock.json", revision));
     const dependency = packageJson.devDependencies?.["@mehul0810/agent-harness"] ?? "";
     const match = dependency.match(
       /^https:\/\/github\.com\/mehul0810\/agent-harness\/archive\/([a-f0-9]{40})\.tar\.gz$/,
@@ -364,7 +365,9 @@ export function auditBehaviorEvidence({
       if (
         evidence.runtime?.host !== "codex-desktop" ||
         evidence.runtime?.isolation !== "fresh-agent" ||
-        evidence.runtime?.harnessRevision !== manifest.harnessRevision
+        (evidence.runtime?.harnessRevision !== manifest.harnessRevision
+          && !compatibleValidationRuntime({ root, baseline, evidence, manifest,
+            testedPin: harnessRevision(root, errors, evidence.testedRevision) }))
       ) {
         errors.push(`${baseline.name}: current fresh-agent runtime binding is required`);
       }

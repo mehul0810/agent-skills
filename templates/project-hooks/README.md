@@ -38,6 +38,10 @@ Real checkpoints and source artifacts must not be committed or exported.
 
 - `PreCompact` checks the existing checkpoint and evidence, then reports a bounded
   advisory. It never claims to have saved missing context or blocks auto-compaction.
+- Intact historical evidence after a commit, branch change or expiry retains a
+  retrieval pointer, never a current-state pass. Other sessions/workspaces, future
+  timestamps and damaged evidence cannot use it. Missing filesystem checkpoints
+  defer to native sources only for continuity-dependent work, not every new query.
 - `SessionStart` for resume/compact injects only a validated retrieval pointer and
   fixed revalidation guidance. Missing/stale checkpoints require source recovery;
   startup without a checkpoint stays quiet. Clear/new work must not inherit an

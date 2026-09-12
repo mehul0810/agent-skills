@@ -28,6 +28,13 @@ Keep every current behavior record directly in `skill-evals/run-records/` and re
 
 ## Cost-Aware Evidence Refresh
 
+The opt-in `cli-validation-v1` baseline contract permits an older harness runtime
+binding only with a reviewed old/new dependency-fingerprint receipt. The audit
+checks the immutable tested commit's pin and lock, exact target pin, and installed
+CLI-validation closure. Unknown contracts, changed dependencies or source/scenario
+drift require fresh evidence. Continuity/API behavior is not covered by this CLI
+contract. Preserve historical runtime identities; never relabel an old run as new.
+
 Before dispatch, compute the changed source/scenario-to-baseline dependency set. Run only invalidated baselines, but cover every required check in each. Reuse one independent run across overlapping baselines only when its explicit results cover their complete contracts; register a separate exact-bound record for each. Do not reread unrelated skills or rerun unchanged validators during iteration. Keep one full aggregate publication gate.
 
 Split a broad baseline only after a dependency audit demonstrates separable behavior and an integration scenario still protects cross-route ownership/authority. File churn alone is not grounds to reduce coverage. Research citations are rationale, decision scenarios are policy evidence, rendered artifacts are visual evidence, and native runtime/user outcomes are separate evidence classes; never substitute one for another.

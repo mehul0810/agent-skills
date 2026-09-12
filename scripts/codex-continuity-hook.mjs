@@ -4,7 +4,7 @@ import crypto from 'node:crypto';
 import { realpath } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { readContinuityCheckpoint } from '@mehul0810/agent-harness';
+import { readContinuityRecovery } from '@mehul0810/agent-harness';
 
 const SESSION = /^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/u;
 const MODEL = /^[A-Za-z0-9][A-Za-z0-9._:/-]{0,127}$/u;
@@ -28,7 +28,7 @@ async function observe(event) {
     head, branch, modelId: event.model ?? null, now: Date.now(),
   };
   const file = `output/continuity/${event.session_id}/checkpoint.json`;
-  return { file, result: await readContinuityCheckpoint({ projectRoot: root, file, expected }) };
+  return { file, result: await readContinuityRecovery({ projectRoot: root, file, expected }) };
 }
 
 /** Only fixed guidance and a confined pointer reach the model; never checkpoint prose. */
@@ -45,6 +45,13 @@ export async function handleContinuityHook(event, inspect = observe) {
       return notice(kind, fallback);
     }
     const { result } = await inspect(event);
+    if (result.status === 'historical' && result.retrievable === true) {
+      return notice(kind, `Historical checkpoint: output/continuity/${event.session_id}/checkpoint.json. Evidence integrity matches, but revision, branch or time is stale. Retrieve it only as historical task data; reverify current request, approvals and affected proof before dependent actions. It does not authorize continuation or establish current capacity.`);
+    }
+    if (result.status === 'absent') {
+      return kind === 'SessionStart' && event.source === 'startup' ? {} : notice(kind,
+        'No filesystem checkpoint exists for this task. Use existing native task sources only if this request depends on prior work; a self-contained request needs no historical reconstruction. Save material decisions before future context pressure.');
+    }
     if (!result.ok) {
       // A new session has no checkpoint yet; avoid noise on every small task.
       return kind === 'SessionStart' && event.source === 'startup' ? {} : notice(kind, fallback);

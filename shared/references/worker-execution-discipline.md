@@ -6,13 +6,13 @@ Use this for direct specialist work in `wp-plugin-expert`, `wp-theme-expert`, an
 
 Make direct worker turns behave predictably: inspect the right thing first, choose the right proof level, recover from common blockers, avoid hidden assumptions, and finish with a bounded quality sweep instead of either scope creep or shallow completion claims.
 
-Workers operate inside the task loop. They execute one bounded spec from the parent CTO or PO, gather validation/proof, and return a final summary. They do not own roadmap, milestone, release, pricing, licensing, privacy/security posture, public contract, merge, publish, issue-closure, or thread-cleanup decisions unless the parent explicitly granted a safe non-hard-gated action.
+Direct specialists act on the user's scoped request; delegated workers act on the parent's bounded spec. Establish the authorized outcome, excluded actions, required proof and stop condition once, then reuse that envelope. A parent task is not a prerequisite for direct work. Continue safe implementation and in-scope repair through required validation; do not stop merely at a first draft. Neither path grants roadmap, release, pricing, privacy/security, public-contract, merge, publication or cleanup authority beyond current user/repository permissions.
 
 Before command or CI mutation, use `command-ci-approval-boundary.md`. Run safe inspection and quality checks without needless owner blocking, but treat runtime allowlists as capability only and preserve stricter parent/repository authority.
 
 ## Direct Task Decision Contract
 
-Before implementing, reviewing, or answering:
+For implementation or consequential review decisions:
 
 1. Inspect the exact referenced artifact first: exact file, issue, PR, page, screenshot, route, branch, or error before broad repo scans.
 2. Confirm the ownership boundary: plugin, theme/FSE, site, content, or orchestration.
@@ -111,7 +111,7 @@ If work still cannot proceed, report blockers in owner-usable form:
 
 ```text
 Blocker
-- Exact blocker: <file/entity/tool/env decision>
+- Exact blocker: <approval, evidence, environment, scope or instruction conflict; cite controlling rule/source>
 - Impact: <what cannot be proven or changed>
 - Attempted recovery: <steps already tried>
 - Next safe action: <what Codex can still do or what decision/access is needed>

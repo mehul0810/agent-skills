@@ -6,7 +6,7 @@ This repository owns reusable Agent Skills, shared references, eval specificatio
 
 ## Workflow
 
-- Start with `git status --short --branch`, current `origin/main`, open PRs, and overlapping local branches.
+- Start repo work with `git status --short --branch` and the exact requested artifact. Check current `origin/main`, open PRs and overlapping local branches before changes or publication, not for every read-only explanation.
 - Publish validated changes to `main` directly. Do not create feature branches or PRs for this repository unless the owner explicitly requests review or repository protection makes direct publication impossible.
 - Preserve unrelated user changes. Never reset, discard, or delete branches/worktrees without explicit approval.
 - Keep `SKILL.md` as the compact execution kernel. Put mode detail in one-level routers/references and avoid second-level hidden expertise.

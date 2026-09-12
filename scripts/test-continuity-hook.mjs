@@ -21,6 +21,8 @@ await check(base, async () => ({ result: { ok: true, warnings: ['changed'], text
 assert.doesNotMatch(json(await handleContinuityHook(base, async () => ({ result: { ok: true, warnings: [], text: 'PRIVATE_SENTINEL' } }))), /PRIVATE_SENTINEL/);
 checks++;
 await check(base, absent, /unavailable or stale/);
+await check(base, async () => ({ result: { ok: false, status: 'historical', retrievable: true } }), /does not authorize continuation/);
+await check(base, async () => ({ result: { ok: false, status: 'absent' } }), /self-contained request needs no historical reconstruction/);
 await check({ ...base, source: 'startup' }, absent, /^\{\}$/);
 await check({ ...base, source: 'clear' }, ready, /^\{\}$/);
 await check({ ...base, hook_event_name: 'Stop' }, ready, /^\{\}$/);

@@ -2,6 +2,11 @@
 
 ## Fast Gate
 
+Read-only explanation/review does not require installation or a publication gate.
+During implementation run affected checks; use `npm ci` when the lockfile changes
+or establishing a clean dependency environment. Run the full aggregate once before
+publication, not after every tool call or literal substitution.
+
 ```bash
 git diff --check
 git show --check --oneline --no-renames HEAD
