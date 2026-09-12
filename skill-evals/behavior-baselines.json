@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee",
+  "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493",
   "defaults": {
     "maxAgeDays": 90,
     "requiredTags": [
@@ -18,7 +18,7 @@
         "wp-plugin-expert/SKILL.md",
         "wp-plugin-expert/references/router.md"
       ],
-      "sha256": "e9aa09941c6f30a53bc63826aa905396b29e16e2b7a5ce719e25c44a7f036298",
+      "sha256": "d408f2f49fefa66f669fc181f1aac478ce36afeff4e4b737caa223a7bb57dfe1",
       "scenario": {
         "id": "elevated-enterprise-runtime-assurance",
         "files": [
@@ -38,18 +38,19 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-09-11-continuity.json",
-          "sha256": "d022327ab0629f0c2bc3779d9bb80ce4fef5b42eb98331a00d2159fe7c395cc9",
-          "testedRevision": "09a43e519087e48675fe64ce297089947d4ae063",
-          "testedSourceSha256": "e9aa09941c6f30a53bc63826aa905396b29e16e2b7a5ce719e25c44a7f036298",
+          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-09-12-astra.json",
+          "sha256": "4deb9d0dc50cc5fb15b75604b1861fdbb417d452a7f53e7a74770690c1adc911",
+          "testedRevision": "2e1db155dbe9188d535c6e734e6041d97b6ed938",
+          "testedSourceSha256": "d408f2f49fefa66f669fc181f1aac478ce36afeff4e4b737caa223a7bb57dfe1",
           "testedScenarioSha256": "3d842125a654c717b1b68f1fe273d32f8bf4ac54bae26ac39dbacefb0f92eb84",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
-            "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
+            "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493"
           }
         }
-      ]
+      ],
+      "harnessContract": "cli-validation-v1"
     },
     {
       "name": "design-experience-routing",
@@ -139,7 +140,8 @@
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           }
         }
-      ]
+      ],
+      "harnessContract": "cli-validation-v1"
     },
     {
       "name": "wordpress-visual-execution",
@@ -167,7 +169,7 @@
         "wp-theme-expert/SKILL.md",
         "wp-theme-expert/references/router.md"
       ],
-      "sha256": "12d1ec79b083e41eebd76d0f0447960084fcdc9b212b862f50d7121401477ea4",
+      "sha256": "da957013784ab2ebf5d687fb0c0f75dec28b4569f60e1a2a51c764958a41571a",
       "scenario": {
         "id": "wordpress-visual-execution",
         "files": [
@@ -248,18 +250,19 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-09-11-continuity.json",
-          "sha256": "0d2dc7b16d327eefb214f909704f43f87dd898dc8cb6504a38589f9a751d4985",
-          "testedRevision": "09a43e519087e48675fe64ce297089947d4ae063",
-          "testedSourceSha256": "12d1ec79b083e41eebd76d0f0447960084fcdc9b212b862f50d7121401477ea4",
+          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-09-12-astra.json",
+          "sha256": "0c59dba13788fce0b43d4ed0fd262b9bf664aea1eaa94f15eabbadc876ed2192",
+          "testedRevision": "2e1db155dbe9188d535c6e734e6041d97b6ed938",
+          "testedSourceSha256": "da957013784ab2ebf5d687fb0c0f75dec28b4569f60e1a2a51c764958a41571a",
           "testedScenarioSha256": "85be7001fd84adbca587bb6418c1923095a34abccb6b0145ef1abd4f566c78fd",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
-            "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
+            "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493"
           }
         }
-      ]
+      ],
+      "harnessContract": "cli-validation-v1"
     },
     {
       "name": "visual-evidence-assets",
@@ -313,7 +316,8 @@
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           }
         }
-      ]
+      ],
+      "harnessContract": "cli-validation-v1"
     },
     {
       "name": "engineering-graph",
@@ -364,7 +368,8 @@
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           }
         }
-      ]
+      ],
+      "harnessContract": "cli-validation-v1"
     },
     {
       "name": "wp-quality-reviewer",
@@ -451,7 +456,8 @@
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           }
         }
-      ]
+      ],
+      "harnessContract": "cli-validation-v1"
     },
     {
       "name": "automatic-specialist-routing",
@@ -490,7 +496,8 @@
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           }
         }
-      ]
+      ],
+      "harnessContract": "cli-validation-v1"
     },
     {
       "name": "product-development-governance",
@@ -567,7 +574,8 @@
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           }
         }
-      ]
+      ],
+      "harnessContract": "cli-validation-v1"
     },
     {
       "name": "product-value-decision",
@@ -614,7 +622,8 @@
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           }
         }
-      ]
+      ],
+      "harnessContract": "cli-validation-v1"
     },
     {
       "name": "product-release-authority",
@@ -690,7 +699,8 @@
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           }
         }
-      ]
+      ],
+      "harnessContract": "cli-validation-v1"
     },
     {
       "name": "owner-correction-learning",
@@ -699,7 +709,7 @@
         "shared/references/self-improvement-loop.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "5bf50b77aacd99d0569b16aa417a933ab765cd19764bcb5100dc815726488cd5",
+      "sha256": "5ac7e146bffb66df93824717da887f492a4dba7092471b91787bfc413c9b2d40",
       "scenario": {
         "id": "owner-correction-learning",
         "files": [
@@ -722,18 +732,19 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/owner-correction-learning-2026-09-11-continuity.json",
-          "sha256": "d8cff24a4df635d893aebd80ca3b585cd9186bfeb81fd72989ba5920b2deaf71",
-          "testedRevision": "09a43e519087e48675fe64ce297089947d4ae063",
-          "testedSourceSha256": "5bf50b77aacd99d0569b16aa417a933ab765cd19764bcb5100dc815726488cd5",
+          "runRecord": "skill-evals/run-records/owner-correction-learning-2026-09-12-astra.json",
+          "sha256": "6f218a8d25816e9cc0479e7829f38d02e6a907a6b7ab034ee28bb6871a2371f3",
+          "testedRevision": "2e1db155dbe9188d535c6e734e6041d97b6ed938",
+          "testedSourceSha256": "5ac7e146bffb66df93824717da887f492a4dba7092471b91787bfc413c9b2d40",
           "testedScenarioSha256": "b73d82e24abe107bee6eca83f4cfb99e0cb14d7bee22ea956c19d298093f7ca4",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
-            "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
+            "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493"
           }
         }
-      ]
+      ],
+      "harnessContract": "cli-validation-v1"
     },
     {
       "name": "owner-aligned-judgment",
@@ -781,7 +792,8 @@
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           }
         }
-      ]
+      ],
+      "harnessContract": "cli-validation-v1"
     },
     {
       "name": "source-blind-behavior-proof",
@@ -820,7 +832,8 @@
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           }
         }
-      ]
+      ],
+      "harnessContract": "cli-validation-v1"
     },
     {
       "name": "product-video-truth-and-assets",
@@ -901,7 +914,8 @@
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           }
         }
-      ]
+      ],
+      "harnessContract": "cli-validation-v1"
     },
     {
       "name": "wp-product-docs-writer",
@@ -950,7 +964,8 @@
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           }
         }
-      ]
+      ],
+      "harnessContract": "cli-validation-v1"
     },
     {
       "name": "content-writer-search-visibility",
@@ -997,7 +1012,8 @@
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           }
         }
-      ]
+      ],
+      "harnessContract": "cli-validation-v1"
     },
     {
       "name": "content-writer-readability",
@@ -1053,7 +1069,8 @@
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           }
         }
-      ]
+      ],
+      "harnessContract": "cli-validation-v1"
     },
     {
       "name": "loop-steward-authority",
@@ -1099,7 +1116,8 @@
           }
         }
       ],
-      "sha256": "a41f285ad825e7cbb5fd941c24a433c3821581a7acb8d0138caed51d71558f8b"
+      "sha256": "a41f285ad825e7cbb5fd941c24a433c3821581a7acb8d0138caed51d71558f8b",
+      "harnessContract": "cli-validation-v1"
     },
     {
       "name": "wp-contributor-upstream-process",
@@ -1149,7 +1167,8 @@
           }
         }
       ],
-      "sha256": "99b5d936311dbfcddb49ca8ed13cb43e75a52eb77a80811237392ec76215c87f"
+      "sha256": "99b5d936311dbfcddb49ca8ed13cb43e75a52eb77a80811237392ec76215c87f",
+      "harnessContract": "cli-validation-v1"
     },
     {
       "name": "context-approach-continuity",
@@ -1161,7 +1180,7 @@
         "templates/project-hooks/README.md",
         "templates/project-hooks/hooks.json"
       ],
-      "sha256": "24a701d2b59007b6f241116c7dc290f53983c8a6e11a17461bc6af53a23d4e02",
+      "sha256": "89aaf4107a57de73c5e1ead59f90c7604a381614e385d29d3085d62aa901163b",
       "scenario": {
         "id": "context-approach-continuity",
         "files": [
@@ -1185,18 +1204,26 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/context-approach-continuity-2026-09-11-continuity.json",
-          "sha256": "e753b19bbb273eea0163699306f596cc5d1b1791614a8c1da5bc9439c044270b",
-          "testedRevision": "09a43e519087e48675fe64ce297089947d4ae063",
-          "testedSourceSha256": "24a701d2b59007b6f241116c7dc290f53983c8a6e11a17461bc6af53a23d4e02",
+          "runRecord": "skill-evals/run-records/context-approach-continuity-2026-09-12-astra.json",
+          "sha256": "ddd090c8f7e6de7d7cd3a42277cd3ee50e5acc2d32bc10a21fea3a9eaef84a46",
+          "testedRevision": "2e1db155dbe9188d535c6e734e6041d97b6ed938",
+          "testedSourceSha256": "89aaf4107a57de73c5e1ead59f90c7604a381614e385d29d3085d62aa901163b",
           "testedScenarioSha256": "15fe8d6e1c98cd377d1f39af05b23b099aa0f20aaa7f06c0d3d7fe90ead13eae",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
-            "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
+            "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493"
           }
         }
       ]
+    }
+  ],
+  "harnessCompatibility": [
+    {
+      "fromRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee",
+      "toRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493",
+      "validationSha256": "ba137bd25feea75f485ceacc21291b811c4eaa6194ca0b0dd126c92aac7f607d",
+      "evidencePointer": "skill-evals/astra-simplification-review.md"
     }
   ]
 }

@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "runId": "wordpress-visual-execution-2026-09-12-astra",
+  "scenario": "wordpress-visual-execution",
+  "result": "succeeded",
+  "startedAt": "2026-09-12T11:19:50.000Z",
+  "durationMs": 134000,
+  "checks": [
+    {
+      "name": "WordPress-native-ownership",
+      "result": "pass"
+    },
+    {
+      "name": "truthful-assets-and-claims",
+      "result": "pass"
+    },
+    {
+      "name": "exact-target-parity-authority",
+      "result": "pass"
+    },
+    {
+      "name": "responsive-accessibility-workflow-proof",
+      "result": "pass"
+    },
+    {
+      "name": "plugin-admin-customer-surface-routing",
+      "result": "pass"
+    },
+    {
+      "name": "plugin-exact-visual-routing",
+      "result": "pass"
+    },
+    {
+      "name": "structured-figma-source",
+      "result": "pass"
+    },
+    {
+      "name": "interactive-client-navigation-lifecycle",
+      "result": "pass"
+    },
+    {
+      "name": "wcag-multistep-flow",
+      "result": "pass"
+    },
+    {
+      "name": "WordPress-design-system-component-first",
+      "result": "pass"
+    },
+    {
+      "name": "emerging-interface-route-preserves-exact-proof",
+      "result": "pass"
+    },
+    {
+      "name": "immersive-editor-and-fallback-proof",
+      "result": "pass"
+    },
+    {
+      "name": "source-visual-intent-classification",
+      "result": "pass"
+    },
+    {
+      "name": "selected-target-source-model-before-code",
+      "result": "pass"
+    },
+    {
+      "name": "growth-redesign-brief-before-generation",
+      "result": "pass"
+    },
+    {
+      "name": "globalized-adaptive-interface-contract",
+      "result": "pass"
+    },
+    {
+      "name": "custom-interaction-pattern-contract",
+      "result": "pass"
+    },
+    {
+      "name": "enterprise-form-recovery",
+      "result": "pass"
+    },
+    {
+      "name": "browser-assistive-technology-matrix",
+      "result": "pass"
+    },
+    {
+      "name": "token-integrity-proof-provenance",
+      "result": "pass"
+    },
+    {
+      "name": "tailwind-wordpress-ownership-and-build-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "WordPress-typography-system",
+      "result": "pass"
+    },
+    {
+      "name": "parent-layout-before-child-nudge",
+      "result": "pass"
+    },
+    {
+      "name": "semantic-spatial-hierarchy",
+      "result": "pass"
+    },
+    {
+      "name": "independent-spatial-evaluation",
+      "result": "pass"
+    },
+    {
+      "name": "source-scale-calibration",
+      "result": "pass"
+    },
+    {
+      "name": "font-before-spacing",
+      "result": "pass"
+    },
+    {
+      "name": "global-styles-ownership",
+      "result": "pass"
+    },
+    {
+      "name": "separate-fidelity-gates",
+      "result": "pass"
+    },
+    {
+      "name": "proportional-token-tooling",
+      "result": "pass"
+    },
+    {
+      "name": "launched-token-consumers",
+      "result": "pass"
+    },
+    {
+      "name": "truthful-empty-and-pointer-alternative",
+      "result": "pass"
+    },
+    {
+      "name": "measured-ux-claims",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 33,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "wordpress-visual-execution-2026-09-12-astra",
+    "artifactPointer": "codex-fresh-agent:/root/astra_behavior_measured#2e1db155dbe9188d535c6e734e6041d97b6ed938"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-12T11:22:04.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Parent-scored fresh source-only decisions and actual recovery fixture retrieval. Shared batch interval is not execution cost. See astra-simplification-review.md. No native WordPress, compaction or token-savings proof."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}

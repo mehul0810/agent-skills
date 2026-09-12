@@ -118,7 +118,8 @@ check_shared_reference_reachability() {
 check_router_discipline() {
   require_text "wp-expert/SKILL.md" "clear tasks should trigger the specialist directly" "wp-expert narrow trigger wording"
   require_text "wp-expert/SKILL.md" "Auto-select the specialist by the task's primary artifact or outcome" "wp-expert auto specialist selection"
-  require_text "wp-plugin-expert/SKILL.md" "Use for WordPress plugin/product engineering" "plugin trigger description"
+  require_text "wp-plugin-expert/SKILL.md" "Build and fix WordPress plugins and plugin-owned UI" "plugin trigger description"
+  require_text "wp-plugin-expert/SKILL.md" "For focused security, performance or accessibility audits, use wp-quality-reviewer" "plugin focused-audit exclusion"
   require_text "wp-theme-expert/SKILL.md" "Use for WordPress theme engineering" "theme trigger description"
   require_text "wp-site-expert/SKILL.md" "Use for WordPress site engineering" "site trigger description"
   require_text "wp-quality-reviewer/SKILL.md" "Use for focused WordPress security, performance, modularity/maintainability, or accessibility audits and fixes" "quality reviewer trigger description"

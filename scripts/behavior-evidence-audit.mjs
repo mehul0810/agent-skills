@@ -362,12 +362,14 @@ export function auditBehaviorEvidence({
       ) {
         errors.push(`${baseline.name}: evidence is stale for current source or scenario`);
       }
+      const testedPin = harnessRevision(root, errors, evidence.testedRevision);
       if (
         evidence.runtime?.host !== "codex-desktop" ||
         evidence.runtime?.isolation !== "fresh-agent" ||
-        (evidence.runtime?.harnessRevision !== manifest.harnessRevision
+        evidence.runtime?.harnessRevision !== testedPin ||
+        (testedPin !== manifest.harnessRevision
           && !compatibleValidationRuntime({ root, baseline, evidence, manifest,
-            testedPin: harnessRevision(root, errors, evidence.testedRevision) }))
+            testedPin }))
       ) {
         errors.push(`${baseline.name}: current fresh-agent runtime binding is required`);
       }
@@ -589,6 +591,22 @@ function selfTest() {
     throw new Error("non-exact harness dependency was accepted");
   }
   fs.writeFileSync(path.join(root, "package.json"), validPackage);
+
+  const upgradedRevision = "b".repeat(40);
+  const upgradedDependency = dependency.replace(revision, upgradedRevision);
+  for (const packageFile of ["package.json", "package-lock.json"]) {
+    const packagePath = path.join(root, packageFile);
+    fs.writeFileSync(
+      packagePath,
+      fs.readFileSync(packagePath, "utf8").replaceAll(dependency, upgradedDependency),
+    );
+  }
+  manifest.harnessRevision = upgradedRevision;
+  manifest.baselines[0].evidence[0].runtime.harnessRevision = upgradedRevision;
+  writeFixture();
+  if (!run().some((error) => error.includes("current fresh-agent runtime binding"))) {
+    throw new Error("old tested evidence relabeled as the current harness was accepted");
+  }
 
   fs.rmSync(root, { recursive: true, force: true });
   console.log("behavior evidence audit self-test passed");

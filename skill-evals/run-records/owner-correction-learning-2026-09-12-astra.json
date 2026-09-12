@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "runId": "owner-correction-learning-2026-09-12-astra",
+  "scenario": "owner-correction-learning",
+  "result": "succeeded",
+  "startedAt": "2026-09-12T11:19:50.000Z",
+  "durationMs": 134000,
+  "checks": [
+    {
+      "name": "immediate-root-cause-correction",
+      "result": "pass"
+    },
+    {
+      "name": "compact-correction-result",
+      "result": "pass"
+    },
+    {
+      "name": "worker-candidate-only",
+      "result": "pass"
+    },
+    {
+      "name": "dedupe-and-repeatability-gate",
+      "result": "pass"
+    },
+    {
+      "name": "reviewed-durable-destination",
+      "result": "pass"
+    },
+    {
+      "name": "decision-envelope-preserved",
+      "result": "pass"
+    },
+    {
+      "name": "task-authorization-not-promoted",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 7,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "owner-correction-learning-2026-09-12-astra",
+    "artifactPointer": "codex-fresh-agent:/root/astra_behavior_measured#2e1db155dbe9188d535c6e734e6041d97b6ed938"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-12T11:22:04.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Parent-scored fresh source-only decisions and actual recovery fixture retrieval. Shared batch interval is not execution cost. See astra-simplification-review.md. No native WordPress, compaction or token-savings proof."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}
