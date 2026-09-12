@@ -1216,6 +1216,57 @@
           }
         }
       ]
+    },
+    {
+      "name": "scoped-review-workflow",
+      "files": [
+        "AGENTS.md",
+        "templates/operational-proof/README.md",
+        "templates/operational-proof/run.md",
+        "templates/project-hooks/activation-proof.md"
+      ],
+      "sha256": "2abd2ea2d1bf15cdbf49ae5df4bf744a452848b9ec555d6a224a8ef3944cc172",
+      "scenario": {
+        "id": "scoped-review-workflow",
+        "files": [
+          "skill-evals/scoped-review-workflow-scenarios.md"
+        ],
+        "anchors": [
+          "## Review Coverage And Restraint",
+          "## Reproducible Journey",
+          "## Linked Evidence And Visual Transfer",
+          "## Hook Activation Honesty"
+        ],
+        "sha256": "c3ec2ad278838bb033689d38078c307be4df9fbe5ec300eb581b39e12831d806"
+      },
+      "requiredChecks": [
+        "unreachable-route-detected",
+        "safe-route-move-preserved",
+        "runtime-relabel-rejected",
+        "truthful-blocked-report-accepted",
+        "unrelated-copy-restraint",
+        "ordinary-bug-retention",
+        "fixture-not-journey",
+        "timeout-no-production-reset",
+        "real-control-proof-accepted",
+        "schema-not-authority",
+        "destination-and-performance-proof",
+        "native-hook-honesty"
+      ],
+      "evidence": [
+        {
+          "runRecord": "skill-evals/run-records/scoped-review-workflow-2026-09-12.json",
+          "sha256": "611e7ed748b09ba43205d3212ca556f5395961b023b366d42abd92c7a28de853",
+          "testedRevision": "a41b3b3d4cc755d6df484d3a98285c6609ea6052",
+          "testedSourceSha256": "2abd2ea2d1bf15cdbf49ae5df4bf744a452848b9ec555d6a224a8ef3944cc172",
+          "testedScenarioSha256": "c3ec2ad278838bb033689d38078c307be4df9fbe5ec300eb581b39e12831d806",
+          "runtime": {
+            "host": "codex-desktop",
+            "isolation": "fresh-agent",
+            "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493"
+          }
+        }
+      ]
     }
   ],
   "harnessCompatibility": [

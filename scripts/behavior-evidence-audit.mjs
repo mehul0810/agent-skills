@@ -27,6 +27,7 @@ const MANDATORY_BASELINES = [
   "product-release-authority",
   "product-video-truth-and-assets",
   "source-blind-behavior-proof",
+  "scoped-review-workflow",
   "visual-evidence-assets",
   "wordpress-visual-execution",
   "wp-contributor-upstream-process",
