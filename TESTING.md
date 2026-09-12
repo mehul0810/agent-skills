@@ -33,6 +33,15 @@ Use `skill-evals/README.md`. Run changed-role scenarios with a fresh agent and r
 
 Green grep/structure audits do not prove the behavior is correct.
 
+For recurring multi-step product proof, adapt
+`templates/operational-proof/README.md` in the owning product. It separates fixture
+readiness from real-control journeys and links existing harness run records to
+private evidence. It is opt-in, not extra setup for small fixes. For repository
+review-rule changes, use `skill-evals/scoped-review-workflow-scenarios.md` and test
+safe counterexamples as well as violations and ordinary bugs.
+For native hook activation proof, use `templates/project-hooks/activation-proof.md`;
+it records existing boundaries without enabling hooks or changing trust.
+
 For design calibration, use `skill-evals/frontend-benchmark/README.md`. Give independent evaluators only its contract and rendered artifacts. Record detected/missed defects separately from deterministic smoke checks; the fixture is not native WordPress or production repair proof.
 
 For source-design implementation capability, run `skill-evals/frontend-benchmark/EXECUTION.md`: a frozen held-out target, fresh native WordPress implementation, independent fidelity and UI-only author proof, and bounded repair. Report actual failed/blocked gates; a discrimination or persistence-only pass does not satisfy this execution test.

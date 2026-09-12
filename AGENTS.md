@@ -26,3 +26,12 @@ Add a top-level skill only for a recurring portable workflow, tool boundary, or 
 ## Review Priorities
 
 Findings first: unsafe authority, lost expertise/reachability, wrong routing, unverified claims, missing proof, token-route regressions, and stale transient policy. Avoid broad wording churn when a router, deterministic audit, or scenario closes the gap more cheaply.
+
+## Code Review Rules
+
+- **Reachable expertise:** When shortening a skill or moving a reference, preserve a reachable route for each retained capability. A smaller kernel is safe when the owning router still reaches the detail; flag removed or misleading routes, not wording changes alone. Safe path: update callers and prove the affected route with a fresh scenario.
+- **Evidence identity:** Changes to baselines, runtime compatibility or proof claims must preserve the original tested revision, artifact identity and limitations. A passing fixture or adapter cannot establish native execution. Safe path: keep historical evidence labeled, use the explicit dependency receipt where eligible, or run fresh proof. Do not flag a correctly labeled blocked or inconclusive result as dishonest success.
+
+These rules supplement ordinary bug review, not replace it. Cite the applicable
+rule and concrete changed location for a rule-based finding. Leave safe exceptions
+and unrelated changes alone; keep mechanical formatting checks in validation.
