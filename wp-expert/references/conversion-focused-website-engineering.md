@@ -65,7 +65,7 @@ Use these as conditional examples, not mandatory layouts. Preserve approved bran
 - On mobile, review decision order as well as stacking: when the promise, evidence, price conditions, and action become available; whether comparisons remain understandable; and whether sticky controls obscure content or focus.
 - Record inspected URL/artifact, viewport, state, CTA destination, result, and untested steps in the existing proof record. Screenshots prove visible states, not successful submission, user comprehension, or conversion uplift. Use synthetic safe journeys for forms; do not submit live inquiries just to test a reference site.
 
-Evaluate materially changed journeys with contrasting cases in `skill-evals/conversion-journey-scenarios.md` from the repository root. Deterministic checks can verify evidence fields and artifact identity, not subjective design quality; keep hooks out of taste scoring.
+For materially changed journeys, test the visitor's actual next step with the project's available proof tooling. Deterministic checks can verify evidence fields and artifact identity, not subjective design quality; keep hooks out of taste scoring. Missing tooling or unrun steps remain explicit proof gaps, not prerequisites to invent a new harness.
 
 ## WordPress Implementation Rules
 

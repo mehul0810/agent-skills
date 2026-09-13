@@ -33,6 +33,16 @@ Use `skill-evals/README.md`. Run changed-role scenarios with a fresh agent and r
 
 Green grep/structure audits do not prove the behavior is correct.
 
+For conversion-guidance changes, use `skill-evals/conversion-journey-scenarios.md`.
+This is repository evaluation infrastructure, not an installed-skill dependency.
+Supplement decision cases with a fresh rendered journey: supply only a frozen
+brief and rendered candidate to the independent reviewer, retain safe
+counterexamples, and record detected defects, missed defects, and false positives.
+Use the existing visual-proof capture fields for viewport/state/identity and
+workflow evidence for the actual CTA destination, result, and untested steps.
+An incomplete pilot stays incomplete; a static analogue cannot pass native
+WordPress authoring, and a rendered pass cannot establish business impact.
+
 For recurring multi-step product proof, adapt
 `templates/operational-proof/README.md` in the owning product. It separates fixture
 readiness from real-control journeys and links existing harness run records to
