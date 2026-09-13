@@ -502,6 +502,11 @@
   ],
   "scenarios": [
     {
+      "name": "Conversion Journey",
+      "file": "skill-evals/conversion-journey-scenarios.md",
+      "requiredPhrases": ["# Conversion Journey Scenarios", "## Contrasting Decision Paths", "## Destination And Evidence Counterexamples", "## Evidence Boundary"]
+    },
+    {
       "name": "Context and approach decisions",
       "file": "skill-evals/context-decision-scenarios.md",
       "requiredPhrases": ["Material Approach Choice", "Source-Bound Recovery", "Model And Hook Boundaries"]
