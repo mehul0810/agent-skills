@@ -40,6 +40,22 @@ Map before judging:
    - Vulnerable/abandoned dependencies, risky install scripts, and production packages containing dev tooling or secrets.
 5. Establish actor, precondition, reachable path, affected data/action, exploitability, and confidence. Keep speculative items labeled as hypotheses.
 
+For broad audits, track surface, trust boundary, relevant source revision, evidence and reviewed/blocked/deferred/out-of-scope disposition in the existing review record. A prior pass applies only to unchanged relevant paths and conditions; unresolved leads never count as covered. Reserve time for verification instead of spending the entire audit on discovery. Routine scoped fixes do not require multi-wave hunting.
+
+Before confirming a material vulnerability, use an independent source-aware reviewer to try to disprove its reachability, attacker control and impact, including upstream/downstream controls. If another layer prevents the attack, distinguish optional hardening from a vulnerability. Keep an unresolved lead in proof gaps with its exact missing fact and next safe check, without a definitive severity; do not force it into the formal report's severity-bearing findings. Rejected claims need a reason, not a security fix.
+
+## AI And Data Lifecycle Boundaries
+
+Apply only when the product has these surfaces:
+
+- For AI/tool actions, compare the final normalized tool, arguments, resource, requester and execution identity with the intentional request or approval. Recheck binding at queued execution, retry, resume and batch side effects; valid generic permissions do not authorize a changed or duplicate action.
+- Trace untrusted retrieval, tool responses and memory writes to later readers and privileged sinks. Verify tenant/ACL filtering and handler-side authorization. Prompt injection alone is not a finding; require unauthorized disclosure, authority use or an unrequested action. User-owned memory serving that user's intentional allowed request is a safe counterexample.
+- Follow protected data through primary storage, cache, search, exports, jobs and backups. Test role downgrade, deletion, revocation and restore against the product's stated guarantees, including queued work that recreates deleted state. Use dummy principals; an unavailable external retention or storage policy is a proof gap, not a confirmed violation.
+
+## Potentially Hostile Target Execution
+
+Source inspection can remain read-only. Before executing potentially hostile target builds, fixtures or processes, verify OS-enforced isolation: no external networking, sanitized allowlisted environment without ambient credentials, read-only source/toolchain with task-owned scratch writes, and bounded CPU, memory, processes, disk and wall time. A temporary directory, loopback listener or instruction to behave safely is not that isolation. If controls are unavailable, do not execute the target; report the missing capability and safe validation plan. Keep evidence outside target-writable paths, promote only bounded verified regular files after processes stop, and reject links or special files. Do not probe production or exhaust shared services. These audit controls do not impose a new harness on ordinary trusted development tests.
+
 ## Authorization And Abuse Contracts
 
 For a route or action that reads or mutates objects, sites, tenants, or privileged functions, record a compact actor x action x resource matrix with expected and observed allow/deny decisions and concrete proof. Cover REST, admin, CLI, webhook, and AI/tool surfaces; test object-property and function-level authorization, not only whether a user is logged in.
