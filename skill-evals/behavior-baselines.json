@@ -385,7 +385,7 @@
         "wp-quality-reviewer/scripts/validate-review-report.mjs",
         "wp-quality-reviewer/scripts/accessibility-audit.mjs"
       ],
-      "sha256": "5a2d0e31a2b18c6493bb54e39033b57507d2caad0abcda492bf1b88453d567a4",
+      "sha256": "b3a180be90b641137dd87c2d903d6bf5fb0d85050bcf486d65d166c5ab325dcf",
       "scenario": {
         "id": "multi-domain-release-quality-review",
         "files": [
@@ -402,9 +402,12 @@
           "Formal report validation",
           "Formal AA evidence boundary",
           "AA input and authentication exceptions",
-          "Measurable AA visual and media proof"
+          "Measurable AA visual and media proof",
+          "AI action and memory boundaries",
+          "Lifecycle and unresolved evidence",
+          "Hostile execution and partial coverage"
         ],
-        "sha256": "f0e591cdcda264d4f78e9a35901d4e93d449318caf237509c49b6dbc20eafb7c"
+        "sha256": "dc871ec228dc5f669cf046b3719b6c9193ee3d1b17d9a11588f6eddfee9d1a25"
       },
       "requiredChecks": [
         "compact-multi-domain-route",
@@ -441,19 +444,25 @@
         "scope-derived-risk-and-capacity-proof",
         "migration-and-legacy-evidence-proof",
         "accessibility-automated-manual-proof",
-        "semantic-proof-authenticity"
+        "semantic-proof-authenticity",
+        "ai-action-intent-binding",
+        "retrieval-memory-principal-isolation",
+        "lifecycle-revocation-restore",
+        "unresolved-lead-and-safe-counterexample",
+        "hostile-execution-isolation",
+        "partial-coverage-honesty"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-09-11-continuity.json",
-          "sha256": "21f0b389c2bda1ad210b109728fe915da709fdb0d6e997f58b816a91f7c1127e",
-          "testedRevision": "09a43e519087e48675fe64ce297089947d4ae063",
-          "testedSourceSha256": "5a2d0e31a2b18c6493bb54e39033b57507d2caad0abcda492bf1b88453d567a4",
-          "testedScenarioSha256": "f0e591cdcda264d4f78e9a35901d4e93d449318caf237509c49b6dbc20eafb7c",
+          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-09-15-security.json",
+          "sha256": "0358af95cb8b8a00e4e264e750f658331a9fc19c7e0867ae3093a0125444d899",
+          "testedRevision": "e24b49f56cd3e848aaaccaeb88db07c56805b03c",
+          "testedSourceSha256": "b3a180be90b641137dd87c2d903d6bf5fb0d85050bcf486d65d166c5ab325dcf",
+          "testedScenarioSha256": "dc871ec228dc5f669cf046b3719b6c9193ee3d1b17d9a11588f6eddfee9d1a25",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
-            "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
+            "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493"
           }
         }
       ],
