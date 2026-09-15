@@ -66,7 +66,7 @@
         "wp-expert/references/visual-parity-regression.md",
         "wp-expert/references/wordpress-design-system.md"
       ],
-      "sha256": "d03f8f1a294ea0ab772371db1aa97f34af7c81c855f1abaa354a3cdb56cedfcb",
+      "sha256": "31eb79f1c8081c16dd149147d572591d2c45ccef382ae023f4e897812588421b",
       "scenario": {
         "id": "premium-enterprise-design-experience",
         "files": [
@@ -129,15 +129,15 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/design-experience-routing-2026-09-11-continuity.json",
-          "sha256": "086d058db5874e37f2bf9a7c2fe360cbb4805a5ec352d05b0a3d85e517d7af92",
-          "testedRevision": "09a43e519087e48675fe64ce297089947d4ae063",
-          "testedSourceSha256": "d03f8f1a294ea0ab772371db1aa97f34af7c81c855f1abaa354a3cdb56cedfcb",
+          "runRecord": "skill-evals/run-records/design-experience-routing-2026-09-15-reference-adoption.json",
+          "sha256": "b6ec9191942c25b1a867595be149a06addd51a92e40fdb52c7e7ad5d308aec9f",
+          "testedRevision": "3fd289ddc1aa0bfe7462c490db30b91619450679",
+          "testedSourceSha256": "31eb79f1c8081c16dd149147d572591d2c45ccef382ae023f4e897812588421b",
           "testedScenarioSha256": "168416f3f9957a78a16ab3339fa253bfee79efd81d322b10c662d9244b63e12d",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
-            "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
+            "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493"
           }
         }
       ],

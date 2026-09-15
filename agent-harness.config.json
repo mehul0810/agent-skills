@@ -658,6 +658,11 @@
       "requiredPhrases": ["# Scoped Review And Workflow Scenarios", "## Review Coverage And Restraint", "## Reproducible Journey", "## Linked Evidence And Visual Transfer", "## Hook Activation Honesty"]
     },
     {
+      "name": "Reference Design Adoption",
+      "file": "skill-evals/reference-design-adoption-scenarios.md",
+      "requiredPhrases": ["# Reference Design Adoption Scenarios", "## Conflicting Gallery Export", "## Equal-Content Direction Comparison", "## Approved Target Safe Counterexample"]
+    },
+    {
       "name": "Astra Simplification Pilot",
       "file": "skill-evals/astra-simplification-scenarios.md",
       "requiredPhrases": ["# Astra Simplification Pilot", "## Discovery Before Loading", "## Direct Execution And Safe Completion", "## Dependency And Recovery Boundaries", "## Paired Execution Evidence"]
