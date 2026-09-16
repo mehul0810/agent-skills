@@ -30,6 +30,19 @@ Give borders, radius and shadows semantic roles: separation, interactive boundar
 
 ## 2. Choose Layout By Relationship
 
+### Visual Refinement Pass
+
+When refinement is in scope, inspect hierarchy, grouping, typography, surfaces, imagery, then details. Diagnose the competing relationship before adding decoration; this is not permission to redesign an approved target.
+
+- If a heading or action is lost, first reduce unnecessary weight, surface contrast, or boxing around competing content rather than enlarging it again. Keep secondary text readable and interactive boundaries/focus visible; pale text is not a universal solution.
+- Example: a loud sidebar and boxed content compete. Test a quieter sidebar surface while retaining navigation state and contrast. Preserve a strong sidebar when navigation or the approved design requires it.
+- Keep labels closer to their own controls than adjacent groups. Do not replace visible form labels with placeholders. In read-only summaries, combine related values into meaningful phrases only when units, context, comparison and assistive-technology reading remain clear; sortable data may need separate columns.
+- Action importance and consequence are separate. A rare destructive action need not dominate the everyday screen, but its label, consequence and required confirmation remain explicit. Never hide danger to achieve visual restraint.
+- Use spacing or surface contrast instead of redundant borders only if grouping remains clear. Keep useful table separators, input boundaries and forced-color affordances. Elevation should consistently express overlays, drag state or depth, not random card decoration.
+- Inspect imagery at its actual placement size. Prefer a truthful workflow crop or appropriate responsive capture over an unreadable whole-app thumbnail. Label simplified illustrations as illustrations; do not alter factual screenshots or remove material context. Choose icons for their optical size rather than assuming vector scalability guarantees balance. Stress author-uploaded aspect ratios and focal points without cropping away essential information.
+
+Use original before/after examples with the same content and task. Preserve semantic headings, native controls, intentional density, and accessible contrast. These heuristics neither ban grids/borders nor prove usability or conversion lift.
+
 - Use Grid for two-dimensional tracks, Flex/Row for one-dimensional distribution, and flow/Stack for reading sequences. Compose axes rather than overloading one primitive.
 - Prefer `gap`, intrinsic sizing, `minmax()`, wrapping, logical properties, and block supports. Avoid negative margins, fixed variable-content heights, DOM-order tricks, and viewport offsets.
 - Use subgrid when supported by the repository's browser policy and repeated child content must share parent tracks. Use container queries when a component responds to its available space rather than the viewport.

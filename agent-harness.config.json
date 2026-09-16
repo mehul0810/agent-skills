@@ -658,6 +658,11 @@
       "requiredPhrases": ["# Scoped Review And Workflow Scenarios", "## Review Coverage And Restraint", "## Reproducible Journey", "## Linked Evidence And Visual Transfer", "## Hook Activation Honesty"]
     },
     {
+      "name": "Visual Refinement",
+      "file": "skill-evals/visual-refinement-scenarios.md",
+      "requiredPhrases": ["# Visual Refinement Scenarios", "## Competing Actions And Grouping", "## Intentional Density And Borders", "## Exact Target Safe Exception"]
+    },
+    {
       "name": "Reference Design Adoption",
       "file": "skill-evals/reference-design-adoption-scenarios.md",
       "requiredPhrases": ["# Reference Design Adoption Scenarios", "## Conflicting Gallery Export", "## Equal-Content Direction Comparison", "## Approved Target Safe Counterexample"]
