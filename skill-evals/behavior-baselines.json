@@ -27,7 +27,10 @@
         "anchors": [
           "Elevated enterprise runtime assurance"
         ],
-        "sha256": "3d842125a654c717b1b68f1fe273d32f8bf4ac54bae26ac39dbacefb0f92eb84"
+        "sha256": "3d842125a654c717b1b68f1fe273d32f8bf4ac54bae26ac39dbacefb0f92eb84",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [],
+        "contractSha256": "db0ee9416c99f16195b4f4b82f99bf2532082a8def0e1019b56b799fd4f4bb27"
       },
       "requiredChecks": [
         "elevated-risk-classification",
@@ -47,7 +50,8 @@
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493"
-          }
+          },
+          "testedScenarioContractSha256": "db0ee9416c99f16195b4f4b82f99bf2532082a8def0e1019b56b799fd4f4bb27"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -98,7 +102,10 @@
           "Browser And Assistive Technology Matrix",
           "Token Integrity And Proof Provenance"
         ],
-        "sha256": "168416f3f9957a78a16ab3339fa253bfee79efd81d322b10c662d9244b63e12d"
+        "sha256": "168416f3f9957a78a16ab3339fa253bfee79efd81d322b10c662d9244b63e12d",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [],
+        "contractSha256": "a37930917308fe2a7b64a8715c9cdda223e12b4d0af6d9e6117cd324a5895025"
       },
       "requiredChecks": [
         "greenfield-taste-route",
@@ -138,7 +145,8 @@
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493"
-          }
+          },
+          "testedScenarioContractSha256": "a37930917308fe2a7b64a8715c9cdda223e12b4d0af6d9e6117cd324a5895025"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -211,7 +219,10 @@
           "an API failure is displayed",
           "an agent likes a redesigned checkout"
         ],
-        "sha256": "85be7001fd84adbca587bb6418c1923095a34abccb6b0145ef1abd4f566c78fd"
+        "sha256": "85be7001fd84adbca587bb6418c1923095a34abccb6b0145ef1abd4f566c78fd",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [],
+        "contractSha256": "1bb669c96e5276800357c4b60c9c189d6290711a679a765a57be567791e4336e"
       },
       "requiredChecks": [
         "WordPress-native-ownership",
@@ -259,7 +270,8 @@
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493"
-          }
+          },
+          "testedScenarioContractSha256": "1bb669c96e5276800357c4b60c9c189d6290711a679a765a57be567791e4336e"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -291,7 +303,10 @@
           "Fixed Defect Requires Reproof",
           "Independent Spatial Proof Rejects A Polished Near Miss"
         ],
-        "sha256": "970762a1435091dfad3cde6c2de78bcdd5581c016fda2d9ca0bec68d0dac849c"
+        "sha256": "970762a1435091dfad3cde6c2de78bcdd5581c016fda2d9ca0bec68d0dac849c",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [],
+        "contractSha256": "2c7fd2552314c5f540a36329e95a526e4523b6081b70aa3ab17d4679681b62c5"
       },
       "requiredChecks": [
         "structured-visual-proof-rejection",
@@ -314,7 +329,8 @@
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
-          }
+          },
+          "testedScenarioContractSha256": "2c7fd2552314c5f540a36329e95a526e4523b6081b70aa3ab17d4679681b62c5"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -339,7 +355,10 @@
           "Conflicting mutable ownership",
           "Graph source identity"
         ],
-        "sha256": "146b415525abf0c551e9f8a7e12d118d434e534e368ab728bc8bd921cc23793c"
+        "sha256": "146b415525abf0c551e9f8a7e12d118d434e534e368ab728bc8bd921cc23793c",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [],
+        "contractSha256": "a83511440506aff519d4148f4be15c8313b9f7442cd333d5a13455444b1391ae"
       },
       "requiredChecks": [
         "one-brief-maximum-three-questions",
@@ -366,7 +385,8 @@
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
-          }
+          },
+          "testedScenarioContractSha256": "a83511440506aff519d4148f4be15c8313b9f7442cd333d5a13455444b1391ae"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -407,7 +427,10 @@
           "Lifecycle and unresolved evidence",
           "Hostile execution and partial coverage"
         ],
-        "sha256": "dc871ec228dc5f669cf046b3719b6c9193ee3d1b17d9a11588f6eddfee9d1a25"
+        "sha256": "dc871ec228dc5f669cf046b3719b6c9193ee3d1b17d9a11588f6eddfee9d1a25",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [],
+        "contractSha256": "49884542d7a3566141313ffeb2f5cba9f68d462acc33fafa2352b190a401e5c0"
       },
       "requiredChecks": [
         "compact-multi-domain-route",
@@ -463,7 +486,8 @@
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493"
-          }
+          },
+          "testedScenarioContractSha256": "49884542d7a3566141313ffeb2f5cba9f68d462acc33fafa2352b190a401e5c0"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -484,7 +508,10 @@
         "anchors": [
           "Automatic specialist selection"
         ],
-        "sha256": "5964fa0002f260ea2ed1ecdf40a842bc6a5548173fca1f1b38adfa16b713693d"
+        "sha256": "5964fa0002f260ea2ed1ecdf40a842bc6a5548173fca1f1b38adfa16b713693d",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [],
+        "contractSha256": "890e5fba206963169f20262894a92c46c8d2edb6f89fcbb9c53c5286e5885a04"
       },
       "requiredChecks": [
         "direct-plugin-specialist",
@@ -503,7 +530,8 @@
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
-          }
+          },
+          "testedScenarioContractSha256": "890e5fba206963169f20262894a92c46c8d2edb6f89fcbb9c53c5286e5885a04"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -543,7 +571,10 @@
           "Automatic reconciled archive",
           "Failed proof correction"
         ],
-        "sha256": "adc694ebf95c5e99f1cf6863325e98fcf92a6e14ad7b6bb2f57dca0ae37c469f"
+        "sha256": "adc694ebf95c5e99f1cf6863325e98fcf92a6e14ad7b6bb2f57dca0ae37c469f",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [],
+        "contractSha256": "2eae1575eaf837cf2af20eaa11f325781c32a5b9dcc0d3f95a59621779c84097"
       },
       "requiredChecks": [
         "planner-discovery-packet",
@@ -581,7 +612,8 @@
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
-          }
+          },
+          "testedScenarioContractSha256": "2eae1575eaf837cf2af20eaa11f325781c32a5b9dcc0d3f95a59621779c84097"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -602,7 +634,10 @@
           "Feature value recommendation",
           "Mandatory work is not score-gated"
         ],
-        "sha256": "52c0b2cb69237e9f1d472448ca912993d5e549eb4c6fc8602cab15beff2581c8"
+        "sha256": "52c0b2cb69237e9f1d472448ca912993d5e549eb4c6fc8602cab15beff2581c8",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [],
+        "contractSha256": "ef8428b23b5a222820ff080477990391309f469171bcb3c6f7faca9e882e31a8"
       },
       "requiredChecks": [
         "user-outcome-specificity",
@@ -629,7 +664,8 @@
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
-          }
+          },
+          "testedScenarioContractSha256": "ef8428b23b5a222820ff080477990391309f469171bcb3c6f7faca9e882e31a8"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -670,7 +706,10 @@
           "Plugin milestone release contract",
           "Temporary negative preference"
         ],
-        "sha256": "415eb151638237bf0c9a4cc09f6462e4f028386f88256125e0f3b8369c87f34e"
+        "sha256": "415eb151638237bf0c9a4cc09f6462e4f028386f88256125e0f3b8369c87f34e",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [],
+        "contractSha256": "29a9087cebfab5f9a1e9e36e5eeee6a34f7153411deb84c32dc98a2a54698946"
       },
       "requiredChecks": [
         "latest-published-release-preflight",
@@ -706,7 +745,8 @@
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
-          }
+          },
+          "testedScenarioContractSha256": "29a9087cebfab5f9a1e9e36e5eeee6a34f7153411deb84c32dc98a2a54698946"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -728,7 +768,10 @@
           "Owner visual correction",
           "Scoped owner direction"
         ],
-        "sha256": "b73d82e24abe107bee6eca83f4cfb99e0cb14d7bee22ea956c19d298093f7ca4"
+        "sha256": "b73d82e24abe107bee6eca83f4cfb99e0cb14d7bee22ea956c19d298093f7ca4",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [],
+        "contractSha256": "9a989d0ede52c82ed7142f57b84f4cb5266bbe9394b81ece9b6126694139641d"
       },
       "requiredChecks": [
         "immediate-root-cause-correction",
@@ -750,7 +793,8 @@
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493"
-          }
+          },
+          "testedScenarioContractSha256": "9a989d0ede52c82ed7142f57b84f4cb5266bbe9394b81ece9b6126694139641d"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -776,7 +820,10 @@
           "Exact supplied values",
           "Enterprise without overengineering"
         ],
-        "sha256": "54b4ae2bce4d363eecee4fad87a2b5e39ae29e0c98c722ac773dc9447afc6d02"
+        "sha256": "54b4ae2bce4d363eecee4fad87a2b5e39ae29e0c98c722ac773dc9447afc6d02",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [],
+        "contractSha256": "2524767524515f299af794712c4237b4dc3b9d1828611196b38fa64a7967b84b"
       },
       "requiredChecks": [
         "live-product-contract-precedence",
@@ -799,7 +846,8 @@
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
-          }
+          },
+          "testedScenarioContractSha256": "2524767524515f299af794712c4237b4dc3b9d1828611196b38fa64a7967b84b"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -819,7 +867,10 @@
         "anchors": [
           "Settings persistence"
         ],
-        "sha256": "95f6f1b3a29e29ad610fb4306f0130bfd212524f1b935513d6630d563beffb1e"
+        "sha256": "95f6f1b3a29e29ad610fb4306f0130bfd212524f1b935513d6630d563beffb1e",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [],
+        "contractSha256": "c9b081700a8d9b824d654907669f50d362bf940a990e957185ceee571e0b283d"
       },
       "requiredChecks": [
         "source-context-excluded",
@@ -839,7 +890,8 @@
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
-          }
+          },
+          "testedScenarioContractSha256": "c9b081700a8d9b824d654907669f50d362bf940a990e957185ceee571e0b283d"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -882,7 +934,10 @@
           "Evidence-led YouTube learning",
           "Publication boundary"
         ],
-        "sha256": "f2d692d2d23ba1e720d928a4937611cd127ff320982077bbb53f8899578602a4"
+        "sha256": "f2d692d2d23ba1e720d928a4937611cd127ff320982077bbb53f8899578602a4",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [],
+        "contractSha256": "a773c1d3b712eadc9f6619f4d86efa9be2aab6dbd7c26a3bf597147d28d6c061"
       },
       "requiredChecks": [
         "automatic-specialist-routing",
@@ -921,7 +976,8 @@
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
-          }
+          },
+          "testedScenarioContractSha256": "a773c1d3b712eadc9f6619f4d86efa9be2aab6dbd7c26a3bf597147d28d6c061"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -948,7 +1004,10 @@
           "Marketing boundary",
           "Publication boundary"
         ],
-        "sha256": "ee6567ec57375f13ef7a284bc086164cd3fc42dee81b96a906f9dcf29ba13029"
+        "sha256": "ee6567ec57375f13ef7a284bc086164cd3fc42dee81b96a906f9dcf29ba13029",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [],
+        "contractSha256": "f197f0362db44457f1f5b9fed6de72eb99bf1eb30739ebc6510ac48d983785ee"
       },
       "requiredChecks": [
         "exact-artifact-and-evidence-range",
@@ -971,7 +1030,8 @@
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
-          }
+          },
+          "testedScenarioContractSha256": "f197f0362db44457f1f5b9fed6de72eb99bf1eb30739ebc6510ac48d983785ee"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -995,7 +1055,10 @@
           "Programmatic Content Scale",
           "Crawler And Training Privacy"
         ],
-        "sha256": "7fc19d19e43a3fa241c4de6dd606b4cc808b765d2ec0a0f85a0093f685906d22"
+        "sha256": "7fc19d19e43a3fa241c4de6dd606b4cc808b765d2ec0a0f85a0093f685906d22",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [],
+        "contractSha256": "4ff61af96c7c3a0cfa7e417e167e39f3a6d47f8266afbe6814823322dc22472e"
       },
       "requiredChecks": [
         "terminology-provider-boundary",
@@ -1019,7 +1082,8 @@
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
-          }
+          },
+          "testedScenarioContractSha256": "4ff61af96c7c3a0cfa7e417e167e39f3a6d47f8266afbe6814823322dc22472e"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -1049,7 +1113,10 @@
           "Reader Test Is Not Agent Opinion",
           "Simplification Preserves Warning"
         ],
-        "sha256": "21891fb1a617782e3b9de3fd71d17ef57ae6dcb22d8503dadd2cf498c2e5f92e"
+        "sha256": "21891fb1a617782e3b9de3fd71d17ef57ae6dcb22d8503dadd2cf498c2e5f92e",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [],
+        "contractSha256": "145d71f8a4d725cf01f4ee043b86825d2315607eeb3a8220669c37281a42cf20"
       },
       "requiredChecks": [
         "audience-task-calibration",
@@ -1076,7 +1143,8 @@
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
-          }
+          },
+          "testedScenarioContractSha256": "145d71f8a4d725cf01f4ee043b86825d2315607eeb3a8220669c37281a42cf20"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -1100,7 +1168,10 @@
           "Missing required check",
           "Authority expansion"
         ],
-        "sha256": "ccb431d8dc24dde902d53f9a6b24ca19769efd2ac88e76c46da998490e04955f"
+        "sha256": "ccb431d8dc24dde902d53f9a6b24ca19769efd2ac88e76c46da998490e04955f",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [],
+        "contractSha256": "eb09df805c2429bf08891d5cb32315d0813eecf1a5f96a08eb725ac0544aca42"
       },
       "requiredChecks": [
         "live-policy-preflight",
@@ -1122,7 +1193,8 @@
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
-          }
+          },
+          "testedScenarioContractSha256": "eb09df805c2429bf08891d5cb32315d0813eecf1a5f96a08eb725ac0544aca42"
         }
       ],
       "sha256": "a41f285ad825e7cbb5fd941c24a433c3821581a7acb8d0138caed51d71558f8b",
@@ -1152,7 +1224,10 @@
           "Security report",
           "AI-assisted contribution"
         ],
-        "sha256": "47b471dd9c95b853d2807dce0cd76b07480b0d99797b5255128ef8ec8aa508f1"
+        "sha256": "47b471dd9c95b853d2807dce0cd76b07480b0d99797b5255128ef8ec8aa508f1",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [],
+        "contractSha256": "6b32157fa57a88005a14fab93ed95e3d7075b1206e4f097a93d50a923f887796"
       },
       "requiredChecks": [
         "live-upstream-state",
@@ -1173,7 +1248,8 @@
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
-          }
+          },
+          "testedScenarioContractSha256": "6b32157fa57a88005a14fab93ed95e3d7075b1206e4f097a93d50a923f887796"
         }
       ],
       "sha256": "99b5d936311dbfcddb49ca8ed13cb43e75a52eb77a80811237392ec76215c87f",
@@ -1200,7 +1276,10 @@
           "## Source-Bound Recovery",
           "## Model And Hook Boundaries"
         ],
-        "sha256": "15fe8d6e1c98cd377d1f39af05b23b099aa0f20aaa7f06c0d3d7fe90ead13eae"
+        "sha256": "15fe8d6e1c98cd377d1f39af05b23b099aa0f20aaa7f06c0d3d7fe90ead13eae",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [],
+        "contractSha256": "729da0443ad04d91485c6e8dcab3faaeb450b4f3ba55e5835e8eff7701c3231f"
       },
       "requiredChecks": [
         "holistic-probe",
@@ -1222,7 +1301,8 @@
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493"
-          }
+          },
+          "testedScenarioContractSha256": "729da0443ad04d91485c6e8dcab3faaeb450b4f3ba55e5835e8eff7701c3231f"
         }
       ]
     },
@@ -1246,7 +1326,10 @@
           "## Linked Evidence And Visual Transfer",
           "## Hook Activation Honesty"
         ],
-        "sha256": "c3ec2ad278838bb033689d38078c307be4df9fbe5ec300eb581b39e12831d806"
+        "sha256": "c3ec2ad278838bb033689d38078c307be4df9fbe5ec300eb581b39e12831d806",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [],
+        "contractSha256": "e917f801dc0feaaab10e07765be24894d6e792a3695779fe6305bf81e0bd7d3f"
       },
       "requiredChecks": [
         "unreachable-route-detected",
@@ -1273,7 +1356,8 @@
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493"
-          }
+          },
+          "testedScenarioContractSha256": "e917f801dc0feaaab10e07765be24894d6e792a3695779fe6305bf81e0bd7d3f"
         }
       ]
     }

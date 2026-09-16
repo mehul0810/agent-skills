@@ -4,7 +4,9 @@
 
 Give a fresh reviewer only the rendered `frontend-benchmark/refinement.html`, the primary task (save routing), and the request to identify actionable visual problems without redesigning the product. No source or author key.
 
-Evaluator-side acceptance: detect destructive action competing with primary save, ambiguous equal label/control grouping, and unreadable small product illustration. Preserve explicit deletion consequences/confirmation, visible labels and semantic heading order. Recommend truthful crop or useful display size, not invented product evidence. Record each detected/missed issue and false positive.
+Evaluator-side acceptance: detect destructive action competing with primary save and unreadable small product illustration. Equal spacing in this original fixture is a disputed heuristic, not a required defect. Preserve explicit deletion consequences/confirmation, visible labels and semantic heading order. Recommend truthful crop or useful display size, not invented product evidence. Record each detected/missed issue and false positive. Historical 2/3 scores remain historical, not retroactively upgraded.
+
+For label-association calibration, render `frontend-benchmark/grouping.html`. Give only its screenshots and the task of entering a sender email and retry delay. Configuration A visibly associates labels with the wrong value types; B retains correct meanings with equal spacing. Accept detecting A and preserving B; a spacing preference without task ambiguity is advisory, not a failure. This isolates semantic association from an arbitrary gap ratio. Neither fixture establishes real-user confusion rates.
 
 ## Intentional Density And Borders
 

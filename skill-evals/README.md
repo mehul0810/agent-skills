@@ -2,6 +2,8 @@
 
 Scenario files are behavioral specifications, not executed tests. Grep-based audits only verify coverage exists.
 
+For fresh runs, use [packet-contract.md](packet-contract.md) to separate evaluator inputs from scoring criteria and freeze an allowlisted artifact manifest. Mixed scenario Markdown is author-side material, not a blind evaluator packet.
+
 For any change that alters authority, routing, release behavior, hallucination controls, design execution, or owner-correction learning:
 
 1. Run structural validation.

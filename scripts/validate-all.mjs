@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { validationPython } from './validation-python.mjs';
 
 if (Number(process.versions.node.split('.')[0]) !== 24) {
   console.error(`Node 24 required by package.json/.nvmrc; found ${process.versions.node}. Activate the repository runtime before validation.`);
@@ -8,13 +9,23 @@ if (Number(process.versions.node.split('.')[0]) !== 24) {
 }
 
 const cwd = fileURLToPath(new URL('..', import.meta.url));
+let python;
+try {
+  python = validationPython();
+} catch (error) {
+  console.error(`FAIL Python runtime: ${error.message}`);
+  process.exit(1);
+}
+console.log(`PASS Python runtime: ${JSON.stringify(python.executable)} (${python.version})`);
 // The reference gate owns domain audits; do not rerun them in this aggregate.
 const checks = [
   ['Diff', 'git', ['diff', '--check']],
+  ['Validation Python regression', 'node', ['scripts/test-validation-python.mjs']],
+  ['Evaluation packet regression', 'node', ['scripts/test-eval-packet.mjs']],
   ['Continuity hook regression', 'node', ['scripts/test-continuity-hook.mjs']],
   ['Harness dependency compatibility', 'node', ['scripts/test-harness-runtime-fingerprint.mjs']],
-  ['Agent profiles', 'python3', ['scripts/validate-agent-profiles.py']],
-  ['Agent profile rejection regression', 'python3', ['-O', 'scripts/test-agent-profiles.py']],
+  ['Agent profiles', python.executable, ['scripts/validate-agent-profiles.py']],
+  ['Agent profile rejection regression', python.executable, ['-O', 'scripts/test-agent-profiles.py']],
   ['References and domain audits', 'bash', ['scripts/validate-references.sh']],
   ['Example record', 'npm', ['run', 'run-record:example']],
   ['Behavior records', 'node', ['scripts/validate-behavior-run-records.mjs']],

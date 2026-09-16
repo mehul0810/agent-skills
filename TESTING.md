@@ -1,5 +1,33 @@
 # Testing Agent Skills
 
+## Python Setup
+
+The aggregate requires Python 3.11 or newer with the standard-library `tomllib`
+module. Before any checks run, it probes `PYTHON` when set, otherwise `python3`
+from `PATH`. An incompatible or missing interpreter fails immediately; the runner
+does not search for another version or install anything. `PYTHON` must be one
+executable name or path, not a shell command or a command with flags:
+
+```bash
+PYTHON=/absolute/path/to/python3.11 npm test
+```
+
+Both aggregate agent-profile checks use that exact executable. This override does
+not rewrite `PATH` or change standalone commands. For individual Python checks,
+invoke the same executable explicitly. A virtual environment can instead put its
+compatible `python3` first on `PATH`.
+
+Optional Skill Creator `quick_validate.py` checks also require PyYAML in the
+interpreter used to run them. PyYAML is not required by the aggregate profile
+checks. If running those optional checks, create a compatible virtual environment
+and explicitly install the dependency before invoking the validator:
+
+```bash
+python3.11 -m venv "$HOME/.venvs/agent-skills"
+"$HOME/.venvs/agent-skills/bin/python" -m pip install PyYAML
+"$HOME/.venvs/agent-skills/bin/python" /path/to/skill-creator/scripts/quick_validate.py /path/to/changed-skill
+```
+
 ## Fast Gate
 
 Read-only explanation/review does not require installation or a publication gate.

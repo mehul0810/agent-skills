@@ -1,0 +1,5 @@
+{
+  "id": "audit-routing-refinement",
+  "request": "Use wp-site-expert to respond to these separate requests. For each, report the primary route, any supporting reference you would actually load, and the next action. Do not implement changes.\n\n1. Review an existing WordPress settings screenshot: actions compete for attention, field grouping looks unclear, and the instructional product screenshot is difficult to read.\n2. Audit a WordPress endpoint's authorization logic. No user interface changed.\n3. Match only the button inset in an approved WordPress screenshot, preserving all other decisions.\n4. Review a WordPress page's dense comparison table. The owner relies on its separate sortable columns and visible row separators.",
+  "artifacts": []
+}

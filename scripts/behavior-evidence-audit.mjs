@@ -71,15 +71,15 @@ function fileContent(root, relativePath, revision) {
     : fs.readFileSync(path.join(root, relativePath), "utf8");
 }
 
-function digestScenario(root, scenario, anchors, errors, revision) {
+function digestLegacyScenarioAnchors(root, scenario, anchors, errors, revision) {
   const hash = crypto.createHash("sha256");
   hash.update(scenario.id);
   hash.update("\0");
   for (const anchor of anchors) {
     const matches = [];
-    for (const relativePath of [...scenario.files].sort()) {
+    for (const relativePath of scenarioPathList(scenario.files, `${scenario.id} scenario files`, errors)) {
       try {
-        const lines = fileContent(root, relativePath, revision).split(/\r?\n/);
+        const lines = scenarioBytes(root, relativePath, revision).toString("utf8").split(/\r?\n/);
         lines.forEach((line, index) => {
           if (line.includes(anchor)) {
             matches.push({ relativePath, line, lineNumber: index + 1 });
@@ -102,6 +102,138 @@ function digestScenario(root, scenario, anchors, errors, revision) {
     hash.update("\0");
     hash.update(match.line);
     hash.update("\0");
+  }
+  return hash.digest("hex");
+}
+
+function scenarioPathList(values, label, errors, { empty = false } = {}) {
+  if (!Array.isArray(values) || (!empty && values.length === 0)
+    || values.some((value) => typeof value !== "string" || !value
+      || value.includes("\\") || /[\x00-\x1f:]/.test(value)
+      || value.split("/").some((part) => !part || part === "." || part === ".." || part === ".git"))) {
+    errors.push(`${label}: expected safe repository-relative file paths`);
+    return [];
+  }
+  if (new Set(values).size !== values.length) errors.push(`${label}: duplicate file paths`);
+  return [...new Set(values)].sort();
+}
+
+function scenarioBytes(root, relativePath, revision) {
+  if (revision) {
+    if (!REVISION.test(revision)) throw new Error("invalid revision");
+    const entry = execFileSync("git", ["ls-tree", "-z", revision, "--", relativePath],
+      { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
+    if (!/^100(?:644|755) blob [a-f0-9]{40}\t/.test(entry)
+      || entry.slice(entry.indexOf("\t") + 1) !== `${relativePath}\0`) {
+      throw new Error("not an exact regular blob");
+    }
+    return execFileSync("git", ["show", `${revision}:${relativePath}`],
+      { cwd: root, stdio: ["ignore", "pipe", "pipe"] });
+  }
+  let location = root;
+  for (const part of relativePath.split("/")) {
+    location = path.join(location, part);
+    if (fs.lstatSync(location).isSymbolicLink()) throw new Error("symlink path");
+  }
+  if (!fs.statSync(location).isFile()) throw new Error("not a regular file");
+  return fs.readFileSync(location);
+}
+
+function scenarioLines(bytes) {
+  // Preserve line endings and all selected bytes, not a normalized text rendering.
+  const text = new TextDecoder("utf-8", { fatal: true, ignoreBOM: true }).decode(bytes);
+  return text.match(/[^\n]*\n|[^\n]+$/g) ?? [];
+}
+
+function selectedContract(lines, index) {
+  const plain = (line) => line.replace(/\r?\n$/, "");
+  let fence;
+  const levels = lines.map((line) => {
+    const delimiter = plain(line).match(/^ {0,3}(`{3,}|~{3,})(.*)$/);
+    if (fence) {
+      if (delimiter && delimiter[1][0] === fence[0]
+        && delimiter[1].length >= fence.length && !delimiter[2].trim()) fence = undefined;
+      return undefined;
+    }
+    if (delimiter) {
+      fence = delimiter[1];
+      return undefined;
+    }
+    return plain(line).match(/^ {0,3}(#{1,6})\s+/)?.[1].length;
+  });
+  const level = levels[index];
+  let start = index;
+  let end = index + 1;
+  if (level) {
+    while (end < lines.length && !(levels[end] && levels[end] <= level)) end++;
+  } else if (/^\s*\|/.test(lines[index])) {
+    // Each Markdown table row is a complete independently selected scenario.
+  } else if (/^\s*(?:[-*+] |\d+[.)] )/.test(lines[index])) {
+    const indent = lines[index].match(/^\s*/)[0].length;
+    while (end < lines.length) {
+      if (levels[end]) break;
+      const nextItem = lines[end].match(/^(\s*)(?:[-*+] |\d+[.)] )/);
+      if (nextItem && nextItem[1].length <= indent) break;
+      if (plain(lines[end]).trim() && lines[end].match(/^\s*/)[0].length <= indent) break;
+      end++;
+    }
+  } else {
+    while (start > 0 && plain(lines[start - 1]).trim() && !levels[start - 1]) start--;
+    while (end < lines.length && plain(lines[end]).trim() && !levels[end]) end++;
+  }
+  return lines.slice(start, end).join("");
+}
+
+export function digestScenarioContract(root, scenario, errors = [], revision) {
+  const files = scenarioPathList(scenario.files, `${scenario.id} scenario files`, errors);
+  const fixtures = scenarioPathList(scenario.fixtureFiles, `${scenario.id} fixtureFiles`, errors, { empty: true });
+  const anchors = stringSet(scenario.anchors, `${scenario.id} scenario anchors`, errors);
+  const sources = new Map();
+  for (const file of files) {
+    try {
+      sources.set(file, scenarioLines(scenarioBytes(root, file, revision)));
+    } catch {
+      errors.push(`${scenario.id}: missing or unsafe scenario source${revision ? ` at ${revision}` : ""}: ${file}`);
+    }
+  }
+  const hash = crypto.createHash("sha256");
+  const add = (value) => {
+    const bytes = Buffer.isBuffer(value) ? value : Buffer.from(value);
+    hash.update(String(bytes.length));
+    hash.update("\0");
+    hash.update(bytes);
+    hash.update("\0");
+  };
+  add("scenario-contract-v1");
+  add(scenario.id);
+  for (const anchor of anchors) {
+    const matches = [];
+    for (const [file, lines] of sources) {
+      lines.forEach((line, index) => {
+        for (let occurrence = 1; occurrence < line.split(anchor).length; occurrence++) {
+          matches.push({ file, lines, index });
+        }
+      });
+    }
+    if (matches.length !== 1) {
+      errors.push(`${scenario.id}: scenario anchor must match exactly once${revision ? ` at ${revision}` : ""}: ${anchor}`);
+      continue;
+    }
+    const { file, lines, index } = matches[0];
+    add("contract");
+    add(anchor);
+    add(file);
+    add(selectedContract(lines, index));
+  }
+  for (const file of fixtures) {
+    try {
+      const bytes = scenarioBytes(root, file, revision);
+      add("fixture");
+      add(file);
+      add(bytes);
+    } catch {
+      errors.push(`${scenario.id}: missing or unsafe scenario fixture${revision ? ` at ${revision}` : ""}: ${file}`);
+    }
   }
   return hash.digest("hex");
 }
@@ -238,14 +370,21 @@ export function auditBehaviorEvidence({
     }
 
     const scenario = baseline.scenario;
-    if (!scenario?.id || !Array.isArray(scenario.files) || scenario.files.length === 0) {
+    if (typeof scenario?.id !== "string" || !scenario.id || !Array.isArray(scenario.files) || scenario.files.length === 0) {
       errors.push(`${baseline.name}: registered scenario id and files are required`);
       continue;
     }
     const anchors = stringSet(scenario.anchors, `${baseline.name} scenario anchors`, errors);
-    const scenarioHash = digestScenario(root, scenario, anchors, errors);
+    const scenarioHash = digestLegacyScenarioAnchors(root, scenario, anchors, errors);
     if (!SHA256.test(scenario.sha256 ?? "") || scenarioHash !== scenario.sha256) {
       errors.push(`${baseline.name}: scenario changed; fresh evidence is required`);
+    }
+    const scenarioContractHash = digestScenarioContract(root, scenario, errors);
+    if (scenario.sha256Scope !== "legacy-anchor-line") {
+      errors.push(`${baseline.name}: original scenario.sha256 must be labeled legacy-anchor-line`);
+    }
+    if (!SHA256.test(scenario.contractSha256 ?? "") || scenarioContractHash !== scenario.contractSha256) {
+      errors.push(`${baseline.name}: scenario contract changed or is unbound; fresh evidence or verified historical migration is required`);
     }
 
     const requiredChecks = stringSet(
@@ -339,7 +478,7 @@ export function auditBehaviorEvidence({
         errors.push(`${baseline.name}: testedRevision must be a commit reachable from HEAD`);
       } else {
         const revisionSource = digestFiles(root, baseline.files, errors, evidence.testedRevision);
-        const revisionScenario = digestScenario(
+        const revisionScenario = digestLegacyScenarioAnchors(
           root,
           scenario,
           anchors,
@@ -351,6 +490,16 @@ export function auditBehaviorEvidence({
           revisionScenario !== evidence.testedScenarioSha256
         ) {
           errors.push(`${baseline.name}: tested revision and tree digests disagree`);
+        }
+        const revisionContract = digestScenarioContract(root, scenario, errors, evidence.testedRevision);
+        if (!SHA256.test(evidence.testedScenarioContractSha256 ?? "")
+          || revisionContract !== evidence.testedScenarioContractSha256) {
+          errors.push(`${baseline.name}: tested revision and full scenario contract digest disagree`);
+        }
+        // A legacy anchor match never permits rebinding a changed body to an old run.
+        if (revisionContract !== scenarioContractHash
+          || evidence.testedScenarioContractSha256 !== scenario.contractSha256) {
+          errors.push(`${baseline.name}: full scenario contract differs from tested revision; fresh evidence is required`);
         }
         const committedAt = commitTimestamp(root, evidence.testedRevision);
         if (!Number.isFinite(committedAt) || startedAt < committedAt) {
@@ -375,7 +524,7 @@ export function auditBehaviorEvidence({
         errors.push(`${baseline.name}: current fresh-agent runtime binding is required`);
       }
       lines.push(
-        `${baseline.name} source=${sourceHash} scenario=${scenarioHash} record=${digest(recordBytes)}`,
+        `${baseline.name} source=${sourceHash} legacyScenarioAnchor=${scenarioHash} scenarioContract=${scenarioContractHash} record=${digest(recordBytes)}`,
       );
     }
   }
@@ -439,7 +588,9 @@ function selfTest() {
     }),
   );
   fs.writeFileSync(path.join(root, "source.md"), "stable\n");
-  fs.writeFileSync(path.join(root, "skill-evals/scenarios.md"), "Scenario: exact route\n");
+  const scenarioText = "## Scenario: exact route\n\nPrompt: follow the route.\n\nRequired: exact proof.\n\n## Other case\n\nUnrelated.\n";
+  const scenarioFile = path.join(root, "skill-evals/scenarios.md");
+  fs.writeFileSync(scenarioFile, scenarioText);
   const record = {
     schemaVersion: 1,
     runId: "exact-route",
@@ -479,13 +630,18 @@ function selfTest() {
   }).trim();
   const noErrors = [];
   const sourceHash = digestFiles(root, ["source.md"], noErrors, testedRevision);
-  const scenarioHash = digestScenario(
+  const scenarioHash = digestLegacyScenarioAnchors(
     root,
     { id: "exact-route", files: ["skill-evals/scenarios.md"] },
     ["Scenario: exact route"],
     noErrors,
     testedRevision,
   );
+  const contractScenario = {
+    id: "exact-route", files: ["skill-evals/scenarios.md"],
+    anchors: ["Scenario: exact route"], fixtureFiles: [],
+  };
+  const contractHash = digestScenarioContract(root, contractScenario, noErrors, testedRevision);
   const manifest = {
     schemaVersion: 2,
     harnessRevision: revision,
@@ -500,6 +656,9 @@ function selfTest() {
           files: ["skill-evals/scenarios.md"],
           anchors: ["Scenario: exact route"],
           sha256: scenarioHash,
+          sha256Scope: "legacy-anchor-line",
+          fixtureFiles: [],
+          contractSha256: contractHash,
         },
         requiredChecks: ["correct-route"],
         evidence: [
@@ -509,6 +668,7 @@ function selfTest() {
             testedRevision,
             testedSourceSha256: sourceHash,
             testedScenarioSha256: scenarioHash,
+            testedScenarioContractSha256: contractHash,
             runtime: { host: "codex-desktop", isolation: "fresh-agent", harnessRevision: revision },
           },
         ],
@@ -532,6 +692,32 @@ function selfTest() {
   if (noErrors.length || run().length) {
     throw new Error("valid evidence fixture failed");
   }
+  const baseline = manifest.baselines[0];
+  const savedContract = baseline.scenario.contractSha256;
+  delete baseline.scenario.contractSha256;
+  writeFixture();
+  if (!run().some((error) => error.includes("scenario contract changed or is unbound"))) {
+    throw new Error("unmigrated anchor-only evidence was accepted");
+  }
+  baseline.scenario.contractSha256 = savedContract;
+  fs.writeFileSync(scenarioFile, scenarioText.replace("Required: exact proof.", "Required: weaker proof."));
+  writeFixture();
+  if (!run().some((error) => error.includes("full scenario contract differs from tested revision"))) {
+    throw new Error("body-only drift with preserved anchor evidence was accepted");
+  }
+  const currentContract = digestScenarioContract(root, baseline.scenario, []);
+  baseline.scenario.contractSha256 = currentContract;
+  baseline.evidence[0].testedScenarioContractSha256 = currentContract;
+  writeFixture();
+  if (!run().some((error) => error.includes("tested revision and full scenario contract digest disagree"))) {
+    throw new Error("blindly refreshing legacy evidence to the current body was accepted");
+  }
+  fs.writeFileSync(scenarioFile, scenarioText.replace("Unrelated.", "An unrelated scenario change."));
+  baseline.scenario.contractSha256 = savedContract;
+  baseline.evidence[0].testedScenarioContractSha256 = savedContract;
+  writeFixture();
+  if (run().length) throw new Error("unrelated scenario section invalidated selected evidence");
+  fs.writeFileSync(scenarioFile, scenarioText);
   fs.writeFileSync(path.join(root, "source.md"), "changed\n");
   if (!run().some((error) => error.includes("behavior changed"))) {
     throw new Error("source drift was accepted");
@@ -610,17 +796,20 @@ function selfTest() {
   }
 
   fs.rmSync(root, { recursive: true, force: true });
+  execFileSync(process.execPath, [path.join(repoRoot, "scripts/test-behavior-scenario-contract.mjs")], { stdio: "inherit" });
   console.log("behavior evidence audit self-test passed");
 }
 
-if (process.argv.includes("--self-test")) {
-  selfTest();
-} else {
-  const result = auditBehaviorEvidence({ print: process.argv.includes("--print") });
-  result.lines.forEach((line) => console.log(line));
-  result.errors.forEach((error) => console.error(`ERROR: ${error}`));
-  if (result.errors.length) {
-    process.exit(1);
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  if (process.argv.includes("--self-test")) {
+    selfTest();
+  } else {
+    const result = auditBehaviorEvidence({ print: process.argv.includes("--print") });
+    result.lines.forEach((line) => console.log(line));
+    result.errors.forEach((error) => console.error(`ERROR: ${error}`));
+    if (result.errors.length) {
+      process.exit(1);
+    }
+    console.log("behavior evidence audit passed");
   }
-  console.log("behavior evidence audit passed");
 }
