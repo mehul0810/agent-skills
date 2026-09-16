@@ -169,7 +169,7 @@
         "wp-theme-expert/SKILL.md",
         "wp-theme-expert/references/router.md"
       ],
-      "sha256": "da957013784ab2ebf5d687fb0c0f75dec28b4569f60e1a2a51c764958a41571a",
+      "sha256": "cc695c4c66c26d2e30ac75a92bef32baf5d114f8c5f11ec53a127aa9aa4cf0bc",
       "scenario": {
         "id": "wordpress-visual-execution",
         "files": [
@@ -250,10 +250,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-09-12-astra.json",
-          "sha256": "0c59dba13788fce0b43d4ed0fd262b9bf664aea1eaa94f15eabbadc876ed2192",
-          "testedRevision": "2e1db155dbe9188d535c6e734e6041d97b6ed938",
-          "testedSourceSha256": "da957013784ab2ebf5d687fb0c0f75dec28b4569f60e1a2a51c764958a41571a",
+          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-09-16-refinement.json",
+          "sha256": "ba13f2bdf31e88cf4460a030f414bbeb932c00d8e9bf0f5747190dab02f2a397",
+          "testedRevision": "1a5ecdafc9ac128821df7864594648d8645d6133",
+          "testedSourceSha256": "cc695c4c66c26d2e30ac75a92bef32baf5d114f8c5f11ec53a127aa9aa4cf0bc",
           "testedScenarioSha256": "85be7001fd84adbca587bb6418c1923095a34abccb6b0145ef1abd4f566c78fd",
           "runtime": {
             "host": "codex-desktop",
