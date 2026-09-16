@@ -70,7 +70,7 @@
         "wp-expert/references/visual-parity-regression.md",
         "wp-expert/references/wordpress-design-system.md"
       ],
-      "sha256": "31eb79f1c8081c16dd149147d572591d2c45ccef382ae023f4e897812588421b",
+      "sha256": "b141a616713a7be9f86edc520e4570f623fac994b80ed332d648992f74277d39",
       "scenario": {
         "id": "premium-enterprise-design-experience",
         "files": [
@@ -104,8 +104,10 @@
         ],
         "sha256": "168416f3f9957a78a16ab3339fa253bfee79efd81d322b10c662d9244b63e12d",
         "sha256Scope": "legacy-anchor-line",
-        "fixtureFiles": [],
-        "contractSha256": "a37930917308fe2a7b64a8715c9cdda223e12b4d0af6d9e6117cd324a5895025"
+        "fixtureFiles": [
+          "skill-evals/cases/design-route-regression/input.json"
+        ],
+        "contractSha256": "ef2cb107551f92969305535f1b975f841ca55286afe5461443d2f447bced0f48"
       },
       "requiredChecks": [
         "greenfield-taste-route",
@@ -136,17 +138,17 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/design-experience-routing-2026-09-15-reference-adoption.json",
-          "sha256": "b6ec9191942c25b1a867595be149a06addd51a92e40fdb52c7e7ad5d308aec9f",
-          "testedRevision": "3fd289ddc1aa0bfe7462c490db30b91619450679",
-          "testedSourceSha256": "31eb79f1c8081c16dd149147d572591d2c45ccef382ae023f4e897812588421b",
+          "runRecord": "skill-evals/run-records/design-experience-routing-2026-09-16-hardened.json",
+          "sha256": "e136e630f37dd347f799f32f8ff10883b87589f36a6cdffb6890c7739ead5f5a",
+          "testedRevision": "767cfe7dcfbed2fea2cbb9e0690a0a8d821a0307",
+          "testedSourceSha256": "b141a616713a7be9f86edc520e4570f623fac994b80ed332d648992f74277d39",
           "testedScenarioSha256": "168416f3f9957a78a16ab3339fa253bfee79efd81d322b10c662d9244b63e12d",
+          "testedScenarioContractSha256": "ef2cb107551f92969305535f1b975f841ca55286afe5461443d2f447bced0f48",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493"
-          },
-          "testedScenarioContractSha256": "a37930917308fe2a7b64a8715c9cdda223e12b4d0af6d9e6117cd324a5895025"
+          }
         }
       ],
       "harnessContract": "cli-validation-v1"

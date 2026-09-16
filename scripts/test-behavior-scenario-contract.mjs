@@ -127,6 +127,24 @@ try {
   check("historical symlink rejection", () => assert.ok(evaluate({ ...scenario, fixtureFiles: ["linked.bin"] }, revision).errors.length));
   check("fixture absent at tested revision", () => assert.ok(evaluate({ ...scenario, fixtureFiles: ["copy.md"] }, revision).errors.length));
   check("invalid historical revision", () => assert.ok(evaluate(scenario, "HEAD").errors.length));
+  check("large binary fixture hashes equally from disk and commit", () => {
+    write("large.bin", Buffer.alloc(1100000, 93));
+    execFileSync("git", ["add", "large.bin"], { cwd: root });
+    execFileSync("git", ["-c", "user.name=Audit", "-c", "user.email=audit@example.test", "commit", "-qm", "large fixture"], { cwd: root });
+    const rev = execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" }).trim();
+    write("cases.md", original);
+    const value = { ...scenario, fixtureFiles: ["large.bin"] };
+    assert.equal(hash(value), hash(value, rev));
+  });
+  check("oversized binary fixture rejected equally", () => {
+    write("large.bin", Buffer.alloc(32 * 1024 * 1024 + 1));
+    execFileSync("git", ["add", "large.bin"], { cwd: root });
+    execFileSync("git", ["-c", "user.name=Audit", "-c", "user.email=audit@example.test", "commit", "-qm", "oversized fixture"], { cwd: root });
+    const rev = execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" }).trim();
+    const value = { ...scenario, fixtureFiles: ["large.bin"] };
+    assert.ok(evaluate(value).errors.length);
+    assert.ok(evaluate(value, rev).errors.length);
+  });
   console.log(`scenario contract tests passed (${assertions} cases)`);
 } finally {
   fs.rmSync(root, { recursive: true, force: true });

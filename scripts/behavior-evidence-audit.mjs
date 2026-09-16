@@ -118,6 +118,7 @@ function scenarioPathList(values, label, errors, { empty = false } = {}) {
   return [...new Set(values)].sort();
 }
 
+const MAX_SCENARIO_BYTES = 32 * 1024 * 1024;
 function scenarioBytes(root, relativePath, revision) {
   if (revision) {
     if (!REVISION.test(revision)) throw new Error("invalid revision");
@@ -127,15 +128,19 @@ function scenarioBytes(root, relativePath, revision) {
       || entry.slice(entry.indexOf("\t") + 1) !== `${relativePath}\0`) {
       throw new Error("not an exact regular blob");
     }
+    const size = Number(execFileSync("git", ["cat-file", "-s", `${revision}:${relativePath}`],
+      { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim());
+    if (!Number.isSafeInteger(size) || size < 0 || size > MAX_SCENARIO_BYTES) throw new Error("scenario file exceeds 32 MiB");
     return execFileSync("git", ["show", `${revision}:${relativePath}`],
-      { cwd: root, stdio: ["ignore", "pipe", "pipe"] });
+      { cwd: root, maxBuffer: MAX_SCENARIO_BYTES + 65536, stdio: ["ignore", "pipe", "pipe"] });
   }
   let location = root;
   for (const part of relativePath.split("/")) {
     location = path.join(location, part);
     if (fs.lstatSync(location).isSymbolicLink()) throw new Error("symlink path");
   }
-  if (!fs.statSync(location).isFile()) throw new Error("not a regular file");
+  const stat = fs.statSync(location);
+  if (!stat.isFile() || stat.size > MAX_SCENARIO_BYTES) throw new Error("not a regular file within 32 MiB");
   return fs.readFileSync(location);
 }
 

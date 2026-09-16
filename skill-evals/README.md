@@ -16,6 +16,8 @@ Prefer small representative scenario sets over repeatedly loading every skill. A
 
 For behavior covered by `behavior-baselines.json`, the manifest binds the exact source set, registered scenario contract, required check set, sanitized run record, tested Git revision, runtime class, and harness revision. Any mismatch makes the evidence stale. Re-run the named fresh-agent scenario against the current revision, replace its sanitized record and evidence entry, then use `node scripts/behavior-evidence-audit.mjs --print` to obtain the current digests. Do not refresh a digest without rerunning the scenario.
 
+Scenario identity includes the selected full Markdown contract and explicitly listed `fixtureFiles` bytes (32 MiB maximum per file, current and historical). An empty fixture list means the author reviewed that no file fixture is part of that contract; linked assets are not discovered automatically. Preserve historical anchor-only hashes labeled `legacy-anchor-line`. A supplemental full-contract digest may be derived without a rerun only when the validator proves current selected bytes equal the immutable tested commit; retain original record, revision and legacy hashes. Any content difference requires fresh evidence, not a migration exception. This comparison strengthens identity, not the quality or independence of historical execution.
+
 ## Sanitized Run Records
 
 Use the `agent-harness` run-record schema for comparable fresh-agent results. Record only host-reported numeric metrics such as `input_tokens`, `cached_input_tokens`, `output_tokens`, `context_tokens_peak`, `tool_calls`, `retry_count`, and `checks_passed`; omit unavailable metrics rather than estimating them.
