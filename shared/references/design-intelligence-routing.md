@@ -23,11 +23,11 @@ For an audit with material grouping, alignment, density, competing emphasis or i
 
 When the material design risk is AI-generated/adaptive UI, personalization, voice, kinetic typography, guided scrolling, spatial/3D media, or trend-led composition, use `emerging-interface-design-contract.md` as the single support reference. It supplies the adoption, fallback, trust, and proof gate; do not treat a trend label as direction approval.
 
-For a Figma URL/file/node, discover the Figma context capability and obtain structured node, variable, component, asset, font, constraint, and interaction evidence before using image-to-code. Do not substitute a screenshot when live structured context is available; if access fails, use an inspected export and state the proof gap.
+Classify the deliverable: concept image, editable design, interactive prototype, or production implementation. For native Figma/Pen creation or updates, switch primary to `native-design-authoring.md`; do not substitute image-to-code. For Figma implementation, obtain structured node/version, variables, components, assets, fonts, constraints, and interactions before coding; use an inspected export only when access fails, declaring the gap.
 
 When a greenfield or redesigned frontend has no selected visual target, or a rendered result is coherent but still generic/template-like, use `frontend-design-taste.md` as the one supporting judgment reference. It provides a WordPress-native design read, expressiveness/motion/density/trust dials, anti-repetition review, and taste preflight. Do not stack it onto exact screenshot/Figma implementation, routine admin UX, or a second confirmed support risk.
 
-Discover the named capability before relying on it. If unavailable, inspect evidence, prepare the brief and perform a manual audit/direction set; the WordPress owner implements the chosen direction. Use generated, licensed/supplied media or labeled placeholders for missing raster assets. Never invent tool execution.
+Discover the named capability before relying on it. If unavailable, prepare the brief and report the blocked artifact; a different format requires agreement. Never invent tool execution.
 
 Use design QA only after a prototype/build has both a source visual and a rendered implementation.
 

@@ -84,6 +84,8 @@ For design calibration, use `skill-evals/frontend-benchmark/README.md`. Give ind
 
 For source-design implementation capability, run `skill-evals/frontend-benchmark/EXECUTION.md`: a frozen held-out target, fresh native WordPress implementation, independent fidelity and UI-only author proof, and bounded repair. Report actual failed/blocked gates; a discrimination or persistence-only pass does not satisfy this execution test.
 
+For native Figma/Pen authoring routes, run `skill-evals/native-design-authoring-scenarios.md` through its blind input packet. Use `skill-evals/frontend-benchmark/NATIVE-DESIGN.md` for actual artifact execution; decision checks cannot pass native structure, save/reopen, transfer or production gates.
+
 For shared harness/topology changes, run `node scripts/check-agent-consumers.mjs <skills-root> <loop-root> <book-root>` against explicit local checkouts. Different pins are allowed only with passing consumer contracts; this read-only check does not upgrade dependencies or establish live runtime adoption.
 
 Measure available token usage, elapsed time, handoffs, retries, reopened defects, and accepted completion over a comparable task set. Missing telemetry is unavailable, not zero. Word budgets and faster validators alone do not establish end-to-end token savings.

@@ -34,6 +34,16 @@
   ],
   "routeBudgets": [
     {
+      "name": "Site native design authoring",
+      "maxWords": 3100,
+      "warningPercent": 90,
+      "files": [
+        "wp-site-expert/SKILL.md",
+        "shared/references/design-intelligence-routing.md",
+        "shared/references/native-design-authoring.md"
+      ]
+    },
+    {
       "name": "Owner decision resolution",
       "maxWords": 850,
       "warningPercent": 85,
@@ -661,6 +671,11 @@
       "name": "Visual Refinement",
       "file": "skill-evals/visual-refinement-scenarios.md",
       "requiredPhrases": ["# Visual Refinement Scenarios", "## Competing Actions And Grouping", "## Intentional Density And Borders", "## Exact Target Safe Exception"]
+    },
+    {
+      "name": "Native Design Authoring",
+      "file": "skill-evals/native-design-authoring-scenarios.md",
+      "requiredPhrases": ["# Native Design Authoring Scenarios", "## Editable Artifact Routing", "## Missing Write Capability", "## Pen Transfer Loss", "## Small Edit Restraint", "## Task-Matched Inspiration", "## Independent Acceptance Gates", "## Single Source And Publication", "## Proportional Handoff"]
     },
     {
       "name": "Reference Design Adoption",
