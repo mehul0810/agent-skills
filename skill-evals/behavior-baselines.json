@@ -70,7 +70,7 @@
         "wp-expert/references/visual-parity-regression.md",
         "wp-expert/references/wordpress-design-system.md"
       ],
-      "sha256": "b141a616713a7be9f86edc520e4570f623fac994b80ed332d648992f74277d39",
+      "sha256": "9ec8c0c60dda03944276e11ecac2f6c8b85ed6f4aa6e78e0c409ab524f007e7e",
       "scenario": {
         "id": "premium-enterprise-design-experience",
         "files": [
@@ -138,10 +138,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/design-experience-routing-2026-09-16-hardened.json",
-          "sha256": "e136e630f37dd347f799f32f8ff10883b87589f36a6cdffb6890c7739ead5f5a",
-          "testedRevision": "767cfe7dcfbed2fea2cbb9e0690a0a8d821a0307",
-          "testedSourceSha256": "b141a616713a7be9f86edc520e4570f623fac994b80ed332d648992f74277d39",
+          "runRecord": "skill-evals/run-records/design-experience-routing-2026-09-16-native.json",
+          "sha256": "d04a0462598f52e2c44dad2b3710cc8c7eb3e393f6f1d9cfa69bc9d88c53244a",
+          "testedRevision": "a2f40f13645c429c6f58979bcff03ab82247f050",
+          "testedSourceSha256": "9ec8c0c60dda03944276e11ecac2f6c8b85ed6f4aa6e78e0c409ab524f007e7e",
           "testedScenarioSha256": "168416f3f9957a78a16ab3339fa253bfee79efd81d322b10c662d9244b63e12d",
           "testedScenarioContractSha256": "ef2cb107551f92969305535f1b975f841ca55286afe5461443d2f447bced0f48",
           "runtime": {
@@ -179,7 +179,7 @@
         "wp-theme-expert/SKILL.md",
         "wp-theme-expert/references/router.md"
       ],
-      "sha256": "cc695c4c66c26d2e30ac75a92bef32baf5d114f8c5f11ec53a127aa9aa4cf0bc",
+      "sha256": "62aed360d22de0cb758b85be6a1cea25edcd4cd8cbdb98455c07d4965e41c09c",
       "scenario": {
         "id": "wordpress-visual-execution",
         "files": [
@@ -223,8 +223,10 @@
         ],
         "sha256": "85be7001fd84adbca587bb6418c1923095a34abccb6b0145ef1abd4f566c78fd",
         "sha256Scope": "legacy-anchor-line",
-        "fixtureFiles": [],
-        "contractSha256": "1bb669c96e5276800357c4b60c9c189d6290711a679a765a57be567791e4336e"
+        "fixtureFiles": [
+          "skill-evals/cases/visual-native-regression/input.json"
+        ],
+        "contractSha256": "700e7eda52097ff91099224f33d54a32dc3c472778a1c83e9c0cb63ee31e360b"
       },
       "requiredChecks": [
         "WordPress-native-ownership",
@@ -263,17 +265,17 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-09-16-refinement.json",
-          "sha256": "ba13f2bdf31e88cf4460a030f414bbeb932c00d8e9bf0f5747190dab02f2a397",
-          "testedRevision": "1a5ecdafc9ac128821df7864594648d8645d6133",
-          "testedSourceSha256": "cc695c4c66c26d2e30ac75a92bef32baf5d114f8c5f11ec53a127aa9aa4cf0bc",
+          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-09-16-native.json",
+          "sha256": "8accb858730ff133e1e05bff18ebee26213142371b7cacbd0b2bfa3dad7999f6",
+          "testedRevision": "e3fe00bb5490f60a455caf76d653b21f0f4487a4",
+          "testedSourceSha256": "62aed360d22de0cb758b85be6a1cea25edcd4cd8cbdb98455c07d4965e41c09c",
           "testedScenarioSha256": "85be7001fd84adbca587bb6418c1923095a34abccb6b0145ef1abd4f566c78fd",
+          "testedScenarioContractSha256": "700e7eda52097ff91099224f33d54a32dc3c472778a1c83e9c0cb63ee31e360b",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493"
-          },
-          "testedScenarioContractSha256": "1bb669c96e5276800357c4b60c9c189d6290711a679a765a57be567791e4336e"
+          }
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -1362,6 +1364,64 @@
           "testedScenarioContractSha256": "e917f801dc0feaaab10e07765be24894d6e792a3695779fe6305bf81e0bd7d3f"
         }
       ]
+    },
+    {
+      "name": "native-design-authoring",
+      "files": [
+        "wp-site-expert/SKILL.md",
+        "shared/references/design-intelligence-routing.md",
+        "shared/references/native-design-authoring.md",
+        "shared/references/visual-to-wordpress-implementation.md"
+      ],
+      "sha256": "666cdec25bfa65431c5cbebe3e4fa75cedf7c1445991ceb5211d18498d826de8",
+      "scenario": {
+        "id": "native-design-authoring",
+        "files": [
+          "skill-evals/native-design-authoring-scenarios.md"
+        ],
+        "anchors": [
+          "## Editable Artifact Routing",
+          "## Missing Write Capability",
+          "## Pen Transfer Loss",
+          "## Small Edit Restraint",
+          "## Task-Matched Inspiration",
+          "## Independent Acceptance Gates",
+          "## Single Source And Publication",
+          "## Proportional Handoff"
+        ],
+        "sha256": "91613d19c65d26ae2bdabd0d8dc41743f5579fd03de3f1f4513c843fe45378c0",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [
+          "skill-evals/cases/native-design-authoring/input.json"
+        ],
+        "contractSha256": "e7b3ee0f69bf866c0347971d8c16ccf082a5d05022f1609fdb9bd677956f146d"
+      },
+      "requiredChecks": [
+        "editable-artifact-routing",
+        "missing-write-capability",
+        "pen-transfer-loss",
+        "small-edit-restraint",
+        "task-matched-inspiration",
+        "independent-acceptance-gates",
+        "single-source-and-publication",
+        "proportional-handoff"
+      ],
+      "evidence": [
+        {
+          "runRecord": "skill-evals/run-records/native-design-authoring-2026-09-16.json",
+          "sha256": "d549261bef3b0f28845bd45b842363c714ffb2c9d4999261b9ebf5f7141d18ea",
+          "testedRevision": "a2f40f13645c429c6f58979bcff03ab82247f050",
+          "testedSourceSha256": "666cdec25bfa65431c5cbebe3e4fa75cedf7c1445991ceb5211d18498d826de8",
+          "testedScenarioSha256": "91613d19c65d26ae2bdabd0d8dc41743f5579fd03de3f1f4513c843fe45378c0",
+          "testedScenarioContractSha256": "e7b3ee0f69bf866c0347971d8c16ccf082a5d05022f1609fdb9bd677956f146d",
+          "runtime": {
+            "host": "codex-desktop",
+            "isolation": "fresh-agent",
+            "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493"
+          }
+        }
+      ],
+      "harnessContract": "cli-validation-v1"
     }
   ],
   "harnessCompatibility": [

@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "runId": "native-design-authoring-2026-09-16",
+  "scenario": "native-design-authoring",
+  "result": "succeeded",
+  "startedAt": "2026-09-16T17:29:20.000Z",
+  "durationMs": 165000,
+  "checks": [
+    {
+      "name": "editable-artifact-routing",
+      "result": "pass"
+    },
+    {
+      "name": "missing-write-capability",
+      "result": "pass"
+    },
+    {
+      "name": "pen-transfer-loss",
+      "result": "pass"
+    },
+    {
+      "name": "small-edit-restraint",
+      "result": "pass"
+    },
+    {
+      "name": "task-matched-inspiration",
+      "result": "pass"
+    },
+    {
+      "name": "independent-acceptance-gates",
+      "result": "pass"
+    },
+    {
+      "name": "single-source-and-publication",
+      "result": "pass"
+    },
+    {
+      "name": "proportional-handoff",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 8,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "native-design-authoring-2026-09-16",
+    "artifactPointer": "codex-fresh-agent:/root/native_design_decisions#a2f40f13645c429c6f58979bcff03ab82247f050"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-16T17:32:05.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Parent-scored eight decision cases. Pen connector disconnected; no native artifact execution. See native-design-authoring-review.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}
