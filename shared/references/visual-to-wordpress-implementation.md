@@ -12,13 +12,15 @@ Classify it as:
 - `Directional`: hierarchy and visual language matter; composition may adapt.
 - `Inspiration`: extract principles, not layout.
 
-Record dimensions, state, fonts/assets, responsive/interaction behavior, and whether each value is `supplied`, `measured`, or `inferred`. Keep an ambiguity ledger; ask only about irreversible, unsafe, brand-critical, or journey-changing choices. Otherwise use an accessible WordPress-native inferred default.
+Record dimensions, state, fonts/assets, responsive/interaction behavior, and whether each value is `supplied`, `measured`, or `inferred`. Record ambiguities; clarify consequential choices, otherwise label accessible native defaults.
 
 Calibrate image pixels against the original CSS viewport, DPR, crop and export resizing; never assume a 2x image means 2x CSS sizes. Unknown scale needs confidence and normalized geometry, not invented precision. Preserve exact-target density; no arbitrary enlargement or whole-page zoom/transform correction.
 
-### Figma Source Preflight
+### Figma And Pen Source Preflight
 
 For Figma, discover frame/version, variables, components, assets, fonts, constraints, and interactions. Use `figma-implement-design` when available; WordPress ownership stays with the specialist. Fingerprint the source or explain the inspected export.
+
+For Pen, inspect board/node IDs, revision or export hash, native constraints, tokens, assets and rendered boards through supported tooling. Respect access restrictions. Text extraction cannot prove appearance; fallback exports must disclose structural/interaction gaps.
 
 ## 2. Build A Visual And Behavior Manifest
 
@@ -30,6 +32,8 @@ Before code, map:
 - owner, editing surface, visitor/author workflows, runtime, captures, tolerance, budget, and deviations.
 
 Use `wp-expert/scripts/fse-design-map.sh` for theme/FSE. Update the compact manifest when evidence disproves an assumption.
+
+For exact pages, map complete section order, including header/footer, to active saved posts, parts, patterns and overrides. A matching hero or changed pattern does not prove saved content changed. Resolve legacy retention versus replacement before authorized mutation; preserve unrelated content with guarded backups.
 
 ## 3. Choose WordPress Ownership
 
@@ -71,7 +75,7 @@ Use responsive WordPress media and an appropriate format. Never claim licensing,
 
 Stabilize ownership, structure, fonts, and real assets before cosmetic nudges. Create a custom block only when native primitives cannot preserve the editing/design contract. For multi-page/system work, prove one representative section with real content, fonts/assets, editor controls, and narrow/intermediate/desktop behavior before scaling. Reuse the task packet's component/token/source IDs across the FSE map and proof receipts; reference established decisions instead of recreating briefs. Judge visual craft and task usability separately; neither pass substitutes for the other.
 
-For every substantial image-to-page task, first prove header, hero, CTA and next-section transition at source and narrow widths. Calibrate loaded fonts and wrapping before spacing. Do not propagate failing proportions. Report fidelity, design quality and visitor/author usability separately; an average cannot conceal a failed gate.
+For every substantial image-to-page task, first prove header, hero, CTA, next-section transition and shared footer at source and narrow widths. Calibrate loaded fonts and wrapping before spacing. Do not propagate failing proportions. Report fidelity, design quality and visitor/author usability separately; an average cannot conceal a failed gate.
 
 For immersive, adaptive, motion-led, or media-dependent behavior, define the static state, reduced-motion/data behavior, unsupported-browser/failed-media fallback, measurable value, cleanup, and rollback before implementation. Enhancement failure must preserve content, navigation, task completion, and authoring.
 
@@ -84,6 +88,8 @@ For authenticated wp-admin/editor/Site Editor proof, prefer the product harness.
 For `Exact`, regression, release-critical, or failed work, use visual-proof schema v3 at `../schemas/wordpress-visual-proof.schema.json` and run `node wp-expert/scripts/validate-visual-proof.mjs <proof.json>` from the declared evidence root. Declare required capture, workflow, environment, and asset IDs before proof. Each scoped surface needs its own required workflow and capture in every required environment; do not reuse one candidate artifact across captures. For release-bound work, install the packaged ZIP/artifact and bind its digest, version/build identity, and environment to every candidate capture; working-tree or development-server screenshots are supplementary, not release proof. The receipt binds immutable evidence, per-surface coverage, risk-aware design/accessibility review, structured token lineage through a rendered layer, defects, and affected capture/workflow/environment reproof. Evidence locators stay relative to the root and cannot escape through traversal or symlinks. Validation proves receipt integrity, not aesthetic correctness.
 
 Compare source and candidate by overlay or perceptual diff across geometry, type, color, crops, responsive behavior, interactions, and editing surfaces. Use project tolerances; otherwise investigate deterministic hard-edge geometry deltas above 2 CSS px. Treat font rasterization separately.
+
+Verify actual CSS viewport, document width, DPR and export scale; explain requested/actual discrepancies before comparison. Healthy routes, H1 counts, valid blocks, loaded assets and no overflow are technical checks, not fidelity. Candidate-only screenshots cannot pass exact parity.
 
 When spacing, alignment, grid, density, or responsive composition is a material risk, reserve the support slot for `spatial-layout-and-alignment-system.md`. Link its validated spatial receipt under design-quality evidence so screenshots and computed parent/child geometry agree; do not compensate for a wrong layout owner with child-level CSS.
 
@@ -98,6 +104,8 @@ Any reproducible in-scope overlap, clipping, overflow, wrong hierarchy/asset, re
 Classify the owning cause first: asset/font/data readiness; ownership/block hierarchy; tokens/components; cascade, Global Styles, or Site Editor overrides; intrinsic layout/breakpoints; runtime state; or capture contamination. Fix that layer, not symptoms with page/viewport selectors, magic offsets, or frontend-only CSS.
 
 Re-render the failure and smallest affected editor/frontend set. Keep observed and fixed evidence under one defect ID. P1/P2 defects cannot be accepted into a pass; only an approved, evidenced P3 deviation reclassified outside the defect set may remain. After two failed repair cycles, stop patching, reopen source, manifest, ownership, or architecture, and replace the contract and proof run before passing. Escalate only an external blocker or material design decision with evidence and the best recovery. Unavailable evidence cannot convert an observed failure into a pass.
+
+Bind authoring proof to surface, operation and candidate: About paragraph persistence cannot pass Home or template-part editing. After content/chrome replacement, rerun affected visual and UI-only save/reopen proof; List View is insufficient. Retain unaffected proof with dependency rationale. Diagnose blank editors on a compatible authorized surface before generalizing browser failure to WordPress. Reconcile manifest, receipt and final gate statuses; contradictions block completion, not trigger unrelated health-check loops.
 
 Completion requires:
 

@@ -219,12 +219,14 @@
           "a one-page theme already has working presets",
           "rename a launched semantic token",
           "an API failure is displayed",
-          "an agent likes a redesigned checkout"
+          "an agent likes a redesigned checkout",
+          "Pen Completion Must Follow The Rendered Candidate"
         ],
         "sha256": "85be7001fd84adbca587bb6418c1923095a34abccb6b0145ef1abd4f566c78fd",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [
-          "skill-evals/cases/visual-native-regression/input.json"
+          "skill-evals/cases/visual-native-regression/input.json",
+          "skill-evals/cases/pen-wordpress-acceptance/input.json"
         ],
         "contractSha256": "700e7eda52097ff91099224f33d54a32dc3c472778a1c83e9c0cb63ee31e360b"
       },
@@ -261,7 +263,11 @@
         "proportional-token-tooling",
         "launched-token-consumers",
         "truthful-empty-and-pointer-alternative",
-        "measured-ux-claims"
+        "measured-ux-claims",
+        "pen-rendered-source-and-composition",
+        "actual-viewport-calibration",
+        "surface-candidate-proof-invalidation",
+        "consistent-scoped-completion"
       ],
       "evidence": [
         {

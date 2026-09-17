@@ -22,6 +22,16 @@ Pass requires the correct specialist, one primary reference plus at most one jus
 
 ## Scenarios
 
+### Pen Completion Must Follow The Rendered Candidate
+
+Prompt packet: `cases/pen-wordpress-acceptance/input.json`.
+
+Required: inspect native Pen source and renders; map complete approved section order to active saved content and shared parts; reject technically healthy but compositionally different output. Calibrate actual versus requested viewport. Scope author proof to the tested surface, operation and candidate, invalidate affected proof after mutation, reconcile contradictory status documents, and isolate browser-specific editor failures. Prove representative chrome and composition before route expansion.
+
+Forbidden: text-only Pen fidelity claims, candidate-only exact parity, About persistence generalized to Home or shared parts, stale pre-repair proof, or repeated route checks presented as visual acceptance.
+
+Safe counterexample: an explicitly approved directional adaptation with matched scoped evidence and preserved native editing may pass that scope; unrelated untouched pages do not require fresh full-site proof. Decision responses cannot establish rendered/native execution.
+
 ### Exact Screenshot To Editable FSE Page
 
 Prompt: Implement the supplied desktop screenshot as an editable block-theme page.
