@@ -4,7 +4,7 @@ Use for a selected visual target. Route creation, critique, redesign, or unresol
 
 ## 1. Qualify The Source
 
-Inspect the source visual and confirm target identity and source model before code. Never build from a filename, memory, thumbnail, description, or unresolved mixed references.
+Inspect the source visual before code; confirm target identity/model. Filename, memory, thumbnail, description or mixed references are insufficient.
 
 Classify it as:
 
@@ -14,7 +14,7 @@ Classify it as:
 
 Record dimensions, state, fonts/assets, responsive/interaction behavior, and whether each value is `supplied`, `measured`, or `inferred`. Record ambiguities; clarify consequential choices, otherwise label accessible native defaults.
 
-Calibrate image pixels against the original CSS viewport, DPR, crop and export resizing; never assume a 2x image means 2x CSS sizes. Unknown scale needs confidence and normalized geometry, not invented precision. Preserve exact-target density; no arbitrary enlargement or whole-page zoom/transform correction.
+Calibrate pixels against CSS viewport, DPR, crop/export resizing; 2x images do not imply 2x CSS sizes. Unknown scale needs confidence/normalized geometry. Preserve exact-target density; no arbitrary enlargement or whole-page zoom/transform correction.
 
 ### Figma And Pen Source Preflight
 
@@ -40,11 +40,11 @@ For exact pages, map complete section order, including header/footer, to active 
 - Site strategy, journey, IA, conversion, SEO, analytics, and page outcomes belong to `wp-site-expert`.
 - Theme tokens, templates, patterns, blocks, editor ownership, and visual implementation belong to `wp-theme-expert`.
 - Plugin-owned admin, editor, onboarding, and customer-facing product surfaces belong to `wp-plugin-expert`.
-- For mixed site/theme work, pass one site brief to theme implementation; load both specialists only when one worker owns both boundaries.
+- Pass mixed-work briefs to theme implementation; load both specialists only for shared ownership.
 
 For block themes, map through `theme.json`, verified blocks/supports, patterns, templates/parts, variations, bindings, custom blocks, then Interactivity API. Structural templates render Post Content when Pages > Edit owns the body. Build saved content, not a pattern-only or frontend-CSS simulation. Never use Custom HTML/Shortcode shortcuts. Apply the distribution gate in `../../wp-expert/references/block-theme-architecture.md` before theme-owned functionality.
 
-Before a custom control, inventory stable Core and WordPress Design System components in the supported runtime. Adapt an accessible primitive with product tokens when it meets the contract. A bespoke replacement needs a recorded functional gap, owner, state/accessibility contract, and maintenance rationale; novelty is insufficient.
+Inventory stable Core and WordPress Design System controls in the supported runtime. Prefer accessible primitives with product tokens. Bespoke controls require a functional gap, owner, state/accessibility contract and maintenance rationale, not novelty.
 
 ## 4. Handle Image Assets Deliberately
 
@@ -73,7 +73,7 @@ Use responsive WordPress media and an appropriate format. Never claim licensing,
 6. Accessibility, performance, and browser compatibility.
 7. Visual parity, editor/frontend parity, and golden workflows.
 
-Stabilize ownership, structure, fonts, and real assets before cosmetic nudges. Create a custom block only when native primitives cannot preserve the editing/design contract. For multi-page/system work, prove one representative section with real content, fonts/assets, editor controls, and narrow/intermediate/desktop behavior before scaling. Reuse the task packet's component/token/source IDs across the FSE map and proof receipts; reference established decisions instead of recreating briefs. Judge visual craft and task usability separately; neither pass substitutes for the other.
+Stabilize ownership, structure, fonts/assets before cosmetic nudges. Custom blocks require a native-primitive gap. Before scaling multi-page/system work, prove representative content, fonts/assets, editor controls and narrow/intermediate/desktop behavior. Reuse component/token/source IDs across maps and receipts, not duplicate briefs. Separate craft from usability.
 
 For every substantial image-to-page task, first prove header, hero, CTA, next-section transition and shared footer at source and narrow widths. Calibrate loaded fonts and wrapping before spacing. Do not propagate failing proportions. Report fidelity, design quality and visitor/author usability separately; an average cannot conceal a failed gate.
 
@@ -85,7 +85,7 @@ For exact/regression work, use `../../wp-expert/references/visual-parity-regress
 
 For authenticated wp-admin/editor/Site Editor proof, prefer the product harness. The spatial adapter accepts a config-relative local `storageStatePath`; keep it outside version control, never echo its path or contents, and use a task-owned account for mutations.
 
-For `Exact`, regression, release-critical, or failed work, use visual-proof schema v3 at `../schemas/wordpress-visual-proof.schema.json` and run `node wp-expert/scripts/validate-visual-proof.mjs <proof.json>` from the declared evidence root. Declare required capture, workflow, environment, and asset IDs before proof. Each scoped surface needs its own required workflow and capture in every required environment; do not reuse one candidate artifact across captures. For release-bound work, install the packaged ZIP/artifact and bind its digest, version/build identity, and environment to every candidate capture; working-tree or development-server screenshots are supplementary, not release proof. The receipt binds immutable evidence, per-surface coverage, risk-aware design/accessibility review, structured token lineage through a rendered layer, defects, and affected capture/workflow/environment reproof. Evidence locators stay relative to the root and cannot escape through traversal or symlinks. Validation proves receipt integrity, not aesthetic correctness.
+For `Exact`, regression, release-critical, or failed work, use visual-proof schema v3 at `../schemas/wordpress-visual-proof.schema.json` and run `node wp-expert/scripts/validate-visual-proof.mjs <proof.json>` from the declared evidence root. Declare required capture, workflow, environment, and asset IDs before proof. Each scoped surface needs its own required workflow and capture in every required environment; do not reuse one candidate artifact across captures. For release proof, install the packaged artifact; bind digest, version/build and environment to each candidate capture. Development screenshots are supplementary. Bind immutable evidence, surface coverage, design/accessibility review, rendered token lineage, defects and affected capture/workflow/environment reproof. Evidence locators cannot escape the root through traversal or symlinks. Validation proves receipt integrity, not aesthetic correctness.
 
 Compare source and candidate by overlay or perceptual diff across geometry, type, color, crops, responsive behavior, interactions, and editing surfaces. Use project tolerances; otherwise investigate deterministic hard-edge geometry deltas above 2 CSS px. Treat font rasterization separately.
 
@@ -121,4 +121,4 @@ Completion requires:
 
 ## Output
 
-Report source class, decisions, ownership/components, assets, capture fingerprint, workflows, validation, deviations, and unresolved items. Keep raw measurements and screenshot paths in the manifest.
+Report source class, decisions, ownership/components, assets, capture fingerprint, workflows, validation, deviations, and unresolved items. Keep measurements/captures in the manifest.
