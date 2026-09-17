@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "runId": "native-design-authoring-2026-09-17-pen-final",
+  "scenario": "native-design-authoring",
+  "result": "succeeded",
+  "startedAt": "2026-09-17T15:46:51.000Z",
+  "durationMs": 137000,
+  "checks": [
+    {
+      "name": "editable-artifact-routing",
+      "result": "pass"
+    },
+    {
+      "name": "missing-write-capability",
+      "result": "pass"
+    },
+    {
+      "name": "pen-transfer-loss",
+      "result": "pass"
+    },
+    {
+      "name": "small-edit-restraint",
+      "result": "pass"
+    },
+    {
+      "name": "task-matched-inspiration",
+      "result": "pass"
+    },
+    {
+      "name": "independent-acceptance-gates",
+      "result": "pass"
+    },
+    {
+      "name": "single-source-and-publication",
+      "result": "pass"
+    },
+    {
+      "name": "proportional-handoff",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 8,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "native-design-authoring-2026-09-17-pen-final",
+    "artifactPointer": "codex-fresh-agent:/root/pen_final_regression#8653c10cf6ec548867e8b7705ecedadca7bbe0b2"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-17T15:49:08.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Parent-scored fresh decisions; visual baseline additionally uses /root/pen_final_forward. Decision-only, no native or rendered execution claim. See pen-wordpress-acceptance-review.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}

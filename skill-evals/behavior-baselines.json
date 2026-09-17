@@ -179,7 +179,7 @@
         "wp-theme-expert/SKILL.md",
         "wp-theme-expert/references/router.md"
       ],
-      "sha256": "62aed360d22de0cb758b85be6a1cea25edcd4cd8cbdb98455c07d4965e41c09c",
+      "sha256": "7070c5f6374fd16ae3f90d12e04c69b659adee04cd2511e1c606dfc093be59cb",
       "scenario": {
         "id": "wordpress-visual-execution",
         "files": [
@@ -222,13 +222,13 @@
           "an agent likes a redesigned checkout",
           "Pen Completion Must Follow The Rendered Candidate"
         ],
-        "sha256": "85be7001fd84adbca587bb6418c1923095a34abccb6b0145ef1abd4f566c78fd",
+        "sha256": "4b6c4dc97df424fb3fc29f417209987cf157b6b6650b04b292b541a7af40b101",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [
           "skill-evals/cases/visual-native-regression/input.json",
           "skill-evals/cases/pen-wordpress-acceptance/input.json"
         ],
-        "contractSha256": "700e7eda52097ff91099224f33d54a32dc3c472778a1c83e9c0cb63ee31e360b"
+        "contractSha256": "238c3d6b9a53d1f72e6dbcbcc86e66255d5505c9003da225d4142f1c47581811"
       },
       "requiredChecks": [
         "WordPress-native-ownership",
@@ -271,12 +271,12 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-09-16-native.json",
-          "sha256": "8accb858730ff133e1e05bff18ebee26213142371b7cacbd0b2bfa3dad7999f6",
-          "testedRevision": "e3fe00bb5490f60a455caf76d653b21f0f4487a4",
-          "testedSourceSha256": "62aed360d22de0cb758b85be6a1cea25edcd4cd8cbdb98455c07d4965e41c09c",
-          "testedScenarioSha256": "85be7001fd84adbca587bb6418c1923095a34abccb6b0145ef1abd4f566c78fd",
-          "testedScenarioContractSha256": "700e7eda52097ff91099224f33d54a32dc3c472778a1c83e9c0cb63ee31e360b",
+          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-09-17-pen-final.json",
+          "sha256": "5073f15c357eab26a1c8f2b3cd1335c063b01c9ffbdc677dbb109fe7f301d0c0",
+          "testedRevision": "8653c10cf6ec548867e8b7705ecedadca7bbe0b2",
+          "testedSourceSha256": "7070c5f6374fd16ae3f90d12e04c69b659adee04cd2511e1c606dfc093be59cb",
+          "testedScenarioSha256": "4b6c4dc97df424fb3fc29f417209987cf157b6b6650b04b292b541a7af40b101",
+          "testedScenarioContractSha256": "238c3d6b9a53d1f72e6dbcbcc86e66255d5505c9003da225d4142f1c47581811",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
@@ -1379,7 +1379,7 @@
         "shared/references/native-design-authoring.md",
         "shared/references/visual-to-wordpress-implementation.md"
       ],
-      "sha256": "666cdec25bfa65431c5cbebe3e4fa75cedf7c1445991ceb5211d18498d826de8",
+      "sha256": "d6cc117cad5004f37c94cd6848d6feda53c6c32bf4ea881de0fd40b72c119129",
       "scenario": {
         "id": "native-design-authoring",
         "files": [
@@ -1414,10 +1414,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/native-design-authoring-2026-09-16.json",
-          "sha256": "d549261bef3b0f28845bd45b842363c714ffb2c9d4999261b9ebf5f7141d18ea",
-          "testedRevision": "a2f40f13645c429c6f58979bcff03ab82247f050",
-          "testedSourceSha256": "666cdec25bfa65431c5cbebe3e4fa75cedf7c1445991ceb5211d18498d826de8",
+          "runRecord": "skill-evals/run-records/native-design-authoring-2026-09-17-pen-final.json",
+          "sha256": "fcc90a82bbcb4aa83ce4ea2d8f30b20b1fdf5a624f9e51c5027edbba5426c973",
+          "testedRevision": "8653c10cf6ec548867e8b7705ecedadca7bbe0b2",
+          "testedSourceSha256": "d6cc117cad5004f37c94cd6848d6feda53c6c32bf4ea881de0fd40b72c119129",
           "testedScenarioSha256": "91613d19c65d26ae2bdabd0d8dc41743f5579fd03de3f1f4513c843fe45378c0",
           "testedScenarioContractSha256": "e7b3ee0f69bf866c0347971d8c16ccf082a5d05022f1609fdb9bd677956f146d",
           "runtime": {
