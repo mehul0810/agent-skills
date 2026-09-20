@@ -47,6 +47,29 @@ Use `$wp-product-docs-writer` for factual WordPress product and release document
 - Skill: `wp-product-docs-writer`
 - Load: both documentation modes only because the request spans them
 
+## WordPress Service Business Tasks
+
+Use `$wp-service-business-development` for consulting and service-business decisions before delivery work begins.
+
+**"Qualify this WordPress lead and recommend the next action"**
+- Skill: `wp-service-business-development`
+- Load: `service-opportunity-decision.md`
+
+**"Prepare a discovery, proposal, estimate range, retainer review, or capacity recommendation"**
+- Skill: `wp-service-business-development`
+- Load: `service-opportunity-decision.md`
+- Boundary: it prepares owner-ready commercial drafts; it does not send outreach, sign terms, commit capacity, or provide legal/financial advice.
+
+## Precise Context Plans
+
+Use the narrowest route instead of the legacy broad alias:
+
+- Development: `npm run context:development:plugin`, `npm run context:development:site`, or `npm run context:development:quality`.
+- Marketing: `npm run context:marketing:research`, `npm run context:marketing:edit`, or `npm run context:marketing:enterprise`.
+- Business: `npm run context:business:product` or `npm run context:business:service`.
+
+The unqualified `context:development`, `context:marketing`, and `context:business` commands remain compatibility defaults for plugin architecture, content research, and product-value decisions respectively.
+
 ## WordPress Contribution Tasks
 
 Use `$wp-contributor` for Core, Meta, Gutenberg, WordPress.org, Trac, GitHub PR, patch, testing, docs, triage, and contributor communication work.

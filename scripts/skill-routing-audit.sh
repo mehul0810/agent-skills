@@ -24,6 +24,7 @@ skill_limit() {
     wp-product-docs-writer) echo 3 ;;
     wp-portfolio-cto) echo 8 ;;
     wp-product-orchestrator) echo 11 ;;
+    wp-service-business-development) echo 3 ;;
     wp-expert) echo 8 ;;
     wp-plugin-expert|wp-theme-expert|wp-site-expert|wp-contributor) echo 10 ;;
     *) echo 10 ;;
@@ -127,6 +128,11 @@ check_router_discipline() {
   require_text "wp-portfolio-cto/SKILL.md" "Use for cross-product WordPress portfolio CTO governance" "portfolio CTO trigger description"
   require_text "wp-product-orchestrator/SKILL.md" "Use for one WordPress product control thread" "product orchestrator trigger description"
   require_text "wp-product-docs-writer/SKILL.md" "Use for evidence-based WordPress product documentation" "product docs trigger description"
+  require_text "wp-service-business-development/SKILL.md" "Use for WordPress consulting and service-business work" "service business trigger description"
+  require_text "wp-service-business-development/SKILL.md" "references/service-opportunity-decision.md" "service business decision route"
+  require_text "wp-service-business-development/SKILL.md" "legal, tax, employment, investment, or financial advice" "service business legal boundary"
+  require_text "skill-evals/service-business-development-scenarios.md" "Inbound without budget" "service business qualification scenario"
+  require_text "skill-evals/service-business-development-scenarios.md" "Capacity collision" "service business capacity scenario"
   require_text "wp-expert/SKILL.md" "wp-portfolio-cto" "wp-expert portfolio specialist routing"
   require_text "wp-expert/SKILL.md" 'use `behavior-validator`' "wp-expert behavior validator routing"
   require_text "wp-expert/SKILL.md" 'use `wp-quality-reviewer`' "wp-expert quality reviewer routing"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "WP Service Business Development"
+  short_description: "Qualify, scope, and shape WordPress service opportunities"
+  default_prompt: "Use $wp-service-business-development to qualify a WordPress consulting opportunity, prepare a discovery/proposal decision packet, or assess retainer and capacity fit without inventing commitments."

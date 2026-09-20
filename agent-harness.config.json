@@ -68,6 +68,15 @@
       ]
     },
     {
+      "name": "Service opportunity decision",
+      "maxWords": 1800,
+      "warningPercent": 85,
+      "files": [
+        "wp-service-business-development/SKILL.md",
+        "wp-service-business-development/references/service-opportunity-decision.md"
+      ]
+    },
+    {
       "name": "WP ambiguous routing",
       "maxWords": 2400,
       "warningPercent": 85,
@@ -520,6 +529,11 @@
       "name": "Context and approach decisions",
       "file": "skill-evals/context-decision-scenarios.md",
       "requiredPhrases": ["Material Approach Choice", "Source-Bound Recovery", "Model And Hook Boundaries"]
+    },
+    {
+      "name": "WP Service Business Development",
+      "file": "skill-evals/service-business-development-scenarios.md",
+      "requiredPhrases": ["# WP Service Business Development Scenarios", "Inbound without budget", "Clear outcome, bounded scope", "Retainer ambiguity", "Capacity collision", "## Evidence Boundary"]
     },
     {
       "name": "WP Expert",
