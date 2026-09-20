@@ -36,7 +36,7 @@ flowchart TD
   G --> H[Verified delivery and reconciliation]
   F -->|Authorized docs or article| H
   H --> I[Outcome evidence and learning]
-  C -. compact state .-> R[Astra low: system health review]
+  C -. compact state .-> R[System health review: current owner model policy]
   E -. candidate and proof .-> R
   I -. recurrence .-> R
   R --> J{Confirmed and admitted repair?}

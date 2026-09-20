@@ -17,6 +17,13 @@ require_text() {
   fi
 }
 
+require_text "shared/references/system-health-reviewer.md" "latest applicable owner instructions" "reviewer current model authority"
+require_text "shared/references/system-health-reviewer.md" 'task_complete.last_agent_message' "reviewer modern completion evidence"
+require_text "shared/references/system-health-reviewer.md" "one bounded exact-turn fallback" "reviewer empty retrieval fallback"
+require_text "shared/references/system-health-reviewer.md" "Prior-turn content remains historical" "reviewer evidence freshness"
+require_text "shared/references/system-health-reviewer.md" "Silence is a notification decision, not closure" "reviewer quiet blocker ownership"
+require_text "shared/references/system-health-reviewer.md" "Check the returned ID matches" "reviewer exact settings target"
+
 require_absent() {
   local file="$1"
   local text="$2"

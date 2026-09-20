@@ -18,4 +18,4 @@ Use one primary mode. Open only the named reference and relevant `##` section; a
 
 Resolve products, priorities, repo paths, thread IDs, and cadence from current governed portfolio state, never this skill file.
 
-- System loop/graph health and bounded Astra-low repair review: `../../shared/references/system-health-reviewer.md`.
+- System loop/graph health and bounded evidence review under current owner model policy: `../../shared/references/system-health-reviewer.md`.

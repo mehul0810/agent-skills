@@ -583,7 +583,9 @@
         ],
         "sha256": "adc694ebf95c5e99f1cf6863325e98fcf92a6e14ad7b6bb2f57dca0ae37c469f",
         "sha256Scope": "legacy-anchor-line",
-        "fixtureFiles": [],
+        "fixtureFiles": [
+          "skill-evals/cases/system-health-governance/input.json"
+        ],
         "contractSha256": "2eae1575eaf837cf2af20eaa11f325781c32a5b9dcc0d3f95a59621779c84097"
       },
       "requiredChecks": [
@@ -1427,6 +1429,49 @@
           }
         }
       ],
+      "harnessContract": "cli-validation-v1"
+    },
+    {
+      "name": "system-health-reviewer-evidence",
+      "files": [
+        "wp-portfolio-cto/references/router.md",
+        "shared/references/system-health-reviewer.md",
+        "shared/references/product-workflow-profiles.md"
+      ],
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "scenario": {
+        "id": "system-health-reviewer-evidence",
+        "files": [
+          "skill-evals/system-health-reviewer-scenarios.md"
+        ],
+        "anchors": [
+          "Empty Retrieval And Modern Events",
+          "Current Turn Identity",
+          "Quiet Blocker Ownership",
+          "Sample Coverage",
+          "Correct Target And Current Policy",
+          "Separation And Safe Completion"
+        ],
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [
+          "skill-evals/cases/system-health-reviewer/input.json",
+          "skill-evals/cases/system-health-reviewer/artifacts/cases.json"
+        ],
+        "contractSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "requiredChecks": [
+        "empty-retrieval-fallback-or-unknown",
+        "modern-event-role-and-turn-binding",
+        "current-turn-cursor-integrity",
+        "quiet-blocker-owner-next-action",
+        "sample-not-portfolio-health",
+        "correct-target-fresh-settings",
+        "current-owner-model-policy",
+        "observe-route-no-self-approval",
+        "healthy-scoped-noop"
+      ],
+      "evidence": [],
       "harnessContract": "cli-validation-v1"
     }
   ],

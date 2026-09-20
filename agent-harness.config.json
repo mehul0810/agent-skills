@@ -684,6 +684,11 @@
       "requiredPhrases": ["# Reference Design Adoption Scenarios", "## Conflicting Gallery Export", "## Equal-Content Direction Comparison", "## Approved Target Safe Counterexample"]
     },
     {
+      "name": "System Health Evidence",
+      "file": "skill-evals/system-health-reviewer-scenarios.md",
+      "requiredPhrases": ["# System Health Reviewer Evidence Scenarios", "## Empty Retrieval And Modern Events", "## Current Turn Identity", "## Quiet Blocker Ownership", "## Sample Coverage", "## Correct Target And Current Policy", "## Separation And Safe Completion"]
+    },
+    {
       "name": "Astra Simplification Pilot",
       "file": "skill-evals/astra-simplification-scenarios.md",
       "requiredPhrases": ["# Astra Simplification Pilot", "## Discovery Before Loading", "## Direct Execution And Safe Completion", "## Dependency And Recovery Boundaries", "## Paired Execution Evidence"]

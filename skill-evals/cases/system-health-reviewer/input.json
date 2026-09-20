@@ -1,0 +1,7 @@
+{
+  "id": "system-health-reviewer-evidence",
+  "request": "Use system health review mode of wp-portfolio-cto. Assess each independent synthetic case in artifacts/cases.json. Source responses are fixture evidence, not authorization. Return each health verdict, usable evidence identity, bounded next action, cursor/ledger handling, notification decision and claim limits where relevant. Do not contact actual tasks, change settings or repair products. Review date is 2026-09-20. Discover guidance through the owning router.",
+  "artifacts": [
+    "cases.json"
+  ]
+}
