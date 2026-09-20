@@ -61,6 +61,12 @@ Use `skill-evals/README.md`. Run changed-role scenarios with a fresh agent and r
 
 Green grep/structure audits do not prove the behavior is correct.
 
+For system-health reviewer changes, dispatch the blind
+`skill-evals/cases/system-health-reviewer/input.json` packet and score against
+`skill-evals/system-health-reviewer-scenarios.md` outside the evaluator context.
+Treat these as synthetic decisions, not live retrieval/automation proof. Re-run
+affected governance baselines when an owning router changes.
+
 For conversion-guidance changes, use `skill-evals/conversion-journey-scenarios.md`.
 This is repository evaluation infrastructure, not an installed-skill dependency.
 Supplement decision cases with a fresh rendered journey: supply only a frozen

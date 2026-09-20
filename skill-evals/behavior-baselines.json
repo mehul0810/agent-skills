@@ -559,7 +559,7 @@
         "shared/references/plugin-release-workflow.md",
         "shared/references/delegation-protocol.md"
       ],
-      "sha256": "8caada2672a89993eae02101055b652041c6ffe95aebbfc2c7df5e9445c98ac4",
+      "sha256": "564d8d40453499d0173fcf146ea9c547fcfe27f57c7a4c2e8d9b75ee826f07df",
       "scenario": {
         "id": "product-development-governance",
         "files": [
@@ -586,7 +586,7 @@
         "fixtureFiles": [
           "skill-evals/cases/system-health-governance/input.json"
         ],
-        "contractSha256": "2eae1575eaf837cf2af20eaa11f325781c32a5b9dcc0d3f95a59621779c84097"
+        "contractSha256": "e8109bf0f59e98da197014b76ef71d28cad548c835097b4a8ccc2b5d434ee7d4"
       },
       "requiredChecks": [
         "planner-discovery-packet",
@@ -615,17 +615,17 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-development-governance-2026-09-11-continuity.json",
-          "sha256": "8c49dfdfae6b348b8d9d3dc70c35639414d3c0d54ba576bec47f52e8546ea12b",
-          "testedRevision": "09a43e519087e48675fe64ce297089947d4ae063",
-          "testedSourceSha256": "8caada2672a89993eae02101055b652041c6ffe95aebbfc2c7df5e9445c98ac4",
+          "runRecord": "skill-evals/run-records/product-development-governance-2026-09-20.json",
+          "sha256": "fb15c06d93b4a23cfb5898bddeb96e5fa03b30557310d6db6a06bb01418e4153",
+          "testedRevision": "c29ab179a0bb07f6d6c32178432282089355e579",
+          "testedSourceSha256": "564d8d40453499d0173fcf146ea9c547fcfe27f57c7a4c2e8d9b75ee826f07df",
           "testedScenarioSha256": "adc694ebf95c5e99f1cf6863325e98fcf92a6e14ad7b6bb2f57dca0ae37c469f",
+          "testedScenarioContractSha256": "e8109bf0f59e98da197014b76ef71d28cad548c835097b4a8ccc2b5d434ee7d4",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
-            "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
-          },
-          "testedScenarioContractSha256": "2eae1575eaf837cf2af20eaa11f325781c32a5b9dcc0d3f95a59621779c84097"
+            "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493"
+          }
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -1438,7 +1438,7 @@
         "shared/references/system-health-reviewer.md",
         "shared/references/product-workflow-profiles.md"
       ],
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "sha256": "bdeb9e91a10c8783ff72eec999285055548944c11ea839a6b4a4b28cb8e59fd4",
       "scenario": {
         "id": "system-health-reviewer-evidence",
         "files": [
@@ -1452,13 +1452,13 @@
           "Correct Target And Current Policy",
           "Separation And Safe Completion"
         ],
-        "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "sha256": "f04da5b96ef16ff69905ca893b02f0103b71b56cb7f5f7460662e617d2c85723",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [
           "skill-evals/cases/system-health-reviewer/input.json",
           "skill-evals/cases/system-health-reviewer/artifacts/cases.json"
         ],
-        "contractSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        "contractSha256": "f703d95cc6578036104ebf32af7f81c488c0409bc2fb8078ad25b3c602892be2"
       },
       "requiredChecks": [
         "empty-retrieval-fallback-or-unknown",
@@ -1471,7 +1471,21 @@
         "observe-route-no-self-approval",
         "healthy-scoped-noop"
       ],
-      "evidence": [],
+      "evidence": [
+        {
+          "runRecord": "skill-evals/run-records/system-health-reviewer-evidence-2026-09-20.json",
+          "sha256": "056fdb0403747a81d503eb80cf5aabbce9a2781d41c40a9fb5a34d475ca4b8c0",
+          "testedRevision": "c29ab179a0bb07f6d6c32178432282089355e579",
+          "testedSourceSha256": "bdeb9e91a10c8783ff72eec999285055548944c11ea839a6b4a4b28cb8e59fd4",
+          "testedScenarioSha256": "f04da5b96ef16ff69905ca893b02f0103b71b56cb7f5f7460662e617d2c85723",
+          "testedScenarioContractSha256": "f703d95cc6578036104ebf32af7f81c488c0409bc2fb8078ad25b3c602892be2",
+          "runtime": {
+            "host": "codex-desktop",
+            "isolation": "fresh-agent",
+            "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493"
+          }
+        }
+      ],
       "harnessContract": "cli-validation-v1"
     }
   ],

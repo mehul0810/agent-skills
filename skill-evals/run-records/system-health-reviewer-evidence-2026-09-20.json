@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "runId": "system-health-reviewer-evidence-2026-09-20",
+  "scenario": "system-health-reviewer-evidence",
+  "result": "succeeded",
+  "startedAt": "2026-09-20T05:12:07.000Z",
+  "durationMs": 98000,
+  "checks": [
+    {
+      "name": "empty-retrieval-fallback-or-unknown",
+      "result": "pass"
+    },
+    {
+      "name": "modern-event-role-and-turn-binding",
+      "result": "pass"
+    },
+    {
+      "name": "current-turn-cursor-integrity",
+      "result": "pass"
+    },
+    {
+      "name": "quiet-blocker-owner-next-action",
+      "result": "pass"
+    },
+    {
+      "name": "sample-not-portfolio-health",
+      "result": "pass"
+    },
+    {
+      "name": "correct-target-fresh-settings",
+      "result": "pass"
+    },
+    {
+      "name": "current-owner-model-policy",
+      "result": "pass"
+    },
+    {
+      "name": "observe-route-no-self-approval",
+      "result": "pass"
+    },
+    {
+      "name": "healthy-scoped-noop",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 9,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "system-health-reviewer-evidence-2026-09-20",
+    "artifactPointer": "codex-fresh-agent:/root/health_evidence_forward#c29ab179a0bb07f6d6c32178432282089355e579"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-20T05:13:45.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Parent-scored fresh synthetic decisions. No live automation/retrieval or unattended reliability claim. See system-health-evidence-review.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}
