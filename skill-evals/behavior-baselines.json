@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493",
+  "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471",
   "defaults": {
     "maxAgeDays": 90,
     "requiredTags": [
@@ -1316,7 +1316,8 @@
           },
           "testedScenarioContractSha256": "729da0443ad04d91485c6e8dcab3faaeb450b4f3ba55e5835e8eff7701c3231f"
         }
-      ]
+      ],
+      "harnessContract": "cli-validation-v1"
     },
     {
       "name": "scoped-review-workflow",
@@ -1371,7 +1372,8 @@
           },
           "testedScenarioContractSha256": "e917f801dc0feaaab10e07765be24894d6e792a3695779fe6305bf81e0bd7d3f"
         }
-      ]
+      ],
+      "harnessContract": "cli-validation-v1"
     },
     {
       "name": "native-design-authoring",
@@ -1492,9 +1494,15 @@
   "harnessCompatibility": [
     {
       "fromRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee",
-      "toRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493",
-      "validationSha256": "ba137bd25feea75f485ceacc21291b811c4eaa6194ca0b0dd126c92aac7f607d",
-      "evidencePointer": "skill-evals/astra-simplification-review.md"
+      "toRevision": "fe1fe276ca5027b4407ef34334fd41317027c471",
+      "validationSha256": "db6e466fd4fd9cc62c39d9ba79b89cfc6fcfe07d507220242ff94853e4e82319",
+      "evidencePointer": "skill-evals/context-route-planning-integration-review.md"
+    },
+    {
+      "fromRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493",
+      "toRevision": "fe1fe276ca5027b4407ef34334fd41317027c471",
+      "validationSha256": "db6e466fd4fd9cc62c39d9ba79b89cfc6fcfe07d507220242ff94853e4e82319",
+      "evidencePointer": "skill-evals/context-route-planning-integration-review.md"
     }
   ]
 }

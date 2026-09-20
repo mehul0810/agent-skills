@@ -6,6 +6,9 @@
   },
   "scripts": {
     "harness": "agent-harness validate --config agent-harness.config.json",
+    "context:development": "agent-harness plan-context --config agent-harness.config.json --route \"Plugin architecture\"",
+    "context:marketing": "agent-harness plan-context --config agent-harness.config.json --route \"Content research\"",
+    "context:business": "agent-harness plan-context --config agent-harness.config.json --route \"Product value decision\"",
     "run-record:example": "agent-harness validate-run --file skill-evals/run-record.example.json",
     "run-record:behavior": "node scripts/validate-behavior-run-records.mjs",
     "validate:behavior-evidence": "node scripts/behavior-evidence-audit.mjs --self-test && node scripts/behavior-evidence-audit.mjs",
@@ -17,7 +20,7 @@
     "test": "node scripts/validate-all.mjs"
   },
   "devDependencies": {
-    "@mehul0810/agent-harness": "https://github.com/mehul0810/agent-harness/archive/e99c9e29c1d58c23ff1ac656040e289ea321d493.tar.gz"
+    "@mehul0810/agent-harness": "https://github.com/mehul0810/agent-harness/archive/fe1fe276ca5027b4407ef34334fd41317027c471.tar.gz"
   },
   "dependencies": {
     "ajv": "8.20.0"
