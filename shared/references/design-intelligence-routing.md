@@ -36,11 +36,11 @@ Use design QA only after a prototype/build has both a source visual and a render
 Inspect the actual image at readable resolution and classify the request before code:
 
 - `Audit`: explain strengths, problems, hierarchy, UX, accessibility, and evidence limits. Use `product-design:audit`.
-- `Derive`: create a new design from one or more references. Treat them as influence, not a target; inspect them, extract constraints, and prepare a compact brief before implementation. Then use `product-design:ideate` and, when direction choice is delegated, choose a coherent reversible direction. Pause for owner selection only when requested or when a materially unresolved brand, positioning, or scope decision needs it.
+- `Derive`: inspect references as influence, not exact targets; extract constraints and prepare a compact brief, then use `product-design:ideate` to establish a coherent direction.
 - `Reproduce`: faithfully implement an explicitly selected screenshot, Figma frame, mockup, or generated result. Use `visual-to-wordpress-implementation.md`.
-- `Extend`: add a new page/state/component to an existing design language. Audit the existing system first and model its reusable rules; for a material new composition, choose a missing target and seek owner/product-design selection only when requested or needed for a brand/scope decision.
+- `Extend`: audit the existing system's reusable rules, then select the missing page/state/component composition before implementation.
 
-Words such as `use this as inspiration`, `make something like this`, `improve`, `redesign`, or `create based on` require inspection and a compact source model or brief before implementation; they do not make a reference an exact target or, by themselves, require owner approval. When direction choice is delegated, proceed with a reversible, labeled choice unless selection is requested or a materially unresolved brand, positioning, or scope decision needs it. Conversely, do not ideate away an exact approved target.
+Inspiration and redesign require inspection and a brief, not exact cloning. When direction choice is delegated, proceed with a reversible, labeled choice. Ask only for requested selection or a materially unresolved brand, positioning, or scope decision. Never ideate away an exact approved target.
 
 ## Design Understanding Readiness
 
@@ -86,7 +86,7 @@ Generate alternatives only from the reviewed brief. Get direction selection when
 - If layout, workflow quality, or UX clarity changed materially, add a design audit.
 - For exact, regression, release-critical, or previously failed work, require the current visual-proof schema v3; generated or materially art-directed imagery also requires the asset-production receipt.
 - If a large redesign has no chosen direction, ideate before implementation; direction choice may remain delegated.
-- For brand-critical greenfield, major overhaul, or multi-page work, validate one representative direction artifact before scaling. This is not an owner-approval gate when direction choice is delegated; seek selection only when requested or when a materially unresolved brand, positioning, or scope decision needs approval. Do not require the artifact checkpoint for exact targets or bounded polish.
+- For brand-critical greenfield, major overhaul, or multi-page work, validate one representative direction artifact before scaling. Delegated direction does not require owner approval. Skip this checkpoint for exact targets or bounded polish.
 - For material onboarding, conversion, settings, publishing, or repeated operational journeys, use risk-tiered usability evidence before claiming excellent UX.
 - For a growth-led redesign, require the growth brief and measurement plan before visual generation; assess the candidate against visitor intent and conversion friction, not aesthetics alone.
 - Convert Product Design findings into actionable acceptance criteria, design QA checks, or adjacent findings for PO triage.

@@ -30,7 +30,7 @@ Audience, accessibility, brand truth, task frequency, and operational risk overr
 
 For premium enterprise work, include one accountability read without loading another design reference: responsible role, operational risk reduced, governed workflow, proof shown, and failure/recovery behavior. A polished surface without those answers is not enterprise evidence.
 
-For a brand-critical greenfield surface, major overhaul, or multi-page system, validate the direction before scaling: produce the smallest useful artifact, such as a style frame, key section, or critical-flow prototype, using truthful content and intended WordPress primitives; check brand, narrow-width behavior, and primary-task fit. When the owner has delegated direction choice, this validates the work rather than requiring approval. Obtain accountable selection only when requested or needed to resolve a materially unresolved brand, positioning, or scope decision. Skip the artifact checkpoint for bounded preserve redesigns, exact approved targets, and low-risk polish.
+For brand-critical greenfield, major overhaul, or multi-page work, validate the smallest representative direction artifact before scaling: a style frame, key section, or critical-flow prototype using truthful content and intended WordPress primitives. Check brand, narrow-width and task fit. Delegated direction does not require owner approval; seek selection only when requested or a material brand, positioning or scope decision remains unresolved. Skip this checkpoint for bounded preserve redesigns, exact targets and low-risk polish.
 
 ### Translate References Into Decisions
 
