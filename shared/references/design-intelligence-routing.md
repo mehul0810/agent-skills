@@ -36,9 +36,9 @@ Use design QA only after a prototype/build has both a source visual and a render
 Inspect the actual image at readable resolution and classify the request before code:
 
 - `Audit`: explain strengths, problems, hierarchy, UX, accessibility, and evidence limits. Use `product-design:audit`.
-- `Derive`: create a new design from one or more references. Treat them as influence, not a target; extract constraints, prepare a compact brief, then use `product-design:ideate`. Show visual alternatives and wait for selection.
+- `Derive`: create a new design from one or more references. Treat them as influence, not a target; extract constraints, prepare a compact brief, then use `product-design:ideate`. Use reversible creative discretion to choose a coherent direction unless alternatives or approval are requested, the change is brand-critical/major, or a material scope or brand decision remains unresolved.
 - `Reproduce`: faithfully implement an explicitly selected screenshot, Figma frame, mockup, or generated result. Use `visual-to-wordpress-implementation.md`.
-- `Extend`: add a new page/state/component to an existing design language. Audit the existing system first, model its reusable rules, then create and select the missing target before implementation when the new composition is material.
+- `Extend`: add a new page/state/component to an existing design language. Audit the existing system first and model its reusable rules; for a material new composition, choose a missing target and seek owner/product-design selection only when requested or needed for a brand/scope decision.
 
 Words such as `use this as inspiration`, `make something like this`, `improve`, `redesign`, or `create based on` do not authorize exact cloning or immediate implementation. Conversely, do not ideate away an exact approved target.
 
@@ -57,7 +57,7 @@ Before ideation or implementation, create a compact source model containing:
 
 OCR, color sampling, and measurements are evidence aids, not authority. A cropped, compressed, composite, or single-state image cannot prove hidden behavior. Ask one focused question only when a brand-critical or journey-changing ambiguity cannot be resolved safely; otherwise use a reversible, labeled inference.
 
-The build gate is a selected direction plus sufficient source evidence. An approved existing design system, wireframe, or rendered WordPress prototype can resolve direction without another generated image; record what it establishes and remaining uncertainty. Exact image/Figma work still preserves the supplied target. If image creation is requested, produce that artifact. Attach supplied references when supported; never claim unused attachments.
+The build gate is a coherent direction plus sufficient source evidence. Obtain owner/product-design selection when requested or when a brand-critical/major direction or material scope decision needs approval; otherwise a reversible, labeled choice is sufficient. An approved existing design system, wireframe, or rendered WordPress prototype can resolve direction without another generated image; record what it establishes and remaining uncertainty. Exact image/Figma work still preserves the supplied target. If image creation is requested, produce that artifact. Attach supplied references when supported; never claim unused attachments.
 
 ## Redesign Growth Gate
 
@@ -75,7 +75,7 @@ For `improve` or `redesign` work on a growth, product, or service page, do not g
 
 Turn findings into ranked hypotheses for message, IA, content, proof, CTA, form, and layout changes. Label each as observed, evidence-backed hypothesis, or assumption; define the expected user/search/business effect and measurement. Preserve valuable ranking content and verified contracts unless the brief explicitly changes them. Never call a tactic or redesign `proven` without applicable experiment or outcome evidence, invent proof, keyword-stuff, add dark patterns, or trade page experience for conversion pressure.
 
-Generate alternatives only from the reviewed brief, then select a direction before implementation. Keep this reference primary for direction; hand the approved brief sequentially to `wp-site-expert` for conversion, SEO, analytics, content, and WordPress implementation. Do not load every growth reference at once.
+Generate alternatives only from the reviewed brief. Get direction selection when requested or when a brand-critical/major decision needs approval; otherwise choose a reversible direction and proceed. Keep this reference primary for direction; hand the brief sequentially to `wp-site-expert` for conversion, SEO, analytics, content, and WordPress implementation. Do not load every growth reference at once.
 
 ## Workflow Rules
 

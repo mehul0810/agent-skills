@@ -26,7 +26,7 @@ Treat the dials as reasoning aids, not user-facing configuration or mechanical s
 - **Density:** editorial and spacious to operational and information-rich.
 - **Trust:** low-consequence promotion to accountable, permissioned, or regulated workflow.
 
-Audience, accessibility, brand truth, task frequency, and operational risk override aesthetic preference. If two materially different readings remain plausible, ask one focused question. Otherwise proceed without a questionnaire.
+Audience, accessibility, brand truth, task frequency, and operational risk override aesthetic preference. For reversible choices, select and label a reasoned direction; ask one focused question only when an unresolved choice materially affects brand, scope, or user journey. Otherwise proceed without a questionnaire.
 
 For premium enterprise work, include one accountability read without loading another design reference: responsible role, operational risk reduced, governed workflow, proof shown, and failure/recovery behavior. A polished surface without those answers is not enterprise evidence.
 
@@ -80,7 +80,7 @@ Use the active project's tokens and components first. For WordPress surfaces, pr
 
 Site strategy and journey belong to `wp-site-expert`; theme tokens, templates, patterns, and editor/frontend presentation belong to `wp-theme-expert`; plugin admin/editor workflows belong to `wp-plugin-expert`. Visual polish never justifies frozen page markup, Custom HTML/Shortcode shortcuts, global admin CSS, duplicate React, or an unrelated frontend stack.
 
-Real product screenshots and supplied or approved assets outrank decorative imagery. When an asset is missing, explicitly choose reuse, generation, sourcing/licensing, CSS/SVG for suitable non-factual geometry, or a labeled placeholder. Never fabricate brands, product states, customer proof, or factual screenshots.
+Real product screenshots and supplied or approved assets outrank decorative imagery. For substantial design work where imagery serves the content, default to purposeful, high-fidelity imagery while preserving the established brand language; this is not a requirement for simple polish or operational UI. When an asset is missing, explicitly choose reuse, generation, sourcing/licensing, CSS/SVG for suitable non-factual geometry, or a labeled placeholder. Never fabricate brands, product states, customer proof, or factual screenshots.
 
 ## 5. Motion And Interaction Contract
 

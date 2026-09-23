@@ -57,7 +57,7 @@ The due date is release exit. At T-1, require implementation on `release/<versio
 
 Milestones need due dates from train evidence; ask if ambiguous. A missing due date alone is not an implementation blocker.
 
-Create/use `release/<release-version>` from the verified base: use the version, not the GitHub milestone ID or sequence number. Non-version titles require repo evidence or a decision brief. Do not retarget/change dates without evidence.
+Milestone release work must target `release/<release-version>` from the verified base; use the version, not the GitHub milestone ID or sequence number. Create the branch when missing, and base issue PRs on it, not the repository default. Non-version titles require repo evidence or a decision brief. Do not retarget/change dates without evidence.
 
 If a wrong milestone-ID branch exists, replay/reconcile its commits into `release/<release-version>`, retarget PRs, and preserve it until deletion is approved.
 
@@ -67,7 +67,7 @@ Stop release creation for unresolved production/previous train, stale metadata/d
 
 Package/readme/Plugin Check validation is not current when any release metadata changed after its last run.
 
-If metadata/readme/changelog is stale, create a focused release-readiness issue/PR against the active `release/<version>` branch, rerun package/readme/Plugin Check, and regenerate the brief. Otherwise include explicit readme/changelog audit evidence.
+Release-readiness is execution, not report-only: within scope, fix safe, authorized gaps on the active `release/<version>` branch, open or update the correctly based PR, then rerun affected checks and regenerate the brief. If metadata/readme/changelog is stale, create a focused release-readiness issue/PR against the active `release/<version>` branch and rerun package/readme/Plugin Check. Otherwise include explicit readme/changelog audit evidence. Protected-branch, release, tag, and deploy actions remain owner-gated.
 
 Issue intake, implementation, hardening PRs, branch creation, unprotected non-production merges, tooling, docs, and validation need no release approval; protected-branch, release, tag, and deploy actions do.
 
