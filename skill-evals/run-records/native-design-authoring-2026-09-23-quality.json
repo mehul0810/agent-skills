@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "runId": "native-design-authoring-2026-09-23-quality",
+  "scenario": "native-design-authoring",
+  "result": "succeeded",
+  "startedAt": "2026-09-23T06:37:01.000Z",
+  "durationMs": 49000,
+  "checks": [
+    { "name": "editable-artifact-routing", "result": "pass" },
+    { "name": "missing-write-capability", "result": "pass" },
+    { "name": "pen-transfer-loss", "result": "pass" },
+    { "name": "small-edit-restraint", "result": "pass" },
+    { "name": "task-matched-inspiration", "result": "pass" },
+    { "name": "independent-acceptance-gates", "result": "pass" },
+    { "name": "single-source-and-publication", "result": "pass" },
+    { "name": "proportional-handoff", "result": "pass" },
+    { "name": "high-fidelity-default", "result": "pass" },
+    { "name": "navigation-and-recovery", "result": "pass" },
+    { "name": "purposeful-media", "result": "pass" },
+    { "name": "placement-aware-image", "result": "pass" },
+    { "name": "image-candidate-rejection", "result": "pass" },
+    { "name": "exact-edit-restraint", "result": "pass" },
+    { "name": "native-runtime-boundary", "result": "pass" },
+    { "name": "truthful-visual-proof", "result": "pass" }
+  ],
+  "metrics": {
+    "checks_passed": 16,
+    "host_telemetry_available": 0,
+    "partial_observation_window": 1
+  },
+  "lineage": {
+    "verificationId": "native-design-authoring-2026-09-23-quality",
+    "artifactPointer": "codex-fresh-agent:/root/native_design_quality_blind#f83aeacfc6ff8ad2e92f815e96a030626fe3ea6d"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-23T06:37:50.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "partial_observation_window"
+    ],
+    "summary": "Sixteen synthetic decisions passed in a 49-second partial parent-observation window during an already-running fresh-agent evaluation. This is not full-run duration, latency, or cost telemetry. Raw response is not public. No rendered/native artifact, design-quality, or all-model-parity proof is established."
+  },
+  "tags": [ "fresh-agent", "sanitized" ]
+}

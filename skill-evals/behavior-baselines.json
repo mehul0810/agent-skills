@@ -1412,9 +1412,10 @@
         "wp-site-expert/SKILL.md",
         "shared/references/design-intelligence-routing.md",
         "shared/references/native-design-authoring.md",
-        "shared/references/visual-to-wordpress-implementation.md"
+        "shared/references/visual-to-wordpress-implementation.md",
+        "templates/global-design-defaults.md"
       ],
-      "sha256": "000e83cec1c9c3936a9fda3b92ba0f72ef8e38ccdb4b3a274d74e2b8ea42fc10",
+      "sha256": "068193425391a69a8089e30e52d6947a1abc46bea4a8939853ae1986e88078b1",
       "scenario": {
         "id": "native-design-authoring",
         "files": [
@@ -1428,14 +1429,22 @@
           "## Task-Matched Inspiration",
           "## Independent Acceptance Gates",
           "## Single Source And Publication",
-          "## Proportional Handoff"
+          "## Proportional Handoff",
+          "## High Fidelity Default",
+          "## Navigation And Recovery",
+          "## Purposeful Media",
+          "## Placement Aware Image",
+          "## Image Candidate Rejection",
+          "## Exact Edit Restraint",
+          "## Native Runtime Boundary",
+          "## Truthful Visual Proof"
         ],
-        "sha256": "91613d19c65d26ae2bdabd0d8dc41743f5579fd03de3f1f4513c843fe45378c0",
+        "sha256": "7ddf652828f4d07a0bf44c85063ab69a865ac3f19dab31a2a3e0975426cfa197",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [
           "skill-evals/cases/native-design-authoring/input.json"
         ],
-        "contractSha256": "e7b3ee0f69bf866c0347971d8c16ccf082a5d05022f1609fdb9bd677956f146d"
+        "contractSha256": "6f2e3ecc40b0adb38f49de2ac5d8e9c0d1e4d5c0b0ce78f17d5ba4f34d2004c9"
       },
       "requiredChecks": [
         "editable-artifact-routing",
@@ -1445,21 +1454,29 @@
         "task-matched-inspiration",
         "independent-acceptance-gates",
         "single-source-and-publication",
-        "proportional-handoff"
+        "proportional-handoff",
+        "high-fidelity-default",
+        "navigation-and-recovery",
+        "purposeful-media",
+        "placement-aware-image",
+        "image-candidate-rejection",
+        "exact-edit-restraint",
+        "native-runtime-boundary",
+        "truthful-visual-proof"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/native-design-authoring-2026-09-23-ownership.json",
-          "sha256": "201f2238eec2a5148abe53170a76221439af96782d25aacfc1cee700ef158af9",
-          "testedRevision": "40b5373b9abb3a4a553978d8b95ce6379a57f74b",
-          "testedSourceSha256": "000e83cec1c9c3936a9fda3b92ba0f72ef8e38ccdb4b3a274d74e2b8ea42fc10",
-          "testedScenarioSha256": "91613d19c65d26ae2bdabd0d8dc41743f5579fd03de3f1f4513c843fe45378c0",
+          "runRecord": "skill-evals/run-records/native-design-authoring-2026-09-23-quality.json",
+          "sha256": "73982134cfdfe8ae5f82874af16af35a1ec9bce553803f0fa1abfca08bcd2639",
+          "testedRevision": "f83aeacfc6ff8ad2e92f815e96a030626fe3ea6d",
+          "testedSourceSha256": "068193425391a69a8089e30e52d6947a1abc46bea4a8939853ae1986e88078b1",
+          "testedScenarioSha256": "7ddf652828f4d07a0bf44c85063ab69a865ac3f19dab31a2a3e0975426cfa197",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           },
-          "testedScenarioContractSha256": "e7b3ee0f69bf866c0347971d8c16ccf082a5d05022f1609fdb9bd677956f146d"
+          "testedScenarioContractSha256": "6f2e3ecc40b0adb38f49de2ac5d8e9c0d1e4d5c0b0ce78f17d5ba4f34d2004c9"
         }
       ],
       "harnessContract": "cli-validation-v1"
