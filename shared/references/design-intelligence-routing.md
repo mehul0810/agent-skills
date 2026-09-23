@@ -36,11 +36,11 @@ Use design QA only after a prototype/build has both a source visual and a render
 Inspect the actual image at readable resolution and classify the request before code:
 
 - `Audit`: explain strengths, problems, hierarchy, UX, accessibility, and evidence limits. Use `product-design:audit`.
-- `Derive`: create a new design from one or more references. Treat them as influence, not a target; extract constraints, prepare a compact brief, then use `product-design:ideate`. Use reversible creative discretion to choose a coherent direction unless alternatives or approval are requested, the change is brand-critical/major, or a material scope or brand decision remains unresolved.
+- `Derive`: create a new design from one or more references. Treat them as influence, not a target; inspect them, extract constraints, and prepare a compact brief before implementation. Then use `product-design:ideate` and, when direction choice is delegated, choose a coherent reversible direction. Pause for owner selection only when requested or when a materially unresolved brand, positioning, or scope decision needs it.
 - `Reproduce`: faithfully implement an explicitly selected screenshot, Figma frame, mockup, or generated result. Use `visual-to-wordpress-implementation.md`.
 - `Extend`: add a new page/state/component to an existing design language. Audit the existing system first and model its reusable rules; for a material new composition, choose a missing target and seek owner/product-design selection only when requested or needed for a brand/scope decision.
 
-Words such as `use this as inspiration`, `make something like this`, `improve`, `redesign`, or `create based on` do not authorize exact cloning or immediate implementation. Conversely, do not ideate away an exact approved target.
+Words such as `use this as inspiration`, `make something like this`, `improve`, `redesign`, or `create based on` require inspection and a compact source model or brief before implementation; they do not make a reference an exact target or, by themselves, require owner approval. When direction choice is delegated, proceed with a reversible, labeled choice unless selection is requested or a materially unresolved brand, positioning, or scope decision needs it. Conversely, do not ideate away an exact approved target.
 
 ## Design Understanding Readiness
 
@@ -57,7 +57,7 @@ Before ideation or implementation, create a compact source model containing:
 
 OCR, color sampling, and measurements are evidence aids, not authority. A cropped, compressed, composite, or single-state image cannot prove hidden behavior. Ask one focused question only when a brand-critical or journey-changing ambiguity cannot be resolved safely; otherwise use a reversible, labeled inference.
 
-The build gate is a coherent direction plus sufficient source evidence. Obtain owner/product-design selection when requested or when a brand-critical/major direction or material scope decision needs approval; otherwise a reversible, labeled choice is sufficient. An approved existing design system, wireframe, or rendered WordPress prototype can resolve direction without another generated image; record what it establishes and remaining uncertainty. Exact image/Figma work still preserves the supplied target. If image creation is requested, produce that artifact. Attach supplied references when supported; never claim unused attachments.
+The build gate is a coherent direction plus sufficient source evidence. Obtain owner/product-design selection when requested or when a materially unresolved brand, positioning, or scope decision needs approval; otherwise a reversible, labeled choice is sufficient when direction choice is delegated. An approved existing design system, wireframe, or rendered WordPress prototype can resolve direction without another generated image; record what it establishes and remaining uncertainty. Exact image/Figma work still preserves the supplied target. If image creation is requested, produce that artifact. Attach supplied references when supported; never claim unused attachments.
 
 ## Redesign Growth Gate
 
@@ -75,7 +75,7 @@ For `improve` or `redesign` work on a growth, product, or service page, do not g
 
 Turn findings into ranked hypotheses for message, IA, content, proof, CTA, form, and layout changes. Label each as observed, evidence-backed hypothesis, or assumption; define the expected user/search/business effect and measurement. Preserve valuable ranking content and verified contracts unless the brief explicitly changes them. Never call a tactic or redesign `proven` without applicable experiment or outcome evidence, invent proof, keyword-stuff, add dark patterns, or trade page experience for conversion pressure.
 
-Generate alternatives only from the reviewed brief. Get direction selection when requested or when a brand-critical/major decision needs approval; otherwise choose a reversible direction and proceed. Keep this reference primary for direction; hand the brief sequentially to `wp-site-expert` for conversion, SEO, analytics, content, and WordPress implementation. Do not load every growth reference at once.
+Generate alternatives only from the reviewed brief. Get direction selection when requested or when a materially unresolved brand, positioning, or scope decision needs approval; otherwise choose a reversible direction and proceed when direction choice is delegated. Keep this reference primary for direction; hand the brief sequentially to `wp-site-expert` for conversion, SEO, analytics, content, and WordPress implementation. Do not load every growth reference at once.
 
 ## Workflow Rules
 
@@ -85,8 +85,8 @@ Generate alternatives only from the reviewed brief. Get direction selection when
 - If UI changed, require screenshot proof.
 - If layout, workflow quality, or UX clarity changed materially, add a design audit.
 - For exact, regression, release-critical, or previously failed work, require the current visual-proof schema v3; generated or materially art-directed imagery also requires the asset-production receipt.
-- If a large redesign has no chosen direction, ideate before implementation.
-- For brand-critical greenfield, major overhaul, or multi-page work, validate one representative direction artifact before scaling the design; do not require this gate for exact targets or bounded polish.
+- If a large redesign has no chosen direction, ideate before implementation; direction choice may remain delegated.
+- For brand-critical greenfield, major overhaul, or multi-page work, validate one representative direction artifact before scaling. This is not an owner-approval gate when direction choice is delegated; seek selection only when requested or when a materially unresolved brand, positioning, or scope decision needs approval. Do not require the artifact checkpoint for exact targets or bounded polish.
 - For material onboarding, conversion, settings, publishing, or repeated operational journeys, use risk-tiered usability evidence before claiming excellent UX.
 - For a growth-led redesign, require the growth brief and measurement plan before visual generation; assess the candidate against visitor intent and conversion friction, not aesthetics alone.
 - Convert Product Design findings into actionable acceptance criteria, design QA checks, or adjacent findings for PO triage.
