@@ -87,8 +87,14 @@ The reviewed read-only learning workflow is published in agent-loop at `cff5cd1`
 Its canonical checkout returned a real pending candidate with mutation disabled.
 Three sanitized correction events were staged into the existing private runtime
 ledger without acceptance or measured-success claims. The existing health reviewer
-now consumes this brief and routes due verification, missing lineage and recurrence
+is configured to consume this brief and route due verification, missing lineage and recurrence
 to existing owners. Its cadence and observe-and-route limits remain unchanged.
+Native integration was checked at 05:02:15 UTC: the reviewer task's actual tool
+output exited zero, selected the existing pending review candidate and reported
+mutation disabled. The first invocation did not execute because it retained the
+previous maintenance-only turn restriction; an explicit new bounded request corrected
+that and produced the tool result. This proves reviewer-to-ledger reading, not future
+scheduled delivery, autonomous routing, acceptance, or outcome verification.
 
 Installing the exact lockfile restored the local harness validation dependency closure.
 Different skills/loop/book pins passed their own consumer contracts; no dependency
