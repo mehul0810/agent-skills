@@ -1,0 +1,3 @@
+# Design Defaults
+
+For Pen/Pencil and Figma design work, default to high-fidelity, task-centered composition with clear navigation, credible content and a purposeful enterprise-quality visual direction. Choose a reversible direction from the brief; ask only when an owner decision materially changes scope or outcome. For native artifacts, use `references/native-design-authoring.md` inside the installed shared skill (under `$CODEX_HOME/skills/shared`, or `~/.codex/skills/shared` when unset). For standalone generated imagery, use only its **Image Art Direction** section with the installed `imagegen` skill. Preserve exact user targets and keep simple edits proportional. Do not treat a concept image as an editable native design or implementation proof.

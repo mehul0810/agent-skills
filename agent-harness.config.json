@@ -690,7 +690,7 @@
     {
       "name": "Native Design Authoring",
       "file": "skill-evals/native-design-authoring-scenarios.md",
-      "requiredPhrases": ["# Native Design Authoring Scenarios", "## Editable Artifact Routing", "## Missing Write Capability", "## Pen Transfer Loss", "## Small Edit Restraint", "## Task-Matched Inspiration", "## Independent Acceptance Gates", "## Single Source And Publication", "## Proportional Handoff"]
+      "requiredPhrases": ["# Native Design Authoring Scenarios", "## Editable Artifact Routing", "## Missing Write Capability", "## Pen Transfer Loss", "## Small Edit Restraint", "## Task-Matched Inspiration", "## Independent Acceptance Gates", "## Single Source And Publication", "## Proportional Handoff", "## High Fidelity Default", "## Navigation And Recovery", "## Purposeful Media", "## Placement Aware Image", "## Image Candidate Rejection", "## Exact Edit Restraint", "## Native Runtime Boundary", "## Truthful Visual Proof"]
     },
     {
       "name": "Reference Design Adoption",

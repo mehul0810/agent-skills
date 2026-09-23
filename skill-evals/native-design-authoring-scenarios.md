@@ -33,3 +33,35 @@ Figma/Pen/code drift needs an authoritative owner and explicit mapping/sync dire
 ## Proportional Handoff
 
 A static approved mockup with no requested prototype can pass its scoped visual/structure/authoring gates while interactions remain untested. Handoff source identity, assets, constraints and component map to the WordPress owner. No blanket prototype requirement and no production completion claim.
+
+## High Fidelity Default
+
+Default to a finished high-fidelity editable composition, not wireframes or a text/card-only approximation. Choose a reversible concrete direction, purposeful media and realistic content; progress autonomously while preserving brand and truthful claims.
+
+## Navigation And Recovery
+
+Treat task navigation and recovery as blocking UX defects; show current location, coherent labels, back/escape, primary action and mobile states. Preserve inputs and truthful status. Canvas checks do not establish runtime accessibility.
+
+## Purposeful Media
+
+Use mixed media where it explains or proves the story, not a quota on every screen. Keep billing task-focused. Specify a poster and playback/fallback/caption requirements; do not claim a playable native video without support and tested playback.
+
+## Placement Aware Image
+
+Use installed imagegen with supplied edit/reference roles and explicit product invariants, composition, focal point, text-safe space and crop constraints. Inspect final asset and target crops; preserve exact marks rather than fabricate them. No native file preflight or forced variants for image-only work.
+
+## Image Candidate Rejection
+
+Reject the candidate, correct image/crop/label/cohesion rather than hide failures through layout changes. Inspect actual placements and dimensions; preserve asset identity, provenance and final paths.
+
+## Exact Edit Restraint
+
+Follow narrow edit scope and imagegen invariants, inspect unchanged regions, no new art direction, added subjects, alternatives or native canvas setup.
+
+## Native Runtime Boundary
+
+Discover and load actual vendor skill/schema and use supported native APIs, not raw .pen file editing or invented CSS semantics. Verify section renders/bounds and saved/reopened native artifact; tool naming alone does not prove compatibility.
+
+## Truthful Visual Proof
+
+Do not fabricate product evidence, customers or metrics. Use truthful captures or clearly illustrative artwork, and distinguish video poster from playback. Premium aesthetics do not authorize false claims.
