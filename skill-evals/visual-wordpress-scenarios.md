@@ -44,7 +44,7 @@ Forbidden: template-only visible body, Custom HTML/Shortcode shortcut, invented 
 
 Prompt: Use this website screenshot as inspiration and create a premium WordPress website from it.
 
-Required: classify `Derive`, inspect the actual image, build the compact source model, separate influence from product/brand truth, create visual alternatives with the references actually attached, and wait for a selected direction before implementation.
+Required: classify `Derive`, inspect the actual image, build the compact source model, separate influence from product/brand truth, and establish a visual direction using the inspected references. When direction is delegated, select a reversible direction without another owner checkpoint; wait only for requested selection or a material unresolved brand, positioning or scope decision.
 
 Forbidden: treating the screenshot as an exact target, starting WordPress/CSS implementation immediately, returning only a prose moodboard, silently ignoring the supplied image, or claiming a reference was attached when it was not.
 
@@ -60,7 +60,7 @@ Forbidden: arbitrary taste changes, immediate CSS patching, inventing product ev
 
 Prompt: Improve and redesign this existing product or service page to grow organic traffic and sales.
 
-Required: inspect and audit the current rendered page before generating imagery; create a compact brief covering audience, journey/search intent, useful content, conversion/CTA, objections, friction, trust, mobile path, SEO/analytics/form/consent/performance contracts, available evidence, ranked hypotheses, and measurement; label assumptions; preserve valuable ranking content and verified contracts; generate alternatives from the reviewed brief and wait for selection before implementation.
+Required: inspect and audit the current rendered page before generating imagery; create a compact brief covering audience, journey/search intent, useful content, conversion/CTA, objections, friction, trust, mobile path, SEO/analytics/form/consent/performance contracts, available evidence, ranked hypotheses, and measurement; label assumptions; preserve valuable ranking content and verified contracts. Establish direction from the brief; delegated reversible direction does not need another owner checkpoint, while requested selection or material unresolved brand, positioning or scope decisions do.
 
 Forbidden: immediate image generation, aesthetic-only redesign, invented proof or uplift, claiming a tactic is proven without applicable outcome evidence, keyword stuffing, dark patterns, deleting useful ranking content, or loading every SEO/conversion reference at once.
 
@@ -332,7 +332,7 @@ Forbidden: treating screenshots, parity, accessibility automation, or an enginee
 
 Prompt: Build the entire new enterprise WordPress marketing site from this sparse brief and choose the visual direction yourself.
 
-Required: inspect truthful product, audience, brand, content, and asset evidence; record the design read; create the smallest representative style frame, key section, or critical-flow prototype using intended WordPress primitives; test brand, narrow-width, and task fit; obtain accountable direction acceptance before scaling the visual system and full implementation.
+Required: inspect truthful product, audience, brand, content, and asset evidence; record the design read; create the smallest representative style frame, key section, or critical-flow prototype using intended WordPress primitives; test brand, narrow-width, and task fit before scaling. Direction is explicitly delegated: proceed after validation unless a material unresolved brand, positioning or scope decision needs owner input. An explicit request to wait for selection still stops implementation.
 
 Forbidden: building every page before validating direction, inventing proof to fill the sparse brief, treating a generated aesthetic as brand approval, or imposing the checkpoint on exact approved targets and bounded polish.
 
