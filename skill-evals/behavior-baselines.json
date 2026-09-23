@@ -923,9 +923,14 @@
         "product-video-producer/references/channel-delivery-feedback.md",
         "product-video-producer/assets/video-manifest.template.json",
         "product-video-producer/assets/video-manifest.schema.json",
-        "product-video-producer/scripts/validate-video-manifest.mjs"
+        "product-video-producer/scripts/validate-video-manifest.mjs",
+        "product-video-producer/scripts/check-shot-fidelity.mjs",
+        "product-video-producer/assets/shot-fidelity.example.json",
+        "product-video-producer/scripts/render-motion-starter.mjs",
+        "product-video-producer/assets/motion-starter/scene.mjs",
+        "product-video-producer/assets/motion-starter/README.md"
       ],
-      "sha256": "e95e782da0f40f90a5e9769a34630e9fa61dbef333fa8ee7459be70800c650fa",
+      "sha256": "ac8e38f17a92fed7ee28b08c8519cef28a86259ab8bf814b98d9711db798f7b0",
       "scenario": {
         "id": "product-video-truth-and-assets",
         "files": [
@@ -951,10 +956,12 @@
           "Evidence-led YouTube learning",
           "Publication boundary"
         ],
-        "sha256": "f2d692d2d23ba1e720d928a4937611cd127ff320982077bbb53f8899578602a4",
+        "sha256": "33697111ea92851395d1e34142df75eb2f8c690ed9855d5f21afa4cf1779f17b",
         "sha256Scope": "legacy-anchor-line",
-        "fixtureFiles": [],
-        "contractSha256": "a773c1d3b712eadc9f6619f4d86efa9be2aab6dbd7c26a3bf597147d28d6c061"
+        "fixtureFiles": [
+          "skill-evals/cases/video-production/input.json"
+        ],
+        "contractSha256": "78775f18516e6a6461659f79533f77fe264f9ecc28fc648d9f0b844a25c9ad39"
       },
       "requiredChecks": [
         "automatic-specialist-routing",
@@ -980,21 +987,40 @@
         "playback-not-contact-sheet",
         "frame-driven-deterministic-scenes",
         "blind-calibration-no-invented-results",
-        "motion-cost-and-astra-ceiling"
+        "motion-cost-and-current-owner-allocation",
+        "delegated-direction-and-explicit-selection",
+        "model-neutral-quality-floor",
+        "crop-zoom-source-coverage",
+        "creative-range-and-purposeful-imagery",
+        "preview-versus-uhd-proof",
+        "cross-model-measurement-honesty"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-09-11-continuity.json",
-          "sha256": "95aacc10c3eb56bbd14089c61699a240406e98dce03d4a9a2de864f9f5f51e44",
-          "testedRevision": "09a43e519087e48675fe64ce297089947d4ae063",
-          "testedSourceSha256": "e95e782da0f40f90a5e9769a34630e9fa61dbef333fa8ee7459be70800c650fa",
-          "testedScenarioSha256": "f2d692d2d23ba1e720d928a4937611cd127ff320982077bbb53f8899578602a4",
+          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-09-23-low.json",
+          "sha256": "b0a041b006e2e22d5651fd944dd1ae543e5374ef2a357cd81dd9546d076ab372",
+          "testedRevision": "04ead6d6907b3d210ae4e7b3ba6ba8de2f38e4d8",
+          "testedSourceSha256": "ac8e38f17a92fed7ee28b08c8519cef28a86259ab8bf814b98d9711db798f7b0",
+          "testedScenarioSha256": "33697111ea92851395d1e34142df75eb2f8c690ed9855d5f21afa4cf1779f17b",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
-            "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
+            "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           },
-          "testedScenarioContractSha256": "a773c1d3b712eadc9f6619f4d86efa9be2aab6dbd7c26a3bf597147d28d6c061"
+          "testedScenarioContractSha256": "78775f18516e6a6461659f79533f77fe264f9ecc28fc648d9f0b844a25c9ad39"
+        },
+        {
+          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-09-23-medium.json",
+          "sha256": "77844b2afc70a508e0de6479c800f516a8fff2ea985f265034c402873092b77c",
+          "testedRevision": "04ead6d6907b3d210ae4e7b3ba6ba8de2f38e4d8",
+          "testedSourceSha256": "ac8e38f17a92fed7ee28b08c8519cef28a86259ab8bf814b98d9711db798f7b0",
+          "testedScenarioSha256": "33697111ea92851395d1e34142df75eb2f8c690ed9855d5f21afa4cf1779f17b",
+          "runtime": {
+            "host": "codex-desktop",
+            "isolation": "fresh-agent",
+            "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
+          },
+          "testedScenarioContractSha256": "78775f18516e6a6461659f79533f77fe264f9ecc28fc648d9f0b844a25c9ad39"
         }
       ],
       "harnessContract": "cli-validation-v1"
