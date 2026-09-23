@@ -86,6 +86,10 @@ safe counterexamples as well as violations and ordinary bugs.
 For native hook activation proof, use `templates/project-hooks/activation-proof.md`;
 it records existing boundaries without enabling hooks or changing trust.
 
+For video changes, use `skill-evals/video-quality-benchmark.md`: blind production
+decisions, crop/zoom coverage, rendered defect controls and native UHD delivery are
+separate gates. Cross-model decision passes do not prove equal generated quality.
+
 For design calibration, use `skill-evals/frontend-benchmark/README.md`. Give independent evaluators only its contract and rendered artifacts. Record detected/missed defects separately from deterministic smoke checks; the fixture is not native WordPress or production repair proof.
 
 For source-design implementation capability, run `skill-evals/frontend-benchmark/EXECUTION.md`: a frozen held-out target, fresh native WordPress implementation, independent fidelity and UI-only author proof, and bounded repair. Report actual failed/blocked gates; a discrimination or persistence-only pass does not satisfy this execution test.

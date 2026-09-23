@@ -21,7 +21,7 @@ require_text "product-video-producer/SKILL.md" "Load only the primary reference 
 require_text "product-video-producer/SKILL.md" "never load all three references in one working context" "no all-reference context"
 require_text "product-video-producer/SKILL.md" "Classify the work: enterprise promo/launch" "video mode classification"
 require_text "product-video-producer/SKILL.md" "For edit/review/delivery-only work" "existing artifact mode"
-require_text "product-video-producer/SKILL.md" "obtain storyboard, animatic, or representative style-sequence approval before the full edit/render" "storyboard approval gate"
+require_text "product-video-producer/SKILL.md" "Validate a representative style sequence before scaling" "representative sequence gate"
 require_text "product-video-producer/SKILL.md" "generic AI glow, stock-montage filler, fake customers" "enterprise anti-slop gate"
 require_text "product-video-producer/SKILL.md" "For direct critique" "direct critique discipline"
 require_text "product-video-producer/SKILL.md" "For post-publication evidence" "analytics hypothesis discipline"
@@ -40,7 +40,7 @@ require_text "product-video-producer/references/render-review-iteration.md" '`10
 require_text "product-video-producer/references/render-review-iteration.md" '`4K UHD`: 3840x2160' "4K render profile"
 require_text "product-video-producer/references/render-review-iteration.md" "Prove the exact project root" "project and output identity"
 require_text "product-video-producer/references/render-review-iteration.md" "source-to-proxy map" "proxy conform lineage"
-require_text "product-video-producer/references/render-review-iteration.md" "approves picture lock before final sound, color, captions, and graphics" "picture-lock approval gate"
+require_text "product-video-producer/references/render-review-iteration.md" "approves picture lock before final sound, color, captions, and graphics" "picture-lock review gate"
 require_text "product-video-producer/references/render-review-iteration.md" "YouTube does not publish a universal required LUFS value" "no invented YouTube loudness rule"
 require_text "product-video-producer/references/render-review-iteration.md" "Machine-readable manifest" "render manifest"
 require_text "product-video-producer/references/render-review-iteration.md" "--expected-artifact-sha256" "independent completion binding"
@@ -91,6 +91,13 @@ require_text "product-video-producer/references/reference-to-storyboard.md" "Mot
 require_text "product-video-producer/references/render-review-iteration.md" "Playback Calibration Gate" "actual playback acceptance"
 require_text "product-video-producer/references/render-review-iteration.md" "never wall-clock timers" "deterministic motion adapter"
 require_text "skill-evals/product-video-producer-scenarios.md" "Blind motion calibration" "no fabricated motion calibration"
+
+if ! node "$repo_root/product-video-producer/scripts/check-shot-fidelity.mjs" --self-test; then
+  errors=$((errors + 1))
+fi
+if ! node --test "$repo_root/product-video-producer/assets/motion-starter/scene.test.mjs" "$repo_root/product-video-producer/assets/motion-starter/cli.test.mjs"; then
+  errors=$((errors + 1))
+fi
 
 if [ "$errors" -gt 0 ]; then
   echo "video production behavior audit failed: $errors issue(s)" >&2

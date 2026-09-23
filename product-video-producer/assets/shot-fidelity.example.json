@@ -1,0 +1,46 @@
+{
+  "shots": [
+    {
+      "shot_id": "hero-product-shot",
+      "asset_id": "product-master-01",
+      "source": {
+        "type": "raster",
+        "width_px": 7680,
+        "height_px": 4320
+      },
+      "crop": {
+        "fractions": {
+          "x": 0.25,
+          "y": 0.25,
+          "width": 0.5,
+          "height": 0.5
+        }
+      },
+      "output_footprint": {
+        "width_px": 1920,
+        "height_px": 1080
+      },
+      "zoom": {
+        "x": 2,
+        "y": 2
+      }
+    },
+    {
+      "shot_id": "logo-lockup",
+      "asset_id": "brand-logo-master",
+      "source": {
+        "type": "vector",
+        "format": "svg",
+        "contains_raster": false,
+        "inspection_evidence": "review://brand-logo-master/source-inspection"
+      },
+      "output_footprint": {
+        "width_px": 3840,
+        "height_px": 2160
+      },
+      "zoom": {
+        "x": 1
+      }
+    }
+  ]
+}

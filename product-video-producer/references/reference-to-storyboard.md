@@ -25,13 +25,13 @@ Translate premium cues into the product's own system:
 - confident negative space and a small number of focal elements,
 - buyer/task/workflow clarity rather than generic feature cards,
 - real product evidence, controls, approvals, reliability, and failure behavior,
-- restrained color and motion anchored in the product brand,
+- deliberate color and motion anchored in the product brand,
 - readable typography with deliberate line breaks and enough hold time,
 - sound and transitions that support meaning rather than mask weak structure.
 
 For AI or workflow products, show governed inputs, decisions, approvals, integrations, and outcomes. Do not use vague particles, glowing brains, magic automation, or impossible dashboards as substitutes for product truth.
 
-Treat each shot as an accountable product statement. Ask what the viewer learns, what evidence supports it, and why motion is needed. Reject generic stock-office montages, fake customer reactions, decorative device mockups, arbitrary zooms, subtitle walls, transition packs, and repeated bass hits when they do not advance the promise. Restraint, product specificity, and a clear failure or recovery state read as more enterprise than ornamental density.
+Each shot must teach something supported by evidence. Reject stock-office filler, fake customers, arbitrary zooms, subtitle walls and repeated bass hits that do not advance the promise. Product specificity matters more than ornamental density.
 
 ## Storyboard Contract
 
@@ -68,7 +68,9 @@ Generated or materially altered media needs a receipt: tool and source, human ov
 
 ## Approval Gate
 
-If the visual direction is open, show a small set of materially different directions, then produce the selected storyboard or low-cost animatic. Full-quality rendering starts only after the direction, claims, copy, logo treatment, and major timing are approved. User-supplied exact direction can proceed without redundant approval, but still requires the preflight and claim gates.
+For delegated direction, explore distinct compositions internally against audience, brand, truth and narrative; validate the storyboard and representative sequence before scaling. Ask only for requested selection or unresolved material brand, claim or scope decisions. Exact direction needs no reselection. Internal review is not publication permission; preserve preflight and claim gates.
+
+Enterprise need not mean minimalism. Consider editorial, cinematic, technical or expressive directions; use purposeful imagery or real UI rather than default text/cards. Generate supporting assets, never evidence. Separate exact composition/crop/type/timing fidelity from subjective craft.
 
 ## Motion Direction Contract
 
@@ -83,4 +85,4 @@ Motion sheet: alignment, safe areas, typography, palette, focal hierarchy, camer
 
 Compose reusable opening, reveal, UI-action, comparison, workflow, evidence and CTA scenes. Parameterize assets/copy/timing/aspect; never copy distinctive reference sequences or flatten brand identity.
 
-URLs/thumbnails are not motion evidence. Frames prove composition only; pacing/easing/audio require playback. Record timecoded failure causes, not vague polish requests.
+Frames prove composition, not pacing/easing/audio. Record timecoded defects after playback.

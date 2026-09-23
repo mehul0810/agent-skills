@@ -8,11 +8,11 @@ Prove the exact project root, source revision or project-file hash, sequence/com
 
 - Ingest originals read-only with hashes, rights, source frame rate/timecode, color interpretation, audio channels, and capture provenance. Mark corrupt or partial media logically excluded and preserve it in place; moving, renaming, replacing, or deleting owner footage requires approval.
 - Use proxies for performance when needed, but retain a source-to-proxy map and relink/conform check. Transcode variable-frame-rate or incompatible sources before precision edits; do not silently resample cadence.
-- Version the timeline non-destructively. A rough cut proves structure and a fine cut proves timing/continuity. The review owner approves picture lock before final sound, color, captions, and graphics; an editorial change after lock revokes it until the changed cut is approved again.
+- Version the timeline non-destructively. The assigned reviewer approves picture lock before final sound, color, captions, and graphics; delegated internal review is sufficient unless owner review is required. Editorial changes revoke lock and affected proof, not unrelated authority.
 - Preserve a truthful source chronology for software demos and evidence sequences. J/L cuts, punch-ins, and pace compression may improve clarity but cannot manufacture a product outcome.
 - Record source, timeline, master, review derivative, poster, captions, and cutdowns as a small lineage graph. Small programmatic videos may mark proxy/conform/master steps `not_applicable` with a reason.
 
-Every cut, speed change, transition, graphic, sound cue, and camera move needs a narrative, attention, continuity, or comprehension job. Remove effects that only signal "premium." Check mobile legibility, cursor purpose, UI crop continuity, visual breathing room, and whether narration and on-screen copy complement rather than duplicate each other.
+Every cut, graphic, sound cue and camera move needs a narrative or comprehension job. Check mobile legibility, cursor purpose, crop continuity, breathing room, and complementary narration/copy.
 
 ## Deterministic Render Contract
 
@@ -36,7 +36,7 @@ Produce:
 4. Accurate timed captions for speech and meaningful audio, plus a transcript when the destination or audience needs one. These are distinct artifacts.
 5. Optional master/intermediate only when requested and supported by the environment.
 
-The manifest records immutable project/job/output identity, source/timeline lineage, storyboard/version, render toolchain, rational frame rate/frame count, color/audio profile, rights/provenance, claims/disclosure, output hashes/probes, accessibility decisions, approval receipt, validation, and known gaps. Resolve relative paths from the project root. Draft validation may inspect the manifest alone. Acceptance or completion must run `../scripts/validate-video-manifest.mjs` with `--verify-files --verify-media` and an independently supplied tuple covering job/project/root, source revision, project-file hash, sequence, timeline, dirty-state hash, artifact ID/hash/role/path, and approval owner. Use the corresponding `--expected-*` flags, including `--expected-artifact-sha256` and `--expected-approval-owner`; values copied from the manifest are not independent proof.
+The manifest binds identity, lineage, storyboard, toolchain, media profile, provenance, claims, hashes, accessibility, approval receipt and gaps. Resolve paths from the project root. Draft validation may inspect metadata alone. Acceptance must run `../scripts/validate-video-manifest.mjs` with `--verify-files --verify-media` and independent job/project/root, source, project-file, sequence, timeline, dirty-state, artifact and approval-owner identity. Supply the corresponding `--expected-*` flags, including `--expected-artifact-sha256` and `--expected-approval-owner`; copying manifest values is not independent proof.
 
 ## Sound, Color, And Accessibility
 
@@ -77,15 +77,21 @@ Stop when the storyboard acceptance criteria and critique ledger pass, required 
 
 ## Official Anchors
 
-Live-check destination specifics at delivery. Stable anchors: [Adobe color management](https://helpx.adobe.com/premiere/desktop/correct-color/set-up-color-management/configuring-sequence-color-management.html), [EBU loudness measurement](https://tech.ebu.ch/loudness/), [W3C prerecorded captions](https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded), [W3C audio description](https://www.w3.org/WAI/WCAG22/Understanding/audio-description-prerecorded.html), and [W3C flash limits](https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html). Last reviewed: 2026-07-26.
+Verify destination specifics at delivery: [color management](https://helpx.adobe.com/premiere/desktop/correct-color/set-up-color-management/configuring-sequence-color-management.html), [loudness](https://tech.ebu.ch/loudness/), [captions](https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded), [audio description](https://www.w3.org/WAI/WCAG22/Understanding/audio-description-prerecorded.html), [flash limits](https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html).
 
 ## Programmatic Motion Adapter
 
-For typography/UI video, evaluate Remotion; preserve proven editors for footage/compositing. Verify APIs, licensing, runtime, rendering and budget: [Remotion docs](https://www.remotion.dev/docs/) and [coding-agent workflows](https://www.remotion.dev/docs/ai/), checked 2026-09-07. No implicit global installs or paid rendering.
+For typography/UI video, evaluate [Remotion](https://www.remotion.dev/docs/); retain proven editors for footage. The optional `../assets/motion-starter/` provides an adaptable deterministic vector starter, not a required aesthetic or production acceptance. Inspect its usage before execution. No implicit global installs or paid rendering.
 
 Separate typed scenes, assets and timing manifest. Use frame-driven animation, never wall-clock timers, unseeded randomness or live network content. Pin dependencies/fonts, await assets and test shot boundaries. Capture real UI separately; generation cannot own exact text/logos or workflow proof.
 
-Preview the approved sequence locally before full rendering. Rerender changed ranges; 4K needs justification. Poster-only edits do not rerender video. Measure model/render costs separately. Follow shared model routing: Astra low/light without explicit permission.
+Use cheap previews plus full-resolution representative ranges before a full render; honor explicit 4K requests. Poster-only edits do not rerender video. Benchmark concurrency and separate model/render costs. Follow current owner model allocation, not historical model ceilings.
+
+## Fidelity And Consistent Acceptance
+
+Run `../scripts/check-shot-fidelity.mjs` on measured source/crop/maximum-zoom footprints; see `../assets/shot-fidelity.example.json`. Coverage is not sharpness proof; vector wrappers cannot exempt embedded rasters. Inspect encoded text/logo edges, gradients, compression and UI detail at 100% and intended display size. Record encoding settings; never equate upscaling or bitrate with quality.
+
+Compare permitted model/effort trials on identical briefs/assets/gates; record settings, revisions, retries, defects and available costs. Separate held-out clips from repair cases. Missing telemetry/playback remains unknown. Repair failures, use permitted runtime escalation, or mark draft. One render cannot certify all-model equivalence.
 
 ## Playback Calibration Gate
 
