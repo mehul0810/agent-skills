@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "runId": "owner-correction-learning-2026-09-23-ownership",
+  "scenario": "owner-correction-learning",
+  "result": "succeeded",
+  "startedAt": "2026-09-23T04:30:40.000Z",
+  "durationMs": 101000,
+  "checks": [
+    {
+      "name": "immediate-root-cause-correction",
+      "result": "pass"
+    },
+    {
+      "name": "compact-correction-result",
+      "result": "pass"
+    },
+    {
+      "name": "worker-candidate-only",
+      "result": "pass"
+    },
+    {
+      "name": "dedupe-and-repeatability-gate",
+      "result": "pass"
+    },
+    {
+      "name": "reviewed-durable-destination",
+      "result": "pass"
+    },
+    {
+      "name": "decision-envelope-preserved",
+      "result": "pass"
+    },
+    {
+      "name": "task-authorization-not-promoted",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 7,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "owner-correction-learning-2026-09-23-ownership",
+    "artifactPointer": "codex-fresh-agent:/root/fresh_release_learning#cd9a87450ca34f14213eb3e259e63e0325cd433d"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-23T04:32:21.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Parent-scored synthetic decisions; shared batch duration, not isolated execution cost. Design final pass re-read compacted sources; unchanged route expertise retained from initial fresh pass. No rendered/native product, release, autonomous-learning or token-savings proof. See workflow-ownership-review-2026-09-23.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}

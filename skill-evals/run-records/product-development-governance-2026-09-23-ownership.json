@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "runId": "product-development-governance-2026-09-23-ownership",
+  "scenario": "product-development-governance",
+  "result": "succeeded",
+  "startedAt": "2026-09-23T04:30:40.000Z",
+  "durationMs": 101000,
+  "checks": [
+    {
+      "name": "planner-discovery-packet",
+      "result": "pass"
+    },
+    {
+      "name": "po-train-and-post-release-learning",
+      "result": "pass"
+    },
+    {
+      "name": "independent-engineering-review",
+      "result": "pass"
+    },
+    {
+      "name": "exact-candidate-release-readiness",
+      "result": "pass"
+    },
+    {
+      "name": "cto-escalation-only",
+      "result": "pass"
+    },
+    {
+      "name": "sibling-product-identity",
+      "result": "pass"
+    },
+    {
+      "name": "outcome-named-temporary-tasks",
+      "result": "pass"
+    },
+    {
+      "name": "stable-production-mainline",
+      "result": "pass"
+    },
+    {
+      "name": "tag-derived-package",
+      "result": "pass"
+    },
+    {
+      "name": "plugin-milestone-scope-and-branch",
+      "result": "pass"
+    },
+    {
+      "name": "solo-owner-independent-review",
+      "result": "pass"
+    },
+    {
+      "name": "primary-studio-safe-first",
+      "result": "pass"
+    },
+    {
+      "name": "disposable-isolation-fallback",
+      "result": "pass"
+    },
+    {
+      "name": "new-studio-owner-approval",
+      "result": "pass"
+    },
+    {
+      "name": "unapproved-studio-proof-gap",
+      "result": "pass"
+    },
+    {
+      "name": "existing-studio-inventory-only",
+      "result": "pass"
+    },
+    {
+      "name": "independent-test-proof",
+      "result": "pass"
+    },
+    {
+      "name": "dedicated-role-tasks-protected",
+      "result": "pass"
+    },
+    {
+      "name": "same-project-disposable-workers",
+      "result": "pass"
+    },
+    {
+      "name": "exact-id-worker-archive",
+      "result": "pass"
+    },
+    {
+      "name": "push-not-completion",
+      "result": "pass"
+    },
+    {
+      "name": "failed-proof-correction",
+      "result": "pass"
+    },
+    {
+      "name": "worktree-cleanup-separate",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 23,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "product-development-governance-2026-09-23-ownership",
+    "artifactPointer": "codex-fresh-agent:/root/fresh_release_learning#cd9a87450ca34f14213eb3e259e63e0325cd433d"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-23T04:32:21.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Parent-scored synthetic decisions; shared batch duration, not isolated execution cost. Design final pass re-read compacted sources; unchanged route expertise retained from initial fresh pass. No rendered/native product, release, autonomous-learning or token-savings proof. See workflow-ownership-review-2026-09-23.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "runId": "visual-evidence-assets-2026-09-23-aligned",
+  "scenario": "visual-evidence-and-assets",
+  "result": "succeeded",
+  "startedAt": "2026-09-23T04:45:16.000Z",
+  "durationMs": 454000,
+  "checks": [
+    {
+      "name": "structured-visual-proof-rejection",
+      "result": "pass"
+    },
+    {
+      "name": "per-surface-proof-coverage",
+      "result": "pass"
+    },
+    {
+      "name": "concrete-evidence-binding",
+      "result": "pass"
+    },
+    {
+      "name": "asset-production-receipt",
+      "result": "pass"
+    },
+    {
+      "name": "design-token-lineage",
+      "result": "pass"
+    },
+    {
+      "name": "visual-defect-reproof",
+      "result": "pass"
+    },
+    {
+      "name": "structured-spatial-proof-rejection",
+      "result": "pass"
+    },
+    {
+      "name": "browser-geometry-capture",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 8,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "visual-evidence-assets-2026-09-23-aligned",
+    "artifactPointer": "codex-fresh-agent:/root/visual_receipt_validation#e501dd384258b676faa55d7a79c3a8b8fd5d9675"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-23T04:52:50.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Four receipt/geometry self-tests and real Chromium localhost fixture: eight DOM checks at 375/1280px. Interval includes dependency recovery and retry. No WordPress product proof. See workflow-ownership-review-2026-09-23.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "runId": "native-design-authoring-2026-09-23-ownership",
+  "scenario": "native-design-authoring",
+  "result": "succeeded",
+  "startedAt": "2026-09-23T04:32:59.000Z",
+  "durationMs": 67000,
+  "checks": [
+    {
+      "name": "editable-artifact-routing",
+      "result": "pass"
+    },
+    {
+      "name": "missing-write-capability",
+      "result": "pass"
+    },
+    {
+      "name": "pen-transfer-loss",
+      "result": "pass"
+    },
+    {
+      "name": "small-edit-restraint",
+      "result": "pass"
+    },
+    {
+      "name": "task-matched-inspiration",
+      "result": "pass"
+    },
+    {
+      "name": "independent-acceptance-gates",
+      "result": "pass"
+    },
+    {
+      "name": "single-source-and-publication",
+      "result": "pass"
+    },
+    {
+      "name": "proportional-handoff",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 8,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "native-design-authoring-2026-09-23-ownership",
+    "artifactPointer": "codex-fresh-agent:/root/fresh_design_ownership#40b5373b9abb3a4a553978d8b95ce6379a57f74b"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-23T04:34:06.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Parent-scored synthetic decisions; shared batch duration, not isolated execution cost. Design final pass re-read compacted sources; unchanged route expertise retained from initial fresh pass. No rendered/native product, release, autonomous-learning or token-savings proof. See workflow-ownership-review-2026-09-23.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}
