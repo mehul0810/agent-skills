@@ -3,7 +3,8 @@ set -euo pipefail
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 tmp="$(mktemp -d)"
-trap 'rm -rf "$tmp"' EXIT
+actual_tmp=""
+trap 'rm -rf "$tmp"; [ -z "$actual_tmp" ] || rm -rf "$actual_tmp"' EXIT
 tmp="$tmp/path with spaces"
 mkdir -p "$tmp"
 
@@ -19,6 +20,22 @@ if CODEX_HOME="$tmp/codex" CLAUDE_HOME="$tmp/claude" \
   bash "$repo_root/scripts/install-global-skill-links.sh" --check-design-defaults >/dev/null 2>&1; then
   echo "ERROR: design checker accepted missing global policy" >&2; exit 1
 fi
+rm "$tmp/codex/skills/wp-expert"
+if health_failure="$(CODEX_HOME="$tmp/codex" CLAUDE_HOME="$tmp/claude" \
+  bash "$repo_root/scripts/check-global-skill-links.sh" --health 2>&1)"; then
+  echo "ERROR: unified health accepted missing global policy" >&2; exit 1
+fi
+printf '%s\n' "$health_failure" | grep -Fq "MISSING: $tmp/codex/skills/wp-expert" || {
+  echo "ERROR: unified health omitted simultaneous skill-link failure" >&2; exit 1;
+}
+printf '%s\n' "$health_failure" | grep -Fq 'global design defaults are not installed' || {
+  echo "ERROR: unified health omitted missing policy failure" >&2; exit 1;
+}
+[ ! -e "$tmp/codex/AGENTS.md" ] && [ ! -e "$tmp/codex/skills/wp-expert" ] || {
+  echo "ERROR: failed unified health check mutated installation state" >&2; exit 1;
+}
+CODEX_HOME="$tmp/codex" CLAUDE_HOME="$tmp/claude" \
+  bash "$repo_root/scripts/install-global-skill-links.sh" >/dev/null
 
 printf 'Owner instructions stay byte-for-byte.\nsecond line' > "$tmp/codex/AGENTS.md"
 cp "$tmp/codex/AGENTS.md" "$tmp/prefix.expected"
@@ -36,6 +53,15 @@ cmp -s "$tmp/activated.expected" "$tmp/codex/AGENTS.md" || {
 }
 CODEX_HOME="$tmp/codex" CLAUDE_HOME="$tmp/claude" \
   bash "$repo_root/scripts/install-global-skill-links.sh" --check-design-defaults >/dev/null
+cp "$tmp/codex/AGENTS.md" "$tmp/health.expected"
+health_output="$(CODEX_HOME="$tmp/codex" CLAUDE_HOME="$tmp/claude" \
+  bash "$repo_root/scripts/check-global-skill-links.sh" --health)"
+cmp -s "$tmp/health.expected" "$tmp/codex/AGENTS.md" || {
+  echo "ERROR: unified health check modified global policy" >&2; exit 1;
+}
+printf '%s\n' "$health_output" | grep -Fq 'runtime loading is not verified' || {
+  echo "ERROR: unified health did not distinguish configured state from runtime verification" >&2; exit 1;
+}
 
 printf '\n# Design Defaults\nConflicting owner rule.\n' >> "$tmp/codex/AGENTS.md"
 for mode in --check-design-defaults --design-defaults; do
@@ -86,6 +112,20 @@ if CODEX_HOME="$tmp/ancestor-link/home" CLAUDE_HOME="$tmp/ancestor-claude" \
   bash "$repo_root/scripts/install-global-skill-links.sh" --design-defaults wp-expert >/dev/null 2>&1; then
   echo "ERROR: activation accepted a symlinked ancestor above a real home directory" >&2; exit 1
 fi
+
+# Exercise lexical /tmp traversal directly on both Linux and macOS, where /tmp
+# may be a real directory or the exact /private/tmp alias.
+actual_tmp="$(mktemp -d /tmp/agent-skills-path-check.XXXXXX)"
+mkdir -p "$actual_tmp/outside"
+printf 'external sentinel\n' > "$actual_tmp/outside/AGENTS.md"
+ln -s "$actual_tmp/outside" "$actual_tmp/link"
+if CODEX_HOME="$actual_tmp/link/home" CLAUDE_HOME="$actual_tmp/claude" \
+  bash "$repo_root/scripts/install-global-skill-links.sh" --design-defaults wp-expert >/dev/null 2>&1; then
+  echo "ERROR: activation accepted a symlink beneath the standard /tmp path" >&2; exit 1
+fi
+[ "$(cat "$actual_tmp/outside/AGENTS.md")" = "external sentinel" ] || {
+  echo "ERROR: standard /tmp symlink path was modified" >&2; exit 1;
+}
 
 while IFS= read -r skill_dir; do
   skill="$(basename "$skill_dir")"

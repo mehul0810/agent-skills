@@ -5,6 +5,15 @@ repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 codex_skills_dir="${CODEX_HOME:-$HOME/.codex}/skills"
 claude_skills_dir="${CLAUDE_HOME:-$HOME/.claude}/skills"
 errors=0
+health=0
+
+if [ "$#" -gt 0 ]; then
+  [ "$#" -eq 1 ] && [ "$1" = "--health" ] || {
+    echo "Usage: bash scripts/check-global-skill-links.sh [--health]" >&2
+    exit 2
+  }
+  health=1
+fi
 
 check_link() {
   local root="$1"
@@ -79,9 +88,26 @@ check_link "$claude_skills_dir" "templates" "$repo_root/templates"
 check_stale_pack_links "$codex_skills_dir"
 check_stale_pack_links "$claude_skills_dir"
 
+health_errors=0
+
+if [ "$health" -eq 1 ]; then
+  if ! bash "$repo_root/scripts/install-global-skill-links.sh" --check-design-defaults; then
+    health_errors=$((health_errors + 1))
+  fi
+fi
+
 if [ "$errors" -gt 0 ]; then
   echo "global skill link check failed: $errors problem(s)" >&2
+fi
+if [ "$health_errors" -gt 0 ]; then
+  echo "global installation health check failed: $health_errors problem(s)" >&2
+fi
+if [ "$errors" -gt 0 ] || [ "$health_errors" -gt 0 ]; then
   exit 1
 fi
 
-echo "global skill links match this checkout"
+if [ "$health" -eq 0 ]; then
+  echo "global skill links match this checkout"
+else
+  echo "installation health: configured filesystem state verified; runtime loading is not verified"
+fi

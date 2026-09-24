@@ -307,6 +307,11 @@ test -f ~/.claude/skills/product-video-producer/SKILL.md && echo "product-video-
 
 Run `bash scripts/check-global-skill-links.sh` after adding or renaming a skill. After first install, restart Claude Code if the skills do not appear immediately. `loop-steward` remains a conditional control-plane role; it is not part of routine WordPress execution.
 
+Run `bash scripts/check-global-skill-links.sh --health` for unified installation
+health: it checks both Codex and Claude skill links plus the configured Codex
+design-defaults policy and shared-reference link. This is filesystem configuration
+proof only; it does not verify that either runtime loaded the skills or policy.
+
 ### Install Globally For Codex
 
 The same installer also symlinks skills into Codex's global skills directory:

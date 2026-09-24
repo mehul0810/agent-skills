@@ -58,11 +58,19 @@ design_marker_end='<!-- agent-skills:global-design-defaults:end -->'
 # be redirected outside the explicitly configured home.
 assert_no_symlink_components() {
   local path="$1" current="" part
-  # macOS exposes these standard paths as aliases; normalize only those known
-  # aliases, then inspect every lexical component without following links.
+  # macOS may expose these paths as aliases; normalize only the exact aliases,
+  # then inspect every lexical component without following links.
   case "$path" in
-    /var/*) path="/private$path" ;;
-    /tmp/*) path="/private$path" ;;
+    /var/*)
+      if [ -L /var ] && { [ "$(readlink /var)" = /private/var ] || [ "$(readlink /var)" = private/var ]; }; then
+        path="/private$path"
+      fi
+      ;;
+    /tmp/*)
+      if [ -L /tmp ] && { [ "$(readlink /tmp)" = /private/tmp ] || [ "$(readlink /tmp)" = private/tmp ]; }; then
+        path="/private$path"
+      fi
+      ;;
     /*) ;;
     *) path="$PWD/$path" ;;
   esac

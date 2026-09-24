@@ -1415,7 +1415,7 @@
         "shared/references/visual-to-wordpress-implementation.md",
         "templates/global-design-defaults.md"
       ],
-      "sha256": "068193425391a69a8089e30e52d6947a1abc46bea4a8939853ae1986e88078b1",
+      "sha256": "79680f5651fe8f4a905d33073a7f5cf6abd8c4a4177d99bf30016e4af50ca95c",
       "scenario": {
         "id": "native-design-authoring",
         "files": [
@@ -1437,14 +1437,16 @@
           "## Image Candidate Rejection",
           "## Exact Edit Restraint",
           "## Native Runtime Boundary",
+          "## Shared Editor Target Drift",
+          "## Isolated Target Exception",
           "## Truthful Visual Proof"
         ],
-        "sha256": "7ddf652828f4d07a0bf44c85063ab69a865ac3f19dab31a2a3e0975426cfa197",
+        "sha256": "2c8ea417197aefe8fd651ea3e5c7800c3523f41a98321f5c66f606e7b653bf62",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [
           "skill-evals/cases/native-design-authoring/input.json"
         ],
-        "contractSha256": "6f2e3ecc40b0adb38f49de2ac5d8e9c0d1e4d5c0b0ce78f17d5ba4f34d2004c9"
+        "contractSha256": "5bdaaaf2470b6a73d0ab2dd8617b2513da128acb9b2a65fe11fda35419cf8dfd"
       },
       "requiredChecks": [
         "editable-artifact-routing",
@@ -1462,21 +1464,23 @@
         "image-candidate-rejection",
         "exact-edit-restraint",
         "native-runtime-boundary",
+        "shared-editor-target-drift",
+        "isolated-target-exception",
         "truthful-visual-proof"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/native-design-authoring-2026-09-23-quality.json",
-          "sha256": "73982134cfdfe8ae5f82874af16af35a1ec9bce553803f0fa1abfca08bcd2639",
-          "testedRevision": "f83aeacfc6ff8ad2e92f815e96a030626fe3ea6d",
-          "testedSourceSha256": "068193425391a69a8089e30e52d6947a1abc46bea4a8939853ae1986e88078b1",
-          "testedScenarioSha256": "7ddf652828f4d07a0bf44c85063ab69a865ac3f19dab31a2a3e0975426cfa197",
+          "runRecord": "skill-evals/run-records/native-design-authoring-2026-09-25-coordination.json",
+          "sha256": "dfa410d3e7e225b0510c5cb1c4a5facc05c2b8a970e64efd90f7be718355af70",
+          "testedRevision": "69d20cf22709de64057f7f28406236e4116a38c9",
+          "testedSourceSha256": "79680f5651fe8f4a905d33073a7f5cf6abd8c4a4177d99bf30016e4af50ca95c",
+          "testedScenarioSha256": "2c8ea417197aefe8fd651ea3e5c7800c3523f41a98321f5c66f606e7b653bf62",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           },
-          "testedScenarioContractSha256": "6f2e3ecc40b0adb38f49de2ac5d8e9c0d1e4d5c0b0ce78f17d5ba4f34d2004c9"
+          "testedScenarioContractSha256": "5bdaaaf2470b6a73d0ab2dd8617b2513da128acb9b2a65fe11fda35419cf8dfd"
         }
       ],
       "harnessContract": "cli-validation-v1"

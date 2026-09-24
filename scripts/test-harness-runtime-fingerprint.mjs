@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { VALIDATION_FILES, validationFingerprint, compatibleValidationRuntime } from './harness-runtime-fingerprint.mjs';
-const root = fs.mkdtempSync('/private/tmp/harness-fingerprint-');
+const root = fs.mkdtempSync(path.join(fs.realpathSync(os.tmpdir()), 'harness-fingerprint-'));
 try {
   const installed = path.join(root, 'node_modules/@mehul0810/agent-harness');
   for (const file of VALIDATION_FILES) { fs.mkdirSync(path.dirname(path.join(installed, file)), { recursive: true }); fs.writeFileSync(path.join(installed, file), file); }

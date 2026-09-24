@@ -17,15 +17,14 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
       - name: Install harness
         run: npm ci
-      - name: Shared harness contracts
-        run: npm run harness
       - name: Shell syntax
         run: find . -type f -name '*.sh' -not -path './.git/*' -print0 | xargs -0 -n1 bash -n
       - name: Commit diff check
         run: git show --check --oneline --no-renames HEAD
-      - name: Structural skill validation
-        run: bash scripts/validate-references.sh
-      - name: Global installer smoke test
-        run: bash scripts/install-links-smoke.sh
+      - name: Aggregate validation
+        run: npm test

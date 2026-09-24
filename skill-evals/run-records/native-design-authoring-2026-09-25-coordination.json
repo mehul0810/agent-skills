@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "runId": "native-design-authoring-2026-09-25-coordination",
+  "scenario": "native-design-authoring",
+  "result": "succeeded",
+  "startedAt": "2026-09-24T18:45:18.000Z",
+  "durationMs": 99000,
+  "checks": [
+    { "name": "editable-artifact-routing", "result": "pass" },
+    { "name": "missing-write-capability", "result": "pass" },
+    { "name": "pen-transfer-loss", "result": "pass" },
+    { "name": "small-edit-restraint", "result": "pass" },
+    { "name": "task-matched-inspiration", "result": "pass" },
+    { "name": "independent-acceptance-gates", "result": "pass" },
+    { "name": "single-source-and-publication", "result": "pass" },
+    { "name": "proportional-handoff", "result": "pass" },
+    { "name": "high-fidelity-default", "result": "pass" },
+    { "name": "navigation-and-recovery", "result": "pass" },
+    { "name": "purposeful-media", "result": "pass" },
+    { "name": "placement-aware-image", "result": "pass" },
+    { "name": "image-candidate-rejection", "result": "pass" },
+    { "name": "exact-edit-restraint", "result": "pass" },
+    { "name": "native-runtime-boundary", "result": "pass" },
+    { "name": "shared-editor-target-drift", "result": "pass" },
+    { "name": "isolated-target-exception", "result": "pass" },
+    { "name": "truthful-visual-proof", "result": "pass" }
+  ],
+  "metrics": {
+    "checks_passed": 18,
+    "host_telemetry_available": 0,
+    "partial_observation_window": 1
+  },
+  "lineage": {
+    "verificationId": "native-design-authoring-2026-09-25-coordination",
+    "artifactPointer": "codex-fresh-agent:/root/native_coordination_blind#69d20cf22709de64057f7f28406236e4116a38c9"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-24T18:46:57.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "partial_observation_window"
+    ],
+    "summary": "Eighteen synthetic decision cases were scored pass after a two-turn evaluation; a neutral follow-up expanded operational sequencing for cases 17 and 18 before final scoring. The 99-second parent-observation window is partial, not full-task timing. No native design execution, rendered quality, or token, latency, or cost proof is established."
+  },
+  "tags": [ "fresh-agent", "sanitized" ]
+}
