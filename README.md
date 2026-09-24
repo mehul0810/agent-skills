@@ -273,6 +273,19 @@ Repoint incorrect symlinks if needed. Real files and directories are always pres
 bash scripts/install-global-skill-links.sh --force
 ```
 
+Global design defaults are opt-in. This appends the repository's marked policy to
+`$CODEX_HOME/AGENTS.md` (or `~/.codex/AGENTS.md`); it preserves existing content
+and refuses an existing conflicting Design Defaults section. Ordinary skill
+installs do not edit global policy:
+
+```bash
+bash scripts/install-global-skill-links.sh --design-defaults
+bash scripts/install-global-skill-links.sh --check-design-defaults
+```
+
+The check verifies that the marked policy and shared design reference are
+resolvable on disk. It does not prove that any runtime loaded the policy.
+
 Verify Claude can see the skill files on disk:
 
 ```bash

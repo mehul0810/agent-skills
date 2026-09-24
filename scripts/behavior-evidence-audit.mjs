@@ -172,7 +172,27 @@ function selectedContract(lines, index) {
   if (level) {
     while (end < lines.length && !(levels[end] && levels[end] <= level)) end++;
   } else if (/^\s*\|/.test(lines[index])) {
-    // Each Markdown table row is a complete independently selected scenario.
+    // Bind an independently selected table case to its schema and governing heading,
+    // without pulling sibling cases into the digest.
+    let tableStart = index;
+    while (tableStart > 0 && /^\s*\|/.test(lines[tableStart - 1])) tableStart--;
+    start = tableStart;
+
+    // Markdown tables have a header row followed by a delimiter row. Include both
+    // only when the selected data row belongs to a well-formed table.
+    const hasHeader = index >= tableStart + 2 && /^\s*\|(?:\s*:?-+:?\s*\|)+\s*$/.test(lines[tableStart + 1]);
+
+    for (let heading = tableStart - 1; heading >= 0; heading--) {
+      if (levels[heading]) {
+        start = heading;
+        break;
+      }
+    }
+    return [
+      ...lines.slice(start, tableStart),
+      ...lines.slice(tableStart, hasHeader ? tableStart + 2 : tableStart),
+      lines[index],
+    ].join("");
   } else if (/^\s*(?:[-*+] |\d+[.)] )/.test(lines[index])) {
     const indent = lines[index].match(/^\s*/)[0].length;
     while (end < lines.length) {
@@ -596,6 +616,30 @@ function selfTest() {
   const scenarioText = "## Scenario: exact route\n\nPrompt: follow the route.\n\nRequired: exact proof.\n\n## Other case\n\nUnrelated.\n";
   const scenarioFile = path.join(root, "skill-evals/scenarios.md");
   fs.writeFileSync(scenarioFile, scenarioText);
+  const tableFile = path.join(root, "skill-evals/table-scenarios.md");
+  const tableScenario = {
+    id: "target-table-case",
+    files: ["skill-evals/table-scenarios.md"],
+    anchors: ["target case"],
+    fixtureFiles: [],
+  };
+  const tableText = "## Governing cases\n\n| Case | Expected route |\n| --- | --- |\n| sibling case | alpha |\n| target case | beta |\n";
+  fs.writeFileSync(tableFile, tableText);
+  const tableDigest = () => digestScenarioContract(root, tableScenario, []);
+  const originalTableDigest = tableDigest();
+  fs.writeFileSync(tableFile, tableText.replace("Expected route", "Required behavior"));
+  if (tableDigest() === originalTableDigest) {
+    throw new Error("changing a selected table's header was not bound to its contract");
+  }
+  fs.writeFileSync(tableFile, tableText.replace("alpha", "changed sibling route"));
+  if (tableDigest() !== originalTableDigest) {
+    throw new Error("changing an independent table case invalidated the selected row contract");
+  }
+  fs.writeFileSync(tableFile, tableText.replace("Governing cases", "Different governing cases"));
+  if (tableDigest() === originalTableDigest) {
+    throw new Error("changing a table's governing heading was not bound to its contract");
+  }
+  fs.writeFileSync(tableFile, tableText);
   const record = {
     schemaVersion: 1,
     runId: "exact-route",

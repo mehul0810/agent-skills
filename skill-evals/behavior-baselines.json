@@ -30,7 +30,7 @@
         "sha256": "3d842125a654c717b1b68f1fe273d32f8bf4ac54bae26ac39dbacefb0f92eb84",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [],
-        "contractSha256": "db0ee9416c99f16195b4f4b82f99bf2532082a8def0e1019b56b799fd4f4bb27"
+        "contractSha256": "a5e92da73927c18518f1dd51dabe014c350387dde50c4dbd14968ced5c3d40e8"
       },
       "requiredChecks": [
         "elevated-risk-classification",
@@ -51,7 +51,7 @@
             "isolation": "fresh-agent",
             "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493"
           },
-          "testedScenarioContractSha256": "db0ee9416c99f16195b4f4b82f99bf2532082a8def0e1019b56b799fd4f4bb27"
+          "testedScenarioContractSha256": "a5e92da73927c18518f1dd51dabe014c350387dde50c4dbd14968ced5c3d40e8"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -368,7 +368,7 @@
         "sha256": "146b415525abf0c551e9f8a7e12d118d434e534e368ab728bc8bd921cc23793c",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [],
-        "contractSha256": "a83511440506aff519d4148f4be15c8313b9f7442cd333d5a13455444b1391ae"
+        "contractSha256": "8d5b410557066ad7ca1ee2927c927a3fdb3c18d05d5652826fead78308dadf7b"
       },
       "requiredChecks": [
         "one-brief-maximum-three-questions",
@@ -396,7 +396,7 @@
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           },
-          "testedScenarioContractSha256": "a83511440506aff519d4148f4be15c8313b9f7442cd333d5a13455444b1391ae"
+          "testedScenarioContractSha256": "8d5b410557066ad7ca1ee2927c927a3fdb3c18d05d5652826fead78308dadf7b"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -440,7 +440,7 @@
         "sha256": "dc871ec228dc5f669cf046b3719b6c9193ee3d1b17d9a11588f6eddfee9d1a25",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [],
-        "contractSha256": "49884542d7a3566141313ffeb2f5cba9f68d462acc33fafa2352b190a401e5c0"
+        "contractSha256": "8f69cb8f53c058aa7ca17282a64122c42b261d4ef5e0cba42f6acdc091a7de03"
       },
       "requiredChecks": [
         "compact-multi-domain-route",
@@ -497,7 +497,7 @@
             "isolation": "fresh-agent",
             "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493"
           },
-          "testedScenarioContractSha256": "49884542d7a3566141313ffeb2f5cba9f68d462acc33fafa2352b190a401e5c0"
+          "testedScenarioContractSha256": "8f69cb8f53c058aa7ca17282a64122c42b261d4ef5e0cba42f6acdc091a7de03"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -521,7 +521,7 @@
         "sha256": "5964fa0002f260ea2ed1ecdf40a842bc6a5548173fca1f1b38adfa16b713693d",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [],
-        "contractSha256": "890e5fba206963169f20262894a92c46c8d2edb6f89fcbb9c53c5286e5885a04"
+        "contractSha256": "3cfb73302f1549563de8f40ca8918fe6e8af1d3a26919d28b46973ce6a2ea3bc"
       },
       "requiredChecks": [
         "direct-plugin-specialist",
@@ -541,7 +541,7 @@
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           },
-          "testedScenarioContractSha256": "890e5fba206963169f20262894a92c46c8d2edb6f89fcbb9c53c5286e5885a04"
+          "testedScenarioContractSha256": "3cfb73302f1549563de8f40ca8918fe6e8af1d3a26919d28b46973ce6a2ea3bc"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -587,7 +587,7 @@
           "skill-evals/cases/system-health-governance/input.json",
           "skill-evals/cases/outcome-ownership/input.json"
         ],
-        "contractSha256": "23fae3e0938167f931071a3a784dd14ef67a936cbdd1508cc2b5c2da549a0f92"
+        "contractSha256": "c403ae73f63963a4a7d3140034dcfb844e7ecb1dc5df0bae1c6a380ae2fe3acb"
       },
       "requiredChecks": [
         "planner-discovery-packet",
@@ -626,7 +626,7 @@
             "isolation": "fresh-agent",
             "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           },
-          "testedScenarioContractSha256": "23fae3e0938167f931071a3a784dd14ef67a936cbdd1508cc2b5c2da549a0f92"
+          "testedScenarioContractSha256": "c403ae73f63963a4a7d3140034dcfb844e7ecb1dc5df0bae1c6a380ae2fe3acb"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -650,7 +650,7 @@
         "sha256": "52c0b2cb69237e9f1d472448ca912993d5e549eb4c6fc8602cab15beff2581c8",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [],
-        "contractSha256": "ef8428b23b5a222820ff080477990391309f469171bcb3c6f7faca9e882e31a8"
+        "contractSha256": "c551293f19babefe9c3ce585d97a433944fc841b0165b9af0bc9efc31734b80c"
       },
       "requiredChecks": [
         "user-outcome-specificity",
@@ -678,7 +678,7 @@
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           },
-          "testedScenarioContractSha256": "ef8428b23b5a222820ff080477990391309f469171bcb3c6f7faca9e882e31a8"
+          "testedScenarioContractSha256": "c551293f19babefe9c3ce585d97a433944fc841b0165b9af0bc9efc31734b80c"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -724,7 +724,7 @@
         "fixtureFiles": [
           "skill-evals/cases/outcome-ownership/input.json"
         ],
-        "contractSha256": "9a6f2ef8a067a978af82a6b1ee0ce1e03c22378d60afbae9121528ecbd46c97c"
+        "contractSha256": "9262bfc0d394006907bc7133b76bb840acdea5d5111e147edaa4d8873736efa7"
       },
       "requiredChecks": [
         "latest-published-release-preflight",
@@ -761,7 +761,7 @@
             "isolation": "fresh-agent",
             "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           },
-          "testedScenarioContractSha256": "9a6f2ef8a067a978af82a6b1ee0ce1e03c22378d60afbae9121528ecbd46c97c"
+          "testedScenarioContractSha256": "9262bfc0d394006907bc7133b76bb840acdea5d5111e147edaa4d8873736efa7"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -788,7 +788,7 @@
         "fixtureFiles": [
           "skill-evals/cases/outcome-ownership/input.json"
         ],
-        "contractSha256": "781cead820f1c38f78b38a97acbbede2c0a10e48512cd690060b98f40452f513"
+        "contractSha256": "bc9eb442eb998afa47dfa7fca7a55d3519b55917a7e658d0268dc0870d6a4110"
       },
       "requiredChecks": [
         "immediate-root-cause-correction",
@@ -811,7 +811,7 @@
             "isolation": "fresh-agent",
             "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           },
-          "testedScenarioContractSha256": "781cead820f1c38f78b38a97acbbede2c0a10e48512cd690060b98f40452f513"
+          "testedScenarioContractSha256": "bc9eb442eb998afa47dfa7fca7a55d3519b55917a7e658d0268dc0870d6a4110"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -840,7 +840,7 @@
         "sha256": "54b4ae2bce4d363eecee4fad87a2b5e39ae29e0c98c722ac773dc9447afc6d02",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [],
-        "contractSha256": "2524767524515f299af794712c4237b4dc3b9d1828611196b38fa64a7967b84b"
+        "contractSha256": "b49e7e8e19f1c4ee1d9ebe679bef8c4b0f47dc9873a70be712671f72602a1b53"
       },
       "requiredChecks": [
         "live-product-contract-precedence",
@@ -864,7 +864,7 @@
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           },
-          "testedScenarioContractSha256": "2524767524515f299af794712c4237b4dc3b9d1828611196b38fa64a7967b84b"
+          "testedScenarioContractSha256": "b49e7e8e19f1c4ee1d9ebe679bef8c4b0f47dc9873a70be712671f72602a1b53"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -887,7 +887,7 @@
         "sha256": "95f6f1b3a29e29ad610fb4306f0130bfd212524f1b935513d6630d563beffb1e",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [],
-        "contractSha256": "c9b081700a8d9b824d654907669f50d362bf940a990e957185ceee571e0b283d"
+        "contractSha256": "7f415c3f64c48375bbb0d63c16cd03db54055659b3d6ca8e7f87eb860636bd73"
       },
       "requiredChecks": [
         "source-context-excluded",
@@ -908,7 +908,7 @@
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           },
-          "testedScenarioContractSha256": "c9b081700a8d9b824d654907669f50d362bf940a990e957185ceee571e0b283d"
+          "testedScenarioContractSha256": "7f415c3f64c48375bbb0d63c16cd03db54055659b3d6ca8e7f87eb860636bd73"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -961,7 +961,7 @@
         "fixtureFiles": [
           "skill-evals/cases/video-production/input.json"
         ],
-        "contractSha256": "78775f18516e6a6461659f79533f77fe264f9ecc28fc648d9f0b844a25c9ad39"
+        "contractSha256": "0a6544f80ea278df5f1ed14362ba19343bc53045b53cf4c154265b41fba4c6e3"
       },
       "requiredChecks": [
         "automatic-specialist-routing",
@@ -1007,7 +1007,7 @@
             "isolation": "fresh-agent",
             "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           },
-          "testedScenarioContractSha256": "78775f18516e6a6461659f79533f77fe264f9ecc28fc648d9f0b844a25c9ad39"
+          "testedScenarioContractSha256": "0a6544f80ea278df5f1ed14362ba19343bc53045b53cf4c154265b41fba4c6e3"
         },
         {
           "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-09-23-medium.json",
@@ -1020,7 +1020,7 @@
             "isolation": "fresh-agent",
             "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           },
-          "testedScenarioContractSha256": "78775f18516e6a6461659f79533f77fe264f9ecc28fc648d9f0b844a25c9ad39"
+          "testedScenarioContractSha256": "0a6544f80ea278df5f1ed14362ba19343bc53045b53cf4c154265b41fba4c6e3"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -1050,7 +1050,7 @@
         "sha256": "ee6567ec57375f13ef7a284bc086164cd3fc42dee81b96a906f9dcf29ba13029",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [],
-        "contractSha256": "f197f0362db44457f1f5b9fed6de72eb99bf1eb30739ebc6510ac48d983785ee"
+        "contractSha256": "eed9e9294dd858b32531a13e7ea574ea8348c923b77a9870bf9d771fa56c2deb"
       },
       "requiredChecks": [
         "exact-artifact-and-evidence-range",
@@ -1074,7 +1074,7 @@
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           },
-          "testedScenarioContractSha256": "f197f0362db44457f1f5b9fed6de72eb99bf1eb30739ebc6510ac48d983785ee"
+          "testedScenarioContractSha256": "eed9e9294dd858b32531a13e7ea574ea8348c923b77a9870bf9d771fa56c2deb"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -1101,7 +1101,7 @@
         "sha256": "7fc19d19e43a3fa241c4de6dd606b4cc808b765d2ec0a0f85a0093f685906d22",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [],
-        "contractSha256": "4ff61af96c7c3a0cfa7e417e167e39f3a6d47f8266afbe6814823322dc22472e"
+        "contractSha256": "dc823ff5c742af976902b3edb85dd8951684bf6fa5ebefa7895dc1391403fe5e"
       },
       "requiredChecks": [
         "terminology-provider-boundary",
@@ -1126,7 +1126,7 @@
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           },
-          "testedScenarioContractSha256": "4ff61af96c7c3a0cfa7e417e167e39f3a6d47f8266afbe6814823322dc22472e"
+          "testedScenarioContractSha256": "dc823ff5c742af976902b3edb85dd8951684bf6fa5ebefa7895dc1391403fe5e"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -1159,7 +1159,7 @@
         "sha256": "21891fb1a617782e3b9de3fd71d17ef57ae6dcb22d8503dadd2cf498c2e5f92e",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [],
-        "contractSha256": "145d71f8a4d725cf01f4ee043b86825d2315607eeb3a8220669c37281a42cf20"
+        "contractSha256": "64916fdf6ea790e90116a9d5ff6f456507a63ebcc3a0b85b0eef7e40480c52d2"
       },
       "requiredChecks": [
         "audience-task-calibration",
@@ -1187,7 +1187,7 @@
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           },
-          "testedScenarioContractSha256": "145d71f8a4d725cf01f4ee043b86825d2315607eeb3a8220669c37281a42cf20"
+          "testedScenarioContractSha256": "64916fdf6ea790e90116a9d5ff6f456507a63ebcc3a0b85b0eef7e40480c52d2"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -1214,7 +1214,7 @@
         "sha256": "ccb431d8dc24dde902d53f9a6b24ca19769efd2ac88e76c46da998490e04955f",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [],
-        "contractSha256": "eb09df805c2429bf08891d5cb32315d0813eecf1a5f96a08eb725ac0544aca42"
+        "contractSha256": "02ab92177e6326dccce3307d926aa132a4a0a6bdd31809de68df0b8f53e2b960"
       },
       "requiredChecks": [
         "live-policy-preflight",
@@ -1237,7 +1237,7 @@
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           },
-          "testedScenarioContractSha256": "eb09df805c2429bf08891d5cb32315d0813eecf1a5f96a08eb725ac0544aca42"
+          "testedScenarioContractSha256": "02ab92177e6326dccce3307d926aa132a4a0a6bdd31809de68df0b8f53e2b960"
         }
       ],
       "sha256": "a41f285ad825e7cbb5fd941c24a433c3821581a7acb8d0138caed51d71558f8b",
@@ -1270,7 +1270,7 @@
         "sha256": "47b471dd9c95b853d2807dce0cd76b07480b0d99797b5255128ef8ec8aa508f1",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [],
-        "contractSha256": "6b32157fa57a88005a14fab93ed95e3d7075b1206e4f097a93d50a923f887796"
+        "contractSha256": "80659dd36ad7c57e1b7ad0446a3cd86c6085fc0efdae019e37d8f394a212bc5f"
       },
       "requiredChecks": [
         "live-upstream-state",
@@ -1292,7 +1292,7 @@
             "isolation": "fresh-agent",
             "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
           },
-          "testedScenarioContractSha256": "6b32157fa57a88005a14fab93ed95e3d7075b1206e4f097a93d50a923f887796"
+          "testedScenarioContractSha256": "80659dd36ad7c57e1b7ad0446a3cd86c6085fc0efdae019e37d8f394a212bc5f"
         }
       ],
       "sha256": "99b5d936311dbfcddb49ca8ed13cb43e75a52eb77a80811237392ec76215c87f",
