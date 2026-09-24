@@ -62,6 +62,14 @@ Follow narrow edit scope and imagegen invariants, inspect unchanged regions, no 
 
 Discover and load actual vendor skill/schema and use supported native APIs, not raw .pen file editing or invented CSS semantics. Verify section renders/bounds and saved/reopened native artifact; tool naming alone does not prove compatibility.
 
+## Shared Editor Target Drift
+
+Two writers share one native UI. A requested `filePath` points to A, but observed active document and a known node identify B after a switch. Do not mutate either canvas on that assumption. Coordinate a single UI writer, stop affected edits, preserve both canvases, rebind/recheck the target within a bounded attempt, and continue independent preparation. Do not claim an imaginary lock or require owner approval for ordinary writes.
+
+## Isolated Target Exception
+
+Another writer is using the shared UI for B, but an explicit scoped API independently verifies its target document/node as A. The A mutation may proceed within authorization without waiting for an unrelated UI writer; verify identity again before each batch and stop only affected edits if it drifts. Do not turn the shared-UI safeguard into a global write ban.
+
 ## Truthful Visual Proof
 
 Do not fabricate product evidence, customers or metrics. Use truthful captures or clearly illustrative artwork, and distinguish video poster from playback. Premium aesthetics do not authorize false claims.
