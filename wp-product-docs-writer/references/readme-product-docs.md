@@ -2,6 +2,8 @@
 
 Use this for WordPress.org `readme.txt`, GitHub `README.md`, and factual documentation synchronization. Check current official WordPress.org guidance when directory behavior may have changed.
 
+For discovery, positioning, or search-intent optimization of the WordPress.org plugin listing, use [wporg-listing-optimization.md](wporg-listing-optimization.md). Load it alongside this reference only when the requested work also writes or validates `readme.txt`; listing strategy does not replace release/package truth checks below.
+
 ## Evidence Order
 
 1. Published production release/tag and public package/listing.

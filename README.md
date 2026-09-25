@@ -33,7 +33,7 @@ This repository contains WordPress engineering, product operations, organic-sear
 - `loop-steward`: independent control-plane PR review, bounded revision, validation, and policy-gated merge decisions for `agent-loop`, `agent-book`, and `agent-skills`.
 - `behavior-validator`: independent source-blind validation of observable WordPress runtime, editor, UI, API, packaged-build, and generated-artifact behavior against an explicit contract.
 - `wp-contributor`: official WordPress project contribution workflows for Core, Meta, Gutenberg, Trac, GitHub PRs, patches, testing, docs, triage, releases, and contributor communication.
-- `wp-product-docs-writer`: evidence-based WordPress.org `readme.txt`, repository README, changelog, release-note, upgrade-notice, and product-document synchronization.
+- `wp-product-docs-writer`: evidence-based WordPress.org `readme.txt` and directory-listing optimization, repository README, changelog, release-note, upgrade-notice, and product-document synchronization.
 - `content-writer`: organic search content writing for SEO, AEO, GEO, AI Overviews, AI Mode, answer engines, AI tools, briefs, outlines, drafts, audits, and content refreshes.
 - `product-video-producer`: premium enterprise promos, software demos, YouTube long-form/Shorts, editing/post, governed assets, deterministic delivery, accessibility, and evidence-led revision.
 - `shared/references/research-token-discipline.md`: reusable reasoning, repo exploration, web search, validation, and output discipline across the skill pack.
@@ -161,10 +161,12 @@ Detailed playbooks remain in specialist `references/` directories and `shared/re
 - Topic research, content briefs, outlines, drafts, landing pages, comparison pages, product/service pages, FAQs, metadata, content audits, and refresh plans.
 - Helpful people-first content, E-E-A-T/trust signals, search intent mapping, entity coverage, schema-aware copy, internal-link guidance, and source-grounded fact handling.
 - Organic search content for any topic, with stronger source standards for current, regulated, YMYL, technical, or high-stakes topics.
+- Broad SEO/AEO/GEO strategy and web campaigns; WordPress.org directory listing optimization routes to `wp-product-docs-writer`.
 
 ## wp-product-docs-writer Coverage
 
 - WordPress.org `readme.txt`, repository `README.md`, changelogs, release notes, upgrade notices, and cross-document synchronization.
+- WordPress.org directory listing positioning and search-intent mapping, grounded in verified capabilities and current directory guidance; distinct from broad Google SEO and conversion measurement.
 - Shipped/planned/conflicting claim classification grounded in tags, candidate diffs, packages, runtime proof, and accepted repo docs.
 - Stable-tag, version, compatibility, installation, screenshot, external-service, privacy, and support disclosure checks without release or publishing authority.
 
@@ -233,7 +235,7 @@ Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-
 
 Use $wp-contributor with `shared/references/project-subagent-routing.md` when a contribution repo needs bounded Core/Meta/Gutenberg subagent mapping, review, or test triage.
 
-Use $wp-product-docs-writer to write or audit a WordPress.org readme, repository README, changelog, release note, upgrade notice, or synchronized release documentation from verified product evidence.
+Use $wp-product-docs-writer to write or audit a WordPress.org readme or plugin-directory listing optimization, repository README, changelog, release note, upgrade notice, or synchronized release documentation from verified product evidence.
 
 Use $content-writer to research, brief, draft, rewrite, audit, or refresh organic-search-focused content for SEO, AEO, GEO, AI Overviews, answer engines, and AI tools.
 

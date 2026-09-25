@@ -37,7 +37,7 @@ Load only when needed:
 - `../shared/references/research-token-discipline.md`: token-efficient web research, source selection, and validation discipline for broad or drift-prone topics.
 - `../shared/references/context-window-discipline.md`: compact vs fresh-thread decisions for long-running or unrelated content work.
 
-Factual WordPress.org `readme.txt`, repository `README.md`, changelog, release-note, upgrade-notice, and release-document synchronization work belongs to `wp-product-docs-writer`. Keep marketing/search persuasion here.
+Factual WordPress.org `readme.txt`, plugin-directory listing optimization, repository `README.md`, changelog, release-note, upgrade-notice, and release-document synchronization work belongs to `wp-product-docs-writer`. Broad SEO/AEO/GEO strategy, non-directory web content, and marketing/search persuasion remain here.
 
 ## Content Quality Bar
 

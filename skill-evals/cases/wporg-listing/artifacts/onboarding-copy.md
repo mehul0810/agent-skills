@@ -1,0 +1,3 @@
+# Synthetic onboarding copy
+
+To connect your site to RelayCloud, open **Forms > Integrations > RelayCloud**, enter the API key from your RelayCloud account, and select **Save connection**. This sends the email addresses of new form submitters to RelayCloud. Do not enable the connection until your privacy notice explains this transfer and you have permission to share those addresses. The connection sends new submissions only; it does not import older entries. In a preview test of 40 submissions, 3 addresses were rejected as invalid; preview results are not a production delivery-rate estimate. If the status remains “Not connected,” check that the key is active in RelayCloud before trying again.

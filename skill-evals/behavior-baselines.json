@@ -1030,7 +1030,8 @@
       "files": [
         "wp-expert/references/changelog-release-notes.md",
         "wp-product-docs-writer/SKILL.md",
-        "wp-product-docs-writer/references/readme-product-docs.md"
+        "wp-product-docs-writer/references/readme-product-docs.md",
+        "wp-product-docs-writer/references/wporg-listing-optimization.md"
       ],
       "sha256": "3a3d41af982011678c02325aa037c41ff3bf7068bce2811224a90403fb00f3e1",
       "scenario": {
@@ -1044,12 +1045,18 @@
           "Conflicting product sources",
           "Release metadata mismatch",
           "External service disclosure",
-          "Marketing boundary",
+        "Broad SEO boundary",
+        "WordPress.org listing optimization",
           "Publication boundary"
         ],
         "sha256": "ee6567ec57375f13ef7a284bc086164cd3fc42dee81b96a906f9dcf29ba13029",
         "sha256Scope": "legacy-anchor-line",
-        "fixtureFiles": [],
+        "fixtureFiles": [
+          "skill-evals/cases/wporg-listing/input.json",
+          "skill-evals/cases/wporg-listing/artifacts/plugin-evidence.md",
+          "skill-evals/cases/wporg-listing/artifacts/onboarding-copy.md",
+          "skill-evals/cases/wporg-listing/artifacts/changelog-evidence.md"
+        ],
         "contractSha256": "eed9e9294dd858b32531a13e7ea574ea8348c923b77a9870bf9d771fa56c2deb"
       },
       "requiredChecks": [
@@ -1060,7 +1067,11 @@
         "external-service-privacy-disclosure",
         "content-writer-boundary",
         "publication-authority-gate",
-        "compact-mode-routing"
+        "compact-mode-routing",
+        "wporg-search-intent-evidence-and-limits",
+        "wporg-copy-metadata-tags-and-readme-rules",
+        "wporg-listing-search-conversion-measurement-boundary",
+        "wporg-simple-version-change-stays-scoped"
       ],
       "evidence": [
         {
@@ -1100,7 +1111,12 @@
         ],
         "sha256": "7fc19d19e43a3fa241c4de6dd606b4cc808b765d2ec0a0f85a0093f685906d22",
         "sha256Scope": "legacy-anchor-line",
-        "fixtureFiles": [],
+        "fixtureFiles": [
+          "skill-evals/cases/wporg-listing/input.json",
+          "skill-evals/cases/wporg-listing/artifacts/plugin-evidence.md",
+          "skill-evals/cases/wporg-listing/artifacts/onboarding-copy.md",
+          "skill-evals/cases/wporg-listing/artifacts/changelog-evidence.md"
+        ],
         "contractSha256": "dc823ff5c742af976902b3edb85dd8951684bf6fa5ebefa7895dc1391403fe5e"
       },
       "requiredChecks": [
@@ -1158,7 +1174,12 @@
         ],
         "sha256": "21891fb1a617782e3b9de3fd71d17ef57ae6dcb22d8503dadd2cf498c2e5f92e",
         "sha256Scope": "legacy-anchor-line",
-        "fixtureFiles": [],
+        "fixtureFiles": [
+          "skill-evals/cases/wporg-listing/input.json",
+          "skill-evals/cases/wporg-listing/artifacts/plugin-evidence.md",
+          "skill-evals/cases/wporg-listing/artifacts/onboarding-copy.md",
+          "skill-evals/cases/wporg-listing/artifacts/changelog-evidence.md"
+        ],
         "contractSha256": "64916fdf6ea790e90116a9d5ff6f456507a63ebcc3a0b85b0eef7e40480c52d2"
       },
       "requiredChecks": [

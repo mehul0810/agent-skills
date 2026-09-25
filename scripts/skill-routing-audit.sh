@@ -21,7 +21,7 @@ reference_mentions() {
 skill_limit() {
   case "$1" in
     content-writer) echo 4 ;;
-    wp-product-docs-writer) echo 3 ;;
+    wp-product-docs-writer) echo 4 ;;
     wp-portfolio-cto) echo 8 ;;
     wp-product-orchestrator) echo 11 ;;
     wp-service-business-development) echo 3 ;;

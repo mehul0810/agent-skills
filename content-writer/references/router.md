@@ -9,6 +9,7 @@ Use this router after `content-writer` is selected. Load one primary reference, 
 - Readability, plain language, comprehension, accessible copy, or localization review: `readability-and-clarity.md`.
 - Voice-preserving edits or evidence-based detection of generic AI-writing patterns: `human-writing-quality-gate.md`.
 - Enterprise product pages, buyer-facing messaging, security/privacy copy, case studies, comparisons, and WordPress VIP positioning: `enterprise-product-writing.md`.
+- WordPress.org plugin-directory listing positioning, search-intent mapping, short description, and tags: route to `wp-product-docs-writer`, which selects its directory-listing mode and preserves the documentation truth contract. Do not load this skill's broad SEO reference for directory-only edits.
 
 ## Selection Rules
 
@@ -17,4 +18,4 @@ Use this router after `content-writer` is selected. Load one primary reference, 
 - For a mixed enterprise landing page, use enterprise product writing as primary and load the editorial gate only for a final pass when generic prose is a confirmed risk.
 - Use readability as the primary lane when comprehension is the requested outcome; otherwise apply only the relevant checks when a clarity, accessibility, localization, or high-stakes risk is present rather than loading every writing reference.
 - Keep implementation in `wp-site-expert`; this skill owns the content artifact.
-- Route factual WordPress.org `readme.txt`, repository `README.md`, changelog, release-note, upgrade-notice, and release-document synchronization to `wp-product-docs-writer`; do not turn release truth into marketing copy.
+- Route WordPress.org `readme.txt` and plugin-directory listing optimization, plus repository `README.md`, changelog, release-note, upgrade-notice, and release-document synchronization to `wp-product-docs-writer`; do not turn release truth into marketing copy. Broad campaigns and non-directory organic-search strategy remain here.

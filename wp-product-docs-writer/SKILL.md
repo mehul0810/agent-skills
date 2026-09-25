@@ -1,6 +1,6 @@
 ---
 name: wp-product-docs-writer
-description: "Use for evidence-based WordPress product documentation: WordPress.org readme.txt, GitHub README.md, changelogs, release notes, upgrade notices, documentation synchronization, and factual release-document audits."
+description: "Use for evidence-based WordPress product documentation: WordPress.org readme.txt and listing optimization, GitHub README.md, changelogs, release notes, upgrade notices, documentation synchronization, and factual release-document audits."
 ---
 
 # WP Product Docs Writer
@@ -20,6 +20,7 @@ Own factual product and release documentation. Do not own implementation, market
 Load only the primary mode:
 
 - WordPress.org `readme.txt`, GitHub `README.md`, installation/usage/FAQ/screenshots/docs synchronization, or documentation audit: `references/readme-product-docs.md`.
+- WordPress.org listing/search-intent optimization: `references/wporg-listing-optimization.md`; load the README mode above as well only when editing or validating the actual `readme.txt` artifact.
 - Changelog, release notes, upgrade notice, SemVer narrative, beta/RC notes, or client release summary: `../wp-expert/references/changelog-release-notes.md`.
 - Combined release-document update: load both only when the request explicitly spans README metadata and release narrative.
 
@@ -36,7 +37,7 @@ Use `../shared/references/research-token-discipline.md` only when current WordPr
 
 ## Boundaries
 
-- `content-writer` owns marketing, SEO/AEO/GEO, landing-page persuasion, and editorial campaigns.
+- `content-writer` owns broad SEO/AEO/GEO strategy, web/landing-page persuasion, and editorial campaigns. This skill owns WordPress.org listing optimization because its copy, metadata, and policy are specific to the directory; use verified product evidence and do not turn it into a general SEO engagement.
 - `wp-plugin-expert`, `wp-theme-expert`, and `wp-site-expert` own code, runtime behavior, and technical fixes.
 - `wp-product-orchestrator` owns issue/milestone state, release readiness, merge, publish, and approval decisions.
 - Writing or validating documentation is autonomous when scoped. Publishing, tagging, releasing, destructive replacement, privacy/security posture changes, and unsupported public promises retain their governing approvals.

@@ -433,6 +433,16 @@
       ]
     },
     {
+      "name": "WP.org listing optimization",
+      "maxWords": 2500,
+      "warningPercent": 85,
+      "files": [
+        "wp-product-docs-writer/SKILL.md",
+        "wp-product-docs-writer/references/readme-product-docs.md",
+        "wp-product-docs-writer/references/wporg-listing-optimization.md"
+      ]
+    },
+    {
       "name": "Content enterprise",
       "maxWords": 1900,
       "warningPercent": 85,
