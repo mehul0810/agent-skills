@@ -380,6 +380,7 @@ The skills are intentionally token-efficient:
 - Each `scripts/` directory contains lightweight discovery, validation, and workflow helpers.
 - `scripts/skill-token-audit.sh` guards frontmatter, `SKILL.md`, prompt, and reference word budgets so future improvements do not quietly increase token usage.
 - `scripts/route-budget-audit.sh` guards representative cumulative skill/router/reference paths rather than only individual files.
+- `npm run context:bundle --silent -- --route "Product video editing" --route "Product video story and editing"` prints one deduplicated file manifest for named routes, preserving each route's harness diagnostics and word budgets. In the current config, this pair shares 2,176 words across two files; the count is recomputed from the live repository when run. Use `--json` for machine-readable output or `--config <path>` for another config. It reports word-count overlap only, loads no file contents into the output, does not automatically choose context, and does not prove token savings or actual model usage. The manifest is sequential, not an atomic filesystem snapshot or runtime policy; readers remain responsible for loading only the needed files.
 - `skill-evals/README.md` defines the fresh-agent behavior gate; structural audits never substitute for scenario execution.
 - `skill-evals/wp-expert-scenarios.md` contains lightweight scenario prompts for checking routing and behavior after skill changes.
 

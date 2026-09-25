@@ -17,6 +17,7 @@
     "context:business": "npm run context:business:product --silent",
     "context:business:product": "agent-harness plan-context --config agent-harness.config.json --route \"Product value decision\"",
     "context:business:service": "agent-harness plan-context --config agent-harness.config.json --route \"Service opportunity decision\"",
+    "context:bundle": "node scripts/plan-context-bundle.mjs",
     "run-record:example": "agent-harness validate-run --file skill-evals/run-record.example.json",
     "run-record:behavior": "node scripts/validate-behavior-run-records.mjs",
     "validate:behavior-evidence": "node scripts/behavior-evidence-audit.mjs --self-test && node scripts/behavior-evidence-audit.mjs",
@@ -25,6 +26,7 @@
     "validate:visual": "node wp-expert/scripts/validate-visual-proof.mjs --self-test && node wp-expert/scripts/validate-asset-production.mjs --self-test && node wp-expert/scripts/validate-spatial-proof.mjs --self-test && node wp-expert/scripts/capture-spatial-measurements.mjs --self-test && bash scripts/visual-wordpress-behavior-audit.sh",
     "validate:quality": "node wp-quality-reviewer/scripts/validate-review-report.mjs --self-test && bash scripts/quality-reviewer-behavior-audit.sh",
     "validate:video": "node product-video-producer/scripts/validate-video-manifest.mjs --self-test && bash scripts/video-production-behavior-audit.sh",
+    "test:context-bundle": "node scripts/test-context-bundle.mjs",
     "test": "node scripts/validate-all.mjs"
   },
   "devDependencies": {

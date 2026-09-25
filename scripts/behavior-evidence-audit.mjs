@@ -38,6 +38,63 @@ function digest(content) {
   return crypto.createHash("sha256").update(content).digest("hex");
 }
 
+const MAX_SCENARIO_BYTES = 32 * 1024 * 1024;
+const MAX_COMMIT_CACHE_BYTES = 64 * 1024 * 1024;
+
+function createReadContext(root) {
+  return { root: path.resolve(root), commitBlobs: new Map(), cachedBytes: 0, cacheHits: 0, cacheMisses: 0 };
+}
+
+function commitScenarioBytes(root, relativePath, revision, context) {
+  if (!REVISION.test(revision)) throw new Error("invalid revision");
+  context ??= createReadContext(root);
+  if (!context || context.root !== path.resolve(root)) throw new Error("read context root mismatch");
+  const key = `${revision}\0${relativePath}`;
+  const cached = context.commitBlobs.get(key);
+  if (cached) {
+    context.cacheHits++;
+    context.commitBlobs.delete(key);
+    context.commitBlobs.set(key, cached);
+    return cached;
+  }
+  context.cacheMisses++;
+
+  const entry = execFileSync("git", ["ls-tree", "-z", revision, "--", relativePath],
+    { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
+  const match = entry.match(/^(100644|100755) blob ([a-f0-9]{40})\t([^\0]+)\0$/);
+  if (!match || match[3] !== relativePath) throw new Error("not an exact regular blob");
+
+  const size = Number(execFileSync("git", ["cat-file", "-s", `${revision}:${relativePath}`], {
+    cwd: root,
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "pipe"],
+  }).trim());
+  if (!Number.isSafeInteger(size) || size < 0 || size > MAX_SCENARIO_BYTES) throw new Error("scenario file exceeds 32 MiB");
+  const bytes = execFileSync("git", ["show", `${revision}:${relativePath}`], {
+    cwd: root,
+    maxBuffer: MAX_SCENARIO_BYTES + 65536,
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+
+  // Retain only scenario blobs after the original type, path, and size checks.
+  if (bytes.length === size && bytes.length <= MAX_SCENARIO_BYTES) {
+    while (context.commitBlobs.size >= 256) {
+      const oldestKey = context.commitBlobs.keys().next().value;
+      context.cachedBytes -= context.commitBlobs.get(oldestKey).length;
+      context.commitBlobs.delete(oldestKey);
+    }
+    while (context.cachedBytes + bytes.length > MAX_COMMIT_CACHE_BYTES) {
+      const oldestKey = context.commitBlobs.keys().next().value;
+      if (oldestKey === undefined) break;
+      context.cachedBytes -= context.commitBlobs.get(oldestKey).length;
+      context.commitBlobs.delete(oldestKey);
+    }
+    context.commitBlobs.set(key, bytes);
+    context.cachedBytes += bytes.length;
+  }
+  return bytes;
+}
+
 function digestFiles(root, files, errors, revision) {
   const hash = crypto.createHash("sha256");
   for (const relativePath of [...files].sort()) {
@@ -71,7 +128,8 @@ function fileContent(root, relativePath, revision) {
     : fs.readFileSync(path.join(root, relativePath), "utf8");
 }
 
-function digestLegacyScenarioAnchors(root, scenario, anchors, errors, revision) {
+function digestLegacyScenarioAnchors(root, scenario, anchors, errors, revision, context) {
+  if (revision) context ??= createReadContext(root);
   const hash = crypto.createHash("sha256");
   hash.update(scenario.id);
   hash.update("\0");
@@ -79,7 +137,7 @@ function digestLegacyScenarioAnchors(root, scenario, anchors, errors, revision) 
     const matches = [];
     for (const relativePath of scenarioPathList(scenario.files, `${scenario.id} scenario files`, errors)) {
       try {
-        const lines = scenarioBytes(root, relativePath, revision).toString("utf8").split(/\r?\n/);
+        const lines = scenarioBytes(root, relativePath, revision, context).toString("utf8").split(/\r?\n/);
         lines.forEach((line, index) => {
           if (line.includes(anchor)) {
             matches.push({ relativePath, line, lineNumber: index + 1 });
@@ -118,21 +176,9 @@ function scenarioPathList(values, label, errors, { empty = false } = {}) {
   return [...new Set(values)].sort();
 }
 
-const MAX_SCENARIO_BYTES = 32 * 1024 * 1024;
-function scenarioBytes(root, relativePath, revision) {
+function scenarioBytes(root, relativePath, revision, context) {
   if (revision) {
-    if (!REVISION.test(revision)) throw new Error("invalid revision");
-    const entry = execFileSync("git", ["ls-tree", "-z", revision, "--", relativePath],
-      { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
-    if (!/^100(?:644|755) blob [a-f0-9]{40}\t/.test(entry)
-      || entry.slice(entry.indexOf("\t") + 1) !== `${relativePath}\0`) {
-      throw new Error("not an exact regular blob");
-    }
-    const size = Number(execFileSync("git", ["cat-file", "-s", `${revision}:${relativePath}`],
-      { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim());
-    if (!Number.isSafeInteger(size) || size < 0 || size > MAX_SCENARIO_BYTES) throw new Error("scenario file exceeds 32 MiB");
-    return execFileSync("git", ["show", `${revision}:${relativePath}`],
-      { cwd: root, maxBuffer: MAX_SCENARIO_BYTES + 65536, stdio: ["ignore", "pipe", "pipe"] });
+    return commitScenarioBytes(root, relativePath, revision, context);
   }
   let location = root;
   for (const part of relativePath.split("/")) {
@@ -210,13 +256,24 @@ function selectedContract(lines, index) {
 }
 
 export function digestScenarioContract(root, scenario, errors = [], revision) {
+  return digestScenarioContractWithContext(
+    root,
+    scenario,
+    errors,
+    revision,
+    revision ? createReadContext(root) : undefined,
+  );
+}
+
+function digestScenarioContractWithContext(root, scenario, errors = [], revision, context) {
+  if (revision) context ??= createReadContext(root);
   const files = scenarioPathList(scenario.files, `${scenario.id} scenario files`, errors);
   const fixtures = scenarioPathList(scenario.fixtureFiles, `${scenario.id} fixtureFiles`, errors, { empty: true });
   const anchors = stringSet(scenario.anchors, `${scenario.id} scenario anchors`, errors);
   const sources = new Map();
   for (const file of files) {
     try {
-      sources.set(file, scenarioLines(scenarioBytes(root, file, revision)));
+      sources.set(file, scenarioLines(scenarioBytes(root, file, revision, context)));
     } catch {
       errors.push(`${scenario.id}: missing or unsafe scenario source${revision ? ` at ${revision}` : ""}: ${file}`);
     }
@@ -252,7 +309,7 @@ export function digestScenarioContract(root, scenario, errors = [], revision) {
   }
   for (const file of fixtures) {
     try {
-      const bytes = scenarioBytes(root, file, revision);
+      const bytes = scenarioBytes(root, file, revision, context);
       add("fixture");
       add(file);
       add(bytes);
@@ -350,6 +407,7 @@ export function auditBehaviorEvidence({
   mandatoryBaselines = MANDATORY_BASELINES,
 } = {}) {
   const errors = [];
+  const readContext = createReadContext(root);
   let manifest;
   try {
     manifest = JSON.parse(fs.readFileSync(manifestFile, "utf8"));
@@ -509,6 +567,7 @@ export function auditBehaviorEvidence({
           anchors,
           errors,
           evidence.testedRevision,
+          readContext,
         );
         if (
           revisionSource !== evidence.testedSourceSha256 ||
@@ -516,7 +575,13 @@ export function auditBehaviorEvidence({
         ) {
           errors.push(`${baseline.name}: tested revision and tree digests disagree`);
         }
-        const revisionContract = digestScenarioContract(root, scenario, errors, evidence.testedRevision);
+        const revisionContract = digestScenarioContractWithContext(
+          root,
+          scenario,
+          errors,
+          evidence.testedRevision,
+          readContext,
+        );
         if (!SHA256.test(evidence.testedScenarioContractSha256 ?? "")
           || revisionContract !== evidence.testedScenarioContractSha256) {
           errors.push(`${baseline.name}: tested revision and full scenario contract digest disagree`);
@@ -677,6 +742,74 @@ function selfTest() {
     cwd: root,
     encoding: "utf8",
   }).trim();
+  const scenarioPath = "skill-evals/scenarios.md";
+  const cacheContext = createReadContext(root);
+  const cachedScenarioDigest = digestLegacyScenarioAnchors(
+    root,
+    { id: "cache-check", files: [scenarioPath] },
+    ["Scenario: exact route", "Other case"],
+    [],
+    testedRevision,
+    cacheContext,
+  );
+  if (!SHA256.test(cachedScenarioDigest) || cacheContext.cacheMisses !== 1 || cacheContext.cacheHits !== 1) {
+    throw new Error("repeated historical scenario reads were not served from the per-audit cache");
+  }
+  const hitsBeforeContract = cacheContext.cacheHits;
+  digestScenarioContractWithContext(root, {
+    id: "cache-check",
+    files: [scenarioPath],
+    anchors: ["Scenario: exact route"],
+    fixtureFiles: [],
+  }, [], testedRevision, cacheContext);
+  if (cacheContext.cacheHits <= hitsBeforeContract) {
+    throw new Error("scenario contract reads did not reuse the validated historical blob");
+  }
+  const committedBytes = scenarioBytes(root, scenarioPath, testedRevision, cacheContext);
+  const workingText = "## Scenario: exact route\n\nWorktree version.\n";
+  fs.writeFileSync(path.join(root, scenarioPath), workingText);
+  if (scenarioBytes(root, scenarioPath).toString("utf8") !== workingText
+    || !scenarioBytes(root, scenarioPath, testedRevision, cacheContext).equals(committedBytes)) {
+    throw new Error("historical scenario cache leaked into fresh working-tree reads");
+  }
+  const nextText = scenarioText.replace("Required: exact proof.", "Required: changed proof.");
+  fs.writeFileSync(path.join(root, scenarioPath), nextText);
+  execFileSync("git", ["add", scenarioPath], { cwd: root });
+  execFileSync("git", ["-c", "user.name=Audit", "-c", "user.email=audit@example.test", "commit", "-qm", "second scenario revision"], {
+    cwd: root,
+    env: { ...process.env, GIT_AUTHOR_DATE: "2026-07-25T00:01:00.000Z", GIT_COMMITTER_DATE: "2026-07-25T00:01:00.000Z" },
+  });
+  const nextRevision = execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" }).trim();
+  if (nextRevision === testedRevision
+    || scenarioBytes(root, scenarioPath, nextRevision, cacheContext).equals(committedBytes)
+    || !scenarioBytes(root, scenarioPath, testedRevision, cacheContext).equals(committedBytes)) {
+    throw new Error("historical scenario cache crossed revision boundaries");
+  }
+  fs.writeFileSync(path.join(root, scenarioPath), scenarioText);
+
+  const otherRoot = fs.mkdtempSync(path.join(os.tmpdir(), "behavior-evidence-other-root-"));
+  fs.mkdirSync(path.join(otherRoot, "skill-evals"), { recursive: true });
+  fs.writeFileSync(path.join(otherRoot, scenarioPath), "Other repository scenario.\n");
+  execFileSync("git", ["init", "-q"], { cwd: otherRoot });
+  execFileSync("git", ["add", scenarioPath], { cwd: otherRoot });
+  execFileSync("git", ["-c", "user.name=Audit", "-c", "user.email=audit@example.test", "commit", "-qm", "other repository"], {
+    cwd: otherRoot,
+    env: { ...process.env, GIT_AUTHOR_DATE: "2026-07-25T00:02:00.000Z", GIT_COMMITTER_DATE: "2026-07-25T00:02:00.000Z" },
+  });
+  const otherRevision = execFileSync("git", ["rev-parse", "HEAD"], { cwd: otherRoot, encoding: "utf8" }).trim();
+  const otherContext = createReadContext(otherRoot);
+  if (scenarioBytes(otherRoot, scenarioPath, otherRevision, otherContext).equals(committedBytes)) {
+    throw new Error("historical scenario cache crossed repository roots");
+  }
+  let rejectedForeignContext = false;
+  try {
+    scenarioBytes(otherRoot, scenarioPath, otherRevision, cacheContext);
+  } catch {
+    rejectedForeignContext = true;
+  }
+  fs.rmSync(otherRoot, { recursive: true, force: true });
+  if (!rejectedForeignContext) throw new Error("scenario cache accepted a context from another repository root");
+
   const noErrors = [];
   const sourceHash = digestFiles(root, ["source.md"], noErrors, testedRevision);
   const scenarioHash = digestLegacyScenarioAnchors(

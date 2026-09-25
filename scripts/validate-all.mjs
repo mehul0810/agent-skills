@@ -24,6 +24,7 @@ const checks = [
   ['Evaluation packet regression', 'node', ['scripts/test-eval-packet.mjs']],
   ['Continuity hook regression', 'node', ['scripts/test-continuity-hook.mjs']],
   ['Harness dependency compatibility', 'node', ['scripts/test-harness-runtime-fingerprint.mjs']],
+  ['Context bundle regression', 'node', ['scripts/test-context-bundle.mjs']],
   ['Agent profiles', python.executable, ['scripts/validate-agent-profiles.py']],
   ['Agent profile rejection regression', python.executable, ['-O', 'scripts/test-agent-profiles.py']],
   ['References and domain audits', 'bash', ['scripts/validate-references.sh']],
