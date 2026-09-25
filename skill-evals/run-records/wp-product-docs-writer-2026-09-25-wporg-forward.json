@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "runId": "wp-product-docs-writer-2026-09-25-wporg-forward",
+  "scenario": "wp-product-docs-writer-truth",
+  "result": "succeeded",
+  "startedAt": "2026-09-25T07:46:18.000Z",
+  "durationMs": 181000,
+  "checks": [
+    {
+      "name": "exact-artifact-and-evidence-range",
+      "result": "pass"
+    },
+    {
+      "name": "shipped-planned-conflict-ledger",
+      "result": "pass"
+    },
+    {
+      "name": "release-metadata-mismatch-fails-closed",
+      "result": "pass"
+    },
+    {
+      "name": "unreleased-feature-single-entry",
+      "result": "pass"
+    },
+    {
+      "name": "external-service-privacy-disclosure",
+      "result": "pass"
+    },
+    {
+      "name": "content-writer-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "publication-authority-gate",
+      "result": "pass"
+    },
+    {
+      "name": "compact-mode-routing",
+      "result": "pass"
+    },
+    {
+      "name": "wporg-search-intent-evidence-and-limits",
+      "result": "pass"
+    },
+    {
+      "name": "wporg-copy-metadata-tags-and-readme-rules",
+      "result": "pass"
+    },
+    {
+      "name": "wporg-listing-search-conversion-measurement-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "wporg-simple-version-change-stays-scoped",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 12,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "wp-product-docs-writer-2026-09-25-wporg-forward",
+    "artifactPointer": "codex-fresh-agent:/root/wporg_blind_forward#7004f5edb0461df490d6487920380746cd294e5b; /private/tmp/wporg-listing-forward-answer.md#sha256=f677b93ac2a1f8f71d4e6265fc93467f8271e3412757e19784c656ba561b4b93; packet-manifest-sha256=1ecced2bcf7638b6cc7284311e6fb176d38337feeda33f0c7901b9b2439a81c7"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-25T07:49:19.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Parent-scored blind synthetic evaluation passed every registered check against the frozen packet. This is not live WordPress.org, package, ranking, conversion, or representative-reader evidence. Host token telemetry unavailable; no efficiency estimate."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}
