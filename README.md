@@ -1,4 +1,20 @@
-# WP Expert Codex Skill Pack
+# Agent Skills
+
+Reusable skills for WordPress engineering, product operations, service-business
+development, content, design and media production. This repository supplies
+instructions and validation tools, not an always-running agent or scheduler.
+
+## Repository Map
+
+| Repository | Responsibility |
+| --- | --- |
+| [agent-skills](https://github.com/mehul0810/agent-skills) | Reusable specialist behavior, references, templates and skill evaluations. |
+| [agent-harness](https://github.com/mehul0810/agent-harness) | Deterministic validation, context planning and evidence contracts. |
+| [agent-loop](https://github.com/mehul0810/agent-loop) | Live-state checks, bounded work selection and advisory workflow output. |
+| [agent-book](https://github.com/mehul0810/agent-book) | Compact decisions and evidence pointers, not live product truth. |
+| [agent-decide](https://github.com/mehul0810/agent-decide) | Shadow-only typed routing and evaluation; no automatic execution or promotion. |
+
+Product-specific implementation and release truth remain in each product repository.
 
 ## Source Of Truth
 
@@ -13,19 +29,20 @@ This repository contains WordPress engineering, product operations, organic-sear
 - `wp-quality-reviewer`: focused WordPress security, performance, modularity/maintainability, and accessibility review-and-fix workflows with evidence-backed enterprise proof.
 - `wp-portfolio-cto`: cross-product WordPress portfolio control room for portfolio heartbeats, product-thread health, release conflicts, owner decision briefs, and shared workflow governance.
 - `wp-product-orchestrator`: one-product WordPress plugin/theme orchestrator for issue intake, milestone scope, release-readiness drive, worker delegation, validation synthesis, and PR workflow.
+- `wp-service-business-development`: opportunity qualification, discovery, offers, scopes, estimates, proposals, retainers and capacity decisions; not autonomous outreach or commercial commitments.
 - `loop-steward`: independent control-plane PR review, bounded revision, validation, and policy-gated merge decisions for `agent-loop`, `agent-book`, and `agent-skills`.
 - `behavior-validator`: independent source-blind validation of observable WordPress runtime, editor, UI, API, packaged-build, and generated-artifact behavior against an explicit contract.
 - `wp-contributor`: official WordPress project contribution workflows for Core, Meta, Gutenberg, Trac, GitHub PRs, patches, testing, docs, triage, releases, and contributor communication.
 - `wp-product-docs-writer`: evidence-based WordPress.org `readme.txt`, repository README, changelog, release-note, upgrade-notice, and product-document synchronization.
 - `content-writer`: organic search content writing for SEO, AEO, GEO, AI Overviews, AI Mode, answer engines, AI tools, briefs, outlines, drafts, audits, and content refreshes.
 - `product-video-producer`: premium enterprise promos, software demos, YouTube long-form/Shorts, editing/post, governed assets, deterministic delivery, accessibility, and evidence-led revision.
-- `shared/references/research-token-discipline.md`: reusable token-efficient reasoning, repo exploration, web search, validation, and output discipline used by both skills.
+- `shared/references/research-token-discipline.md`: reusable reasoning, repo exploration, web search, validation, and output discipline across the skill pack.
 - `shared/references/session-continuity-pr-discipline.md`: reusable new-chat context rehydration, release-branch detection, explicit PR base selection, and branch/PR safety used by code-oriented skills.
-- `shared/references/project-subagent-routing.md`: reusable project-level subagent routing, availability-first model/reasoning allocation, and bounded parallel mapping/review.
+- `shared/references/project-subagent-routing.md`: project-level delegation and bounded mapping/review; see the model-policy limitation below before using its legacy allocation guidance.
 - `shared/references/product-autonomy-permissions.md`: reusable autonomy boundaries, permission levels, stop conditions, and owner-decision format for product/plugin/theme workflows.
 - `shared/references/product-queue-triage.md`: reusable issue/PR queue triage, autonomous candidate selection, release-blocker detection, and owner-facing output format.
 - `shared/references/live-proof-wordpress.md`: reusable WordPress live-proof gates for plugins, themes, FSE, REST, WP-CLI, admin, frontend, integrations, and releases.
-- `shared/references/production-dependency-discipline.md`: reusable Composer/npm production dependency hygiene used by both skills.
+- `shared/references/production-dependency-discipline.md`: reusable Composer/npm production dependency hygiene across engineering skills.
 - `shared/references/enterprise-code-quality-gate.md`: reusable enterprise/WPVIP-grade code creation and review gate for modularity, performance, security, maintainability, observability, and rare-scenario tests.
 
 ## Modular WordPress Expert Coverage
@@ -178,6 +195,7 @@ wp-site-expert/
 wp-quality-reviewer/
 wp-portfolio-cto/
 wp-product-orchestrator/
+wp-service-business-development/
 loop-steward/
 behavior-validator/
 wp-contributor/
@@ -199,11 +217,13 @@ Use $wp-site-expert to plan, build, review, or improve a WordPress website, land
 
 Use $wp-quality-reviewer for a focused independent WordPress security, performance, modularity/maintainability, or accessibility audit and review-led remediation.
 
-Use the relevant specialist with `shared/references/project-subagent-routing.md` when a project needs subagent profiles, skill routing, or availability-first model/reasoning allocation; use $wp-expert only if the lane is ambiguous.
+Use the relevant specialist with `shared/references/project-subagent-routing.md` when a project needs subagent profiles or skill routing; current explicit model restrictions take precedence over legacy allocation guidance. Use $wp-expert only if the lane is ambiguous.
 
 Use $wp-portfolio-cto for cross-product WordPress portfolio governance, portfolio heartbeats, product-thread health, release conflicts, owner decision briefs, and shared workflow improvements.
 
 Use $wp-product-orchestrator to triage, plan, delegate, validate, commit, push, or prepare PRs for one WordPress plugin/theme product thread.
+
+Use $wp-service-business-development to qualify a WordPress services opportunity, plan discovery, draft scope or proposals, or evaluate retainer and capacity options without making commercial commitments.
 
 Use $loop-steward to review, repair, validate, and policy-gate a pull request in agent-loop, agent-book, or agent-skills.
 
@@ -372,7 +392,7 @@ The skills are intentionally token-efficient:
 - The shared `session-continuity-pr-discipline.md` reference keeps new-chat context recovery and PR base-branch safety explicit across code-oriented skills.
 - The shared `project-subagent-routing.md` reference keeps project-level subagent/model routing explicit without bloating hot-path skill instructions.
 - The shared product autonomy, queue triage, and live-proof references keep autonomous plugin/theme work explicit without bloating `wp-expert`.
-- The shared `production-dependency-discipline.md` reference keeps Composer/npm production-artifact hygiene consistent across both skills.
+- The shared `production-dependency-discipline.md` reference keeps Composer/npm production-artifact hygiene consistent across engineering skills.
 - The shared `enterprise-code-quality-gate.md` reference keeps modular, secure, performant, maintainable, test-backed engineering expectations consistent across code-oriented skills.
 - The `wp-expert/references/thinking-brainstorming-engineering-discipline.md` reference keeps brainstorming convergence, anti-overengineering, reference budgets, and premium polish stopping rules explicit without bloating the core skill.
 - The `wp-expert/references/ux-product-strategy-design-qa.md` reference keeps premium UI/UX strategy, image parity, and design QA explicit without bloating the core skill.
@@ -385,3 +405,35 @@ The skills are intentionally token-efficient:
 - `skill-evals/wp-expert-scenarios.md` contains lightweight scenario prompts for checking routing and behavior after skill changes.
 
 See `PLANNING_REPORT.md` for the planning rationale and validation history.
+
+## Validation And Limits
+
+Use Node.js 24 and Python 3.11 or newer. If the default `python3` is older, set
+`PYTHON` to an installed compatible executable as described in [TESTING.md](TESTING.md).
+
+```bash
+npm ci
+npm test
+bash -n scripts/*.sh
+git diff --check
+```
+
+The full aggregate is also used by the manually dispatched CI workflow. For
+focused iteration, use the `validate:*` and `context:*` scripts in
+[package.json](package.json); focused checks do not replace the publication gate.
+
+- **Runtime activation:** successful installation and filesystem health checks do
+  not prove that a host loaded a skill, hook or model configuration.
+- **Quality evidence:** decision scenarios, rendered results, native editing and
+  actual user outcomes are separate proof classes. See the
+  [evaluation protocol](skill-evals/README.md); no identical-quality or token-saving
+  guarantee across models is established.
+- **Harness version:** [package-lock.json](package-lock.json) records the installed
+  revision. New harness source does not automatically upgrade this consumer.
+  The [migration evidence](skill-evals/execution-reliability-2026-09-25.md) records
+  the pending runtime migration and its required fresh proof.
+- **Model-policy mismatch:** some shared routing references still describe legacy
+  families and fallback preferences. They are not reconciled with the owner's
+  newer strict model policy. Current explicit owner/host restrictions take
+  precedence; do not treat model availability as permission to fall back. This
+  README update does not change those references or enforce runtime selection.
