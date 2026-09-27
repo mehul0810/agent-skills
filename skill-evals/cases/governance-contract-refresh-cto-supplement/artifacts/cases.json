@@ -1,0 +1,6 @@
+[
+  {
+    "case": "case-cto-01",
+    "request": "The product PO says: 'I need the owner to choose a milestone date, a local proof fixture, and the default for a small settings field before I continue.' The repository contains the milestone date formula, the normal approved local test runtime, and the established setting convention. The requested issue is otherwise scoped and authorized. Production publication requires a separate exact-candidate owner approval. As portfolio CTO, provide your disposition and next action."
+  }
+]
