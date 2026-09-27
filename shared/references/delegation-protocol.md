@@ -12,9 +12,9 @@ Use one PR per issue unless scope crosses release or validation boundaries. Main
 
 Portfolio control routes product execution to the product PO. User-visible product control threads must not be archived unless the owner asks; only reconciled Codex-created workers may be archived.
 
-`Worker Threads` is the project for execution rooms. Create `CTO Worker <Task Name>` for small stateful execution. These workers are execution rooms, not control rooms: no roadmap authority, no direct product-thread contact except through CTO reconciliation, and no release/publish/merge/pricing/licensing/privacy/security/public-contract decisions.
+Use an in-task subagent for bounded execution by default. Create a new user-visible Codex task/thread only when the owner explicitly requests one; environment or tool constraints do not create that authorization. When explicitly authorized, a visible worker is an execution room, not a control room: no roadmap authority, no direct product-thread contact except through CTO reconciliation, and no release/publish/merge/pricing/licensing/privacy/security/public-contract decisions.
 
-When the owner adopts dedicated roles for a product, PO instead creates disposable `<Product> Worker <Issue or Outcome>` tasks in that same saved product project. Record each returned thread ID; project/title matching alone is insufficient for archive or recovery. Keep Planner, PO, Review, Test & Proof, and Release Readiness tasks protected and long-lived.
+When the owner explicitly adopts dedicated roles for a product, preserve the authorized long-lived roles and create disposable `<Product> Worker <Issue or Outcome>` tasks only when visible-task creation is within that explicit authorization. Record each returned thread ID; project/title matching alone is insufficient for archive or recovery. Keep Planner, PO, Review, Test & Proof, and Release Readiness tasks protected and long-lived.
 
 Worker lifecycle owner is the creator. CTO- or PO-created workers remain that creator's responsibility for scope, proof, reconciliation, and archive/delete. POs report only blockers, release-readiness changes, cross-product/process concerns, or owner decisions.
 
@@ -34,7 +34,7 @@ Delegation decision: Delegated|Direct|Deferred - <short reason>
 
 Use `Direct` only when work is smaller than delegation overhead, delegation is unavailable, or the owner asked. Use `Deferred` when a plan/blocker prevents delegation.
 
-Use a `Worker Threads` execution room for narrow stateful fixes/audits/cleanup/docs/investigation/validation; keep direction, release scope, priority, customer decisions, and product context in the PO.
+Use an in-task subagent for narrow stateful fixes/audits/cleanup/docs/investigation/validation when available; keep direction, release scope, priority, customer decisions, and product context in the PO. If only a new user-visible task could perform the work, ask the owner before creating it and continue independent work meanwhile.
 
 Before declaring delegation unavailable, use tool discovery for project/thread/worktree/subagent tools. Look for `list_projects`, `create_thread`, `fork_thread`, `send_message_to_thread`, worktree/subagent tools, and shell/manual git worktree capability.
 
@@ -89,7 +89,7 @@ Control owns final plan, branch/base, PR/GitHub state, proof synthesis, push aut
 
 Workers own bounded implementation/mapping/review/triage/investigation/evidence. No release, publish/deploy, issue close, milestone retarget, or subdelegation.
 
-Prefer multi-agent/subagent delegation for subtasks inside the current request. Create user-visible Codex threads only when the owner explicitly requests them or the environment requires it. Never archive user-created control or skill threads.
+Prefer in-task subagents for subtasks inside the current request. Create user-visible Codex tasks only when explicitly requested by the owner; a missing subagent, tool, project, or runtime does not authorize a visible task as a workaround. Never archive user-created control or skill threads.
 
 ## Delegated Thread Prompt
 
@@ -105,6 +105,7 @@ Every delegated thread prompt must include:
 - Screenshot requirement when admin, editor, frontend, style, layout, UX, or other design-visible output changes; include evidence or exact proof gap.
 - Suggested model/reasoning when useful.
 - Hard gates: no merge, release, issue close, milestone retarget, push to `main`, protected archive, product decision, or subdelegation unless the parent CTO thread asks.
+- Creating another user-visible task requires explicit owner authorization.
 - Stop condition and summary requirements.
 
 Use worktrees when parallel implementation or CI repair risks branch drift. Prefer read-only workers for mapping/evidence.

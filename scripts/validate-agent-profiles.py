@@ -27,7 +27,7 @@ def validate(directory):
         instructions = data['developer_instructions']
         if len(instructions.split()) > 250:
             raise ValueError(f'{path.name}: instruction budget exceeded')
-        if 'Do not subdelegate' not in instructions or 'low/light' not in instructions:
+        if 'Do not subdelegate' not in instructions or 'max/ultra require explicit owner approval' not in instructions:
             raise ValueError(f'{path.name}: missing delegation or reasoning boundary')
 
 

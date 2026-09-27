@@ -38,8 +38,8 @@ Default to canonical local validation. Reserve Actions for release transactions 
 Before release action, verify:
 
 - Latest production/prerelease, target/previous train state.
-- Current authorization and owner testing confirmation.
-- For WordPress.org, `Tested up to` matches the live-verified release target.
+- Current release authorization, plus product acceptance evidence only where the product's acceptance contract requires it. Keep technical readiness, contract-required product acceptance, release authorization, and fresh live verification as separate dispositions; a pass in one does not establish another.
+- For WordPress.org, set `Tested up to` only when a compatibility receipt ties the exact release candidate SHA/package to the exact patched WordPress runtime and applicable compatibility matrix results. A live-verified latest WordPress release target alone does not prove that the candidate was tested on it.
 - Confirm release metadata matches the target version: plugin header/version file, package metadata, release notes, and `readme.txt`.
 - `readme.txt` and changelog/release notes are release-current: version/stable tag, `Tested up to`, Requires WP/PHP, changelog, upgrade notice when applicable, features/docs/assets, and no overclaiming unmerged future milestone work.
 - Current package/readme/Plugin Check and compact quality gate matrix.
@@ -49,7 +49,7 @@ Release-ready recommendations and owner approval requests require fresh live ver
 
 ## Active Release Train Execution
 
-A train is quiet only when scoped work is merged, owner-gated, failing, draft, wrong-base, blocked, or deferred. Action clean PRs or escalate repeated executable work.
+A train is quiet only when no safe executable scoped item remains. Failing, draft, or wrong-base work is not quiet merely because of its status: repair or route it when safe and in scope. For each remaining item, record a concrete disposition (merged, explicitly deferred, a genuine owner gate, or a verified blocker), its accountable owner, and the next action or review/deadline trigger. Escalate repeated executable work rather than silently carrying it as quiet.
 
 The due date is release exit. At T-1, require implementation on `release/<version>`, freeze scope, and allow proof fixes only. One issue/branch/worktree/PR; parallel scope cannot overlap. User-visible work needs packaged browser proof and fresh source-blind `$behavior-validator`. For plugin-only milestone, changelog, and candidate-channel choreography, read `plugin-release-workflow.md`.
 

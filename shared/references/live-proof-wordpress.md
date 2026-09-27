@@ -16,7 +16,7 @@ Use this reference before claiming a WordPress plugin/theme change is done. Pick
 
 ## Independent Source-Blind Proof
 
-Use `$behavior-validator` when observable behavior needs evidence independent of the implementation worker: changed admin/editor/frontend workflows, REST/API side effects, generated artifacts, or release-candidate golden paths. Start a fresh worker without inherited implementation discussion and provide only a compact behavior contract, exact target/build identity, access method, allowed fixtures or credential names, evidence requirements, and hard gates.
+Use `$behavior-validator` when observable behavior needs evidence independent of the implementation worker: changed admin/editor/frontend workflows, REST/API side effects, generated artifacts, or release-candidate golden paths. Use an in-task subagent with no inherited implementation discussion by default; create a new user-visible validator task only when explicitly requested by the owner. Provide only a compact behavior contract, exact target/build identity, access method, allowed fixtures or credential names, evidence requirements, and hard gates.
 
 Do not use source-blind validation for static lint, architecture review, release metadata-only edits, or exact user-fed values. If the validator reads source, diffs, tests, history, or implementation notes, mark the result contaminated and rerun fresh before claiming independent proof.
 

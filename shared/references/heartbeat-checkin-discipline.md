@@ -7,9 +7,9 @@ Use this reference for CTO and PO heartbeat reporting. Check-ins must be delta-f
 - Lead with change, separated as blocked, owner-needed, Codex-owned, and quiet.
 - Write for the owner, not as raw logs/XML/verification dumps; escalate repeated blockers.
 - Justify quiet with evidence.
-- Use `NOTIFY` only when there is a material change, blocker, owner decision, executable work, release/proof drift, topology/process concern, or cadence change worth surfacing.
-- Use `DONT_NOTIFY` only when no owner decision, blocker, executable work, material drift, or process concern exists.
-- Replace `owner-gated` jargon with the exact decision. If checks cannot finish quickly, return a partial owner-readable result instead of staying in progress.
+- Use `NOTIFY` only for a new or materially changed blocker, owner decision, executable action, release/proof drift, topology/process concern, or cadence/deadline change worth surfacing. Compare with the prior check-in; the continued existence of a known item is not itself a delta.
+- Use `DONT_NOTIFY` when there is no new or materially changed owner-relevant delta. Keep known pending decisions and blockers in the governed state; do not repeat them as a quiet-status sentence just to prove they remain open.
+- Replace `owner-gated` jargon with the exact decision. If an otherwise-warranted update cannot finish its checks promptly, return a partial owner-readable result instead of staying in progress; a slow check alone is not a reason to send an unchanged status message.
 - Put an item under `Owner decisions` only after the research-and-reversibility ladder identifies a named hard gate. Put unavailable required live facts under `Blocked` as verification blockers, and put reversible decisions under `Codex-owned next actions` with the chosen action and rollback.
 
 ## Readability Rules
@@ -21,9 +21,9 @@ Use this reference for CTO and PO heartbeat reporting. Check-ins must be delta-f
 
 ## `DONT_NOTIFY` Rule
 
-`DONT_NOTIFY` requires current quiet evidence, no blocker/escalation, owner decision, skipped executable `owner:codex` work, or material release/PR/CI/topology/automation/process drift.
+`DONT_NOTIFY` is for a check with no new or materially changed owner-relevant delta. It does not mean the portfolio is empty or that known blockers, decisions, and follow-up actions are closed; retain them in their source of truth and surface them again when their status, owner, next action, risk, or deadline materially changes.
 
-The `DONT_NOTIFY` message must be one sentence with the product name, strongest quiet reason, and whether any owner decision exists.
+Do not send a `DONT_NOTIFY` sentence merely to announce that nothing changed. When a report is otherwise warranted, its quiet-product coverage may cite compact current evidence and distinguish unchanged known decisions/blockers from new changes.
 
 ## `NOTIFY` Structure
 
@@ -41,24 +41,24 @@ Cadence/automation changes
 
 ## Partial Result Rule
 
-Use a partial `NOTIFY` result for routine product heartbeats, quiet monitoring loops, or post-intervention checks when live checks time out, public checks run long, or one narrow verification path cannot finish promptly.
+Use a partial result for a heartbeat with a new/material owner-relevant delta or deadline when live checks time out, public checks run long, or one narrow verification path cannot finish promptly. A timeout alone does not create a notification delta; if it leaves the owner decision, risk, next action, and deadline unchanged, retain the evidence in its source of truth and send no quiet-status message.
 
 - Return verified evidence instead of waiting hours; name incomplete checks, owner-decision impact, and next retry/cadence without retry logs.
-- If a connector returns `Bad Request`, retry once with a strictly smaller payload and report the payload-reduction rule instead of repeating the same call shape. If the retry fails, stop broad reads, do not paste more context, and switch to one narrow source-of-truth check or a fresh worker/product thread.
+- If a connector returns `Bad Request`, retry once with a strictly smaller payload. If the retry fails, stop broad reads, do not paste more context, and use one narrow source-of-truth check or report the exact verification gap. Do not create a user-visible worker/product thread as a recovery workaround; that requires explicit owner authorization.
 
-Use this shape:
+When a material delta or deadline warrants notification, use this shape:
 
 ```text
 NOTIFY - <product>
 
 What changed
-- <verified delta or no verified material change>.
+- <verified material delta>.
 
 What is blocked
 - <exact timed-out or incomplete checks>; impact on confidence.
 
 What owner needs to decide
-- <changed decision or no change>.
+- <changed decision, or omit this section if no owner decision is needed>.
 
 What Codex will do next
 - <retry scope, reduced cadence, or next safe action>.
@@ -161,13 +161,13 @@ Stop condition
 
 ## Quiet Evidence
 
-Quiet claims cite no PR/issue/CI/release delta, executable `owner:codex` item, new topology/worktree/automation drift, or release regression; only known owner decisions may remain.
+Quiet coverage is relevant only inside an otherwise warranted report. Cite the checked signals and whether any safe executable item remains; known pending decisions/blockers may remain in their source of truth without generating a repeated notification.
 
 Avoid phrases like `no update`, `nothing new`, or `still monitoring` without evidence.
 
 ## Repetition Control
 
-- If the same blocker repeats, say what was attempted, what changed, and what exact escalation remains.
-- If nothing changed, compress to one quiet sentence instead of repeating the full structure.
+- If a material delta/deadline warrants reporting a repeated blocker, say what was attempted, what changed, and what exact escalation remains. Otherwise retain attempted checks and escalation state in the source of truth without repeating a notification.
+- If nothing changed, do not send a quiet-status sentence; preserve only the compact check result in its source of truth.
 - If a product consumed most of the action budget, summarize the rest with a compact verified-quiet coverage line.
-- If a heartbeat timed out or exited partially, the next check-in should say what was verified before timeout, what remains unverified, and whether cadence was reduced or kept for a concrete reason.
+- If a material delta or deadline otherwise warrants a check-in after a timeout/partial exit, say what was verified, what remains unverified, and whether cadence changed. Otherwise retain the incomplete evidence in its source of truth without a repeated notification.

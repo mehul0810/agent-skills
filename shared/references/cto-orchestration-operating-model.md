@@ -13,7 +13,7 @@ If sources disagree, use live owner direction, then the current governed manifes
 - Portfolio control thread: cross-product CTO control room. Alias: `CTO`.
 - Product-orchestrator thread: one long-lived user-visible control thread per product. Alias: `<Product Name> PO`.
 - Product Planner, Engineering Review, and Release Readiness: explicit role contracts; milestone-bound or disposable tasks unless sustained product activity justifies a durable lane.
-- Implementation/evidence worker: outcome-named Codex-created bounded worker, normally under `Worker Threads`.
+- Implementation/evidence worker: bounded in-task subagent by default. Create a new user-visible Codex task only when explicitly requested by the owner; a missing tool or environment constraint is not authorization.
 - Active release/CI heartbeat: temporary high-frequency loop for one moving PR or release.
 
 Use thread IDs, not aliases, for archive, pin, interruption, fork recovery, release delegation, or destructive cleanup. Never archive user-created portfolio, product, or skill threads unless the owner explicitly asks. Only Codex-created workers may be archived after evidence and product state are reconciled.
@@ -32,11 +32,11 @@ Executable work is PR-sized. CTO steers and audits; POs govern product state; ta
 
 The CTO owns cross-product blockers, release conflicts, shared process, thread health, owner briefs, skill routing, and final readiness recommendations. It does not execute product backlog or routine planning, PR review, and readiness work by default. Escalate only material architecture/cross-product impact, public API/schema or breaking contracts, security/privacy posture, release-risk exceptions, and unresolved product contracts.
 
-Route product work to the healthy PO. Bypass a PO only for super-critical work it cannot complete with the strongest suitable available model and highest supported reasoning level after capability verification. Ask before interrupting, replacing, or forking a user-created PO thread.
+Route product work to the healthy PO. Bypass a PO only for super-critical work it cannot safely complete under the current owner-approved model/reasoning policy after verifying availability and supported effort. Model or tool unavailability does not authorize a different model or expand CTO authority. Ask before interrupting, replacing, or forking a user-created PO thread.
 
 Classify repeated inactivity, empty/system-error turns, missing workers, wrong path/base/model, or ignored executable work as topology/process drift. Intervene with an exact blocker request, cadence change, worker recovery, owner-approved thread recovery, or skill/process patch.
 
-Route substantive skill changes through a Skill PO lane. Direct-main skill publication requires explicit current CTO/owner authorization; otherwise use a focused PR.
+Route substantive skill changes through a Skill PO lane. Apply the target repository's standing publication policy when its exact target and conditions match; owner-managed `agent-*` repositories may publish validated changes directly to `main` under their standing authorization. Do not generalize that authorization to other repositories, protected targets, or release actions. Otherwise follow the repository policy and obtain any required owner approval; use a PR when requested or required by protection.
 
 ## Product Thread Ownership
 

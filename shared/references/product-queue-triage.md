@@ -12,7 +12,7 @@ The product-thread objective is release readiness: keep advancing the next relea
 
 Each heartbeat compares prior `Next action` with queue state. Repeated executable work must execute, delegate, or name the blocker.
 
-`DONT_NOTIFY` is valid only when no eligible execution remains, or every issue/PR is owner-gated, blocked, failing, draft, wrong-base with recovery, or deliberately deferred.
+Do not call a train quiet while any safe executable scoped item remains. Failing, draft, and wrong-base status are not quiet dispositions when the item can be repaired or routed safely. Before declaring a train quiet, disposition every scoped item as merged, explicitly deferred, a genuine owner gate, or a verified blocker with an accountable owner and next action/review trigger. `DONT_NOTIFY` follows `heartbeat-checkin-discipline.md`: no new material delta suppresses a repeated notification, but does not make executable train work quiet.
 
 Escalate to portfolio CTO when executable work stays unchanged for two heartbeats, or one heartbeat for merge-ready PRs or release blockers.
 

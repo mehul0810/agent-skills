@@ -30,33 +30,16 @@ reject_section_regex() {
 }
 
 require_text "shared/references/project-subagent-routing.md" "At each delegation" "delegation-time availability check"
-require_text "shared/references/project-subagent-routing.md" "re-check host model/reasoning availability" "runtime availability inventory"
-require_text "shared/references/project-subagent-routing.md" "treat owner choices as preferences" "owner model preference"
-require_text "shared/references/project-subagent-routing.md" "lowest sufficient available capability tier" "lowest sufficient tier"
-require_text "shared/references/project-subagent-routing.md" "Strongest reasoning-capable:" "strongest suitable tier"
-require_text "shared/references/project-subagent-routing.md" "Luna-class: monitoring/mapping/deterministic evidence" "Luna evidence class"
-require_text "shared/references/project-subagent-routing.md" "Terra-class: PO execution/bounded implementation" "Terra default execution class"
-require_text "shared/references/project-subagent-routing.md" "Sol-class: release/critical review/security/architecture" "Sol high-risk class"
-require_text "shared/references/project-subagent-routing.md" "current capability-class aliases, not permanent model IDs" "non-pinned class aliases"
-require_text "shared/references/project-subagent-routing.md" "Allocation changes capability, not authority" "allocation authority boundary"
-require_text "shared/references/project-subagent-routing.md" "preserve risk tier" "fallback risk-tier precedence"
-reject_section_regex "shared/references/project-subagent-routing.md" "- Fast/economical:" "- Balanced:" '(product/code|implementation|fix)' "product implementation in fast/economical tier"
-require_text "shared/references/project-subagent-routing.md" 'Use reasoning above `xhigh` only' "reasoning cost ceiling"
-require_text "shared/references/project-subagent-routing.md" "Keep equivalent substitutions quiet" "quiet equivalent fallback"
-require_text "shared/references/project-subagent-routing.md" "report meaningful change" "material fallback reporting"
-require_text "shared/references/project-subagent-routing.md" "withhold that recommendation" "insufficient fallback fail closed"
-require_text "shared/references/project-subagent-routing.md" "choose its nearest class/reasoning" "same-tier fallback"
-require_text "shared/references/project-subagent-routing.md" "Requested: <model/reasoning>" "fallback requested field"
-require_text "shared/references/project-subagent-routing.md" "Available constraint: <missing model or unsupported reasoning>" "fallback constraint field"
-require_text "shared/references/project-subagent-routing.md" "Fallback: <selected capability tier and supported reasoning>" "fallback selection field"
-require_text "shared/references/project-subagent-routing.md" "Impact: <none or evidence/risk difference>" "fallback impact field"
-require_text "shared/references/project-subagent-routing.md" "Do not downgrade the final reviewer merely for model diversity" "high-risk reviewer tier"
-require_text "shared/references/project-subagent-routing.md" "Capability-check both fields at runtime" "reasoning capability check"
+require_text "shared/references/project-subagent-routing.md" "follow the current owner model-allocation policy; it overrides older capability-family guidance" "current owner policy precedence"
+require_text "shared/references/project-subagent-routing.md" "use GPT-6 Luna for implementation, fixes, tests, and routine evidence work" "Luna implementation and evidence lane"
+require_text "shared/references/project-subagent-routing.md" "use GPT-6 Sol for orchestration, planning, frontend work, and high-risk final review" "Sol orchestration and high-risk lane"
+require_text "shared/references/project-subagent-routing.md" "Do not select another model for a task, worker, reviewer, retry, or automation without the owner's explicit approval" "no unapproved model substitution"
+require_text "shared/references/project-subagent-routing.md" "stop only that assignment and ask the owner; do not silently fall back" "unavailable required model gate"
+require_text "shared/references/project-subagent-routing.md" "Model selection changes capability, not authority" "allocation authority boundary"
+require_text "shared/references/project-subagent-routing.md" "Use low reasoning for routine deterministic work, medium by default, and high for ambiguity or consequential risk" "owner reasoning defaults"
+require_text "shared/references/project-subagent-routing.md" "Never use max/ultra without explicit owner approval" "max and ultra owner gate"
+require_text "shared/references/project-subagent-routing.md" "Verify supported reasoning at runtime" "reasoning capability check"
 require_text "shared/references/project-subagent-routing.md" "must not pin transient models/reasoning" "model-free reusable profiles"
-require_text "shared/references/project-subagent-routing.md" "Default to Luna/Terra/Sol" "approved stable model family"
-require_text "shared/references/project-subagent-routing.md" "preview, research-preview, experimental, or separate-capacity models" "preview and separate-capacity exclusion"
-require_text "shared/references/project-subagent-routing.md" "Daybreak Blue-class" "defensive security specialist"
-require_text "shared/references/project-subagent-routing.md" "fixer must not approve its own remediation" "independent security verification"
 require_text "shared/references/project-subagent-routing.md" "Never use a full-history worker fork" "bounded worker context"
 require_text "shared/references/project-subagent-routing.md" "first CTO interaction of their local calendar day" "daily owner capacity signal"
 require_text "shared/references/project-subagent-routing.md" "Missing answer means one worker at a time" "conservative missing capacity"
@@ -65,21 +48,20 @@ require_text "shared/references/project-subagent-routing.md" "Never claim quota/
 require_text "shared/references/project-subagent-routing.md" "never lower risk or expand authority" "capacity authority boundary"
 require_text "shared/references/project-subagent-routing.md" "Do not create a recurring automation or durable account-usage record" "no implicit capacity automation"
 require_text "wp-portfolio-cto/SKILL.md" "first interaction of their local calendar day" "CTO daily capacity route"
-require_text "shared/references/cto-orchestration-operating-model.md" "strongest suitable available model and highest supported reasoning level" "capability-based CTO bypass"
+require_text "shared/references/cto-orchestration-operating-model.md" "current owner-approved model/reasoning policy" "owner-policy CTO bypass"
 require_text "skill-evals/model-routing-scenarios.md" "Daily Owner Capacity Signal" "daily capacity scenario"
 require_text "skill-evals/model-routing-scenarios.md" "Exact Planned Implementation" "bounded implementation scenario"
 require_text "skill-evals/model-routing-scenarios.md" "Routine Evidence Lane" "routine evidence scenario"
 require_text "skill-evals/model-routing-scenarios.md" "Complex Security And Release Decision" "complex decision scenario"
 require_text "skill-evals/model-routing-scenarios.md" "Unavailable Explicit Request" "unavailable request scenario"
+require_text "skill-evals/model-routing-scenarios.md" "Max Or Ultra Needs Explicit Approval" "max/ultra reasoning scenario"
 require_text "skill-evals/model-routing-scenarios.md" "Missing Runtime Classes" "per-class fallback scenario"
-require_text "skill-evals/model-routing-scenarios.md" "Approved Stable Family Boundary" "stable family boundary scenario"
-require_text "skill-evals/model-routing-scenarios.md" "Daybreak Blue Defensive Security" "security specialist scenario"
-require_text "skill-evals/model-routing-scenarios.md" "Routine Security Does Not Use Specialist" "specialist non-trigger scenario"
+require_text "skill-evals/model-routing-scenarios.md" "Owner Model Policy Overrides Runtime Inventory" "owner model policy scenario"
 require_text "skill-evals/model-routing-scenarios.md" "Bounded Worker Context" "worker context scenario"
-require_text "skill-evals/wp-product-orchestrator-scenarios.md" "Terra-class with medium reasoning as the default execution lane" "PO runtime class mapping"
+require_text "skill-evals/wp-product-orchestrator-scenarios.md" "current owner model allocation" "PO owner model allocation"
 
 # Historical records and provider/API integration examples may name models. Current
-# Codex routing policy, evals, templates, and user-facing guidance must not.
+# guidance may name only models explicitly approved by the current owner policy.
 matches="$(find "$repo_root" -type f \( -name '*.md' -o -name '*.toml' -o -name '*.yaml' -o -name '*.yml' -o -name '*.sh' \) \
   ! -path '*/.git/*' \
   ! -path '*/CHANGELOG.md' \
@@ -87,18 +69,17 @@ matches="$(find "$repo_root" -type f \( -name '*.md' -o -name '*.toml' -o -name 
   ! -path '*/scripts/model-routing-audit.sh' \
   ! -path '*/wp-expert/references/ai-llm-wordpress-product-engineering.md' \
   ! -path '*/wp-expert/references/third-party-api-integrations.md' \
-  -print0 | xargs -0 rg -n -i 'gpt-[0-9]|codex-spark' 2>/dev/null || true)"
+  -print0 | xargs -0 rg -o -i --no-filename 'gpt-[0-9]+(\.[0-9]+)?-[a-z0-9-]+|codex-spark' 2>/dev/null | sort -u | rg -vi '^gpt-6-(luna|sol)$' || true)"
 
 if [ -n "$matches" ]; then
-  echo "ERROR: transient Codex model IDs found in normative current guidance:" >&2
+  echo "ERROR: unapproved/transient Codex model IDs found in normative current guidance:" >&2
   printf '%s\n' "$matches" >&2
   errors=$((errors + 1))
 else
-  echo "ok: no transient Codex model IDs in normative current guidance"
+  echo "ok: only owner-approved model IDs or no IDs in normative current guidance"
 fi
 
-require_text "shared/references/project-subagent-routing.md" 'No task, subagent, reviewer, retry or automation may use Astra above' "Astra assignment ceiling"
-require_text "shared/references/project-subagent-routing.md" 'including inherited settings' "Astra inheritance gate"
+reject_section_regex "shared/references/project-subagent-routing.md" "## Availability-First Routing Contract" "## Planning Before Allocation" '(Terra-class|Astra-class|Daybreak Blue-class|5\.6 capability family|owner choices as preferences|nearest class/reasoning|same-tier capability-equivalent)' "superseded model-family and fallback policy"
 
 if [ "$errors" -gt 0 ]; then
   echo "model routing audit failed: $errors issue(s)" >&2

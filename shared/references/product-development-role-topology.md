@@ -32,14 +32,14 @@ CTO is escalation-only for public API/schema or breaking contracts, security/pri
 
 - Preserve exact product identity even when products share a parent project. Every task names product, repository/path, milestone, branch/base, issue/PR, and release candidate when applicable.
 - Use shared durable lanes only when their contract remains product-scoped. Planner and Release Readiness may be milestone-bound for quiet products.
-- Name temporary implementation, proof, docs, design, and review work by outcome. Reconcile evidence and close/archive Codex-created workers when complete; do not create permanent functional silos by habit.
+- Name temporary implementation, proof, docs, design, and review work by outcome. Use in-task subagents by default; create a new user-visible worker task only when the owner explicitly requests it. Reconcile evidence and close/archive authorized Codex-created workers when complete; do not create permanent functional silos by habit.
 - One task may carry one role contract. When one person or thread performs multiple roles, record each handoff and preserve independence where review or behavioral proof requires it.
 
 ### Owner-Approved Dedicated Product Topology
 
-For an active product where the owner wants durable role control rooms, create protected tasks in the same saved product project named `<Product> Planner`, `<Product> PO`, `<Product> Review`, `<Product> Test & Proof`, and `<Product> Release Readiness`. These tasks retain only their role state; GitHub and repo docs remain source of truth. Do not give every task a heartbeat.
+For an active product where the owner explicitly requests durable role control rooms and visible task creation, create protected tasks in the same saved product project named `<Product> Planner`, `<Product> PO`, `<Product> Review`, `<Product> Test & Proof`, and `<Product> Release Readiness`. These tasks retain only their role state; GitHub and repo docs remain source of truth. Do not give every task a heartbeat. Without that explicit request, map the role contracts onto the current task and in-task agents rather than creating visible chats.
 
-Do not create a permanent Worker task. PO creates outcome-named disposable workers in that same product project only when an issue needs isolated execution, records their thread IDs, and supplies exact repo/worktree paths. Product-project membership does not prove an app-managed worktree root; if the saved project is broader than the Git repo, use a verified manual worktree outside WordPress-scanned paths.
+Do not create a permanent Worker task. PO uses an in-task subagent for isolated execution by default. Creating a user-visible disposable worker task requires an explicit owner request for that task; when authorized, record its thread ID and supply exact repo/worktree paths. Product-project membership does not prove an app-managed worktree root; if the saved project is broader than the Git repo, use a verified manual worktree outside WordPress-scanned paths.
 
 ### Disposable Worker Lifecycle
 

@@ -1,0 +1,7 @@
+{
+  "id": "governance-contract-refresh",
+  "request": "Use the applicable product-orchestration, portfolio-governance, release, and continuity guidance for these independent synthetic cases. Do not execute repository, task, schedule, publication, or external-service mutations. For each case, state the route, decision, evidence needed or available, what can proceed now, any stopping boundary, and the next action. Do not assume an unavailable tool/model or unverified runtime result.",
+  "artifacts": [
+    "cases.json"
+  ]
+}

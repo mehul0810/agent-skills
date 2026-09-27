@@ -12,19 +12,11 @@ Delegate when parallel mapping, independent lanes, second review, or browser/CI 
 
 ## Availability-First Routing Contract
 
-At each delegation: re-check host model/reasoning availability; treat owner choices as preferences; classify ambiguity, completeness, risk, reversibility, evidence/context, latency/cost; select the lowest sufficient available capability tier; omit fitting overrides.
+At each delegation, verify runtime availability and follow the current owner model-allocation policy; it overrides older capability-family guidance. Classify ambiguity, completeness, risk, reversibility, evidence/context, latency, and cost before selecting a supported reasoning level. Runtime exposure or inherited settings do not authorize another model.
 
-Never assume a model ID or that `high`, `xhigh`, `max`, or another reasoning label exists. Capability-check both fields at runtime.
+Current owner allocation: use GPT-6 Luna for implementation, fixes, tests, and routine evidence work; use GPT-6 Sol for orchestration, planning, frontend work, and high-risk final review. Frontend takes precedence over the general implementation lane. Do not select another model for a task, worker, reviewer, retry, or automation without the owner's explicit approval for that assignment. If the required model is unavailable, stop only that assignment and ask the owner; do not silently fall back.
 
-### Approved Stable Family
-
-Default to Luna/Terra/Sol. Admit successors only after runtime availability, stable status and cost/risk-tier review.
-
-Do not select legacy, deprecated, preview, research-preview, experimental, or separate-capacity models merely because the runtime exposes them. They require an explicit owner request for the current task. Astra and Daybreak Blue exceptions follow below.
-
-### Astra Reasoning Ceiling
-
-Astra-class is an owner-approved exceptional-complexity option, not the routine default. No task, subagent, reviewer, retry or automation may use Astra above supported `low`/`light` without explicit owner permission for that assignment. This ceiling overrides strongest-tier and failed-proof escalation rules, including inherited settings. If neither level exists, choose a suitable approved non-Astra lane or request permission; never silently use medium/high. Verify actual runtime settings: prose cannot switch a running task. Keep Luna/Terra/Sol defaults and use Daybreak Blue only for authorized defensive security at the lowest sufficient supported reasoning.
+Use low reasoning for routine deterministic work, medium by default, and high for ambiguity or consequential risk. Use xhigh only with concrete complexity or failed-proof justification. Never use max/ultra without explicit owner approval. Verify supported reasoning at runtime; prose cannot change a running task's model or effort.
 
 ### Owner Capacity Signal
 
@@ -32,54 +24,31 @@ On the owner's first CTO interaction of their local calendar day, ask once: `Sho
 
 - Ask once, never block/repeat. Missing answer means one worker at a time. Never claim quota/reset visibility or control.
 - After risk/availability classification, use it only for tier, reasoning, concurrency, and duration; never lower risk or expand authority.
-- Reserve optional higher-cost or long-running parallel work for stated capacity; high-risk work still receives the strongest suitable lane even under conservative capacity.
+- Reserve optional higher-cost or long-running parallel work for stated capacity; high-risk final review still uses owner-approved GPT-6 Sol with supported reasoning regardless of the capacity signal.
 - Keep the signal in the current CTO control context. Do not create a recurring automation or durable account-usage record unless the owner explicitly requests it.
 
-### Capability Tiers
+### Work Classification
 
-- Fast/economical: mapping, intake, deterministic docs/tests/evidence/screenshots, simple CI.
-- Balanced: bounded implementation, normal review, CI repair, moderate integration.
-- Strongest reasoning-capable: ambiguous architecture, security/privacy, migration/public contracts, high-scale/release/cross-product decisions, final high-risk review.
+Classify work to choose among the owner-approved lanes, not to invent model substitutions: Luna handles monitoring, mapping, deterministic evidence, screenshots, docs, tests, simple CI, fixes, and implementation; Sol handles orchestration, planning, frontend work, and high-risk final review. Keep routine security lint or dependency review in the normal lane; security model specialization requires explicit owner approval for the task. Model selection changes capability, not authority.
 
-When the current host exposes the 5.6 capability family, map its runtime classes after inventory:
-
-- Luna-class: monitoring/mapping/deterministic evidence/screenshots/docs/tests/simple CI; `low` or synthesis `medium`.
-- Terra-class: PO execution/bounded implementation/ordinary review/CI/integration; `medium` or ambiguous `high`.
-- Sol-class: release/critical review/security/architecture/migrations/contracts/regressions/conflicts/topology/owner decisions; supported `high`/`xhigh`.
-
-These are current capability-class aliases, not permanent model IDs or reusable configuration values. If the host exposes different names, preserve the same risk/cost tiers. Use reasoning above `xhigh` only when the owner explicitly requests it or concrete failed proof shows `xhigh` is insufficient.
-
-### Defensive Security Specialist
-
-Use Daybreak Blue-class, when exposed, only for authorized defensive vulnerability discovery, attack-path analysis, exploitability validation, remediation implementation, or fix verification. Prefer supported `high` or `xhigh`; use a higher level only for an explicitly requested deep scan or demonstrated complexity.
-
-- Keep routine security lint, dependency review, ordinary hardening, and non-security implementation in the Luna/Terra/Sol lanes.
-- Separate discovery, fixing, and final verification for material findings. The fixer must not approve its own remediation; use a fresh Daybreak Blue-class verifier or an independent Sol-class security review.
-- Preserve private handling and sanitized public reporting. Do not expose actionable exploit details, secrets, personal data, or unsafe reproduction steps.
-- Specialist allocation changes capability, not authority. It does not authorize disclosure, destructive testing, production mutation, release, merge, or security/privacy policy changes.
-
-Allocation changes capability, not authority. A Sol-class assignment for topology recovery or release judgment still inherits protected-thread, mutation, and owner-approval gates from the governing role.
-
-For final high-risk review, keep the strongest suitable lane as reviewer. Do not downgrade the final reviewer merely for model diversity; add an independent second pass only when variance reduction materially justifies its cost.
-
-Portfolio sweeps use low/medium; product heartbeats medium. Escalate only for listed risk. Screenshots and bounded official research stay fast unless judgment is complex.
+Portfolio sweeps use low/medium; product heartbeats use medium. Escalate reasoning only for listed ambiguity or risk. Screenshots and bounded official research stay low-effort unless judgment is consequential.
 
 ### Escalation And De-Escalation
 
-Escalate after concrete ambiguity, failed proof, inadequate implementation, or higher risk; do not brute-force an underpowered lane. De-escalate after planning or deterministic proof removes uncertainty.
+Escalate reasoning after concrete ambiguity, failed proof, inadequate implementation, or higher risk; do not brute-force an underpowered lane. De-escalate after planning or deterministic proof removes uncertainty.
 
 Classify repeated retries or weak evidence caused by the assigned lane as `wrong model/reasoning allocation`, then reassess availability and tier.
 
-If unavailable, preserve risk tier and choose its nearest class/reasoning. Never downgrade high-risk judgment for a name; cross tiers only when necessary. Keep equivalent substitutions quiet; report meaningful change:
+If the owner-approved model or a needed reasoning level is unavailable, do not substitute another model. Ask the owner before that assignment; meanwhile, continue independent work that does not depend on it. Do not report an unapproved fallback as completed:
 
 ```text
 Requested: <model/reasoning>
 Available constraint: <missing model or unsupported reasoning>
-Fallback: <selected capability tier and supported reasoning>
-Impact: <none or evidence/risk difference>
+Fallback: none; awaiting owner direction
+Impact: <blocked assignment and independent work that can continue>
 ```
 
-If the strongest available fallback cannot meet the evidence or reliability required for a high-risk final recommendation, fail closed: return the capability/proof gap and withhold that recommendation. A weaker fallback may map evidence or prepare options, but it must not present the gated judgment as complete.
+Withhold a judgment when its required reviewer/model or evidence is unavailable. A separately authorized bounded evidence task may continue only when it is independently useful and does not imply the gated judgment is complete.
 
 ## Planning Before Allocation
 
@@ -93,7 +62,7 @@ Give workers outcomes and constraints; let them choose routine execution steps. 
 
 For code work, include the proportional quality contract from `../../wp-expert/references/planning-drift-control.md`: ownership/contracts, modularity/maintainability and scalability boundary, performance hot path/budget, security/privacy boundary, tests/proof, and rollback. Workers execute that contract and return a quality receipt; they do not spend the execution turn rebuilding an omitted plan.
 
-Fully planned work uses the lowest sufficient tier. Astra needs no duplicated planning scaffold; preserve its reasoning ceiling and required evidence. Compare quality, retries, duration, and available token telemetry before claiming savings.
+Fully planned work uses the owner-approved model lane and supported reasoning appropriate to the task; do not select another model because a capability tier or inherited setting appears to fit. Compare quality, retries, duration, and available token telemetry before claiming savings.
 
 ### Worker Context Boundary
 
@@ -149,7 +118,7 @@ For compaction/resume, use the context-window contract and optional [project hoo
 
 ## Parent Checklist
 
-Before delegation: verify availability, choose the capability tier, front-load the plan, set one lane/output budget, prefer read-only unless exact fixing is assigned, and avoid duplicate exploration.
+Before delegation: verify availability, select only an owner-approved model/reasoning combination, front-load the plan, set one lane/output budget, prefer read-only unless exact fixing is assigned, and avoid duplicate exploration.
 
 Keep payloads compact: do not batch broad parallel thread reads, full PR diffs, oversized issue bodies, or accumulated automation history. Create issues one at a time with concise bodies after narrow duplicate-screening.
 
