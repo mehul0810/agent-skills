@@ -565,7 +565,7 @@ require_text "shared/references/product-development-role-topology.md" 'A pushed 
 require_text "shared/references/product-development-role-topology.md" 'Never auto-archive owner-created role/control tasks' "product protected role tasks"
 require_text "shared/references/product-development-role-topology.md" "CTO is escalation-only" "CTO escalation-only role"
 require_text "shared/references/product-development-role-topology.md" "post-release" "product post-release learning"
-require_text "shared/references/product-development-role-topology.md" "compact user/business value case" "planner value case"
+require_text "shared/references/product-development-role-topology.md" "include its user/business value case" "planner value case"
 require_text "shared/references/product-development-role-topology.md" 'validated|mixed|disproved|unmeasured' "PO outcome classification"
 require_text "shared/references/product-value-decision.md" "User value:" "product user value"
 require_text "shared/references/product-value-decision.md" "Business value:" "product business value"

@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "runId": "context-approach-continuity-2026-09-27-governance-context-final",
+  "scenario": "context-approach-continuity",
+  "result": "succeeded",
+  "startedAt": "2026-09-27T12:45:03.000Z",
+  "durationMs": 116000,
+  "checks": [
+    {
+      "name": "holistic-probe",
+      "result": "pass"
+    },
+    {
+      "name": "proportional-choice",
+      "result": "pass"
+    },
+    {
+      "name": "source-first-recovery",
+      "result": "pass"
+    },
+    {
+      "name": "negative-constraints-and-failed-proof",
+      "result": "pass"
+    },
+    {
+      "name": "stale-approval-rejected",
+      "result": "pass"
+    },
+    {
+      "name": "model-aware-unknown-fallback",
+      "result": "pass"
+    },
+    {
+      "name": "hook-activation-honesty",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 7,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "context-approach-continuity-2026-09-27-governance-context-final",
+    "artifactPointer": "skill-evals/governance-contract-refresh-evidence-2026-09-27.md#Context-Rerun"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-27T12:46:59.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Fresh source-blind run on the final three-case context packet passed all seven required checks. Synthetic decision evidence only; evaluator returned the result in native chat and no raw result file was produced. Host numeric telemetry unavailable."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}
