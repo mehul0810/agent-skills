@@ -624,7 +624,7 @@
       "evidence": [
         {
           "runRecord": "skill-evals/run-records/product-development-governance-2026-09-27-governance-topology-budget.json",
-          "sha256": "b24c602966614154bac9b09b1b8d9ced36c8c4bddd8fd5354a65a502ba57818c",
+          "sha256": "4d19de82d9ea649239f7ff48026cf2f1632e425800b7d32cdd4b1e9de98747d0",
           "testedRevision": "82b63819d492fbe433a7be80603c5256754ba08a",
           "testedSourceSha256": "3ecdc0683caf04e1c257ec3ffba852d6736836cdfadf04d4407babd07ba37a65",
           "testedScenarioSha256": "1a06905b2d6ada3db36c1ee36ad36aa798e3b04bebf04c033216d150fdc09db4",
@@ -686,7 +686,7 @@
       "evidence": [
         {
           "runRecord": "skill-evals/run-records/product-value-decision-2026-09-27-governance-topology-budget.json",
-          "sha256": "06ac23b53d2267880625ec97ae7558bb3b14aafb615cd8c33dc3449b9fe2100e",
+          "sha256": "195683568fbb69fb7fe43fdc6be056b891994fe8b66ff3e8d34ab6cb91f9cb87",
           "testedRevision": "82b63819d492fbe433a7be80603c5256754ba08a",
           "testedSourceSha256": "63d6d24de28a26c80ef47dc6ba27a902ac18a46c82ffd7e772f61bb0b7a378ce",
           "testedScenarioSha256": "52c0b2cb69237e9f1d472448ca912993d5e549eb4c6fc8602cab15beff2581c8",
