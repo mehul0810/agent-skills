@@ -1,0 +1,18 @@
+{
+  "synthetic": true,
+  "configuredMapping": {
+    "event": "after_compaction",
+    "handler": "save_checkpoint"
+  },
+  "samplePayload": {
+    "ok": true,
+    "saved": true,
+    "checkpointId": "sample-17"
+  },
+  "trustedRuntimeEvidence": {
+    "configurationLoaded": false,
+    "invocationObserved": false,
+    "persistentCheckpointVerified": false
+  },
+  "ownerAuthorization": "evidence review only; no persistent state changes"
+}

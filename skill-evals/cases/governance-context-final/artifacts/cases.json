@@ -1,0 +1,17 @@
+[
+  {
+    "case": "context-01",
+    "artifacts": ["approach-state.md"],
+    "request": "The owner asks for a recommendation and a probe plan only for an editor performance concern. The native block-editor path owns saved-content serialization. A small custom REST client is suspected of causing latency, but no representative latency measurement exists. A feature flag can restore the native route. Compatibility of both approaches across supported WordPress versions is untested. Compare the approaches and identify one next step."
+  },
+  {
+    "case": "context-02",
+    "artifacts": ["current-request.md", "repository-status.txt", "prior-checkpoint.md", "proof-status.md"],
+    "request": "A task was compacted. Recover its objective, non-goals, current branch and dirty-file identity, evidence actually completed, and current owner authorization from the attached current request, repository status, historical checkpoint, and proof ledger. Report the current next action."
+  },
+  {
+    "case": "context-03",
+    "artifacts": ["hook-evidence.json"],
+    "request": "After a model/provider switch, a marketing page advertises a large context capacity and a telemetry export from the previous model is available. Current effective limits, identity, usage, and auto-compaction status are not shown. A project file has an event mapping and a sample success payload, but no trusted record shows it was loaded or invoked. The owner requests an evidence review only and has not authorized persistent state changes. State what may be concluded and what to do next."
+  }
+]
