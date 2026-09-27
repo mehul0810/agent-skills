@@ -1,0 +1,9 @@
+Repository: forms-lab
+Branch: feature/editor-delay
+HEAD: d3ad842 (synthetic)
+Working tree: dirty
+Unstaged paths:
+  src/editor/client.php
+  tests/editor-serialization-test.php
+Attribution for these edits: unknown; do not overwrite or attribute them.
+Current source and branch contents are available for read-only review only.
