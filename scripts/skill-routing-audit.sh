@@ -160,7 +160,7 @@ check_router_discipline() {
   require_text "wp-contributor/SKILL.md" "references/router.md" "contributor router pointer"
   require_text "shared/references/project-subagent-routing.md" "Assign one lane and the narrowest skill/reference" "subagent narrow skill selection"
   require_text "shared/references/project-subagent-routing.md" "Availability-First Routing Contract" "subagent model reasoning routing"
-  require_text "shared/references/project-subagent-routing.md" "lowest sufficient available capability tier" "subagent strongest-model guard"
+  require_text "shared/references/project-subagent-routing.md" "Do not select another model for a task, worker, reviewer, retry, or automation without the owner's explicit approval for that assignment." "subagent no-unapproved-model-fallback guard"
   require_text "shared/references/project-subagent-routing.md" 'Plugin: `$wp-plugin-expert`' "subagent plugin specialist profile"
   require_text "shared/references/project-subagent-routing.md" 'Theme/FSE: `$wp-theme-expert`' "subagent theme specialist profile"
   require_text "shared/references/project-subagent-routing.md" 'Product/release documentation: `$wp-product-docs-writer`' "subagent product docs specialist profile"

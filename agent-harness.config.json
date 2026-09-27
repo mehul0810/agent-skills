@@ -600,7 +600,7 @@
     {
       "name": "Model routing",
       "file": "skill-evals/model-routing-scenarios.md",
-      "requiredPhrases": ["# Availability-First Model Routing Scenarios", "Approved Stable Family Boundary", "Daybreak Blue Defensive Security", "Bounded Worker Context"]
+      "requiredPhrases": ["# Availability-First Model Routing Scenarios", "Owner Model Policy Overrides Runtime Inventory", "Max Or Ultra Needs Explicit Approval", "Bounded Worker Context"]
     },
     {
       "name": "Loop Steward",

@@ -6,11 +6,11 @@ Use this reference to turn product work into explicit decision, execution, revie
 
 ### Product Planner
 
-Validate discovery before implementation: user/problem evidence, current workflow, expected outcome, UX and WordPress ownership, constraints, non-goals, dependencies, risks, and cheapest useful proof. For feature, UX, growth, or product-research recommendations, use `product-value-decision.md` and include its compact user/business value case. Return an implementation-ready packet with exact product/repo, milestone, recommended branch/base, acceptance criteria, proof-environment choice, and unresolved contract questions. Research findings without actionable evidence stay in a research lane, not the release backlog.
+Validate discovery before implementation: user/problem evidence, workflow, outcome, UX/WordPress ownership, constraints, risks, dependencies, and proportionate proof. For feature, UX, growth, or research recommendations, use `product-value-decision.md` and include its user/business value case. Return an implementation-ready packet with product/repo, milestone, branch/base, acceptance criteria, proof environment, and unresolved contract questions. Keep research without actionable evidence out of the release backlog.
 
 ### Product Operations / PO
 
-Own one product's issues, milestones/due dates, priority, accepted scope, labels, assignment, branch/train state, worker coordination, and acceptance reconciliation. Convert the Planner packet and value case into duplicate-screened PR-sized issues. After release, compare the stated outcome/decision threshold with measured or qualitative evidence, classify the bet `validated|mixed|disproved|unmeasured`, and capture support, usage, proof, regression, and release-process learning; route reusable lessons to product docs or the cross-product learning loop.
+Own one product's issues, milestones, priorities, accepted scope, labels, assignments, branch/train state, worker coordination, and acceptance reconciliation. Convert the Planner packet and value case into duplicate-screened PR-sized issues. After release, compare the stated outcome/decision threshold with evidence; classify the bet `validated|mixed|disproved|unmeasured`, capture support, usage, proof, regression, and release-process learning, and route reusable lessons to product docs or the cross-product learning loop.
 
 ### Engineering Review
 
@@ -22,7 +22,7 @@ Independently exercise the exact PR/head or packaged artifact against acceptance
 
 ### Release Readiness
 
-Assess an exact milestone candidate, not general branch state. Verify release scope, candidate SHA, production-branch ancestry, required CI, version/package/readme/changelog/release notes, open-issue dispositions, quality evidence, packaged browser/golden-workflow proof, rollback, and proof-environment legitimacy. Return `GO|NO-GO`, remaining blockers, accepted gaps, and the exact owner approval requested. Readiness never grants release authority.
+Assess an exact milestone candidate, not general branch state. Verify scope, candidate SHA, production-branch ancestry, CI, version/package/readme/changelog/release notes, issue dispositions, quality evidence, packaged browser/golden-workflow proof, rollback, and proof-environment legitimacy. Return `GO|NO-GO`, blockers, accepted gaps, and the exact owner approval requested. Readiness never grants release authority.
 
 ## CTO Boundary
 
@@ -32,7 +32,7 @@ CTO is escalation-only for public API/schema or breaking contracts, security/pri
 
 - Preserve exact product identity even when products share a parent project. Every task names product, repository/path, milestone, branch/base, issue/PR, and release candidate when applicable.
 - Use shared durable lanes only when their contract remains product-scoped. Planner and Release Readiness may be milestone-bound for quiet products.
-- Name temporary implementation, proof, docs, design, and review work by outcome. Use in-task subagents by default; create a new user-visible worker task only when the owner explicitly requests it. Reconcile evidence and close/archive authorized Codex-created workers when complete; do not create permanent functional silos by habit.
+- Name temporary implementation, proof, docs, design, and review work by outcome. Use in-task subagents by default; create a new user-visible worker task only when the owner explicitly requests it. Reconcile evidence and close/archive authorized Codex-created workers when complete.
 - One task may carry one role contract. When one person or thread performs multiple roles, record each handoff and preserve independence where review or behavioral proof requires it.
 
 ### Owner-Approved Dedicated Product Topology

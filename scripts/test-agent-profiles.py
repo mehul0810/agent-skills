@@ -23,7 +23,7 @@ class ProfilesTest(unittest.TestCase):
             lambda s: s + '\nmodel = "transient-model"\n',
             lambda s: s.replace('sandbox_mode = "read-only"', 'sandbox_mode = "danger-full-access"'),
             lambda s: s.replace('Do not subdelegate', 'Delegate freely'),
-            lambda s: s.replace('low/light', 'unlimited'),
+            lambda s: s.replace('max/ultra require explicit owner approval', 'max/ultra are unrestricted'),
             lambda s: 'name = [',
         ]
         for mutate in mutations:
@@ -31,7 +31,10 @@ class ProfilesTest(unittest.TestCase):
                 target = Path(temp) / 'agents'
                 shutil.copytree(SOURCE, target)
                 file = target / 'wp-reviewer.toml'
-                file.write_text(mutate(file.read_text()))
+                original = file.read_bytes()
+                mutated = mutate(original.decode())
+                self.assertNotEqual(original, mutated.encode(), 'mutation did not alter profile bytes')
+                file.write_text(mutated)
                 with self.assertRaises(ValueError):
                     module.validate(target)
         with tempfile.TemporaryDirectory() as temp:
