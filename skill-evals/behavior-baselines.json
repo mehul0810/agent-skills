@@ -995,12 +995,24 @@
           "Cinematic film mode",
           "Instructional walkthrough mode",
           "Editable handoff request",
-          "Advanced motion feasibility"
+          "Advanced motion feasibility",
+          "4K render provenance bundle",
+          "MP4 completion identity",
+          "Generated frame identity continuity",
+          "VFR proxy and picture-lock lineage"
         ],
         "sha256": "33697111ea92851395d1e34142df75eb2f8c690ed9855d5f21afa4cf1779f17b",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [
-          "skill-evals/cases/video-production/input.json"
+          "skill-evals/cases/video-production/input.json",
+          "skill-evals/cases/video-production/artifacts/case-35-render-contract.json",
+          "skill-evals/cases/video-production/artifacts/case-36-output-identity.json",
+          "skill-evals/cases/video-production/artifacts/case-37/sequence.json",
+          "skill-evals/cases/video-production/artifacts/case-37/style-reference.svg",
+          "skill-evals/cases/video-production/artifacts/case-37/generated-shot-01.svg",
+          "skill-evals/cases/video-production/artifacts/case-37/generated-shot-02.svg",
+          "skill-evals/cases/video-production/artifacts/case-37/generated-shot-03.svg",
+          "skill-evals/cases/video-production/artifacts/case-38/proxy-timeline-lineage.json"
         ],
         "contractSha256": "0a6544f80ea278df5f1ed14362ba19343bc53045b53cf4c154265b41fba4c6e3"
       },

@@ -1,0 +1,11 @@
+{
+  "sequenceId": "glass-current-study-03",
+  "referenceFrame": "style-reference.svg",
+  "shots": [
+    { "shotId": "shot-01", "timecode": "00:00:00:00", "frame": "generated-shot-01.svg", "seed": 4127 },
+    { "shotId": "shot-02", "timecode": "00:00:04:12", "frame": "generated-shot-02.svg", "seed": 4127 },
+    { "shotId": "shot-03", "timecode": "00:00:08:00", "frame": "generated-shot-03.svg", "seed": 4127 }
+  ],
+  "canvas": { "width": 960, "height": 540 },
+  "renderStatus": "representative-style-check"
+}

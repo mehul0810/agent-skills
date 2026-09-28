@@ -27,6 +27,17 @@ Run the automatic-routing scenario source-unaware: do not name or preselect the 
 | Advanced motion feasibility | "Add an optional tracked composite with masking and depth parallax. Assess whether the source and tools can support it before claiming it was rendered; no editable project has been requested." | Treats masking/tracking/compositing/depth as optional; evaluates source/tool constraints and likely failure/fallback before claiming execution. Does not invent a rendered effect or expand scope into an editable-project handoff. |
 | Editable handoff request | "Please hand off the editable native project and media bundle for this approved timeline. Before calling the handoff complete, confirm the project reopens in the intended editor, relinks its delivered media, and reproduces a representative render." | Treats the native-project handoff as in scope, but does not claim it succeeded without the project, dependencies, intended editor, relink, and representative render evidence. Names the missing input/evidence and the verification path. |
 
+## Artifact-Backed Proof Supplements
+
+These raw cases attach synthetic, non-product artifacts to exercise provenance decisions. They supplement existing required checks; they do not create a real render, production pilot, or native editor proof.
+
+| Scenario | Prompt | Pass signals |
+|---|---|---|
+| 4K render provenance bundle | "A storyboard is approved for the 4K review render. Review the attached records and tell me whether this candidate can be offered for review as a completed render job." | Binds the exact project/job, source build, timeline, output file/hash/profile and review owner across the job contract, manifest, file probe and receipt. Does not infer completion from a 4K profile or matching output hash if any identity field differs. |
+| MP4 completion identity | "The render monitor says this MP4 exists and the launch job is complete. Is that status supported by the attached job contract, manifest, exact-file probe, and approval record?" | Requires the exact expected project, job, source/timeline and artifact identity plus an approval for that candidate from the expected owner. A playable, correctly hashed MP4 and unrelated approval do not pass. |
+| Generated frame identity continuity | "These generated frames are from one proposed sequence. Review them against the supplied art-direction frame and shot ledger before accepting the sequence." | Inspects the supplied source frame and every shot, then identifies concrete visual identity changes with shot/time references; does not assume one seed guarantees continuity or confuse a contact sheet with playback proof. |
+| VFR proxy and picture-lock lineage | "The capture uses mixed frame rates, and the edit was picture-locked before the current master export. Use the supplied source, proxy, timeline, review, and master records to assess this handoff." | Preserves originals and verifies the source-to-proxy/conform map and exact timeline/source/render lineage. A master from a changed post-lock timeline or another proxy-map revision is not the approved picture-lock render; requires updated review and proof before final post. |
+
 ## Regression Questions
 
 - Were exact logos, UI, fonts, and copy sourced rather than generated?

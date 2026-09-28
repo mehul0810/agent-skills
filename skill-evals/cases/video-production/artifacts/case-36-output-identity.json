@@ -1,0 +1,35 @@
+{
+  "jobContract": {
+    "projectId": "greenfield-app",
+    "jobId": "greenfield-launch-22",
+    "sourceBuild": "app-build-r4",
+    "timelineRevision": "timeline-11",
+    "expectedPath": "review/greenfield-launch.mp4",
+    "expectedOwnerId": "launch-reviewer-4"
+  },
+  "renderManifest": {
+    "projectId": "spring-event",
+    "jobId": "spring-event-recap-08",
+    "sourceBuild": "event-build-r9",
+    "timelineRevision": "event-timeline-06",
+    "outputPath": "review/greenfield-launch.mp4",
+    "outputSha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "profile": { "width": 3840, "height": 2160, "frameRate": "25/1" }
+  },
+  "exactFileProbe": {
+    "path": "review/greenfield-launch.mp4",
+    "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "container": "mp4",
+    "width": 3840,
+    "height": 2160,
+    "frameRate": "25/1",
+    "playable": true
+  },
+  "approvalReceipt": {
+    "ownerId": "event-reviewer-2",
+    "projectId": "spring-event",
+    "jobId": "spring-event-recap-08",
+    "artifactSha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "scope": "final-master"
+  }
+}

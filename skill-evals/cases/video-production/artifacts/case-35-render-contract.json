@@ -1,0 +1,39 @@
+{
+  "jobContract": {
+    "projectId": "northstar-web",
+    "jobId": "launch-film-4k-17",
+    "sourceBuild": "build-a13",
+    "timelineRevision": "timeline-09",
+    "output": {
+      "path": "review/northstar-launch-uhd.mp4",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "reviewOwnerId": "reviewer-17",
+    "profile": { "width": 3840, "height": 2160, "frameRate": "30000/1001" }
+  },
+  "renderManifest": {
+    "projectId": "northstar-web",
+    "jobId": "launch-film-4k-17",
+    "sourceBuild": "build-a12",
+    "timelineRevision": "timeline-09",
+    "output": {
+      "path": "review/northstar-launch-uhd.mp4",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "profile": { "width": 3840, "height": 2160, "frameRate": "30000/1001" }
+  },
+  "fileProbe": {
+    "path": "review/northstar-launch-uhd.mp4",
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "width": 3840,
+    "height": 2160,
+    "frameRate": "30000/1001"
+  },
+  "reviewReceipt": {
+    "ownerId": "reviewer-17",
+    "projectId": "northstar-web",
+    "jobId": "launch-film-4k-17",
+    "artifactSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "scope": "4k-render-review"
+  }
+}

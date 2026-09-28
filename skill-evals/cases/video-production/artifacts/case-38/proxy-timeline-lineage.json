@@ -1,0 +1,66 @@
+{
+  "projectId": "settings-demo-42",
+  "sources": [
+    {
+      "sourceId": "capture-A",
+      "path": "camera/A001.MOV",
+      "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "reportedFrameRate": "59.94-vfr",
+      "durationFramesAtNominalRate": 3716,
+      "audioSampleRate": 48000
+    },
+    {
+      "sourceId": "screen-B",
+      "path": "capture/settings-screen.mp4",
+      "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "reportedFrameRate": "30/1-cfr",
+      "durationFrames": 2280
+    }
+  ],
+  "proxyMap": {
+    "revision": "proxy-map-r2",
+    "entries": [
+      {
+        "sourceId": "capture-A",
+        "sourceSha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "proxyPath": "proxies/A001-proxy.mov",
+        "proxySha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "proxyFrameRate": "30/1-cfr",
+        "conformMap": "capture-A-vfr-to-proxy-r2.json"
+      },
+      {
+        "sourceId": "screen-B",
+        "sourceSha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "proxyPath": "proxies/settings-screen-proxy.mp4",
+        "proxySha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "proxyFrameRate": "30/1-cfr",
+        "conformMap": "screen-B-r1.json"
+      }
+    ]
+  },
+  "timelineHistory": [
+    { "revision": "timeline-v7", "sha256": "1111111111111111111111111111111111111111111111111111111111111111", "state": "picture-lock", "reviewReceipt": "picture-lock-review-17" },
+    { "revision": "timeline-v8", "sha256": "2222222222222222222222222222222222222222222222222222222222222222", "state": "current", "parentRevision": "timeline-v7", "changeNote": "trimmed first camera out-point by 00:00:08 and retimed settings-screen insert by 12 frames" }
+  ],
+  "pictureLockReceipt": {
+    "timelineRevision": "timeline-v7",
+    "timelineSha256": "1111111111111111111111111111111111111111111111111111111111111111",
+    "reviewerId": "reviewer-17",
+    "approvedAt": "2026-09-26T12:00:00Z"
+  },
+  "reviewExport": {
+    "path": "review/picture-lock-v7.mp4",
+    "timelineRevision": "timeline-v7",
+    "timelineSha256": "1111111111111111111111111111111111111111111111111111111111111111",
+    "sourceMapRevision": "proxy-map-r2",
+    "sha256": "3333333333333333333333333333333333333333333333333333333333333333"
+  },
+  "deliveryMaster": {
+    "path": "masters/settings-demo-final.mp4",
+    "timelineRevision": "timeline-v8",
+    "timelineSha256": "2222222222222222222222222222222222222222222222222222222222222222",
+    "sourceMapRevision": "proxy-map-r1",
+    "sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+    "renderStatus": "complete"
+  }
+}
