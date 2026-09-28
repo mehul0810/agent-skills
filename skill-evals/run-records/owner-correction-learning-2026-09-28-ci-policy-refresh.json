@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "runId": "owner-correction-learning-2026-09-28-ci-policy-refresh",
+  "scenario": "owner-correction-learning",
+  "result": "succeeded",
+  "startedAt": "2026-09-28T15:48:47.000Z",
+  "durationMs": 343043,
+  "checks": [
+    {
+      "name": "immediate-root-cause-correction",
+      "result": "pass"
+    },
+    {
+      "name": "compact-correction-result",
+      "result": "pass"
+    },
+    {
+      "name": "worker-candidate-only",
+      "result": "pass"
+    },
+    {
+      "name": "dedupe-and-repeatability-gate",
+      "result": "pass"
+    },
+    {
+      "name": "reviewed-durable-destination",
+      "result": "pass"
+    },
+    {
+      "name": "decision-envelope-preserved",
+      "result": "pass"
+    },
+    {
+      "name": "task-authorization-not-promoted",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 7,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "owner-correction-learning-2026-09-28-ci-policy-refresh",
+    "artifactPointer": "skill-evals/ci-policy-evidence-2026-09-28.md#owner-correction-learning"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-28T15:54:30.043Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Fresh-agent synthetic decision scoring passed 7/7 required checks at source revision df678758406d2ae3b7d850f445d07cdd371ecbef. Private evaluator artifacts are identified by SHA-256 in the evidence note; raw inputs and outputs are not stored in Git. Host token and context telemetry unavailable. This is not native hosted CI or product runtime proof."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}

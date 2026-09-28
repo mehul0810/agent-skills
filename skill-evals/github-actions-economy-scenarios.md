@@ -2,6 +2,8 @@
 
 Use these source-blind scenarios when designing or reviewing WordPress CI/CD. The agent should preserve proof while minimizing hosted execution, storage, and notification cost.
 
+Coverage mapping: **Local deterministic checks** is exercised by Private-repo cost control; Public-repo useful CI tests the boundary where retaining hosted feedback is justified. **Cache, artifact, and concurrency hygiene** is exercised by CI performance without proof loss.
+
 | Scenario | Prompt | Passing behavior |
 | --- | --- | --- |
 | Private-repo cost control | "This private plugin already runs lint, tests, builds, and Plugin Check locally. Reduce billed GitHub Actions without weakening assurance." | Verifies or treats visibility as unknown, defaults private deterministic checks to one canonical local fast/full/package gate, retains only documented hosted evidence that is required or non-equivalent, and does not claim cost savings without before/after usage. |

@@ -18,7 +18,7 @@
         "wp-plugin-expert/SKILL.md",
         "wp-plugin-expert/references/router.md"
       ],
-      "sha256": "d408f2f49fefa66f669fc181f1aac478ce36afeff4e4b737caa223a7bb57dfe1",
+      "sha256": "675bac16b38606e4f6a93b2d2999b349a08aeab1f9a1b027f0b9cdc1cc90ee02",
       "scenario": {
         "id": "elevated-enterprise-runtime-assurance",
         "files": [
@@ -41,15 +41,15 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-09-12-astra.json",
-          "sha256": "4deb9d0dc50cc5fb15b75604b1861fdbb417d452a7f53e7a74770690c1adc911",
-          "testedRevision": "2e1db155dbe9188d535c6e734e6041d97b6ed938",
-          "testedSourceSha256": "d408f2f49fefa66f669fc181f1aac478ce36afeff4e4b737caa223a7bb57dfe1",
+          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-09-28-ci-policy-refresh.json",
+          "sha256": "43723d35b84609ef08e45b9edd51120a0c349b085ed7349a7bd4e919f91db66c",
+          "testedRevision": "df678758406d2ae3b7d850f445d07cdd371ecbef",
+          "testedSourceSha256": "675bac16b38606e4f6a93b2d2999b349a08aeab1f9a1b027f0b9cdc1cc90ee02",
           "testedScenarioSha256": "3d842125a654c717b1b68f1fe273d32f8bf4ac54bae26ac39dbacefb0f92eb84",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
-            "harnessRevision": "e99c9e29c1d58c23ff1ac656040e289ea321d493"
+            "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           },
           "testedScenarioContractSha256": "a5e92da73927c18518f1dd51dabe014c350387dde50c4dbd14968ced5c3d40e8"
         }
@@ -386,15 +386,15 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/engineering-graph-2026-09-11-continuity.json",
-          "sha256": "9547d35cf4898db1f699f5212394d8f360dc4ef8e1c92d0934bba7b8ed6c7698",
-          "testedRevision": "09a43e519087e48675fe64ce297089947d4ae063",
+          "runRecord": "skill-evals/run-records/engineering-graph-2026-09-28-ci-policy-refresh.json",
+          "sha256": "84cef29bd6d3bf3846873f9ea8dd1921a3d86df410ce786b4795043a020e200e",
+          "testedRevision": "df678758406d2ae3b7d850f445d07cdd371ecbef",
           "testedSourceSha256": "754b81a97a323423e0ce793983459e884d13f21156d2f90f857c01e29702d160",
           "testedScenarioSha256": "146b415525abf0c551e9f8a7e12d118d434e534e368ab728bc8bd921cc23793c",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
-            "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
+            "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           },
           "testedScenarioContractSha256": "8d5b410557066ad7ca1ee2927c927a3fdb3c18d05d5652826fead78308dadf7b"
         }
@@ -531,15 +531,15 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/automatic-specialist-routing-2026-09-11-continuity.json",
-          "sha256": "ec2d30694217d6cd27f354630b54d94cf35f16d3a98ea8fbe0207a8fe43a5f95",
-          "testedRevision": "09a43e519087e48675fe64ce297089947d4ae063",
+          "runRecord": "skill-evals/run-records/automatic-specialist-routing-2026-09-28-ci-policy-refresh.json",
+          "sha256": "87ebc7bc4bf2a515815f71194f178aa1b852063fd48c27aea7be4f2c5ce8118d",
+          "testedRevision": "df678758406d2ae3b7d850f445d07cdd371ecbef",
           "testedSourceSha256": "4e0d87c13037ff161d7b66ffa0954e61328946f858ef895b0557dc6d4a374244",
           "testedScenarioSha256": "5964fa0002f260ea2ed1ecdf40a842bc6a5548173fca1f1b38adfa16b713693d",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
-            "harnessRevision": "4fa28f5a6c646dedde4f616dec8ae533df42f5ee"
+            "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           },
           "testedScenarioContractSha256": "3cfb73302f1549563de8f40ca8918fe6e8af1d3a26919d28b46973ce6a2ea3bc"
         }
@@ -559,7 +559,7 @@
         "shared/references/plugin-release-workflow.md",
         "shared/references/delegation-protocol.md"
       ],
-      "sha256": "9116465b1cec12250eb20a206da7c9609eab95e3749dfe28a9db69f19a25fd63",
+      "sha256": "d33d0ebcd194f7d7ad0994c2644e7ec084fafbe643cf1a815ec13af0f665c9c3",
       "scenario": {
         "id": "product-development-governance",
         "files": [
@@ -623,10 +623,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-development-governance-2026-09-28-governance-contract-refresh.json",
-          "sha256": "1f0ec1d6b9d6936d3905f28914a6737c0c9fde9a2b510ceaeb22f7acb5a4162f",
-          "testedRevision": "5668c398440298ad8101c485e0b53b06e6659e08",
-          "testedSourceSha256": "9116465b1cec12250eb20a206da7c9609eab95e3749dfe28a9db69f19a25fd63",
+          "runRecord": "skill-evals/run-records/product-development-governance-2026-09-28-ci-policy-refresh.json",
+          "sha256": "82aeb4ad0b3821abc9b1dde2c14c384469c5228764045d0c770c08d0068d266e",
+          "testedRevision": "df678758406d2ae3b7d850f445d07cdd371ecbef",
+          "testedSourceSha256": "d33d0ebcd194f7d7ad0994c2644e7ec084fafbe643cf1a815ec13af0f665c9c3",
           "testedScenarioSha256": "1a06905b2d6ada3db36c1ee36ad36aa798e3b04bebf04c033216d150fdc09db4",
           "runtime": {
             "host": "codex-desktop",
@@ -682,13 +682,13 @@
         "post-release-outcome-disposition",
         "quality-and-authority-boundary"
       ],
-      "sha256": "63d6d24de28a26c80ef47dc6ba27a902ac18a46c82ffd7e772f61bb0b7a378ce",
+      "sha256": "cea3975259395746644a25ffdbb8bf584d67098a3acda93952e82c6a8f0f9bb3",
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-value-decision-2026-09-27-governance-topology-budget.json",
-          "sha256": "195683568fbb69fb7fe43fdc6be056b891994fe8b66ff3e8d34ab6cb91f9cb87",
-          "testedRevision": "82b63819d492fbe433a7be80603c5256754ba08a",
-          "testedSourceSha256": "63d6d24de28a26c80ef47dc6ba27a902ac18a46c82ffd7e772f61bb0b7a378ce",
+          "runRecord": "skill-evals/run-records/product-value-decision-2026-09-28-ci-policy-refresh.json",
+          "sha256": "f3df1318e0a1f086a4e68f5efd99e52323fc298e509f1a7b0385cec0b65b1626",
+          "testedRevision": "df678758406d2ae3b7d850f445d07cdd371ecbef",
+          "testedSourceSha256": "cea3975259395746644a25ffdbb8bf584d67098a3acda93952e82c6a8f0f9bb3",
           "testedScenarioSha256": "52c0b2cb69237e9f1d472448ca912993d5e549eb4c6fc8602cab15beff2581c8",
           "runtime": {
             "host": "codex-desktop",
@@ -715,7 +715,7 @@
         "shared/references/plugin-release-workflow.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "dae3a916808123e8eccac797bbea5d79b4217ab18b4bc907e2db3385e5ca2cf3",
+      "sha256": "de5029cd42f5dc6dac97e086c62c0e43b1f91ff5d67e3edbbe5733d52d900802",
       "scenario": {
         "id": "product-release-authority",
         "files": [
@@ -776,10 +776,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-release-authority-2026-09-28-governance-contract-refresh.json",
-          "sha256": "09637b0e262159cdde1032f6344602030e3cd34d72158820bec558807dc6181d",
-          "testedRevision": "5668c398440298ad8101c485e0b53b06e6659e08",
-          "testedSourceSha256": "dae3a916808123e8eccac797bbea5d79b4217ab18b4bc907e2db3385e5ca2cf3",
+          "runRecord": "skill-evals/run-records/product-release-authority-2026-09-28-ci-policy-refresh.json",
+          "sha256": "439b10585e5d5ad95bbf66e25f63d61cf0b4f41064f4fb3dc43eb7fb6c0490d8",
+          "testedRevision": "df678758406d2ae3b7d850f445d07cdd371ecbef",
+          "testedSourceSha256": "de5029cd42f5dc6dac97e086c62c0e43b1f91ff5d67e3edbbe5733d52d900802",
           "testedScenarioSha256": "415eb151638237bf0c9a4cc09f6462e4f028386f88256125e0f3b8369c87f34e",
           "runtime": {
             "host": "codex-desktop",
@@ -826,9 +826,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/owner-correction-learning-2026-09-28-operational-forward.json",
-          "sha256": "b1bf4907e7aefcb7671c1fe3efee19abdf53c97e8d5157207ad4aae7c58ecef9",
-          "testedRevision": "11b23590d40c53d1c4d15875d13ccb2e5a4ead91",
+          "runRecord": "skill-evals/run-records/owner-correction-learning-2026-09-28-ci-policy-refresh.json",
+          "sha256": "f91f6380526d8fa4e0f2f6cc327326fc6d6f606085c9876fed00678f67006ef2",
+          "testedRevision": "df678758406d2ae3b7d850f445d07cdd371ecbef",
           "testedSourceSha256": "378c0ed684c148f141a86cb6ec99ebb44ef2ed6440107187f30c2d01ecf134d1",
           "testedScenarioSha256": "b73d82e24abe107bee6eca83f4cfb99e0cb14d7bee22ea956c19d298093f7ca4",
           "runtime": {
@@ -889,9 +889,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/owner-aligned-judgment-2026-09-28-governance-contract-refresh.json",
-          "sha256": "6aced0de288476a334723a59a5b27efbb9613c4ab7f3a8bac32da589ed53f4cb",
-          "testedRevision": "5668c398440298ad8101c485e0b53b06e6659e08",
+          "runRecord": "skill-evals/run-records/owner-aligned-judgment-2026-09-28-ci-policy-refresh.json",
+          "sha256": "70631a108da652d10c4fc915ca8da7679a0573e3c4e99a8e86ebc2a2d434e401",
+          "testedRevision": "df678758406d2ae3b7d850f445d07cdd371ecbef",
           "testedSourceSha256": "8298a22cf47050942e77d3d21a2f7e9ce0bb05885baf54c172e3d48a1d3a038a",
           "testedScenarioSha256": "54b4ae2bce4d363eecee4fad87a2b5e39ae29e0c98c722ac773dc9447afc6d02",
           "runtime": {

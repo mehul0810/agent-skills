@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "runId": "automatic-specialist-routing-2026-09-28-ci-policy-refresh",
+  "scenario": "automatic-specialist-selection",
+  "result": "succeeded",
+  "startedAt": "2026-09-28T15:48:48.340Z",
+  "durationMs": 178404,
+  "checks": [
+    {
+      "name": "direct-plugin-specialist",
+      "result": "pass"
+    },
+    {
+      "name": "no-umbrella-map-load",
+      "result": "pass"
+    },
+    {
+      "name": "one-primary-reference-budget",
+      "result": "pass"
+    },
+    {
+      "name": "bounded-evidence-handoff",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 4,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "automatic-specialist-routing-2026-09-28-ci-policy-refresh",
+    "artifactPointer": "skill-evals/ci-policy-evidence-2026-09-28.md#automatic-specialist-routing"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-28T15:51:46.744Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Fresh-agent synthetic decision scoring passed 4/4 required checks at source revision df678758406d2ae3b7d850f445d07cdd371ecbef. Private evaluator artifacts are identified by SHA-256 in the evidence note; raw inputs and outputs are not stored in Git. Timing is the observed native task wall-clock interval, not model compute latency. Host token and context telemetry unavailable. This is not native hosted CI or product runtime proof."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}
