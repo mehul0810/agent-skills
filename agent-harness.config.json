@@ -481,6 +481,45 @@
       ]
     },
     {
+      "name": "Product video production modes",
+      "maxWords": 1500,
+      "warningPercent": 85,
+      "files": [
+        "product-video-producer/SKILL.md",
+        "product-video-producer/references/production-modes.md"
+      ]
+    },
+    {
+      "name": "Product video story mode",
+      "maxWords": 2700,
+      "warningPercent": 85,
+      "files": [
+        "product-video-producer/SKILL.md",
+        "product-video-producer/references/production-modes.md",
+        "product-video-producer/references/reference-to-storyboard.md"
+      ]
+    },
+    {
+      "name": "Product video motion handoff",
+      "maxWords": 3300,
+      "warningPercent": 85,
+      "files": [
+        "product-video-producer/SKILL.md",
+        "product-video-producer/references/production-modes.md",
+        "product-video-producer/references/render-review-iteration.md"
+      ]
+    },
+    {
+      "name": "Product video channel mode",
+      "maxWords": 2500,
+      "warningPercent": 85,
+      "files": [
+        "product-video-producer/SKILL.md",
+        "product-video-producer/references/production-modes.md",
+        "product-video-producer/references/channel-delivery-feedback.md"
+      ]
+    },
+    {
       "name": "Product video editing",
       "maxWords": 2300,
       "warningPercent": 85,
@@ -679,7 +718,11 @@
         "Synthetic media and rights",
         "Wrong output identity",
         "Evidence-led YouTube learning",
-        "Publication boundary"
+        "Publication boundary",
+        "Cinematic film mode",
+        "Instructional walkthrough mode",
+        "Advanced motion feasibility",
+        "Editable handoff request"
       ]
     },
     {

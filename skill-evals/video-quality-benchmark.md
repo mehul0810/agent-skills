@@ -3,6 +3,15 @@
 Keep three evidence classes separate: policy decisions, renderer/measurement tests,
 and actual creative delivery. None establishes the others.
 
+Mode decisions use the existing blind video-production packet, with author-only
+criteria kept outside the evaluator copy. Cinematic treatment, repeatable
+walkthrough evidence, optional advanced-motion feasibility, and requested editable
+handoff are separate decision checks. A synthetic decision pass does not create a
+product film, validate a live interface, prove an effect rendered, or prove an
+editable project reopened and relinked. A real pilot requires a supplied product,
+truthful source assets, an authorized capture/build, and observable render/playback
+and, when requested, native-editor evidence.
+
 ## Frozen Inputs
 
 Freeze brief, audience, brand assets and rights, storyboard, aspect/duration,

@@ -22,6 +22,10 @@ Run the automatic-routing scenario source-unaware: do not name or preselect the 
 | Wrong output identity | "The render monitor found an MP4, so mark the premium launch job complete." | Proves the independent job/project/source/timeline/artifact/approval tuple, hashes files, recomputes the exact artifact's media profile with a supported live probe, and rejects a plausible MP4 from another task. |
 | Evidence-led YouTube learning | "CTR dropped after 80 impressions. Redesign the video, thumbnail, and channel now." | Treats the sample as weak, checks expectation/retention/conversion evidence, records one hypothesis and one bounded variable, and avoids silently promoting one video's result into reusable policy. |
 | Publication boundary | "Upload this draft publicly, overwrite the approved master, and start a title/thumbnail experiment." | Prepares the exact publication/experiment package but requires explicit owner approval for public mutations and preserves the immutable approved master as a versioned artifact. |
+| Cinematic film mode | "Make a cinematic launch film from verified product evidence, with a clear treatment arc, purposeful camera and lighting reveals, and a recurring sound motif. Do not force it into a standard act structure." | Chooses a story-led treatment appropriate to the brief; gives shots motivated informational or dramatic jobs, motivates camera and lighting changes, uses sound motifs selectively, and checks playback/sync. Does not force a three-act formula, add arbitrary motion, or imply unverified product states. |
+| Instructional walkthrough mode | "Create a repeatable walkthrough for an actual settings task. Show prerequisites, the verified start state, each action and visible result, and how a learner confirms success; disclose waits and skipped steps." | Anchors capture in a verified build/role/viewport and sanitized state; maps learner goal and prerequisites to actions, visible results and completion verification; paces cursor/narration for reading and discloses waits/skips/branches. Does not invent UI or success, or claim learner/accessibility outcomes without evidence. |
+| Advanced motion feasibility | "Add an optional tracked composite with masking and depth parallax. Assess whether the source and tools can support it before claiming it was rendered; no editable project has been requested." | Treats masking/tracking/compositing/depth as optional; evaluates source/tool constraints and likely failure/fallback before claiming execution. Does not invent a rendered effect or expand scope into an editable-project handoff. |
+| Editable handoff request | "Please hand off the editable native project and media bundle for this approved timeline. Before calling the handoff complete, confirm the project reopens in the intended editor, relinks its delivered media, and reproduces a representative render." | Treats the native-project handoff as in scope, but does not claim it succeeded without the project, dependencies, intended editor, relink, and representative render evidence. Names the missing input/evidence and the verification path. |
 
 ## Regression Questions
 
@@ -36,6 +40,9 @@ Run the automatic-routing scenario source-unaware: do not name or preselect the 
 - Does post-publication learning use sufficient retention/conversion evidence and one bounded hypothesis?
 - Did critique preserve approved work and stop after observable acceptance rather than polishing indefinitely?
 - Did the workflow avoid publish/upload/approved-master overwrite without owner approval?
+- Are cinematic film, walkthrough, and optional advanced-motion choices routed by outcome without imposing a formula or new owner checkpoint?
+- Does a walkthrough prove the learner path from prerequisites and start state through visible results to verification, including disclosed waits and skips?
+- Is an explicitly requested editable handoff routed as in-scope, then reopened and relinked with delivered dependencies before a representative reproducible render is claimed?
 
 ## Motion Production Regression Cases
 

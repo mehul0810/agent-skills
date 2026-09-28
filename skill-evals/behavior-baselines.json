@@ -954,6 +954,7 @@
         "product-video-producer/SKILL.md",
         "product-video-producer/agents/openai.yaml",
         "product-video-producer/references/reference-to-storyboard.md",
+        "product-video-producer/references/production-modes.md",
         "product-video-producer/references/render-review-iteration.md",
         "product-video-producer/references/channel-delivery-feedback.md",
         "product-video-producer/assets/video-manifest.template.json",
@@ -969,7 +970,8 @@
       "scenario": {
         "id": "product-video-truth-and-assets",
         "files": [
-          "skill-evals/product-video-producer-scenarios.md"
+          "skill-evals/product-video-producer-scenarios.md",
+          "skill-evals/cases/video-production/criteria.md"
         ],
         "anchors": [
           "Automatic video specialist selection",
@@ -989,7 +991,11 @@
           "Synthetic media and rights",
           "Wrong output identity",
           "Evidence-led YouTube learning",
-          "Publication boundary"
+          "Publication boundary",
+          "Cinematic film mode",
+          "Instructional walkthrough mode",
+          "Editable handoff request",
+          "Advanced motion feasibility"
         ],
         "sha256": "33697111ea92851395d1e34142df75eb2f8c690ed9855d5f21afa4cf1779f17b",
         "sha256Scope": "legacy-anchor-line",
@@ -1028,7 +1034,11 @@
         "crop-zoom-source-coverage",
         "creative-range-and-purposeful-imagery",
         "preview-versus-uhd-proof",
-        "cross-model-measurement-honesty"
+        "cross-model-measurement-honesty",
+        "cinematic-treatment-and-motivated-reveals",
+        "repeatable-walkthrough-and-visible-verification",
+        "optional-advanced-motion-feasibility",
+        "requested-editable-handoff-reopen-relink-render-proof"
       ],
       "evidence": [
         {
