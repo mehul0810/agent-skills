@@ -8,7 +8,8 @@ This file defines tools needed to maintain and validate this skill repository. P
 - Node.js matching `.nvmrc` and `package.json#engines`. Run `npm ci`; do not substitute an EOL line. The checked 2026-09-04 baseline is Node 24 LTS.
 - npm from that Node distribution.
 - Bash 3.2 or newer. Repository scripts intentionally avoid Bash 4-only features and are checked with `bash -n` plus runtime self-tests.
-- Python 3 only for Skill Creator's optional `quick_validate.py`.
+- Python 3.11 or newer for `npm test` and aggregate profile validation (`tomllib` is required). Set `PYTHON` to the compatible interpreter when it is not the default `python3` on `PATH`; see `TESTING.md`.
+- PyYAML is optional and needed only when running Skill Creator's `quick_validate.py`; it is not an aggregate test dependency.
 - `gh` only for live GitHub inspection or owner-authorized mutations.
 
 Authoritative current support sources are registered in `shared/source-freshness.json`. The local audit fails when a selected source exceeds its review window.
@@ -41,7 +42,7 @@ bash scripts/install-global-skill-links.sh
 bash scripts/check-global-skill-links.sh
 ```
 
-Run changed skill folders through Skill Creator's `quick_validate.py` when available. See `TESTING.md` for the complete gate.
+Run changed skill folders through Skill Creator's `quick_validate.py` when available and its optional PyYAML dependency is installed. See `TESTING.md` for the complete gate and interpreter setup.
 
 ## Version Identity
 

@@ -8,6 +8,7 @@ permissions:
 
 jobs:
   validate:
+    timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -23,7 +24,7 @@ jobs:
       - name: Install harness
         run: npm ci
       - name: Shell syntax
-        run: find . -type f -name '*.sh' -not -path './.git/*' -print0 | xargs -0 -n1 bash -n
+        run: find . -type d \( -name .git -o -name node_modules \) -prune -o -type f -name '*.sh' -print0 | xargs -0 -r -n1 bash -n
       - name: Commit diff check
         run: git show --check --oneline --no-renames HEAD
       - name: Aggregate validation

@@ -8,12 +8,12 @@ The skill provides reusable orchestration behavior. Product-specific truth belon
 
 Recommended repo docs:
 
-- `AGENTS.md`: repo-specific agent workflow, branch rules, local validation gates, PR rules, hosted-CI exceptions, and automation constraints.
+- `AGENTS.md`: repo-specific agent workflow, branch rules, local validation gates, PR rules, private-repo hosted-CI exceptions, useful public-CI triggers/performance expectations, and automation constraints.
 - `PRODUCT.md`: product positioning, target users/customers, product principles, free/pro boundaries, and non-goals.
 - `ARCHITECTURE.md`: durable system owners, dependency/state boundaries, data and public contracts, failure behavior, migrations, and rollback when a compact set of ADRs is not enough.
 - `DESIGN.md`: concise product design contract for admin UI patterns, screen hierarchy, components/controls, empty/loading/error/success states, accessibility, responsive behavior, WordPress.org/website assets, copy/tone, visual non-goals, and the default UI baseline. Use the [WordPress Design System](https://www.figma.com/community/file/1436359662053949167/wordpress-design-system) as the starting point, then layer each product's brand colors and product-specific identity on top of it.
 - `CONTENT.md`: site information architecture, page purpose, editorial ownership, blocks/patterns, claim evidence, SEO/AEO/GEO, internal links, and publishing workflow when content operations are material.
-- `TESTING.md`: canonical local fast/full/package commands, prerequisites, fixtures, environments, expected evidence, and any justified hosted-only checks.
+- `TESTING.md`: canonical local fast/full/package commands, prerequisites, fixtures, environments, expected evidence, justified private-repo hosted-only checks, and useful public CI coverage where adopted.
 - `COMPATIBILITY.md`: supported WordPress/PHP/database/browser/editor/integration matrix, tested cells, accepted gaps, and compatibility owner when this would be too large or volatile for `TESTING.md`.
 - `.github/SECURITY.md` or `SECURITY.md`: supported versions, private disclosure path, sensitive-report handling, and durable security expectations for public, distributed, or sensitive products.
 - `OPERATIONS.md` or `RUNBOOK.md`: critical workflows, service signals, post-release observation, thresholds, recovery/backout, RPO/RTO where relevant, and operational ownership.
@@ -40,7 +40,7 @@ Update or recommend docs when:
 - A milestone or release train rule is ambiguous.
 - A product decision affects multiple future issues.
 - A repo automation needs stable local instructions.
-- Hosted PR/push workflows duplicate locally reproducible checks, no canonical local validation entrypoint exists, or a hosted-CI exception lacks a documented reason.
+- Private hosted PR/push workflows duplicate locally reproducible checks, public workflows run redundant gates, no canonical local validation entrypoint exists, or a hosted exception lacks a documented reason.
 - A release workflow can publish from `release/*`, auto-create a tag, or finish without proving the production tag is reachable from `main`.
 - GitHub issue comments alone would hide important long-term context.
 - An active product still depends on chat-only instructions for workflow, design, testing, or release behavior.

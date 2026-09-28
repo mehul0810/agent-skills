@@ -53,30 +53,17 @@ Duplication/modularity:
 
 ## Local-First Automation Policy
 
-Make deterministic validation locally executable before adding hosted automation. Each repo should expose one canonical command or small ordered command set for its applicable syntax, lint, static analysis, tests, build, package, Plugin Check, and focused browser/runtime proof.
+Make deterministic validation locally executable and expose one canonical command or small ordered command set for applicable syntax, lint, static analysis, tests, build, package, Plugin Check, and focused browser/runtime proof. Apply the visibility-aware cost and performance policy in `../../shared/references/github-actions-economy.md`: private repositories are local-first with documented hosted exceptions; public repositories may use useful CI for ordinary tasks, with standard-runner and storage caveats.
 
 - Run the canonical local gate before commit, PR, and non-production merge; record commands, relevant tool versions, and results.
 - Absence of hosted CI is not permission to skip validation. A failed or unavailable local gate is a proof gap.
-- Do not add GitHub Actions that merely repeat reliable local checks on every PR or feature-branch push.
+- In private repositories, do not spend hosted minutes merely repeating reliable local checks. In public repositories, keep useful PR/push CI when it improves feedback or proof; for every visibility, avoid overlapping triggers that repeat the same gate for the same revision.
 - Keep validation logic in versioned repository scripts or package/composer commands. Hosted workflows call those same entrypoints instead of maintaining a second YAML-only test definition.
 - Separate fast changed-boundary checks from the full release gate when that improves developer speed without weakening release proof.
 
-## GitHub Actions Economy
+## GitHub Actions
 
-For owner-managed WordPress products, default GitHub Actions to beta/prerelease/stable release mechanisms. The release workflow reruns the canonical full local gate in a clean runner against the exact candidate, builds and validates the package, then permits the separately owner-gated publish/release step.
-
-Use `workflow_dispatch` with explicit candidate SHA/version inputs for owner-initiated beta or production releases by default. A tag/release event may publish only when an owner-approved upstream gate created and verified that exact tag; never let an arbitrary tag push become release authorization.
-
-Do not use `pull_request` or feature-branch `push` triggers for locally reproducible checks by default. Hosted PR/development CI is an exception when it adds evidence local execution cannot reliably provide, such as untrusted external contributions, enforced branch protection, a required operating-system/runtime matrix, secret-backed integration proof, or an independent compliance runner. Document the reason in `AGENTS.md`, `TESTING.md`, or `RELEASE.md`; do not preserve hosted jobs only because they already exist.
-
-For retained workflows:
-
-- Choose active stable tool/action versions using `runtime-toolchain-version-policy.md`.
-- Use least-privilege `permissions`; never echo secrets or use `pull_request_target` without a reviewed security model.
-- For untrusted PRs, use a read-only token, no secrets, and a disposable GitHub-hosted runner; never execute fork code through `pull_request_target` or a privileged persistent/self-hosted runner.
-- Bound matrices to supported combinations, set timeouts, cache by lockfile, reuse the candidate artifact, and avoid duplicate checkout/build jobs.
-- Use concurrency carefully for prereleases; never cancel an active production publication merely to save minutes.
-- Upload artifacts only when needed for release, proof, rollback, or debugging.
+Use `../../shared/references/github-actions-economy.md` for visibility-aware cost decisions, triggers, workflow performance, cache/artifact policy, concurrency, and release safety. Do not infer that CI is unnecessary in a public repository or that its storage/larger-runner usage is free. Keep owner approval and exact-candidate release boundaries below unchanged.
 
 ## CI Troubleshooting
 

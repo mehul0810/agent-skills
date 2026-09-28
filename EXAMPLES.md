@@ -165,23 +165,26 @@ theme/
 
 ---
 
-## Example 3: Local-First Validation And Release Actions
+## Example 3: Visibility-Aware GitHub Actions
 
-**Scenario**: A WordPress plugin can run deterministic testing, linting, builds, and package checks locally. GitHub Actions usage should stay focused on beta/stable releases.
+**Scenario**: A WordPress plugin can run deterministic checks locally. Its private and public repositories need different cost defaults, and all retained CI should be efficient without losing required proof.
 
-### Step 1: Define One Local Contract
+### Step 1: Verify Visibility And Define The Local Contract
 
-Use `standards-ci-github.md` to create a canonical local validation entrypoint from the repo's existing Composer/npm/scripts. It should cover only applicable syntax, standards, static analysis, tests, build, package, Plugin Check, and focused runtime proof. Document fast/full/package commands in `TESTING.md` and run them before commit, PR, and non-production merge.
+Verify each repository's visibility and runner types before estimating cost. Create one canonical fast/full/package validation entrypoint from existing Composer/npm/scripts, covering applicable syntax, standards, static analysis, tests, build, package, Plugin Check, and focused runtime proof. Document it in `TESTING.md` and run it before commit, PR, and non-production merge.
 
-### Step 2: Keep Hosted Automation Narrow
+### Step 2: Apply The Visibility-Aware Policy
 
-- Do not add PR or feature-push Actions that duplicate the local gate.
-- Keep a documented hosted PR exception only for non-equivalent evidence such as untrusted contributors, required matrices/protections, secret-backed integration, or compliance.
-- Use read-only, secret-free disposable runners for untrusted PRs.
+- For private repositories, default deterministic checks to local execution and retain hosted jobs only for required or non-equivalent evidence that justifies potentially billed minutes/storage.
+- For public repositories, standard-runner CI may run useful checks for ordinary PR/push tasks; larger runners are still billed and storage limits still apply.
+- Optimize all CI by removing redundant triggers/setup, bounding supported matrices, caching only beneficial regenerable inputs, reusing exact build artifacts, and measuring runtime/storage before claiming savings.
+- For untrusted PRs, use read-only, secret-free disposable runners; never execute fork code with `pull_request_target`.
 
-### Step 3: Build The Release Workflow
+### Step 3: Preserve Required Checks And Release Safety
 
-Use `workflow_dispatch` with explicit candidate SHA/version inputs. In a clean runner, call the same full repository validation script, build one production-only package, record its identity, and validate that exact artifact. Keep the beta/production publish job separate and owner-gated; an arbitrary tag push must not authorize deployment.
+- Path-filter only optional checks, or provide an always-on decision check when branch protection requires a status; account for the 300-file path-filter limit.
+- Cancel only superseded development/PR validation. Do not cancel a release, deployment, rollback, or the only run holding a release artifact; set bounded timeouts and retention.
+- For beta/stable publication, use explicit candidate SHA/version inputs, validate on a clean runner, build once, identify and validate the exact artifact, and keep publication owner-gated. An arbitrary tag push must not authorize deployment.
 
 ### Step 4: Verify Release Artifacts
 

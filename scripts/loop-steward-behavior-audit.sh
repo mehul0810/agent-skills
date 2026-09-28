@@ -23,6 +23,8 @@ require_text loop-steward/SKILL.md "reconcile the queue idempotently" "idempoten
 require_text loop-steward/SKILL.md "Never bypass required, flaky, missing, or failing checks" "required-check fail closed"
 require_text loop-steward/SKILL.md "git diff --check origin/main...HEAD" "agent-skills base-relative diff check"
 require_text .github/workflows/validate-skills.yml "fetch-depth: 0" "CI base history fetch"
+require_text .github/workflows/validate-skills.yml "timeout-minutes: 15" "bounded validation workflow runtime"
+require_text .github/workflows/validate-skills.yml "-name node_modules" "shell syntax scan excludes dependency trees"
 require_text skill-evals/loop-steward-scenarios.md "Missing policy" "missing policy scenario"
 require_text skill-evals/loop-steward-scenarios.md "Head changed before merge" "changed head scenario"
 require_text skill-evals/loop-steward-scenarios.md "Duplicate event" "duplicate event scenario"

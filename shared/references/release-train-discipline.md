@@ -31,7 +31,7 @@ POs audit workflows and `RELEASE.md`. Production automation resolves the approve
 
 ### Hosted Automation Economy
 
-Default to canonical local validation. Reserve Actions for release transactions using the same scripts and exact package, plus documented non-equivalent evidence such as untrusted contributions, required matrices/protections, secret-backed integration, or compliance. Avoid duplicate PR/push jobs; economy never justifies skipped proof.
+For private repositories, prefer local deterministic checks and retain hosted work only when required or non-equivalent evidence justifies its cost. Public repositories may use useful standard-runner CI for ordinary tasks, but larger runners and storage still have cost/limits. Follow `github-actions-economy.md` when CI topology/performance is the primary risk. The release transaction still validates the exact candidate/package and keeps publish owner-gated; cost reduction never justifies skipped proof.
 
 ## Required Release Checks
 

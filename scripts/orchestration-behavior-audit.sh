@@ -315,7 +315,7 @@ require_text "shared/references/plugin-release-workflow.md" "dedicated project C
 require_text "shared/references/plugin-release-workflow.md" "CTO performs a bounded governance review" "bounded CTO release review"
 require_text "shared/references/plugin-release-workflow.md" "release Action consumes that tag" "tag-driven release action"
 require_text "shared/references/release-train-discipline.md" "Release-ready recommendations and owner approval requests require fresh live verification" "release live verification required"
-require_text "shared/references/github-actions-economy.md" "Local-vs-hosted decision" "orchestration Actions local-hosted decision"
+require_text "shared/references/github-actions-economy.md" "Visibility-Aware Cost Policy" "orchestration Actions visibility-aware policy"
 require_text "shared/references/github-actions-economy.md" "skipped path-filtered check pending" "orchestration Actions required-check guard"
 require_text "shared/references/release-train-discipline.md" "do not request beta/production approval" "release live verification fail closed"
 require_text "shared/references/release-train-discipline.md" "release metadata matches the target version" "release metadata match gate"

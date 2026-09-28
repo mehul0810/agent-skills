@@ -58,7 +58,7 @@ When tests are not feasible locally, provide the strongest available evidence an
 
 ## Local-First Validation Contract
 
-Every maintained repo should provide one canonical local validation command or a documented small command set. Run the applicable gate before commit, PR, or non-production merge and report exact results. Prefer repository scripts so developers and release automation execute the same test/build/package logic. Do not substitute per-push GitHub Actions for locally reproducible validation, and do not treat missing hosted CI as permission to skip tests. Reserve hosted automation for release/prerelease proof or a documented risk that local execution cannot cover reliably.
+Every maintained repo should provide one canonical local validation command or a documented small command set. Run the applicable gate before commit, PR, or non-production merge and report exact results. Prefer repository scripts so developers and release automation execute the same test/build/package logic. Missing hosted CI is not permission to skip tests. For private repositories, default deterministic checks to local execution and justify hosted cost; public repositories may use useful standard-runner CI for ordinary work, while larger runners/storage still have cost or limits. Use `github-actions-economy.md` for detailed design; do not duplicate its performance and security controls here.
 
 ## Merge And Release Expectation
 
