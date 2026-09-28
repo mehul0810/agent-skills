@@ -57,7 +57,7 @@ For a repeatable correction or evidence-backed proactive pattern, preserve one c
 - Close the result as `met`, `missed`, `inconclusive`, or `not applicable`; keep it `pending` until the window can be evaluated.
 - Promote product-specific learning to product docs/issues and cross-product learning to the owning shared skill, contract, runtime, harness, or private decision record. Never mutate a repository merely because a candidate was classified.
 
-When the governed Agent Loop runtime is available, emit its compact learning-event contract and use the review-only candidate ledger. Otherwise preserve the same fields in the issue, PR, run record, or audit handoff; do not invent a parallel memory format.
+When the governed Agent Loop checkout is available, stage only a sanitized event under its ignored `runtime/` and run `npm run learning:workflow -- --input <event> --ledger runtime/learning-candidates.json`; without `--input`, workflow is read-only. Follow the stable work ID through `learning:resolve`, `learning:outcome`, and another `learning:workflow` read. Keep named reviewer, decision/action/artifact pointers, source pointer, verifier, measurement time, summary, and verification window as applicable. The active authorized agent performs repair, review, and verification; these commands only stage ledger state and never mutate or publish repositories, promote policy, or schedule work. If the checkout or ledger is unavailable, preserve the gap in the issue/PR handoff with the same lineage; do not claim an outcome.
 
 ## Stale Learning Lifecycle
 
