@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "runId": "owner-correction-learning-2026-09-28-operational-forward",
+  "scenario": "owner-correction-learning",
+  "result": "succeeded",
+  "startedAt": "2026-09-28T10:25:02.000Z",
+  "durationMs": 105000,
+  "checks": [
+    {
+      "name": "immediate-root-cause-correction",
+      "result": "pass"
+    },
+    {
+      "name": "compact-correction-result",
+      "result": "pass"
+    },
+    {
+      "name": "worker-candidate-only",
+      "result": "pass"
+    },
+    {
+      "name": "dedupe-and-repeatability-gate",
+      "result": "pass"
+    },
+    {
+      "name": "reviewed-durable-destination",
+      "result": "pass"
+    },
+    {
+      "name": "decision-envelope-preserved",
+      "result": "pass"
+    },
+    {
+      "name": "task-authorization-not-promoted",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 7,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "owner-correction-learning-2026-09-28-operational-forward",
+    "artifactPointer": "skill-evals/feedback-operational-evidence-2026-09-28.md#owner-correction-learning"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-28T10:26:47.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Fresh-agent synthetic decisions from the frozen outcome-ownership packet passed all seven required checks. An additional learning-01 case was scored separately and is not used for baseline coverage because it was not in the frozen packet. Host numeric telemetry unavailable; no operational learning or runtime proof."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}
