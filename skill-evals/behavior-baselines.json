@@ -966,7 +966,7 @@
         "product-video-producer/assets/motion-starter/scene.mjs",
         "product-video-producer/assets/motion-starter/README.md"
       ],
-      "sha256": "ac8e38f17a92fed7ee28b08c8519cef28a86259ab8bf814b98d9711db798f7b0",
+      "sha256": "a423e9813b7e5ba6a033675a3e981ec6ad756995b7ed33f63d8166b3187291eb",
       "scenario": {
         "id": "product-video-truth-and-assets",
         "files": [
@@ -1001,7 +1001,7 @@
           "Generated frame identity continuity",
           "VFR proxy and picture-lock lineage"
         ],
-        "sha256": "33697111ea92851395d1e34142df75eb2f8c690ed9855d5f21afa4cf1779f17b",
+        "sha256": "cb13e2bfa5e24f102caf8f3b00d1fe20b17f6de1d288b3f82ad2f490d68ce246",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [
           "skill-evals/cases/video-production/input.json",
@@ -1014,7 +1014,7 @@
           "skill-evals/cases/video-production/artifacts/case-37/generated-shot-03.svg",
           "skill-evals/cases/video-production/artifacts/case-38/proxy-timeline-lineage.json"
         ],
-        "contractSha256": "0a6544f80ea278df5f1ed14362ba19343bc53045b53cf4c154265b41fba4c6e3"
+        "contractSha256": "dbbce9621da6aab2110714b56462c82f9c6ff92baa90bf9ebf39a219d4c74d28"
       },
       "requiredChecks": [
         "automatic-specialist-routing",
@@ -1054,30 +1054,17 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-09-23-low.json",
-          "sha256": "b0a041b006e2e22d5651fd944dd1ae543e5374ef2a357cd81dd9546d076ab372",
-          "testedRevision": "04ead6d6907b3d210ae4e7b3ba6ba8de2f38e4d8",
-          "testedSourceSha256": "ac8e38f17a92fed7ee28b08c8519cef28a86259ab8bf814b98d9711db798f7b0",
-          "testedScenarioSha256": "33697111ea92851395d1e34142df75eb2f8c690ed9855d5f21afa4cf1779f17b",
+          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-09-28-artifact-forward.json",
+          "sha256": "f7a26ffac97da98c074707c9c7942cc6e1b311ded41230ad87b449bd29ccbf08",
+          "testedRevision": "37fe781c4c4a6f33d83ccd9506de6858de8576e8",
+          "testedSourceSha256": "a423e9813b7e5ba6a033675a3e981ec6ad756995b7ed33f63d8166b3187291eb",
+          "testedScenarioSha256": "cb13e2bfa5e24f102caf8f3b00d1fe20b17f6de1d288b3f82ad2f490d68ce246",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           },
-          "testedScenarioContractSha256": "0a6544f80ea278df5f1ed14362ba19343bc53045b53cf4c154265b41fba4c6e3"
-        },
-        {
-          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-09-23-medium.json",
-          "sha256": "77844b2afc70a508e0de6479c800f516a8fff2ea985f265034c402873092b77c",
-          "testedRevision": "04ead6d6907b3d210ae4e7b3ba6ba8de2f38e4d8",
-          "testedSourceSha256": "ac8e38f17a92fed7ee28b08c8519cef28a86259ab8bf814b98d9711db798f7b0",
-          "testedScenarioSha256": "33697111ea92851395d1e34142df75eb2f8c690ed9855d5f21afa4cf1779f17b",
-          "runtime": {
-            "host": "codex-desktop",
-            "isolation": "fresh-agent",
-            "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
-          },
-          "testedScenarioContractSha256": "0a6544f80ea278df5f1ed14362ba19343bc53045b53cf4c154265b41fba4c6e3"
+          "testedScenarioContractSha256": "dbbce9621da6aab2110714b56462c82f9c6ff92baa90bf9ebf39a219d4c74d28"
         }
       ],
       "harnessContract": "cli-validation-v1"
