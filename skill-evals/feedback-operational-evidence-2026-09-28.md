@@ -1,6 +1,8 @@
 # Governance Evaluation Evidence - 2026-09-28
 
-## Scope And Result
+## Native Evaluation And Scoring
+
+### Scope And Result
 
 Fresh-agent forward evaluation of synthetic decision cases only. Four baselines were evaluated against source revision `5668c398440298ad8101c485e0b53b06e6659e08`; `owner-correction-learning` was evaluated separately against `11b23590d40c53d1c4d15875d13ccb2e5a4ead91`. The independent scorer mapped the native structured results to current required checks. All five registered baselines scored pass: product-development-governance 23/23, product-release-authority 21/21, owner-aligned-judgment 8/8, context-approach-continuity 7/7, and owner-correction-learning 7/7.
 
@@ -25,6 +27,8 @@ Runtime binding retained from the tested repository/harness: host `codex-desktop
 The four-baseline native result is `/private/tmp/feedback-governance-results.json` (SHA-256 `873ef91abf04533d9c379235c4f7061f38cb12b670d5fa9c62f977f5e3d8c069`). Frozen packet manifest SHA-256 values: `governance-contract-refresh` `102894b410547931af15b35fa1ce79d409e00cc213d0586a7108024c76805d96`; `governance-contract-refresh-supplement` `14f837f301f70d61b04a39bd411dc3a125152daf454f5c515d1b848a10a5620f`; `governance-contract-refresh-cto-supplement` `4cd8f2efcb6cae786bb3940d93a975fd108f4fb7399fe776e74d80d8e899060b`; `governance-context-final` `167c992d5af4a0ccdbf6005d1d23d1a2b6d27308be4e1af8ce7f5b711ddb0cce`. The compact per-check case mapping is retained in `/private/tmp/feedback-governance-scoring.json`; preflighted baseline receipts are `/private/tmp/feedback-governance-product-development-governance-draft-receipt.json`, `/private/tmp/feedback-governance-product-release-authority-draft-receipt.json`, `/private/tmp/feedback-governance-owner-aligned-judgment-draft-receipt.json`, and `/private/tmp/feedback-governance-context-approach-continuity-draft-receipt.json`.
 
 The separate model-routing capacity scenario `additional-capacity-case/capacity-01` passed its conservative-default signals; it is not part of the four baseline check counts. Its result was in the same private native JSON. No dispatch or capacity measurement occurred.
+
+## Owner Correction Learning
 
 The owner-correction native result is `/private/tmp/feedback-learning-results.json` (SHA-256 `531cb7f113341ee994130113aaa9adc6e7fbe1a29f89d9e23369d3fefa33e41e`); frozen `outcome-ownership` packet manifest SHA-256 is `2f713dc86be140572b0731ee3be027cbab6cff6efcc0d4693b1e620d110cb269`. Required-check coverage uses only frozen packet cases `case-13` through `case-17` and `case-24`: correction/root cause, compact correction transfer, candidate-only routing, repeatability and dedupe, reviewed destination, decision-envelope continuity, and non-promotion of task/tool/previous-decision authority. The check-to-case mapping and native result hash are in `/private/tmp/feedback-governance-owner-correction-learning-draft-receipt.json`, which passed preflight with admission not performed. The extra `learning-01` response was scored separately from the same result JSON but is not part of the frozen baseline packet and is not used to satisfy any required check.
 
