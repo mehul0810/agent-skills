@@ -43,6 +43,14 @@ npm ci
 npm test
 ```
 
+The aggregate runs checks sequentially with a 120-second per-command deadline,
+a 16 MiB combined stdout/stderr capture limit, and a 250 ms SIGTERM-to-SIGKILL
+grace period, followed by a 500 ms final drain bound. On POSIX, timed-out or
+completed commands have their owned process group signaled; escaped sessions
+remain outside this boundary and unfinished stream cleanup is reported as a
+failure. Run-record batches use the pinned harness `validateRunFile` API once
+per file rather than starting a CLI process for every record.
+
 The shared `agent-harness` owns generic route-budget, scenario-inventory, and sanitized run-record validation. Repository-specific skill frontmatter/body limits and routing contracts remain in the local shell audits. Routine validation is local-first; the hosted workflow is manual and supplemental.
 
 ## Full Gate

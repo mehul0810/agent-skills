@@ -4,6 +4,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { verifyPacket } from './build-eval-packet.mjs';
+import { DEFAULT_FILE_LIMITS, normalizeFileLimits, safeReadFile, listRegularFiles } from './bounded-files.mjs';
+import { analyzeConfigChange, CONFIG_PATH } from './eval-config-planner.mjs';
 
 const rootDefault = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SHA256 = /^[a-f0-9]{64}$/;
@@ -25,11 +27,13 @@ function safeRepoPath(value) {
   return value;
 }
 
-export function planBaselines(manifest, changedPaths) {
+export function planBaselines(manifest, changedPaths, { semanticConfig = null } = {}) {
   if (manifest?.schemaVersion !== 2 || !Array.isArray(manifest.baselines)) throw new Error('invalid behavior baseline manifest');
   if (!Array.isArray(changedPaths) || !changedPaths.length) throw new Error('at least one changed path is required');
   const paths = [...new Set(changedPaths.map(safeRepoPath))].sort();
-  const all = new Set(paths.filter((file) => GLOBAL_INPUTS.has(file)).length ? manifest.baselines.map((b) => b.name) : []);
+  const allInputs = paths.filter((file) => GLOBAL_INPUTS.has(file)
+    && !(file === CONFIG_PATH && semanticConfig?.safe === true));
+  const all = new Set(allInputs.length ? manifest.baselines.map((b) => b.name) : []);
   const dependencies = new Map();
   for (const baseline of manifest.baselines) {
     if (typeof baseline.name !== 'string' || !baseline.name || !Array.isArray(baseline.requiredChecks)
@@ -51,6 +55,18 @@ export function planBaselines(manifest, changedPaths) {
     const owners = dependencies.get(file);
     if (owners) for (const name of owners) all.add(name);
     else if (!GLOBAL_INPUTS.has(file)) unmapped.push(file);
+  }
+  if (paths.includes(CONFIG_PATH) && semanticConfig?.safe === true) {
+    for (const file of semanticConfig.ownedPaths ?? []) {
+      safeRepoPath(file);
+      const owners = dependencies.get(file);
+      if (!owners) {
+        all.clear();
+        for (const baseline of manifest.baselines) all.add(baseline.name);
+        break;
+      }
+      for (const name of owners) all.add(name);
+    }
   }
   const byName = new Map(manifest.baselines.map((b) => [b.name, b]));
   return {
@@ -90,14 +106,65 @@ function resolveEvidenceFile(root, value) {
   }
 }
 
-export function preflightReceipt(root, receipt) {
+const sha256 = (bytes) => crypto.createHash('sha256').update(bytes).digest('hex');
+
+export function preflightReceipt(root, receipt, {
+  readFile = safeReadFile,
+  listFiles = listRegularFiles,
+  verify = verifyPacket,
+  hashBytes = sha256,
+  limits = DEFAULT_FILE_LIMITS,
+} = {}) {
   const errors = [];
   try {
+    limits = normalizeFileLimits(limits);
     if (receipt?.schemaVersion !== 1 || receipt.status !== 'draft') throw new Error('receipt must use schemaVersion 1 and status draft');
     const manifest = readJson(path.join(root, 'skill-evals/behavior-baselines.json'));
     const baseline = manifest.baselines.find((item) => item.name === receipt.baseline);
     if (!baseline) throw new Error(`unknown baseline: ${receipt.baseline}`);
     if (!REVISION.test(receipt.testedRevision ?? '')) throw new Error('exact testedRevision is required');
+
+    const cache = new Map();
+    let cachedBytes = 0;
+    const readCached = (file, options = {}) => {
+      const absolute = path.resolve(file);
+      const maxBytes = Math.min(options.maxBytes ?? limits.maxFileBytes, limits.maxFileBytes);
+      let bytes = cache.get(absolute);
+      if (!bytes) {
+        if (cache.size >= limits.maxEntries) throw new Error('Evidence exceeds file count limit');
+        bytes = readFile(absolute, { maxBytes: Math.min(maxBytes, limits.maxTotalBytes - cachedBytes) });
+        cachedBytes += bytes.length;
+        if (cachedBytes > limits.maxTotalBytes) throw new Error('Evidence exceeds total byte limit');
+        cache.set(absolute, bytes);
+      }
+      if (bytes.length > maxBytes) throw new Error('File exceeds byte limit');
+      return bytes;
+    };
+    const resultCaseIndexes = new Map();
+    const resultDigests = new Map();
+    const verifiedPackets = new Map();
+    const digestFile = (file) => {
+      const key = path.resolve(file);
+      if (!resultDigests.has(key)) resultDigests.set(key, hashBytes(readCached(file)));
+      return resultDigests.get(key);
+    };
+    const resultHasCase = (file, packetId, caseId) => {
+      const key = path.resolve(file);
+      let index = resultCaseIndexes.get(key);
+      if (!index) {
+        const result = JSON.parse(readCached(file).toString('utf8'));
+        if (!Array.isArray(result.cases)) {
+          resultCaseIndexes.set(key, new Set());
+          return false;
+        }
+        index = new Set(result.cases.filter((item) => item?.packetId && item?.id
+          && ((typeof item?.outcome === 'string' && item.outcome.trim())
+            || (typeof item?.decision === 'string' && item.decision.trim())))
+          .map((item) => JSON.stringify([item.packetId, item.id])));
+        resultCaseIndexes.set(key, index);
+      }
+      return index.has(JSON.stringify([packetId, caseId]));
+    };
 
     const evalInfo = receipt.evaluation;
     if (!evalInfo || typeof evalInfo.evaluator?.identity !== 'string' || !evalInfo.evaluator.identity.trim()
@@ -137,21 +204,28 @@ export function preflightReceipt(root, receipt) {
           const resultPath = ref.resultPath;
           if (!SHA256.test(ref.resultSha256 ?? '')) throw new Error('local result SHA-256 is required');
           const resultFile = resolveEvidenceFile(root, resultPath);
-          if (crypto.createHash('sha256').update(fs.readFileSync(resultFile)).digest('hex') !== ref.resultSha256) {
+          if (digestFile(resultFile) !== ref.resultSha256) {
             throw new Error('local result hash mismatch');
           }
           const packetRoot = resolveEvidenceFile(root, path.join(packetPath, 'manifest.json'));
           const packetDirectory = path.dirname(packetRoot);
-          const packet = verifyPacket(packetDirectory);
-          const manifestBytes = fs.readFileSync(packetRoot);
-          if (crypto.createHash('sha256').update(manifestBytes).digest('hex') !== ref.manifestSha256) throw new Error('frozen packet manifest hash mismatch');
+          const packetKey = fs.realpathSync(packetDirectory);
+          let verified = verifiedPackets.get(packetKey);
+          if (!verified) {
+            try {
+              const packet = verify(packetDirectory, { readFile: readCached, listFiles, limits, hashBytes });
+              verified = { packet, manifestSha256: hashBytes(readCached(packetRoot)) };
+            } catch (error) {
+              verified = { error: error.message };
+            }
+            verifiedPackets.set(packetKey, verified);
+          }
+          if (verified.error) throw new Error(verified.error);
+          if (verified.manifestSha256 !== ref.manifestSha256) throw new Error('frozen packet manifest hash mismatch');
+          const packet = verified.packet;
           const sourceRevision = packet.sourceRevision ?? packet.revision;
           if (packet.id !== ref.packetId || sourceRevision !== receipt.testedRevision) throw new Error('packet id or packet revision does not match receipt');
-          const result = readJson(resultFile);
-          if (!Array.isArray(result.cases) || !result.cases.some((item) => item?.packetId === ref.packetId
-            && item?.id === ref.caseId
-            && ((typeof item?.outcome === 'string' && item.outcome.trim())
-              || (typeof item?.decision === 'string' && item.decision.trim())))) {
+          if (!resultHasCase(resultFile, ref.packetId, ref.caseId)) {
             throw new Error(`case ${ref.packetId}/${ref.caseId} is not locatable in structured result evidence`);
           }
         } catch (error) { errors.push(`${check.name}: ${error.message}`); }
@@ -188,7 +262,33 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
         const diffPaths = execFileSync('git', ['diff', '--name-only', `${opts.base}...${opts.head ?? 'HEAD'}`], { cwd: rootDefault, encoding: 'utf8' }).trim().split('\n').filter(Boolean);
         changed = mergeChangedPaths(changed, diffPaths);
       }
-      const output = planBaselines(readJson(path.join(rootDefault, 'skill-evals/behavior-baselines.json')), changed);
+      let manifest;
+      if (opts.base) {
+        const { execFileSync } = await import('node:child_process');
+        const head = opts.head ?? 'HEAD';
+        const committedBytes = execFileSync('git', ['show', `${head}:skill-evals/behavior-baselines.json`], { cwd: rootDefault, encoding: 'buffer' });
+        const committedManifest = JSON.parse(committedBytes.toString('utf8'));
+        const registryPath = 'skill-evals/behavior-baselines.json';
+        if ((opts.file ?? []).includes(registryPath)
+          && !fs.readFileSync(path.join(rootDefault, registryPath)).equals(committedBytes)) {
+          throw new Error('working behavior-baselines.json differs from the committed head; use path-only planning without --base, or commit the registry change before committed-range planning');
+        }
+        manifest = committedManifest;
+      } else manifest = readJson(path.join(rootDefault, 'skill-evals/behavior-baselines.json'));
+      let semanticConfig = null;
+      if (opts.base && changed.includes(CONFIG_PATH) && !(opts.file ?? []).includes(CONFIG_PATH)) {
+        try {
+          const { execFileSync } = await import('node:child_process');
+          const head = opts.head ?? 'HEAD';
+          const mergeBase = execFileSync('git', ['merge-base', opts.base, head], { cwd: rootDefault, encoding: 'utf8' }).trim();
+          const before = execFileSync('git', ['show', `${mergeBase}:${CONFIG_PATH}`], { cwd: rootDefault, encoding: 'buffer' });
+          const after = execFileSync('git', ['show', `${head}:${CONFIG_PATH}`], { cwd: rootDefault, encoding: 'buffer' });
+          semanticConfig = analyzeConfigChange(before, after, manifest);
+        } catch (error) {
+          semanticConfig = { safe: false, reason: `config comparison unavailable: ${error.message}` };
+        }
+      }
+      const output = planBaselines(manifest, changed, { semanticConfig });
       console.log(JSON.stringify(output, null, 2));
     } else if (mode === 'preflight' && opts.receipt) {
       const result = preflightReceipt(rootDefault, readJson(path.resolve(rootDefault, opts.receipt)));
