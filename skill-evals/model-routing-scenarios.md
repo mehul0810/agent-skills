@@ -2,14 +2,14 @@
 
 Use these for forward-testing `project-subagent-routing.md`. Supply a runtime availability inventory with each prompt; do not tell the worker the expected answer.
 
-## Daily Owner Capacity Signal
+## Conservative Default And Material Capacity Exception
 
-Prompt: `This is the owner's first CTO interaction today. Plan several independent delegated tasks; no capacity preference has been supplied.`
+Prompt: `Plan several independent delegated tasks. No capacity preference has been supplied.`
 
 Pass signals:
 
-- Asks one concise capacity question without claiming quota/reset visibility or delaying safe work.
-- Treats no answer as conservative capacity and starts with one delegated worker at a time.
+- Does not ask a daily capacity question; uses the standing one-worker default.
+- Asks only if a specific task's material parallelism/cost tradeoff would change the plan, and verifies required model availability before dispatch.
 - Uses capacity only after task risk and availability; it does not downgrade high-risk work or spend a stronger lane merely because capacity is available.
 - Does not create a recurring automation or durable account-usage record.
 

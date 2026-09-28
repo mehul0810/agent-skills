@@ -18,14 +18,13 @@ Current owner allocation: use GPT-6 Luna for implementation, fixes, tests, and r
 
 Use low reasoning for routine deterministic work, medium by default, and high for ambiguity or consequential risk. Use xhigh only with concrete complexity or failed-proof justification. Never use max/ultra without explicit owner approval. Verify supported reasoning at runtime; prose cannot change a running task's model or effort.
 
-### Owner Capacity Signal
+### Capacity And Concurrency
 
-On the owner's first CTO interaction of their local calendar day, ask once: `Should I plan delegated work around conservative capacity, or do you expect to use available capacity today or this week?`
+Use one delegated worker at a time as the standing default. Verify the required model and reasoning availability before dispatch; never infer capacity or quota from runtime exposure. Do not claim quota/reset visibility or control. Do not ask for a daily capacity signal. Ask only when a specific task materially benefits from parallel or long-running work and the added cost/capacity tradeoff would change the recommendation.
 
-- Ask once, never block/repeat. Missing answer means one worker at a time. Never claim quota/reset visibility or control.
-- After risk/availability classification, use it only for tier, reasoning, concurrency, and duration; never lower risk or expand authority.
-- Reserve optional higher-cost or long-running parallel work for stated capacity; high-risk final review still uses owner-approved GPT-6 Sol with supported reasoning regardless of the capacity signal.
-- Keep the signal in the current CTO control context. Do not create a recurring automation or durable account-usage record unless the owner explicitly requests it.
+- A user-supplied capacity preference may inform concurrency and duration only; it never lowers risk or expands authority.
+- Keep high-risk independent review on the owner-approved GPT-6 Sol lane with supported reasoning, regardless of capacity preferences.
+- Do not create a recurring automation or durable account-usage record unless the owner explicitly requests it.
 
 ### Work Classification
 
@@ -100,7 +99,7 @@ Use the five optional [project agent templates](../../templates/project-agents/R
 
 ## Project Configuration
 
-Keep concurrency conservative and reduce it further when the capacity signal is missing or conservative:
+Keep concurrency conservative; one worker at a time is the default. Increase only when the task justifies the coordination and cost and runtime availability is verified:
 
 ```toml
 [agents]
