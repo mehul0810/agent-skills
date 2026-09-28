@@ -22,6 +22,7 @@ const checks = [
   ['Diff', 'git', ['diff', '--check']],
   ['Validation Python regression', 'node', ['scripts/test-validation-python.mjs']],
   ['Evaluation packet regression', 'node', ['scripts/test-eval-packet.mjs']],
+  ['Evaluation feedback lifecycle regression', 'node', ['scripts/test-eval-feedback-loop.mjs']],
   ['Continuity hook regression', 'node', ['scripts/test-continuity-hook.mjs']],
   ['Harness dependency compatibility', 'node', ['scripts/test-harness-runtime-fingerprint.mjs']],
   ['Context bundle regression', 'node', ['scripts/test-context-bundle.mjs']],

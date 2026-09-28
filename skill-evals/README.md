@@ -4,6 +4,26 @@ Scenario files are behavioral specifications, not executed tests. Grep-based aud
 
 For fresh runs, use [packet-contract.md](packet-contract.md) to separate evaluator inputs from scoring criteria and freeze an allowlisted artifact manifest. Mixed scenario Markdown is author-side material, not a blind evaluator packet.
 
+### Refresh Planning And Draft Receipts
+
+Before dispatch, run the dependency planner against the committed range being evaluated:
+
+```bash
+node scripts/eval-feedback-loop.mjs plan --base origin/main --head HEAD
+```
+
+This compares committed `base...head` paths only; it does not include staged, unstaged, or untracked worktree files. Supply those paths explicitly with repeated `--file PATH` options, for example `node scripts/eval-feedback-loop.mjs plan --file wp-expert/SKILL.md --file skill-evals/new-cases.md`. Paths are repository-relative and may not contain `..`. The planner binds baseline dependencies from source files, scenario files and explicitly registered fixtures. It emits every `requiredChecks` entry for each affected baseline; it never proposes a subset. Changes not mapped to a baseline are listed as `unmapped` and invalidate selective planning. Changes to the baseline registry, evidence validator, runtime fingerprint, package lock or harness config invalidate every baseline. Regardless of planner output, `fullAggregateRequired` is always true for publication.
+
+After dispatch and scoring, create a draft JSON receipt and preflight it without modifying the baseline registry:
+
+```bash
+node scripts/eval-feedback-loop.mjs preflight --receipt /absolute/path/to/draft-receipt.json
+```
+
+The receipt uses `schemaVersion: 1`, `status: "draft"`, `baseline`, and exact `testedRevision`. `evaluation.evaluator` and `.scorer` each record a distinct non-empty `identity`, explicit `exposedPaths`, and boolean `expectedAnswersExposed` / `candidateSourceExposed` attestations. The evaluator attestations must be false; scorer exposure is recorded as observed and is not inferred from filenames. Every required check appears exactly once with `result` equal to `pass`, `fail`, or `incomplete`, and at least one `cases` reference. Each case reference contains `packetId`, `caseId`, `packetPath`, `manifestSha256`, `resultPath`, and `resultSha256`. Packet integrity is verified against its manifest and its frozen hash; the result JSON must contain a non-empty `outcome` or `decision` row in `cases` matching the exact `packetId` and `caseId`. The check-to-case mapping lives in the receipt, so one evaluator result may support more than one required check. Result/packet files can remain in an ignored private runtime or temporary location; do not add raw evaluator outputs to Git. Relative paths must stay within the repository and symlink leaves are rejected. Absolute paths are supported for private runtime artifacts.
+
+Preflight reports `complete`, `incomplete`, `failed`, or `invalid`, and always reports `admission: "not-performed"`. It authenticates local bytes against supplied SHA-256 values, not who created them, the truth of exposure attestations, a remote/native artifact, or semantic correctness. A complete draft is not baseline evidence: independently review/scoring must finish, sanitize the run record, run the existing evidence audit, and update the baseline through the established review workflow. Never use this command to bless a declared pass or rewrite historical evidence.
+
 For any change that alters authority, routing, release behavior, hallucination controls, design execution, or owner-correction learning:
 
 1. Run structural validation.
