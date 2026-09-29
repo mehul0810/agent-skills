@@ -55,6 +55,8 @@ For a material ambiguous decision, retain privately: `class | options | choice |
 
 Calibration is evidence, not policy. Record later acceptance, modification, or reversal only as a sanitized disposition and pointer. Never store full chat, ask solely for training, or mutate policy without review.
 
+A disposition update retains the complete decision envelope, including its original class and options; do not replace it with a choice-only summary. Mark unavailable fields unknown, and append the changed assumption, outcome status, verifier, and next review trigger without inventing facts.
+
 ## Correction And Promotion
 
 An owner correction is not complete with an apology or local patch:
