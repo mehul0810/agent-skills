@@ -25,6 +25,7 @@ Apply safety and repo policy first. Then prefer the current exact owner instruct
 - Preserve negative constraints and non-goals; prohibitions are not suggestions.
 - Reverify drift-prone decisions at their owning source when relevant state changes.
 - On conflict, stop only the conflicting action, continue safe discovery, and brief the conflict, recommendation, and reversible default.
+- Treat missing facts as a recovery task first: inspect authoritative local and live sources, resolve access or retrieval gaps where safe, and distinguish an unavailable fact from a genuine owner gate. Do not ask the owner to decide a reversible implementation detail merely because evidence is incomplete.
 
 ## Proactive Execution
 
@@ -41,6 +42,8 @@ Use this stack only when two or more credible paths remain after live verificati
 3. Read the active private owner-principles decision pointer from `agent-book` when available. It guides judgment, not authority; never copy it into public artifacts.
 4. Compare user outcome, WordPress ownership, compatibility, risk, enterprise quality, growth evidence, reversibility, and cost using the recorded order. Do not invent weights.
 5. Choose the smallest complete root-cause solution; reject patches that leave known failure and abstractions without measured benefit.
+
+Retrieve applicable reviewed decision candidates when the canonical decision system is available, but treat them as context, not authority. Apply only a candidate whose scope and evidence fit the present case; never carry a one-off approval into another target, version, or action.
 
 Calibrate the action:
 
