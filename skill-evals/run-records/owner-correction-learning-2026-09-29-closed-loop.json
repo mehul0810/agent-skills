@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "runId": "owner-correction-learning-2026-09-29-closed-loop",
+  "scenario": "owner-correction-learning",
+  "result": "succeeded",
+  "startedAt": "2026-09-29T07:07:01.000Z",
+  "durationMs": 515371,
+  "checks": [
+    {
+      "name": "immediate-root-cause-correction",
+      "result": "pass"
+    },
+    {
+      "name": "compact-correction-result",
+      "result": "pass"
+    },
+    {
+      "name": "worker-candidate-only",
+      "result": "pass"
+    },
+    {
+      "name": "dedupe-and-repeatability-gate",
+      "result": "pass"
+    },
+    {
+      "name": "reviewed-durable-destination",
+      "result": "pass"
+    },
+    {
+      "name": "decision-envelope-preserved",
+      "result": "pass"
+    },
+    {
+      "name": "task-authorization-not-promoted",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 7,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "owner-correction-learning-2026-09-29-closed-loop",
+    "artifactPointer": "skill-evals/closed-loop-evidence-2026-09-29.md"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-09-29T07:15:36.371Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Required synthetic checks passed at 521eb45772f444ae7c7c25db676a7817b090883b. Three originally incomplete cases use a separately timestamped prompted structured-format follow-up; all original mappings retained. Combined elapsed window includes the gap; not an unprompted all-case pass. No live outcomes, token savings or native execution inferred. See evidence note for raw and normalized hashes and limitations."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}

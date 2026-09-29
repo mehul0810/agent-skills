@@ -715,7 +715,7 @@
         "shared/references/plugin-release-workflow.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "de5029cd42f5dc6dac97e086c62c0e43b1f91ff5d67e3edbbe5733d52d900802",
+      "sha256": "2d140d67a69505f7046a2588c9ef82484ef4bda0318587dffc5b3b27c4b01c64",
       "scenario": {
         "id": "product-release-authority",
         "files": [
@@ -776,10 +776,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-release-authority-2026-09-28-ci-policy-refresh.json",
-          "sha256": "439b10585e5d5ad95bbf66e25f63d61cf0b4f41064f4fb3dc43eb7fb6c0490d8",
-          "testedRevision": "df678758406d2ae3b7d850f445d07cdd371ecbef",
-          "testedSourceSha256": "de5029cd42f5dc6dac97e086c62c0e43b1f91ff5d67e3edbbe5733d52d900802",
+          "runRecord": "skill-evals/run-records/product-release-authority-2026-09-29-closed-loop.json",
+          "sha256": "4781347e6bb1f43f9f979ebde2abe73d579d1dc23cff01a75ae75267afe8b1b8",
+          "testedRevision": "521eb45772f444ae7c7c25db676a7817b090883b",
+          "testedSourceSha256": "2d140d67a69505f7046a2588c9ef82484ef4bda0318587dffc5b3b27c4b01c64",
           "testedScenarioSha256": "415eb151638237bf0c9a4cc09f6462e4f028386f88256125e0f3b8369c87f34e",
           "runtime": {
             "host": "codex-desktop",
@@ -798,7 +798,7 @@
         "shared/references/self-improvement-loop.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "378c0ed684c148f141a86cb6ec99ebb44ef2ed6440107187f30c2d01ecf134d1",
+      "sha256": "c8908447e0f15d3d04ba825eab37b1f3db959c56046732c3d855f563942f677c",
       "scenario": {
         "id": "owner-correction-learning",
         "files": [
@@ -826,10 +826,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/owner-correction-learning-2026-09-28-ci-policy-refresh.json",
-          "sha256": "f91f6380526d8fa4e0f2f6cc327326fc6d6f606085c9876fed00678f67006ef2",
-          "testedRevision": "df678758406d2ae3b7d850f445d07cdd371ecbef",
-          "testedSourceSha256": "378c0ed684c148f141a86cb6ec99ebb44ef2ed6440107187f30c2d01ecf134d1",
+          "runRecord": "skill-evals/run-records/owner-correction-learning-2026-09-29-closed-loop.json",
+          "sha256": "b4e7664389d77962c01665862ec1e01252ebf7ac6df668ee3bc3921ef8fc6ef1",
+          "testedRevision": "521eb45772f444ae7c7c25db676a7817b090883b",
+          "testedSourceSha256": "c8908447e0f15d3d04ba825eab37b1f3db959c56046732c3d855f563942f677c",
           "testedScenarioSha256": "b73d82e24abe107bee6eca83f4cfb99e0cb14d7bee22ea956c19d298093f7ca4",
           "runtime": {
             "host": "codex-desktop",
@@ -848,7 +848,7 @@
         "wp-product-orchestrator/SKILL.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "8298a22cf47050942e77d3d21a2f7e9ce0bb05885baf54c172e3d48a1d3a038a",
+      "sha256": "2750630613dfa2ebe1318515433e7842a82e1976e912d663ab3faba672a1a48e",
       "scenario": {
         "id": "owner-aligned-judgment",
         "files": [
@@ -889,10 +889,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/owner-aligned-judgment-2026-09-28-ci-policy-refresh.json",
-          "sha256": "70631a108da652d10c4fc915ca8da7679a0573e3c4e99a8e86ebc2a2d434e401",
-          "testedRevision": "df678758406d2ae3b7d850f445d07cdd371ecbef",
-          "testedSourceSha256": "8298a22cf47050942e77d3d21a2f7e9ce0bb05885baf54c172e3d48a1d3a038a",
+          "runRecord": "skill-evals/run-records/owner-aligned-judgment-2026-09-29-closed-loop.json",
+          "sha256": "4cf9179569e815b13c29ce37481b50b939f083d31ebe97524df545a859828ac8",
+          "testedRevision": "521eb45772f444ae7c7c25db676a7817b090883b",
+          "testedSourceSha256": "2750630613dfa2ebe1318515433e7842a82e1976e912d663ab3faba672a1a48e",
           "testedScenarioSha256": "54b4ae2bce4d363eecee4fad87a2b5e39ae29e0c98c722ac773dc9447afc6d02",
           "runtime": {
             "host": "codex-desktop",
