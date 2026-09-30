@@ -14,21 +14,23 @@ Delegate when parallel mapping, independent lanes, second review, or browser/CI 
 
 At each delegation, verify runtime availability and follow the current owner model-allocation policy; it overrides older capability-family guidance. Classify ambiguity, completeness, risk, reversibility, evidence/context, latency, and cost before selecting a supported reasoning level. Runtime exposure or inherited settings do not authorize another model.
 
-Current owner allocation: use GPT-6 Luna for implementation, fixes, tests, and routine evidence work; use GPT-6 Sol for orchestration, planning, frontend work, and high-risk final review. Frontend takes precedence over the general implementation lane. Do not select another model for a task, worker, reviewer, retry, or automation without the owner's explicit approval for that assignment. If the required model is unavailable, stop only that assignment and ask the owner; do not silently fall back.
+Current owner allocation: use GPT-6 Luna (`gpt-6-luna`) for routine implementation, fixes, tests, and evidence work; prefer GPT-6.1 Sol (`gpt-6.1-sol`) for most Sol agents/subagents, including orchestration, planning, frontend implementation and design. Retain GPT-6 Sol (`gpt-6-sol`) only for a documented, justified assignment exception within the owner-authorized Sol preference policy. Record the lower Sol task scope and concrete compatibility or other task-specific reason; the standing permission to use lower Sol when needed does not require redundant approval for a qualifying assignment. Inheritance, runtime exposure, or unavailability alone is not a justification. Frontend takes precedence over the general implementation lane. Do not select another model for a task, worker, reviewer, retry, or automation outside the current owner policy or its explicit assignment exception. If the required model is unavailable, stop only that assignment and ask the owner; do not silently fall back.
 
-Use low reasoning for routine deterministic work, medium by default, and high for ambiguity or consequential risk. Use xhigh only with concrete complexity or failed-proof justification. Never use max/ultra without explicit owner approval. Verify supported reasoning at runtime; prose cannot change a running task's model or effort.
+The owner's existing demanding-work and exceptional-work thresholds remain unchanged: prefer GPT-6.1 Sol for demanding architecture, consequential ambiguity, high-risk final review, and bounded escalation after a genuine reasoning failure. Reserve GPT-6 Astra (`gpt-6-astra`) for exceptional work with a recorded complexity or failed-proof justification showing why 6.1 Sol is insufficient. Do not select Astra by default, for routine retries, or merely because another model is unavailable. Return to the lowest sufficient approved lane after the exceptional work. Missing access, stale inputs, tool outages, and authority gaps are not reasoning failures. Never select GPT-5.6 or older or an unapproved model.
+
+Use low reasoning for routine deterministic work, medium by default, and high for ambiguity or consequential risk. Use xhigh only with concrete complexity or failed-proof justification. Never use max/ultra without explicit owner approval. Verify supported reasoning at runtime; check the literal model ID and inherited model/effort before dispatch and explicitly override when inheritance differs. Use bounded context for overrides. Apply changes through supported runtime controls; prose cannot change a running task's model or effort. When no setter is available, request a model change rather than claiming one occurred.
 
 ### Capacity And Concurrency
 
 Use one delegated worker at a time as the standing default. Verify the required model and reasoning availability before dispatch; never infer capacity or quota from runtime exposure. Do not claim quota/reset visibility or control. Do not ask for a daily capacity signal. Ask only when a specific task materially benefits from parallel or long-running work and the added cost/capacity tradeoff would change the recommendation.
 
 - A user-supplied capacity preference may inform concurrency and duration only; it never lowers risk or expands authority.
-- Keep high-risk independent review on the owner-approved GPT-6 Sol lane with supported reasoning, regardless of capacity preferences.
+- Keep high-risk independent review on the owner-approved GPT-6.1 Sol lane with supported reasoning, regardless of capacity preferences.
 - Do not create a recurring automation or durable account-usage record unless the owner explicitly requests it.
 
 ### Work Classification
 
-Classify work to choose among the owner-approved lanes, not to invent model substitutions: Luna handles monitoring, mapping, deterministic evidence, screenshots, docs, tests, simple CI, fixes, and implementation; Sol handles orchestration, planning, frontend work, and high-risk final review. Keep routine security lint or dependency review in the normal lane; security model specialization requires explicit owner approval for the task. Model selection changes capability, not authority.
+Classify work to choose among the owner-approved lanes, not to invent model substitutions: Luna handles routine monitoring, mapping, deterministic evidence, screenshots, docs, tests, simple CI, fixes, and implementation; 6.1 Sol handles orchestration, planning, frontend work, and high-risk final review. Retain demanding-work classification even though its preferred model now matches the general Sol lane; exceptional Astra work still requires the recorded justification above. Keep routine security lint or dependency review in the normal lane; security model specialization requires explicit owner approval for the task. Model selection changes capability, not authority.
 
 Portfolio sweeps use low/medium; product heartbeats use medium. Escalate reasoning only for listed ambiguity or risk. Screenshots and bounded official research stay low-effort unless judgment is consequential.
 
@@ -38,7 +40,7 @@ Escalate reasoning after concrete ambiguity, failed proof, inadequate implementa
 
 Classify repeated retries or weak evidence caused by the assigned lane as `wrong model/reasoning allocation`, then reassess availability and tier.
 
-If the owner-approved model or a needed reasoning level is unavailable, do not substitute another model. Ask the owner before that assignment; meanwhile, continue independent work that does not depend on it. Do not report an unapproved fallback as completed:
+If the owner-approved model or a needed reasoning level is unavailable, do not substitute another model without an already authorized, documented assignment exception consistent with owner policy. Otherwise ask the owner before that assignment; meanwhile, continue independent work that does not depend on it. Availability alone never justifies lower Sol or Astra. Do not report an unapproved fallback as completed:
 
 ```text
 Requested: <model/reasoning>

@@ -1,0 +1,8 @@
+{
+  "id": "sol-family-preference",
+  "request": "Apply the supplied candidate routing guidance to each independent synthetic request using its runtime inventory. For paired cases compare against the supplied prior owner policy. Return an allocation/hold, reasoning, exception or escalation basis, unchanged boundaries, and evidence limits. Do not dispatch, execute, change settings, publish or create automations.",
+  "artifacts": [
+    "cases.json",
+    "prior-owner-model-policy.json"
+  ]
+}

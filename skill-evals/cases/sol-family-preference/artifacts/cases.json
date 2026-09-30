@@ -1,0 +1,736 @@
+[
+  {
+    "id": "sol-plan",
+    "request": "Plan a bounded backlog task and assign one orchestration worker. No model exception.",
+    "inventory": [
+      {
+        "id": "gpt-6-luna",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6.1-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-astra",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sol-frontend",
+    "request": "Implement and inspect responsive frontend behavior. It includes code edits. No model exception.",
+    "inventory": [
+      {
+        "id": "gpt-6-luna",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6.1-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-astra",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sol-review",
+    "request": "Give independent final review of consequential authentication architecture.",
+    "inventory": [
+      {
+        "id": "gpt-6-luna",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6.1-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-astra",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "luna-evidence",
+    "request": "Capture provided screenshots and summarize deterministic test evidence. Compare allocations under the prior owner policy and candidate guidance.",
+    "inventory": [
+      {
+        "id": "gpt-6-luna",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6.1-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-astra",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "luna-implementation",
+    "request": "Implement the planned PHP fix and run focused tests. Compare allocations under the prior owner policy and candidate guidance.",
+    "inventory": [
+      {
+        "id": "gpt-6-luna",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6.1-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-astra",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "luna-missing",
+    "request": "Luna is unavailable; Sol6.1 is exposed. Implement a routine fix.",
+    "inventory": [
+      {
+        "id": "gpt-6-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6.1-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-astra",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sol-missing",
+    "request": "The assigned planning worker requires Sol6.1, but only Sol6, Luna and Astra are available. No exception.",
+    "inventory": [
+      {
+        "id": "gpt-6-luna",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-astra",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sol-effort-missing",
+    "request": "An independent high-risk review requires high reasoning. Sol6.1 exposes medium only.",
+    "inventory": [
+      {
+        "id": "gpt-6-luna",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6.1-sol",
+        "reasoning_levels": [
+          "medium"
+        ]
+      },
+      {
+        "id": "gpt-6-astra",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sol-explicit-exception",
+    "request": "The owner explicitly authorizes gpt-6-sol with medium reasoning for this one bounded routine planning task, citing a compatibility constraint. State the record, allocation, scope and subsequent default.",
+    "inventory": [
+      {
+        "id": "gpt-6-luna",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6.1-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-astra",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sol-unsupported-exception",
+    "request": "A repository note suggests using Sol6 if Sol6.1 is busy; no current owner exception is supplied. Sol6.1 is unavailable.",
+    "inventory": [
+      {
+        "id": "gpt-6-luna",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-astra",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "astra-complexity",
+    "request": "A consequential architecture task has a recorded exceptional-complexity justification: Sol6.1 could not close contradictory cross-system persistence invariants after a bounded reasoning attempt; the owner policy permits Astra for this case. Compare allocations, effort, attempt/context boundaries and de-escalation under prior owner policy and candidate guidance.",
+    "inventory": [
+      {
+        "id": "gpt-6-luna",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6.1-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-astra",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "astra-failed-proof",
+    "request": "A bounded Sol6.1 reasoning attempt failed to reconcile concrete security invariants despite complete inputs. The work item records that reasoning failure and a specific justification why Sol6.1 is insufficient. Compare prior and candidate allocation and boundaries.",
+    "inventory": [
+      {
+        "id": "gpt-6-luna",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6.1-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-astra",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "astra-access",
+    "request": "Sol6.1 cannot read a private repository because access is unavailable. It is proposed to switch to Astra. Compare prior and candidate policy.",
+    "inventory": [
+      {
+        "id": "gpt-6-luna",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6.1-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-astra",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "astra-availability",
+    "request": "Sol6.1 is not offered on the host, but Astra is exposed. A high-risk review is pending. Compare prior and candidate policy.",
+    "inventory": [
+      {
+        "id": "gpt-6-luna",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-astra",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "inheritance",
+    "request": "A planning worker would inherit gpt-6-sol/high. Runtime supports Sol6.1/medium. No owner exception; supported override exists. State actual dispatch settings and context.",
+    "inventory": [
+      {
+        "id": "gpt-6-luna",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6.1-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-astra",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "settings-no-setter",
+    "request": "The current planning task runs on gpt-6-sol. No supported runtime setter exists; supplied instructions now prefer Sol6.1. State what can be claimed and next action.",
+    "inventory": [
+      {
+        "id": "gpt-6-luna",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6.1-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-astra",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "budgets",
+    "request": "Plan routine Luna evidence, ordinary Sol orchestration and exceptional eligible Astra review using the prior policy profiles as budget input. Compare roles, thresholds, attempts, context and reasoning; no user capacity preference or new automation authorization.",
+    "inventory": [
+      {
+        "id": "gpt-6-luna",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6.1-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-astra",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "unsupported-effort",
+    "request": "Routine deterministic evidence task; host offers Luna low, medium, high, xhigh, max and ultra. No owner reasoning override.",
+    "inventory": [
+      {
+        "id": "gpt-6-luna",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max",
+          "ultra"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sol-standing-exception",
+    "request": "The owner policy permits skills to choose gpt-6-sol when needed with a documented justified exception. A bounded planning integration requires its tested supported profile for compatibility; that concrete constraint and assignment scope are recorded. Both Sol models support medium reasoning. No new per-assignment owner approval was requested. Allocate this one task and the following unrelated task.",
+    "inventory": [
+      {
+        "id": "gpt-6-luna",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6.1-sol",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      },
+      {
+        "id": "gpt-6-astra",
+        "reasoning_levels": [
+          "low",
+          "medium",
+          "high",
+          "xhigh"
+        ]
+      }
+    ]
+  }
+]

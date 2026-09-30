@@ -1,0 +1,113 @@
+{
+  "policy_version": "2026-09-29",
+  "profiles": {
+    "monitor": {
+      "profile_id": "monitor",
+      "route": "routine",
+      "allowed_model_ids": ["gpt-6-luna"],
+      "reasoning": "low",
+      "reasoning_ceiling": "low",
+      "max_attempts": 1,
+      "context_budget": "minimal",
+      "use_for": "narrow freshness and duplicate checks with no eligible execution"
+    },
+    "triage": {
+      "profile_id": "triage",
+      "route": "planning",
+      "allowed_model_ids": ["gpt-6-sol"],
+      "reasoning": "medium",
+      "reasoning_ceiling": "high",
+      "max_attempts": 1,
+      "context_budget": "bounded",
+      "use_for": "backlog triage, issue planning, and routine PO work"
+    },
+    "execution": {
+      "profile_id": "execution",
+      "route": "standard",
+      "allowed_model_ids": ["gpt-6-luna"],
+      "reasoning": "medium",
+      "reasoning_ceiling": "high",
+      "max_attempts": 2,
+      "context_budget": "task-scoped",
+      "use_for": "implementation, fixes, tests, and routine evidence"
+    },
+    "orchestration": {
+      "profile_id": "orchestration",
+      "route": "orchestration",
+      "allowed_model_ids": ["gpt-6-sol"],
+      "reasoning": "medium",
+      "reasoning_ceiling": "high",
+      "max_attempts": 1,
+      "context_budget": "decision-scoped",
+      "use_for": "orchestration and planning"
+    },
+    "frontend": {
+      "profile_id": "frontend",
+      "route": "frontend",
+      "allowed_model_ids": ["gpt-6-sol"],
+      "reasoning": "medium",
+      "reasoning_ceiling": "high",
+      "max_attempts": 2,
+      "context_budget": "task-scoped",
+      "use_for": "frontend implementation and design"
+    },
+    "critical": {
+      "profile_id": "critical",
+      "route": "critical",
+      "allowed_model_ids": ["gpt-6.1-sol"],
+      "reasoning": "high",
+      "reasoning_ceiling": "high",
+      "max_attempts": 2,
+      "context_budget": "decision-scoped",
+      "use_for": "demanding architecture/planning, consequential ambiguity, bounded 6.1 escalation, and critical or high-risk final review"
+    },
+    "astra_escalation": {
+      "profile_id": "astra_escalation",
+      "route": "critical_escalation",
+      "allowed_model_ids": ["gpt-6-astra"],
+      "reasoning": "high",
+      "reasoning_ceiling": "high",
+      "max_attempts": 1,
+      "context_budget": "decision-scoped",
+      "use_for": "rare, explicitly justified escalation after a reasoning failure or exceptional complexity"
+    }
+  },
+  "execution_roles": {
+    "implementation": "execution",
+    "fixes": "execution",
+    "tests": "execution",
+    "routine_evidence": "execution",
+    "orchestration": "orchestration",
+    "planning": "triage",
+    "frontend": "frontend",
+    "critical_review": "critical",
+    "demanding_review": "critical"
+  },
+  "selection": {
+    "critical_risk_or_release": "critical",
+    "ready_or_in_progress": "execution",
+    "backlog_or_planned": "triage",
+    "otherwise": "monitor"
+  },
+  "rules": {
+    "resolve_at_runtime": true,
+    "persist_provider_model_id": false,
+    "availability_inventory_env": "AGENT_LOOP_MODEL_INVENTORY",
+    "unavailable_model_action": "hold_and_ask_owner",
+    "fallback_allowed": false,
+    "profile_model_ids_are_exact": true,
+    "unknown_or_ambiguous_role_action": "hold_and_ask_owner",
+    "xhigh_requires_profile_justification": true,
+    "escalate_only_for_reasoning_failure": true,
+    "astra_requires_explicit_escalation_record": true,
+    "astra_never_used_for_unavailability_or_access_or_authority_blocks": true,
+    "do_not_escalate_for": [
+      "stale_input",
+      "missing_access",
+      "policy_block",
+      "approval_required",
+      "tool_outage"
+    ],
+    "preserve_risk_tier_before_cost": true
+  }
+}

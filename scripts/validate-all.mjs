@@ -17,6 +17,7 @@ export function validationChecks(python) {
     ['Context bundle regression', 'node', ['scripts/test-context-bundle.mjs']],
     ['Agent profiles', python.executable, ['scripts/validate-agent-profiles.py']],
     ['Agent profile rejection regression', python.executable, ['-O', 'scripts/test-agent-profiles.py']],
+    ['Model routing audit regression', 'node', ['scripts/test-model-routing-audit.mjs']],
     ['References and domain audits', 'bash', ['scripts/validate-references.sh']],
     ['Example record', 'npm', ['run', 'run-record:example']],
     ['Behavior records', 'node', ['scripts/validate-behavior-run-records.mjs']],

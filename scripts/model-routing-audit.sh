@@ -31,14 +31,19 @@ reject_section_regex() {
 
 require_text "shared/references/project-subagent-routing.md" "At each delegation" "delegation-time availability check"
 require_text "shared/references/project-subagent-routing.md" "follow the current owner model-allocation policy; it overrides older capability-family guidance" "current owner policy precedence"
-require_text "shared/references/project-subagent-routing.md" "use GPT-6 Luna for implementation, fixes, tests, and routine evidence work" "Luna implementation and evidence lane"
-require_text "shared/references/project-subagent-routing.md" "use GPT-6 Sol for orchestration, planning, frontend work, and high-risk final review" "Sol orchestration and high-risk lane"
-require_text "shared/references/project-subagent-routing.md" "Do not select another model for a task, worker, reviewer, retry, or automation without the owner's explicit approval" "no unapproved model substitution"
+require_text "shared/references/project-subagent-routing.md" 'use GPT-6 Luna (`gpt-6-luna`) for routine implementation, fixes, tests, and evidence work' "unchanged Luna implementation and evidence lane"
+require_text "shared/references/project-subagent-routing.md" 'prefer GPT-6.1 Sol (`gpt-6.1-sol`) for most Sol agents/subagents, including orchestration, planning, frontend implementation and design' "preferred literal Sol model and general lane"
+require_text "shared/references/project-subagent-routing.md" 'Retain GPT-6 Sol (`gpt-6-sol`) only for a documented, justified assignment exception within the owner-authorized Sol preference policy' "lower Sol explicit exception"
+require_text "shared/references/project-subagent-routing.md" "outside the current owner policy or its explicit assignment exception" "no unapproved model substitution"
+require_text "shared/references/project-subagent-routing.md" 'Reserve GPT-6 Astra (`gpt-6-astra`) for exceptional work with a recorded complexity or failed-proof justification showing why 6.1 Sol is insufficient' "unchanged Astra exceptional threshold"
+require_text "shared/references/project-subagent-routing.md" "Missing access, stale inputs, tool outages, and authority gaps are not reasoning failures" "non-reasoning failures do not justify Astra"
+require_text "shared/references/project-subagent-routing.md" "Return to the lowest sufficient approved lane after the exceptional work" "Astra de-escalation"
 require_text "shared/references/project-subagent-routing.md" "stop only that assignment and ask the owner; do not silently fall back" "unavailable required model gate"
 require_text "shared/references/project-subagent-routing.md" "Model selection changes capability, not authority" "allocation authority boundary"
 require_text "shared/references/project-subagent-routing.md" "Use low reasoning for routine deterministic work, medium by default, and high for ambiguity or consequential risk" "owner reasoning defaults"
 require_text "shared/references/project-subagent-routing.md" "Never use max/ultra without explicit owner approval" "max and ultra owner gate"
 require_text "shared/references/project-subagent-routing.md" "Verify supported reasoning at runtime" "reasoning capability check"
+require_text "shared/references/project-subagent-routing.md" "check the literal model ID and inherited model/effort before dispatch" "supported literal runtime and inheritance check"
 require_text "shared/references/project-subagent-routing.md" "must not pin transient models/reasoning" "model-free reusable profiles"
 require_text "shared/references/project-subagent-routing.md" "Never use a full-history worker fork" "bounded worker context"
 require_text "shared/references/project-subagent-routing.md" "Use one delegated worker at a time as the standing default" "conservative concurrency default"
@@ -60,6 +65,9 @@ require_text "skill-evals/model-routing-scenarios.md" "Max Or Ultra Needs Explic
 require_text "skill-evals/model-routing-scenarios.md" "Missing Runtime Classes" "per-class fallback scenario"
 require_text "skill-evals/model-routing-scenarios.md" "Owner Model Policy Overrides Runtime Inventory" "owner model policy scenario"
 require_text "skill-evals/model-routing-scenarios.md" "Bounded Worker Context" "worker context scenario"
+require_text "skill-evals/model-routing-scenarios.md" "Documented Lower Sol Exception" "supported lower Sol exception scenario"
+require_text "skill-evals/model-routing-scenarios.md" "Exceptional Astra Threshold Unchanged" "unchanged exceptional Astra scenario"
+require_text "skill-evals/model-routing-scenarios.md" "Non-Reasoning Failures Are Not Astra Escalation" "non-reasoning failure scenario"
 require_text "skill-evals/wp-product-orchestrator-scenarios.md" "current owner model allocation" "PO owner model allocation"
 
 # Historical records and provider/API integration examples may name models. Current
@@ -71,7 +79,7 @@ matches="$(find "$repo_root" -type f \( -name '*.md' -o -name '*.toml' -o -name 
   ! -path '*/scripts/model-routing-audit.sh' \
   ! -path '*/wp-expert/references/ai-llm-wordpress-product-engineering.md' \
   ! -path '*/wp-expert/references/third-party-api-integrations.md' \
-  -print0 | xargs -0 rg -o -i --no-filename 'gpt-[0-9]+(\.[0-9]+)?-[a-z0-9-]+|codex-spark' 2>/dev/null | sort -u | rg -vi '^gpt-6-(luna|sol)$' || true)"
+  -print0 | xargs -0 rg -o -i --no-filename 'gpt-[0-9]+(\.[0-9]+)?-[a-z0-9-]+|codex-spark' 2>/dev/null | sort -u | rg -vi '^(gpt-6-(luna|sol|astra)|gpt-6\.1-sol)$' || true)"
 
 if [ -n "$matches" ]; then
   echo "ERROR: unapproved/transient Codex model IDs found in normative current guidance:" >&2
