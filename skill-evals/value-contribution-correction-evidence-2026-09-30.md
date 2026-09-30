@@ -1,0 +1,38 @@
+# Value Contribution Correction Evidence (2026-09-30)
+
+This is a separate product-value guidance correction, not a Sol routing change. The earlier `skill-evals/sol-family-preference-evidence-2026-09-30.md` remains byte-identical as the historical blocked-stage snapshot; this note supplies the subsequent disposition.
+
+## Scope And Identity
+
+- Local branch `mg/sol-6-1-routing` in `/private/tmp/agent-skills-sol-6-1-routing`.
+- Previous Sol source `d422627b9494cb2d3bc0c0d47613a2cc9924a2bb`; previous blocked handoff `d6b8e1cffbaf06dd109235d63774635ef2eaf917`.
+- Separate correction source `6b00ee95f3ad67541c7f3b6dde147ebc28a706a5` changes only `shared/references/product-value-decision.md`, item 4. It requires a case-specific lifetime contribution formula over the supplied horizon, including incident burden, using supplied/verified inputs and explicit unknowns. The material-recommendation trigger includes Research; proportionality and mandatory-work treatment stay intact.
+- Existing acceptance criteria, all Sol/Luna/Astra guidance, role thresholds, efforts and budgets are unchanged. No controlled before/after causal comparison was run; a corrected decision pass would not establish that routing caused prior failure or demonstrate model quality/cost savings.
+
+## Original Failures Remain
+
+The original short-output first run passed 68/70 baseline checks but failed the required case-supp-09 lifetime/measurement proof. Its original summary remains SHA-256 `9bfb2a5256d7f04b41e29d6dece30996f00358d6d63c01a5674c5959cb62e4c2`. Uncapped medium and bounded high attempts each passed 10/11 value checks and failed lifetime contribution/incident burden; summaries remain SHA-256 `39e8b88a71b67b75fab77a2b2d5a0b4c57ea4d724c1ca090f4127c3418eb8c8f` and `e27c541f88bdc95dfa9f93bbc0924daaae7cd8b23292ead645969d73ed367bc3`. No output, criterion, score or old receipt was rewritten. Exact raw/metadata/receipt hashes are bound in `/private/tmp/value-contribution-correction-20260930/preservation-start.json` and its final comparison.
+
+## Fresh Affected Proof
+
+Five frozen normative guidance files and two raw subset packets at exact correction source are bound by `/private/tmp/value-contribution-correction-20260930/frozen-inputs.json`, SHA-256 `fbbfc454c61cb1a906ebcdcd67e5644913a14e1a969bd21d0bfdf61e02d84669`. The nine raw case objects and both payload digests are identical to the prior packets; only the intended normative guidance and manifest revision changed. The evaluator loaded only the 14 whitelisted files, without expected criteria, previous results or product implementation. UTC tool-observed interval: 15:04:30Z-15:10:44Z (374000 ms, one-second precision); token/cost telemetry unavailable. Raw results SHA-256 `d3a38bbb26c01475ec59af4d309d1be60aeab777e76119d4c36acd90300bf4ee`; metadata SHA-256 `3a2616f46a34f4c98300178020180127b58348842419eba68b90449bca8f81bd`.
+
+Independent scoring passes 9/9 cases, all 11/11 required value checks, and 4/4 focused probes against unchanged criteria. Scoring summary SHA-256 `3b5cd80357387209f5a2873c3de2d5755035031171e12517545a53d44a82a2d4`; draft receipt SHA-256 `1e58bd8a55e260a7c7d13a09b5725bc8120c527a1c5b686934894cab391fe9e4`. The raw structured decisions remain unchanged. A lossless separately hashed locator adapter adds only `outcome = JSON.stringify(decision)` to satisfy the existing preflight locator contract; adapter SHA-256 `8d946ca778428bfddcbbbcfa506196747ad81d9e96728cd1f53bceb392d251cc`. No decision content or score was altered for locatability.
+
+All five selected baseline receipts passed independent preflight and were admitted as local evidence at 15:18:08.550Z: 59 unchanged checks at original `d422627` plus 11 fresh value checks at `6b00ee9`. The initial 111-case attempt still has its original failed disposition; it is not relabeled 111 fresh passes. Admission result SHA-256 `0a9218676c7f1e9d4ef69a2ac86dc50cc20e8aa04aa500b62838a86df558f120`; final preflight SHA-256 `635bbc12fd2f0822dad7c943945edb6e06d5c9d58932adc35f6e52ecfaa31f29`. Five superseded current run records were archived byte-for-byte at `skill-evals/run-records/archive/2026-09-30-value-contribution-correction/`. The sanitized registry/run records preserve each actual source revision, evaluator start and dependency digests. Recorded durations are elapsed wall time through admission verification, including intervening holds/scoring, not model execution times.
+
+## Unaffected Evidence Reuse
+
+Only the product-value baseline owns the changed reference. Independent `/private/tmp/value-contribution-correction-20260930/reuse-review-plan.json`, SHA-256 `dfda99c37863efeb381b631d2771d67541ce48cf3bc4a0bfb268cfad21e183fa`, verifies exact source/scenario/fixture byte equality and complete preflights for development, release, owner-judgment and context-continuity receipts. They retain their original tested `d422627` revision, evaluator metadata and results; none is retrobound to `6b00ee9`. The 19/19 passing Sol decisions remain identified with `d422627`. Reuse is a dependency-specific proof decision, not a claim that every prior raw case passed or was rerun.
+
+## Limits And Preservation
+
+Primary main and both sibling repositories are read-only and unchanged against their initial HEAD/status/diff/file hashes. Prior failure artifacts and historical note remain unchanged. All evidence is synthetic decision proof, not native dispatch, installed adoption, product runtime or business-impact proof. Corresponding agent-loop runtime work remains outside this local task. No push, main merge, installation, runtime adoption, schedule/auth/settings change or unchanged-source evaluation retry was performed.
+
+## Aggregate Validation
+
+The first post-admission aggregate passed 16/17 and rejected the five generated run-record startedAt strings because the schema requires milliseconds; log SHA-256 `319edb40f701513500daef9ecf450d8ab14f131d75d3e9b6843df483a44adb1d`. A separately reviewed lossless serialization correction normalized those strings to ISO .000Z with identical epochs, preserving their original whole-second precision. Only those five fields and their five registry record hashes changed; immutable evaluator metadata, scores, tested revisions, durations, verification times and archive bytes stayed unchanged. Correction receipt SHA-256 `7a82f199f420033dccb23062719a00685e2152812165e55439e5f60548366fca`. This was a data-format repair, not criterion weakening or a new evaluation.
+
+The final full aggregate passes **17/17** with Node 24.18.0 and Python 3.11.16. Log `/private/tmp/value-contribution-correction-20260930/full-test-final.log`, SHA-256 `9500578ed358aed69a81145327832bfebf4be7805e361d487a13b244ea5ca00c`. Reference/evidence, all current behavior-record schema, model-routing regression and isolated install-link fixture checks pass; the latter did not install skills globally. Non-failing word/route headroom warnings remain, including the product-value route at 800/900 words. Optional Skill Creator validation was not run: PyYAML remains unavailable; no dependency was installed.
+
+Final preservation receipt SHA-256 `34b11e458482185bab29afefcbb3e771c3786bfed1f8f858ca5c5f60b6f865d4` confirms the primary checkout and both sibling repositories, all 15 prior failure/provenance artifacts, the historical blocked-stage note, five archived records and frozen normative sources remain unchanged. This green result applies to the isolated local candidate only, not dirty main or installed/runtime adoption. A subsequent evidence-only commit records these generated bindings, records, archives and this note without changing the tested source.
