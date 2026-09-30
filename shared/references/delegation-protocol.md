@@ -14,7 +14,7 @@ Portfolio control routes product execution to the product PO. User-visible produ
 
 Use an in-task subagent for bounded execution by default. Create a new user-visible Codex task/thread only when the owner explicitly requests one; environment or tool constraints do not create that authorization. When explicitly authorized, a visible worker is an execution room, not a control room: no roadmap authority, no direct product-thread contact except through CTO reconciliation, and no release/publish/merge/pricing/licensing/privacy/security/public-contract decisions.
 
-When the owner explicitly adopts dedicated roles for a product, preserve the authorized long-lived roles and create disposable `<Product> Worker <Issue or Outcome>` tasks only when visible-task creation is within that explicit authorization. Record each returned thread ID; project/title matching alone is insufficient for archive or recovery. Keep Planner, PO, Review, Test & Proof, and Release Readiness tasks protected and long-lived.
+When the owner explicitly adopts dedicated roles for a product, preserve the authorized long-lived roles and create disposable `<Product> Worker <Issue or Outcome>` tasks only when visible-task creation is within that explicit authorization. Record each returned thread ID; project/title matching alone is insufficient for archive or recovery. Preserve owner-requested issue/product prefixes such as `AIC-`, `PS-`, or `CL-` when referring to those items. Keep Planner, PO, Review, Test & Proof, and Release Readiness tasks protected and long-lived.
 
 Worker lifecycle owner is the creator. CTO- or PO-created workers remain that creator's responsibility for scope, proof, reconciliation, and archive/delete. POs report only blockers, release-readiness changes, cross-product/process concerns, or owner decisions.
 
@@ -46,7 +46,7 @@ Before an app-managed worktree, verify the saved project/source `cwd` is the plu
 git rev-parse --show-toplevel
 ```
 
-Exact-project preflight: the saved project path must equal `git rev-parse --show-toplevel`. Broad `wp-content` roots are unusable; choose an exact project or report `setup-blocked: missing exact repo project`.
+Exact-project preflight: supported project/thread tools must explicitly return the saved project's membership/identity for the target thread; never infer membership from cwd, title, or a matching path. The saved project path must also equal `git rev-parse --show-toplevel`. Broad `wp-content` roots are unusable; choose an exact project or report `setup-blocked: missing exact repo project`.
 
 Do not create issue/worktree checkouts directly as visible plugin folders under `wp-content/plugins`. Keep worktrees outside the install. Runtime proof may keep exactly one visible canonical plugin folder per product per instance; extra worktrees/copies stay non-scanned.
 
@@ -75,7 +75,7 @@ Final status must not stop at "blocked because X". Use either:
 - `Recovered by doing Y; next work is Z`.
 - `Owner action required: approve/perform Y; meanwhile I completed A/B/C that did not need Y`.
 
-Stale active turn handling: if a product orchestrator has an older active/inProgress turn, an empty completed turn, `systemError`, missing proof, wrong path/base/model lane, repeated owner-instruction drift, or a pending worktree did not materialize, classify `Product thread topology drift`, escalate, and do not queue more work into that thread.
+Stale active turn handling: if a product orchestrator has an older active/inProgress turn, an empty completed turn, `systemError`, missing proof, wrong path/base/model lane, repeated owner-instruction drift, or a pending worktree did not materialize, classify `Product thread topology drift`, escalate, and do not queue more work into that thread. For an interrupted worker, reconcile its exact thread status and actual artifact/test evidence first; reuse/recover its work when viable, and start a replacement only for a verified gap, without duplicating work or claiming completion from status text alone.
 
 Missing milestone due dates are metadata decisions, not blanket implementation blockers. If an issue has clear scope plus safe milestone/branch/base evidence, delegate implementation and brief only unsafe ambiguity.
 

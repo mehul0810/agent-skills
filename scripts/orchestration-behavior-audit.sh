@@ -215,7 +215,7 @@ require_text "shared/references/heartbeat-checkin-discipline.md" 'Replace `owner
 require_text "shared/references/heartbeat-checkin-discipline.md" "does it block current work; what would unblock it" "heartbeat dirty-blocker translation"
 require_text "shared/references/heartbeat-checkin-discipline.md" 'If a connector returns `Bad Request`, retry once with a strictly smaller payload' "heartbeat bad-request retry rule"
 require_text "shared/references/heartbeat-checkin-discipline.md" "Translate PO output instead of copying raw XML/messages" "heartbeat portfolio translation rule"
-require_text "shared/references/heartbeat-checkin-discipline.md" "Repeated quiet status should trigger cadence reduction/pause or a proactive discovery lane" "heartbeat repeated quiet cadence rule"
+require_text "shared/references/heartbeat-checkin-discipline.md" "Repeated quiet status should prompt a cadence-reduction/pause recommendation or a proactive discovery lane" "heartbeat repeated quiet cadence recommendation"
 require_text "shared/references/heartbeat-checkin-discipline.md" "CTO must not merely relay PO output" "heartbeat CTO intervention rule"
 require_text "shared/references/heartbeat-checkin-discipline.md" "Quiet repeats twice during active work" "heartbeat repeated quiet CTO trigger"
 require_text "shared/references/heartbeat-checkin-discipline.md" "Portfolio 'NOTIFY' check-ins should include 'CTO intervention'" "heartbeat CTO intervention reporting"

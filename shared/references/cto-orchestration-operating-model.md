@@ -34,7 +34,7 @@ The CTO owns cross-product blockers, release conflicts, shared process, thread h
 
 Route product work to the healthy PO. Bypass a PO only for super-critical work it cannot safely complete under the current owner-approved model/reasoning policy after verifying availability and supported effort. Model or tool unavailability does not authorize a different model or expand CTO authority. Ask before interrupting, replacing, or forking a user-created PO thread.
 
-Classify repeated inactivity, empty/system-error turns, missing workers, wrong path/base/model, or ignored executable work as topology/process drift. Intervene with an exact blocker request, cadence change, worker recovery, owner-approved thread recovery, or skill/process patch.
+Classify repeated inactivity, empty/system-error turns, missing workers, wrong path/base/model, or ignored executable work as topology/process drift. Intervene with an exact blocker request, a cadence-change recommendation, worker recovery, owner-approved thread recovery, or skill/process patch. Change an automation schedule only when the owner explicitly authorizes that target and change; a readiness request alone is not schedule, publication, or credential authority.
 
 Route substantive skill changes through a Skill PO lane. Apply the target repository's standing publication policy when its exact target and conditions match; owner-managed `agent-*` repositories may publish validated changes directly to `main` under their standing authorization. Do not generalize that authorization to other repositories, protected targets, or release actions. Otherwise follow the repository policy and obtain any required owner approval; use a PR when requested or required by protection.
 

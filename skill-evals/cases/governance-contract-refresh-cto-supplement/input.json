@@ -1,6 +1,6 @@
 {
   "id": "governance-contract-refresh-cto-supplement",
-  "request": "Use the portfolio governance and product orchestration guidance to respond to this independent synthetic case. Do not execute task, repository, product, or external-service mutations. State the CTO's disposition, what the PO should do, what remains owner-only, and the next evidence-based action.",
+  "request": "Use the portfolio governance and product orchestration guidance to respond to each independent synthetic case. Do not execute task, repository, product, or external-service mutations. State the CTO's disposition, what the PO should do, what remains owner-only, and the next evidence-based action.",
   "artifacts": [
     "cases.json"
   ]

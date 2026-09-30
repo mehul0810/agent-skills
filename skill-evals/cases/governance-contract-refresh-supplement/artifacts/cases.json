@@ -42,5 +42,17 @@
   {
     "case": "case-supp-11",
     "request": "A prior release decision was materially ambiguous. Attached artifacts contain the options, evidence, chosen path, rollback method, expected outcome, and a review trigger. The owner later accepts the choice but changes one assumption. State how to preserve a compact private decision receipt and sanitized calibration disposition without turning the result into general policy."
+  },
+  {
+    "case": "case-supp-12",
+    "request": "Several support conversations suggest new site owners have trouble finding the form preview, but the conversations were gathered opportunistically. There is no count of eligible new users, no current preview-completion baseline, and no instrumentation to distinguish preview use from form completion. The owner asks whether to run an experiment next month. Recommend the next step and state whether an experiment is ready."
+  },
+  {
+    "case": "case-supp-13",
+    "request": "A reversible, in-scope onboarding copy test is approved by the owner. The cohort is new accounts that reach the first-form setup screen during the next two weekly cohorts. The known baseline is 60% setup completion across the last four weekly cohorts. The owner-approved decision threshold is at least 5 percentage points higher in both test cohorts, with no increase in setup-related support contacts; stop early if support contacts rise in either cohort. State the test spec, what is fact versus approved target, the next decision, and how proportional measurement should be."
+  },
+  {
+    "case": "case-supp-14",
+    "request": "A reproducible compatibility regression prevents the plugin's settings page from saving on the currently supported WordPress release. The fix is a one-line compatibility adjustment within the approved maintenance scope; no new feature or product-value experiment is proposed. Explain prioritization and proportionate verification."
   }
 ]

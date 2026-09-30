@@ -76,7 +76,7 @@ Topology/process drift includes empty completions, active turns without output, 
 
 For release blockers, one non-material PO heartbeat is enough to escalate.
 
-Corrective action must be explicit: recover the worker/path, narrow the blocker, reduce/pause cadence, route a bounded worker, or escalate owner approval for protected-thread recovery.
+Corrective action must be explicit: recover the worker/path, narrow the blocker, recommend a cadence change, route a bounded worker, or escalate owner approval for protected-thread recovery. Change a schedule only with explicit owner authorization for that target and change.
 
 ## Portfolio CTO Template
 
@@ -110,7 +110,7 @@ Cadence/automation changes
 - <heartbeat/product>: <reduced, increased, paused, resumed, or topology follow-up>; why.
 ```
 
-Escalate repeated blockers. For stale topology, surface the exact decision until resolved or cadence changes. Repeated quiet status should trigger cadence reduction/pause or a proactive discovery lane.
+Escalate repeated blockers. For stale topology, surface the exact decision until resolved or an authorized cadence change. Repeated quiet status should prompt a cadence-reduction/pause recommendation or a proactive discovery lane; it does not itself authorize a schedule mutation.
 
 ## CTO Intervention Trigger
 
@@ -122,7 +122,7 @@ Intervene without prompting when:
 - Raw logs replace decisions; evidence-backed or unexpected behavior, maintainability/comments/tests/validation/workflow findings lack a focused issue.
 - Community PR/issues are ignored; UI work lacks Playground/equivalent proof; executable work is falsely owner-gated; cadence mismatches urgency; or work lacks proof/uses the wrong lane.
 
-CTO response should be one of: return a false owner blocker for researched execution, correct the PO, reduce/pause cadence, request the exact verification blocker, recover/fork the product thread with owner approval when needed, or route a skill/process patch.
+CTO response should be one of: return a false owner blocker for researched execution, correct the PO, recommend a cadence change, request the exact verification blocker, recover/fork the product thread with owner approval when needed, or route a skill/process patch. Apply schedule changes only when explicitly authorized for the target and change.
 
 Portfolio 'NOTIFY' check-ins should include 'CTO intervention' when this happens so the owner sees what was corrected and why.
 

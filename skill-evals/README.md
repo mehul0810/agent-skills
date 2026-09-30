@@ -4,6 +4,8 @@ Scenario files are behavioral specifications, not executed tests. Grep-based aud
 
 For fresh runs, use [packet-contract.md](packet-contract.md) to separate evaluator inputs from scoring criteria and freeze an allowlisted artifact manifest. Mixed scenario Markdown is author-side material, not a blind evaluator packet.
 
+The product value measurement-readiness regressions are in [cases/governance-contract-refresh-supplement](cases/governance-contract-refresh-supplement/): `case-supp-09` covers the observed proposal; `case-supp-12` through `case-supp-14` cover missing-baseline discovery, an approved reversible test, and proportionate mandatory work. The author-only scoring criteria are in `criteria.md`, outside blind evaluator packets.
+
 ### Refresh Planning And Draft Receipts
 
 Before dispatch, run the dependency planner against the committed range being evaluated:
