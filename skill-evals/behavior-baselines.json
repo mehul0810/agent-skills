@@ -559,7 +559,7 @@
         "shared/references/plugin-release-workflow.md",
         "shared/references/delegation-protocol.md"
       ],
-      "sha256": "d33d0ebcd194f7d7ad0994c2644e7ec084fafbe643cf1a815ec13af0f665c9c3",
+      "sha256": "36291eb1c3b8bf2ff854798aee28c4bd537605611766125fb3bdaed82356408a",
       "scenario": {
         "id": "product-development-governance",
         "files": [
@@ -594,7 +594,7 @@
           "skill-evals/cases/governance-contract-refresh/artifacts/cases.json",
           "skill-evals/cases/governance-contract-refresh/input.json"
         ],
-        "contractSha256": "c821e7e6070b4fcd842964d7c2e1370e00396422202569d7c782f3eca7384f7d"
+        "contractSha256": "2f136b78d396536694524a5a319f3dfb0f21a37537980f44b4e2881f609ef68a"
       },
       "requiredChecks": [
         "planner-discovery-packet",
@@ -623,17 +623,17 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-development-governance-2026-09-28-ci-policy-refresh.json",
-          "sha256": "82aeb4ad0b3821abc9b1dde2c14c384469c5228764045d0c770c08d0068d266e",
-          "testedRevision": "df678758406d2ae3b7d850f445d07cdd371ecbef",
-          "testedSourceSha256": "d33d0ebcd194f7d7ad0994c2644e7ec084fafbe643cf1a815ec13af0f665c9c3",
+          "runRecord": "skill-evals/run-records/product-development-governance-2026-09-30-committed-scope-guardrail.json",
+          "sha256": "72152d91c71ec0d06678cb766e09a6614e795fbac39bd1f5c4c8f53e9d0e8d79",
+          "testedRevision": "3a03aeb45acf8ab89c41dfc36a21e2bc5bc9dc4a",
+          "testedSourceSha256": "36291eb1c3b8bf2ff854798aee28c4bd537605611766125fb3bdaed82356408a",
           "testedScenarioSha256": "1a06905b2d6ada3db36c1ee36ad36aa798e3b04bebf04c033216d150fdc09db4",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           },
-          "testedScenarioContractSha256": "c821e7e6070b4fcd842964d7c2e1370e00396422202569d7c782f3eca7384f7d"
+          "testedScenarioContractSha256": "2f136b78d396536694524a5a319f3dfb0f21a37537980f44b4e2881f609ef68a"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -654,7 +654,7 @@
           "Feature value recommendation",
           "Mandatory work is not score-gated"
         ],
-        "sha256": "52c0b2cb69237e9f1d472448ca912993d5e549eb4c6fc8602cab15beff2581c8",
+        "sha256": "6755c127191c13d265bb20ddc06e102ec98f41f8734353499ae850083dd64696",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [
           "skill-evals/cases/governance-contract-refresh-cto-supplement/artifacts/cases.json",
@@ -667,7 +667,7 @@
           "skill-evals/cases/governance-contract-refresh/artifacts/cases.json",
           "skill-evals/cases/governance-contract-refresh/input.json"
         ],
-        "contractSha256": "a8ba6911fb76bc613d05282f83bbf8b0afc84dfeadc34537daebfbc71d377879"
+        "contractSha256": "44b2d8fd1574d11dbd41d422cf58ee9c5a83f3a9ddda762f851c20a54c7cf8d3"
       },
       "requiredChecks": [
         "user-outcome-specificity",
@@ -682,20 +682,20 @@
         "post-release-outcome-disposition",
         "quality-and-authority-boundary"
       ],
-      "sha256": "cea3975259395746644a25ffdbb8bf584d67098a3acda93952e82c6a8f0f9bb3",
+      "sha256": "80ddc6e7f201a19443ba86c80467776c57460863ab1d9f8a30c57551481a51cf",
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-value-decision-2026-09-28-ci-policy-refresh.json",
-          "sha256": "f3df1318e0a1f086a4e68f5efd99e52323fc298e509f1a7b0385cec0b65b1626",
-          "testedRevision": "df678758406d2ae3b7d850f445d07cdd371ecbef",
-          "testedSourceSha256": "cea3975259395746644a25ffdbb8bf584d67098a3acda93952e82c6a8f0f9bb3",
-          "testedScenarioSha256": "52c0b2cb69237e9f1d472448ca912993d5e549eb4c6fc8602cab15beff2581c8",
+          "runRecord": "skill-evals/run-records/product-value-decision-2026-09-30-committed-scope-guardrail.json",
+          "sha256": "f1ab526e088a438079b5776fe7dd4e6429ea88c59e98a973aac0cead57b98dd9",
+          "testedRevision": "3a03aeb45acf8ab89c41dfc36a21e2bc5bc9dc4a",
+          "testedSourceSha256": "80ddc6e7f201a19443ba86c80467776c57460863ab1d9f8a30c57551481a51cf",
+          "testedScenarioSha256": "6755c127191c13d265bb20ddc06e102ec98f41f8734353499ae850083dd64696",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           },
-          "testedScenarioContractSha256": "a8ba6911fb76bc613d05282f83bbf8b0afc84dfeadc34537daebfbc71d377879"
+          "testedScenarioContractSha256": "44b2d8fd1574d11dbd41d422cf58ee9c5a83f3a9ddda762f851c20a54c7cf8d3"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -715,7 +715,7 @@
         "shared/references/plugin-release-workflow.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "2d140d67a69505f7046a2588c9ef82484ef4bda0318587dffc5b3b27c4b01c64",
+      "sha256": "ab3c2df755596dcf62c29d2c8a887b8d11643d8d1bf03e2c0dc29c18d9984ac8",
       "scenario": {
         "id": "product-release-authority",
         "files": [
@@ -749,7 +749,7 @@
           "skill-evals/cases/governance-contract-refresh/artifacts/cases.json",
           "skill-evals/cases/governance-contract-refresh/input.json"
         ],
-        "contractSha256": "7e839a84300f2037e63d753b33d65ee44f7fb75773df468c4543d2ff4126ab7d"
+        "contractSha256": "e92b08121b5f33aa6170824d645fa3cb914270cdd90b25b9b2d58f5cc5ce20c6"
       },
       "requiredChecks": [
         "latest-published-release-preflight",
@@ -776,17 +776,17 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-release-authority-2026-09-29-closed-loop.json",
-          "sha256": "4781347e6bb1f43f9f979ebde2abe73d579d1dc23cff01a75ae75267afe8b1b8",
-          "testedRevision": "521eb45772f444ae7c7c25db676a7817b090883b",
-          "testedSourceSha256": "2d140d67a69505f7046a2588c9ef82484ef4bda0318587dffc5b3b27c4b01c64",
+          "runRecord": "skill-evals/run-records/product-release-authority-2026-09-30-committed-scope-guardrail.json",
+          "sha256": "dbfb77732ab6dfe1dd449be7ceee4f4ac636edc4fa6933c7414b6a7aa9625e85",
+          "testedRevision": "3a03aeb45acf8ab89c41dfc36a21e2bc5bc9dc4a",
+          "testedSourceSha256": "ab3c2df755596dcf62c29d2c8a887b8d11643d8d1bf03e2c0dc29c18d9984ac8",
           "testedScenarioSha256": "415eb151638237bf0c9a4cc09f6462e4f028386f88256125e0f3b8369c87f34e",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           },
-          "testedScenarioContractSha256": "7e839a84300f2037e63d753b33d65ee44f7fb75773df468c4543d2ff4126ab7d"
+          "testedScenarioContractSha256": "e92b08121b5f33aa6170824d645fa3cb914270cdd90b25b9b2d58f5cc5ce20c6"
         }
       ],
       "harnessContract": "cli-validation-v1"
@@ -848,7 +848,7 @@
         "wp-product-orchestrator/SKILL.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "2750630613dfa2ebe1318515433e7842a82e1976e912d663ab3faba672a1a48e",
+      "sha256": "d04c4a0ca51d7dfa94a60a5d1b739bfcb0103fc04b8d48938b4dea7e67fa33fe",
       "scenario": {
         "id": "owner-aligned-judgment",
         "files": [
@@ -875,7 +875,7 @@
           "skill-evals/cases/governance-contract-refresh/artifacts/cases.json",
           "skill-evals/cases/governance-contract-refresh/input.json"
         ],
-        "contractSha256": "197fb731be2f378d458344148128f87e37e9614e5782d28bdddd6921ed77d1b6"
+        "contractSha256": "2d6d66e6c978f4c101ff67660085830ff86d7a0377abfa917cb1b533061279a0"
       },
       "requiredChecks": [
         "live-product-contract-precedence",
@@ -889,17 +889,17 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/owner-aligned-judgment-2026-09-29-closed-loop.json",
-          "sha256": "4cf9179569e815b13c29ce37481b50b939f083d31ebe97524df545a859828ac8",
-          "testedRevision": "521eb45772f444ae7c7c25db676a7817b090883b",
-          "testedSourceSha256": "2750630613dfa2ebe1318515433e7842a82e1976e912d663ab3faba672a1a48e",
+          "runRecord": "skill-evals/run-records/owner-aligned-judgment-2026-09-30-committed-scope-guardrail.json",
+          "sha256": "cee16e279c4f2f3a8e7e1c125a5846118c180204982245a78c02ce9c5a8888df",
+          "testedRevision": "3a03aeb45acf8ab89c41dfc36a21e2bc5bc9dc4a",
+          "testedSourceSha256": "d04c4a0ca51d7dfa94a60a5d1b739bfcb0103fc04b8d48938b4dea7e67fa33fe",
           "testedScenarioSha256": "54b4ae2bce4d363eecee4fad87a2b5e39ae29e0c98c722ac773dc9447afc6d02",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           },
-          "testedScenarioContractSha256": "197fb731be2f378d458344148128f87e37e9614e5782d28bdddd6921ed77d1b6"
+          "testedScenarioContractSha256": "2d6d66e6c978f4c101ff67660085830ff86d7a0377abfa917cb1b533061279a0"
         }
       ],
       "harnessContract": "cli-validation-v1"
