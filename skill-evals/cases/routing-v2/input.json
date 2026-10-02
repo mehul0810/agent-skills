@@ -1,0 +1,38 @@
+{
+  "evaluation": "Synthetic repository policy decisions only; do not change any active model/session or dispatch real work. Use proposed canonical policy and project-subagent-routing reference. Return decisions for each case with evidence and uncertainty.",
+  "inventory": "For cases other than R4/R5, each non-escalation catalog model supports low/medium/high/xhigh, shell and browser, and 50000 context tokens. This is synthetic fixture data, not real availability.",
+  "cases": [
+    {
+      "id": "R1",
+      "task": "Two exact files need a deterministic read-only evidence check; complete criteria, low complexity/uncertainty/consequence, strong evidence, 4000 context tokens, shell available. Recommend model and effort, delegation choice, and concise status."
+    },
+    {
+      "id": "R2",
+      "task": "A high-consequence final gate is a deterministic comparison against a verified immutable artifact, strong evidence, low complexity and uncertainty. Recommend capability and effort separately. Publication approval is absent."
+    },
+    {
+      "id": "R3",
+      "task": "Ordinary reversible implementation has high complexity and unresolved uncertainty, weak evidence. All catalog models are exposed, plus an unapproved ID claiming top capability. No explicit model lock. Explain route, evidence needs and authority."
+    },
+    {
+      "id": "R4",
+      "task": "The user explicitly locks gpt-6-sol/high for a review; inventory only exposes gpt-6-luna with low/medium/high. A separate low-consequence evidence task is ready. State dispositions."
+    },
+    {
+      "id": "R5",
+      "task": "Global capacity=1, no active writer. P0 work is locked to a missing model; P1 independent work is feasible within its existing authorization. Explain capacity reservation and next action."
+    },
+    {
+      "id": "R6",
+      "task": "Two validation failures have exhausted their cause budget; another item failed once for missing_access. The first item has a claimed actor and corrective note but no externally verified review. Explain retry/requeue and remaining blockers without resetting attempts."
+    },
+    {
+      "id": "R7",
+      "task": "A one-line reversible fix and a separate broad evidence/review task both exist. Parent allows a bounded independent review and one writer. Recommend proportional delegation, nested delegation constraints and outcome format."
+    },
+    {
+      "id": "R8",
+      "task": "Review spans five necessary source contracts. Effective model headroom is verified sufficient for them and the next bounded phase; there is no need for control-thread history. Explain context choice and reporting; do not assume a fixed reference cap."
+    }
+  ]
+}

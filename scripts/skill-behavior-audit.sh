@@ -127,7 +127,7 @@ require_text "shared/references/visual-to-wordpress-implementation.md" "Inventor
 require_text "shared/references/visual-to-wordpress-implementation.md" "reduced-motion/data behavior" "visual immersive fallback and removal gate"
 require_text "shared/references/visual-to-wordpress-implementation.md" "install the packaged artifact; bind digest, version/build and environment" "visual package-bound capture gate"
 require_text "skill-evals/visual-wordpress-scenarios.md" "Packaged Immersive UI Uses Stable Components" "visual package component fallback scenario"
-require_text "shared/references/project-subagent-routing.md" "Assign one lane and the narrowest skill/reference" "subagent specialist auto routing"
+require_text "shared/references/project-subagent-routing.md" "Start with the narrowest relevant skill/reference" "subagent specialist auto routing"
 require_text "shared/references/project-subagent-routing.md" "Inspect the exact artifact first" "subagent exact artifact first"
 require_text "shared/references/enterprise-code-quality-gate.md" "Before calling work done/merge-ready/release-ready, consider scalability" "shared quality contract dimensions"
 require_text "shared/references/enterprise-code-quality-gate.md" '`Not applicable - reason`' "shared quality contract explicit exceptions"

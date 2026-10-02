@@ -22,17 +22,17 @@ Worker lifecycle owner is the creator. CTO- or PO-created workers remain that cr
 
 Control threads directly handle only rehydration, duplicate-screened intake, decision briefs, status synthesis, and fixes smaller than delegation overhead.
 
-Once there are two or more independent bounded issues/PR blockers, or one issue needs parallel implementation/evidence work, the CTO must delegate at least one bounded task unless it writes why direct execution is better.
+Once there are two or more independent bounded issues/PR blockers, or one issue needs parallel implementation/evidence work, the CTO weighs bounded delegation against coordination cost, evidence independence and one-writer ownership. Keep trivial sequential work direct; delegate when it materially improves quality or time.
 
 Once the plan is clear, delegate implementation, CI/dependency/workflow investigation, or evidence gathering.
 
-Every CTO heartbeat/check-in must include:
+When delegation affects the outcome or a blocker, make the decision and reason clear. This optional compact label can help:
 
 ```text
 Delegation decision: Delegated|Direct|Deferred - <short reason>
 ```
 
-Use `Direct` only when work is smaller than delegation overhead, delegation is unavailable, or the owner asked. Use `Deferred` when a plan/blocker prevents delegation.
+Use `Direct` when direct execution best fits the scope, dependencies, cost and evidence needs. Use `Deferred` when a plan/blocker prevents delegation.
 
 Use an in-task subagent for narrow stateful fixes/audits/cleanup/docs/investigation/validation when available; keep direction, release scope, priority, customer decisions, and product context in the PO. If only a new user-visible task could perform the work, ask the owner before creating it and continue independent work meanwhile.
 
@@ -87,7 +87,7 @@ When delegation is deferred, report the exact hard blocker: issue number, missin
 
 Control owns final plan, branch/base, PR/GitHub state, proof synthesis, push authorization, decisions, issue closure, and release readiness.
 
-Workers own bounded implementation/mapping/review/triage/investigation/evidence. No release, publish/deploy, issue close, milestone retarget, or subdelegation.
+Workers own bounded implementation/mapping/review/triage/investigation/evidence. No release, publish/deploy, issue close or milestone retarget; subdelegation requires the parent to explicitly authorize a bounded independent role and capacity budget.
 
 Prefer in-task subagents for subtasks inside the current request. Create user-visible Codex tasks only when explicitly requested by the owner; a missing subagent, tool, project, or runtime does not authorize a visible task as a workaround. Never archive user-created control or skill threads.
 

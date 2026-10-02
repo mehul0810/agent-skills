@@ -48,7 +48,7 @@ Optional project hooks in [the hook template](../../templates/project-hooks/READ
 
 - `wp-portfolio-cto` and product control threads should stay high-level. Do not let them absorb implementation logs, CI noise, or large code-reading output.
 - Start recurring portfolio/product work with a compact source-of-truth summary from repo/GitHub/runtime evidence. Do not reread full thread history unless the missing decision is not durable anywhere else.
-- Load one primary reference plus one supporting reference by default. Load additional references only after a concrete risk, blocker, or artifact boundary proves they are needed.
+- Start with the primary task source and add evidence needed for dependencies, uncertainty or crossed contracts. Reference count is a heuristic, not a hard cap; reserve actual model-bound headroom for the next phase and checkpoint.
 - For portfolio heartbeats, use compact exception sweeps first: active blockers, owner decisions, moving PRs/releases, unhealthy threads/workers, and material drift. Prefer an in-task subagent or clean execution context for unrelated product work and compact only when continuing the same portfolio decision chain.
 - For product heartbeats, compact the product thread when continuing the same release train and context is high; use an in-task subagent for implementation/evidence work.
 - For small stateful execution outside a control task, use an authorized in-task subagent with a clear stop condition, then reconcile evidence. Create a new user-visible task only when explicitly requested by the owner; environment constraints do not grant that authority.
