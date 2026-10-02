@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "runId": "product-development-governance-2026-10-02-routing-refresh",
+  "scenario": "product-development-governance",
+  "result": "succeeded",
+  "startedAt": "2026-10-02T11:11:32.000Z",
+  "durationMs": 1178317,
+  "checks": [
+    {
+      "name": "planner-discovery-packet",
+      "result": "pass"
+    },
+    {
+      "name": "po-train-and-post-release-learning",
+      "result": "pass"
+    },
+    {
+      "name": "independent-engineering-review",
+      "result": "pass"
+    },
+    {
+      "name": "exact-candidate-release-readiness",
+      "result": "pass"
+    },
+    {
+      "name": "cto-escalation-only",
+      "result": "pass"
+    },
+    {
+      "name": "sibling-product-identity",
+      "result": "pass"
+    },
+    {
+      "name": "outcome-named-temporary-tasks",
+      "result": "pass"
+    },
+    {
+      "name": "stable-production-mainline",
+      "result": "pass"
+    },
+    {
+      "name": "tag-derived-package",
+      "result": "pass"
+    },
+    {
+      "name": "plugin-milestone-scope-and-branch",
+      "result": "pass"
+    },
+    {
+      "name": "solo-owner-independent-review",
+      "result": "pass"
+    },
+    {
+      "name": "primary-studio-safe-first",
+      "result": "pass"
+    },
+    {
+      "name": "disposable-isolation-fallback",
+      "result": "pass"
+    },
+    {
+      "name": "new-studio-owner-approval",
+      "result": "pass"
+    },
+    {
+      "name": "unapproved-studio-proof-gap",
+      "result": "pass"
+    },
+    {
+      "name": "existing-studio-inventory-only",
+      "result": "pass"
+    },
+    {
+      "name": "independent-test-proof",
+      "result": "pass"
+    },
+    {
+      "name": "dedicated-role-tasks-protected",
+      "result": "pass"
+    },
+    {
+      "name": "same-project-disposable-workers",
+      "result": "pass"
+    },
+    {
+      "name": "exact-id-worker-archive",
+      "result": "pass"
+    },
+    {
+      "name": "push-not-completion",
+      "result": "pass"
+    },
+    {
+      "name": "failed-proof-correction",
+      "result": "pass"
+    },
+    {
+      "name": "worktree-cleanup-separate",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 23,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "product-development-governance-2026-10-02-routing-refresh",
+    "artifactPointer": "skill-evals/routing-refresh-evidence-2026-10-02.md#independent-scoring"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-10-02T11:31:10.317Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Independent scoring passed all 23 exact required synthetic decision checks at source revision 14dd98a9c42942f092c15f4b713e3677225d188b. Shared wall-clock window includes sealed evaluation and scoring, not task-performance telemetry. Original legacy rubric failure, incomplete receipt and unscored product-value cases are preserved in the durable evidence note. No native activation, adoption, release or token/cost claim."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}
