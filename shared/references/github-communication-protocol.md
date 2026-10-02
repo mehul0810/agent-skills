@@ -16,6 +16,12 @@ Example wording for a rejected-edit fix, not a report of an actual test:
 
 > A rejected change now leaves the saved web address alone. This keeps the existing link working. The unit tests passed; they check small parts of the code. We have not checked the form in a browser yet. Next: test the form before release.
 
+Two examples with an explained technical term, not reports of actual tests:
+
+> The problem was reproduced on a local WordPress 7.1.2 site using PHP 8.2. PHP is the programming language WordPress uses. The live site has not been checked.
+
+> Three automated checks passed. PHP is the programming language WordPress uses. The check that the code works with PHP 8.4 failed. The security check could not run because access was missing. Release approval is still needed.
+
 Plain wording changes how the message reads. Existing posting permission, novelty and evidence requirements still apply.
 
 ## GitHub Issue And PR Comments
