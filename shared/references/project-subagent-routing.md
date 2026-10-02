@@ -12,42 +12,25 @@ Delegate when parallel mapping, independent lanes, second review, or browser/CI 
 
 ## Availability-First Routing Contract
 
-At each delegation, verify runtime availability and follow the current owner model-allocation policy; it overrides older capability-family guidance. Classify ambiguity, completeness, risk, reversibility, evidence/context, latency, and cost before selecting a supported reasoning level. Runtime exposure or inherited settings do not authorize another model.
+At each delegation, verify runtime availability and the reviewed versioned policy identified by `contracts/routing-policy.json`. Its canonical owner is agent-loop's `policies/model-routing.json`; do not duplicate fixed role/model assignments in skills. The October 2 descriptor is a proposal until adoption is reviewed. Existing explicit user locks and active configuration stay in force meanwhile.
 
-Current owner allocation: use GPT-6 Luna for implementation, fixes, tests, and routine evidence work; use GPT-6 Sol for orchestration, planning, frontend work, and high-risk final review. Frontend takes precedence over the general implementation lane. Do not select another model for a task, worker, reviewer, retry, or automation without the owner's explicit approval for that assignment. If the required model is unavailable, stop only that assignment and ask the owner; do not silently fall back.
+Assess complexity, uncertainty, consequence, evidence quality, tool/context needs, latency and budget. Select model capability and reasoning independently from the supported authorized set. Role names describe responsibilities and conservative defaults, not permanent models. A deterministic consequential check can need a capable model with low effort; ambiguous implementation can need a stronger model with high effort. A default effort is not a floor after evidence removes uncertainty. Verify supported reasoning at runtime. Use xhigh only with concrete task justification. Never use max/ultra without explicit owner approval; the current executable policy does not select them.
 
-Use low reasoning for routine deterministic work, medium by default, and high for ambiguity or consequential risk. Use xhigh only with concrete complexity or failed-proof justification. Never use max/ultra without explicit owner approval. Verify supported reasoning at runtime; prose cannot change a running task's model or effort.
+Explicit model and effort locks are hard constraints. If the required combination is unavailable or insufficient, stop only that assignment and ask the owner; do not silently fall back. Runtime exposure, inherited settings, relative cost ranks and this guidance do not authorize another model or spending. Model selection changes capability, not authority.
 
 ### Capacity And Concurrency
 
-Use one delegated worker at a time as the standing default. Verify the required model and reasoning availability before dispatch; never infer capacity or quota from runtime exposure. Do not claim quota/reset visibility or control. Do not ask for a daily capacity signal. Ask only when a specific task materially benefits from parallel or long-running work and the added cost/capacity tradeoff would change the recommendation.
-
-- A user-supplied capacity preference may inform concurrency and duration only; it never lowers risk or expands authority.
-- Keep high-risk independent review on the owner-approved GPT-6 Sol lane with supported reasoning, regardless of capacity preferences.
-- Do not create a recurring automation or durable account-usage record unless the owner explicitly requests it.
+Verify each route's feasibility before reserving capacity. Held work consumes no slot; continue independent feasible work. Use one worker at a time as a conservative starting point, then choose concurrency proportionally to independent work, coordination cost, consequence and verified runtime support. Preserve one writer per product/artifact and independent consequential review. Do not claim quota/reset visibility or control. Do not ask for a daily capacity signal. Ask only when a specific task materially benefits from a capacity/cost decision the owner must make. Do not create a recurring automation or durable account-usage record without explicit instruction.
 
 ### Work Classification
 
-Classify work to choose among the owner-approved lanes, not to invent model substitutions: Luna handles monitoring, mapping, deterministic evidence, screenshots, docs, tests, simple CI, fixes, and implementation; Sol handles orchestration, planning, frontend work, and high-risk final review. Keep routine security lint or dependency review in the normal lane; security model specialization requires explicit owner approval for the task. Model selection changes capability, not authority.
-
-Portfolio sweeps use low/medium; product heartbeats use medium. Escalate reasoning only for listed ambiguity or risk. Screenshots and bounded official research stay low-effort unless judgment is consequential.
+Use current evidence rather than title or role stereotypes. Preserve high-consequence capability floors, explicit locks, tool/context support, budget and owner/security/release gates. Missing metadata is unavailable, not proof of support. An unavailable judgment can hold while separately useful evidence work continues. Compare accepted outcomes, retries, latency and actual available telemetry before claiming savings.
 
 ### Escalation And De-Escalation
 
-Escalate reasoning after concrete ambiguity, failed proof, inadequate implementation, or higher risk; do not brute-force an underpowered lane. De-escalate after planning or deterministic proof removes uncertainty.
+Escalate for concrete complexity, unresolved ambiguity or failed reasoning; de-escalate effort after planning or deterministic proof removes uncertainty. Access, approval, policy, stale inputs and tool outages need their own recovery, not a stronger model. Escalation-only models require the canonical policy's explicit eligible record. A held assignment reports the requested combination, support constraint, impact and next action in plain language.
 
-Classify repeated retries or weak evidence caused by the assigned lane as `wrong model/reasoning allocation`, then reassess availability and tier.
-
-If the owner-approved model or a needed reasoning level is unavailable, do not substitute another model. Ask the owner before that assignment; meanwhile, continue independent work that does not depend on it. Do not report an unapproved fallback as completed:
-
-```text
-Requested: <model/reasoning>
-Available constraint: <missing model or unsupported reasoning>
-Fallback: none; awaiting owner direction
-Impact: <blocked assignment and independent work that can continue>
-```
-
-Withhold a judgment when its required reviewer/model or evidence is unavailable. A separately authorized bounded evidence task may continue only when it is independently useful and does not imply the gated judgment is complete.
+Retry advice is bounded by cause and lifetime attempts. Correct reasoning failures before reviewed requeue; a work item's claimed reviewer is not authenticated approval. Preserve source history, stop on exhausted budgets and keep all side-effect gates. Never reset attempts to hide failed work.
 
 ## Planning Before Allocation
 
@@ -61,15 +44,15 @@ Give workers outcomes and constraints; let them choose routine execution steps. 
 
 For code work, include the proportional quality contract from `../../wp-expert/references/planning-drift-control.md`: ownership/contracts, modularity/maintainability and scalability boundary, performance hot path/budget, security/privacy boundary, tests/proof, and rollback. Workers execute that contract and return a quality receipt; they do not spend the execution turn rebuilding an omitted plan.
 
-Fully planned work uses the owner-approved model lane and supported reasoning appropriate to the task; do not select another model because a capability tier or inherited setting appears to fit. Compare quality, retries, duration, and available token telemetry before claiming savings.
+Fully planned work uses the reviewed authorized policy and current evidence; explicit locks remain binding. Compare quality, retries, duration, and available token telemetry before claiming savings.
 
 ### Worker Context Boundary
 
-Default model-routed workers to no inherited turns and provide a compact task packet. If continuity is necessary, pass only the smallest recent-turn slice that carries required evidence. Never use a full-history worker fork: long control-thread history, tool transcripts, and repeated cached context can exhaust a model-specific allowance without improving the bounded result.
+Prefer a compact task packet with exact evidence pointers. Choose the smallest inherited slice that preserves dependencies and decisions; use no inherited turns for an independent bounded task. A full-history fork requires a concrete continuity need or explicit user instruction, verified headroom and a scoped output budget. Context limits are proportional to the next phase, not a fixed number of references. Preserve constraints, uncertainty and evidence during reduction.
 
 ## Skill Routing
 
-Assign one lane and the narrowest skill/reference:
+Start with the narrowest relevant skill/reference; add sources when the task crosses contracts or needs evidence:
 
 - Plugin: `$wp-plugin-expert` plus one plugin reference.
 - Theme/FSE: `$wp-theme-expert` plus one theme reference.
@@ -84,9 +67,9 @@ Assign one lane and the narrowest skill/reference:
 Subagent prompt contract:
 
 ```text
-Use only the named skill/reference lane unless a concrete blocker appears.
-Inspect the exact artifact first. Stay inside scope and do not subdelegate.
-Return findings, files touched/inspected, confidence, validation, risks, and adjacent findings.
+Start with the named skill/reference lane; load additional sources when evidence or cross-contract work requires them.
+Inspect the exact artifact first. Stay inside scope; subdelegate only when the parent explicitly authorizes a bounded independent role and capacity budget.
+Return the outcome with evidence, material uncertainty, validation and actionable blockers; scale detail and format to the task.
 Convert Product Design feedback into acceptance criteria, design QA checks, or adjacent findings.
 If blocked, report recovery attempted and the exact proof gap.
 Do not modify files unless assigned as a narrow fixer.
@@ -99,7 +82,7 @@ Use the five optional [project agent templates](../../templates/project-agents/R
 
 ## Project Configuration
 
-Keep concurrency conservative; one worker at a time is the default. Increase only when the task justifies the coordination and cost and runtime availability is verified:
+Keep concurrency proportional; one worker at a time is the conservative starting point. Increase only when the task justifies the coordination and cost and runtime availability is verified:
 
 ```toml
 [agents]

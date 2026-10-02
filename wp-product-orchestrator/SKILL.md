@@ -40,6 +40,6 @@ Use `references/router.md` to select one product mode and relevant section. Do n
 1. Prove the latest production release, select the first unreleased train, and compare the previous next action with live state.
 2. Select the highest-leverage ready issue, blocker, discovery, or release-proof action.
 3. Define the bounded plan and delegate/execute under the authority rules.
-4. Report `Delegation decision: Delegated|Direct|Deferred - <reason>` and, when context is high, `Context decision: Compact|Fresh thread|Continue - <reason>`.
+4. When useful, report `Delegation decision: Delegated|Direct|Deferred - <reason>` and, when context is high, `Context decision: Compact|Fresh thread|Continue - <reason>`.
 5. Reconcile issue/PR, proof, worktree, worker, heartbeat, and post-release learning state.
 6. When ready, report merged PRs, remaining issues, quality gates, CI/package/browser proof, docs/readme/WordPress.org state, risks, and exact release approval requested.

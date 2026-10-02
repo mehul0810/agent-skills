@@ -177,7 +177,7 @@ require_text "shared/references/delegation-protocol.md" "or subdelegation" "dele
 require_text "shared/references/delegation-protocol.md" "Or explicit no-edit boundary when read-only" "delegated no-edit boundary rule"
 require_text "shared/references/delegation-protocol.md" "Stop condition and summary requirements" "delegated stop-condition rule"
 require_text "shared/references/delegation-protocol.md" "Direct Execution Boundary" "direct CTO execution boundary"
-require_text "shared/references/delegation-protocol.md" "delegate at least one bounded task" "mandatory delegation trigger"
+require_text "shared/references/delegation-protocol.md" "weighs bounded delegation" "proportional delegation guidance"
 require_text "shared/references/delegation-protocol.md" "Delegation decision: Delegated|Direct|Deferred" "delegation decision check-in line"
 require_text "shared/references/delegation-protocol.md" 'empty completed turn, `systemError`, missing proof, wrong path/base/model lane, repeated owner-instruction drift' "delegation topology drift failure modes"
 require_text "shared/references/delegation-protocol.md" "archive/delete the disposable worker" "delegation disposable worker cleanup"

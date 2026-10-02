@@ -27,7 +27,7 @@ Do not send a `DONT_NOTIFY` sentence merely to announce that nothing changed. Wh
 
 ## `NOTIFY` Structure
 
-Every `NOTIFY` check-in should separate these sections:
+A material `NOTIFY` check-in needs the change, evidence, impact and actionable next step. Use only relevant sections; this optional structure helps larger updates:
 
 ```text
 What changed
@@ -46,7 +46,7 @@ Use a partial result for a heartbeat with a new/material owner-relevant delta or
 - Return verified evidence instead of waiting hours; name incomplete checks, owner-decision impact, and next retry/cadence without retry logs.
 - If a connector returns `Bad Request`, retry once with a strictly smaller payload. If the retry fails, stop broad reads, do not paste more context, and use one narrow source-of-truth check or report the exact verification gap. Do not create a user-visible worker/product thread as a recovery workaround; that requires explicit owner authorization.
 
-When a material delta or deadline warrants notification, use this shape:
+When a material delta or deadline warrants notification, scale this example to the update; omit empty sections:
 
 ```text
 NOTIFY - <product>

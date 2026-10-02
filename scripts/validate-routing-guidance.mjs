@@ -1,0 +1,10 @@
+import {readFileSync} from 'node:fs';
+const root=new URL('../',import.meta.url);
+const contract=JSON.parse(readFileSync(new URL('contracts/routing-policy.json',root)));
+if(contract.schema_version!=='1.0'||contract.canonical_repository!=='mehul0810/agent-loop'||contract.canonical_path!=='policies/model-routing.json'||!['proposal','adopted'].includes(contract.mode)) throw new Error('Invalid canonical routing descriptor');
+const required=['independent_model_and_effort','explicit_locks','verified_runtime_support','authorized_set_and_budget','feasibility_before_capacity','cause_aware_bounded_retry','proportional_context_and_delegation','no_authority_expansion'];
+if(required.some(rule=>!contract.invariants?.includes(rule))) throw new Error('Missing routing boundary');
+const guide=readFileSync(new URL('shared/references/project-subagent-routing.md',root),'utf8');
+if(!guide.includes('contracts/routing-policy.json')) throw new Error('Guidance must reach canonical policy');
+if(/(?:use|selects?|handles?) GPT-6 (?:Luna|Sol) for (?:implementation|orchestration|high-risk)/iu.test(guide)) throw new Error('Guidance duplicates fixed role/model allocation');
+console.log('Routing structure valid. Behavioral proof requires fresh scenarios and canonical policy tests; prose matching is not acceptance.');
