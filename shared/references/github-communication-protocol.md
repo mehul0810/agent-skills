@@ -1,6 +1,22 @@
 # GitHub Communication Protocol
 
-Use this reference when reading GitHub issues/PRs/comments/reviews, applying ownership labels, or deciding whether a GitHub comment is durable enough to post.
+Use this reference when reading or writing GitHub issue and PR titles/bodies, comments and reviews, applying ownership labels, or deciding whether a GitHub comment is durable enough to post.
+
+## Plain-Language Titles And Messages
+
+Apply this guidance to every future issue, PR, review and comment you write or update. Write so a reader without project knowledge can follow the main point. Aim for the ease of a simple explanation to a young reader, with a respectful adult tone; do not use baby talk or remove facts needed to judge the work.
+
+- Use everyday words, short complete sentences and direct verbs. Explain needed technical terms the first time you use them. Keep exact commands, names, versions and identifiers where they matter.
+- Lead with what is wrong or what changed. Then explain why it matters, what was actually checked and what happens next, when relevant. A short title should name the problem or result. Scale the detail to the task; these are questions to answer, not mandatory headings for every comment.
+- Keep failed, blocked and unrun checks clear. Do not turn a unit-test pass into browser, security, compatibility or release proof. State an important risk or limit beside the claim it qualifies, even when that makes the explanation longer.
+- Put extra code paths, commands, logs and implementation detail in an optional `Technical details` section or linked evidence when they help a reviewer. Keep any fact needed to make a safe decision in the main explanation.
+- Before finishing, check whether the reader can say what happened, why it matters, what the evidence covers and what to do next. Do not force a reading-score target, a word-count limit or childish wording.
+
+Example wording for a rejected-edit fix, not a report of an actual test:
+
+> A rejected change now leaves the saved web address alone. This keeps the existing link working. The unit tests passed; they check small parts of the code. We have not checked the form in a browser yet. Next: test the form before release.
+
+Plain wording changes how the message reads. Existing posting permission, novelty and evidence requirements still apply.
 
 ## GitHub Issue And PR Comments
 

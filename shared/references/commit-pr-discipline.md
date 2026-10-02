@@ -41,6 +41,8 @@ Rules:
 
 ## PR Requirements
 
+Use the plain-language authoring guidance in `github-communication-protocol.md` for issue and PR titles/bodies, reviews and comments. Explain the change and its effect first; keep the required evidence below accurate and easy to follow. Extra technical detail can follow the main explanation without hiding risks or proof gaps.
+
 Every PR must include:
 
 - Linked issue and milestone.
