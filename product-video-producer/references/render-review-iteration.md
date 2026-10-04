@@ -85,7 +85,9 @@ For typography/UI video, evaluate [Remotion](https://www.remotion.dev/docs/); re
 
 Separate typed scenes, assets and timing manifest. Use frame-driven animation, never wall-clock timers, unseeded randomness or live network content. Pin dependencies/fonts, await assets and test shot boundaries. Capture real UI separately; generation cannot own exact text/logos or workflow proof.
 
-Use cheap previews plus full-resolution representative ranges before a full render; honor explicit 4K requests. Poster-only edits do not rerender video. Benchmark concurrency and separate model/render costs. Follow current owner model allocation, not historical model ceilings.
+Compile unequal-duration beats into frame-indexed property tracks: stable object IDs, timed poses, reading holds, cue frames and overlaps. Preserve continuing objects; test position/scale/velocity across handoffs, exempting intentional cuts. Render risky transitions first; inspect encoded in-betweens and playback. Smooth easing cannot rescue a script without visible action.
+
+Use cheap previews and full-resolution ranges before full renders; honor explicit 4K requests. Poster-only edits do not rerender video. Measure concurrency and separate model/render costs. Follow current owner allocation.
 
 ## Fidelity And Consistent Acceptance
 
