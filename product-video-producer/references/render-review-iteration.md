@@ -1,7 +1,5 @@
 # Editing, Render, Review, And Iteration
 
-Use this after a storyboard/beat sheet exists, for editing supplied footage, or when reviewing/revising an existing render.
-
 ## Edit And Conform Contract
 
 Prove the exact project root, source revision or project-file hash, sequence/composition ID, job ID, and expected output role/path before editing or probing an artifact. A plausible MP4 elsewhere is not completion evidence.
@@ -12,7 +10,7 @@ Prove the exact project root, source revision or project-file hash, sequence/com
 - Preserve a truthful source chronology for software demos and evidence sequences. J/L cuts, punch-ins, and pace compression may improve clarity but cannot manufacture a product outcome.
 - Record source, timeline, master, review derivative, poster, captions, and cutdowns as a small lineage graph. Small programmatic videos may mark proxy/conform/master steps `not_applicable` with a reason.
 
-Every cut, graphic, sound cue and camera move needs a narrative or comprehension job. Check mobile legibility, cursor purpose, crop continuity, breathing room, and complementary narration/copy.
+Check mobile legibility, cursor purpose, crop continuity, breathing room, and complementary narration/copy.
 
 ## Deterministic Render Contract
 
