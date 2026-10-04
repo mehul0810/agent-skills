@@ -966,7 +966,7 @@
         "product-video-producer/assets/motion-starter/scene.mjs",
         "product-video-producer/assets/motion-starter/README.md"
       ],
-      "sha256": "a423e9813b7e5ba6a033675a3e981ec6ad756995b7ed33f63d8166b3187291eb",
+      "sha256": "bbff80fea005b1f528df23fd8b72ad9d0f4eaf3fff2e7b0415bb76e7a9389b18",
       "scenario": {
         "id": "product-video-truth-and-assets",
         "files": [
@@ -999,9 +999,13 @@
           "4K render provenance bundle",
           "MP4 completion identity",
           "Generated frame identity continuity",
-          "VFR proxy and picture-lock lineage"
+          "VFR proxy and picture-lock lineage",
+          "Format-led reference translation",
+          "Visual script and state change",
+          "Temporal handoff and deliberate stillness",
+          "## Script-To-Motion Checks"
         ],
-        "sha256": "cb13e2bfa5e24f102caf8f3b00d1fe20b17f6de1d288b3f82ad2f490d68ce246",
+        "sha256": "adeda224de9b348538d05b6e0dfe2d45dd6a839321e0f5c6eebde89bc55812be",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [
           "skill-evals/cases/video-production/input.json",
@@ -1014,7 +1018,7 @@
           "skill-evals/cases/video-production/artifacts/case-37/generated-shot-03.svg",
           "skill-evals/cases/video-production/artifacts/case-38/proxy-timeline-lineage.json"
         ],
-        "contractSha256": "dbbce9621da6aab2110714b56462c82f9c6ff92baa90bf9ebf39a219d4c74d28"
+        "contractSha256": "5b3f2be7366f85a1cbcb80da2a53976ecff6dca1cf8b4ec655265e7e8c739129"
       },
       "requiredChecks": [
         "automatic-specialist-routing",
@@ -1050,21 +1054,24 @@
         "cinematic-treatment-and-motivated-reveals",
         "repeatable-walkthrough-and-visible-verification",
         "optional-advanced-motion-feasibility",
-        "requested-editable-handoff-reopen-relink-render-proof"
+        "requested-editable-handoff-reopen-relink-render-proof",
+        "format-led-reference-translation",
+        "visual-script-action-state-and-timing",
+        "temporal-handoff-and-inbetween-verification"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-09-28-artifact-forward.json",
-          "sha256": "f7a26ffac97da98c074707c9c7942cc6e1b311ded41230ad87b449bd29ccbf08",
-          "testedRevision": "37fe781c4c4a6f33d83ccd9506de6858de8576e8",
-          "testedSourceSha256": "a423e9813b7e5ba6a033675a3e981ec6ad756995b7ed33f63d8166b3187291eb",
-          "testedScenarioSha256": "cb13e2bfa5e24f102caf8f3b00d1fe20b17f6de1d288b3f82ad2f490d68ce246",
+          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-10-04-budgeted-motion-forward.json",
+          "sha256": "0eb39768b9190068f06d8d8b6b3f6fce0373e8c3209f00cda6a908cc9d8036cd",
+          "testedRevision": "a29e04dc2c427d45a1ee88abc59f1b1d98adf99e",
+          "testedSourceSha256": "bbff80fea005b1f528df23fd8b72ad9d0f4eaf3fff2e7b0415bb76e7a9389b18",
+          "testedScenarioSha256": "adeda224de9b348538d05b6e0dfe2d45dd6a839321e0f5c6eebde89bc55812be",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
             "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           },
-          "testedScenarioContractSha256": "dbbce9621da6aab2110714b56462c82f9c6ff92baa90bf9ebf39a219d4c74d28"
+          "testedScenarioContractSha256": "5b3f2be7366f85a1cbcb80da2a53976ecff6dca1cf8b4ec655265e7e8c739129"
         }
       ],
       "harnessContract": "cli-validation-v1"
