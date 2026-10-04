@@ -26,7 +26,7 @@ Each shot advances an evidenced idea. Reject stock-office filler, fake customers
 
 ## Storyboard Contract
 
-Write a visual script before polishing narration: viewer question, visible action, changed state, evidence, and payoff. Choose voice-led or music-led structure; spoken words and screen text should complement, not duplicate, the action. Every shot records:
+Write a visual script before polishing narration: viewer question, visible action, changed state, evidence, and payoff. Choose voice-led or music-led structure; spoken words and screen text should complement, not duplicate, the action. Deliver, rather than promise, this shot plan:
 
 | Field | Requirement |
 |---|---|
