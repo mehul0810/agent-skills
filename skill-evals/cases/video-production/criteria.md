@@ -50,3 +50,10 @@ Cases 1-30 retain all original baseline coverage:
 - Case 38 supplements `non-destructive-edit-and-output-lineage`: retain VFR originals and require the source-to-proxy cadence/conform receipt; distinguish proxy-map r2 from r1. The current master uses timeline v8 after reviewer approval of v7 and is not derived from the locked review export. Re-open picture lock and validate the revised source/timeline/master lineage before final post; do not erase the history or claim delivery proof from the fixture.
 
 All baseline gates remain independently applicable: no unsafe publication, fabricated evidence, weakened quality floor, or substitution of synthetic decisions for actual playback/native-editor proof.
+
+## Script-To-Motion Checks
+
+- Case 39, `format-led-reference-translation`: choose format by audience and job, distinguish creator descriptions from viewed footage, and translate useful principles without copying signatures or asserting one company-wide style. Do not replace a promised workflow with decorative abstraction.
+- Case 40, `visual-script-action-state-and-timing`: supply a timed beat plan with screen/spoken copy or none, before/action/after states, persistent objects, property paths/key poses, reading holds, transition handoff and meaningful audio cues. Keep preview/review/publish choice truthful. Missing captures/assets block exact UI production, not script or a clearly conceptual motion test; do not invent a shipped interface, speed metric or publication outcome.
+- Case 41, `temporal-handoff-and-inbetween-verification`: diagnose the position/velocity reset despite matching style/frame rate. Preserve object identity and inspect actual adjacent/in-between encoded frames and normal-speed playback; align pose/velocity for continuity or make the editorial cut explicit. Metadata or interpolation formulas alone do not prove smoothness.
+- Case 42 supplements `temporal-handoff-and-inbetween-verification`: retain purposeful reading stillness unless observed legibility/narrative evidence warrants a change. Do not require constant motion or fail an intentional hold merely because nothing moves.

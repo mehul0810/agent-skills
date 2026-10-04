@@ -71,3 +71,17 @@ These raw cases attach synthetic, non-product artifacts to exercise provenance d
 - **Creative range:** Enterprise art direction need not become the same minimal text/card template. Choose purposeful imagery and distinctive composition against the brief without inventing product evidence.
 - **Cheap preview, expensive proof:** A clean low-resolution preview does not prove native 4K edge/compression quality; render representative full-resolution ranges. A poster-only edit does not rerender unrelated scenes.
 - **Cross-model measurement:** Compare identical frozen inputs/checks across allowed settings; separate evaluator detection from generation quality. Record failures, retries and unavailable metrics honestly.
+
+## Script-To-Motion Execution
+
+### Format-led reference translation
+
+Select product/material reveal, graphic metaphor, human story or software workflow from the brief and evidence, not a universal enterprise look. Reference descriptions and frame samples cannot establish full motion/audio review. Preserve the promised workflow and originality.
+
+### Visual script and state change
+
+Translate the promise into timed before/action/after beats with exact copy or no text, evidence, persistent object identity, paths/key poses, holds, transition anchors and audio cues. Missing captures do not authorize fabricated UI; a clearly conceptual pilot remains a separate proof class.
+
+### Temporal handoff and deliberate stillness
+
+Inspect position, scale and velocity through a continuous handoff and check encoded in-betweens. Matching colors, a high frame rate or an easing function cannot prove continuity. Preserve motivated cuts and stable reading holds; smooth does not mean movement in every frame.
