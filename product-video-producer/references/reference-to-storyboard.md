@@ -41,7 +41,7 @@ Write a visual script before polishing narration: viewer question, visible actio
 | Transition | Outgoing/incoming anchor, overlap, reason; intentional cut or continuous handoff |
 | Acceptance | Observable pass condition |
 
-Keep the arc compact: context, tension, product role, verified proof, outcome, next action. A launch teaser can omit detailed UI; an explainer cannot replace a real workflow with abstraction when the workflow itself is the promise.
+Derive the arc from the subject, not a compulsory intro/reveal/CTA script. A science journey, material study and software demo need different pacing, imagery and sound. Keep promised workflows visible; narration and title cards must not substitute for the action.
 
 ## Asset Preflight
 
@@ -61,7 +61,7 @@ Generated/altered media needs a receipt: tool/source, oversight, rights/consent,
 
 For delegated direction, compare compositions against audience, brand, truth and narrative; validate a representative sequence before scaling. Ask only for requested selection or material brand/claim/scope decisions; exact direction needs no reselection. Internal review is not publication permission.
 
-Enterprise need not mean minimalism. Consider editorial, cinematic, technical or expressive directions; use purposeful imagery or real UI rather than default text/cards. Generate supporting assets, never evidence. Separate exact composition/crop/type/timing fidelity from subjective craft.
+Choose visual language from subject, audience and genre. Compare recent work when available: do not inherit rings, metallic spheres, dark palettes, centered layouts, camera loops or narration cadence merely because code exists. Reuse infrastructure, not a visual template. Preserve approved series identity; novelty is not randomness. Separate fidelity from craft.
 
 ## Motion Direction Contract
 
@@ -74,6 +74,6 @@ Motion sheet: alignment, safe areas, type, palette, focal hierarchy, camera/dept
 - Allocate entrance, readable hold and exit separately. Check exact copy at normal speed on the smallest intended display; no universal word-per-second value replaces this test. Do not synchronize every word or cut mechanically to a beat.
 - Map sound cues to visible events, leave breathing room, and keep voice, music and effects separately adjustable. A cue supports meaning, not a weak transition.
 
-Parameterize opening, reveal, UI-action, comparison, workflow, evidence and CTA scenes by assets/copy/timing/aspect, not a borrowed signature.
+Parameterize rendering mechanics; invent subject-specific composition and choreography rather than reskinning stock scenes.
 
 Frames prove composition, not pacing/easing/audio. Record timecoded defects after playback.

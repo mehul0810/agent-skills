@@ -1,6 +1,6 @@
 ---
 name: product-video-producer
-description: "Use for premium product and brand video: enterprise promos, software demos, YouTube long-form/Shorts, editing and post-production, storyboards, motion, deterministic delivery, and evidence-led revisions without invented claims or fake UI."
+description: "Use for product/brand video, 3D explainers and abstract motion: promos, software demos, YouTube long-form/Shorts, editing, storyboards, deterministic delivery, and evidence-led revisions without invented claims or fake UI."
 ---
 
 # Product Video Producer
@@ -10,7 +10,7 @@ Turn product truth, approved assets, footage, and references into distinctive, e
 ## Route
 
 - Reference review, brand translation, storyboard, typography, pacing, composition, motion, or abstract storytelling: read `references/reference-to-storyboard.md`.
-- Cinematic film, instructional walkthrough, or advanced motion execution: use the relevant mode guidance in `references/production-modes.md` as the single optional support for the current stage, replacing rather than stacking another supporting reference. Keep modes optional and combine only when the brief benefits.
+- Cinematic film, instructional walkthrough, 3D scenes or advanced motion: use `references/production-modes.md` as the current stage's single optional support, replacing rather than stacking another reference. Combine modes only when the brief benefits.
 - Editing, real software capture, ingest/conform, sound, color, captions, rendering, manifest, QA, or user-critique iteration: read `references/render-review-iteration.md`.
 - YouTube long-form, Shorts, thumbnails/titles, channel packaging, disclosure, upload profiles, or retention learning: read `references/channel-delivery-feedback.md`.
 - Load the primary reference for the current stage; when needed, the production-mode reference is its one supporting reference. Do not load every stage reference in one context or stack another supporting reference with the mode guide. Handoff compact decisions between stages. Verify changing platform rules at delivery.
@@ -19,7 +19,7 @@ Turn product truth, approved assets, footage, and references into distinctive, e
 
 ## Workflow
 
-1. Classify the work: enterprise promo/launch, explainer or software demo, long-form, Short, edit, or delivery-only. Confirm audience, one content promise, channel, duration, outcome, deliverables, and review owner.
+1. Classify the work: enterprise promo/launch, educational/3D explainer, abstract motion, software demo, long-form, Short, edit, or delivery-only. Confirm audience, content promise, channel, duration, outcome, deliverables, and review owner.
 2. Establish project, source revision/hash, sequence, job and expected output identity. For edit/review/delivery-only work, bind the supplied artifact to its existing contract; never invent missing identity.
 3. Confirm approved claims, brand, product evidence, sanitized capture, media/likeness rights, accessibility, synthetic-media needs, and platform constraints.
 4. Inspect references and footage; record timestamped observations, intent, reusable principles, and originality boundaries.

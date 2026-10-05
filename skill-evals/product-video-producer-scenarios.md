@@ -85,3 +85,7 @@ Translate the promise into timed before/action/after beats with exact copy or no
 ### Temporal handoff and deliberate stillness
 
 Inspect position, scale and velocity through a continuous handoff and check encoded in-betweens. Matching colors, a high frame rate or an easing function cannot prove continuity. Preserve motivated cuts and stable reading holds; smooth does not mean movement in every frame.
+
+## Subject-Led 3D Regression
+
+Cases 43-48 in the blind packet test subject-specific visual language, geometry purpose, encoded-motion inspection and safe exceptions. Science and fragrance treatments must differ beyond palette; physical Saturn rings, explicit abstract ring art and approved series identity remain valid. Check unwanted guides and intermediate geometry without inventing playback evidence. Future-style feedback does not itself request replacement videos. These decision checks supplement, not replace, rendered creative review.

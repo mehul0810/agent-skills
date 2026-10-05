@@ -48,8 +48,8 @@ The manifest binds identity, lineage, storyboard, toolchain, media profile, prov
 ## QA Gate
 
 - Probe the exact expected artifact and verify codec, frame size, rational frame rate/frame count, duration, pixel format, scan, color tags, audio layout/rate, and integrity against the manifest. Acceptance validation recomputes media evidence with `ffprobe` and fails closed when it is unavailable; another parser may support draft investigation but is not completion proof until the validator supports it.
-- Review the first/last frame, every cut, title hold, logo appearance, caption, and representative motion frame at 100%.
-- Check spelling, line breaks, adaptive/mobile safe areas, contrast, hierarchy, clipping, banding, flicker/flash, judder, unintended blank frames, sync, dialogue intelligibility, loudness/true peak, and audio transitions.
+- Review endpoints, cuts, title holds, logos, captions and representative motion frames at 100%.
+- Check copy, mobile safe areas, contrast, clipping, banding, flicker, judder, blanks, sync, dialogue and audio levels/transitions. In 3D, check encoded motion for intersections, stray geometry, popping and unnecessary guides, not just attractive keyframes.
 - Inspect logos over light and dark frames for matte boxes, halos, color shifts, distortion, and insufficient clear space.
 - Confirm every UI frame is real and versioned or unmistakably conceptual. Confirm every product/scale/security/outcome claim has evidence.
 - Compare the render to storyboard acceptance criteria, not merely to source code or timeline settings.

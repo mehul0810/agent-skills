@@ -18,6 +18,12 @@ Keep cursor, highlights, zoom, and narration subordinate to the task. Show contr
 
 Before proposing masking, tracking, compositing, or depth, check source media and tool feasibility: resolution, blur, occlusion, edge detail, camera movement, lighting, and required output. Name the likely failure and a simpler fallback. Inspect mask edges across occlusion; tracking across exits, blur, and lighting changes; composite perspective, contact, grain, exposure, and motion; and depth geometry and any invented parallax. Test a representative range. If the actual renderer and playback cannot validate it, call it a proposal, not an achieved effect. Never fabricate exact UI or product copy for a composite.
 
+### Subject-Led 3D
+
+Give geometry a role: physical subject, explanatory guide or intentional abstraction. Rings are not default decoration. Keep physical features such as Saturn's rings; show orbit paths, grids and halos only when they clarify the current question, then retire them. An explicitly requested ring sculpture remains valid. Avoid turning every subject into a diagram or metallic turntable.
+
+Choose camera, materials, lighting, motion and sound for this subject. Scientific creativity must preserve relationships and disclose compressed scale/time; abstraction permits expressive geometry without factual claims. Inspect encoded in-betweens and playback for intersections, stray/duplicate objects, popping, z-fighting, occlusion and camera clipping. Distinguish an unwanted designed object from a renderer defect before repairing it.
+
 ## Editable Handoff, When Requested
 
 Provide the native project or identified interchange package with its editor/version and dependencies. Reopen it in the intended editor, relink delivered media, and render a representative range from that reopened project. Include fonts and licensed assets only when transfer is permitted, plus settings and requested/necessary audio stems; state external dependency and license limits.
