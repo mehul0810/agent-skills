@@ -1,0 +1,7 @@
+{
+  "id": "github-communication",
+  "request": "Use the supplied shared GitHub writing guidance to respond to each independent case in cases.json. Produce the requested drafts or decisions only. Do not mutate GitHub, rewrite repository history or run product operations. Use only supplied facts and record which guidance files you loaded.",
+  "artifacts": [
+    "cases.json"
+  ]
+}

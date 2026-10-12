@@ -2,6 +2,8 @@
 
 Use this reference before committing, pushing, opening a PR, updating a PR body, or handing off product work.
 
+Use the **Cross-Project Writing Standard** in `github-communication-protocol.md` for titles and information order. It covers commit messages, PRs, issues, reviews and handoffs; explicit repository/upstream conventions remain valid. Formatting does not change the branch or authorization gates below.
+
 ## Branch Discipline
 
 - Product repositories keep the verified `main` or documented `master` production branch as stable release space; it must not receive development work directly.
@@ -15,7 +17,7 @@ Use this reference before committing, pushing, opening a PR, updating a PR body,
 
 ## Commit Convention
 
-Use this commit format:
+Use this commit format and the same title shape for PRs and issues:
 
 ```text
 type(scope): concise action
@@ -32,6 +34,7 @@ Examples:
 Rules:
 
 - Keep commits scoped.
+- Write an action for a commit/PR and an observable problem or requested outcome for an issue; the shared protocol defines types, scope and examples.
 - Do not mix unrelated issues.
 - Reference issue numbers in the PR body, not necessarily every commit subject.
 - Commit only intended files.
@@ -56,6 +59,8 @@ Every PR must include:
 - Release impact.
 - Delegated thread/worktree reference when applicable.
 - Owner decisions needed, if any.
+
+Group this information under `Summary`, `Context`, `Changes`, `Validation`, and `Risks And Follow-Up` rather than adding a heading for every bullet. State when no issue/milestone was supplied or a field is not applicable; do not invent tracker items or proof to fill the structure.
 
 For a milestone issue PR, also include `Changelog:` with one verified audience-facing item, or `Not applicable - internal only: <reason>`. Do not place a release date in the final changelog until the owner has selected it; release preparation then updates the date and reruns affected metadata/package checks.
 

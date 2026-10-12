@@ -74,6 +74,7 @@ Use `../../shared/references/github-actions-economy.md` for visibility-aware cos
 
 ## GitHub PR Workflow
 
+- For commit messages, PR/issue titles and bodies, use the cross-project writing standard in `../../shared/references/github-communication-protocol.md`; preserve explicit repository and upstream contribution formats.
 - Rehydrate repo context at the start of a new chat or resumed task: verify Git root, remote, default branch, current branch, dirty tree, ahead/behind state, workflow docs, active issue/milestone, and release/hotfix/support branches.
 - Fetch remote refs before deciding a PR base when network access is available.
 - Never create a PR by relying on the GitHub default base. Explicitly choose and pass `--base`; `main`/`trunk` is only correct when evidence says it is the intended target.

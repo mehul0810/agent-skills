@@ -69,6 +69,12 @@ Use `skill-evals/README.md`. Run changed-role scenarios with a fresh agent and r
 
 Green grep/structure audits do not prove the behavior is correct.
 
+For cross-project GitHub writing changes, use the blind packet in
+`skill-evals/cases/github-communication/` and score separately against its
+author-only `criteria.md`. Cover title/body consistency, explicit upstream
+exceptions, small-change proportionality and honest proof limits. These are
+synthetic writing decisions, not live GitHub posting or reader-comprehension proof.
+
 For system-health reviewer changes, dispatch the blind
 `skill-evals/cases/system-health-reviewer/input.json` packet and score against
 `skill-evals/system-health-reviewer-scenarios.md` outside the evaluator context.

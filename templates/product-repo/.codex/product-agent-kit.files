@@ -12,5 +12,7 @@
 .codex/prompts/landpr.md
 .codex/prompts/pickup.md
 .codex/prompts/release-wporg.md
+.github/ISSUE_TEMPLATE/work-item.md
+.github/pull_request_template.md
 AGENTS.md
 PRODUCT.md

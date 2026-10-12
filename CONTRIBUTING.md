@@ -93,12 +93,8 @@ This owner-managed repository publishes scoped, validated changes directly to `m
 2. Test: Run `bash scripts/validate-references.sh` (see Validation section).
 3. Commit with a clear message:
    ```
-   git commit -m "Add new-topic reference guidance
-   
-   - Explain the content added
-   - Mention which reference map entries were updated
-   
-   Co-Authored-By: Your Name <your.email@example.com>"
+   git commit -m "docs(references): add new-topic guidance" \
+     -m "Explain why the guidance is needed and which routes changed."
    ```
 4. Push only after validation and the applicable owner/publishing policy allow it.
 
@@ -189,12 +185,8 @@ git fetch origin
 bash scripts/validate-references.sh
 
 # Commit with descriptive message
-git commit -m "Add/fix: your change
-
-- Detailed explanation
-- What problem it solves
-
-Co-Authored-By: Your Name <email>"
+git commit -m "docs(references): clarify the new-topic workflow" \
+  -m "Explain the problem solved and record relevant validation or gaps."
 
 # Push the validated main commit when publication is authorized
 git push origin main
@@ -202,26 +194,13 @@ git push origin main
 
 ### Commit Message Format
 
-Use conventional commits:
+Use the [shared cross-project writing standard](shared/references/github-communication-protocol.md) for commit messages, PR and issue titles, bodies, reviews and handoffs. Its default title format is:
 
-```
-type: short description (50 chars max)
-
-Longer explanation of the change.
-- What was changed
-- Why it was changed
-- Any breaking changes
-
-Co-Authored-By: Name <email>
+```text
+type(scope): plain-language summary
 ```
 
-Commit types:
-- `feat`: New reference, guide, or feature
-- `fix`: Bug fix or correction
-- `docs`: Documentation updates (README, guides)
-- `refactor`: Reorganizing existing content
-- `test`: Adding or updating validation scripts
-- `chore`: Maintenance, tooling, version updates
+Keep the subject specific and aim for 72 characters or fewer. For a substantive change, explain why and record relevant checks or gaps in the body. Add issue references and co-author attribution only when verified. Do not add a breaking-change marker without an intentional, authorized contract change. Follow explicit upstream formats when contributing outside owner-managed projects.
 
 ## Validation Checklist
 
