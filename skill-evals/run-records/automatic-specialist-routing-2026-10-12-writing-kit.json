@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "runId": "automatic-specialist-routing-2026-10-12-writing-kit",
+  "scenario": "automatic-specialist-selection",
+  "result": "succeeded",
+  "startedAt": "2026-10-12T04:07:34.000Z",
+  "durationMs": 54000,
+  "checks": [
+    {
+      "name": "direct-plugin-specialist",
+      "result": "pass"
+    },
+    {
+      "name": "no-umbrella-map-load",
+      "result": "pass"
+    },
+    {
+      "name": "one-primary-reference-budget",
+      "result": "pass"
+    },
+    {
+      "name": "bounded-evidence-handoff",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 4,
+    "host_telemetry_available": 0
+  },
+  "lineage": {
+    "verificationId": "automatic-specialist-routing-2026-10-12-writing-kit",
+    "artifactPointer": "skill-evals/github-writing-review-2026-10-12.md#automatic-specialist-routing"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-10-12T04:08:28.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available"
+    ],
+    "summary": "Fresh synthetic routing decision independently scored 4/4 checks at revision 489e83b54d054c5b1e34c9b5acdf91640ab5893d. Observed dispatch-to-completion-check interval, not model compute latency; token/context telemetry unavailable. Raw evidence hashes in review note. Not product runtime, native dispatch, posting or universal adoption proof."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "synthetic-decision"
+  ]
+}

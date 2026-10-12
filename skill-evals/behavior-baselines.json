@@ -509,7 +509,7 @@
         "wp-expert/agents/openai.yaml",
         "templates/product-repo/AGENTS.md"
       ],
-      "sha256": "4e0d87c13037ff161d7b66ffa0954e61328946f858ef895b0557dc6d4a374244",
+      "sha256": "4b4fe5396ed27259e9c5f46af980c4687d1b345d4e32be9b1b141b1fb0531777",
       "scenario": {
         "id": "automatic-specialist-selection",
         "files": [
@@ -531,10 +531,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/automatic-specialist-routing-2026-09-28-ci-policy-refresh.json",
-          "sha256": "87ebc7bc4bf2a515815f71194f178aa1b852063fd48c27aea7be4f2c5ce8118d",
-          "testedRevision": "df678758406d2ae3b7d850f445d07cdd371ecbef",
-          "testedSourceSha256": "4e0d87c13037ff161d7b66ffa0954e61328946f858ef895b0557dc6d4a374244",
+          "runRecord": "skill-evals/run-records/automatic-specialist-routing-2026-10-12-writing-kit.json",
+          "sha256": "5387268c0cfe3b023c86e2fd41793ce57c9299a99add95f44cba7863065c01b0",
+          "testedRevision": "489e83b54d054c5b1e34c9b5acdf91640ab5893d",
+          "testedSourceSha256": "4b4fe5396ed27259e9c5f46af980c4687d1b345d4e32be9b1b141b1fb0531777",
           "testedScenarioSha256": "5964fa0002f260ea2ed1ecdf40a842bc6a5548173fca1f1b38adfa16b713693d",
           "runtime": {
             "host": "codex-desktop",
