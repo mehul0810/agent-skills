@@ -25,6 +25,11 @@ Keep local, CI, packaged, editor/browser and production checks distinct.
 
 ## Risks And Follow-Up
 
-Risk, rollback, compatibility/migration and release impact, owner decisions and next action.
+Risk:
+Rollback plan:
+Compatibility/migration and release impact:
+Owner decisions:
+Next action:
+
 Delegated chat/worktree reference when applicable.
 `Changelog:` verified audience-facing item, or `Not applicable - internal only: reason`, for milestone issue PRs.

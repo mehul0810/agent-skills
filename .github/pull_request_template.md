@@ -24,5 +24,10 @@ Screenshots or other observable proof for visible changes, or the exact proof ga
 
 ## Risks And Follow-Up
 
-Risk, rollback, release impact, remaining findings, owner decisions, and next action.
+Risk:
+Rollback plan:
+Release impact:
+Owner decisions or remaining findings:
+Next action:
+
 Delegated chat/worktree reference when applicable. `Changelog:` for milestone issue PRs.
