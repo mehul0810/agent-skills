@@ -69,6 +69,11 @@ Use `skill-evals/README.md`. Run changed-role scenarios with a fresh agent and r
 
 Green grep/structure audits do not prove the behavior is correct.
 
+Freeze the applicable owning router and material support references into decision
+packets, not just the files changed by the patch. Check route reachability before
+dispatch. Missing guidance makes coverage incomplete; correct the packet and
+rerun the affected requests without weakening criteria or hiding earlier attempts.
+
 For cross-project GitHub writing changes, use the blind packet in
 `skill-evals/cases/github-communication/` and score separately against its
 author-only `criteria.md`. Cover title/body consistency, explicit upstream

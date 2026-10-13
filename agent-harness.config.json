@@ -570,6 +570,11 @@
   ],
   "scenarios": [
     {
+      "name": "Creative Exploration",
+      "file": "skill-evals/creative-exploration-scenarios.md",
+      "requiredPhrases": ["# Creative Exploration Forward-Test Scenarios", "CE-1 Intent", "CE-2 Difference", "CE-3 Truth", "CE-4 Render", "CE-5 Restraint"]
+    },
+    {
       "name": "Conversion Journey",
       "file": "skill-evals/conversion-journey-scenarios.md",
       "requiredPhrases": ["# Conversion Journey Scenarios", "## Contrasting Decision Paths", "## Destination And Evidence Counterexamples", "## Evidence Boundary"]

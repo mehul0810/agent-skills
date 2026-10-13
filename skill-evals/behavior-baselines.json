@@ -70,7 +70,7 @@
         "wp-expert/references/visual-parity-regression.md",
         "wp-expert/references/wordpress-design-system.md"
       ],
-      "sha256": "f3a55b12d2572b885788878f3dd006daea2b3dc86e54465541b7501751eb61c5",
+      "sha256": "a0c39b7d79db6af1c500f72f3f7ae60206134865b77e6dec605fc0854741dba7",
       "scenario": {
         "id": "premium-enterprise-design-experience",
         "files": [
@@ -138,10 +138,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/design-experience-routing-2026-09-23-aligned.json",
-          "sha256": "6a9b62f8f0d9955fcfabdde9a42f1e95557fab9af1fed5c34e7245b6300a5223",
-          "testedRevision": "e501dd384258b676faa55d7a79c3a8b8fd5d9675",
-          "testedSourceSha256": "f3a55b12d2572b885788878f3dd006daea2b3dc86e54465541b7501751eb61c5",
+          "runRecord": "skill-evals/run-records/design-experience-routing-2026-10-13-compact.json",
+          "sha256": "a8398ef0fb353e1e7b58ec1d4509a6b00f7a2b39b5bf2ea59a4991fe2e3deb11",
+          "testedRevision": "3ac4b7ceca7093d0b4bb37f5955a9ab26444b533",
+          "testedSourceSha256": "a0c39b7d79db6af1c500f72f3f7ae60206134865b77e6dec605fc0854741dba7",
           "testedScenarioSha256": "168416f3f9957a78a16ab3339fa253bfee79efd81d322b10c662d9244b63e12d",
           "runtime": {
             "host": "codex-desktop",
@@ -1501,7 +1501,7 @@
         "shared/references/visual-to-wordpress-implementation.md",
         "templates/global-design-defaults.md"
       ],
-      "sha256": "79680f5651fe8f4a905d33073a7f5cf6abd8c4a4177d99bf30016e4af50ca95c",
+      "sha256": "ba1cd58655d162bc4a946f16389f202d2d326413b5c7e52beefe5f7a8b27903a",
       "scenario": {
         "id": "native-design-authoring",
         "files": [
@@ -1556,10 +1556,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/native-design-authoring-2026-09-25-coordination.json",
-          "sha256": "dfa410d3e7e225b0510c5cb1c4a5facc05c2b8a970e64efd90f7be718355af70",
-          "testedRevision": "69d20cf22709de64057f7f28406236e4116a38c9",
-          "testedSourceSha256": "79680f5651fe8f4a905d33073a7f5cf6abd8c4a4177d99bf30016e4af50ca95c",
+          "runRecord": "skill-evals/run-records/native-design-authoring-2026-10-13-compact.json",
+          "sha256": "91495181fcb35bddafc9b47666d72a3c7099bfcb3d5cf46b2e2d4c81dad32c0e",
+          "testedRevision": "3ac4b7ceca7093d0b4bb37f5955a9ab26444b533",
+          "testedSourceSha256": "ba1cd58655d162bc4a946f16389f202d2d326413b5c7e52beefe5f7a8b27903a",
           "testedScenarioSha256": "2c8ea417197aefe8fd651ea3e5c7800c3523f41a98321f5c66f606e7b653bf62",
           "runtime": {
             "host": "codex-desktop",

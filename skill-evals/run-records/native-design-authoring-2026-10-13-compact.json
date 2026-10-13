@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "runId": "native-design-authoring-2026-10-13-compact",
+  "scenario": "native-design-authoring",
+  "result": "succeeded",
+  "startedAt": "2026-10-13T05:10:25.264Z",
+  "durationMs": 919472,
+  "checks": [
+    {
+      "name": "editable-artifact-routing",
+      "result": "pass"
+    },
+    {
+      "name": "missing-write-capability",
+      "result": "pass"
+    },
+    {
+      "name": "pen-transfer-loss",
+      "result": "pass"
+    },
+    {
+      "name": "small-edit-restraint",
+      "result": "pass"
+    },
+    {
+      "name": "task-matched-inspiration",
+      "result": "pass"
+    },
+    {
+      "name": "independent-acceptance-gates",
+      "result": "pass"
+    },
+    {
+      "name": "single-source-and-publication",
+      "result": "pass"
+    },
+    {
+      "name": "proportional-handoff",
+      "result": "pass"
+    },
+    {
+      "name": "high-fidelity-default",
+      "result": "pass"
+    },
+    {
+      "name": "navigation-and-recovery",
+      "result": "pass"
+    },
+    {
+      "name": "purposeful-media",
+      "result": "pass"
+    },
+    {
+      "name": "placement-aware-image",
+      "result": "pass"
+    },
+    {
+      "name": "image-candidate-rejection",
+      "result": "pass"
+    },
+    {
+      "name": "exact-edit-restraint",
+      "result": "pass"
+    },
+    {
+      "name": "native-runtime-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "shared-editor-target-drift",
+      "result": "pass"
+    },
+    {
+      "name": "isolated-target-exception",
+      "result": "pass"
+    },
+    {
+      "name": "truthful-visual-proof",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 18,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "native-design-authoring-2026-10-13-compact",
+    "artifactPointer": "codex-private:creative-exploration-20261013#independent-score-compact-native-01"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-10-13T05:25:44.736Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Independent scoring passes all 18 checks from the fresh compact-source packet, including a known raw supplemental import case. Shared parent-observed evaluation/scoring interval, not model cost. Synthetic decisions only; no native, production, usability, savings or unseen-transfer proof. Earlier source-specific attempts retained. See creative-exploration-review-2026-10-13.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}
