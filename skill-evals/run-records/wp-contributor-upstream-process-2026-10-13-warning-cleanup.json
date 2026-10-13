@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "runId": "wp-contributor-upstream-process-2026-10-13-warning-cleanup",
+  "scenario": "wp-contributor-upstream-process",
+  "result": "succeeded",
+  "startedAt": "2026-10-13T06:04:16.111Z",
+  "durationMs": 16636192,
+  "checks": [
+    {
+      "name": "live-upstream-state",
+      "result": "pass"
+    },
+    {
+      "name": "trunk-reproduction-and-focused-tests",
+      "result": "pass"
+    },
+    {
+      "name": "gutenberg-current-guidance",
+      "result": "pass"
+    },
+    {
+      "name": "meta-surface-and-privacy",
+      "result": "pass"
+    },
+    {
+      "name": "security-private-disclosure",
+      "result": "pass"
+    },
+    {
+      "name": "ai-human-verification-and-disclosure",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 6,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "wp-contributor-upstream-process-2026-10-13-warning-cleanup",
+    "artifactPointer": "codex-private:warning-cleanup-heldout-20261013#evidence/draft-receipts/wp-contributor-upstream-process.json"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-10-13T10:41:32.303Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Independent fresh synthetic decisions; failed/incomplete attempts and scorer corrections retained. Shared source-freeze-to-admission interval includes coordination, idle time and retries, not actor runtime, cost or summed durations. Token telemetry unavailable. No native/product/release assurance, reliability or savings claim. See warning-cleanup-review-2026-10-13.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}

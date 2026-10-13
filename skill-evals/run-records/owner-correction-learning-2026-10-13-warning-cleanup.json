@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "runId": "owner-correction-learning-2026-10-13-warning-cleanup",
+  "scenario": "owner-correction-learning",
+  "result": "succeeded",
+  "startedAt": "2026-10-13T06:04:16.111Z",
+  "durationMs": 16636192,
+  "checks": [
+    {
+      "name": "immediate-root-cause-correction",
+      "result": "pass"
+    },
+    {
+      "name": "compact-correction-result",
+      "result": "pass"
+    },
+    {
+      "name": "worker-candidate-only",
+      "result": "pass"
+    },
+    {
+      "name": "dedupe-and-repeatability-gate",
+      "result": "pass"
+    },
+    {
+      "name": "reviewed-durable-destination",
+      "result": "pass"
+    },
+    {
+      "name": "decision-envelope-preserved",
+      "result": "pass"
+    },
+    {
+      "name": "task-authorization-not-promoted",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 7,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "owner-correction-learning-2026-10-13-warning-cleanup",
+    "artifactPointer": "codex-private:warning-cleanup-heldout-20261013#evidence/draft-receipts/owner-correction-learning.json"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-10-13T10:41:32.303Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Independent fresh synthetic decisions; failed/incomplete attempts and scorer corrections retained. Shared source-freeze-to-admission interval includes coordination, idle time and retries, not actor runtime, cost or summed durations. Token telemetry unavailable. No native/product/release assurance, reliability or savings claim. See warning-cleanup-review-2026-10-13.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}

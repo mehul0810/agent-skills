@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "runId": "native-design-authoring-2026-10-13-warning-cleanup",
+  "scenario": "native-design-authoring",
+  "result": "succeeded",
+  "startedAt": "2026-10-13T06:04:16.111Z",
+  "durationMs": 16636192,
+  "checks": [
+    {
+      "name": "editable-artifact-routing",
+      "result": "pass"
+    },
+    {
+      "name": "missing-write-capability",
+      "result": "pass"
+    },
+    {
+      "name": "pen-transfer-loss",
+      "result": "pass"
+    },
+    {
+      "name": "small-edit-restraint",
+      "result": "pass"
+    },
+    {
+      "name": "task-matched-inspiration",
+      "result": "pass"
+    },
+    {
+      "name": "independent-acceptance-gates",
+      "result": "pass"
+    },
+    {
+      "name": "single-source-and-publication",
+      "result": "pass"
+    },
+    {
+      "name": "proportional-handoff",
+      "result": "pass"
+    },
+    {
+      "name": "high-fidelity-default",
+      "result": "pass"
+    },
+    {
+      "name": "navigation-and-recovery",
+      "result": "pass"
+    },
+    {
+      "name": "purposeful-media",
+      "result": "pass"
+    },
+    {
+      "name": "placement-aware-image",
+      "result": "pass"
+    },
+    {
+      "name": "image-candidate-rejection",
+      "result": "pass"
+    },
+    {
+      "name": "exact-edit-restraint",
+      "result": "pass"
+    },
+    {
+      "name": "native-runtime-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "shared-editor-target-drift",
+      "result": "pass"
+    },
+    {
+      "name": "isolated-target-exception",
+      "result": "pass"
+    },
+    {
+      "name": "truthful-visual-proof",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 18,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "native-design-authoring-2026-10-13-warning-cleanup",
+    "artifactPointer": "codex-private:warning-cleanup-heldout-20261013#evidence/draft-receipts/native-design-authoring.json"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-10-13T10:41:32.303Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Independent fresh synthetic decisions; failed/incomplete attempts and scorer corrections retained. Shared source-freeze-to-admission interval includes coordination, idle time and retries, not actor runtime, cost or summed durations. Token telemetry unavailable. No native/product/release assurance, reliability or savings claim. See warning-cleanup-review-2026-10-13.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}
