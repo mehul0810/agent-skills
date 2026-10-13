@@ -1,22 +1,22 @@
 # Production Modes
 
-Choose a mode from the requested outcome, not a fixed formula. Modes are optional and may be combined when useful. Product truth, rights, accessibility, output identity, and publication boundaries in the main skill still apply.
+Choose mode(s) from the requested outcome, not a formula. Main-skill truth, rights, accessibility, output identity and publication boundaries still apply.
 
 ## Cinematic Film
 
-For a story-led film, define what the viewer encounters, what shifts, and what image or sound remains. This is a flexible treatment arc, not a required three-act structure. Give each shot an informational or dramatic job, subject, composition, duration, and transition intent. Motivate camera movement and lighting from the subject or reveal; hold still when movement adds no meaning. Do not imply an unverified product state.
+For story-led film, define encounter, change and lasting image/sound. Flexible treatment arc, not a required three-act structure. Give each shot job, subject, composition, duration and transition; motivate camera/light from subject or reveal, otherwise hold still. Never imply unverified state.
 
-Use recurring sound motifs only when they connect scenes or signal a meaningful change. Identify their source or licensed asset and how they evolve; allow silence. Do not cue every cut or use sound to imply an action that did not happen. Check sync, dialogue intelligibility, and the full mix in playback.
+Use sound motifs only to connect scenes or signal change; identify source/license and evolution, and allow silence. Do not cue every cut or imply nonexistent action. Check sync, dialogue and full mix in playback.
 
 ## Instructional Walkthrough
 
-Identify the learner goal and prerequisites, then capture a verified start state in the named build, role, viewport, and sanitized fixture. Map each action to its visible result and a reliable way to verify success. Explain an appropriate confirmation source when no result appears; otherwise mark it unverified. Match control labels to the captured build.
+Identify learner goal/prerequisites; capture verified start state with build, role, viewport and sanitized fixture. Map actions to visible results and reliable success checks. Name confirmation source when results are absent or mark unverified. Match labels to build.
 
-Keep cursor, highlights, zoom, and narration subordinate to the task. Show controls before acting, allow time to read, pause for asynchronous work, and disclose meaningful waits, skips, assumptions, or branches. Do not omit choices or warnings learners need. Narration must cover important visual-only setup or state changes. Review whether a learner can begin, perform the steps, see the result, recover from a relevant failure, and verify completion. A clean screen recording alone proves none of those outcomes; do not claim learner success or accessibility conformance without evidence.
+Keep cursor, highlights, zoom and narration subordinate. Show controls before action; allow reading, pause for async work and disclose meaningful waits, skips, assumptions or branches. Include needed choices/warnings; narrate important visual-only changes. Verify learners can start, follow steps, see results, recover from relevant failure and confirm completion. Clean recording alone proves none; do not claim success or accessibility conformance without evidence.
 
 ## Optional Advanced Motion
 
-Before proposing masking, tracking, compositing, or depth, check source media and tool feasibility: resolution, blur, occlusion, edge detail, camera movement, lighting, and required output. Name the likely failure and a simpler fallback. Inspect mask edges across occlusion; tracking across exits, blur, and lighting changes; composite perspective, contact, grain, exposure, and motion; and depth geometry and any invented parallax. Test a representative range. If the actual renderer and playback cannot validate it, call it a proposal, not an achieved effect. Never fabricate exact UI or product copy for a composite.
+Before masking, tracking, compositing or depth, check source media and tool feasibility (resolution, blur, occlusion, edges, camera, lighting, output), likely failure and simpler fallback. Inspect masks through occlusion; tracking through exits/blur/light changes; composite perspective/contact/grain/exposure/motion; depth geometry and invented parallax. Test representative range. Without actual render/playback validation, call it a proposal. Never fabricate UI or product copy.
 
 ### Subject-Led 3D
 
@@ -26,6 +26,6 @@ Choose camera, materials, lighting, motion and sound for this subject. Scientifi
 
 ## Editable Handoff, When Requested
 
-Provide the native project or identified interchange package with its editor/version and dependencies. Reopen it in the intended editor, relink delivered media, and render a representative range from that reopened project. Include fonts and licensed assets only when transfer is permitted, plus settings and requested/necessary audio stems; state external dependency and license limits.
+Provide native project or identified interchange package, editor/version and dependencies. Reopen it in the intended editor, relink media and render representative range. Include fonts/licensed assets only if transferable, plus settings and needed/requested stems; state dependency/license limits.
 
-Partial timelines, missing-media screenshots, an exported master, or an unreopened project do not prove an editable handoff. If an editor or dependency is unavailable, state the exact gap. Do not expand a review-render request into an editable-project handoff by default.
+Partial timelines, missing-media screenshots, exported masters or unreopened projects do not prove editable handoff. State unavailable editor/dependency gaps. A review-render request does not imply editable handoff.

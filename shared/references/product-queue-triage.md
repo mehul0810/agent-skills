@@ -1,18 +1,16 @@
 # Product Queue Triage
 
-Use this reference for GitHub issue/PR triage in WordPress repositories.
+WordPress GitHub issue/PR triage.
 
 ## Goal
 
-Convert queue state into autonomous work, decisions, blockers, or deferrals.
-
-The product-thread objective is release readiness: keep advancing the next release train to approval.
+The product-thread objective is release readiness: advance the next release train to approval.
 
 ## Product Heartbeat Execution Contract
 
-Each heartbeat compares prior `Next action` with queue state. Repeated executable work must execute, delegate, or name the blocker.
+Each heartbeat compares prior `Next action` with queue state; execute, delegate, or name blockers for repeated executable work.
 
-Do not call a train quiet while any safe executable scoped item remains. Failing, draft, and wrong-base status are not quiet dispositions when the item can be repaired or routed safely. Before declaring a train quiet, disposition every scoped item as merged, explicitly deferred, a genuine owner gate, or a verified blocker with an accountable owner and next action/review trigger. `DONT_NOTIFY` follows `heartbeat-checkin-discipline.md`: no new material delta suppresses a repeated notification, but does not make executable train work quiet.
+Do not call a train quiet while any safe executable scoped item remains. Failing, draft, and wrong-base status are not quiet dispositions if repair/routing is safe. Disposition each as merged, explicitly deferred, genuine owner gate, or verified blocker with accountable owner and next action/review trigger. `DONT_NOTIFY` suppresses repeated notices without a delta, not executable work.
 
 Escalate to portfolio CTO when executable work stays unchanged for two heartbeats, or one heartbeat for merge-ready PRs or release blockers.
 
@@ -28,22 +26,22 @@ git branch -a --list '*release*' '*hotfix*' '*support*' '*maintenance*' '*develo
 gh repo view --json nameWithOwner,defaultBranchRef,url
 ```
 
-Read applicable repo policy/docs, changelog/`readme.txt`, labels, and milestones.
+Read repo docs/policy, changelog, labels, milestones.
 
-Ensure `owner:codex` and `owner:me` labels exist in each managed repo. Labels define ready state: `owner:codex` is ready for orchestrator/worker action; `owner:me` marks a question, but reversible non-release choices can be resolved and relabeled `owner:codex`.
+Ensure `owner:codex` and `owner:me` labels exist. `owner:codex` means ready; `owner:me` marks a question, but reversible choices can be resolved and relabeled `owner:codex`.
 
 ## Queue Discovery
 
-For the repo:
+Run:
 
 ```bash
 gh issue list --state open --limit 100 --json number,title,labels,milestone,url
 gh pr list --state open --limit 100 --json number,title,isDraft,mergeStateStatus,baseRefName,headRefName,labels,milestone,url
 ```
 
-Batch normal reads. Retry once for the missing signal, then report `live check unavailable` and use local remote-tracking and repo evidence only for non-mutating summary. Do not create issues, relabel, merge, delegate, or decide readiness without live labels/comments/milestones/PR/CI.
+Batch reads. Retry once for the missing signal; then report `live check unavailable` and use local remote-tracking and repo evidence only for non-mutating summary. Do not create issues, relabel, merge, delegate, or decide readiness without live labels/comments/milestones/PR/CI.
 
-Inspect details before recommending action:
+Inspect details first:
 
 ```bash
 gh issue view <number-or-url> --json number,title,body,comments,labels,milestone,url
@@ -54,9 +52,9 @@ Separate human PR/issues, owner/automation issues, bot/dependency PRs, and relea
 
 ## Issue Intake
 
-User requests become GitHub issues first unless explicitly told not to. Product-idea issues require web research first. Competitor names may inform private research, but keep them out of public issue titles and bodies.
+User requests become GitHub issues first unless explicitly told not to. Product-idea issues require web research first. Competitor names may inform private research, not public titles/bodies.
 
-Owner-mentioned work is approved intake signal, not an owner-decision blocker. When `@mehul0810` names work or says to proceed, duplicate-screen, create/update the issue, assign `@mehul0810`, and prioritize it into the nearest appropriate milestone or release train among the next three.
+Owner-mentioned work is approved intake signal, not an owner-decision blocker. When `@mehul0810` names work or says to proceed, duplicate-screen, create/update and assign the issue, and prioritize it into the nearest appropriate milestone or release train among the next three.
 
 Do not blindly drain every issue in a milestone. Before implementation, define the milestone/release scope and priority set from evidence, impact, and risk using `rolling-milestone-triage.md`; brief ambiguity.
 
@@ -69,17 +67,17 @@ Before creating an issue:
 - Assign to `@mehul0810`.
 - Reuse supported labels/milestones; label ready work `owner:codex`.
 - Include acceptance criteria, non-goals, branch/base, validation, proof needs, risk, model/reasoning, and owner decisions.
-- Milestone work must use `release/<release-version>` as branch and PR base, where `<release-version>` is the version/milestone title, not the GitHub milestone ID or sequence number. If the title is not a release version, infer from repo policy/source-of-truth evidence or ask. Use `develop` only for unmilestoned integration or creating missing milestone branches.
+- Milestone work must use `release/<release-version>` as branch and PR base: the version/milestone title, not the GitHub milestone ID or sequence number. If not a release version, infer from policy/source or ask. Use `develop` only for unmilestoned integration or creating missing milestone branches.
 - If a wrong milestone-ID branch was created, preserve commits by replaying or reconciling them into the correct `release/<release-version>` branch, retarget open PRs, and do not delete the wrong branch without explicit owner approval.
 - Missing milestone due dates or branch-policy gaps are not blanket blockers for owner-approved intake. Create/update and recommend order; escalate only unsafe ambiguity.
 - Dirty or behind primary checkouts block direct edits, not fresh scoped worktree delegation from a clean upstream branch.
 - If delegation is deferred, report the exact blocker: issue number, missing branch/base, missing owner decision, missing tool/project, or unsafe checkout state.
 
-If none is ready, create proactive review work for scalability, modularity, performance, maintainability, tooling, UX/docs, WordPress.org, accessibility, sanitized hardening, or authority/growth. Keep it PR-sized and classify as blocker, near-term improvement, research-needed idea, or owner-gated strategic choice.
+If none is ready, create proactive review work for scalability, modularity, performance, maintainability, tooling, UX/docs, WordPress.org, accessibility, sanitized hardening, or authority/growth. Keep PR-sized; classify blocker, near-term improvement, research-needed idea, or owner-gated strategic choice.
 
 Convert real discoveries into issues unless they are safely fixed inside the current PR scope. Duplicate-screen first, then create a focused issue with observed symptom, why it matters, suspected source, affected files/surfaces, acceptance criteria, validation/proof expectation, risk, and whether docs need updating.
 
-Security-sensitive findings must not become public issues and must not include exploit details, reproduction steps, or public `security issue` wording. Use sanitized hardening PRs with validation and minimal public detail.
+Security-sensitive findings must not become public issues or include exploit details, reproduction steps, or public `security issue` wording. Use sanitized hardening PRs with validation and minimal public detail.
 
 Use `community-intake-hygiene.md` for contributor PR courtesy, external issue courtesy, AI-friendly templates, and Playground hygiene.
 
@@ -123,19 +121,19 @@ Lower priority when the item is cosmetic without acceptance criteria, stale with
 
 ## Autonomous Work Loop
 
-Work one item at a time: verify entity/metadata/base; reproduce/root-cause; choose the smallest contract-safe fix; use the narrow specialist; test and prove by risk; commit/push/PR only as authorized; reconcile GitHub, screenshots/gaps, worktrees, heartbeats, and adjacent findings; leave a clean expected checkout.
+Work one item at a time: verify base; reproduce/root-cause; choose smallest safe fix; use specialist; test by risk; commit/push/PR only as authorized; reconcile GitHub, proof, worktrees, heartbeat, adjacent findings, checkout.
 
 ## Release-Ready Notification
 
 When the train is ready for owner approval, report:
 
 - Merged PRs and included scope.
-- Remaining open issues and why they are non-blocking or deferred.
+- Remaining issues and why non-blocking/deferred.
 - CI/package/build/lint/test/live proof.
-- Release metadata match for target version: plugin header, readme stable tag/changelog, package metadata, release notes, and current Plugin Check.
+- Release metadata match for target version: plugin header, readme stable tag/changelog, package metadata, release notes, current Plugin Check.
 - Readme/changelog audit: compatibility fields, upgrade notice, feature/FAQ/assets/tags, no future-work claims.
 - Docs/release notes/WordPress.org/support/Advanced View status.
-- Risks, rollback notes, and unresolved proof gaps.
+- Risks, rollback, unresolved proof gaps.
 - Exact approval requested: production or beta release target/version.
 
 ## Owner-Facing Triage Output
@@ -156,4 +154,4 @@ Defer/close
 - <url> <title>: duplicate/superseded/stale reason; suggested action.
 ```
 
-For implementation-ready items, include the intended base branch and whether a release branch was found from the milestone. Include canonical URLs.
+Implementation-ready output includes intended base, whether milestone yielded a release branch, and canonical URLs.

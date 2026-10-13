@@ -1,10 +1,10 @@
 # GitHub Communication Protocol
 
-Use this reference when writing commit messages, GitHub issue/PR titles and bodies, comments, reviews or handoffs, applying ownership labels, or deciding whether a GitHub comment is durable enough to post.
+Use for commit/issue/PR text, comments, reviews, handoffs, labels, and comment-posting decisions.
 
 ## Cross-Project Writing Standard
 
-Default for new owner-managed work; explicit repository/upstream conventions, including Core/Trac, take precedence. Preserve their required fields. Do not rename historical records, rewrite commits, edit others' drafts or override generated dependency/release titles solely for consistency. Formatting grants no creation, publication, merge, closure or release authority.
+Default for new owner-managed work. Explicit repo/upstream conventions (including Core/Trac) take precedence; preserve required fields. Do not rename history, rewrite commits, edit others' drafts, or override generated dependency/release titles for consistency. Formatting grants no create, publish, merge, close, or release authority.
 
 ### Titles
 
@@ -20,7 +20,7 @@ type(scope): plain-language summary
 - Aim for 72 characters, no final period; avoid unreadable abbreviations. Put links, versions and evidence in the body unless essential to identify work.
 - Avoid vague `update files`, inflated `production-ready` claims and agent jargon. Squash titles describe the combined change, not the last fixup.
 
-Hypothetical examples, not claims about shipped work:
+Examples:
 
 | Artifact | Title |
 | --- | --- |
@@ -33,26 +33,26 @@ Hypothetical examples, not claims about shipped work:
 
 ### Information Order
 
-Order: **summary, context, changes/scope, validation/evidence, risks and next action, links**. Scale to the artifact; small commits/replies need no empty headings. Preserve material commands, paths, errors, versions and identifiers exactly; explain unfamiliar terms rather than dropping detail.
+Order: **summary, context, changes/scope, validation/evidence, risks and next action, links**. Scale to the artifact; small messages need no empty headings. Preserve material commands, paths, errors, versions, and IDs; explain unfamiliar terms.
 
-- **Commits:** typo-only changes can use just the subject. Substantive messages need a blank line, reason/non-obvious constraint and checks/gaps inside the commit itself, not separate commentary. Footers use verified issue references/genuine attribution; no invented co-authors or unintended closure keywords.
-- **PRs:** retain the repository template's required fields. Defaults: `Summary`; `Context` (issue/milestone, explicit base evidence); `Changes` (scope, non-goals, key files); `Validation` (tested revision/artifact, commands/results, screenshots/proof gaps); `Risks And Follow-Up` (risk, rollback, release impact, owner decisions, next action). Include milestone `Changelog:` per `commit-pr-discipline.md`. State missing issues/milestones; never fabricate them. Headings alone do not complete a draft.
-- **Issues:** `Summary`, `Evidence`, `Acceptance Criteria`, `Scope And Constraints`. Bugs: actual/expected behavior, reproduction and environment where available. Proposals: evidence versus assumptions. Acceptance is observable; proposed checks are not completed validation. Include relevant dependencies, exclusions and canonical links. Sensitive reports use private security channels.
-- **Comments/handoffs:** new decision/finding/outcome, necessary evidence, exact next action/question. Short replies need no full PR template; apply the novelty gate below before posting.
-- **Reviews:** severity-ordered findings first, with location, impact and reproduction/evidence; separate questions and unresolved proof gaps. Formatting is not review evidence.
-- **Changelogs/release notes:** audience-facing outcomes in repo version/category format, not commit prefixes or worker history. Include material compatibility, migration and limitations; do not imply release/deployment before verification.
+- **Commits:** typo-only may use the subject. Substantive messages include reason/non-obvious constraint and checks/gaps in the commit, not separate commentary. Footers require verified issue references/genuine attribution; never invent co-authors or closure keywords.
+- **PRs:** retain required template fields. Defaults: `Summary`; `Context` (issue/milestone, base evidence); `Changes` (scope, non-goals, files); `Validation` (revision/artifact, commands/results, screenshots/gaps); `Risks And Follow-Up` (risk, rollback, release impact, owner decisions, next action). Include milestone `Changelog:` per `commit-pr-discipline.md`; state missing issues/milestones, never fabricate. Headings alone do not complete a draft.
+- **Issues:** `Summary`, `Evidence`, `Acceptance Criteria`, `Scope And Constraints`. Bugs include actual/expected behavior, reproduction/environment; proposals separate evidence and assumptions. Acceptance is observable; proposed checks are not validation. Include dependencies, exclusions, canonical links. Sensitive reports use private channels.
+- **Comments/handoffs:** new decision/finding/outcome, needed evidence, exact next action/question. Short replies need no PR template; apply the novelty gate.
+- **Reviews:** severity-ordered findings with location, impact, reproduction/evidence; separate questions and proof gaps. Formatting is not review evidence.
+- **Changelogs/release notes:** audience-facing outcomes in repo version/category format, not commit prefixes/worker history. Include compatibility, migration, limitations; don't imply release/deployment before verification.
 
-Distinguish `Passed`, `Failed`, `Blocked` and `Not run`, with command, environment and revision/artifact. Separate local, CI, packaged, editor/browser and production proof. Proposed tests, synthetic decisions and formatting passes cannot prove runtime/release behavior. Explain material non-applicability; avoid unexplained checkmarks/empty sections.
+Distinguish `Passed`, `Failed`, `Blocked`, and `Not run`, with command/environment/revision. Separate local, CI, package, editor/browser, and production proof. Proposed tests, synthetic decisions, and formatting do not prove runtime/release behavior. Explain material non-applicability; avoid unexplained checkmarks/empty sections.
 
 ## GitHub Issue And PR Comments
 
-Read GitHub issue and PR comments as part of the CTO control loop. Write GitHub comments sparingly.
+Read GitHub comments in the CTO control loop. Write GitHub comments sparingly. Do not post GitHub comments for routine notifications.
 
-Use the relevant Codex task for routine progress, retries, local tests, handoffs, periodic check-ins and CI polling. Keep implementation summaries, validation results and remaining proof gaps in the PR description/checks. Do not post GitHub comments for routine notifications.
+Use Codex for progress, retries, tests, handoffs, check-ins, and CI polling. Keep summaries, validation, and proof gaps in PR descriptions/checks; do not comment routine notifications.
 
-Before posting, inspect the exact issue/PR's existing comments, substantive reviews, PR body, CI and native timeline. Ask: is this new; does someone need to act or does it preserve a necessary durable record; is it already represented elsewhere? Default to skipping duplicates, including automatic PR links, commit notifications and green CI. If current evidence is unavailable, defer nonessential posting rather than guess novelty. This gate does not suppress an explicit owner-requested comment, a direct reply, or required substantive review feedback; keep those concise and specific.
+Before posting, inspect the exact issue/PR's existing comments, substantive reviews, PR body, CI and native timeline. Ask if it is new, needs action/preserves a durable record, or is already represented. Skip duplicates (automatic PR links, commit notifications, green CI). If evidence is unavailable, defer nonessential posting rather than guess. This gate does not suppress explicit owner requests, direct replies, or required substantive review feedback; keep them concise and specific.
 
-Reserve GitHub comments for durable repo-visible state transitions or decisions that future maintainers need to see:
+Reserve comments for durable repo-visible transitions/decisions future maintainers need:
 
 - Strategy or decision records that affect implementation or release sequencing.
 - Owner questions and answered-decision records.
@@ -65,9 +65,9 @@ Reserve GitHub comments for durable repo-visible state transitions or decisions 
 
 For contributor/community closures, comments should be owner-readable and explicit about why the item is closing, what shipped or replaced it, and any canonical PR/issue/release link.
 
-When opening a PR, comment on the linked issue with the PR link and scope only when it adds useful durable context beyond automatic linking. After merge, reconcile issue state; add a completion comment only when the disposition or remaining scope is not already clear. Explain material deferral or milestone changes when their rationale is missing. Preserve contributor courtesy and explicit owner requests. Do not delete or edit historical comments merely to clean up noise.
+When opening a PR, link it on the issue only if useful beyond automatic linking. After merge, reconcile issue state; comment on completion only if disposition/scope is unclear. Explain material deferrals or milestone changes with missing rationale. Preserve contributor courtesy and explicit owner requests. Do not delete or edit historical comments merely to clean up noise.
 
-Do not post comments just to say the orchestrator is checking, polling CI, waiting, continuing, delegating internally, or preparing another update. Keep that status in the CTO control chat thread.
+Do not post comments just to report checking, CI polling, waiting, continuing, internal delegation, or preparing another update. Keep that status in the CTO control chat thread.
 
 ## Contributor And Community Courtesy
 

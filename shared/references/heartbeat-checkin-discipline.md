@@ -1,33 +1,33 @@
 # Heartbeat Check-In Discipline
 
-Use this reference for CTO and PO heartbeat reporting. Check-ins must be delta-first, decision-oriented, owner-readable, and brief enough to explain change without repeating unchanged state.
+Use for CTO/PO heartbeats: delta-first, decision-oriented, owner-readable, and brief.
 
 ## Core Rules
 
-- Lead with change, separated as blocked, owner-needed, Codex-owned, and quiet.
+- Lead with changes: blocked, owner-needed, Codex-owned, quiet.
 - Write for the owner, not as raw logs/XML/verification dumps; escalate repeated blockers.
 - Justify quiet with evidence.
-- Use `NOTIFY` only for a new or materially changed blocker, owner decision, executable action, release/proof drift, topology/process concern, or cadence/deadline change worth surfacing. Compare with the prior check-in; the continued existence of a known item is not itself a delta.
-- Use `DONT_NOTIFY` when there is no new or materially changed owner-relevant delta. Keep known pending decisions and blockers in the governed state; do not repeat them as a quiet-status sentence just to prove they remain open.
+- `NOTIFY` only for new/materially changed blockers, owner decisions, executable actions, release/proof drift, topology/process concerns, or worthwhile cadence/deadline changes. Compare prior check-in; known-item persistence is not a delta.
+- `DONT_NOTIFY` when no owner-relevant delta changed. Retain known decisions/blockers in governed state; do not repeat them as quiet status.
 - Replace `owner-gated` jargon with the exact decision. If an otherwise-warranted update cannot finish its checks promptly, return a partial owner-readable result instead of staying in progress; a slow check alone is not a reason to send an unchanged status message.
-- Put an item under `Owner decisions` only after the research-and-reversibility ladder identifies a named hard gate. Put unavailable required live facts under `Blocked` as verification blockers, and put reversible decisions under `Codex-owned next actions` with the chosen action and rollback.
+- Use `Owner decisions` only after the research-and-reversibility ladder identifies a named hard gate; unavailable live facts are verification `Blocked`; reversible choices are `Codex-owned next actions` with action/rollback.
 
 ## Readability Rules
 
-- Use plain headings and short sentences. Avoid long SHAs/API/XML unless identity matters; keep raw proof compact under `Evidence`.
+- Use plain headings/short sentences. Avoid long SHAs/API/XML except when identity matters; keep proof under `Evidence`.
 - Translate status into change, blocker, decision, and next action.
 - If a checkout is dirty/stale, say whether it blocks current work and what would unblock it.
-- Do not paste long heartbeat XML, PR bodies, diffs, screenshot lists, or raw tool output into follow-up prompts. Also do not paste full skill bodies or repeated history into follow-up prompts. Use URLs, short deltas, and exact blocker summaries.
+- Do not paste long heartbeat XML, PR bodies, diffs, screenshot lists, or raw tool output into follow-up prompts. Also avoid full skill bodies or repeated history; use URLs, short deltas, and exact blocker summaries.
 
 ## `DONT_NOTIFY` Rule
 
-`DONT_NOTIFY` is for a check with no new or materially changed owner-relevant delta. It does not mean the portfolio is empty or that known blockers, decisions, and follow-up actions are closed; retain them in their source of truth and surface them again when their status, owner, next action, risk, or deadline materially changes.
+`DONT_NOTIFY` means no owner-relevant delta, not an empty portfolio or closed work. Retain known blockers/decisions/actions at source and resurface when status, owner, next action, risk, or deadline materially changes.
 
-Do not send a `DONT_NOTIFY` sentence merely to announce that nothing changed. When a report is otherwise warranted, its quiet-product coverage may cite compact current evidence and distinguish unchanged known decisions/blockers from new changes.
+Do not send a `DONT_NOTIFY` sentence merely to announce that nothing changed. In otherwise-warranted reports, quiet coverage cites current evidence and separates unchanged items from new changes.
 
 ## `NOTIFY` Structure
 
-A material `NOTIFY` check-in needs the change, evidence, impact and actionable next step. Use only relevant sections; this optional structure helps larger updates:
+A material `NOTIFY` needs change, evidence, impact, and next step. Use relevant sections only:
 
 ```text
 What changed
@@ -41,12 +41,12 @@ Cadence/automation changes
 
 ## Partial Result Rule
 
-Use a partial result for a heartbeat with a new/material owner-relevant delta or deadline when live checks time out, public checks run long, or one narrow verification path cannot finish promptly. A timeout alone does not create a notification delta; if it leaves the owner decision, risk, next action, and deadline unchanged, retain the evidence in its source of truth and send no quiet-status message.
+Use partial results when a new/material delta or deadline coincides with timed-out live checks, long public checks, or a narrow verification delay. A timeout alone does not create a notification delta; if decision, risk, next action, and deadline are unchanged, retain evidence at source and send no quiet-status message.
 
-- Return verified evidence instead of waiting hours; name incomplete checks, owner-decision impact, and next retry/cadence without retry logs.
+- Return verified evidence instead of waiting hours; name incomplete checks, owner-decision impact, and next retry/cadence, not retry logs.
 - If a connector returns `Bad Request`, retry once with a strictly smaller payload. If the retry fails, stop broad reads, do not paste more context, and use one narrow source-of-truth check or report the exact verification gap. Do not create a user-visible worker/product thread as a recovery workaround; that requires explicit owner authorization.
 
-When a material delta or deadline warrants notification, scale this example to the update; omit empty sections:
+When a material delta/deadline warrants notification, adapt this example and omit empty sections:
 
 ```text
 NOTIFY - <product>
@@ -72,11 +72,11 @@ Cadence/automation changes
 
 ## Thread Health And Drift
 
-Topology/process drift includes empty completions, active turns without output, `systemError`, non-materialized workers, wrong path/base/model lane, issue/PR claims without proof, and repeated quiet while work is executable.
+Topology/process drift includes empty completions/active turns, `systemError`, non-materialized workers, wrong path/base/model lane, unsupported issue/PR claims, and quiet while work is executable.
 
 For release blockers, one non-material PO heartbeat is enough to escalate.
 
-Corrective action must be explicit: recover the worker/path, narrow the blocker, reduce/pause cadence, route a bounded worker, or escalate owner approval for protected-thread recovery.
+Correct explicitly: recover worker/path, narrow blocker, reduce/pause cadence, route bounded work, or escalate owner approval for protected-thread recovery.
 
 ## Portfolio CTO Template
 
@@ -114,7 +114,7 @@ Escalate repeated blockers. For stale topology, surface the exact decision until
 
 ## CTO Intervention Trigger
 
-CTO must not merely relay PO output. If a PO report is unclear, log-like, contradictory, passive, repeated, stalled, missing an expected action, or misaligned with the owner-approved objective, intervene immediately: ask why it is happening, what the blocker is, and what will change before the next heartbeat.
+CTO must not merely relay PO output. For unclear, log-like, contradictory, passive, repeated, stalled, actionless, or misaligned reports, intervene immediately: identify why, the blocker, and what changes next heartbeat.
 
 Intervene without prompting when:
 

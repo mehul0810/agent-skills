@@ -1,36 +1,36 @@
 # Worker Execution Discipline
 
-Use this for direct specialist work in `wp-plugin-expert`, `wp-theme-expert`, and `wp-site-expert`. It closes the gap between high-level orchestration discipline and day-to-day worker execution.
+Use for direct work in `wp-plugin-expert`, `wp-theme-expert`, and `wp-site-expert`.
 
 ## Goal
 
-Make direct worker turns behave predictably: inspect the right thing first, choose the right proof level, recover from common blockers, avoid hidden assumptions, and finish with a bounded quality sweep instead of either scope creep or shallow completion claims.
+Workers inspect first, choose proportionate proof, recover blockers, surface assumptions, and finish with a bounded quality sweep, avoiding scope creep and shallow claims.
 
-Direct specialists act on the user's scoped request; delegated workers act on the parent's bounded spec. Establish the authorized outcome, excluded actions, required proof and stop condition once, then reuse that envelope. A parent task is not a prerequisite for direct work. Continue safe implementation and in-scope repair through required validation; do not stop merely at a first draft. Neither path grants roadmap, release, pricing, privacy/security, public-contract, merge, publication or cleanup authority beyond current user/repository permissions.
+Direct specialists follow the user's scope; delegated workers follow the parent spec. Establish authorized outcome, exclusions, proof, and stop condition once. Direct work needs no parent task. Continue safe implementation/in-scope repair through validation, not just a first draft. Neither path grants roadmap, release, pricing, privacy/security, public-contract, merge, publication, or cleanup authority beyond current permissions.
 
-Before command or CI mutation, use `command-ci-approval-boundary.md`. Run safe inspection and quality checks without needless owner blocking, but treat runtime allowlists as capability only and preserve stricter parent/repository authority.
+Before command/CI mutation, use `command-ci-approval-boundary.md`. Run safe inspection/checks without needless blocking; allowlists grant capability only, and stricter parent/repo rules prevail.
 
 ## Direct Task Decision Contract
 
-For implementation or consequential review decisions:
+For implementation/consequential review:
 
-1. Inspect the exact referenced artifact first: exact file, issue, PR, page, screenshot, route, branch, or error before broad repo scans.
-2. Confirm the ownership boundary: plugin, theme/FSE, site, content, or orchestration.
-3. State the changed boundary: code path, UI surface, data contract, release metadata, or runtime behavior.
-4. Choose the cheapest proof level that reaches that boundary: diff, static, runtime, editor, frontend, external, or release.
-5. Choose a reasonable reversible implementation inside the approved outcome. Surface a decision only when missing information materially changes scope, correctness, ownership, or a protected contract; multiple viable approaches alone are not a blocker.
+1. Inspect the exact artifact (file, issue, PR, page, screenshot, route, branch, error) before broad scans.
+2. Confirm ownership: plugin, theme/FSE, site, content, or orchestration.
+3. Name changed boundary: code path, UI, data contract, release metadata, or runtime behavior.
+4. Choose cheapest proof reaching it: diff, static, runtime, editor, frontend, external, or release.
+5. Choose a reversible implementation within scope. Ask only if missing facts materially change scope, correctness, ownership, or contract; multiple viable approaches alone are not blockers.
 
-Keep routine planning internal and brief. Use outcome, constraints, acceptance criteria, and required evidence to guide execution; do not turn reference examples into mandatory steps. Load only unresolved domain guidance, and reuse an already established plan or proof instead of rebuilding it. Substantial architecture, data, security, release, and ambiguous visual work still need explicit contracts.
+Keep routine planning brief/internal; use outcome, constraints, AC, and proof, not examples as mandatory steps. Load unresolved domain guidance only and reuse existing plans/proof. Substantial architecture, data, security, release, and ambiguous visual work need explicit contracts.
 
 ### Material Approach Choice
 
-Before committing to a material approach, compare the smallest complete solution with a credible alternative, including no change when justified. Consider applicable user/business outcomes, constraints and authority, source confidence, ownership/dependencies, compatibility/data migration, security/privacy, reliability/concurrency, performance/scale, editor/accessibility needs, operations/rollback, maintenance, time/cost and available proof. Do not enumerate immaterial factors for a tiny safe edit.
+For material choices, compare the smallest complete solution with a credible alternative, including no change. Consider user/business outcomes, constraints/authority, source confidence, ownership/dependencies, compatibility/migration, security/privacy, reliability/concurrency, performance, editor/accessibility, operations/rollback, maintenance, cost, and proof. Skip immaterial factors for tiny safe edits.
 
-Resolve the uncertainty most likely to change the choice with the cheapest discriminating check. Record the chosen tradeoff, rejected approach and reason, failure/rollback path, and evidence or trigger that would reverse the choice; a preferred technique is not evidence. Carry this concise decision record into the task checkpoint before expansion or handoff, not an internal reasoning transcript. Revisit only when a constraint, dependency, failure or source fact changes.
+Use the cheapest check that can change the choice. Record tradeoff, rejected option/reason, failure/rollback path, and reversal evidence/trigger; preference is not evidence. Put this decision record in the checkpoint before expansion/handoff, not hidden reasoning. Revisit only when constraints, dependencies, failures, or source facts change.
 
 ## Assumption And Confidence Gate
 
-Do not proceed on silent assumptions when any of these are true:
+Do not silently assume when:
 
 - the source of truth is ambiguous,
 - the current task references a specific entity that has not been inspected directly,
@@ -48,7 +48,7 @@ Assumption/risk
 
 ## Claim And Evidence Gate
 
-Never invent WordPress hooks, blocks, supports, REST behavior, package APIs, CLI flags, vendor features, issue/PR state, compatibility, design values, assets, links, screenshots, or validation results.
+Never invent WordPress hooks/blocks/supports, REST/package APIs, CLI flags, vendor features, issue/PR state, compatibility, design values, assets/links/screenshots, or validation results.
 
 - Verify project behavior in current code, tests, configuration, or runtime evidence.
 - Verify uncertain WordPress or vendor contracts in installed source or current official documentation.
@@ -58,11 +58,11 @@ Never invent WordPress hooks, blocks, supports, REST behavior, package APIs, CLI
 
 ## Compact Communication
 
-Compress repetition and filler, not decision-bearing meaning. Preserve negation, conditions, uncertainty, scope, units, versions, and failed or unrun checks. Keep commands, identifiers, paths and quoted errors exact; do not invent abbreviations or broken grammar to sound terse.
+Compress filler, not meaning. Preserve negation, conditions, uncertainty, scope, units, versions, and failed/unrun checks. Keep commands, IDs, paths, and quoted errors exact; do not invent abbreviations or broken grammar.
 
-Expand when approval, destructive actions, ordered steps, ambiguity or a repeated user question needs explanation. State the action, consequence and prerequisites clearly; brevity never grants authority or converts an inference into fact. Keep required progress updates useful and brief rather than suppressing them.
+Explain approvals, destructive actions, ordered steps, ambiguity, or repeated questions. State action, consequence, prerequisites; brevity grants no authority or converts inference to fact. Keep required updates useful, not suppressed.
 
-Operational chat can be compact. Documentation, code comments, commits, issues, reviews and contributor messages remain professional prose with necessary context and courtesy. State each fact once per message; retain details needed to act safely, not a mandatory terse template.
+Chat may be compact. Docs, comments, commits, issues, reviews, and contributor messages retain professional context/courtesy. State each fact once; keep safety-critical detail, not a mandatory terse template.
 
 ## Owner Correction To Learning
 
@@ -70,7 +70,7 @@ When the owner says the result or process is wrong, fix the immediate scoped sta
 
 ## Worker Recovery Ladder
 
-If a direct task is blocked, recover in this order before declaring failure:
+If blocked, recover in order before declaring failure:
 
 1. Recheck the exact artifact and changed boundary.
 2. Switch to the cheapest proof that can still validate the claim safely.
@@ -79,11 +79,11 @@ If a direct task is blocked, recover in this order before declaring failure:
 5. If runtime/browser proof is blocked, gather the strongest safe fallback evidence and state the exact remaining proof gap.
 6. If the blocker is real, report the exact blocker, impact, attempted recovery, and next safe action.
 
-Do not stop at "blocked because tool X failed" when code mapping, static validation, targeted tests, release metadata review, or proof-gap reporting can still move the task forward.
+Do not stop at "blocked because tool X failed" if code mapping, static checks, targeted tests, metadata review, or proof-gap reporting can advance work.
 
 ## Finish Pass
 
-Before calling direct worker work done, run a bounded finish pass around touched files and affected behavior:
+Before completion, run a bounded finish pass on touched files/behavior:
 
 - tests: missing happy-path, failure-path, permission, or regression coverage,
 - docs or release metadata: readme, changelog, screenshots, or inline operator notes when relevant,
@@ -91,19 +91,19 @@ Before calling direct worker work done, run a bounded finish pass around touched
 - UX/proof drift: screenshot/proof gap when the change is design-visible,
 - adjacent findings: separate anything real but out of scope through `adjacent-finding-protocol.md`.
 
-The finish pass is a narrow check around the changed boundary, not an excuse to broaden scope.
+The finish pass is narrow, not scope expansion.
 
-Stop verification after applicable required checks pass. Broaden or repeat only after changed inputs, failures, or a named unresolved risk. Do not create tests that merely mirror an exact low-risk substitution. Preserve editor/frontend, accessibility, security, compatibility, and release proof wherever the changed behavior requires it; concise reporting must not conceal a failed or unrun check.
+Stop after required checks pass; broaden/repeat only for changed inputs, failures, or named risk. Do not test trivial substitutions. Preserve required editor/frontend, accessibility, security, compatibility, and release proof; concise reports must disclose failed/unrun checks.
 
 ## Failed Visual Evidence Recovery
 
-When screenshot, browser, or editor proof exposes an in-scope broken layout or workflow, mark the proof `FAIL` and continue the scoped task. Classify the highest owning root cause, repair it there, rerun the same proof, and check the smallest affected viewport/workflow regression set. Do not hand back "I made a mistake; I will fix it" when the worker can safely perform that recovery now, and do not relabel an observed failure as a proof gap.
+When screenshot/browser/editor proof finds an in-scope broken layout/workflow, mark `FAIL`, find/repair owning root cause, rerun the same proof, and check the smallest affected viewport/workflow regressions. Do not hand off safe recoverable errors or relabel observed failures as proof gaps.
 
-After two repair-and-proof cycles without convergence, stop cosmetic tweaking and recheck assumptions, ownership, component constraints, and architecture. Escalate only the exact external dependency, unsafe contract decision, or inaccessible environment that prevents recovery; include failed evidence, attempts, and the recommended next path.
+After two unsuccessful repair/proof cycles, stop cosmetic tweaks; recheck assumptions, ownership, component constraints, architecture. Escalate only the blocking external dependency, unsafe contract, or inaccessible environment with failed evidence, attempts, and next path.
 
 ## Review Convergence Gate
 
-Before applying review-triggered edits, freeze the requested behavior, owner boundary, intended files, and proof level. Classify each accepted finding as an in-scope blocker, adjacent follow-up, or contract/owner decision. After two review-triggered edit cycles without clean convergence, stop and reclassify every remaining finding. Continue only for bounded in-scope blockers with a clear proof path; route follow-ups through `adjacent-finding-protocol.md` and escalate contract changes instead of chasing the reviewer or silently expanding the task.
+Before review edits, freeze behavior, owner boundary, files, proof level. Classify findings as in-scope blocker, adjacent follow-up, or contract/owner decision. After two review-triggered edit cycles without convergence, reclassify all remaining findings. Continue only bounded blockers with clear proof; route follow-ups via `adjacent-finding-protocol.md` and escalate contract changes, not reviewer chasing or scope expansion.
 
 ## Blocker Reporting
 

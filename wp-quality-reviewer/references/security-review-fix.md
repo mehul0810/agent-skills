@@ -1,6 +1,6 @@
 # Security Review And Fix
 
-Use for WordPress application-security review and remediation. This contract owns the judgment; PHPCS, VIPCS, dependency scanners, dynamic scanners, and host tooling are optional evidence sources.
+Use for WordPress application-security review/remediation. This contract owns judgment; PHPCS/VIPCS, scanners and host tools are optional evidence.
 
 ## Authoritative Anchors
 
@@ -10,74 +10,70 @@ Use for WordPress application-security review and remediation. This contract own
 - WordPress VIP PHPCS errors and warnings: https://docs.wpvip.com/php_codesniffer/errors/ and https://docs.wpvip.com/php_codesniffer/warnings/
 - OWASP ASVS: https://owasp.org/www-project-application-security-verification-standard/
 - OWASP API Security: https://owasp.org/API-Security/editions/2023/en/0x11-t10/
-- OWASP headers, sessions, logging, and denial of service: https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html, https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html, https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html, and https://cheatsheetseries.owasp.org/cheatsheets/Denial_of_Service_Cheat_Sheet.html
+- OWASP headers: https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html; [sessions](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html), [logging](https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html), [DoS](https://cheatsheetseries.owasp.org/cheatsheets/Denial_of_Service_Cheat_Sheet.html)
 
-Verify drift-prone platform policy or standard versions from official sources. Do not copy an entire generic checklist when the changed trust boundary is smaller.
+Verify changing policy/standard versions officially; scope checklist to changed trust boundary.
 
 ## Security Model
 
 Map before judging:
 
-- Assets: content, settings, users, customer/order data, private media, tokens, secrets, generated files, logs, privileged actions, and availability.
-- Actors: anonymous, authenticated low-privilege, content author, manager, admin, network admin, integration, compromised account, malicious extension, and insider.
-- Entry points: REST, admin-post, legacy AJAX, forms, block/editor panels, render callbacks, shortcodes, webhooks, OAuth callbacks, uploads, imports, CLI, cron/queues, and third-party responses.
-- Trust boundaries and invariants: who may read/change which object, what must never leave the server, which side effects must be idempotent, and what may be cached or logged.
+- Assets: content/settings, users/customer/order data, private media, tokens/secrets, generated files, logs, privileged actions, availability.
+- Actors: anonymous, low-privilege/authors/managers/admins/network admins, integrations, compromised accounts, malicious extensions, insiders.
+- Entry points: REST/admin-post/AJAX, forms/editor/render/shortcodes, webhooks/OAuth, uploads/imports, CLI/cron/queues, third-party responses.
+- Boundaries/invariants: who may read/change what, what stays server-side, idempotent effects, cache/log permissions.
 
 ## Evidence Workflow
 
-1. Inventory registered routes/actions/hooks and deployed package/runtime behavior.
-2. Trace each relevant source through normalization, validation, authorization, persistence/side effect, and output sink.
-3. Test the server boundary directly; hidden UI and client validation are not controls.
+1. Inventory routes/actions/hooks and deployed package/runtime behavior.
+2. Trace source through normalization, validation, authorization, persistence/effects and output sink.
+3. Test server boundary directly; UI/client validation is not control.
 4. Review the highest-risk classes:
-   - Missing capability, tenant, or object-ownership checks; IDOR/BOLA.
-   - Missing CSRF protection on authenticated mutations. Nonces do not grant authorization.
-   - Stored/reflected/DOM XSS, unsafe HTML, and missing context-specific late escaping.
-   - SQL/command/path injection, unsafe identifiers, unserialization, and file traversal.
-   - SSRF, open redirects, unsafe uploads, archive extraction, and MIME confusion.
-   - Forged/replayed webhooks, OAuth state/redirect weaknesses, token leakage, and weak secret lifecycle.
-   - Enumeration, brute force, unbounded expensive public actions, and missing abuse controls.
-   - Cross-user/site cache leakage, verbose errors, sensitive logs, exports, and release artifacts.
-   - Vulnerable/abandoned dependencies, risky install scripts, and production packages containing dev tooling or secrets.
-5. Establish actor, precondition, reachable path, affected data/action, exploitability, and confidence. Keep speculative items labeled as hypotheses.
+   - Missing capability/tenant/object ownership (IDOR/BOLA); CSRF on authenticated mutations (nonces are not authorization).
+   - Stored/reflected/DOM XSS, unsafe HTML or late escaping; SQL/command/path injection, unsafe identifiers, unserialization, traversal.
+   - SSRF, redirects, unsafe uploads/archive/MIME; forged/replayed webhooks, weak OAuth state/redirect, token leakage/secret lifecycle.
+   - Enumeration, brute force, expensive public actions/abuse controls; cross-user/site cache leaks, verbose errors, sensitive logs/exports/artifacts.
+   - Vulnerable/abandoned dependencies, risky install scripts, dev tooling/secrets in production packages.
+5. Establish actor, precondition, reachable path, affected data/action, exploitability and confidence; label speculation as hypothesis.
 
-For broad audits, track surface, trust boundary, relevant source revision, evidence and reviewed/blocked/deferred/out-of-scope disposition in the existing review record. A prior pass applies only to unchanged relevant paths and conditions; unresolved leads never count as covered. Reserve time for verification instead of spending the entire audit on discovery. Routine scoped fixes do not require multi-wave hunting.
+Broad audits record surface, boundary, source revision, evidence and reviewed/blocked/deferred/out-of-scope status. Prior passes cover only unchanged paths/conditions; leads are not coverage. Reserve verification time. Scoped fixes need no multi-wave hunt.
 
-Before confirming a material vulnerability, use an independent source-aware reviewer to try to disprove its reachability, attacker control and impact, including upstream/downstream controls. If another layer prevents the attack, distinguish optional hardening from a vulnerability. Keep an unresolved lead in proof gaps with its exact missing fact and next safe check, without a definitive severity; do not force it into the formal report's severity-bearing findings. Rejected claims need a reason, not a security fix.
+Before confirming material vulnerability, have an independent source-aware reviewer challenge reachability, attacker control and impact, including other controls. If another layer blocks attack, classify optional hardening, not vulnerability. Unresolved leads go in proof gaps with missing fact/next safe check, no severity; do not force into findings. Rejected claims need reason, not a fix.
 
 ## AI And Data Lifecycle Boundaries
 
 Apply only when the product has these surfaces:
 
-- For AI/tool actions, compare the final normalized tool, arguments, resource, requester and execution identity with the intentional request or approval. Recheck binding at queued execution, retry, resume and batch side effects; valid generic permissions do not authorize a changed or duplicate action.
-- Trace untrusted retrieval, tool responses and memory writes to later readers and privileged sinks. Verify tenant/ACL filtering and handler-side authorization. Prompt injection alone is not a finding; require unauthorized disclosure, authority use or an unrequested action. User-owned memory serving that user's intentional allowed request is a safe counterexample.
-- Follow protected data through primary storage, cache, search, exports, jobs and backups. Test role downgrade, deletion, revocation and restore against the product's stated guarantees, including queued work that recreates deleted state. Use dummy principals; an unavailable external retention or storage policy is a proof gap, not a confirmed violation.
+- For AI/tools, bind final normalized tool, args, resource, requester and executor to intent/approval; recheck queued, retried, resumed and batched effects. Generic permission does not authorize changed/duplicate actions.
+- Trace untrusted retrieval/responses/memory to later readers and privileged sinks; verify tenant/ACL filtering and handler authorization. Prompt injection alone is not a finding: require unauthorized disclosure, authority or action. User-owned memory serving an intentional allowed request is a safe counterexample.
+- Trace protected data through storage/cache/search/exports/jobs/backups. Test downgrade, deletion, revocation and restore against guarantees, including queued recreation. Use dummy principals; unavailable external retention policy is a gap, not violation.
 
 ## Potentially Hostile Target Execution
 
-Source inspection can remain read-only. Before executing potentially hostile target builds, fixtures or processes, verify OS-enforced isolation: no external networking, sanitized allowlisted environment without ambient credentials, read-only source/toolchain with task-owned scratch writes, and bounded CPU, memory, processes, disk and wall time. A temporary directory, loopback listener or instruction to behave safely is not that isolation. If controls are unavailable, do not execute the target; report the missing capability and safe validation plan. Keep evidence outside target-writable paths, promote only bounded verified regular files after processes stop, and reject links or special files. Do not probe production or exhaust shared services. These audit controls do not impose a new harness on ordinary trusted development tests.
+Source inspection may be read-only. Before running hostile builds/fixtures/processes, verify OS isolation: no external network; sanitized allowlisted env without ambient credentials; read-only source/toolchain, task-owned scratch; bounded CPU/memory/processes/disk/time. Temp dirs, loopback or safety instructions are insufficient. If unavailable, do not run target; report gap and safe plan. Keep evidence outside target writes; after stop, promote only bounded verified regular files, reject links/special files. Do not probe production or exhaust shared services. This does not impose a harness on trusted dev tests.
 
 ## Authorization And Abuse Contracts
 
-For a route or action that reads or mutates objects, sites, tenants, or privileged functions, record a compact actor x action x resource matrix with expected and observed allow/deny decisions and concrete proof. Cover REST, admin, CLI, webhook, and AI/tool surfaces; test object-property and function-level authorization, not only whether a user is logged in.
+For object/site/tenant or privileged reads/mutations, record a compact actor x action x resource matrix with expected/observed allow/deny and proof. Cover REST/admin/CLI/webhook/AI; test property/function authorization, not merely login.
 
-For public, expensive, bulk, import/export, payment, email, AI/provider, or otherwise abuse-prone paths, define quantitative limits for payload, items, recursion, concurrency, execution time, retries, queue depth, and cost as applicable. Prove over-limit behavior, per-actor/site/IP fairness, 429 or safe rejection/backoff, dependency failure handling, and no retry amplification. Platform edge limits do not replace application authorization or workload controls.
+For abuse-prone public/expensive/bulk/import/export/payment/email/AI paths, set quantitative limits for applicable payload/item/recursion/concurrency/time/retry/queue/cost. Prove over-limit response, actor/site/IP fairness, 429/safe backoff, dependency failure and no retry amplification. Edge limits do not replace app authorization/workload controls.
 
-Maintain an inventory for public REST, GraphQL, Abilities, MCP, webhook, and legacy AJAX surfaces: owner, version, permission callback, schema, exposed data, lifecycle/deprecation state, and removal risk. Use conditional browser checks for responses or cookies the product actually owns: CSP/frame ancestors, HSTS, `Secure`/`HttpOnly`/`SameSite`, `Referrer-Policy`, and content-type protections; do not add blanket headers without host ownership and compatibility proof.
+Maintain an inventory for public REST, GraphQL, Abilities, MCP, webhook, and legacy AJAX surfaces: owner, version, permission callback, schema, exposed data, lifecycle/deprecation and removal risk. Browser-check only owned responses/cookies (CSP/frame ancestors, HSTS, `Secure`/`HttpOnly`/`SameSite`, `Referrer-Policy`, content type); no blanket headers without host ownership/compatibility proof.
 
-When introducing PII, audit logs, diagnostics, or exports, record classification, retention, erase/export behavior, access and alerting, log-injection handling, redaction, and tamper/access monitoring. For multisite or concurrent mutations, prove blog switching/restoration, site-aware cache keys, authorization recheck at mutation time, and race/TOCTOU behavior. For auth or signed callbacks, record token expiry/audience/scope/storage/rotation/revocation and constant-time signature comparison where relevant.
+For new PII/logs/diagnostics/exports, record classification, retention, erase/export, access/alerts, injection handling, redaction and tamper monitoring. For multisite/concurrent mutations, prove blog restore, site-aware cache, mutation-time auth and race/TOCTOU. For auth/callbacks, record token expiry/audience/scope/storage/rotation/revocation and constant-time signature checks.
 
 ## WordPress Remediation Rules
 
-- Authorize at the server-side action and resource boundary with meaningful capabilities and ownership checks.
-- Validate/reject shape, type, length, enum, range, identifiers, and relationships before sanitizing. Escape at the final output context.
-- Use `$wpdb->prepare()` for values and allowlists for identifiers, sort columns, directions, file types, and redirects.
-- Give every REST route a meaningful `permission_callback` and schema. Prefer REST over new `admin-ajax.php` handlers when the interaction fits REST.
-- Check capability and then nonce for admin mutations; validate every object in bulk actions.
-- Use WordPress HTTP safe-request APIs plus a business allowlist for user-influenced URLs; reject unsupported schemes, credentials, loopback/private/link-local destinations, redirect escapes, and DNS-rebinding outcomes.
-- Use WordPress media/filesystem/temp APIs where appropriate. Enforce size, extension, MIME, dimensions, extraction destination, executable-content, and cleanup rules.
-- Verify webhook signature, canonical payload, timestamp/age, replay key, sender/account binding, and idempotency before side effects.
-- Store secrets server-side with least privilege and rotation/revocation paths. Redact logs, UI, analytics, screenshots, issue/PR text, cache keys, URLs, cron args, and client data.
-- Preserve public compatibility only when it does not preserve the vulnerability. Document migrations, revocations, and rollback.
+- Authorize server-side at action/resource boundary with capability and ownership checks.
+- Validate/reject shape, type, length, enum, range, IDs and relationships before sanitize; escape in final context.
+- Use `$wpdb->prepare()` for values; allowlist identifiers, sort fields/directions, file types and redirects.
+- REST routes need meaningful `permission_callback` and schema; prefer REST over new AJAX when suitable.
+- Admin mutations require capability then nonce; validate each bulk object.
+- For user URLs, use safe HTTP APIs plus business allowlist; reject bad schemes/credentials, local/private/link-local targets, redirect escapes and DNS rebinding.
+- Use WP media/filesystem/temp APIs; enforce size, extension, MIME, dimensions, extraction path, executable-content and cleanup.
+- Verify webhook signature, canonical payload, age, replay key, sender/account and idempotency before effects.
+- Keep secrets server-side, least-privileged, rotatable/revocable. Redact logs/UI/analytics/screenshots/issues/PRs/cache/URLs/cron/client data.
+- Preserve compatibility only if it does not preserve vulnerability; document migrations, revocation and rollback.
 - For elevated dependency/package work, reuse `../../shared/references/enterprise-runtime-assurance.md` for lockfiles, provenance/SBOM, artifact contents, and production-only dependencies.
 
 ## Proof
@@ -93,11 +89,11 @@ Every fixed security finding needs the smallest relevant negative proof:
 - Dependency/package scan against the exact candidate.
 - Authorization matrix decisions and resource-budget/over-limit behavior when those contracts apply.
 
-Use unit tests for validators and policies; WordPress integration tests for capabilities, REST, persistence, hooks, and multisite; browser tests only where UI state matters. A scanner pass cannot replace boundary-specific negative tests.
+Use unit tests for validators/policies; WP integration for capabilities, REST, persistence, hooks and multisite; browser tests when UI state matters. Scanners cannot replace boundary-specific negative tests.
 
 ## Disclosure And Stop Rules
 
 - Do not put exploitable details, payloads, customer data, or weaponized reproduction steps in public issues/comments.
-- Sanitize public hardening PRs and use the repository's private security path for actionable vulnerabilities.
-- Stop and escalate immediately for active exploitation, exposed secrets, destructive data access, or a release candidate with a credible `P0`/`P1`.
-- Do not claim comprehensive security or compliance from a scoped review. State the reviewed revision, surfaces, evidence, exclusions, and residual risk.
+- Sanitize public hardening PRs; use private security path for actionable vulnerabilities.
+- Escalate active exploitation, exposed secrets, destructive data access or credible `P0`/`P1` release candidate.
+- Scoped review cannot prove comprehensive security/compliance. State revision, surfaces, evidence, exclusions and residual risk.
