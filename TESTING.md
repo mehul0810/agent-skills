@@ -106,6 +106,15 @@ separate gates. Cross-model decision passes do not prove equal generated quality
 
 For design calibration, use `skill-evals/frontend-benchmark/README.md`. Give independent evaluators only its contract and rendered artifacts. Record detected/missed defects separately from deterministic smoke checks; the fixture is not native WordPress or production repair proof.
 
+For creative exploration changes, use `skill-evals/creative-exploration-scenarios.md`.
+Freeze guidance before a separate author prepares an unseen held-out brief; keep
+criteria outside generation packets. Independently inspect the actual concept
+artifacts at desktop and mobile. Check useful differences, brief fit, truthful
+content and safe repetition/exact-target counterexamples, not a numeric creativity
+score. These checks do not establish native authoring, production usability or
+business impact. Preserve failed attempts; a held-out case used to tune a fix must
+become development material and be replaced before claiming transfer.
+
 For source-design implementation capability, run `skill-evals/frontend-benchmark/EXECUTION.md`: a frozen held-out target, fresh native WordPress implementation, independent fidelity and UI-only author proof, and bounded repair. Report actual failed/blocked gates; a discrimination or persistence-only pass does not satisfy this execution test.
 
 For Pen-to-WordPress acceptance changes, also dispatch the blind

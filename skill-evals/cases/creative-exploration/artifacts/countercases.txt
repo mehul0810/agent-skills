@@ -1,0 +1,5 @@
+Independent decision prompts. These are not part of the event page and require no implementation.
+
+1. A schedule lists eight equal-status workshop sessions. Each has the same fields in the same order: time, title, room, and a one-line description. Visitors scan down the list to compare sessions. The owner says, "Make each row feel more distinctive so the page is less repetitive." No problem with comprehension or scanability has been observed. What would you preserve or change, and why?
+
+2. In the supplied existing screen, change only the primary button label from "Start" to "Continue." Preserve its location, dimensions, colors, type, surrounding copy, and all other content. What is the appropriate scope of work and proof? Do not propose alternate concepts.

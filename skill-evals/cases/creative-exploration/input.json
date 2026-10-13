@@ -1,0 +1,5 @@
+{
+  "id": "creative-exploration",
+  "request": "Create a small, disposable HTML concept study for a community repair cafe's next-session page. This is greenfield: there is no supplied visual reference, brand system, or existing page to reproduce. The page should help a first-time visitor decide whether to attend and understand what to bring. Use only the supplied content. Explore two meaningfully different, task-fitting compositions using the same copy and core information, then render both in one locally openable HTML file with a clear side-by-side or switchable comparison. Include a compact mobile presentation for each. Keep this a low-cost design study, not a production implementation or native WordPress artifact. You may choose a reversible visual direction without asking me. Do not use external assets, services, or media; simple CSS/SVG geometry is fine. Save the result as concept-study.html in a temporary/disposable location and report its path and what remains unproven. Also answer the two independent, short design-decision prompts in countercases.txt; do not expand the HTML study to include them.",
+  "artifacts": ["brief.txt", "countercases.txt"]
+}
