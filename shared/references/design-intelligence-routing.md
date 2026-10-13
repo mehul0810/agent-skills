@@ -44,7 +44,7 @@ Inspiration and redesign require inspection and a brief, not exact cloning. When
 
 ## Design Understanding Readiness
 
-Greenfield needs audience/job, outcome, truthful content and constraints. Missing source images are not blockers: mark their fields not applicable. Explore reversible concepts before fixing layout or WordPress mapping. Label hypotheses; never invent assets/proof. Concept review cannot replace final high-fidelity, native-authoring or implementation checks.
+Greenfield needs audience/job, outcome, truthful content and constraints. Missing source images are not blockers; mark their fields inapplicable. Explore reversible concepts before fixing layout/WordPress mapping. Label hypotheses; never invent assets/proof. Concept review cannot replace final high-fidelity, native-authoring or implementation checks.
 
 Inspect supplied visuals first. Before implementation, resolve the selected direction's:
 
@@ -59,7 +59,7 @@ Inspect supplied visuals first. Before implementation, resolve the selected dire
 
 OCR, color sampling, and measurements are evidence aids, not authority. A cropped, compressed, composite, or single-state image cannot prove hidden behavior. Ask one focused question only when a brand-critical or journey-changing ambiguity cannot be resolved safely; otherwise use a reversible, labeled inference.
 
-The build gate requires coherent direction and sufficient evidence. Obtain selection when requested or when unresolved brand, positioning or scope needs approval; otherwise delegated direction permits a reversible, labeled choice. An approved design system, wireframe or rendered WordPress prototype can resolve direction without another generated image; record evidence and uncertainty. Preserve exact image/Figma targets. If image creation is requested, produce that artifact. Attach supplied references when supported; never claim unused attachments.
+Require coherent, evidence-backed direction before building. Obtain requested selection or approval for materially unresolved brand/positioning/scope; otherwise choose reversibly under delegation. Approved design systems, wireframes or rendered WordPress prototypes can establish direction without another generated image; record evidence and uncertainty. Preserve exact image/Figma targets. If image creation is requested, produce that artifact. Attach supplied references when supported; never claim unused attachments.
 
 ## Redesign Growth Gate
 
