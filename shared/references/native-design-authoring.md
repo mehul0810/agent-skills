@@ -29,6 +29,8 @@ Work section-by-section with render/structure checks before replication. Repair 
 
 Use installed `imagegen` and its current workflow when imagery helps. Specify placement: aspect ratio, crop, focal point, text-safe space, lighting, material/texture, subject and brand constraints. Keep image series coherent, not repetitive. Keep unrequested content unchanged; preserve exact logos, supplied identities and truthful product screenshots. Use actual asset paths and provenance; do not invent UI, customers or results. Generate at slot-usable size, then inspect there and at mobile crop. Reject artifacts, bad crops, unreadable overlays and misleading details; revise. Do not claim photorealism or native editability without checking.
 
+When a supplied mark is required, inspect the actual asset against its showcase and desktop/mobile navigation placements at intended sizes; palette fit or a file reference is not identity proof. Keep approved wordmark-only or logo-free exceptions scoped. After a disputed brand-status claim, inspect the images and approval provenance, correct unsupported readiness labels, and retain unapproved drafts as drafts rather than imposing logos everywhere.
+
 ## Accept The Artifact
 
 Record source/version, candidate file/node IDs, library/token ownership, runtime, required states/widths, captures and exceptions in the existing task evidence. Evaluate separately:

@@ -136,6 +136,10 @@ Required: trace tokens/components from their canonical source to rendered output
 
 Forbidden: near-duplicate raw tokens, invented scale/certification/customer identity, or using a polished fixture to imply production evidence.
 
+### Evidence-Calibrated Brand Claims
+
+Use the blind `cases/brand-identity-regression/input.json` packet. Inspect the actual images and each source/approval scope before judging the candidate or describing reused art as branded. Palette compatibility, a filename or existing use does not establish ownership or approval. Reconcile an explicit owner correction before repeating a disputed label. Keep the approved logo-free artwork and wordmark-only treatments valid within their exact scopes; no universal logo requirement or approval transfer. Rendered fixture results do not establish native WordPress media/editor behavior or publication.
+
 ### Missing Hero Artwork
 
 Prompt: Match the supplied page design, but the hero artwork is unavailable.

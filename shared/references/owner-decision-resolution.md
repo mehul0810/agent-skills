@@ -20,6 +20,7 @@ Never infer release, publish, destructive, transfer, protected-branch, material 
 Apply safety/repo policy first; then current exact owner instruction, live product truth, repo docs, active `agent-book` decision, and older memory/chat. Current direction supersedes older assumptions only within scope.
 
 - Treat "for now," "this time," "on this task," and similar wording as bounded, not standing policy.
+- Preserve decision provenance/time; scheduler replay is not newer owner direction. Apply newer instructions within scope and expiry/condition; on expiry resume standing policy, without new authority. Replay and notification deduplication do not change cadence.
 - Preserve negative constraints and non-goals; prohibitions are not suggestions.
 - Reverify drift-prone decisions at their source when state changes.
 - On conflict, stop only that action; continue safe discovery and report the conflict, recommendation, and reversible default.

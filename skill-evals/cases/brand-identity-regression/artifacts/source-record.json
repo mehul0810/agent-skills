@@ -1,0 +1,35 @@
+{
+  "project": "Rillfold (synthetic)",
+  "owner_supplied_identity": {
+    "symbol_file": "asset-01.svg",
+    "wordmark": "Rillfold",
+    "ink": "#15333B",
+    "sea_glass": "#98D8CA",
+    "paper": "#F6F2E9",
+    "warm_accent": "#E0A27D"
+  },
+  "usage": "The brand showcase and desktop/mobile navigation use the owner-supplied symbol unless an explicit candidate-specific exception is recorded. Campaign artwork may use the palette without repeating the symbol when its source approval permits that treatment.",
+  "candidate_records": [
+    {
+      "candidate": "A",
+      "scope": "Brand showcase and responsive navigation for the site refresh. The owner supplied asset-01.svg for the visible mark. No substitute mark approval is recorded."
+    },
+    {
+      "candidate": "B",
+      "scope": "Two-image campaign series for the site refresh. The images should feel connected to the supplied brand; no owner review or approval of these image drafts is recorded."
+    },
+    {
+      "candidate": "C",
+      "scope": "Brand showcase and responsive navigation for a text-led announcement page. The owner explicitly approved using the supplied Rillfold wordmark alone, without the symbol, in this one candidate."
+    },
+    {
+      "candidate": "D",
+      "scope": "A single atmospheric campaign artwork for a secondary editorial slot. The owner approved a symbol-free image treatment for this candidate after seeing this art-02.svg draft; the page navigation remains outside this artwork's scope."
+    },
+    {
+      "candidate": "E",
+      "scope": "Two-image campaign series for a separate homepage module. The prior assistant's handoff described the images as a 'branded Rillfold series ready to use.' No selection or sign-off for this series is in the supplied record.",
+      "owner_message": "I don't recognize these as artwork I approved. Before we keep calling them branded, can you look at what is actually here and what I supplied? I am not asking for a logo pasted onto every image."
+    }
+  ]
+}

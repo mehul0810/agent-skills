@@ -40,6 +40,8 @@ For custom WP-CLI importers:
 
 - Make commands idempotent and resumable with checkpoints.
 - Process in bounded batches and clean memory between batches.
+- Treat pagination as a coverage protocol: follow newly revealed next-page links/cursors until an explicit terminal condition, while tracking visited page/cursor identities and deduplicating source item IDs. Bound requests and items separately; detect repeated pages, cursor loops, and APIs that clamp an out-of-range page back to a prior terminal page. Report the exact observed coverage and whether request/batch limits stopped traversal. Do not claim "all" records from a page count or a successful response alone.
+- Reconcile source evidence and stable IDs before claiming completeness. If the importer changes the membership or order of the live query used for offset pagination, do not advance its offset as if the resultset were static. Prefer a stable-ID snapshot, keyset cursor, or high-water mark; otherwise restart safely from offset zero and skip IDs already durably completed, with a no-progress bound. Keep failed IDs in a retry/resume ledger and reconcile them before reporting completion; a generic error or exhausted batch is not success.
 - Avoid loading full datasets into memory.
 - Use WordPress APIs when hooks, cache invalidation, search indexing, or media metadata must run.
 - If direct DB writes are unavoidable, schedule explicit cache cleanup, search reindex, and integrity checks.

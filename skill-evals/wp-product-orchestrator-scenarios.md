@@ -130,6 +130,7 @@ Use these lightweight scenarios to verify one-product plugin/theme workflow rout
 - Did the PO prefer local deterministic validation for private repos while allowing useful public CI, challenge redundant hosted runs, preserve documented non-equivalent exceptions, and require release/prerelease automation to rerun the canonical gate against the exact candidate?
 - Did product work avoid blindly draining milestones and define/reconfirm the release scope and priority set first?
 - Did product heartbeat cadence resolve from current owner direction or governed automation/product state while portfolio cadence remained owned by `wp-portfolio-cto`?
+- When an older adaptive-cadence rule reappeared through scheduler replay after a newer exact owner cadence instruction, did it preserve original decision provenance, honor the newer instruction only within its stated scope and expiry/condition, avoid treating replay time as fresh authority, and keep notification deduplication distinct from scheduling?
 - Did routine heartbeat live checks batch GitHub queries, retry at most once for a narrow missing signal, then report `live check unavailable` without retry storms?
 - Did heartbeat output notify only on new/material deltas or meaningful deadline changes, suppress repeated quiet-status sentences, and retain unchanged pending items in their source of truth?
 - Did one non-material heartbeat on a release blocker escalate instead of looping quietly?

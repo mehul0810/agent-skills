@@ -607,7 +607,7 @@
     {
       "name": "Dedicated Product Role Topology",
       "file": "skill-evals/product-role-topology-scenarios.md",
-      "requiredPhrases": ["# Dedicated Product Role Topology Scenarios", "Dedicated product topology lifecycle", "Push is not completion", "Automatic reconciled archive", "Failed proof correction"]
+      "requiredPhrases": ["# Dedicated Product Role Topology Scenarios", "Dedicated product topology lifecycle", "Push is not completion", "Automatic reconciled archive", "Failed proof correction", "Accepted blocked evidence worker", "Missing handoff acknowledgement", "Owner-created role task", "Active implementation correction"]
     },
     {
       "name": "Visual WordPress",
@@ -623,7 +623,8 @@
         "Parent Stretch Is Not Child Padding",
         "Spatial Hierarchy Is Not A Mechanical Grid",
         "Independent Spatial Proof Rejects A Polished Near Miss",
-        "Pen Completion Must Follow The Rendered Candidate"
+        "Pen Completion Must Follow The Rendered Candidate",
+        "Evidence-Calibrated Brand Claims"
       ]
     },
     {
@@ -753,7 +754,7 @@
     {
       "name": "Native Design Authoring",
       "file": "skill-evals/native-design-authoring-scenarios.md",
-      "requiredPhrases": ["# Native Design Authoring Scenarios", "## Editable Artifact Routing", "## Missing Write Capability", "## Pen Transfer Loss", "## Small Edit Restraint", "## Task-Matched Inspiration", "## Independent Acceptance Gates", "## Single Source And Publication", "## Proportional Handoff", "## High Fidelity Default", "## Navigation And Recovery", "## Purposeful Media", "## Placement Aware Image", "## Image Candidate Rejection", "## Exact Edit Restraint", "## Native Runtime Boundary", "## Truthful Visual Proof"]
+      "requiredPhrases": ["# Native Design Authoring Scenarios", "## Editable Artifact Routing", "## Missing Write Capability", "## Pen Transfer Loss", "## Small Edit Restraint", "## Task-Matched Inspiration", "## Independent Acceptance Gates", "## Single Source And Publication", "## Proportional Handoff", "## High Fidelity Default", "## Navigation And Recovery", "## Purposeful Media", "## Placement Aware Image", "## Image Candidate Rejection", "## Exact Edit Restraint", "## Native Runtime Boundary", "## Truthful Visual Proof", "## Supplied Mark In Native Placements"]
     },
     {
       "name": "Reference Design Adoption",
@@ -769,6 +770,18 @@
       "name": "Astra Simplification Pilot",
       "file": "skill-evals/astra-simplification-scenarios.md",
       "requiredPhrases": ["# Astra Simplification Pilot", "## Discovery Before Loading", "## Direct Execution And Safe Completion", "## Dependency And Recovery Boundaries", "## Paired Execution Evidence"]
+    },
+    {
+      "name": "Content Migration Integrity",
+      "file": "skill-evals/content-migration-integrity-scenarios.md",
+      "requiredPhrases": [
+        "# Content Migration Integrity Scenarios",
+        "CMI-1 Coverage",
+        "CMI-2 Honest status",
+        "CMI-3 Mutation safety",
+        "CMI-4 Resume integrity",
+        "CMI-5 No-progress/empty"
+      ]
     }
   ]
 }

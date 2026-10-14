@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 390" role="img" aria-label="Illustration of layered paper shapes">
+  <rect width="600" height="390" fill="#F6F2E9"/>
+  <circle cx="445" cy="105" r="120" fill="#98D8CA"/>
+  <path d="M-40 275Q140 70 310 255T650 190V420H-40Z" fill="#15333B"/>
+  <path d="M-40 330Q160 170 350 315T650 235V420H-40Z" fill="#E0A27D"/>
+  <path d="M65 98h154m-154 20h112" stroke="#15333B" stroke-width="5" stroke-linecap="round"/>
+</svg>

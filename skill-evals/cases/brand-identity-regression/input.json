@@ -1,0 +1,13 @@
+{
+  "id": "brand-identity-regression",
+  "request": "Review the five independent synthetic candidate treatments in gallery.html against the supplied brand source and each candidate's recorded scope/approvals. Inspect the actual SVGs and rendered gallery at desktop and narrow mobile width, including the nav marks at roughly 32px. State for each candidate whether it is ready, what concrete change (if any) is needed, and what evidence remains unproven. Address the owner exchange recorded for candidate E. For the separate native-pilot-brief.md, describe a bounded first authoring and verification pass only; do not create or edit a native file. Do not access external services or treat these fixtures as real customer work.",
+  "artifacts": [
+    "source-record.json",
+    "gallery.html",
+    "asset-01.svg",
+    "asset-02.svg",
+    "art-01.svg",
+    "art-02.svg",
+    "native-pilot-brief.md"
+  ]
+}

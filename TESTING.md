@@ -69,6 +69,23 @@ Use `skill-evals/README.md`. Run changed-role scenarios with a fresh agent and r
 
 Green grep/structure audits do not prove the behavior is correct.
 
+For content-migration changes, the aggregate includes
+`node scripts/test-content-migration-regression.mjs`. Also run the blind
+`skill-evals/cases/content-migration-integrity/input.json` requests with a fresh
+agent, keeping criteria outside its context. Exercise source discovery, changing
+query membership, failed writes/checkpoint resume, bounded stops and empty-source
+counterexamples. These synthetic mechanics do not prove a real source inventory,
+WordPress migration, production-data integrity or rollback.
+
+For role-specific worker completion or cadence freshness, use the blind
+`skill-evals/cases/chat-governance-corrections/input.json` packet, including
+owner-created tasks, active corrections, missing handoff acknowledgement and
+expired-override counterexamples. These are decisions, not real archival or
+schedule changes. For brand identity, inspect the raw vectors and rendered
+desktop/mobile gallery in `skill-evals/cases/brand-identity-regression/input.json`;
+palette fit cannot substitute for exact marks or approval evidence. The separate
+native pilot retains its own write/structure/authoring gates.
+
 Freeze the applicable owning router and material support references into decision
 packets, not just the files changed by the patch. Check route reachability before
 dispatch. Missing guidance makes coverage incomplete; correct the packet and

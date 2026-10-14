@@ -1,0 +1,5 @@
+{
+  "id": "chat-governance-corrections",
+  "request": "For each independent case, use only the supplied request and records. State the applicable decision and next action. Do not operate chats, automations, repositories, or external systems.",
+  "artifacts": ["cases.json"]
+}

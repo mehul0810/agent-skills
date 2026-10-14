@@ -220,13 +220,22 @@
           "rename a launched semantic token",
           "an API failure is displayed",
           "an agent likes a redesigned checkout",
-          "Pen Completion Must Follow The Rendered Candidate"
+          "Pen Completion Must Follow The Rendered Candidate",
+          "Evidence-Calibrated Brand Claims"
         ],
         "sha256": "4b6c4dc97df424fb3fc29f417209987cf157b6b6650b04b292b541a7af40b101",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [
           "skill-evals/cases/visual-native-regression/input.json",
-          "skill-evals/cases/pen-wordpress-acceptance/input.json"
+          "skill-evals/cases/pen-wordpress-acceptance/input.json",
+          "skill-evals/cases/brand-identity-regression/artifacts/art-01.svg",
+          "skill-evals/cases/brand-identity-regression/artifacts/art-02.svg",
+          "skill-evals/cases/brand-identity-regression/artifacts/asset-01.svg",
+          "skill-evals/cases/brand-identity-regression/artifacts/asset-02.svg",
+          "skill-evals/cases/brand-identity-regression/artifacts/gallery.html",
+          "skill-evals/cases/brand-identity-regression/artifacts/native-pilot-brief.md",
+          "skill-evals/cases/brand-identity-regression/artifacts/source-record.json",
+          "skill-evals/cases/brand-identity-regression/input.json"
         ],
         "contractSha256": "7bba682d8feba96cc7cfa9273d33fb57fae94c60c9b0b41a6879484a00c5aa72"
       },
@@ -267,7 +276,8 @@
         "pen-rendered-source-and-composition",
         "actual-viewport-calibration",
         "surface-candidate-proof-invalidation",
-        "consistent-scoped-completion"
+        "consistent-scoped-completion",
+        "brand-status-evidence-and-owner-correction"
       ],
       "evidence": [
         {
@@ -579,7 +589,11 @@
           "Dedicated product topology lifecycle",
           "Push is not completion",
           "Automatic reconciled archive",
-          "Failed proof correction"
+          "Failed proof correction",
+          "Accepted blocked evidence worker",
+          "Missing handoff acknowledgement",
+          "Owner-created role task",
+          "Active implementation correction"
         ],
         "sha256": "1a06905b2d6ada3db36c1ee36ad36aa798e3b04bebf04c033216d150fdc09db4",
         "sha256Scope": "legacy-anchor-line",
@@ -592,7 +606,9 @@
           "skill-evals/cases/governance-contract-refresh-supplement/artifacts/recovery-checkpoint.md",
           "skill-evals/cases/governance-contract-refresh-supplement/input.json",
           "skill-evals/cases/governance-contract-refresh/artifacts/cases.json",
-          "skill-evals/cases/governance-contract-refresh/input.json"
+          "skill-evals/cases/governance-contract-refresh/input.json",
+          "skill-evals/cases/chat-governance-corrections/artifacts/cases.json",
+          "skill-evals/cases/chat-governance-corrections/input.json"
         ],
         "contractSha256": "c821e7e6070b4fcd842964d7c2e1370e00396422202569d7c782f3eca7384f7d"
       },
@@ -619,7 +635,8 @@
         "exact-id-worker-archive",
         "push-not-completion",
         "failed-proof-correction",
-        "worktree-cleanup-separate"
+        "worktree-cleanup-separate",
+        "role-scoped-evidence-worker-completion"
       ],
       "evidence": [
         {
@@ -873,7 +890,9 @@
           "skill-evals/cases/governance-contract-refresh-supplement/artifacts/recovery-checkpoint.md",
           "skill-evals/cases/governance-contract-refresh-supplement/input.json",
           "skill-evals/cases/governance-contract-refresh/artifacts/cases.json",
-          "skill-evals/cases/governance-contract-refresh/input.json"
+          "skill-evals/cases/governance-contract-refresh/input.json",
+          "skill-evals/cases/chat-governance-corrections/artifacts/cases.json",
+          "skill-evals/cases/chat-governance-corrections/input.json"
         ],
         "contractSha256": "197fb731be2f378d458344148128f87e37e9614e5782d28bdddd6921ed77d1b6"
       },
@@ -885,7 +904,8 @@
         "exact-value-proportional-proof",
         "enterprise-stopping-rule",
         "profile-not-authority",
-        "private-sanitized-calibration"
+        "private-sanitized-calibration",
+        "cadence-decision-provenance-and-expiry"
       ],
       "evidence": [
         {
@@ -1532,12 +1552,21 @@
           "## Native Runtime Boundary",
           "## Shared Editor Target Drift",
           "## Isolated Target Exception",
-          "## Truthful Visual Proof"
+          "## Truthful Visual Proof",
+          "## Supplied Mark In Native Placements"
         ],
         "sha256": "2c8ea417197aefe8fd651ea3e5c7800c3523f41a98321f5c66f606e7b653bf62",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [
-          "skill-evals/cases/native-design-authoring/input.json"
+          "skill-evals/cases/native-design-authoring/input.json",
+          "skill-evals/cases/brand-identity-regression/artifacts/art-01.svg",
+          "skill-evals/cases/brand-identity-regression/artifacts/art-02.svg",
+          "skill-evals/cases/brand-identity-regression/artifacts/asset-01.svg",
+          "skill-evals/cases/brand-identity-regression/artifacts/asset-02.svg",
+          "skill-evals/cases/brand-identity-regression/artifacts/gallery.html",
+          "skill-evals/cases/brand-identity-regression/artifacts/native-pilot-brief.md",
+          "skill-evals/cases/brand-identity-regression/artifacts/source-record.json",
+          "skill-evals/cases/brand-identity-regression/input.json"
         ],
         "contractSha256": "5bdaaaf2470b6a73d0ab2dd8617b2513da128acb9b2a65fe11fda35419cf8dfd"
       },
@@ -1559,7 +1588,8 @@
         "native-runtime-boundary",
         "shared-editor-target-drift",
         "isolated-target-exception",
-        "truthful-visual-proof"
+        "truthful-visual-proof",
+        "exact-supplied-brand-identity"
       ],
       "evidence": [
         {
@@ -1633,6 +1663,48 @@
           }
         }
       ],
+      "harnessContract": "cli-validation-v1"
+    },
+    {
+      "name": "content-migration-integrity",
+      "files": [
+        "wp-site-expert/SKILL.md",
+        "wp-site-expert/references/router.md",
+        "wp-expert/references/content-migration-editorial-scale.md",
+        "scripts/migration-regression-fixture.mjs",
+        "scripts/test-content-migration-regression.mjs"
+      ],
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "scenario": {
+        "id": "content-migration-integrity",
+        "files": [
+          "skill-evals/content-migration-integrity-scenarios.md"
+        ],
+        "anchors": [
+          "CMI-1 Coverage",
+          "CMI-2 Honest status",
+          "CMI-3 Mutation safety",
+          "CMI-4 Resume integrity",
+          "CMI-5 No-progress/empty"
+        ],
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "sha256Scope": "legacy-anchor-line",
+        "fixtureFiles": [
+          "skill-evals/cases/content-migration-integrity/artifacts/failure.json",
+          "skill-evals/cases/content-migration-integrity/artifacts/live-selector.json",
+          "skill-evals/cases/content-migration-integrity/artifacts/source-pages.json",
+          "skill-evals/cases/content-migration-integrity/input.json"
+        ],
+        "contractSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "requiredChecks": [
+        "source-discovery-completeness",
+        "partial-discovery-status",
+        "mutation-safe-batch-progress",
+        "checkpoint-resume-and-reconciliation",
+        "bounded-empty-and-no-progress"
+      ],
+      "evidence": [],
       "harnessContract": "cli-validation-v1"
     }
   ],

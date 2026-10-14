@@ -43,9 +43,9 @@ Do not create a permanent Worker task. Creating a user-visible disposable worker
 
 ### Disposable Worker Lifecycle
 
-PO or its heartbeat performs lifecycle reconciliation automatically for exact tracked worker IDs. A pushed commit or open PR is not completion. Use `set_thread_archived` only when a Codex-created worker is idle with final summary; Engineering Review and applicable Test & Proof pass; corrections/current validation match exact PR/head; PR and issue/train are reconciled; and no handoff remains.
+PO or its heartbeat performs lifecycle reconciliation automatically for exact worker IDs. Use `set_thread_archived` only for Codex-created disposable workers. Never auto-archive owner-created role/control tasks or owner-created disposables. A pushed commit or open PR is not completion. Implementation requires idle final summary, independent Engineering Review and applicable Test & Proof passing on the exact PR/head, corrections/current validation matching that head, reconciled PR/issue/train, and no handoff. Failed review/proof or assigned corrections keep workers available for correction/fresh validation; accepted diagnostics cannot change their implementation role or establish readiness.
 
-Failed review/proof returns bounded correction; do not archive. Clean worktrees separately only after storage-lifecycle safety proof. Automation inspects tracked completed workers, archives reconciled successes quietly, and reports a missing tool, identity, review, or PR state once. Never auto-archive owner-created role/control tasks.
+Non-implementation research/review/proof/readiness requires accepted scoped deliverable, durable evidence, unresolved actions transferred with acknowledged receiving-owner handoff, idle final summary, and no assigned correction. Accepted `BLOCKED`/`NO-GO` needs no implementation PR/pass and establishes no product readiness. Both branches retain creator/identity gates. Clean worktrees separately after storage-lifecycle safety proof. Archive quietly; report unavailable prerequisites once.
 
 ## Required Handoffs
 
