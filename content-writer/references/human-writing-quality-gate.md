@@ -18,7 +18,7 @@ Keep the writer's meaning, vocabulary, cadence, confidence, humor, technical pre
 - primary search intent, important entities, descriptive anchors, accessibility meaning, and conversion action;
 - strong sentences and rhetorical devices that serve the audience.
 
-Never invent a claim, statistic, quotation, example, opinion, transition, or customer outcome to make prose sound stronger. Ask or flag the gap when meaning is unclear.
+Never fabricate factual claims, statistics, quotations, firsthand experiences, sources, or customer outcomes to strengthen prose. Clearly labeled hypothetical examples may explain a verified mechanism; they are illustrations, not evidence. Preserve the author's meaning and opinions in edits; ask or flag unclear meaning instead of inventing it.
 
 ## Pattern Review
 
@@ -40,7 +40,7 @@ Do not maintain a universal banned-word or punctuation list. A contrast, fragmen
 Before returning an edit, mark each check internally as pass or fail:
 
 1. The purpose, audience, meaning, and requested action remain intact.
-2. No facts, claims, sources, examples, or product capabilities were invented.
+2. Facts, sources, experiences, outcomes, and capabilities were not fabricated; hypothetical illustrations are clearly labeled and consistent with verified mechanisms.
 3. Distinctive voice survived; strong human sentences were left alone.
 4. Edits are proportional to the actual problem rather than a wholesale rewrite.
 5. Unsupported authority, filler, abstraction, and robotic repetition were removed or flagged.

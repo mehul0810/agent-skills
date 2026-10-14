@@ -1208,9 +1208,10 @@
       "files": [
         "content-writer/SKILL.md",
         "content-writer/references/router.md",
+        "content-writer/references/human-writing-quality-gate.md",
         "content-writer/references/readability-and-clarity.md"
       ],
-      "sha256": "fdc5ea98c85fde8a51dec2a43ade5c99f385138a6dd9f01d846a0c84e9e48ac1",
+      "sha256": "d4184a8feac48ef14274219fa479a64197d3de5b8f7abe4a5d923761648e4542",
       "scenario": {
         "id": "content-writer-readability",
         "files": [
@@ -1226,17 +1227,21 @@
           "Verified Procedure Not Invented UI",
           "Numbers Preserve Scope",
           "Reader Test Is Not Agent Opinion",
-          "Simplification Preserves Warning"
+          "Simplification Preserves Warning",
+          "Labeled Mechanism Illustration",
+          "Illustration Is Not Evidence"
         ],
-        "sha256": "21891fb1a617782e3b9de3fd71d17ef57ae6dcb22d8503dadd2cf498c2e5f92e",
+        "sha256": "423903d47208398ee8f7babbc3b3da132828c0ff03a70353f52ae8c3f490fd63",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [
           "skill-evals/cases/wporg-listing/input.json",
           "skill-evals/cases/wporg-listing/artifacts/plugin-evidence.md",
           "skill-evals/cases/wporg-listing/artifacts/onboarding-copy.md",
-          "skill-evals/cases/wporg-listing/artifacts/changelog-evidence.md"
+          "skill-evals/cases/wporg-listing/artifacts/changelog-evidence.md",
+          "skill-evals/cases/labeled-illustrations/input.json",
+          "skill-evals/cases/labeled-illustrations/artifacts/cases.json"
         ],
-        "contractSha256": "41ca4b1d84e9fdefa50fb3e80104a8ebf2547ba690c62fc2d0ee9b086a33285c"
+        "contractSha256": "3c2a3fe6a487469d1c07e07cc54aac7f746eecc59dbf601d153fa5a52891583d"
       },
       "requiredChecks": [
         "audience-task-calibration",
@@ -1250,7 +1255,9 @@
         "verified-procedure-boundary",
         "numeracy-and-scope",
         "reader-evidence-not-agent-opinion",
-        "warning-preserving-rewrite"
+        "warning-preserving-rewrite",
+        "labeled-mechanism-illustrations",
+        "no-fabricated-proof-or-author-experience"
       ],
       "evidence": [
         {
