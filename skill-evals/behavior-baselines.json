@@ -41,9 +41,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-10-13-warning-cleanup.json",
-          "sha256": "7d44d3d3a849bfd036a1035065f2a908d88db4b8f64530e45eb22d08887d70f0",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
+          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-10-14-boundary-remediation.json",
+          "sha256": "7713e75bcfe102c590f84da5cf26a0545c4d3bc13c7d1957fd6a8222569c7d9a",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
           "testedSourceSha256": "2cdcf362660cc634e791bb7d297c4953226338c81a0d7634aa2a6ce2a5559299",
           "testedScenarioSha256": "3d842125a654c717b1b68f1fe273d32f8bf4ac54bae26ac39dbacefb0f92eb84",
           "testedScenarioContractSha256": "a5e92da73927c18518f1dd51dabe014c350387dde50c4dbd14968ced5c3d40e8",
@@ -138,9 +138,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/design-experience-routing-2026-10-13-warning-cleanup.json",
-          "sha256": "fd0994953c62c8218a152a7eace3b783910e76be87d11361b46f7d53f15d7fb0",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
+          "runRecord": "skill-evals/run-records/design-experience-routing-2026-10-14-boundary-remediation.json",
+          "sha256": "66de757ba39c4815fe38fee7fdbe09179c75f1de775dac52011a8aa83ac47030",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
           "testedSourceSha256": "3ff97246c25490e74c4f68a69e36a3af2abf2b1156a6a054975cdaafe20f1b8c",
           "testedScenarioSha256": "168416f3f9957a78a16ab3339fa253bfee79efd81d322b10c662d9244b63e12d",
           "testedScenarioContractSha256": "fffff90556a6327eb6c63901efa3769fc7525a6082feb078e3556be8d3f1048c",
@@ -271,9 +271,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-10-13-warning-cleanup.json",
-          "sha256": "d2c6a290edeb7f4c454871c247d1a74ebdc96923ba35e0c8c9ca7481fa2be43c",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
+          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-10-14-boundary-remediation.json",
+          "sha256": "33ab7ad1c06c99f28c5d4771a1746d50a40013fee2533410549da8d78887831e",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
           "testedSourceSha256": "e9318b83f6d451578e4ab82de9c3004617ccb9374e7d36b254c6ea9b2f2972f6",
           "testedScenarioSha256": "4b6c4dc97df424fb3fc29f417209987cf157b6b6650b04b292b541a7af40b101",
           "testedScenarioContractSha256": "7bba682d8feba96cc7cfa9273d33fb57fae94c60c9b0b41a6879484a00c5aa72",
@@ -330,9 +330,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/visual-evidence-assets-2026-10-13-warning-cleanup.json",
-          "sha256": "68ef74df7eb952ee072ece39b7e79efa445769d5f3ea606b9e74120f1b54a407",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
+          "runRecord": "skill-evals/run-records/visual-evidence-assets-2026-10-14-boundary-remediation.json",
+          "sha256": "f740bac2b253ab0112602144014f0b23312d0cf4cc4b942018eef6c7a4fbcde3",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
           "testedSourceSha256": "044f2cf3a387434af45f8ff0c693a9e2e48fb8f617d4d0f604138befbbdd63f7",
           "testedScenarioSha256": "970762a1435091dfad3cde6c2de78bcdd5581c016fda2d9ca0bec68d0dac849c",
           "testedScenarioContractSha256": "2c7fd2552314c5f540a36329e95a526e4523b6081b70aa3ab17d4679681b62c5",
@@ -386,9 +386,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/engineering-graph-2026-10-13-warning-cleanup.json",
-          "sha256": "d166fffced6f292867066a69183f208375abdf0d5a6d4880041144147f9400ea",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
+          "runRecord": "skill-evals/run-records/engineering-graph-2026-10-14-boundary-remediation.json",
+          "sha256": "f4d7296db534e8e3493eeb9f99619b55d4dc2360b1e80b6d855181571f469578",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
           "testedSourceSha256": "754b81a97a323423e0ce793983459e884d13f21156d2f90f857c01e29702d160",
           "testedScenarioSha256": "146b415525abf0c551e9f8a7e12d118d434e534e368ab728bc8bd921cc23793c",
           "testedScenarioContractSha256": "8d5b410557066ad7ca1ee2927c927a3fdb3c18d05d5652826fead78308dadf7b",
@@ -487,9 +487,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-10-13-warning-cleanup.json",
-          "sha256": "daacae4a45660b713f4a0123ba4f34f7b65cd01f1b8a52dec0e3cc87debcd183",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
+          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-10-14-boundary-remediation.json",
+          "sha256": "9ceb8b5f1055b1d371368279f8d21b781919704a5fd0a26515550d142b30df50",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
           "testedSourceSha256": "df382b1a3b53893884a79c36c309f79a0cd7011ca082d2dd42f3b08b31143665",
           "testedScenarioSha256": "dc871ec228dc5f669cf046b3719b6c9193ee3d1b17d9a11588f6eddfee9d1a25",
           "testedScenarioContractSha256": "8f69cb8f53c058aa7ca17282a64122c42b261d4ef5e0cba42f6acdc091a7de03",
@@ -531,9 +531,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/automatic-specialist-routing-2026-10-13-warning-cleanup.json",
-          "sha256": "67b81518bfd2b67d4b8fad399849847897581f6b0cc7ae43aacfc311c517aac7",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
+          "runRecord": "skill-evals/run-records/automatic-specialist-routing-2026-10-14-boundary-remediation.json",
+          "sha256": "835e0f5e28cd260ffc2210d668b58bbd5f6400e74db4135f0e677521b28c51b5",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
           "testedSourceSha256": "4b4fe5396ed27259e9c5f46af980c4687d1b345d4e32be9b1b141b1fb0531777",
           "testedScenarioSha256": "5964fa0002f260ea2ed1ecdf40a842bc6a5548173fca1f1b38adfa16b713693d",
           "testedScenarioContractSha256": "3cfb73302f1549563de8f40ca8918fe6e8af1d3a26919d28b46973ce6a2ea3bc",
@@ -623,9 +623,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-development-governance-2026-10-13-warning-cleanup.json",
-          "sha256": "d62d84412955e67fa36eff47912ab966aac5f468ab59ffe41a04a1ce64993295",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
+          "runRecord": "skill-evals/run-records/product-development-governance-2026-10-14-boundary-remediation.json",
+          "sha256": "c8dd74fc1dc151b84da27ff6e046092a72e791b15ed87789a14ebd7018790f23",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
           "testedSourceSha256": "ad8c95269d7d8508ab189a9b6717a43b983ebb6887522f5d2994fcbf151bf982",
           "testedScenarioSha256": "1a06905b2d6ada3db36c1ee36ad36aa798e3b04bebf04c033216d150fdc09db4",
           "testedScenarioContractSha256": "c821e7e6070b4fcd842964d7c2e1370e00396422202569d7c782f3eca7384f7d",
@@ -685,9 +685,9 @@
       "sha256": "f325e976eaa1d71df1c8cf4372448825924dcc22c8430a47f369ba2034973db8",
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-value-decision-2026-10-13-warning-cleanup.json",
-          "sha256": "a2b649b07e513e07d6cc4d316f0740aa25ea78024f5df08c2054e1b2ff6d5cdc",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
+          "runRecord": "skill-evals/run-records/product-value-decision-2026-10-14-boundary-remediation.json",
+          "sha256": "4549a7197f843d7f48499eaa85619c15271e8d53afbe0fa57ae470f69c5afa27",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
           "testedSourceSha256": "f325e976eaa1d71df1c8cf4372448825924dcc22c8430a47f369ba2034973db8",
           "testedScenarioSha256": "52c0b2cb69237e9f1d472448ca912993d5e549eb4c6fc8602cab15beff2581c8",
           "testedScenarioContractSha256": "a8ba6911fb76bc613d05282f83bbf8b0afc84dfeadc34537daebfbc71d377879",
@@ -776,9 +776,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-release-authority-2026-10-13-warning-cleanup.json",
-          "sha256": "e1c83b037e2cb72fe9f34c67b103df0c143dcc1f978580042a53f84818dfc967",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
+          "runRecord": "skill-evals/run-records/product-release-authority-2026-10-14-boundary-remediation.json",
+          "sha256": "79589006475c635fe6b745da9d1bf766c61184ce584f6f72cad3e12477af4274",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
           "testedSourceSha256": "cf66a0b099b4975acfc9a27922ecda1ab9deebf3cec48f091a5a953657ef51b4",
           "testedScenarioSha256": "415eb151638237bf0c9a4cc09f6462e4f028386f88256125e0f3b8369c87f34e",
           "testedScenarioContractSha256": "7e839a84300f2037e63d753b33d65ee44f7fb75773df468c4543d2ff4126ab7d",
@@ -826,9 +826,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/owner-correction-learning-2026-10-13-warning-cleanup.json",
-          "sha256": "9a00475bee585b34629d5d9abc8f7f438b7de32cc2b757b86c30bc6de61e8d94",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
+          "runRecord": "skill-evals/run-records/owner-correction-learning-2026-10-14-boundary-remediation.json",
+          "sha256": "5e59cf669b48417cff7c17c6f55a7394fb8e8aa10335e9eb8c53290756f64cdd",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
           "testedSourceSha256": "123d37c6a04209830c6c448111d32767e05dc5f9174d04380b03d7d705da5eda",
           "testedScenarioSha256": "b73d82e24abe107bee6eca83f4cfb99e0cb14d7bee22ea956c19d298093f7ca4",
           "testedScenarioContractSha256": "bc9eb442eb998afa47dfa7fca7a55d3519b55917a7e658d0268dc0870d6a4110",
@@ -889,9 +889,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/owner-aligned-judgment-2026-10-13-warning-cleanup.json",
-          "sha256": "6351a8a3b85f187121860e543b246e39a8803d76bb30e4ed02b177f156dab598",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
+          "runRecord": "skill-evals/run-records/owner-aligned-judgment-2026-10-14-boundary-remediation.json",
+          "sha256": "cafc7f0edb5fe529a69a30eeee6a28722d9265508c243ecdc0c150c411ae4a58",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
           "testedSourceSha256": "1b5bbfd034841c338a5f14c97f02056848535867f424d35b6dbcb9c8cbb83a43",
           "testedScenarioSha256": "54b4ae2bce4d363eecee4fad87a2b5e39ae29e0c98c722ac773dc9447afc6d02",
           "testedScenarioContractSha256": "197fb731be2f378d458344148128f87e37e9614e5782d28bdddd6921ed77d1b6",
@@ -933,9 +933,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/source-blind-behavior-proof-2026-10-13-warning-cleanup.json",
-          "sha256": "e8c1168ecfc0ea09183d7473cdfaea82686a42c0e79df0a8ccd489f9ba3e83d6",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
+          "runRecord": "skill-evals/run-records/source-blind-behavior-proof-2026-10-14-boundary-remediation.json",
+          "sha256": "c8c329a0946b86b482fae7eccf37a68967bdef571ea6a6c3b2d75ff0e23aed28",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
           "testedSourceSha256": "082e6366c45a976687e1a9ac81a488aee6bc4d7b3142e3002a3efa788bd36acf",
           "testedScenarioSha256": "95f6f1b3a29e29ad610fb4306f0130bfd212524f1b935513d6630d563beffb1e",
           "testedScenarioContractSha256": "7f415c3f64c48375bbb0d63c16cd03db54055659b3d6ca8e7f87eb860636bd73",
@@ -1066,9 +1066,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-10-13-warning-cleanup.json",
-          "sha256": "354877f2d8059652af1ecaca9884f20120043791148b73c014b727ef5ccd562c",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
+          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-10-14-boundary-remediation.json",
+          "sha256": "ccf27d63c27542757a30e8f9246dd3e89bb91695a047bebc7a18a915e9d06fe6",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
           "testedSourceSha256": "680e24457ccbcd9469404b59af3a6e14404138fe76b68ec91d7b55a68f2c64c4",
           "testedScenarioSha256": "c73de5eedf1dee85a45a49b23b404d1df8e65a62bd200478209cda6063be8b66",
           "testedScenarioContractSha256": "17de0a37f6a96a8cce76ac8b0f11c6e4f1cc1d042c04ee98fe1a409f72322df0",
@@ -1131,9 +1131,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wp-product-docs-writer-2026-10-13-warning-cleanup.json",
-          "sha256": "cd3fd6a145294e57d8de0930cd6119396a6dedb998dbe7a3b30b1d299e8df3dc",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
+          "runRecord": "skill-evals/run-records/wp-product-docs-writer-2026-10-14-boundary-remediation.json",
+          "sha256": "95f91eddf3c1622086ed4bd63f805a282e88543f44bbaab30d870070fa6507a9",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
           "testedSourceSha256": "56ae3a80ae708a5c7939bef784f100f6742d9b79da2c39eedbd92f5d4fcc734c",
           "testedScenarioSha256": "9d2db8f80fa320b57cb77f668ee4ddc87a6556c1cf217b2a77d22fc6f9051823",
           "testedScenarioContractSha256": "cb6dfd466a19d551d24a9b426cb67c2008d101ec76d7f97c25f1ad11c16c836a",
@@ -1188,9 +1188,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/content-writer-search-visibility-2026-10-13-warning-cleanup.json",
-          "sha256": "0f4c1e9852b5be6a199b7ecc2ea1a492b86f23ae7abcbdf73762e421eb8a8fc4",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
+          "runRecord": "skill-evals/run-records/content-writer-search-visibility-2026-10-14-boundary-remediation.json",
+          "sha256": "e2d10dbc207dcddde38cfcaf770741e3736d49c8989cd2741ddce88084721ecc",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
           "testedSourceSha256": "09f620d608ddfbfe6630844aa3cc7bffe726133113c2cfde18fc99ee509df3cc",
           "testedScenarioSha256": "7fc19d19e43a3fa241c4de6dd606b4cc808b765d2ec0a0f85a0093f685906d22",
           "testedScenarioContractSha256": "570f53d205034aaab3740d38e6ce13ec420a7cf67f95035bcbc263e35f6a883e",
@@ -1261,12 +1261,12 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/content-writer-readability-2026-10-13-warning-cleanup.json",
-          "sha256": "43c5683b75f6a0777e11c0760598011b0c29ac53e1f06441b5f123f4a9f4385d",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
-          "testedSourceSha256": "fdc5ea98c85fde8a51dec2a43ade5c99f385138a6dd9f01d846a0c84e9e48ac1",
-          "testedScenarioSha256": "21891fb1a617782e3b9de3fd71d17ef57ae6dcb22d8503dadd2cf498c2e5f92e",
-          "testedScenarioContractSha256": "41ca4b1d84e9fdefa50fb3e80104a8ebf2547ba690c62fc2d0ee9b086a33285c",
+          "runRecord": "skill-evals/run-records/content-writer-readability-2026-10-14-boundary-remediation.json",
+          "sha256": "5fe6fa6e924aa7af621433318b593b1842e3087ee49b252ce4c8ec3a250f98b1",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
+          "testedSourceSha256": "d4184a8feac48ef14274219fa479a64197d3de5b8f7abe4a5d923761648e4542",
+          "testedScenarioSha256": "423903d47208398ee8f7babbc3b3da132828c0ff03a70353f52ae8c3f490fd63",
+          "testedScenarioContractSha256": "3c2a3fe6a487469d1c07e07cc54aac7f746eecc59dbf601d153fa5a52891583d",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
@@ -1311,9 +1311,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/loop-steward-authority-2026-10-13-warning-cleanup.json",
-          "sha256": "641cf989c5b6da21eb0f74a1cf14eaa94e29554986a06ab8f1211daf5f794bf7",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
+          "runRecord": "skill-evals/run-records/loop-steward-authority-2026-10-14-boundary-remediation.json",
+          "sha256": "6769e4e438df35be3900f44c54bbce4cd7ccc0423d765812b4c062b8db6eda91",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
           "testedSourceSha256": "a41f285ad825e7cbb5fd941c24a433c3821581a7acb8d0138caed51d71558f8b",
           "testedScenarioSha256": "ccb431d8dc24dde902d53f9a6b24ca19769efd2ac88e76c46da998490e04955f",
           "testedScenarioContractSha256": "02ab92177e6326dccce3307d926aa132a4a0a6bdd31809de68df0b8f53e2b960",
@@ -1366,9 +1366,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wp-contributor-upstream-process-2026-10-13-warning-cleanup.json",
-          "sha256": "a4a0d047b32dac560da75be72b9ac1b090096cf8d2e00ec66c64362db16a23d2",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
+          "runRecord": "skill-evals/run-records/wp-contributor-upstream-process-2026-10-14-boundary-remediation.json",
+          "sha256": "1700364c382b2091360d09658b4d5f41e6e7068bcbfe5b1216b03e6083891605",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
           "testedSourceSha256": "99b5d936311dbfcddb49ca8ed13cb43e75a52eb77a80811237392ec76215c87f",
           "testedScenarioSha256": "47b471dd9c95b853d2807dce0cd76b07480b0d99797b5255128ef8ec8aa508f1",
           "testedScenarioContractSha256": "80659dd36ad7c57e1b7ad0446a3cd86c6085fc0efdae019e37d8f394a212bc5f",
@@ -1428,9 +1428,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/context-approach-continuity-2026-10-13-warning-cleanup.json",
-          "sha256": "d246fb3146ccae8c17c0944139e02ff825bb61e0df82960a15e0da1e2a0f49ae",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
+          "runRecord": "skill-evals/run-records/context-approach-continuity-2026-10-14-boundary-remediation.json",
+          "sha256": "9a2f8ef853a52fa8ede9e35b3836227835335c5ebb493c547629e39ad25b5bf9",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
           "testedSourceSha256": "c4cd9492e197f4099468119272fe4b201fb3d124ac0e0a727552e4ae2592dc03",
           "testedScenarioSha256": "15fe8d6e1c98cd377d1f39af05b23b099aa0f20aaa7f06c0d3d7fe90ead13eae",
           "testedScenarioContractSha256": "311ab149b274f23b878c14280e03b7b3ada9aeef7fbe78d3b6023fb0443fcec4",
@@ -1484,9 +1484,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/scoped-review-workflow-2026-10-13-warning-cleanup.json",
-          "sha256": "1f426279869b83e9bfea38fbaab3a03c6c3fa1656d33c018f667f25e9d40f1a4",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
+          "runRecord": "skill-evals/run-records/scoped-review-workflow-2026-10-14-boundary-remediation.json",
+          "sha256": "7fd85e887ec68282fcb44c0d2a2bc025e7b18ef84dc6b70de13aba0dd342f03d",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
           "testedSourceSha256": "2abd2ea2d1bf15cdbf49ae5df4bf744a452848b9ec555d6a224a8ef3944cc172",
           "testedScenarioSha256": "c3ec2ad278838bb033689d38078c307be4df9fbe5ec300eb581b39e12831d806",
           "testedScenarioContractSha256": "e917f801dc0feaaab10e07765be24894d6e792a3695779fe6305bf81e0bd7d3f",
@@ -1563,9 +1563,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/native-design-authoring-2026-10-13-warning-cleanup.json",
-          "sha256": "66a333c02cb73ced1e57db19060ad8bf6ba68ca9aaca2645636d50250dac3522",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
+          "runRecord": "skill-evals/run-records/native-design-authoring-2026-10-14-boundary-remediation.json",
+          "sha256": "fc98e67906702ce97ad04d0e20d9049af15459c585fcfaf4c059a7e3ff8ed631",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
           "testedSourceSha256": "e93fde4b1289e4a4ea9e2a30848295f5d0cf3865dfefc9b7c94430b47b819e8a",
           "testedScenarioSha256": "2c8ea417197aefe8fd651ea3e5c7800c3523f41a98321f5c66f606e7b653bf62",
           "testedScenarioContractSha256": "5bdaaaf2470b6a73d0ab2dd8617b2513da128acb9b2a65fe11fda35419cf8dfd",
@@ -1620,9 +1620,9 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/system-health-reviewer-evidence-2026-10-13-warning-cleanup.json",
-          "sha256": "bc2d0b5285cd632753798156bbc916d83835fbebc447571cd5f45f86a42e988d",
-          "testedRevision": "a5822677561655b96e73d6065056f85d104ff7bb",
+          "runRecord": "skill-evals/run-records/system-health-reviewer-evidence-2026-10-14-boundary-remediation.json",
+          "sha256": "4341e8ef845325918eb22c700ef719b3df65ae416edcb03042c734285289b0b0",
+          "testedRevision": "64474dfa4760769b44f1f8848e84afcaf45f2842",
           "testedSourceSha256": "bdeb9e91a10c8783ff72eec999285055548944c11ea839a6b4a4b28cb8e59fd4",
           "testedScenarioSha256": "f04da5b96ef16ff69905ca893b02f0103b71b56cb7f5f7460662e617d2c85723",
           "testedScenarioContractSha256": "f703d95cc6578036104ebf32af7f81c488c0409bc2fb8078ad25b3c602892be2",

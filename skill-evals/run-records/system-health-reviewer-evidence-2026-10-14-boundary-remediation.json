@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "runId": "system-health-reviewer-evidence-2026-10-14-boundary-remediation",
+  "scenario": "system-health-reviewer-evidence",
+  "result": "succeeded",
+  "startedAt": "2026-10-14T04:04:58.725Z",
+  "durationMs": 8567057,
+  "checks": [
+    {
+      "name": "empty-retrieval-fallback-or-unknown",
+      "result": "pass"
+    },
+    {
+      "name": "modern-event-role-and-turn-binding",
+      "result": "pass"
+    },
+    {
+      "name": "current-turn-cursor-integrity",
+      "result": "pass"
+    },
+    {
+      "name": "quiet-blocker-owner-next-action",
+      "result": "pass"
+    },
+    {
+      "name": "sample-not-portfolio-health",
+      "result": "pass"
+    },
+    {
+      "name": "correct-target-fresh-settings",
+      "result": "pass"
+    },
+    {
+      "name": "current-owner-model-policy",
+      "result": "pass"
+    },
+    {
+      "name": "observe-route-no-self-approval",
+      "result": "pass"
+    },
+    {
+      "name": "healthy-scoped-noop",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 9,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "system-health-reviewer-evidence-2026-10-14-boundary-remediation",
+    "artifactPointer": "codex-private:boundary-remediation-20261014#evidence/draft-receipts/system-health-reviewer-evidence.json"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-10-14T06:27:45.782Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Fresh frozen-source synthetic decisions independently scored; failed/incomplete attempts retained. Shared parent-observed freeze-to-admission interval includes coordination/retries, not per-actor runtime or summable cost. Host token/cost telemetry unavailable; no native/product/release assurance. See boundary-remediation-review-2026-10-14.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}
