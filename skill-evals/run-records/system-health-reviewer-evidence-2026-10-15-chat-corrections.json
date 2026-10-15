@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "runId": "system-health-reviewer-evidence-2026-10-15-chat-corrections",
+  "scenario": "system-health-reviewer-evidence",
+  "result": "succeeded",
+  "startedAt": "2026-10-14T15:45:08.268Z",
+  "durationMs": 43151193,
+  "checks": [
+    {
+      "name": "empty-retrieval-fallback-or-unknown",
+      "result": "pass"
+    },
+    {
+      "name": "modern-event-role-and-turn-binding",
+      "result": "pass"
+    },
+    {
+      "name": "current-turn-cursor-integrity",
+      "result": "pass"
+    },
+    {
+      "name": "quiet-blocker-owner-next-action",
+      "result": "pass"
+    },
+    {
+      "name": "sample-not-portfolio-health",
+      "result": "pass"
+    },
+    {
+      "name": "correct-target-fresh-settings",
+      "result": "pass"
+    },
+    {
+      "name": "current-owner-model-policy",
+      "result": "pass"
+    },
+    {
+      "name": "observe-route-no-self-approval",
+      "result": "pass"
+    },
+    {
+      "name": "healthy-scoped-noop",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 9,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "system-health-reviewer-evidence-2026-10-15-chat-corrections",
+    "artifactPointer": "codex-private:skill-gap-fixes-20261015-final-01#evidence/draft-receipts-03/system-health-reviewer-evidence.json"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-10-15T03:44:19.461Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Fresh frozen-source development regression independently scored after retained failed/incomplete attempts. Shared parent-observed freeze-to-admission duration includes coordination and retries, not per-actor runtime or summable cost. Host token/cost telemetry unavailable. Synthetic decisions and cited local fixtures only; native pilot remains partial, with no production or held-out claim. See chat-workflow-review-2026-10-15.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}

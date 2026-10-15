@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "runId": "wordpress-visual-execution-2026-10-15-chat-corrections",
+  "scenario": "wordpress-visual-execution",
+  "result": "succeeded",
+  "startedAt": "2026-10-14T15:45:08.268Z",
+  "durationMs": 43151193,
+  "checks": [
+    {
+      "name": "WordPress-native-ownership",
+      "result": "pass"
+    },
+    {
+      "name": "truthful-assets-and-claims",
+      "result": "pass"
+    },
+    {
+      "name": "exact-target-parity-authority",
+      "result": "pass"
+    },
+    {
+      "name": "responsive-accessibility-workflow-proof",
+      "result": "pass"
+    },
+    {
+      "name": "plugin-admin-customer-surface-routing",
+      "result": "pass"
+    },
+    {
+      "name": "plugin-exact-visual-routing",
+      "result": "pass"
+    },
+    {
+      "name": "structured-figma-source",
+      "result": "pass"
+    },
+    {
+      "name": "interactive-client-navigation-lifecycle",
+      "result": "pass"
+    },
+    {
+      "name": "wcag-multistep-flow",
+      "result": "pass"
+    },
+    {
+      "name": "WordPress-design-system-component-first",
+      "result": "pass"
+    },
+    {
+      "name": "emerging-interface-route-preserves-exact-proof",
+      "result": "pass"
+    },
+    {
+      "name": "immersive-editor-and-fallback-proof",
+      "result": "pass"
+    },
+    {
+      "name": "source-visual-intent-classification",
+      "result": "pass"
+    },
+    {
+      "name": "selected-target-source-model-before-code",
+      "result": "pass"
+    },
+    {
+      "name": "growth-redesign-brief-before-generation",
+      "result": "pass"
+    },
+    {
+      "name": "globalized-adaptive-interface-contract",
+      "result": "pass"
+    },
+    {
+      "name": "custom-interaction-pattern-contract",
+      "result": "pass"
+    },
+    {
+      "name": "enterprise-form-recovery",
+      "result": "pass"
+    },
+    {
+      "name": "browser-assistive-technology-matrix",
+      "result": "pass"
+    },
+    {
+      "name": "token-integrity-proof-provenance",
+      "result": "pass"
+    },
+    {
+      "name": "tailwind-wordpress-ownership-and-build-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "WordPress-typography-system",
+      "result": "pass"
+    },
+    {
+      "name": "parent-layout-before-child-nudge",
+      "result": "pass"
+    },
+    {
+      "name": "semantic-spatial-hierarchy",
+      "result": "pass"
+    },
+    {
+      "name": "independent-spatial-evaluation",
+      "result": "pass"
+    },
+    {
+      "name": "source-scale-calibration",
+      "result": "pass"
+    },
+    {
+      "name": "font-before-spacing",
+      "result": "pass"
+    },
+    {
+      "name": "global-styles-ownership",
+      "result": "pass"
+    },
+    {
+      "name": "separate-fidelity-gates",
+      "result": "pass"
+    },
+    {
+      "name": "proportional-token-tooling",
+      "result": "pass"
+    },
+    {
+      "name": "launched-token-consumers",
+      "result": "pass"
+    },
+    {
+      "name": "truthful-empty-and-pointer-alternative",
+      "result": "pass"
+    },
+    {
+      "name": "measured-ux-claims",
+      "result": "pass"
+    },
+    {
+      "name": "pen-rendered-source-and-composition",
+      "result": "pass"
+    },
+    {
+      "name": "actual-viewport-calibration",
+      "result": "pass"
+    },
+    {
+      "name": "surface-candidate-proof-invalidation",
+      "result": "pass"
+    },
+    {
+      "name": "consistent-scoped-completion",
+      "result": "pass"
+    },
+    {
+      "name": "brand-status-evidence-and-owner-correction",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 38,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "wordpress-visual-execution-2026-10-15-chat-corrections",
+    "artifactPointer": "codex-private:skill-gap-fixes-20261015-final-01#evidence/draft-receipts-03/wordpress-visual-execution.json"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-10-15T03:44:19.461Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Fresh frozen-source development regression independently scored after retained failed/incomplete attempts. Shared parent-observed freeze-to-admission duration includes coordination and retries, not per-actor runtime or summable cost. Host token/cost telemetry unavailable. Synthetic decisions and cited local fixtures only; native pilot remains partial, with no production or held-out claim. See chat-workflow-review-2026-10-15.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}
