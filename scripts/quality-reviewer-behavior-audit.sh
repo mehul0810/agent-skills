@@ -68,7 +68,7 @@ require_text "wp-quality-reviewer/references/modularity-review-fix.md" "characte
 require_text "wp-quality-reviewer/references/modularity-review-fix.md" "expand -> migrate/backfill -> contract" "additive migration sequencing"
 require_text "wp-quality-reviewer/references/modularity-review-fix.md" "intentional public or stored-contract break" "intentional break gate"
 require_text "wp-quality-reviewer/SKILL.md" "compact non-breaking modularity checkpoint" "reviewer task-level modularity checkpoint"
-require_text "wp-quality-reviewer/references/accessibility-review-fix.md" "No automated tool alone determines accessibility" "accessibility manual judgment"
+require_text "wp-quality-reviewer/references/accessibility-review-fix.md" "Automated tools cannot certify accessibility; human evaluation is required" "accessibility manual judgment"
 require_text "wp-quality-reviewer/references/accessibility-review-fix.md" "Fix semantics/DOM order before ARIA" "accessibility native semantics"
 require_text "wp-quality-reviewer/references/accessibility-review-fix.md" "zero-violation automated scan is not an accessibility pass" "accessibility no scanner-only pass"
 require_text "wp-quality-reviewer/references/accessibility-review-fix.md" "all 55 A/AA criteria" "formal AA coverage"

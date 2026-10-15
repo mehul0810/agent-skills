@@ -4,6 +4,8 @@ Use this as the single supporting reference when a WordPress UI introduces a cus
 
 ## Native And WordPress-First Boundary
 
+Apply the owner's VoiceOver verification exclusion: omit that check without substituting another reader or blocking ordinary completion. Record excluded by owner direction, not passed; keep keyboard/focus, semantics, labels and all other applicable proof. Do not claim assistive-technology compatibility or WCAG conformance from this exclusion. A later explicit owner request restores only the requested check.
+
 - Use the semantic element or existing WordPress component that already provides the interaction: links for navigation, buttons for actions, native form controls for input, `details`/`summary` for simple disclosure, and documented WordPress menus/panels for admin/editor surfaces.
 - A custom widget needs a recorded functional gap, owner, state model, keyboard contract, and browser/assistive-technology proof. Do not add ARIA roles to make non-semantic markup appear compliant.
 - Keep one interaction owner. Do not implement the same focus, open/close, selection, or save state in competing React, DOM, and WordPress stores.

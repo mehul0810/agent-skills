@@ -35,9 +35,23 @@ const INTERNAL_CONTRACT = /\b(?:internal|private|helper|implementation detail|un
 const GENERIC_SECURITY_CASE = /^(?:(?:security|generic|negative|access|test|actor|input|resource|case|boundary)\s*)+$/i;
 const GENERIC_BROWSER = /^(?:(?:generic|test|desktop|mobile)\s+)?(?:web\s+)?browser(?:\s+[\d.]+)?$/i;
 const GENERIC_ASSISTIVE_TECHNOLOGY = /^(?:(?:generic|test)\s+)?(?:screen\s+reader|assistive\s+technology|at|reader)(?:\s+[\d.]+)?$/i;
+const EXCLUSION_PLACEHOLDER = /\b(?:todo|tbd|placeholder|unknown|not specified|trust me)\b/i;
+
+function validateVoiceOverExclusion(value, prefix = 'voiceOverExclusion') {
+	const errors = [];
+	if (value === undefined) return errors;
+	if (!isObject(value)) return [`${prefix} must be an object`];
+	const allowed = new Set(['status', 'authority', 'reason', 'claims']);
+	for (const key of Object.keys(value)) if (!allowed.has(key)) errors.push(`${prefix}.${key} is not allowed`);
+	if (value.status !== 'excluded_by_owner') errors.push(`${prefix}.status must be excluded_by_owner`);
+	if (typeof value.authority !== 'string' || value.authority.trim().length < 12 || EXCLUSION_PLACEHOLDER.test(value.authority)) errors.push(`${prefix}.authority must be a meaningful owner-directive pointer`);
+	if (typeof value.reason !== 'string' || value.reason.trim().length < 12 || EXCLUSION_PLACEHOLDER.test(value.reason)) errors.push(`${prefix}.reason must be concrete and non-placeholder`);
+	if (value.claims !== 'not_verified') errors.push(`${prefix}.claims must be not_verified`);
+	return errors;
+}
 
 const KEYS = {
-	top: new Set(['schemaVersion', 'mode', 'targetIdentity', 'scope', 'qualityTarget', 'assuranceProfile', 'accessibilityClaim', 'accessibilityAudit', 'domains', 'findings', 'proofGaps', 'conclusion']),
+	top: new Set(['schemaVersion', 'mode', 'targetIdentity', 'scope', 'qualityTarget', 'assuranceProfile', 'accessibilityClaim', 'accessibilityAudit', 'voiceOverExclusion', 'domains', 'findings', 'proofGaps', 'conclusion']),
 	target: new Set(['kind', 'repository', 'commitSha', 'baseCommitSha', 'artifact']),
 	artifact: new Set(['path', 'sha256']),
 	scope: new Set(['targets', 'exclusions']),
@@ -241,7 +255,7 @@ function validateValidationReceipt(receipt, prefix, errors) {
 	if (receipt.artifactSha256 !== undefined && !SHA256.test(receipt.artifactSha256)) errors.push(`${prefix}.artifactSha256 must be a 64-character digest`);
 	if (receipt.result === 'pass' && [receipt.check, receipt.expected, receipt.observed, receipt.artifact].some((value) => nonEmpty(value) && PLACEHOLDER_PROOF.test(value))) errors.push(`${prefix} pass cannot rely on placeholder proof`);
 	if (receipt.identity !== undefined) validateIdentityValues(receipt.identity, `${prefix}.identity`, errors);
-	if (receipt.claim !== undefined && !['security_negative', 'performance_comparable', 'modularity_behavior', 'accessibility_manual', 'accessibility_automated', 'contract_compatibility', 'migration_step'].includes(receipt.claim)) errors.push(`${prefix}.claim is invalid`);
+	if (receipt.claim !== undefined && !['security_negative', 'performance_comparable', 'modularity_behavior', 'accessibility_manual', 'accessibility_keyboard', 'accessibility_automated', 'contract_compatibility', 'migration_step'].includes(receipt.claim)) errors.push(`${prefix}.claim is invalid`);
 	const states = ['allow', 'deny', 'reject', 'sanitize', 'preserve', 'within_budget', 'accessible', 'success', 'failure', 'blocked'];
 	if (receipt.expectedState !== undefined && !states.includes(receipt.expectedState)) errors.push(`${prefix}.expectedState is invalid`);
 	if (receipt.observedState !== undefined && !states.includes(receipt.observedState)) errors.push(`${prefix}.observedState is invalid`);
@@ -249,7 +263,15 @@ function validateValidationReceipt(receipt, prefix, errors) {
 	if (receipt.claim === 'security_negative' && !['deny', 'reject', 'sanitize'].includes(receipt.expectedState)) errors.push(`${prefix}.expectedState must be deny, reject, or sanitize for security_negative proof`);
 	if (receipt.claim === 'performance_comparable' && receipt.expectedState !== 'within_budget') errors.push(`${prefix}.expectedState must be within_budget for performance_comparable proof`);
 	if (['modularity_behavior', 'contract_compatibility'].includes(receipt.claim) && receipt.expectedState !== 'preserve') errors.push(`${prefix}.expectedState must be preserve for contract proof`);
-	if (['accessibility_manual', 'accessibility_automated'].includes(receipt.claim) && receipt.expectedState !== 'accessible') errors.push(`${prefix}.expectedState must be accessible for accessibility proof`);
+	if (['accessibility_manual', 'accessibility_keyboard', 'accessibility_automated'].includes(receipt.claim) && receipt.expectedState !== 'accessible') errors.push(`${prefix}.expectedState must be accessible for accessibility proof`);
+	if (receipt.claim === 'accessibility_keyboard') {
+		if (!['browser', 'manual'].includes(receipt.kind)) errors.push(`${prefix}.kind must be browser or manual for keyboard-only proof`);
+		if (!meaningfulText(receipt.browser, 3, 1) || GENERIC_BROWSER.test(receipt.browser.trim())) errors.push(`${prefix}.browser must name the keyboard-test browser`);
+		if (!nonEmpty(receipt.environment) || !nonEmpty(receipt.artifact) || receipt.identity === undefined) errors.push(`${prefix} keyboard proof requires environment, artifact, and candidate identity`);
+		if (!['accessible', 'failure', 'blocked'].includes(receipt.observedState)) errors.push(`${prefix}.observedState must be accessible, failure, or blocked for keyboard-only proof`);
+		if (receipt.result === 'pass' && receipt.observedState !== 'accessible') errors.push(`${prefix}.observedState must be accessible for passing keyboard-only proof`);
+		if (receipt.assistiveTechnology !== undefined) errors.push(`${prefix} keyboard proof cannot claim assistiveTechnology`);
+	}
 	if (receipt.claim === 'accessibility_automated' && !SHA256.test(receipt.artifactSha256 ?? '')) errors.push(`${prefix}.artifactSha256 is required for automated accessibility proof`);
 	if (receipt.browser !== undefined && (!meaningfulText(receipt.browser, 3, 1) || GENERIC_BROWSER.test(receipt.browser.trim()))) errors.push(`${prefix}.browser must name a supported browser`);
 	if (receipt.assistiveTechnology !== undefined && (!meaningfulText(receipt.assistiveTechnology, 3, 1) || GENERIC_ASSISTIVE_TECHNOLOGY.test(receipt.assistiveTechnology.trim()))) errors.push(`${prefix}.assistiveTechnology must name an assistive technology`);
@@ -621,6 +643,7 @@ export function validate(report) {
 	const errors = [];
 	if (!isObject(report)) return ['report must be an object'];
 	checkKeys(report, KEYS.top, 'report', errors);
+	errors.push(...validateVoiceOverExclusion(report.voiceOverExclusion));
 	if (report.schemaVersion !== 2) errors.push('schemaVersion must be 2');
 	if (!MODES.has(report.mode)) errors.push('mode is invalid');
 	if (!CONCLUSIONS.has(report.conclusion)) errors.push('conclusion is invalid');
@@ -677,9 +700,11 @@ export function validate(report) {
 		if (releasePass && Array.isArray(domain.validation) && !domain.validation.some((receipt) => RELEASE_VALIDATION_KINDS[area]?.has(receipt?.kind))) {
 			errors.push(`domains.${area}.validation requires release-appropriate ${[...RELEASE_VALIDATION_KINDS[area]].join(' or ')} proof`);
 		}
+		const requiredClaim = area === 'accessibility' && report.voiceOverExclusion
+			? 'accessibility_keyboard' : RELEASE_VALIDATION_CLAIMS[area];
 		const claimedProof = releasePass && Array.isArray(domain.validation)
-			? domain.validation.find((receipt) => receipt?.claim === RELEASE_VALIDATION_CLAIMS[area]) : null;
-		if (releasePass && !claimedProof) errors.push(`domains.${area}.validation requires ${RELEASE_VALIDATION_CLAIMS[area]} proof`);
+			? domain.validation.find((receipt) => receipt?.claim === requiredClaim) : null;
+		if (releasePass && !claimedProof) errors.push(`domains.${area}.validation requires ${requiredClaim} proof`);
 		if (releasePass && area === 'security' && claimedProof) validateSecurityCases(claimedProof.securityCases, 'domains.security.validation.securityCases', errors);
 		if (releasePass && area === 'modularity' && claimedProof) validateContractCases(claimedProof.contractCases, 'domains.modularity.validation.contractCases', errors);
 		if (releasePass && area === 'performance') {
@@ -699,10 +724,12 @@ export function validate(report) {
 		if (releasePass && area === 'accessibility' && (
 			!meaningfulText(claimedProof?.browser, 3, 1)
 			|| GENERIC_BROWSER.test(claimedProof.browser.trim())
-			|| !meaningfulText(claimedProof?.assistiveTechnology, 3, 1)
-			|| GENERIC_ASSISTIVE_TECHNOLOGY.test(claimedProof.assistiveTechnology.trim())
+			|| (!report.voiceOverExclusion && (!meaningfulText(claimedProof?.assistiveTechnology, 3, 1)
+				|| GENERIC_ASSISTIVE_TECHNOLOGY.test(claimedProof.assistiveTechnology.trim())))
 		)) {
-			errors.push('domains.accessibility.validation requires named browser and assistiveTechnology proof');
+			errors.push(report.voiceOverExclusion
+				? 'domains.accessibility.validation requires named browser keyboard proof'
+				: 'domains.accessibility.validation requires named browser and assistiveTechnology proof');
 		}
 		if (releasePass) {
 			for (const [validationIndex, receipt] of (Array.isArray(domain.validation) ? domain.validation : []).entries()) {
@@ -826,6 +853,23 @@ export function validate(report) {
 		}
 	}
 	errors.push(...validateAccessibilityAudit(report, validateValidationReceipt));
+	const keyboardReceipts = [
+		...Object.values(domains).flatMap((domain) => Array.isArray(domain?.validation) ? domain.validation : []),
+		...(Array.isArray(report.findings) ? report.findings.flatMap((finding) => Array.isArray(finding?.validation) ? finding.validation : []) : []),
+		...(isObject(report.accessibilityAudit?.checks) ? Object.values(report.accessibilityAudit.checks) : []),
+	];
+	for (const receipt of keyboardReceipts.filter((item) => item?.claim === 'accessibility_keyboard')) {
+		if (!report.voiceOverExclusion || report.targetIdentity?.kind !== 'package') errors.push('accessibility_keyboard proof requires a packaged report with voiceOverExclusion');
+		if (!domains.accessibility?.validation?.includes(receipt)) errors.push('accessibility_keyboard proof must be a domains.accessibility.validation receipt');
+	}
+	if (report.voiceOverExclusion && (!report.domains?.accessibility || report.domains.accessibility.disposition === 'not_applicable')) {
+		errors.push('voiceOverExclusion requires an applicable accessibility domain');
+	}
+	if (report.voiceOverExclusion && report.targetIdentity?.kind === 'package' && report.conclusion === 'pass') {
+		const keyboardProofs = Array.isArray(report.domains?.accessibility?.validation)
+			? report.domains.accessibility.validation.filter((receipt) => receipt?.claim === 'accessibility_keyboard') : [];
+		if (keyboardProofs.length === 0 || keyboardProofs.some((receipt) => receipt.result !== 'pass')) errors.push('packaged scoped accessibility pass with voiceOverExclusion requires at least one passing accessibility_keyboard receipt');
+	}
 	return [...new Set(errors)];
 }
 

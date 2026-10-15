@@ -65,6 +65,8 @@ When the local Skill Creator is installed, also run `quick_validate.py` for ever
 
 ## Behavioral Gate
 
+Honor the standing owner exclusion of macOS VoiceOver and voice-over narration verification. Do not execute or request these checks, substitute another screen reader to recreate them, or block ordinary completion solely on their absence. Mark them excluded by owner direction, not passed. Synthetic tests of exclusion receipts and fresh-agent decisions remain required for changes to this policy; they do not perform the excluded checks. Retain all other applicable accessibility, safety, artifact-identity and formal-claim gates. A later explicit owner request can restore the named check for its scope.
+
 Use `skill-evals/README.md`. Run changed-role scenarios with a fresh agent and raw artifacts for changes affecting authority, routing, release behavior, hallucination controls, design execution, runtime assurance, graph closure, or owner-correction learning. Store a sanitized run record or durable evidence pointer with the changed behavior.
 
 Green grep/structure audits do not prove the behavior is correct.

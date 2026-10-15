@@ -59,10 +59,21 @@
     "proofGaps": {
       "type": "array",
       "items": { "$ref": "#/$defs/nonEmpty" }
-    }
+    },
+    "voiceOverExclusion": { "$ref": "#/$defs/voiceOverExclusion" }
   },
   "$defs": {
     "nonEmpty": { "type": "string", "minLength": 1 },
+    "voiceOverExclusion": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "authority", "reason", "claims"],
+      "properties": {
+        "status": { "const": "excluded_by_owner" },
+        "authority": { "type": "string", "minLength": 12, "pattern": "\\S" },
+        "reason": { "type": "string", "minLength": 12, "pattern": "\\S" },
+        "claims": { "const": "not_verified" }
+      }
+    },
     "fingerprint": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
     "evidence": {
       "type": "object",

@@ -1,0 +1,5 @@
+{
+  "id": "voiceover-owner-exclusion",
+  "request": "Use the supplied owning guidance and raw cases to decide completion, remaining checks and evidence claims for each independent task. These are synthetic decisions, not permission to run apps, assistive technology, audio playback, publication or release actions. Return one decision per case, the actual guidance read and proof limits.",
+  "artifacts": ["cases.json"]
+}

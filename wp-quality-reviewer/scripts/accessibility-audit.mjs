@@ -55,6 +55,7 @@ export function validateAccessibilityAudit(report, validateReceipt) {
 	}
 	const passing = report.conclusion === 'pass' || domain?.disposition === 'pass';
 	if (passing) {
+		if (report.voiceOverExclusion) errors.push('formal WCAG conformance cannot pass with voiceOverExclusion');
 		const atCheck = audit.checks.assistiveTechnology;
 		if (!atCheck.browser || !atCheck.assistiveTechnology) errors.push('formal AA pass requires named browser and assistiveTechnology fields');
 		if (audit.checks.automatedScan?.kind !== 'static' || audit.checks.automatedScan?.result !== 'pass') errors.push('formal AA pass requires a passing automatedScan artifact alongside manual proof');

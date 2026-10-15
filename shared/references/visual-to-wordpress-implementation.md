@@ -79,7 +79,7 @@ Verify CSS viewport, document width, DPR, and export scale; explain requested/ac
 
 For material spacing/alignment/grid/density/responsive risk, reserve the support slot for `spatial-layout-and-alignment-system.md`. Link its validated spatial receipt; do not compensate for wrong layout ownership with child CSS.
 
-Use narrow, desktop, intermediate widths; add engines, devices, locales, content, roles as warranted. Bind environments to captures and name the browser/assistive-technology task. Without mobile target, prove accessible coherent inferred behavior, not pixel parity.
+Use narrow, desktop, intermediate widths; add engines, devices, locales, content, roles as warranted. Bind environments to captures and name any tested browser/assistive-technology task. Under the owner's VoiceOver exclusion, omit that verification without substituting another reader or blocking ordinary completion; record top-level `voiceOverExclusion` (`status: excluded_by_owner`, concrete `authority` and `reason`, `claims: not_verified`) separately from passing proof. Keep keyboard/focus, semantics, labels, contrast and other checks; do not claim AT compatibility or WCAG conformance. A later explicit owner request restores the requested check. Without mobile target, prove accessible coherent inferred behavior, not pixel parity.
 
 For elevated/multi-surface design-system changes, bind `DESIGN.md` and trace tokens through Figma/WPDS, `theme.json`, CSS, styles, output. No pass with token drift/unowned values; deviations need evidence.
 

@@ -45,6 +45,7 @@ const SHA256_FINGERPRINT = /^sha256:[a-f0-9]{64}$/;
 const FIGMA_FINGERPRINT = /^figma:[^:]+:[^:]+:.+$/;
 const REVISION = /^(?:[a-f0-9]{40}|working-tree:sha256:[a-f0-9]{64})$/;
 const LOCATOR = /(?:https?:\/\/|\/|\\|\.(?:png|webp|jpe?g|json|zip|md|html|xml|txt|log|trace|mp4|webm)$)/i;
+const EXCLUSION_PLACEHOLDER = /\b(?:todo|tbd|placeholder|unknown|not specified|trust me)\b/i;
 
 let compiledSchema;
 
@@ -128,9 +129,25 @@ function gateByName(proof, name) {
   return proof.gates.find((gate) => gate.name === name);
 }
 
+function validateVoiceOverExclusion(value) {
+  if (value === undefined) return [];
+  if (!value || typeof value !== "object" || Array.isArray(value)) return ["voiceOverExclusion must be an object"];
+  const errors = [];
+  for (const key of Object.keys(value)) {
+    if (!["status", "authority", "reason", "claims"].includes(key)) errors.push(`voiceOverExclusion.${key} is not allowed`);
+  }
+  if (value.status !== "excluded_by_owner") errors.push("voiceOverExclusion.status must be excluded_by_owner");
+  if (typeof value.authority !== "string" || value.authority.trim().length < 12 || EXCLUSION_PLACEHOLDER.test(value.authority)) errors.push("voiceOverExclusion.authority must be a meaningful owner-directive pointer");
+  if (typeof value.reason !== "string" || value.reason.trim().length < 12 || EXCLUSION_PLACEHOLDER.test(value.reason)) errors.push("voiceOverExclusion.reason must be concrete and non-placeholder");
+  if (value.claims !== "not_verified") errors.push("voiceOverExclusion.claims must be not_verified");
+  return errors;
+}
+
 export function validateVisualProof(proof) {
   const errors = schemaErrors(proof);
   if (errors.length > 0) return errors;
+
+  errors.push(...validateVoiceOverExclusion(proof.voiceOverExclusion));
 
   if (proof.source.kind === "figma") {
     if (!FIGMA_FINGERPRINT.test(proof.source.fingerprint)) {
@@ -403,13 +420,18 @@ export function validateVisualProof(proof) {
       errors.push(`accessibility.assistiveTechnology[${index}].browser must match its declared environment`);
     }
     validateDisposition(check, `accessibility.assistiveTechnology[${index}]`, errors);
+    if (proof.status === "pass" && proof.voiceOverExclusion && check.result !== "pass") {
+      errors.push(`accessibility.assistiveTechnology[${index}] cannot be waived by voiceOverExclusion`);
+    }
   }
   if (proof.accessibility.risk === "material" && proof.status === "pass") {
     if (
       proof.accessibility.assistiveTechnology.length === 0 ||
       proof.accessibility.assistiveTechnology.some((check) => check.result !== "pass")
     ) {
-      errors.push("material accessibility risk requires a passing named browser/assistive-technology task");
+      if (!(proof.voiceOverExclusion && proof.accessibility.assistiveTechnology.length === 0)) {
+        errors.push("material accessibility risk requires a passing named browser/assistive-technology task");
+      }
     }
   }
 
@@ -785,6 +807,17 @@ function selfTest() {
       },
     }, false],
     ["material accessibility without AT", { ...valid, accessibility: { ...valid.accessibility, risk: "material" } }, false],
+    ["material accessibility without AT under owner exclusion", {
+      ...valid,
+      voiceOverExclusion: { status: "excluded_by_owner", authority: "AGENTS.md section 3 Proportional Quality Gates, owner directive 2026-10-15", reason: "macOS VoiceOver screen-reader verification is excluded by owner direction", claims: "not_verified" },
+      accessibility: { ...valid.accessibility, risk: "material" },
+    }, true],
+    ["owner exclusion cannot waive failed AT receipt", {
+      ...valid,
+      voiceOverExclusion: { status: "excluded_by_owner", authority: "AGENTS.md section 3 Proportional Quality Gates, owner directive 2026-10-15", reason: "macOS VoiceOver screen-reader verification is excluded by owner direction", claims: "not_verified" },
+      accessibility: { ...materialAccessibility, assistiveTechnology: materialAccessibility.assistiveTechnology.map((check) => ({ ...check, result: "fail" })) },
+    }, false],
+    ["malformed owner exclusion", { ...valid, voiceOverExclusion: { status: "waived", authority: "unknown", reason: "TODO", claims: "pass" } }, false],
     ["valid material accessibility environment", { ...valid, accessibility: materialAccessibility }, true],
     ["assistive technology outside candidate environments", { ...valid, accessibility: { ...materialAccessibility, assistiveTechnology: materialAccessibility.assistiveTechnology.map((check) => ({ ...check, environmentId: "firefox-windows" })) } }, false],
     ["assistive technology browser contradicts environment", { ...valid, accessibility: { ...materialAccessibility, assistiveTechnology: materialAccessibility.assistiveTechnology.map((check) => ({ ...check, browser: "Firefox 142" })) } }, false],

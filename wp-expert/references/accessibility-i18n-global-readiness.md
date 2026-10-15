@@ -73,6 +73,7 @@ For a material interface, record in `COMPATIBILITY.md` or `DESIGN.md` the engine
 
 ## Validation
 
+- Honor the owner's VoiceOver exclusion: do not run/request it, substitute another reader to recreate the gate, or block ordinary completion solely on its absence. Record excluded by owner direction, never passed; keep other applicable checks and do not claim assistive-technology compatibility or WCAG conformance. A later explicit request restores the named check.
 - Keyboard pass: tab order, focus trap, escape behavior, and no keyboard dead ends.
 - Screen-reader smoke: labels, names, roles, status announcements, and modal behavior; report the actual supported browser/assistive-technology pair rather than an unspecified pass.
 - Automated checks: axe/Playwright, pa11y, eslint-jsx-a11y, or project equivalent where available.
@@ -82,6 +83,6 @@ For a material interface, record in `COMPATIBILITY.md` or `DESIGN.md` the engine
 - Responsive checks: 200% text resize, reflow at 320 CSS pixels without two-dimensional scrolling except essential content, orientation changes, and no keyboard obstruction.
 - Input checks: keyboard, touch/coarse pointer, no-hover operation, dragging alternative, target size, visible unobscured focus, autofill/autocomplete, retained multi-step input, and consistent help when applicable.
 - Visual adaptation: reduced motion, forced-colors/high-contrast mode, user color/spacing overrides where relevant, and no information conveyed by color alone.
-- Manual assistive-technology smoke remains required for critical journeys; automated tools cannot prove task usability.
+- Manual assistive-technology smoke is required for critical journeys only when within the authorized verification scope; the owner exclusion does not waive keyboard proof or prove task usability.
 
 For a material global or mode change, the compact proof receipt names the exact WordPress/theme/plugin build, locale/direction, color scheme, preference flags, browser/assistive-technology pair, viewport, fixtures, and unsupported dimensions. Capture at least one representative LTR and RTL state, one expansion-heavy locale/script, and every supported color scheme; a non-supported dimension must carry its reason and fallback. Do not claim global readiness from a stylesheet, translation extraction, or automated scan alone.

@@ -27,3 +27,4 @@ Use `$wp-expert` only when the WordPress artifact or specialist remains ambiguou
 - Preserve launched public contracts. Do not add compatibility shims for abandoned intermediate shapes of unreleased work.
 - Add or update tests when behavior, security, data, editor, release, or scale risk warrants it.
 - Before saying done, report validation and live-proof coverage or the exact proof gap.
+- Under the standing owner policy, exclude macOS VoiceOver screen-reader checks and voice-over narration verification unless explicitly requested later. Do not run/request them, substitute another reader, or block ordinary completion solely on their absence. Report excluded by owner direction, never passed. Preserve keyboard/focus, semantics, labels, contrast, captions, automated checks and other safety gates; do not claim unverified AT compatibility, narration or WCAG conformance.

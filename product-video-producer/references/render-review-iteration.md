@@ -10,7 +10,7 @@ Prove the exact project root, source revision/file hash, sequence/composition, j
 - Preserve truthful chronology: J/L cuts, punch-ins and compression cannot manufacture outcomes.
 - Record source-to-cutdown lineage. Programmatic video may mark proxy/conform/master `not_applicable` with reason.
 
-Check mobile legibility, cursor, crop and narration.
+Check mobile legibility, cursor and crop. Owner-excluded narration verification is not required or requested unless explicitly restored. Record excluded, never passed; preserve technical audio, captions and all other safety gates. Do not claim verified narration or accessibility conformance.
 
 ## Deterministic Render Contract
 
@@ -95,7 +95,7 @@ Compare permitted model/effort trials on identical briefs/assets/gates; record s
 
 ## Playback Calibration Gate
 
-Before claiming smooth quality, review full render at normal speed with audio, then suspect ranges frame-by-frame. Contact sheet, manifest or successful render cannot pass. If playback/audio unavailable, label draft and exact gap, not accepted master.
+Before claiming smooth quality, review full render at normal speed and suspect ranges frame-by-frame; honor the narration exclusion above. Contact sheet, manifest or successful render cannot pass. Missing playback/other audio proof remains a draft gap. Excluded narration alone permits completion: record `known_gaps` category `audio`, disposition `accepted`, owner directive in `evidence`, approval owner in `accepted_by`. This accepts omitted verification, not narration quality or another defect.
 
 Use short fixtures for unreadable holds, easing inconsistency, competing focal objects, crop/zoom legibility loss, discontinuity, cue offset and logo matte; include clean control. Independent reviewer gets brief/clips without answer key; report hits/misses/false positives separately from technical tests. Store render/toolchain ID and timecodes. Without rendered fixtures, scenarios test policy, not motion.
 

@@ -5,6 +5,13 @@ import Ajv from 'ajv/dist/2020.js';
 import { WCAG22_AA_IDS } from './accessibility-audit.mjs';
 import { validate } from './validate-review-report.mjs';
 
+const VOICEOVER_EXCLUSION_FIXTURE = {
+	status: 'excluded_by_owner',
+	authority: 'AGENTS.md:20 (owner directive, 2026-10-15)',
+	reason: 'macOS VoiceOver screen-reader verification is excluded by owner direction',
+	claims: 'not_verified',
+};
+
 const schema = JSON.parse(fs.readFileSync(new URL('../../shared/schemas/wp-quality-review.schema.json', import.meta.url), 'utf8'));
 const schemaValid = new Ajv({ strict: false }).compile(schema);
 
@@ -51,6 +58,97 @@ test('ordinary scoped review stays lightweight without conformance claim', () =>
 	report.qualityTarget = 'Scoped keyboard review toward WCAG 2.2 AA';
 	report.accessibilityClaim = 'scoped_review';
 	assert.deepEqual(validate(report), []);
+});
+test('typed owner exclusion permits an ordinary scoped review without claiming AT verification', () => {
+	const report = fixture(); delete report.accessibilityAudit;
+	report.qualityTarget = 'Scoped package accessibility review';
+	report.accessibilityClaim = 'scoped_review';
+	report.voiceOverExclusion = { ...VOICEOVER_EXCLUSION_FIXTURE };
+	assert.ok(schemaValid(report), JSON.stringify(schemaValid.errors));
+	assert.deepEqual(validate(report), []);
+});
+test('packaged scoped review uses a separate candidate-bound keyboard receipt under exclusion', () => {
+	const report = fixture(); delete report.accessibilityAudit;
+	report.qualityTarget = 'Packaged scoped accessibility review';
+	report.accessibilityClaim = 'scoped_review';
+	report.voiceOverExclusion = { ...VOICEOVER_EXCLUSION_FIXTURE };
+	report.targetIdentity = { kind: 'package', repository: 'fixture/accessibility', commitSha: 'a'.repeat(40), artifact: { path: 'dist/plugin.zip', sha256: 'b'.repeat(64) } };
+	report.assuranceProfile = { level: 'standard', risks: [] };
+	const identity = { commitSha: 'a'.repeat(40), artifactSha256: 'b'.repeat(64) };
+	report.domains.accessibility.evidence[0].identity = identity;
+	report.domains.accessibility.validation = [{
+		kind: 'browser', check: 'Keyboard-only package journey in Firefox', expected: 'Every control is keyboard reachable and operable', observed: 'All controls were reached and operated using keyboard input', expectedState: 'accessible', observedState: 'accessible', result: 'pass',
+		environment: 'Firefox desktop package test environment', browser: 'Firefox 142', artifact: 'artifacts/keyboard-only.json', identity, claim: 'accessibility_keyboard',
+	}, {
+		kind: 'static', check: 'Run axe-core against package pages', expected: 'Automated accessibility scan reports no blocking issues', observed: 'The scan completed with no blocking issues', expectedState: 'accessible', observedState: 'accessible', result: 'pass',
+		artifact: 'artifacts/axe-report.json', artifactSha256: 'c'.repeat(64), identity, claim: 'accessibility_automated',
+	}];
+	assert.ok(schemaValid(report), JSON.stringify(schemaValid.errors));
+	assert.deepEqual(validate(report), []);
+	const twoJourneys = structuredClone(report);
+	const firstKeyboard = twoJourneys.domains.accessibility.validation.find((receipt) => receipt.claim === 'accessibility_keyboard');
+	twoJourneys.domains.accessibility.validation.push({
+		...firstKeyboard,
+		check: 'Keyboard-only alternate workflow in Firefox',
+		expected: 'Every alternate workflow control is keyboard reachable and operable',
+		observed: 'All alternate workflow controls were reached and operated using keyboard input',
+		artifact: 'artifacts/keyboard-alternate.json',
+	});
+	assert.ok(schemaValid(twoJourneys), JSON.stringify(schemaValid.errors));
+	assert.deepEqual(validate(twoJourneys), []);
+	const honestKeyboardFailure = structuredClone(report);
+	honestKeyboardFailure.conclusion = 'fail';
+	honestKeyboardFailure.domains.accessibility.disposition = 'fail';
+	const failedKeyboardReceipt = honestKeyboardFailure.domains.accessibility.validation.find((receipt) => receipt.claim === 'accessibility_keyboard');
+	failedKeyboardReceipt.result = 'fail'; failedKeyboardReceipt.observedState = 'failure';
+	assert.ok(schemaValid(honestKeyboardFailure), JSON.stringify(schemaValid.errors));
+	assert.deepEqual(validate(honestKeyboardFailure), []);
+	for (const observedState of [undefined, 'allow']) {
+		const malformedState = structuredClone(honestKeyboardFailure);
+		const keyboard = malformedState.domains.accessibility.validation.find((receipt) => receipt.claim === 'accessibility_keyboard');
+		if (observedState === undefined) delete keyboard.observedState;
+		else keyboard.observedState = observedState;
+		assert.equal(schemaValid(malformedState), false);
+		assert.ok(validate(malformedState).some((error) => error.includes('observedState must be accessible, failure, or blocked')));
+	}
+	const withoutKeyboard = structuredClone(report);
+	withoutKeyboard.domains.accessibility.validation = withoutKeyboard.domains.accessibility.validation.filter((receipt) => receipt.claim !== 'accessibility_keyboard');
+	assert.ok(validate(withoutKeyboard).some((error) => error.includes('accessibility_keyboard')));
+	const fakeAt = structuredClone(report);
+	fakeAt.domains.accessibility.validation.find((receipt) => receipt.claim === 'accessibility_keyboard').assistiveTechnology = 'VoiceOver';
+	assert.equal(schemaValid(fakeAt), false);
+	const spoofedCommit = structuredClone(report);
+	delete spoofedCommit.voiceOverExclusion;
+	spoofedCommit.targetIdentity.kind = 'commit'; delete spoofedCommit.targetIdentity.artifact;
+	assert.ok(validate(spoofedCommit).some((error) => error.includes('packaged report with voiceOverExclusion')));
+	delete report.domains.accessibility.validation;
+	assert.ok(validate(report).some((error) => error.includes('accessibility_keyboard')));
+});
+test('formal WCAG pass cannot carry an owner exclusion', () => {
+	const report = fixture();
+	report.voiceOverExclusion = { ...VOICEOVER_EXCLUSION_FIXTURE };
+	assert.ok(validate(report).some((error) => error.includes('formal WCAG conformance cannot pass')));
+	delete report.accessibilityAudit.checks.assistiveTechnology;
+	assert.equal(schemaValid(report), false);
+	assert.ok(validate(report).length > 0);
+});
+test('owner exclusion cannot be used on a security-only report', () => {
+	const report = fixture(); delete report.accessibilityAudit; delete report.accessibilityClaim;
+	report.mode = 'security'; report.domains = { security: { ...report.domains.accessibility } };
+	report.voiceOverExclusion = { ...VOICEOVER_EXCLUSION_FIXTURE };
+	assert.ok(validate(report).some((error) => error.includes('requires an applicable accessibility domain')));
+});
+test('owner exclusion is typed and rejects placeholder authority or extra fields', () => {
+	for (const exclusion of [
+		{ ...VOICEOVER_EXCLUSION_FIXTURE, authority: 'unknown' },
+		{ ...VOICEOVER_EXCLUSION_FIXTURE, reason: 'TODO' },
+		{ ...VOICEOVER_EXCLUSION_FIXTURE, claims: 'pass' },
+		{ ...VOICEOVER_EXCLUSION_FIXTURE, waiveSecurity: true },
+	]) {
+		const report = fixture(); delete report.accessibilityAudit;
+		report.accessibilityClaim = 'scoped_review'; report.voiceOverExclusion = exclusion;
+		assert.ok(validate(report).length > 0);
+	}
 });
 test('claim is structured, not inferred from unrelated compliance or disclaimers', () => {
 	for (const target of ['Scoped keyboard review, not a WCAG conformance audit', 'SOC 2 compliance readiness and scoped keyboard review']) {
