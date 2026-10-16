@@ -60,7 +60,7 @@ Do not jump to custom code because the design looks custom.
 
 ## Existing And Custom Blocks
 
-- Preserve block comments, attributes, saved markup, transforms, and deprecations. Add migrations or use dynamic rendering when markup contracts change.
+- Preserve block comments, attributes, saved markup, transforms, and deprecations. Dynamic rendering alone does not migrate attributes in already-saved posts; editor migrations generally run when content is opened and saved. Keep a compatibility reader or provide an explicit migration path, and verify old serialized fixtures render without modifying published content.
 - Validate insert, edit, save, reload, copy/paste, transform, undo/revision, and frontend render behavior.
 - Define custom blocks through `block.json`; keep attributes/data ownership explicit and inputs untrusted.
 - Use `InnerBlocks`, parent/ancestor/child relationships, allowed blocks, templates, and locking for safe composition.

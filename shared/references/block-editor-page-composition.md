@@ -52,6 +52,8 @@ When the exact block choice is uncertain, load the Block Selection Matrix in `co
 
 Patterns solve repeatable composition; styles solve appearance; variations solve insertion presets. A custom block is not a substitute for a pattern, and a stylesheet is not a substitute for any of them.
 
+PHP-registered patterns execute to generate pattern markup when the pattern is offered/inserted; after insertion, the saved block markup is ordinary post content and does not remain a live per-instance PHP template. Editing the pattern source later does not update already-inserted content. Use bindings or a dynamic block when inserted content must remain connected to changing data. Verify representative editor contexts and save/export round trips; do not imply that PHP registration never runs on later requests for other pattern uses.
+
 ## Page And Post Ownership
 
 - A Page template provides structure and renders Post Content. Page-specific hero, proof, sections, media, FAQs, and CTAs belong in the Page body unless intentionally global or data-driven.

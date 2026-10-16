@@ -36,6 +36,7 @@ Guidelines can change. The Detailed Plugin Guidelines page showed a March 11, 20
 - Release discipline: avoid noisy frequent commits to SVN and increment plugin versions for each release.
 - Completeness: submitted plugin must be complete and functional at submission time.
 - Trademarks: plugin names, slugs, block names, and branding must not imply ownership/official status for third-party projects.
+- For new Plugin Directory submissions, verify the current submission FAQ and guidelines for restrictions on arbitrary code execution, including AI-generated code, and cloned/resubmitted products that lack meaningful differences. Scope this to new submissions and verify current live policy; do not infer retroactive closure of existing listings or a blanket ban on private products.
 
 ## Block Directory Review
 

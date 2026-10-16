@@ -35,6 +35,8 @@ Map every personal or sensitive data surface:
 - Suggest privacy policy text for plugin-specific processing when appropriate.
 - Include user ID, email, order/customer IDs, IP addresses, API identifiers, and provider IDs in data discovery.
 - For erasure, define what is deleted, anonymized, retained for legal/security reasons, or delegated to third-party processors.
+- Treat a guest's submitted email as an identity input that requires the platform's privacy-request verification flow; do not assume a registered user ID exists. Callbacks receive the email and a page number starting at 1. Use bounded queries and stable record IDs; offset pagination over a shrinking deletion result can skip records. Ensure retained records cannot keep a batch running forever.
+- Return the eraser response fields `items_removed`, `items_retained`, `messages`, and `done` with truthful values. Define a completion condition and make repeated and interrupted requests safe. Test zero matches, exactly one batch, multiple batches, retained records, and retry after partial deletion, including continuation and completion.
 
 ## Data Minimization And Security
 
