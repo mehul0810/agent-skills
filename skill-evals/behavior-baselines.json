@@ -179,7 +179,7 @@
         "wp-theme-expert/SKILL.md",
         "wp-theme-expert/references/router.md"
       ],
-      "sha256": "9bf9f608c9d66f9244103f6c8eba3f63fa6f4063489a7e763a38c4843ad71985",
+      "sha256": "bcd6a95c463e34f752566822cf434061c19e368a7bfefac5d6e3c006d8d7563a",
       "scenario": {
         "id": "wordpress-visual-execution",
         "files": [
@@ -281,10 +281,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-10-15-voiceover-exclusion.json",
-          "sha256": "209d1a9846a6ca9275e603253e5b7c4472c94e8c98a49852a2c1e6adc5b73b3f",
-          "testedRevision": "fbf46e5e9177b9cc9a318d90ca5ad8925fbff385",
-          "testedSourceSha256": "9bf9f608c9d66f9244103f6c8eba3f63fa6f4063489a7e763a38c4843ad71985",
+          "runRecord": "skill-evals/run-records/wordpress-visual-execution-2026-10-16-handbook-contracts.json",
+          "sha256": "ea690ea5c569e198617bbe9f2f9dc93cddb5f387b093dd6e4e6e793b4dedc5a2",
+          "testedRevision": "c1b45a642fb556db4ae0e2cb5ecc956df1581d86",
+          "testedSourceSha256": "bcd6a95c463e34f752566822cf434061c19e368a7bfefac5d6e3c006d8d7563a",
           "testedScenarioSha256": "4db39eaf0b66bbad800d102d5cca5d8030de2cbf4359013f930e1c07fb4704c9",
           "testedScenarioContractSha256": "970f216853d5836255dc3c93bfa891e1396f9d06708d0f763f54c7d523ed7891",
           "runtime": {
