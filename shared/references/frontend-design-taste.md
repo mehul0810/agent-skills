@@ -69,6 +69,8 @@ Check for agent-default repetition:
 
 These are diagnostic signals, not universal bans. Keep patterns that fit content, conventions, accessibility, or measured success; fix generic output through composition, not novelty.
 
+When a composition depends on a compact preview, disclosure or scroll region, compare its content/interaction structure at a constrained height before scaling the direction. Documented composition studies passed document-overflow checks yet hid lower content: one study exposed capture tiling, another real preview overlap. Recapture unchanged source to distinguish evidence loss from a layout defect before editing; then repair only the owning problem. This is a failure diagnostic, not an extra exploration step for exact targets or routine polish.
+
 ## 4. Preserve WordPress Ownership
 
 Use project tokens/components first; prefer Core and verified plugin blocks, patterns, styles, variations, `theme.json`, `@wordpress/components`, `@wordpress/icons`, and existing primitives before custom abstractions.
@@ -88,10 +90,7 @@ For material animation, record its purpose (hierarchy, feedback, progress, spati
 
 Before completion, verify:
 
-- the design read and dials match the actual user, task, brand, and risk,
-- hierarchy and primary action are obvious without decorative explanation,
-- repeated layouts, cards, labels, and visual effects have content-driven reasons,
-- type, spacing, color, radii, icons, and assets form one coherent language,
+- hierarchy, primary action, repeated patterns and visual language fit the design read, task, brand and risk without decorative explanation,
 - all visible copy, metrics, logos, screenshots, and testimonials are truthful or clearly fixtures,
 - empty, loading, error, disabled, permission, success, destructive, and long-content states are covered where applicable,
 - mobile collapse is explicit and intermediate widths do not overlap, clip, wrap incoherently, or hide the next action,

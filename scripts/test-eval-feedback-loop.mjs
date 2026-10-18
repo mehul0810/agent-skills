@@ -171,7 +171,7 @@ const cliRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'eval-loop-cli-'));
 try {
   const cliScripts = path.join(cliRoot, 'scripts');
   fs.mkdirSync(cliScripts, { recursive: true });
-  for (const name of ['eval-feedback-loop.mjs', 'eval-config-planner.mjs', 'bounded-files.mjs', 'build-eval-packet.mjs']) {
+  for (const name of ['eval-feedback-loop.mjs', 'eval-attempt-evidence.mjs', 'eval-config-planner.mjs', 'bounded-files.mjs', 'build-eval-packet.mjs']) {
     fs.copyFileSync(path.join(repoRoot, 'scripts', name), path.join(cliScripts, name));
   }
   const packageLink = path.join(cliRoot, 'node_modules/@mehul0810/agent-harness');

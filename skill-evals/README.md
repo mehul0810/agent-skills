@@ -24,6 +24,8 @@ The receipt uses `schemaVersion: 1`, `status: "draft"`, `baseline`, and exact `t
 
 Preflight reports `complete`, `incomplete`, `failed`, or `invalid`, and always reports `admission: "not-performed"`. It authenticates local bytes against supplied SHA-256 values, not who created them, the truth of exposure attestations, a remote/native artifact, or semantic correctness. A complete draft is not baseline evidence: independently review/scoring must finish, sanitize the run record, run the existing evidence audit, and update the baseline through the established review workflow. Never use this command to bless a declared pass or rewrite historical evidence.
 
+For new first-attempt/recovery comparisons, use the opt-in [attempt evidence format](attempt-evidence.md). It retains every attempt, target-bound activation and accepted-artifact evidence, and required rendered captures without relabeling legacy receipts or modifying the pinned harness schema.
+
 For any change that alters authority, routing, release behavior, hallucination controls, design execution, or owner-correction learning:
 
 1. Run structural validation.

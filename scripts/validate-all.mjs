@@ -12,6 +12,8 @@ export function validationChecks(python) {
     ['Validation process runner regression', 'node', ['scripts/test-validation-runner.mjs']],
     ['Evaluation packet regression', 'node', ['scripts/test-eval-packet.mjs']],
     ['Evaluation feedback lifecycle regression', 'node', ['scripts/test-eval-feedback-loop.mjs']],
+    ['Attempt evidence regression', 'node', ['scripts/test-eval-attempt-evidence.mjs']],
+    ['Consumer adoption regression', 'node', ['scripts/test-agent-consumer-adoption.mjs']],
     ['Continuity hook regression', 'node', ['scripts/test-continuity-hook.mjs']],
     ['Harness dependency compatibility', 'node', ['scripts/test-harness-runtime-fingerprint.mjs']],
     ['Context bundle regression', 'node', ['scripts/test-context-bundle.mjs']],

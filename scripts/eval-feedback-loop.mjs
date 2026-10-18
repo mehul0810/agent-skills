@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { verifyPacket } from './build-eval-packet.mjs';
 import { DEFAULT_FILE_LIMITS, normalizeFileLimits, safeReadFile, listRegularFiles } from './bounded-files.mjs';
 import { analyzeConfigChange, CONFIG_PATH } from './eval-config-planner.mjs';
+import { preflightAttempts } from './eval-attempt-evidence.mjs';
 
 const rootDefault = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SHA256 = /^[a-f0-9]{64}$/;
@@ -115,6 +116,9 @@ export function preflightReceipt(root, receipt, {
   hashBytes = sha256,
   limits = DEFAULT_FILE_LIMITS,
 } = {}) {
+  if (receipt?.schemaVersion === 2) {
+    return preflightAttempts(root, receipt, { readFile, listFiles, verify, hashBytes, limits }, preflightReceipt);
+  }
   const errors = [];
   try {
     limits = normalizeFileLimits(limits);

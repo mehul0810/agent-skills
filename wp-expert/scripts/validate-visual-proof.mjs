@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import crypto from "node:crypto";
+import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -74,6 +75,8 @@ function duplicateValues(values) {
 }
 
 export function verifyVisualEvidenceFiles(proof, proofPath, evidenceRoot = process.cwd()) {
+  const errors = schemaErrors(proof);
+  if (errors.length > 0) return errors;
   return verifyProofEvidenceFiles(proof, { evidenceRoot, pointer: "proof" });
 }
 
@@ -89,9 +92,11 @@ function validateLinkedAssetReceipts(proof, proofPath, evidenceRoot = process.cw
       errors.push(`assetReceipts[${index}] is not valid JSON: ${error.message}`);
       continue;
     }
-    for (const error of validateAssetProduction(receipt)) {
+    const receiptErrors = validateAssetProduction(receipt);
+    for (const error of receiptErrors) {
       errors.push(`assetReceipts[${index}]: ${error}`);
     }
+    if (receiptErrors.length > 0) continue;
     for (const error of verifyAssetEvidenceFiles(receipt, resolved.path, evidenceRoot)) {
       errors.push(`assetReceipts[${index}]: ${error}`);
     }
@@ -837,6 +842,55 @@ function selfTest() {
     }
   }
   const evidenceRoot = fs.mkdtempSync(path.join(os.tmpdir(), "visual-proof-"));
+  const proofPath = path.join(evidenceRoot, "proof.json");
+  const runProofCli = (proof) => {
+    fs.writeFileSync(proofPath, `${JSON.stringify(proof)}\n`);
+    return spawnSync(process.execPath, [fileURLToPath(import.meta.url), proofPath], {
+      cwd: evidenceRoot,
+      encoding: "utf8",
+      timeout: 10_000,
+    });
+  };
+  const assertCliRejected = (name, proof, expectedError) => {
+    const result = runProofCli(proof);
+    const lines = result.stderr.trim().split("\n");
+    if (
+      result.status !== 1 || result.signal || result.error || result.stdout !== "" ||
+      !lines.every((line) => line.startsWith("ERROR: ")) ||
+      !result.stderr.includes(expectedError)
+    ) {
+      throw new Error(`visual proof CLI self-test failed: ${name}: ${result.error ?? result.stderr}`);
+    }
+  };
+  const malformedCases = [
+    ["missing proof", undefined, "schema / must be object"],
+    ["null proof", null, "schema / must be object"],
+    ["string proof", "invalid", "schema / must be object"],
+    ["number proof", 42, "schema / must be object"],
+    ["boolean proof", false, "schema / must be object"],
+    ["array proof", [], "schema / must be object"],
+    ["empty proof", {}, "must have required property 'assetReceipts'"],
+    ["missing asset receipts", { ...valid, assetReceipts: undefined }, "must have required property 'assetReceipts'"],
+    ["null asset receipts", { ...valid, assetReceipts: null }, "schema /assetReceipts must be array"],
+    ["primitive asset receipts", { ...valid, assetReceipts: 42 }, "schema /assetReceipts must be array"],
+    ["null asset link", { ...valid, assetReceipts: [null] }, "schema /assetReceipts/0 must be object"],
+    ["primitive asset link", { ...valid, assetReceipts: [42] }, "schema /assetReceipts/0 must be object"],
+    ["missing asset evidence", { ...valid, assetReceipts: [{ assetId: "hero", result: "pass" }] }, "must have required property 'evidence'"],
+    ["non-string evidence locator", {
+      ...valid,
+      candidate: { ...valid.candidate, artifact: { ...valid.candidate.artifact, locator: null } },
+    }, "schema /candidate/artifact/locator must be string"],
+  ];
+  for (const [name, proof, expectedError] of malformedCases) {
+    for (const validate of [validateVisualProof, verifyVisualEvidenceFiles]) {
+      const errors = validate(proof, proofPath, evidenceRoot);
+      if (!Array.isArray(errors) || !errors.some((error) => error.includes(expectedError))) {
+        throw new Error(`visual proof malformed-input self-test failed: ${name}: ${validate.name}`);
+      }
+    }
+    // Undefined has no JSON representation, so it is covered by the public APIs only.
+    if (proof !== undefined) assertCliRejected(name, proof, expectedError);
+  }
   const hydrated = structuredClone(valid);
   const seen = new WeakSet();
   let index = 0;
@@ -853,6 +907,32 @@ function selfTest() {
   hydrated.candidate.fingerprint = hydrated.candidate.artifact.fingerprint;
   if (verifyVisualEvidenceFiles(hydrated, path.join(evidenceRoot, "proof.json"), evidenceRoot).length > 0) {
     throw new Error("valid local visual evidence failed byte verification");
+  }
+  const validCli = runProofCli(hydrated);
+  if (validCli.status !== 0 || validCli.error || validCli.stderr !== "" || !validCli.stdout.startsWith("visual proof valid:")) {
+    throw new Error(`valid local visual proof failed CLI validation: ${validCli.error ?? validCli.stderr}`);
+  }
+  for (const [name, contents, expectedError] of [
+    ["null linked receipt", "null", "assetReceipts[0]: schema / must be object"],
+    ["primitive linked receipt", "42", "assetReceipts[0]: schema / must be object"],
+    ["empty linked receipt", "{}", "assetReceipts[0]: schema / must have required property"],
+    ["malformed linked receipt JSON", "{", "assetReceipts[0] is not valid JSON"],
+  ]) {
+    const locator = "asset-receipt.json";
+    fs.writeFileSync(path.join(evidenceRoot, locator), contents);
+    const linkedProof = {
+      ...hydrated,
+      assetReceipts: [{
+        assetId: "hero",
+        result: "pass",
+        evidence: {
+          kind: "asset_receipt",
+          locator,
+          fingerprint: `sha256:${crypto.createHash("sha256").update(contents).digest("hex")}`,
+        },
+      }],
+    };
+    assertCliRejected(name, linkedProof, expectedError);
   }
   fs.writeFileSync(path.join(evidenceRoot, hydrated.captures[0].candidateEvidence.locator), "changed");
   if (!verifyVisualEvidenceFiles(hydrated, path.join(evidenceRoot, "proof.json"), evidenceRoot).some((error) => error.includes("does not match"))) {
@@ -912,11 +992,13 @@ async function main() {
     process.exitCode = 1;
     return;
   }
-  const errors = [
-    ...validateVisualProof(proof),
-    ...verifyVisualEvidenceFiles(proof, argument),
-    ...validateLinkedAssetReceipts(proof, argument),
-  ];
+  const errors = validateVisualProof(proof);
+  if (errors.length === 0) {
+    errors.push(
+      ...verifyVisualEvidenceFiles(proof, argument),
+      ...validateLinkedAssetReceipts(proof, argument),
+    );
+  }
   if (errors.length > 0) {
     for (const error of errors) console.error(`ERROR: ${error}`);
     process.exitCode = 1;

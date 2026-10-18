@@ -151,4 +151,6 @@ For native Figma/Pen authoring routes, run `skill-evals/native-design-authoring-
 
 For shared harness/topology changes, run `node scripts/check-agent-consumers.mjs <skills-root> <loop-root> <book-root>` against explicit local checkouts. Different pins are allowed only with passing consumer contracts; this read-only check does not upgrade dependencies or establish live runtime adoption.
 
+The consumer check also accepts `--json` and `--source-root <agent-harness-checkout>`. It reports source HEAD, consumer pin/lock, installed validation-byte fingerprint, and local contract validation separately. With a source checkout, it compares installed bytes to the pinned Git commit, never to an assumed latest release. Native host loading and task outcomes remain unavailable until independently observed. See [attempt evidence](skill-evals/attempt-evidence.md) for bounded first-attempt, recovery, activation and rendered-result receipts.
+
 Measure available token usage, elapsed time, handoffs, retries, reopened defects, and accepted completion over a comparable task set. Missing telemetry is unavailable, not zero. Word budgets and faster validators alone do not establish end-to-end token savings.
