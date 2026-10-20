@@ -12,7 +12,7 @@ Each permission level is separate; one does not imply the next.
 | Plan | Produce PRD, scope, estimates, acceptance criteria, or implementation plan | None; remain read-only |
 | Implement local | Edit files and run local validation within assigned scope | Any critical, destructive, transfer, or uncertain-side-effect action |
 | Commit | Stage and commit intended files when role/repo policy permits | Protected-branch mutation or broader unauthorized scope |
-| Push | Push a scoped non-protected branch when role/repo policy permits | Protected-branch direct push or unauthorized repository scope |
+| Push | Only an explicit current owner request or the verified no-pipeline open-source-plugin exception in `change-delivery-discipline.md` | Client work without explicit request; unknown side effects; protected or unauthorized target; a role/repo policy alone |
 | PR | Create/update PR body/comments when role/repo policy permits | Protected mutation, release, or action outside role authority |
 | CI repair | Inspect or rerun proven-safe non-production CI and fix scoped failures | Deploy/release-capable or otherwise gated workflow action |
 | Merge/close | Merge safe non-production PRs or close items when role/repo policy permits | Protected/production merge, release/deploy/publish, or ambiguous authority |

@@ -19,7 +19,7 @@ Use `$wp-expert` only when the WordPress artifact or specialist remains ambiguou
 - Read release docs and milestones before creating branches or PRs.
 - PRs for issue work must target the release branch implied by the issue milestone when that branch exists.
 - Each worker owns one issue, branch, worktree, and PR. The PO may coordinate parallel workers only when their scopes do not overlap.
-- Commit focused validated changes. Push only when authorized by the user or project workflow.
+- Make the smallest coherent tested local commits; push only when explicitly requested or the verified no-pipeline open-source-plugin exception applies. Client work always requires an explicit request; preserve stricter repository conventions. Apply the installed shared change-delivery discipline.
 - For commit messages, PR/issue titles and bodies, use the installed `shared/references/github-communication-protocol.md` cross-project writing standard. Its default is `type(scope): plain-language summary`; preserve explicit repository/upstream formats and existing approval gates.
 - The PO may merge a reviewed, green, non-draft PR into a live-verified unprotected non-production branch when repo policy allows it and no current owner stop exists.
 - Never merge to a protected branch or `main`/production, create beta or production tags/releases, deploy/publish, close ambiguous issues, change licensing/pricing/free-pro, privacy/security posture, or public contracts, or run destructive migrations without explicit current permission.

@@ -7,13 +7,13 @@ This repository owns reusable Agent Skills, shared references, eval specificatio
 ## Workflow
 
 - Start repo work with `git status --short --branch` and the exact requested artifact. Check current `origin/main`, open PRs and overlapping local branches before changes or publication, not for every read-only explanation.
-- Publish validated changes to `main` directly. Do not create feature branches or PRs for this repository unless the owner explicitly requests review or repository protection makes direct publication impossible.
+- Make the smallest coherent tested local commits as authorized work progresses. Do not create feature branches or PRs for this repository unless the owner explicitly requests review or repository protection requires them. Branch choice is not push authorization.
 - Preserve unrelated user changes. Never reset, discard, or delete branches/worktrees without explicit approval.
 - Keep `SKILL.md` as the compact execution kernel. Put mode detail in one-level routers/references and avoid second-level hidden expertise.
 - Before adding a rule, duplicate-screen skills, references, evals, open/recent PRs, and local unpublished branches.
 - Update behavior/eval coverage for repeatable owner corrections. Structural string checks do not replace fresh-agent forward tests.
 - Keep generic route-budget and scenario-inventory contracts in `agent-harness.config.json`, backed by the exact `agent-harness` commit pinned in `package-lock.json`. Keep WordPress skill-specific section and routing policy in local audits.
-- Commit scoped validated changes and push `main` after validation. The owner has established direct-to-`main` as the standing publication policy for `agent-*` repositories; branch or PR creation now requires an explicit exception.
+- Apply `shared/references/change-delivery-discipline.md` before commits or pushes. Hold pushes until explicitly requested; these agent control-plane repositories are not open-source plugins and do not qualify for the narrow no-pipeline plugin exception. Preserve stricter client/repository conventions.
 
 ## Required Validation
 

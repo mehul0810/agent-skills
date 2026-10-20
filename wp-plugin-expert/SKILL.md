@@ -32,7 +32,7 @@ Build narrow, production-safe WordPress plugin changes with enterprise/WPVIP-gra
 - Keep bootstraps thin; place behavior in small owned modules/classes with explicit contracts.
 - Stay in this lane for plugin-owned work. If the task becomes theme, site, orchestration, contribution, or content writing, hand off instead of loading broad WordPress context.
 - Use `references/router.md` only when the correct plugin reference is not obvious from the task.
-- Stage only intended files, commit scoped validated changes when expected, and push only when explicitly asked or repo-local automation policy authorizes it.
+- Stage only intended files; make the smallest coherent tested local commits. Use the router's change-delivery discipline: hold pushes unless explicitly requested or the verified no-pipeline open-source-plugin exception applies.
 
 ## Reference Router
 

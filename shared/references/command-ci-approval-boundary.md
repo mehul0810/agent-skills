@@ -11,7 +11,7 @@ A runtime allowlist or approved command prefix grants technical capability, not 
 - Read-only Git/GitHub inspection: status, diff, log, show, list/view, checks, workflow/run state, logs, annotations, and artifact download.
 - Local or hosted quality work: tests, lint, format checks, static analysis, security scans, builds, packaging, and dry-run validation.
 - Trigger or rerun reviewed non-production CI only when it cannot deploy, publish, release, mutate secrets or permissions, transfer protected data, or write a protected branch.
-- Reversible issue/PR updates or scoped non-protected branch pushes already allowed by the active role and repository.
+- Reversible issue/PR updates already allowed by the active role and repository. Pushes are a separate boundary: apply `change-delivery-discipline.md`; a non-protected branch or green/free CI is not permission.
 
 ## Require Explicit Owner Approval
 

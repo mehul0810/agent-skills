@@ -113,3 +113,7 @@ Use this map to choose references with low context cost.
 
 - Ollie/Ollie Pro tasks: load `ollie-block-theme.md` as supporting context after choosing the primary task reference.
 - Blocksy/Blocksy Pro tasks: load `blocksy-theme.md` as supporting context after choosing the primary task reference.
+
+## Local Commits And Gated Pushes
+
+Before committing or pushing, apply `../../shared/references/change-delivery-discipline.md`; preserve stricter client/repository conventions and do not treat branch choice as publication authority.

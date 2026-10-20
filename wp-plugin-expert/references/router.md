@@ -50,4 +50,4 @@ Use this router only after `wp-plugin-expert` is selected. Load one primary refe
 - Use REST for new interactive endpoints when it fits; avoid new `admin-ajax.php` by default.
 - Keep bootstraps thin and behavior in small owned modules/classes with explicit contracts.
 - Preserve launched public contracts and real production data; do not add compatibility for abandoned intermediate shapes of unreleased work.
-- Stage only intended files, commit scoped validated changes when expected, and push only when explicitly asked or repo-local automation authorizes it.
+- Stage only intended files; make smallest coherent tested local commits; apply `../../shared/references/change-delivery-discipline.md` before any push.

@@ -28,7 +28,7 @@ Deliver editable site-owned pages and journeys. Keep conversion, search, accessi
 - Route out-of-scope findings through `../shared/references/adjacent-finding-protocol.md`; preserve scope and let the PO triage.
 - For current, policy, API or source-backed research, use the router's bounded research route. For high-context or drift-prone continuation, use `../shared/references/context-window-discipline.md`.
 - Stay with site-owned outcomes. For theme architecture, plugin internals, orchestration, contribution or standalone content writing, hand off instead of loading broad WordPress context. Focused quality audit/fix belongs with `wp-quality-reviewer`; routine delivery stays here.
-- Stage only intended files; commit when expected; push only when explicitly asked or repo-local automation policy authorizes it.
+- Stage only intended files; make the smallest coherent tested local commits. Use the router's change-delivery discipline; hold pushes unless explicitly requested or the verified plugin exception applies.
 
 ## Output
 

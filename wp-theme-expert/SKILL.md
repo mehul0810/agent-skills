@@ -33,7 +33,7 @@ Build editable, performant, accessible, premium themes that match the design wit
 - For high context or drift-prone continuation decisions, use the router's context-window route to choose compact vs fresh thread.
 - Stay in this lane for theme/FSE-owned work. If the task becomes plugin, site strategy, orchestration, contribution, or content writing, hand off instead of loading broad WordPress context.
 - Use `references/router.md` only when the correct theme/FSE reference is not obvious from the task.
-- Stage only intended files; commit when expected; push only when asked or repo policy authorizes it.
+- Stage only intended files; make the smallest coherent tested local commits. Apply `../shared/references/change-delivery-discipline.md`; hold pushes unless explicitly requested or the verified plugin exception applies.
 
 ## Reference Router
 

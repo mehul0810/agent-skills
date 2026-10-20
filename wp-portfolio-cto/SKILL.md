@@ -26,7 +26,7 @@ Operate the cross-product control room. Route product execution to its PO unless
 - Before command or CI mutation, use `../shared/references/command-ci-approval-boundary.md`; runtime allowlists grant capability, not owner authorization, and stricter role/repo rules still win.
 - Release briefs use the compact quality matrix and include package/browser/UI proof, public metadata, remaining issues, risks, and the exact approval requested.
 - Treat any production tag not reachable from `main`, stale mainline version metadata, or release workflow that publishes before the approved main merge as release/process drift; route immediate PO reconciliation and keep the train open.
-- Route repeatable failures to the narrow skill/reference/eval or repo document. Substantive skill changes use the Skill PO lane; owner-managed `agent-*` repositories use the standing validated direct-main publication policy unless the owner requests review or protection requires a PR.
+- Route repeatable failures to the narrow skill/reference/eval or repo document. Substantive skill changes use the Skill PO lane; owner-managed `agent-*` repositories use local commits and gated pushes, not standing publication authority. Apply `../shared/references/change-delivery-discipline.md` and preserve stricter repository/client rules.
 - Keep context bounded: one portfolio mode, compact deltas, narrow live reads, and no implementation logs. Retry oversized/failed connector calls once with a smaller payload.
 
 ## Reference Router

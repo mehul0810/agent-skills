@@ -87,16 +87,16 @@ Add your reference to the appropriate skill's `SKILL.md`:
 
 #### Step 6: Validate And Publish
 
-This owner-managed repository publishes scoped, validated changes directly to `main`. Do not create a feature branch or pull request unless the owner explicitly asks for review or repository protection requires it.
+This owner-managed repository keeps small coherent tested local commits. Publication is separate and requires an explicit push request under `shared/references/change-delivery-discipline.md`. Do not create a feature branch or pull request unless the owner explicitly asks for review or repository protection requires it.
 
-1. Make changes following the guidance above on the current `main` checkout.
+1. Make changes in the authorized checkout, preserving unrelated work and the repository branch convention.
 2. Test: Run `bash scripts/validate-references.sh` (see Validation section).
 3. Commit with a clear message:
    ```
    git commit -m "docs(references): add new-topic guidance" \
      -m "Explain why the guidance is needed and which routes changed."
    ```
-4. Push only after validation and the applicable owner/publishing policy allow it.
+4. Hold the local commits for review; push only when explicitly requested. Green tests, a public repository or a `main` branch do not authorize publication.
 
 ### 3. Helper Scripts
 

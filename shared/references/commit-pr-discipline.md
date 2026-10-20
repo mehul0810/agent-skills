@@ -1,13 +1,13 @@
 # Commit And PR Discipline
 
-Use this reference before committing, pushing, opening a PR, updating a PR body, or handing off product work.
+Use this WordPress product/release adapter before opening a PR or handing off product work. All platforms use `change-delivery-discipline.md` for local commits and gated pushes; this adapter cannot broaden that authority. Do not impose WordPress milestone branches or PR paperwork on a static site, native app, game or exploratory artifact without that repository's own requirement.
 
 Use the **Cross-Project Writing Standard** in `github-communication-protocol.md` for titles and information order. It covers commit messages, PRs, issues, reviews and handoffs; explicit repository/upstream conventions remain valid. Formatting does not change the branch or authorization gates below.
 
 ## Branch Discipline
 
 - Product repositories keep the verified `main` or documented `master` production branch as stable release space; it must not receive development work directly.
-- Owner-managed `agent-*` control-plane repositories are the exception: validated changes commit and push directly to `main` by default. Do not create a feature branch or PR unless the owner explicitly asks for review or repository protection requires that path.
+- Owner-managed `agent-*` control-plane repositories retain their branch convention but use local commits and gated pushes. Do not create a feature branch or PR unless the owner explicitly asks for review or repository protection requires that path. No branch choice grants publication authority.
 - `develop` is for unmilestoned development integration or as the verified source for creating missing milestone branches.
 - Milestone-based work must create or use `release/<release-version>` branches from the verified development base and target issue PRs into that release branch. `<release-version>` is the version/milestone title, not the GitHub milestone ID or sequence number; do not create `release/3` unless the documented release version is literally `3`.
 - Release branches merge to the production branch only after explicit owner release approval.
@@ -17,7 +17,7 @@ Use the **Cross-Project Writing Standard** in `github-communication-protocol.md`
 
 ## Commit Convention
 
-Use this commit format and the same title shape for PRs and issues:
+Preserve stricter client, repository and upstream conventions. Where no such convention exists, the existing writing protocol uses this title shape; the owner's small-commit rule does not mandate a new message format:
 
 ```text
 type(scope): concise action
@@ -39,7 +39,7 @@ Rules:
 - Reference issue numbers in the PR body, not necessarily every commit subject.
 - Commit only intended files.
 - Avoid generated noise unless required.
-- Do not push unless repo policy or the parent CTO thread authorizes it.
+- Hold pushes unless the current owner explicitly requests one or the verified open-source-plugin exception in `change-delivery-discipline.md` applies. Delegation or an older policy cannot broaden that permission.
 - Do not push to `main` for development work.
 
 ## PR Requirements

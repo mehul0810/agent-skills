@@ -30,7 +30,7 @@ reject_text() {
   fi
 }
 
-require_text "wp-expert/SKILL.md" "push only when explicitly asked or repo-local automation policy authorizes it" "wp-expert push authorization discipline"
+require_text "wp-expert/SKILL.md" "hold pushes unless explicitly requested" "wp-expert push authorization discipline"
 require_text "wp-expert/SKILL.md" "../shared/references/live-proof-wordpress.md" "wp-expert live proof routing"
 require_text "wp-expert/SKILL.md" "../shared/references/context-window-discipline.md" "wp-expert context window discipline routing"
 require_text "wp-expert/SKILL.md" "references/architecture-decision-gate.md" "wp-expert architecture gate routing"

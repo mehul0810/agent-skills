@@ -36,7 +36,7 @@ Route product work to the healthy PO. Bypass a PO only for super-critical work i
 
 Classify repeated inactivity, empty/system-error turns, missing workers, wrong path/base/model, or ignored executable work as topology/process drift. Intervene with an exact blocker request, cadence change, worker recovery, owner-approved thread recovery, or skill/process patch.
 
-Route substantive skill changes through a Skill PO lane. Apply the target repository's standing publication policy when its exact target and conditions match; owner-managed `agent-*` repositories may publish validated changes directly to `main` under their standing authorization. Do not generalize that authorization to other repositories, protected targets, or release actions. Otherwise follow the repository policy and obtain any required owner approval; use a PR when requested or required by protection.
+Route substantive skill changes through a Skill PO lane. For agent control-plane work, retain the repository branch convention but use local commits and gated pushes under `change-delivery-discipline.md`. There is no standing permission to push `agent-*` changes; current owner instructions and stricter repository/client gates prevail.
 
 ## Product Thread Ownership
 

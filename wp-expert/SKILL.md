@@ -37,7 +37,7 @@ Use this skill as the thin WordPress engineering router. Prefer the narrow speci
 - Use `../shared/references/live-proof-wordpress.md` before claiming WordPress runtime, editor, frontend, external integration, or release behavior is complete.
 - Apply enterprise/WPVIP standards by default: modular, performant, secure, maintainable, accessible, observable where useful, and covered by appropriate tests for meaningful behavior or risk.
 - Validate with the cheapest reliable proof that reaches the changed boundary; disclose unrun checks.
-- Stage only intended files, commit scoped validated changes when expected, and push only when explicitly asked or repo-local automation policy authorizes it.
+- Stage only intended files; make the smallest coherent tested local commits. Use the router's change-delivery discipline: hold pushes unless explicitly requested or the verified no-pipeline open-source-plugin exception applies.
 
 ## WordPress Hard Gates
 

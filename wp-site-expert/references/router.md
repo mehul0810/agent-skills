@@ -46,3 +46,7 @@ Use this router only after `wp-site-expert` is selected. Load one primary refere
 - Keep mobile-first responsive architecture visible for visitor-facing and admin/editor-facing flows.
 - Preserve premium and enterprise feel: clear IA, intentional hierarchy, strong copy, polished states, accessible interactions, fast perceived performance, and consistent design language.
 - For exact user-provided CSS values, copy, or config, apply directly and confirm by diff unless runtime risk requires more.
+
+## Local Commits And Gated Pushes
+
+Before committing or pushing, apply `../../shared/references/change-delivery-discipline.md`; preserve stricter client/repository conventions and do not treat branch choice as publication authority.

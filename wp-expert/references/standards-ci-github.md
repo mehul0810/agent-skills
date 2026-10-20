@@ -85,7 +85,7 @@ Use `../../shared/references/github-actions-economy.md` for visibility-aware cos
 - Link the relevant issue, milestone, and labels when the repo uses them.
 - Keep commits scoped and messages specific. For implementation tasks, create small focused commits for separately validated units of work when the change naturally splits.
 - Stage only intended files. Do not include unrelated local changes, secrets, generated noise, or local environment files.
-- Push only when the user explicitly asks, or when repo-local automation policy explicitly authorizes pushing after validation. If no push is authorized, report the branch ahead/behind state instead.
+- Push only when the user explicitly asks, or the exact no-pipeline open-source-plugin exception in `../../shared/references/change-delivery-discipline.md` is verified. Client work always requires an explicit request; stricter repository conventions win. Otherwise report local commit IDs and ahead/behind state, not publication.
 - If the remote has advanced, fetch and use the repo's normal safe sync path before pushing. Do not force-push, amend, or rewrite shared history without explicit approval.
 - For review comments, reply to each actionable thread individually when requested.
 - Avoid PR bodies with unescaped shell-sensitive backticks when creating PRs through CLI.
