@@ -14,7 +14,7 @@
       "id": "wordpress-current-developer-guidance",
       "url": "https://make.wordpress.org/core/2026/08/05/wordpress-7-1-field-guide/",
       "owner": "Make WordPress Core",
-      "checkedAt": "2026-09-04",
+      "checkedAt": "2026-10-20",
       "maxAgeDays": 45,
       "recheckOn": "WordPress release candidate, stable release, or security release",
       "consumers": ["wordpress-7-0-7-1-enterprise-compatibility.md", "weekly-wordpress-intelligence.md"]

@@ -15,6 +15,8 @@ Recheck official release/security/dev sources and runtime registry. Classify rel
 
 At this snapshot, 7.1.0 is production. Verify later patches, security releases, Gutenberg-only behavior, and 7.2/trunk separately.
 
+Maintenance recheck, 2026-10-20: the official [7.1.3 maintenance/security release](https://wordpress.org/news/2026/10/wordpress-7-1-3-maintenance-and-security-release/) is dated October 6. Use the current patched package for new compatibility proof. This source recheck does not replace the historical August 30 baseline above, execute any product compatibility matrix, or establish 7.2/trunk support.
+
 ## WordPress 7.0 Production Baseline
 
 Shipped surfaces include:
