@@ -8,6 +8,7 @@ export function validationChecks(python) {
   // The reference gate owns domain audits; do not rerun them in this aggregate.
   return [
     ['Diff', 'git', ['diff', '--check']],
+    ['Portable proof integrity regression', 'node', ['--test', 'scripts/test-platform-proof.mjs']],
     ['Validation Python regression', 'node', ['scripts/test-validation-python.mjs']],
     ['Validation process runner regression', 'node', ['scripts/test-validation-runner.mjs']],
     ['Evaluation packet regression', 'node', ['scripts/test-eval-packet.mjs']],

@@ -154,3 +154,7 @@ For shared harness/topology changes, run `node scripts/check-agent-consumers.mjs
 The consumer check also accepts `--json` and `--source-root <agent-harness-checkout>`. It reports source HEAD, consumer pin/lock, installed validation-byte fingerprint, and local contract validation separately. With a source checkout, it compares installed bytes to the pinned Git commit, never to an assumed latest release. Native host loading and task outcomes remain unavailable until independently observed. See [attempt evidence](skill-evals/attempt-evidence.md) for bounded first-attempt, recovery, activation and rendered-result receipts.
 
 Measure available token usage, elapsed time, handoffs, retries, reopened defects, and accepted completion over a comparable task set. Missing telemetry is unavailable, not zero. Word budgets and faster validators alone do not establish end-to-end token savings.
+
+## Portable Platform Proof
+
+Run `node --test scripts/test-platform-proof.mjs` for the optional non-WordPress receipt validator. It checks bounded local artifact integrity, platform/runtime compatibility and truthful clause-status representation, not capture authenticity or appearance quality. WordPress retains its existing proof adapter. Use fresh task-matched agents for routing decisions, actual runtime artifacts for behavior, and separate visual comparisons for creative-quality claims. Blocked native/browser execution must remain blocked. Never refresh historical behavior fingerprints solely to turn the aggregate green.

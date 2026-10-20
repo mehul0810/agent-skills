@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Engineer"
+  short_description: "Platform-specific non-WordPress implementation"
+  default_prompt: "Use $project-engineer for non-WordPress web, static-site, macOS and game implementation in the actual stack. Keep WordPress work, standalone design files and independent acceptance with their specialists. Use proportional proof; separate local commits from publication."

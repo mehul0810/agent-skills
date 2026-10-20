@@ -1,6 +1,6 @@
 # Native Design Authoring
 
-Use for editable Figma/Pen mockups, libraries and updates. For standalone images, use only **Image Art Direction** and `imagegen`, not native-file preflight or editability tests. This does not replace vendor skills. Tiny edits need only affected checks. A design file does not prove native WordPress authoring; production stays with its site, theme or plugin specialist.
+Use for editable Figma/Pen mockups, libraries and updates. For standalone images, use only **Image Art Direction** and `imagegen`, not native-file preflight or editability tests. This does not replace vendor skills. Tiny edits need only affected checks. Here native means editable design-tool structure, not macOS app execution. A design file does not prove WordPress authoring or a native app/game runtime; production stays with its platform specialist.
 
 ## Qualify Before Writing
 

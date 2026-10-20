@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-20",
+  "kind": "source-and-validation-receipt",
+  "scope": "Portable routing and receipt-integrity candidate, not production quality or host adoption",
+  "sources": {
+    "project-engineer/SKILL.md": "1d48096a3bbee5a1afcc31e77bf11a4d141c85c7c9f9b8d9a6ea9965f4e1a788",
+    "behavior-validator/SKILL.md": "3e89dc29188fe4800ebbfdcec41352945db60f785a98c031a5ff34ec1db71ed0",
+    "shared/references/platform-workflow-profiles.md": "de1b26026e5df75556497ffda4698eb6ee12b823be3f0082a50b22b92caddd19",
+    "shared/references/observable-proof-contract.md": "3ec3549174fab87badcbd3776812443710f54f8066b9bb84847323edc505a34d",
+    "shared/references/frontend-design-taste.md": "28a5c872fcf074f59248dffe249567f760e66d2574955163279ba4342fb0ffe8",
+    "shared/references/design-intelligence-routing.md": "dc6f7c5df07e85baa93776599445752a6b8f90738be3c6fd11c9f215541d71ec",
+    "scripts/validate-platform-proof.mjs": "9ab45ed27240a323e2eb61894a290dc7202a214fe746f05dff26a0360cb0f2af",
+    "scripts/test-platform-proof.mjs": "9e96025229c32defdfc6a8aad70aeb809c2161edb78241f3022d06b789e89b5e"
+  },
+  "checks": {
+    "proofIntegrityUnitTests": 39,
+    "freshAgentInitialCases": 7,
+    "freshAgentFollowUpCases": 1,
+    "initialFinding": "Unqualified supplied-target reference could route non-WordPress to WordPress; retained in first response, corrected and rechecked",
+    "structuralChecks": "routing, WordPress visual, skill behavior, context budgets, shell syntax, skill frontmatter and isolated install-link checks passed",
+    "aggregate": "19/20 stages pass; reference stage retains evidence freshness and source freshness failures",
+    "baseline": "18/19 stages passed before changes; five historical behavior groups and one current-source check already stale",
+    "candidate": "thirteen behavior groups now require fresh evidence; do not rebind old passes",
+    "runtime": "Browser fixture execution unavailable; no macOS execution or automatic host activation tested"
+  },
+  "limitations": [
+    "Decision tests explicitly supplied skill paths, not automatic discovery",
+    "Synthetic PNG/schema tests do not prove capture authenticity or visual quality",
+    "Full publication gate remains incomplete; current source changes are local only"
+  ]
+}

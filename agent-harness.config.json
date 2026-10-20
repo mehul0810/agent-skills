@@ -566,6 +566,41 @@
         "product-video-producer/references/channel-delivery-feedback.md",
         "product-video-producer/references/render-review-iteration.md"
       ]
+    },
+    {
+      "name": "Portable implementation profile",
+      "maxWords": 1550,
+      "warningPercent": 90,
+      "files": [
+        "project-engineer/SKILL.md",
+        "shared/references/platform-workflow-profiles.md"
+      ]
+    },
+    {
+      "name": "Portable source-blind proof",
+      "maxWords": 1200,
+      "warningPercent": 90,
+      "files": [
+        "behavior-validator/SKILL.md",
+        "shared/references/observable-proof-contract.md"
+      ]
+    },
+    {
+      "name": "Portable design direction",
+      "maxWords": 1750,
+      "warningPercent": 90,
+      "files": [
+        "project-engineer/SKILL.md",
+        "shared/references/frontend-design-taste.md"
+      ]
+    },
+    {
+      "name": "Portable change delivery",
+      "maxWords": 650,
+      "warningPercent": 90,
+      "files": [
+        "shared/references/change-delivery-discipline.md"
+      ]
     }
   ],
   "scenarios": [
@@ -781,6 +816,18 @@
         "CMI-3 Mutation safety",
         "CMI-4 Resume integrity",
         "CMI-5 No-progress/empty"
+      ]
+    },
+    {
+      "name": "Portable platform workflow",
+      "file": "skill-evals/portable-platform-scenarios.md",
+      "requiredPhrases": [
+        "# Portable Platform Scenarios",
+        "Exact target restraint",
+        "Unavailable native runtime",
+        "Representative game assets",
+        "Scoped lesson counterexample",
+        "Evidence Boundary"
       ]
     }
   ]

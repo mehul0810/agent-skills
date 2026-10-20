@@ -1,10 +1,10 @@
 # Frontend Design Taste
 
-Use as the one support when a sound WordPress surface needs distinctive direction or anti-template review. It is judgment, not a framework or source-parity substitute.
+Use as the one support when a sound user-facing surface needs distinctive direction or anti-template review. It is judgment, not a framework or source-parity substitute.
 
-Skip tiny polish, exact screenshot/Figma work, routine wp-admin conventions, and dense operational UI. Supplied targets use `visual-to-wordpress-implementation.md`; admin workflows use `ui-ux-pro-for-wordpress.md`. Never add design-system or animation dependencies only for aesthetics.
+Skip tiny polish, exact screenshot/Figma work, routine wp-admin conventions, and dense operational UI. For WordPress supplied targets use `visual-to-wordpress-implementation.md`, and wp-admin workflows use `ui-ux-pro-for-wordpress.md`. Non-WordPress supplied targets stay with `project-engineer` and the actual stack. Never add design-system or animation dependencies only for aesthetics.
 
-For trend-led or material AI adaptation, personalization, voice, kinetic type, guided scroll, or immersive/3D media, use `emerging-interface-design-contract.md` as the one support before choosing; a year label is not a visual specification.
+For trend-led or material AI adaptation, personalization, voice, kinetic type, guided scroll, or immersive/3D media, use `emerging-interface-design-contract.md` as focused support before choosing; a year label is not a visual specification.
 
 ## 1. Establish The Design Read
 
@@ -14,7 +14,7 @@ Before code, state a compact internal design read:
 Surface and mode: <site/theme/product surface>; <greenfield/preserve redesign/overhaul>
 User and job: <primary user>; <task or decision>
 Audience and trust: <buyer/visitor/operator>; <promotional/transactional/regulated>
-Existing language: <tokens, type, assets, patterns, WordPress primitives>
+Existing language: <tokens, type, assets, patterns, platform primitives>
 Direction: <plain-language visual character>
 Experience dials: expressiveness <1-10>; motion <1-10>; density <1-10>; trust <1-10>
 ```
@@ -30,7 +30,7 @@ Audience, accessibility, brand truth, task frequency, and risk override taste. C
 
 For premium enterprise work, include one accountability read: responsible role, risk reduced, governed workflow, proof, and failure/recovery. Polish alone is not enterprise evidence.
 
-For brand-critical greenfield, major overhaul, or multi-page work, validate the smallest representative direction artifact (style frame, section, or critical-flow prototype) with truthful content and WordPress primitives before scaling. Check brand, width, and task fit. Delegated direction needs no approval; request selection only when asked or brand/scope remains unresolved. Skip bounded preserve redesigns, exact targets, and low-risk polish.
+For brand-critical greenfield, major overhaul, or multi-page work, validate the smallest representative direction artifact (style frame, section, or critical-flow prototype) with truthful content and the actual platform primitives before scaling. Check brand, width, and task fit. Delegated direction needs no approval; request selection only when asked or brand/scope remains unresolved. Skip bounded preserve redesigns, exact targets, and low-risk polish.
 
 ### Translate References Into Decisions
 
@@ -71,11 +71,13 @@ These are diagnostic signals, not universal bans. Keep patterns that fit content
 
 When a composition depends on a compact preview, disclosure or scroll region, compare its content/interaction structure at a constrained height before scaling the direction. Documented composition studies passed document-overflow checks yet hid lower content: one study exposed capture tiling, another real preview overlap. Recapture unchanged source to distinguish evidence loss from a layout defect before editing; then repair only the owning problem. This is a failure diagnostic, not an extra exploration step for exact targets or routine polish.
 
-## 4. Preserve WordPress Ownership
+## 4. Preserve Platform Ownership
 
-Use project tokens/components first; prefer Core and verified plugin blocks, patterns, styles, variations, `theme.json`, `@wordpress/components`, `@wordpress/icons`, and existing primitives before custom abstractions.
+Use project tokens/components and the actual platform conventions first. For WordPress only, prefer Core and verified plugin blocks, patterns, styles, variations, `theme.json`, `@wordpress/components`, `@wordpress/icons`, and existing primitives before custom abstractions.
 
-`wp-site-expert` owns strategy/journey; `wp-theme-expert` owns theme tokens/templates/patterns/editor presentation; `wp-plugin-expert` owns plugin workflows. Polish never justifies frozen markup, Custom HTML/Shortcode shortcuts, global admin CSS, duplicate React, or unrelated stacks.
+For WordPress, `wp-site-expert` owns strategy/journey; `wp-theme-expert` owns theme tokens/templates/patterns/editor presentation; `wp-plugin-expert` owns plugin workflows. Within WordPress, polish never justifies frozen markup, Custom HTML/Shortcode shortcuts, global admin CSS, duplicate React, or unrelated stacks.
+
+For non-WordPress implementation, `project-engineer` owns the existing web/native/game stack. A realistic game may need a representative scene, while a macOS utility needs its actual window and task flow; neither needs WordPress components or a marketing layout.
 
 Real screenshots and supplied/approved assets outrank decoration. Use purposeful high-fidelity imagery for substantial content, not simple polish or operational UI. For missing assets choose reuse, generation, licensing, non-factual CSS/SVG, or labeled placeholder. Never fabricate brands, product states, customer proof, or factual screenshots.
 
@@ -96,13 +98,13 @@ Before completion, verify:
 - mobile collapse is explicit and intermediate widths do not overlap, clip, wrap incoherently, or hide the next action,
 - keyboard, focus, contrast, zoom/reflow, touch, and reduced motion pass for the changed surface,
 - performance and asset behavior meet repository budgets,
-- the visitor completes the primary task and the intended author/operator completes the editing or operational task,
+- the primary user completes the task and, where applicable, the intended author/operator completes the editing or operational task,
 - source and candidate screenshots, measurements, or browser evidence support every visual completion claim.
 
-Visual proof is not excellent usability by themselves. For material onboarding, conversion, account, settings, publishing, or repeated operational journeys, use risk-tiered evidence in `ux-product-strategy-design-qa.md`. Without representative-user, product-signal, or equivalent outcome evidence, label usability unverified.
+Visual proof is not excellent usability by themselves. For material onboarding, conversion, account, settings, publishing, or repeated operational journeys, use task-matched evidence; for WordPress use `ux-product-strategy-design-qa.md`. Without representative-user, product-signal, or equivalent outcome evidence, label usability unverified.
 
 Overlap, clipping, broken hierarchy, generic placeholder, inaccessible interaction, or editor/frontend divergence is a failed implementation. Fix the owning layer and rerun the smallest affected visual/workflow matrix.
 
 ## Output
 
-Report design read, preservation, direction, WordPress ownership, visual changes, proof, deviations, and unresolved decisions. Keep dials and measurements in implementation record.
+Report design read, preservation, direction, platform ownership, visual changes, proof, deviations, and unresolved decisions. Keep dials and measurements in implementation record.

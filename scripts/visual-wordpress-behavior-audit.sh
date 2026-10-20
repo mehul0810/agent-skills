@@ -152,7 +152,7 @@ require_text "shared/references/design-intelligence-routing.md" "emerging-interf
 require_text "shared/references/frontend-design-taste.md" "Experience dials: expressiveness" "frontend design read"
 require_text "shared/references/frontend-design-taste.md" "diagnostic signals, not universal bans" "contextual anti-template judgment"
 require_text "shared/references/frontend-design-taste.md" "Never fabricate brands" "frontend truth boundary"
-require_text "shared/references/frontend-design-taste.md" "visitor completes the primary task" "frontend visitor workflow proof"
+require_text "shared/references/frontend-design-taste.md" "primary user completes the task" "frontend visitor workflow proof"
 require_text "shared/references/frontend-design-taste.md" "author/operator completes" "frontend author workflow proof"
 require_text "shared/references/frontend-design-taste.md" "smallest representative direction artifact" "material direction checkpoint"
 require_text "shared/references/frontend-design-taste.md" "not excellent usability by themselves" "visual proof usability boundary"

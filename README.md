@@ -439,3 +439,7 @@ focused iteration, use the `validate:*` and `context:*` scripts in
   newer strict model policy. Current explicit owner/host restrictions take
   precedence; do not treat model availability as permission to fall back. This
   README update does not change those references or enforce runtime selection.
+
+## Non-WordPress Projects
+
+Use `project-engineer` for runnable web/static-site, macOS and game implementation. It selects platform-specific ownership and proportional explore/build/verify/ship guidance without loading WordPress conventions. `behavior-validator` now selects the actual platform for independent proof. Shared delivery discipline applies to every domain; preserve stricter client conventions. These source changes do not install or activate skills in any host. Verify discovery separately after an approved rollout.
