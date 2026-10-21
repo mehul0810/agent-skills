@@ -4,7 +4,7 @@
   "scenario": "content-migration-integrity",
   "result": "succeeded",
   "startedAt": "2026-10-21T02:45:52.000Z",
-  "durationMs": 362915,
+  "durationMs": 455056,
   "checks": [
     {
       "name": "source-discovery-completeness",
@@ -38,7 +38,7 @@
   },
   "measurement": {
     "status": "met",
-    "verifiedAt": "2026-10-21T02:51:54.915Z",
+    "verifiedAt": "2026-10-21T02:53:27.056Z",
     "metricNames": [
       "checks_passed",
       "host_telemetry_available",

@@ -4,7 +4,7 @@
   "scenario": "automatic-specialist-selection",
   "result": "succeeded",
   "startedAt": "2026-10-21T02:42:20.000Z",
-  "durationMs": 503167,
+  "durationMs": 667056,
   "checks": [
     {
       "name": "direct-plugin-specialist",
@@ -34,7 +34,7 @@
   },
   "measurement": {
     "status": "met",
-    "verifiedAt": "2026-10-21T02:50:43.167Z",
+    "verifiedAt": "2026-10-21T02:53:27.056Z",
     "metricNames": [
       "checks_passed",
       "host_telemetry_available",

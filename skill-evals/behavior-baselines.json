@@ -42,7 +42,7 @@
       "evidence": [
         {
           "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-10-21-cloud-refresh.json",
-          "sha256": "49c3bfea10ba36c26fe8e0b0fb46bea5e2ffb6755079b1a8f7130abadd86a1d1",
+          "sha256": "7c8eb4297dd019780c81805580bc18c1bbe562d851920c670bd8288658de081a",
           "testedRevision": "06323063661568a985baf26ec31bc6778677b83d",
           "testedSourceSha256": "78bd1b5a4ce7d859adbefea67347517cf51d7b2696365651b7655397b92546a7",
           "testedScenarioSha256": "3d842125a654c717b1b68f1fe273d32f8bf4ac54bae26ac39dbacefb0f92eb84",
@@ -542,7 +542,7 @@
       "evidence": [
         {
           "runRecord": "skill-evals/run-records/automatic-specialist-routing-2026-10-21-cloud-refresh.json",
-          "sha256": "143c3678918a753cda0c2e8308ed817be35e88d4dfc8142539d0771ab2011495",
+          "sha256": "2dce4743dba296fc75ca529706d7decb9c1b36f6de15f515335612d457428023",
           "testedRevision": "06323063661568a985baf26ec31bc6778677b83d",
           "testedSourceSha256": "f248988db7c3a23fa0b60de3c24c68f4588eacbffac2d3c564cd861a3e8586ef",
           "testedScenarioSha256": "5964fa0002f260ea2ed1ecdf40a842bc6a5548173fca1f1b38adfa16b713693d",
@@ -794,7 +794,7 @@
       "evidence": [
         {
           "runRecord": "skill-evals/run-records/product-release-authority-2026-10-21-cloud-refresh.json",
-          "sha256": "e7939662b2147ba503c71a9e1c09ca475b60eca6aadb12f3a7d602683fafd39d",
+          "sha256": "4af1e092414dde2b485f645047dfaa6378ef5d0792bd36f40da35733af640d9d",
           "testedRevision": "06323063661568a985baf26ec31bc6778677b83d",
           "testedSourceSha256": "0c6a89cab08c761038a954ddea03c03f46dbdcac86df3a9c9187dc32474029ab",
           "testedScenarioSha256": "415eb151638237bf0c9a4cc09f6462e4f028386f88256125e0f3b8369c87f34e",
@@ -910,7 +910,7 @@
       "evidence": [
         {
           "runRecord": "skill-evals/run-records/owner-aligned-judgment-2026-10-21-cloud-refresh.json",
-          "sha256": "ee0d3f68b8cb923d070565f6b1068fa937f24c5a97663cbbdf26c042962bacb6",
+          "sha256": "51b904e2c0779e788975821e559fa10b56d9f59badf9eedd4c67e00fef42e64c",
           "testedRevision": "06323063661568a985baf26ec31bc6778677b83d",
           "testedSourceSha256": "4c0b09529ec089050d098f7b2431617ac7a47a5e18d5ab0bbf7a30ecbb3aec76",
           "testedScenarioSha256": "54b4ae2bce4d363eecee4fad87a2b5e39ae29e0c98c722ac773dc9447afc6d02",
@@ -1332,7 +1332,7 @@
       "evidence": [
         {
           "runRecord": "skill-evals/run-records/loop-steward-authority-2026-10-21-cloud-refresh.json",
-          "sha256": "0a5e73f0ce1a2adbb0b6ef715cfb6eef95a86018d6d10bc54a62d966b961e7e0",
+          "sha256": "bf26cf917ddc81ea2b5d3e5dc1dc597eca732e7ec6c9347d1f2cb06be50c5969",
           "testedRevision": "06323063661568a985baf26ec31bc6778677b83d",
           "testedSourceSha256": "bf80f508596888500055de68fd7d4b6c87a31a9ce09568d049b1753e914a3e5c",
           "testedScenarioSha256": "ccb431d8dc24dde902d53f9a6b24ca19769efd2ac88e76c46da998490e04955f",
@@ -1505,7 +1505,7 @@
       "evidence": [
         {
           "runRecord": "skill-evals/run-records/scoped-review-workflow-2026-10-21-cloud-refresh.json",
-          "sha256": "fa1023693e2585d419d484c3363718ab43c9d6d0bb8ff3d1d241eaa3e3cd063f",
+          "sha256": "f9b4342dbdcb679a57756a1a6efcb6b35249a87b1294ba823599827847b55a55",
           "testedRevision": "06323063661568a985baf26ec31bc6778677b83d",
           "testedSourceSha256": "884d84de9eafafa010e9fa0f6097e1615fe713b8f044875904ef8b497db44ebf",
           "testedScenarioSha256": "c3ec2ad278838bb033689d38078c307be4df9fbe5ec300eb581b39e12831d806",
@@ -1707,7 +1707,7 @@
       "evidence": [
         {
           "runRecord": "skill-evals/run-records/content-migration-integrity-2026-10-21-cloud-refresh.json",
-          "sha256": "666387a56672a1f09b20377eb5d5b3fb337254b6d733d4a8d460fa70c3000366",
+          "sha256": "e8301e75a675df4fc70596d3d77be31d383efb20dcf9d5e3a815c28bfbdf073c",
           "testedRevision": "06323063661568a985baf26ec31bc6778677b83d",
           "testedSourceSha256": "b98cedc5f243c3d2f59e6e8d794d0628663dbbed7d4bdeca37a62da0ca676e1f",
           "testedScenarioSha256": "728a0c1ed73b9f2374fd0085df9ec5486c239dad0abc4ac84790c95ff3b4b407",
