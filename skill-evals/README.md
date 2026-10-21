@@ -52,6 +52,19 @@ Do not store prompts, completions, hidden reasoning, model identifiers, secrets,
 
 Keep every current behavior record directly in `skill-evals/run-records/` and register it exactly once in the baseline manifest. Move superseded sanitized records to a dated `run-records/archive/` directory so they remain historical evidence without being treated as current. The validator discovers only the current directory, rejects orphan or duplicate current records, and expires records after the manifest freshness window. `npm run run-record:behavior` schema-validates the discovered set; no hardcoded filename list should be maintained.
 
+## Evaluation Host Identity
+
+Record the actual evaluation host as `codex-desktop` or `assistant-cloud`, with
+`isolation: "fresh-agent"`. Both hosts use the same exact-source, scenario,
+complete-check, artifact and harness-binding gates. Do not relabel historical
+runs when moving between hosts. Unknown hosts and non-fresh isolation fail.
+
+Host identifies where the evaluator ran, not what it verified. A cloud decision
+exercise cannot establish native desktop execution, rendered appearance,
+browser interaction, assistive-technology behavior or a real release. Required
+checks lacking that evidence remain failed or incomplete; host selection cannot
+convert them into passing checks. Keep the evidence class and limits explicit.
+
 ## Cost-Aware Evidence Refresh
 
 The opt-in `cli-validation-v1` baseline contract permits an older harness runtime

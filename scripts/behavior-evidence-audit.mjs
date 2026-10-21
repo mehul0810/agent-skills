@@ -604,7 +604,7 @@ export function auditBehaviorEvidence({
       }
       const testedPin = harnessRevision(root, errors, evidence.testedRevision);
       if (
-        evidence.runtime?.host !== "codex-desktop" ||
+        !["codex-desktop", "assistant-cloud"].includes(evidence.runtime?.host) ||
         evidence.runtime?.isolation !== "fresh-agent" ||
         evidence.runtime?.harnessRevision !== testedPin ||
         (testedPin !== manifest.harnessRevision
@@ -875,6 +875,44 @@ function selfTest() {
     throw new Error("valid evidence fixture failed");
   }
   const baseline = manifest.baselines[0];
+  // Host records where the evaluator ran, not the target platform it proved.
+  const runtime = baseline.evidence[0].runtime;
+  runtime.host = "assistant-cloud";
+  writeFixture();
+  if (run().length) throw new Error("valid cloud decision evidence was rejected");
+  for (const invalidHost of ["unknown", "browser", "native-macos", "", null]) {
+    runtime.host = invalidHost;
+    writeFixture();
+    if (!run().some(error => error.includes("runtime binding"))) {
+      throw new Error("unsupported evaluation host was accepted");
+    }
+  }
+  runtime.host = "assistant-cloud";
+  runtime.isolation = "shared-agent";
+  writeFixture();
+  if (!run().some(error => error.includes("runtime binding"))) {
+    throw new Error("cloud host bypassed fresh-agent isolation");
+  }
+  runtime.isolation = "fresh-agent";
+  for (const result of ["fail", "error"]) {
+    const failed = structuredClone(record);
+    failed.result = "failed";
+    failed.checks[0].result = result;
+    fs.writeFileSync(recordFile, JSON.stringify(failed));
+    writeFixture();
+    if (!run().some(error => error.includes("exact registered clean pass"))) {
+      throw new Error("cloud host converted missing target proof into a pass");
+    }
+  }
+  fs.writeFileSync(recordFile, JSON.stringify(record));
+  fs.writeFileSync(path.join(root, "source.md"), "changed\n");
+  writeFixture();
+  if (!run().some(error => error.includes("behavior changed"))) {
+    throw new Error("cloud host bypassed source identity");
+  }
+  fs.writeFileSync(path.join(root, "source.md"), "stable\n");
+  runtime.host = "codex-desktop";
+  writeFixture();
   const savedContract = baseline.scenario.contractSha256;
   delete baseline.scenario.contractSha256;
   writeFixture();
