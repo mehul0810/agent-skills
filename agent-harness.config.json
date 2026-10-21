@@ -637,7 +637,7 @@
     {
       "name": "WP Product Orchestrator",
       "file": "skill-evals/wp-product-orchestrator-scenarios.md",
-      "requiredPhrases": ["# WP Product Orchestrator Evaluation Scenarios", "Owner-aligned implementation choice", "Exact supplied values", "Enterprise without overengineering", "Four-role product topology", "Feature value recommendation", "Mandatory work is not score-gated", "Stable mainline lineage", "Proof environment preflight", "Unapproved Studio proof"]
+      "requiredPhrases": ["# WP Product Orchestrator Evaluation Scenarios", "Owner-aligned implementation choice", "Exact supplied values", "Enterprise without overengineering", "Four-role product topology", "Feature value recommendation", "Mandatory work is not score-gated", "Stable mainline lineage", "Proof environment preflight", "Unapproved Studio proof", "Local-only completion", "Push-only completion", "Requested PR still missing", "Local verification gap"]
     },
     {
       "name": "Dedicated Product Role Topology",

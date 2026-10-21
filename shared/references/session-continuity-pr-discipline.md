@@ -121,9 +121,21 @@ For partial issue coverage, do not use closing keywords. Use closing keywords on
 
 ## Completion Standard
 
-Before saying GitHub work is complete:
+Judge completion against the requested outcome, not a fixed GitHub artifact.
+Apply [change delivery discipline](change-delivery-discipline.md); finishing one
+stage does not authorize the next.
 
-- Confirm the PR exists against the intended base.
-- Confirm only intended commits/files are included.
-- Confirm validation state and CI state if CI is part of the task.
-- Report the PR URL, base branch, head branch, and any remaining risk.
+- Local implementation: verify the intended changes, commit IDs and required
+  checks. A PR is not required when the owner requested local-only work. Report
+  that delivery remains local; do not manufacture a push approval dependency.
+- Requested push: verify the exact remote/ref/SHA and required resulting checks.
+  A verified push completes only that delivery scope, not an unrequested PR,
+  merge, release or deployment.
+- Requested PR: confirm it exists with the intended base/head and only intended
+  commits/files. Report its URL and validation/CI state; a push alone is not a PR.
+- Requested merge, release or deployment: establish that specific authorized
+  outcome with fresh evidence. Do not call a predecessor stage full completion.
+
+Required failed or unavailable verification remains a gap, even when the commit
+or PR exists. Report what is verified, what remains, and the exact dependency.
+Do not invent new gates or artifacts to replace the owner's requested outcome.
