@@ -904,6 +904,17 @@ function selfTest() {
       throw new Error("cloud host converted missing target proof into a pass");
     }
   }
+  for (const mutate of [
+    value => { value.checks[0].result = "fail"; },
+    value => { value.checks = []; },
+    value => { delete value.lineage.artifactPointer; },
+  ]) {
+    const invalid = structuredClone(record);
+    mutate(invalid);
+    fs.writeFileSync(recordFile, JSON.stringify(invalid));
+    writeFixture();
+    if (!run().length) throw new Error("cloud label bypassed required proof evidence");
+  }
   fs.writeFileSync(recordFile, JSON.stringify(record));
   fs.writeFileSync(path.join(root, "source.md"), "changed\n");
   writeFixture();
