@@ -18,7 +18,7 @@
         "wp-plugin-expert/SKILL.md",
         "wp-plugin-expert/references/router.md"
       ],
-      "sha256": "2cdcf362660cc634e791bb7d297c4953226338c81a0d7634aa2a6ce2a5559299",
+      "sha256": "78bd1b5a4ce7d859adbefea67347517cf51d7b2696365651b7655397b92546a7",
       "scenario": {
         "id": "elevated-enterprise-runtime-assurance",
         "files": [
@@ -41,14 +41,14 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-10-15-chat-corrections.json",
-          "sha256": "120ad70552bb6082d287ea4cb7148f28fe211092702cac021f26d10d780ff745",
-          "testedRevision": "3467de86b8c1fec9361ae12229a2778735b2fda0",
-          "testedSourceSha256": "2cdcf362660cc634e791bb7d297c4953226338c81a0d7634aa2a6ce2a5559299",
+          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-10-21-cloud-refresh.json",
+          "sha256": "49c3bfea10ba36c26fe8e0b0fb46bea5e2ffb6755079b1a8f7130abadd86a1d1",
+          "testedRevision": "06323063661568a985baf26ec31bc6778677b83d",
+          "testedSourceSha256": "78bd1b5a4ce7d859adbefea67347517cf51d7b2696365651b7655397b92546a7",
           "testedScenarioSha256": "3d842125a654c717b1b68f1fe273d32f8bf4ac54bae26ac39dbacefb0f92eb84",
           "testedScenarioContractSha256": "a5e92da73927c18518f1dd51dabe014c350387dde50c4dbd14968ced5c3d40e8",
           "runtime": {
-            "host": "codex-desktop",
+            "host": "assistant-cloud",
             "isolation": "fresh-agent",
             "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           }
@@ -519,7 +519,7 @@
         "wp-expert/agents/openai.yaml",
         "templates/product-repo/AGENTS.md"
       ],
-      "sha256": "0beab90ad843d41f582c93d0ecf293b0b74049d2e28b832135bd99ac31615fdb",
+      "sha256": "f248988db7c3a23fa0b60de3c24c68f4588eacbffac2d3c564cd861a3e8586ef",
       "scenario": {
         "id": "automatic-specialist-selection",
         "files": [
@@ -541,14 +541,14 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/automatic-specialist-routing-2026-10-15-voiceover-exclusion.json",
-          "sha256": "6a83ae956849986a4d410ac2f8c6b4194424e952cfc9823298081476cbf488d9",
-          "testedRevision": "fbf46e5e9177b9cc9a318d90ca5ad8925fbff385",
-          "testedSourceSha256": "0beab90ad843d41f582c93d0ecf293b0b74049d2e28b832135bd99ac31615fdb",
+          "runRecord": "skill-evals/run-records/automatic-specialist-routing-2026-10-21-cloud-refresh.json",
+          "sha256": "143c3678918a753cda0c2e8308ed817be35e88d4dfc8142539d0771ab2011495",
+          "testedRevision": "06323063661568a985baf26ec31bc6778677b83d",
+          "testedSourceSha256": "f248988db7c3a23fa0b60de3c24c68f4588eacbffac2d3c564cd861a3e8586ef",
           "testedScenarioSha256": "5964fa0002f260ea2ed1ecdf40a842bc6a5548173fca1f1b38adfa16b713693d",
           "testedScenarioContractSha256": "3cfb73302f1549563de8f40ca8918fe6e8af1d3a26919d28b46973ce6a2ea3bc",
           "runtime": {
-            "host": "codex-desktop",
+            "host": "assistant-cloud",
             "isolation": "fresh-agent",
             "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           }
@@ -732,7 +732,7 @@
         "shared/references/plugin-release-workflow.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "5d079a74ba28cafc61e490d65d26230eaf88a55cb033e92199db33b0d819db78",
+      "sha256": "0c6a89cab08c761038a954ddea03c03f46dbdcac86df3a9c9187dc32474029ab",
       "scenario": {
         "id": "product-release-authority",
         "files": [
@@ -793,14 +793,14 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-release-authority-2026-10-15-chat-corrections.json",
-          "sha256": "b090584f01e0153bac4852c606757f684adaeff355bc33603f6a2b41bd9b5b92",
-          "testedRevision": "3467de86b8c1fec9361ae12229a2778735b2fda0",
-          "testedSourceSha256": "5d079a74ba28cafc61e490d65d26230eaf88a55cb033e92199db33b0d819db78",
+          "runRecord": "skill-evals/run-records/product-release-authority-2026-10-21-cloud-refresh.json",
+          "sha256": "e7939662b2147ba503c71a9e1c09ca475b60eca6aadb12f3a7d602683fafd39d",
+          "testedRevision": "06323063661568a985baf26ec31bc6778677b83d",
+          "testedSourceSha256": "0c6a89cab08c761038a954ddea03c03f46dbdcac86df3a9c9187dc32474029ab",
           "testedScenarioSha256": "415eb151638237bf0c9a4cc09f6462e4f028386f88256125e0f3b8369c87f34e",
           "testedScenarioContractSha256": "7e839a84300f2037e63d753b33d65ee44f7fb75773df468c4543d2ff4126ab7d",
           "runtime": {
-            "host": "codex-desktop",
+            "host": "assistant-cloud",
             "isolation": "fresh-agent",
             "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           }
@@ -865,7 +865,7 @@
         "wp-product-orchestrator/SKILL.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "8977cfd6602d3fddcf43ddb8e1d878f85403145d0a1de0289ac56a679c4aef55",
+      "sha256": "4c0b09529ec089050d098f7b2431617ac7a47a5e18d5ab0bbf7a30ecbb3aec76",
       "scenario": {
         "id": "owner-aligned-judgment",
         "files": [
@@ -909,14 +909,14 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/owner-aligned-judgment-2026-10-15-chat-corrections.json",
-          "sha256": "2f538d171f9f08d224c209449fe0d6f0a2e1a181b89fc52279131bf0c4865e03",
-          "testedRevision": "3467de86b8c1fec9361ae12229a2778735b2fda0",
-          "testedSourceSha256": "8977cfd6602d3fddcf43ddb8e1d878f85403145d0a1de0289ac56a679c4aef55",
+          "runRecord": "skill-evals/run-records/owner-aligned-judgment-2026-10-21-cloud-refresh.json",
+          "sha256": "ee0d3f68b8cb923d070565f6b1068fa937f24c5a97663cbbdf26c042962bacb6",
+          "testedRevision": "06323063661568a985baf26ec31bc6778677b83d",
+          "testedSourceSha256": "4c0b09529ec089050d098f7b2431617ac7a47a5e18d5ab0bbf7a30ecbb3aec76",
           "testedScenarioSha256": "54b4ae2bce4d363eecee4fad87a2b5e39ae29e0c98c722ac773dc9447afc6d02",
           "testedScenarioContractSha256": "5f6efa91ab001a0d5c4b4f3bf7f19f7f9bc9350ecfe381b0dabe7b92f3b2d5ec",
           "runtime": {
-            "host": "codex-desktop",
+            "host": "assistant-cloud",
             "isolation": "fresh-agent",
             "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           }
@@ -1331,20 +1331,20 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/loop-steward-authority-2026-10-15-chat-corrections.json",
-          "sha256": "08ff6866263669b8121085614b2404208752fdebd422b5304ff8cae21d1f696f",
-          "testedRevision": "3467de86b8c1fec9361ae12229a2778735b2fda0",
-          "testedSourceSha256": "a41f285ad825e7cbb5fd941c24a433c3821581a7acb8d0138caed51d71558f8b",
+          "runRecord": "skill-evals/run-records/loop-steward-authority-2026-10-21-cloud-refresh.json",
+          "sha256": "0a5e73f0ce1a2adbb0b6ef715cfb6eef95a86018d6d10bc54a62d966b961e7e0",
+          "testedRevision": "06323063661568a985baf26ec31bc6778677b83d",
+          "testedSourceSha256": "bf80f508596888500055de68fd7d4b6c87a31a9ce09568d049b1753e914a3e5c",
           "testedScenarioSha256": "ccb431d8dc24dde902d53f9a6b24ca19769efd2ac88e76c46da998490e04955f",
           "testedScenarioContractSha256": "02ab92177e6326dccce3307d926aa132a4a0a6bdd31809de68df0b8f53e2b960",
           "runtime": {
-            "host": "codex-desktop",
+            "host": "assistant-cloud",
             "isolation": "fresh-agent",
             "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           }
         }
       ],
-      "sha256": "a41f285ad825e7cbb5fd941c24a433c3821581a7acb8d0138caed51d71558f8b",
+      "sha256": "bf80f508596888500055de68fd7d4b6c87a31a9ce09568d049b1753e914a3e5c",
       "harnessContract": "cli-validation-v1"
     },
     {
@@ -1471,7 +1471,7 @@
         "templates/operational-proof/run.md",
         "templates/project-hooks/activation-proof.md"
       ],
-      "sha256": "bf3f9c302c72c22bada582f347998d643b924ce765c27762d570b58cdb5fe30c",
+      "sha256": "884d84de9eafafa010e9fa0f6097e1615fe713b8f044875904ef8b497db44ebf",
       "scenario": {
         "id": "scoped-review-workflow",
         "files": [
@@ -1504,14 +1504,14 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/scoped-review-workflow-2026-10-15-voiceover-exclusion.json",
-          "sha256": "361b40d7be9b054c67041580c6f2176005efa62f225268fc1dbfc3dc2a444265",
-          "testedRevision": "fbf46e5e9177b9cc9a318d90ca5ad8925fbff385",
-          "testedSourceSha256": "bf3f9c302c72c22bada582f347998d643b924ce765c27762d570b58cdb5fe30c",
+          "runRecord": "skill-evals/run-records/scoped-review-workflow-2026-10-21-cloud-refresh.json",
+          "sha256": "fa1023693e2585d419d484c3363718ab43c9d6d0bb8ff3d1d241eaa3e3cd063f",
+          "testedRevision": "06323063661568a985baf26ec31bc6778677b83d",
+          "testedSourceSha256": "884d84de9eafafa010e9fa0f6097e1615fe713b8f044875904ef8b497db44ebf",
           "testedScenarioSha256": "c3ec2ad278838bb033689d38078c307be4df9fbe5ec300eb581b39e12831d806",
           "testedScenarioContractSha256": "e917f801dc0feaaab10e07765be24894d6e792a3695779fe6305bf81e0bd7d3f",
           "runtime": {
-            "host": "codex-desktop",
+            "host": "assistant-cloud",
             "isolation": "fresh-agent",
             "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           }
@@ -1674,7 +1674,7 @@
         "scripts/migration-regression-fixture.mjs",
         "scripts/test-content-migration-regression.mjs"
       ],
-      "sha256": "45584a7f045964f00bdcde6b330e157b88e1de122b57f0a9446b84fb4e86a10e",
+      "sha256": "b98cedc5f243c3d2f59e6e8d794d0628663dbbed7d4bdeca37a62da0ca676e1f",
       "scenario": {
         "id": "content-migration-integrity",
         "files": [
@@ -1706,14 +1706,14 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/content-migration-integrity-2026-10-15-chat-corrections.json",
-          "sha256": "59c0cdb87f58ffe66bee207f56db6a6445a712f251fdc2cd52791e19c3e06d6a",
-          "testedRevision": "3467de86b8c1fec9361ae12229a2778735b2fda0",
-          "testedSourceSha256": "45584a7f045964f00bdcde6b330e157b88e1de122b57f0a9446b84fb4e86a10e",
+          "runRecord": "skill-evals/run-records/content-migration-integrity-2026-10-21-cloud-refresh.json",
+          "sha256": "666387a56672a1f09b20377eb5d5b3fb337254b6d733d4a8d460fa70c3000366",
+          "testedRevision": "06323063661568a985baf26ec31bc6778677b83d",
+          "testedSourceSha256": "b98cedc5f243c3d2f59e6e8d794d0628663dbbed7d4bdeca37a62da0ca676e1f",
           "testedScenarioSha256": "728a0c1ed73b9f2374fd0085df9ec5486c239dad0abc4ac84790c95ff3b4b407",
           "testedScenarioContractSha256": "165e388050fac23b6adbdd01c7d95fcb0eb4729efb2056d17681ef2dd139cb94",
           "runtime": {
-            "host": "codex-desktop",
+            "host": "assistant-cloud",
             "isolation": "fresh-agent",
             "harnessRevision": "fe1fe276ca5027b4407ef34334fd41317027c471"
           }

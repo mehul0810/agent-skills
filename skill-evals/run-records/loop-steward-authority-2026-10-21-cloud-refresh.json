@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "runId": "loop-steward-authority-2026-10-21-cloud-refresh",
+  "scenario": "loop-steward-authority",
+  "result": "succeeded",
+  "startedAt": "2026-10-21T02:42:20.000Z",
+  "durationMs": 503167,
+  "checks": [
+    {
+      "name": "live-policy-preflight",
+      "result": "pass"
+    },
+    {
+      "name": "missing-policy-fail-closed",
+      "result": "pass"
+    },
+    {
+      "name": "revised-head-independent-review",
+      "result": "pass"
+    },
+    {
+      "name": "premerge-race-recheck",
+      "result": "pass"
+    },
+    {
+      "name": "idempotent-reconciliation",
+      "result": "pass"
+    },
+    {
+      "name": "required-check-fail-closed",
+      "result": "pass"
+    },
+    {
+      "name": "authority-expansion-owner-gate",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 7,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "loop-steward-authority-2026-10-21-cloud-refresh",
+    "artifactPointer": "private-eval:agent-skills-2026-10-21#scoring/loop-steward-authority.draft.json"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-10-21T02:50:43.167Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Fresh isolated synthetic evaluation against frozen source, independently scored against every required check. Retained manifest, results, draft receipt and rejected attempts in private evidence. Shared observed evaluation-to-admission interval includes coordination and scoring, not model latency or cost. No live product, native, rendered, production or conformance claims."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}
