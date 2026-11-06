@@ -12,7 +12,7 @@ PR per issue unless release/validation boundaries cross. Maintain one versioned 
 
 Portfolio control routes execution to the product PO. Do not archive visible product-control threads without owner request; only reconciled Codex-created workers may be archived.
 
-Use an in-task subagent by default. Create a new user-visible Codex task/thread only when the owner explicitly requests one; environment/tool constraints do not authorize it. When explicitly authorized, a visible worker is an execution room, not a control room: no roadmap authority, direct product-thread contact except through CTO reconciliation, or release/publish/merge/pricing/licensing/privacy/security/public-contract decisions.
+Use an in-task subagent by default. Create a new user-visible Codex task/thread only when the owner explicitly requests one; environment/tool constraints do not authorize it. When explicitly authorized, a visible worker is an execution room, not a control room: no roadmap authority or release/publish/merge/pricing/licensing/privacy/security/public-contract decisions. Route questions, status, and handoffs through the accountable parent/coordinator; do not contact unrelated product conversations without explicit scope.
 
 For owner-adopted roles, preserve authorized long-lived roles; create disposable `<Product> Worker <Issue or Outcome>` tasks only within visible-task authorization. Record each returned thread ID; title/project alone cannot identify archive/recovery targets. Protect Planner, PO, Review, Test & Proof, and Release Readiness.
 
