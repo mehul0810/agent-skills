@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "runId": "visual-evidence-assets-2026-11-06-baseline-refresh",
+  "scenario": "visual-evidence-and-assets",
+  "result": "succeeded",
+  "startedAt": "2026-11-06T05:13:58.163Z",
+  "durationMs": 7087553,
+  "checks": [
+    {
+      "name": "structured-visual-proof-rejection",
+      "result": "pass"
+    },
+    {
+      "name": "per-surface-proof-coverage",
+      "result": "pass"
+    },
+    {
+      "name": "concrete-evidence-binding",
+      "result": "pass"
+    },
+    {
+      "name": "asset-production-receipt",
+      "result": "pass"
+    },
+    {
+      "name": "design-token-lineage",
+      "result": "pass"
+    },
+    {
+      "name": "visual-defect-reproof",
+      "result": "pass"
+    },
+    {
+      "name": "structured-spatial-proof-rejection",
+      "result": "pass"
+    },
+    {
+      "name": "browser-geometry-capture",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 8,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "visual-evidence-assets-2026-11-06-baseline-refresh",
+    "artifactPointer": "codex-private:baseline-refresh-20261106#accepted-checks/visual-evidence-assets.json"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-11-06T07:12:05.716Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Fresh frozen-source development regressions independently accepted after retained failed/incomplete attempts and targeted recoveries. Shared parent-observed batch interval includes coordination and scoring, not per-actor runtime or summable cost. Host token/cost telemetry unavailable. Synthetic decisions and actual local fixture mechanics only; native/production acceptance and excluded VoiceOver/narration are not claimed. See baseline-refresh-evidence-2026-11-06.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "development-regression"
+  ]
+}

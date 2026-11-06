@@ -20,7 +20,7 @@ Fail if a response archives on push alone, creates a permanent Worker control ta
 ## Responsibility-First Coordination
 
 Use `cases/responsibility-first-coordination/input.json` through the blind packet
-builder, keeping `criteria.md` outside performer inputs. These twelve cases cover
+builder, keeping `criteria.md` outside performer inputs. These cases cover
 current-task/dot product ownership without rooms; narrow status scope; on-demand
 cross-product escalation; reversible choices; independent exact-revision review;
 preservation of adopted chats/jobs; no unsolicited schedules; explicit handoff

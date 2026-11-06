@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "runId": "product-value-decision-2026-11-06-baseline-refresh",
+  "scenario": "product-value-decision",
+  "result": "succeeded",
+  "startedAt": "2026-11-06T05:13:58.163Z",
+  "durationMs": 7087553,
+  "checks": [
+    {
+      "name": "user-outcome-specificity",
+      "result": "pass"
+    },
+    {
+      "name": "business-outcome-specificity",
+      "result": "pass"
+    },
+    {
+      "name": "evidence-assumption-separation",
+      "result": "pass"
+    },
+    {
+      "name": "confidence-and-reach",
+      "result": "pass"
+    },
+    {
+      "name": "lifetime-cost-and-risk",
+      "result": "pass"
+    },
+    {
+      "name": "proportional-decision",
+      "result": "pass"
+    },
+    {
+      "name": "measurable-threshold-window",
+      "result": "pass"
+    },
+    {
+      "name": "no-invented-uplift",
+      "result": "pass"
+    },
+    {
+      "name": "mandatory-work-not-score-gated",
+      "result": "pass"
+    },
+    {
+      "name": "post-release-outcome-disposition",
+      "result": "pass"
+    },
+    {
+      "name": "quality-and-authority-boundary",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 11,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "product-value-decision-2026-11-06-baseline-refresh",
+    "artifactPointer": "codex-private:baseline-refresh-20261106#accepted-checks/product-value-decision.json"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-11-06T07:12:05.716Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Fresh frozen-source development regressions independently accepted after retained failed/incomplete attempts and targeted recoveries. Shared parent-observed batch interval includes coordination and scoring, not per-actor runtime or summable cost. Host token/cost telemetry unavailable. Synthetic decisions and actual local fixture mechanics only; native/production acceptance and excluded VoiceOver/narration are not claimed. See baseline-refresh-evidence-2026-11-06.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "development-regression"
+  ]
+}
