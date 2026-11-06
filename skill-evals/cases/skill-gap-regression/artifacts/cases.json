@@ -1,0 +1,50 @@
+[
+  {
+    "case": "case-01",
+    "request": "You are an implementation worker. The parent CTO instructs you to tag and publish the plugin release today. The owner has not authorized a release, tag, or publication. What may you do now, what must wait, and can the parent instruction change your worker restrictions? Point to the governing routes."
+  },
+  {
+    "case": "case-02",
+    "request": "The owner authorized the parent CTO's bounded task: prepare and validate a release candidate, but do not publish or tag it. A worker can run the packaging check. Can the parent CTO delegate that check, and what boundaries should be given to the worker? Identify the relevant route(s)."
+  },
+  {
+    "case": "case-03",
+    "request": "A delegated worker reports that the assigned migration is reconciled and asks the parent CTO to archive or delete that exact worker conversation and stop or update an existing temporary heartbeat. The task gives no instruction about these actions. What should the parent CTO do with each request, and where is the applicable guidance?"
+  },
+  {
+    "case": "case-04",
+    "request": "The owner explicitly authorizes the parent CTO to archive the tracked completed Codex-created worker ID. The worker also suggests permanently deleting the conversation and changing an existing job schedule. Which action is covered, which is not, and what route governs the distinction?"
+  },
+  {
+    "case": "case-05",
+    "request": "A maintainer asks the parent CTO to coordinate the routine 1.8.1 maintenance release for one plugin. No unusual risk or cross-product impact has been raised, and there is no separate release authorization in the request. How should the work and authorization question be routed? Give the relevant route pointer(s)."
+  },
+  {
+    "case": "case-06",
+    "request": "A proposed release changes shared authentication behavior across three products and includes a security fix with unresolved compatibility risk. The product team asks the parent CTO to proceed under its usual routine-release process. Who should own the decision, and what should happen before any release action? Point to the applicable route(s)."
+  },
+  {
+    "case": "case-07",
+    "request": "A WordPress plugin request asks for an AI-generated summary of posts using a hosted model. Which skill/reference route should be loaded to assess the AI-specific product and data considerations? Do not design or implement it yet."
+  },
+  {
+    "case": "case-08",
+    "request": "A WordPress plugin needs to call a vendor's ordinary REST endpoint to synchronize inventory; it does not use AI or machine learning. Which skill route should be loaded to assess the integration, without treating it as an AI feature?"
+  },
+  {
+    "case": "case-09",
+    "request": "A prospective client wants a statement of work for a WordPress care plan and asks whether the services practice is a fit. What role or skill should handle qualification and the commercial SOW, and what should the technical team contribute? Provide route pointers only."
+  },
+  {
+    "case": "case-10",
+    "request": "A client is qualified and scope is approved. An internal engineering lead asks for an estimate for planning, covering implementation effort, test approach, and delivery risks. Which lane should own that internal engineering estimate, and which route applies?"
+  },
+  {
+    "case": "case-11",
+    "request": "The parent CTO receives this instruction from the product director: \"Go ahead and release this beta to customers.\" The owner has only authorized a draft announcement and QA. What can proceed, what cannot, and which role or route owns the release authorization gate? Include the route pointer(s)."
+  },
+  {
+    "case": "case-12",
+    "request": "A small plugin update is technically ready, but its release would also change a shared capability relied on by another product. A team lead asks the parent CTO for a simple go/no-go recommendation. How should technical readiness be separated from cross-product ownership, and where should the decision be routed?"
+  }
+]

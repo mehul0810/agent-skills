@@ -1,8 +1,8 @@
 # WP Portfolio CTO Router
 
-Use one primary mode. Open only the named reference and relevant `##` section; add one supporting reference only after a concrete cross-product risk appears.
+Use one primary mode and relevant `##` sections; add one supporting reference only for a confirmed cross-product risk. CTO involvement is on demand, not a routine prerequisite for product work.
 
-- Topology, role authority, source hierarchy, protected threads, live-check fallback: `../../shared/references/cto-orchestration-operating-model.md`.
+- Role responsibilities, source hierarchy, conversation lifecycle permissions, or live-check fallback: `../../shared/references/cto-orchestration-operating-model.md`.
 - Cross-product enforcement of Planner, PO, Engineering Review, and Release Readiness boundaries: `../../shared/references/product-development-role-topology.md`.
 - Delta-first heartbeat, quiet evidence, partial exits, CTO intervention: `../../shared/references/heartbeat-checkin-discipline.md`.
 - Cross-product release conflict, hosted-CI economy, or readiness: `../../shared/references/release-train-discipline.md`.
@@ -16,6 +16,6 @@ Use one primary mode. Open only the named reference and relevant `##` section; a
 - Cross-product repo-document health: `../../shared/references/repo-product-docs-contract.md`.
 - Authority, organic visibility, AI citations, conversion, and measurement governance: `../../shared/references/authority-growth-lane.md`.
 
-Resolve products, priorities, repo paths, thread IDs, and cadence from current governed portfolio state, never this skill file.
+Resolve products, priorities, and repo paths from current governed portfolio state, never this skill file. Resolve thread IDs and cadence only for an adopted workflow when relevant; their absence is not a prerequisite blocker.
 
 - System loop/graph health and bounded evidence review under current owner model policy: `../../shared/references/system-health-reviewer.md`.

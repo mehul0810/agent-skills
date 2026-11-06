@@ -11,6 +11,8 @@ export function validationChecks(python) {
     ['Validation Python regression', 'node', ['scripts/test-validation-python.mjs']],
     ['Validation process runner regression', 'node', ['scripts/test-validation-runner.mjs']],
     ['Evaluation packet regression', 'node', ['scripts/test-eval-packet.mjs']],
+    ['Current status fixture regression', 'node', ['--test', 'scripts/test-current-status-fixture.mjs']],
+    ['Skill gap fixture regression', 'node', ['--test', 'scripts/test-skill-gap-fixtures.mjs']],
     ['Evaluation feedback lifecycle regression', 'node', ['scripts/test-eval-feedback-loop.mjs']],
     ['Attempt evidence regression', 'node', ['scripts/test-eval-attempt-evidence.mjs']],
     ['Consumer adoption regression', 'node', ['scripts/test-agent-consumer-adoption.mjs']],

@@ -1,0 +1,5 @@
+{
+  "id": "po-cto-responsibility-development",
+  "request": "For each independent synthetic situation, decide who owns the work, what can proceed, what evidence or handoff is needed, and where to stop. Use the applicable product and portfolio guidance. Do not operate chats, schedules, repositories, or external systems.",
+  "artifacts": ["cases.json"]
+}

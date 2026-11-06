@@ -1,6 +1,6 @@
 # Heartbeat Check-In Discipline
 
-Use for CTO/PO heartbeats: delta-first, decision-oriented, owner-readable, and brief.
+Use for a requested CTO/PO check-in or an already authorized scheduled heartbeat. This is a reporting contract, not a requirement to create a durable chat, schedule, or routine heartbeat. A skill invocation grants no permission to create, archive, interrupt, replace, fork, pause, or reschedule conversations or automations; leave existing chats and jobs unchanged absent exact applicable authorization. The same concise reporting rules apply to a direct task update when useful.
 
 ## Core Rules
 
@@ -76,7 +76,7 @@ Topology/process drift includes empty completions/active turns, `systemError`, n
 
 For release blockers, one non-material PO heartbeat is enough to escalate.
 
-Correct explicitly: recover worker/path, narrow blocker, reduce/pause cadence, route bounded work, or escalate owner approval for protected-thread recovery.
+Correct explicitly: recover worker/path, narrow blocker, or route bounded work. Recommend cadence changes, but change, pause, or resume an automation only when its exact existing authorization permits it; otherwise report the recommendation for owner decision. Conversation recovery, interruption, replacement, or fork requires exact authorization; otherwise report the blocker without changing the conversation.
 
 ## Portfolio CTO Template
 
@@ -110,7 +110,7 @@ Cadence/automation changes
 - <heartbeat/product>: <reduced, increased, paused, resumed, or topology follow-up>; why.
 ```
 
-Escalate repeated blockers. For stale topology, surface the exact decision until resolved or cadence changes. Repeated quiet status should trigger cadence reduction/pause or a proactive discovery lane.
+Escalate repeated blockers. For stale topology, surface the exact decision until resolved or authorized cadence changes. Repeated quiet status should prompt a cadence-reduction/pause recommendation or a proactive discovery lane; apply automation changes only under exact existing authorization.
 
 ## CTO Intervention Trigger
 
@@ -122,9 +122,9 @@ Intervene without prompting when:
 - Raw logs replace decisions; evidence-backed or unexpected behavior, maintainability/comments/tests/validation/workflow findings lack a focused issue.
 - Community PR/issues are ignored; UI work lacks Playground/equivalent proof; executable work is falsely owner-gated; cadence mismatches urgency; or work lacks proof/uses the wrong lane.
 
-CTO response should be one of: return a false owner blocker for researched execution, correct the PO, reduce/pause cadence, request the exact verification blocker, recover/fork the product thread with owner approval when needed, or route a skill/process patch.
+CTO response should be one of: return a false owner blocker for researched execution, correct the PO, recommend a cadence reduction/pause, request the exact verification blocker, recommend authorized conversation recovery when needed, or route a skill/process patch.
 
-Portfolio 'NOTIFY' check-ins should include 'CTO intervention' when this happens so the owner sees what was corrected and why.
+Portfolio `NOTIFY` check-ins should include `CTO intervention` when this happens so the owner sees what was corrected and why. This format does not itself require or authorize a scheduled check-in.
 
 ## Product PO Template
 

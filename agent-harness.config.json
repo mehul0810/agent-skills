@@ -607,7 +607,7 @@
     {
       "name": "Dedicated Product Role Topology",
       "file": "skill-evals/product-role-topology-scenarios.md",
-      "requiredPhrases": ["# Dedicated Product Role Topology Scenarios", "Dedicated product topology lifecycle", "Push is not completion", "Automatic reconciled archive", "Failed proof correction", "Accepted blocked evidence worker", "Missing handoff acknowledgement", "Owner-created role task", "Active implementation correction"]
+      "requiredPhrases": ["# Dedicated Product Role Topology Scenarios", "Dedicated product topology lifecycle", "Push is not completion", "Automatic reconciled archive", "Failed proof correction", "Accepted blocked evidence worker", "Missing handoff acknowledgement", "Owner-created role task", "Active implementation correction", "## Responsibility-First Coordination"]
     },
     {
       "name": "Visual WordPress",
@@ -781,6 +781,27 @@
         "CMI-3 Mutation safety",
         "CMI-4 Resume integrity",
         "CMI-5 No-progress/empty"
+      ]
+    },
+    {
+      "name": "Current Status Evidence",
+      "file": "skill-evals/current-status-scenarios.md",
+      "requiredPhrases": [
+        "# Current Status Evidence Scenarios",
+        "## Exact Target And Current State",
+        "## Unavailable Evidence",
+        "## Revision Matched CI",
+        "## Historical Scope And Receipt Reuse",
+        "## Execution And Scoring"
+      ]
+    },
+    {
+      "name": "Skill Gap Regression",
+      "file": "skill-evals/skill-gap-regression-scenarios.md",
+      "requiredPhrases": [
+        "# Skill Gap Regression Scenarios",
+        "Parent CTO directs a worker",
+        "case-supp-11"
       ]
     }
   ]

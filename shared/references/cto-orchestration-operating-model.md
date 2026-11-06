@@ -1,22 +1,20 @@
 # CTO Orchestration Operating Model
 
-Use this only for thread topology, role authority, source-of-truth order, or control-plane recovery. Use the portfolio/PO router for intake, heartbeats, releases, delegation, growth, repo docs, or research instead of loading those details here.
+Use this for responsibility boundaries, source-of-truth order, conversation lifecycle permissions, or control-plane recovery. Use the portfolio/PO router for intake, check-ins, releases, delegation, growth, repo docs, or research instead of loading those details here.
 
 ## Runtime Portfolio Contract
 
-Resolve assigned products, repo roots, thread IDs, priority, active release train, and heartbeat cadence from current owner instructions, live automation state, and a durable portfolio manifest such as `PORTFOLIO.md`. Do not hardcode transient product lists, priorities, version targets, or cadence in shared skills.
+Resolve assigned products, repo roots, priority, and relevant release train from current governed sources. Resolve thread IDs and heartbeat cadence only for adopted workflows when needed; missing rooms or schedules do not block ordinary work. Do not hardcode transient portfolio state in shared skills.
 
 If sources disagree, use live owner direction, then the current governed manifest/automation definition, then repo docs. Report the conflict and correct the durable source rather than carrying a chat-only exception.
 
-## Thread Topology
+## Responsibility And Conversation Boundaries
 
-- Portfolio control thread: cross-product CTO control room. Alias: `CTO`.
-- Product-orchestrator thread: one long-lived user-visible control thread per product. Alias: `<Product Name> PO`.
-- Product Planner, Engineering Review, and Release Readiness: explicit role contracts; milestone-bound or disposable tasks unless sustained product activity justifies a durable lane.
-- Implementation/evidence worker: bounded in-task subagent by default. Create a new user-visible Codex task only when explicitly requested by the owner; a missing tool or environment constraint is not authorization.
-- Active release/CI heartbeat: temporary high-frequency loop for one moving PR or release.
+PO and CTO are responsibilities, not mandatory permanent chats, a fixed hierarchy, or prerequisites for work. The PO coordinates one exact product in the current task, a verified dot workflow, or bounded delegated work. CTO is on demand for material cross-product, architecture, security/privacy, public-contract, release-exception, or unresolved-contract decisions; routine status and implementation stay in the product lane. Planner, Engineering Review, Test & Proof, and Release Readiness are role contracts that may be combined or separated proportionally while retaining required independence.
 
-Use thread IDs, not aliases, for archive, pin, interruption, fork recovery, release delegation, or destructive cleanup. Never archive user-created portfolio, product, or skill threads unless the owner explicitly asks. Only Codex-created workers may be archived after evidence and product state are reconciled.
+Durable chats and scheduled heartbeats are optional workflow structures only when explicitly adopted and authorized. A skill invocation grants no permission to create, archive, interrupt, replace, fork, pause, pin, or reschedule chats or automations. Existing chats and jobs remain unchanged absent exact applicable authorization. If a workflow has such authorization, use exact IDs and honor its scope; otherwise keep work in the current task and report handoffs without changing persistent resources. A tool's native dot capability alone does not prove that relevant guidance/context was loaded or that work was verified.
+
+Implementation/evidence work should be bounded and scoped. A new user-visible task requires explicit owner request; a missing tool or environment constraint is not authorization. Exact source identity, role, scope/non-goals, validation, proof environment/mutation, stop condition, evidence, and owner gates travel with every handoff, independent of host. Automatic workflow archival is limited to authorized Codex-created disposable workers after evidence and product state are reconciled. Never auto-archive owner-created conversations; an explicit owner request may authorize a lifecycle action for the exact identified conversation.
 
 ## Loop-Stack Operating Model
 
@@ -28,19 +26,19 @@ Use thread IDs, not aliases, for archive, pin, interruption, fork recovery, rele
 
 Executable work is PR-sized. CTO steers and audits; POs govern product state; task workers implement and prove. Product docs are system memory. Reusable repo rules belong in `AGENTS.md`, `DESIGN.md`, `TESTING.md`, `RELEASE.md`, architecture docs, or the relevant product document.
 
-## Portfolio Thread Ownership
+## Portfolio Responsibility
 
 The CTO owns cross-product blockers, release conflicts, shared process, thread health, owner briefs, skill routing, and final readiness recommendations. It does not execute product backlog or routine planning, PR review, and readiness work by default. Escalate only material architecture/cross-product impact, public API/schema or breaking contracts, security/privacy posture, release-risk exceptions, and unresolved product contracts.
 
-Route product work to the healthy PO. Bypass a PO only for super-critical work it cannot safely complete under the current owner-approved model/reasoning policy after verifying availability and supported effort. Model or tool unavailability does not authorize a different model or expand CTO authority. Ask before interrupting, replacing, or forking a user-created PO thread.
+Route product work to the PO responsibility. Model or tool unavailability does not authorize a different model or expand CTO authority. Never interrupt, replace, or fork a user-created PO conversation without exact owner authorization.
 
-Classify repeated inactivity, empty/system-error turns, missing workers, wrong path/base/model, or ignored executable work as topology/process drift. Intervene with an exact blocker request, cadence change, worker recovery, owner-approved thread recovery, or skill/process patch.
+Classify repeated inactivity, empty/system-error turns, missing workers, wrong path/base/model, or ignored executable work as topology/process drift. Intervene with an exact blocker request, worker recovery, an authorized cadence change, owner-approved conversation recovery, or skill/process patch.
 
-Route substantive skill changes through a Skill PO lane. Apply the target repository's standing publication policy when its exact target and conditions match; owner-managed `agent-*` repositories may publish validated changes directly to `main` under their standing authorization. Do not generalize that authorization to other repositories, protected targets, or release actions. Otherwise follow the repository policy and obtain any required owner approval; use a PR when requested or required by protection.
+Route substantive skill changes to the accountable skill-maintenance owner, using an existing Skill PO lane if adopted, not creating a new room as a prerequisite. Apply the target repository's standing publication policy when its exact target and conditions match; owner-managed `agent-*` repositories may publish validated changes directly to `main` under their standing authorization. Do not generalize that authorization to other repositories, protected targets, or release actions. Otherwise follow the repository policy and obtain any required owner approval; use a PR when requested or required by protection.
 
-## Product Thread Ownership
+## Product Responsibility
 
-Each PO owns one product's strategy, issue-first intake, milestone scope, release train, research/discovery validation, community/WordPress.org visibility, dependency/stale-PR hygiene, delegation, post-release learning, and release-ready evidence. Use `product-development-role-topology.md` for role handoffs and exact product identity when products share a parent project.
+The PO responsibility owns one product's strategy, issue-first intake, milestone scope, release train, research/discovery validation, community/WordPress.org visibility, dependency/stale-PR hygiene, delegation, post-release learning, and release-ready evidence. Use `product-development-role-topology.md` for role handoffs and exact product identity when products share a parent project.
 
 ## Source Of Truth Hierarchy
 

@@ -1,6 +1,6 @@
 # WP Product Orchestrator Router
 
-Use one primary mode. Open only the named reference and relevant `##` section; add one supporting reference only for a confirmed risk.
+Use one primary mode and relevant `##` sections; add one supporting reference only for a confirmed risk. Do not perform a full release discovery for routine status or typo work.
 
 - Queue rehydration, issue-first intake, discovery, dependency/stale PR triage: `../../shared/references/product-queue-triage.md`.
 - Planner, PO, independent Engineering Review, Release Readiness, and role handoffs: `../../shared/references/product-development-role-topology.md`.
@@ -14,10 +14,10 @@ Use one primary mode. Open only the named reference and relevant `##` section; a
 - Merged/reconciled worktree cleanup or local-storage pressure: `../../shared/references/worktree-storage-lifecycle.md`.
 - Branch, commit, PR body/base, screenshots, and merge discipline: `../../shared/references/commit-pr-discipline.md`.
 - Durable GitHub comments, labels, contributor/community handling: `../../shared/references/github-communication-protocol.md`; use `../../shared/references/community-intake-hygiene.md` for the detailed courtesy/forms/Playground lane.
-- Product check-in, partial exit, quiet proof, topology drift: `../../shared/references/heartbeat-checkin-discipline.md`.
+- Delta-first check-in, partial exit, quiet evidence, or topology drift: `../../shared/references/heartbeat-checkin-discipline.md`.
 - Context and payload budget: `../../shared/references/context-window-discipline.md`.
 - Worker skill/model/reasoning selection: `../../shared/references/project-subagent-routing.md`.
-- Topology, protected threads, source hierarchy, authority: `../../shared/references/cto-orchestration-operating-model.md`.
+- Role responsibility, source identity, thread/chat lifecycle permissions, or authority: `../../shared/references/cto-orchestration-operating-model.md`.
 - Rolling milestone/release-train planning: `../../shared/references/rolling-milestone-triage.md`.
 - Product `AGENTS.md`, `DESIGN.md`, `TESTING.md`, `RELEASE.md`, and self-improving docs: `../../shared/references/repo-product-docs-contract.md`.
 - Evidence-backed authority, SEO/AEO/GEO, AI citation, conversion, and measurement work: `../../shared/references/authority-growth-lane.md`.

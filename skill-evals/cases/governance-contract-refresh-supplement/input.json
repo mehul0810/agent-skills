@@ -5,6 +5,7 @@
     "cases.json",
     "recovery-checkpoint.md",
     "current-task.md",
-    "private-principles.md"
+    "private-principles.md",
+    "release-decision.md"
   ]
 }

@@ -13,7 +13,7 @@ Checked 2026-08-30 against official WordPress sources:
 
 Recheck official release/security/dev sources and runtime registry. Classify relied-on capabilities as `production`, `release-candidate`, `experimental/deferred`, or `unverified`; documentation does not prove shipment.
 
-At this snapshot, 7.1.0 is production. Verify later patches, security releases, Gutenberg-only behavior, and 7.2/trunk separately.
+Release freshness rechecked 2026-11-06: the [7.1 Field Guide](https://make.wordpress.org/core/2026/08/05/wordpress-7-1-field-guide/) remains the versioned developer baseline. [7.1.4](https://wordpress.org/news/2026/10/wordpress-7-1-4/) is the latest published stable security release observed in the official release feed; [7.2 Beta 4](https://wordpress.org/news/2026/11/wordpress-7-2-beta-4/) is testing-only, not production compatibility proof. Earlier focused API notes above retain their original check date. Verify later patches, Gutenberg-only behavior, and 7.2/trunk separately.
 
 ## WordPress 7.0 Production Baseline
 

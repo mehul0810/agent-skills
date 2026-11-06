@@ -38,7 +38,8 @@ Use this map to choose references with low context cost.
 | Session continuity, PR base, release branch, or milestone drift | `session-continuity-pr-discipline.md` |
 | Universal code-change quality plan, proportional risk contract, and completion receipt | `planning-drift-control.md` |
 | Subagents and model/reasoning allocation | `project-subagent-routing.md` |
-| PRD, SOW, estimates, or milestones | `delivery-excellence.md` |
+| Consulting qualification, buyer-facing SOW/estimate/proposal, retainer, or commercial capacity decision | `../../wp-service-business-development/SKILL.md` |
+| Internal PRD, implementation estimates, delivery planning, or milestones | `delivery-excellence.md` |
 | Enterprise acceptance criteria | `enterprise-acceptance-criteria-templates.md` |
 | Scope drift or exact-value change | `planning-drift-control.md` |
 | Brainstorming convergence and stopping rule | `thinking-brainstorming-engineering-discipline.md` |

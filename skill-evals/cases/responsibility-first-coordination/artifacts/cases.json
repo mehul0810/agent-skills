@@ -1,0 +1,50 @@
+[
+  {
+    "case": "case-01",
+    "request": "A maintainer asks for one bounded fix in a single plugin. The issue and repository are identified, and the current chat has enough context to coordinate implementation and proof. No dedicated product chat exists. Decide how to organize this work."
+  },
+  {
+    "case": "case-02",
+    "request": "A small product has a few open issues tracked in Dot, but no permanent product-control chat. The owner asks for a short prioritization decision and a next task. The issues, current release state, and existing Dot records are available. Where should coordination happen, and what information should the result retain?"
+  },
+  {
+    "case": "case-03",
+    "request": "The owner asks, 'What is the status of the settings fix?' The current issue, PR, checks, and latest review are visible. There is no request to prepare a release or inspect every milestone. State the appropriate scope of the answer and any immediate next action."
+  },
+  {
+    "case": "case-04",
+    "request": "Two products depend on the same shared API change. Each product has a separate owner, and their proposed release timing conflicts. The question is which cross-product constraint should govern sequencing, not how to implement either patch. Assign the decision and the product follow-through."
+  },
+  {
+    "case": "case-05",
+    "request": "A product's approved UI convention already specifies a reversible default for a new settings field. The scoped issue is authorized, and the team can test the default locally and roll it back. A worker wants the owner to choose the value before any code is written. Decide what should happen next."
+  },
+  {
+    "case": "case-06",
+    "request": "One engineer wrote a substantive persistence change and ran its tests. The same engineer offers to mark the change independently reviewed because there is no standing Review chat. A separate qualified reviewer can examine the exact revision in the current workflow. Decide the review path and what the test result establishes."
+  },
+  {
+    "case": "case-07",
+    "request": "The owner previously created dedicated Planner and Product Owner chats for a plugin, and an explicitly authorized recurring check still sends results to the Product Owner chat. A new responsibility-first description is being adopted. No owner instruction changes those chats or the check. Decide what happens to the existing setup."
+  },
+  {
+    "case": "case-08",
+    "request": "A product has no recurring check. Its release queue is quiet this week, but the PO responsibility still exists when work arrives. Someone proposes creating an hourly schedule and a permanent chat so the role is visibly active. The owner has not requested either. Decide whether to set them up."
+  },
+  {
+    "case": "case-09",
+    "request": "A bounded issue investigation is moving from this chat to an authorized background task. The new task can see its own instructions but not this chat's prior discussion. The issue link, tested revision, failed proof, constraints, and next action are known here. What must be supplied at handoff before the background task acts?"
+  },
+  {
+    "case": "case-10",
+    "request": "A candidate passed local checks, but the live site cannot be reached from the available environment. The product owner has not been asked to waive live verification. A worker says that missing live proof means the owner must decide whether ordinary development can continue. Separate the evidence gap from any authorization question."
+  },
+  {
+    "case": "case-11",
+    "request": "A product patch has been pushed to a review branch. The current revision still needs independent review and a user-facing regression check. A worker calls the push 'done' and asks the PO to close the issue. Decide the status and next steps without expanding into a full release cycle."
+  },
+  {
+    "case": "case-12",
+    "request": "The exact release candidate has completed its required checks and the PO has written a readiness recommendation. The owner only asked for preparation; there is no approval to merge the protected release branch, create a tag, or publish. State what may be reported and which actions remain gated."
+  }
+]

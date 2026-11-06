@@ -24,6 +24,7 @@ Use this router only after `wp-plugin-expert` is selected. Load one primary refe
 - Incidents, SLOs, monitoring, logs, and operational recovery: `../../wp-expert/references/observability-incident-response.md`.
 - Explicit VIP/enterprise candidate go/no-go and disaster recovery: `../../wp-expert/references/vip-enterprise-launch-readiness.md` or `../../wp-expert/references/disaster-recovery-business-continuity.md`; do not use this route for general enterprise implementation preparation.
 - Third-party APIs, SDKs, OAuth, webhooks, retries, rate limits: `../../wp-expert/references/third-party-api-integrations.md`.
+- AI/LLM plugins, MCP/agent integrations, embeddings, provider costs, retrieval permissions, or prompt safety: `../../wp-expert/references/ai-llm-wordpress-product-engineering.md`.
 - React admin/editor apps: `../../wp-expert/references/react-wordpress-enterprise.md`.
 - Existing Tailwind utility CSS, Tailwind v3/v4 migration, utility build/source discovery, Preflight scope, or an isolated React/app surface: `../../shared/references/tailwind-informed-frontend-engineering.md`; keep WPDS primary for native admin/editor work.
 - Accessibility implementation constraints plus i18n, RTL/bidi, multilingual, light/dark/system, forced-colors, browser, and input-mode readiness: `../../wp-expert/references/accessibility-i18n-global-readiness.md`; use the reviewer for a focused accessibility audit.

@@ -16,7 +16,7 @@ Use an in-task subagent by default. Create a new user-visible Codex task/thread 
 
 For owner-adopted roles, preserve authorized long-lived roles; create disposable `<Product> Worker <Issue or Outcome>` tasks only within visible-task authorization. Record each returned thread ID; title/project alone cannot identify archive/recovery targets. Protect Planner, PO, Review, Test & Proof, and Release Readiness.
 
-Worker lifecycle owner is the creator. CTO- or PO-created workers remain that creator's responsibility for scope, proof, reconciliation, and archive/delete the disposable worker. POs report blockers, readiness changes, cross-product/process concerns, or owner decisions.
+Worker lifecycle owner is the creator. CTO- or PO-created workers remain that creator's responsibility for scope, proof, reconciliation, and authorized lifecycle actions. Creation or completion alone does not authorize archival, deletion, or automation changes. POs report blockers, readiness changes, cross-product/process concerns, or owner decisions.
 
 ## Direct Execution Boundary
 
@@ -104,7 +104,7 @@ Every prompt includes:
 - Declared proof environment, exact target, mutation level, allowed fixtures, and cleanup owner; new Studio creation is owner-gated.
 - Screenshot requirement when admin, editor, frontend, style, layout, UX, or other design-visible output changes; include evidence or exact proof gap.
 - Suggested model/reasoning when useful.
-- Hard gates: no merge, release, issue close, milestone retarget, push to `main`, protected archive, product decision, or subdelegation unless parent CTO asks.
+- Worker hard gates: no merge, release, issue close, milestone retarget, push to `main`, protected archive, or product decision. Parent direction cannot override worker restrictions or owner-only gates. Only bounded subdelegation may be authorized by the parent, with an explicit role and capacity budget.
 - Creating another user-visible task requires explicit owner authorization.
 - Stop condition and summary requirements.
 
@@ -112,7 +112,7 @@ Use worktrees for parallel implementation/CI branch-drift risk; prefer read-only
 
 ## Delegated Thread Lifecycle
 
-Document strategy first; use GitHub comments only for durable transitions. Creator verifies diff/proof, reconciles PR/issue/product state and lessons, then archives/deletes the worker.
+Document strategy first; use GitHub comments only for durable transitions. Creator verifies diff/proof and reconciles PR/issue/product state and lessons. Archive or delete only with exact applicable authorization for that action and worker ID; archive approval is not deletion approval. Otherwise report eligibility without changing the conversation.
 
 For an owner-approved dedicated product topology, apply the exact-ID automatic archive and proof gates in `product-development-role-topology.md`; never treat push alone as completion.
 
@@ -124,7 +124,7 @@ After worker output, PR merge/closure, or abandonment:
 - Confirm proof or exact gap.
 - Update GitHub only for state transitions, blockers, deferrals, or owner questions.
 - Apply storage lifecycle: remove approved eligible worktrees or record retention reason/review trigger.
-- Stop/update temporary release/CI heartbeats.
+- Stop/update temporary release/CI heartbeats only under exact applicable authorization for that job and action; otherwise recommend the change without modifying it.
 - Select next train item or release evidence.
 - Final worker summary covers work done, files/issues/PRs touched, validation/proof, blockers, risks, and handoff needs.
 
