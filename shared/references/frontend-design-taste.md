@@ -42,6 +42,8 @@ Compare directions with identical truthful content/task and distinct organizing 
 
 Record accepted decisions in existing `DESIGN.md` or equivalent: audience/task, direction/rationale, token owner, composition, relevant states, exceptions, proof/limits. Keep numerical tokens canonical, not duplicated here. Automated checks prove consistency/state coverage, not creativity or conversion; retain rendered and task review.
 
+For changed/material tokens, trace the canonical owner and value through the affected component/block/style mapping to the computed rendered value on each scoped surface. Record intentional deviations with evidence; fail unowned drift. Token names and matching screenshots alone do not prove lineage.
+
 ## 2. Audit Before Redesign
 
 Inspect existing surfaces before proposing:
@@ -83,6 +85,7 @@ Real screenshots and supplied/approved assets outrank decoration. Use purposeful
 
 For material animation, record its purpose (hierarchy, feedback, progress, spatial relation, or narrative); otherwise remove it.
 
+- Inspect existing product motion tokens and the applicable performance budget. Use established timing tokens; otherwise choose the shortest effective duration validated in context, not a universal range.
 - Prefer existing stack/CSS or the smallest dependency; animate transform/opacity where practical, avoiding layout thrash and continuous React state.
 - Support keyboard, touch/no-hover, reduced motion, interruption, cleanup, focus, reading order, input response, and browser navigation. Do not default to scroll hijacking, magnetic input, parallax, or perpetual loops.
 
