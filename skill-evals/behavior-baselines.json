@@ -569,7 +569,7 @@
         "shared/references/plugin-release-workflow.md",
         "shared/references/delegation-protocol.md"
       ],
-      "sha256": "56ca21b9fcaa6977232eca033e2ce05d99bc484237ed4058eaa798d40cff4910",
+      "sha256": "85f367dd51ec895963245c7aa71bf8631384b750f6cc5f9cb3c29c0d66f05bbe",
       "scenario": {
         "id": "product-development-governance",
         "files": [
@@ -611,7 +611,7 @@
           "skill-evals/cases/chat-governance-corrections/artifacts/cases.json",
           "skill-evals/cases/chat-governance-corrections/input.json"
         ],
-        "contractSha256": "681061b0c88067f0b34eae18b957841b23a988531047d9ffd98b945051185e68"
+        "contractSha256": "eddf71c316b7231ca63c9bf0dd35f98c1fbfe9c87ce2b551a3fb7c3301a58e05"
       },
       "requiredChecks": [
         "planner-discovery-packet",
@@ -641,12 +641,12 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-development-governance-2026-11-06-baseline-refresh.json",
-          "sha256": "f63b584a3114de21fb7501ed3d136ae06cd6e5c8a3d99b86a89a2e20c3ec200e",
-          "testedRevision": "66235b1b6785cb2f2fcae7d60685203ff0ad5637",
-          "testedSourceSha256": "56ca21b9fcaa6977232eca033e2ce05d99bc484237ed4058eaa798d40cff4910",
+          "runRecord": "skill-evals/run-records/product-development-governance-2026-11-18-model-policy-refresh.json",
+          "sha256": "5b79f87416babfa418b84a6af959207e9a120390a21daeed21566eebea5dbdb2",
+          "testedRevision": "16788f6aecf6c399d1ef19d04d59ccdae2a8e0cf",
+          "testedSourceSha256": "85f367dd51ec895963245c7aa71bf8631384b750f6cc5f9cb3c29c0d66f05bbe",
           "testedScenarioSha256": "cb1b841c151187c9d727015e13a77d1964e28df2f481bc364210e60f4663cf30",
-          "testedScenarioContractSha256": "681061b0c88067f0b34eae18b957841b23a988531047d9ffd98b945051185e68",
+          "testedScenarioContractSha256": "eddf71c316b7231ca63c9bf0dd35f98c1fbfe9c87ce2b551a3fb7c3301a58e05",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
@@ -686,7 +686,7 @@
           "skill-evals/cases/governance-contract-refresh/artifacts/cases.json",
           "skill-evals/cases/governance-contract-refresh/input.json"
         ],
-        "contractSha256": "9bfede7f6f836599d5b1e363cde5712413c5dc6e3c4c887e306645897d95f7f0"
+        "contractSha256": "51705ecb2e0f0e71eb8478edc226d84a8daaa2ce40b33e09f2a13d8d1e91751c"
       },
       "requiredChecks": [
         "user-outcome-specificity",
@@ -704,12 +704,12 @@
       "sha256": "5baa0ccc180c2e071d5cf8b99c29a2ccfb350a10bb6358d8ece82b0c60e30f6c",
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-value-decision-2026-11-06-baseline-refresh.json",
-          "sha256": "b6d3427d97c098c9f9d9dafac56a058a2b3f3bef8734f2bce95f4ab95cf19cf5",
-          "testedRevision": "c2a36bb3559d67fa611f770f3f0f344a9d7a2a8e",
+          "runRecord": "skill-evals/run-records/product-value-decision-2026-11-18-model-update-refresh.json",
+          "sha256": "3eafc28a709f6be281917b52ff36f10e09081f37679f38a23327789490f2e4dd",
+          "testedRevision": "872aad9fbde870a22595e8877fcf50121e136543",
           "testedSourceSha256": "5baa0ccc180c2e071d5cf8b99c29a2ccfb350a10bb6358d8ece82b0c60e30f6c",
           "testedScenarioSha256": "52c0b2cb69237e9f1d472448ca912993d5e549eb4c6fc8602cab15beff2581c8",
-          "testedScenarioContractSha256": "9bfede7f6f836599d5b1e363cde5712413c5dc6e3c4c887e306645897d95f7f0",
+          "testedScenarioContractSha256": "51705ecb2e0f0e71eb8478edc226d84a8daaa2ce40b33e09f2a13d8d1e91751c",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
@@ -734,7 +734,7 @@
         "shared/references/plugin-release-workflow.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "b239a0a819b0faa622986d020f08e73b09ee9ef42f5687cb3085df2f5ea1a2e0",
+      "sha256": "78d996aaf3a91fb73c9fd8b3c5dd46d014bba5dd268becf6ee173af4858b5b39",
       "scenario": {
         "id": "product-release-authority",
         "files": [
@@ -769,7 +769,7 @@
           "skill-evals/cases/governance-contract-refresh/artifacts/cases.json",
           "skill-evals/cases/governance-contract-refresh/input.json"
         ],
-        "contractSha256": "1071fc17fb836814443899a593082259d491e79d81a4a6f4627326070e71ee6e"
+        "contractSha256": "da1a41a88d7c9096f0521dfb794d6152a27d5de5c83da92120225d08979b85fc"
       },
       "requiredChecks": [
         "latest-published-release-preflight",
@@ -796,12 +796,12 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-release-authority-2026-11-06-baseline-refresh.json",
-          "sha256": "25ecaf5d2d9f95cef2616c3de7d02087cdb0a50ec5526efe7db340a9df2e70c2",
-          "testedRevision": "c2a36bb3559d67fa611f770f3f0f344a9d7a2a8e",
-          "testedSourceSha256": "b239a0a819b0faa622986d020f08e73b09ee9ef42f5687cb3085df2f5ea1a2e0",
+          "runRecord": "skill-evals/run-records/product-release-authority-2026-11-18-model-policy-refresh.json",
+          "sha256": "909f8c726d666118e18137458c92736ec114c55b833550550c7e84bace2e4e68",
+          "testedRevision": "16788f6aecf6c399d1ef19d04d59ccdae2a8e0cf",
+          "testedSourceSha256": "78d996aaf3a91fb73c9fd8b3c5dd46d014bba5dd268becf6ee173af4858b5b39",
           "testedScenarioSha256": "415eb151638237bf0c9a4cc09f6462e4f028386f88256125e0f3b8369c87f34e",
-          "testedScenarioContractSha256": "1071fc17fb836814443899a593082259d491e79d81a4a6f4627326070e71ee6e",
+          "testedScenarioContractSha256": "da1a41a88d7c9096f0521dfb794d6152a27d5de5c83da92120225d08979b85fc",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
@@ -868,7 +868,7 @@
         "wp-product-orchestrator/SKILL.md",
         "shared/references/owner-decision-resolution.md"
       ],
-      "sha256": "691b4fae4685174f235963eb6bcc9d7cbb14eb10e72bdfb83b5010b4db8b1b71",
+      "sha256": "7a74c17cef91ba639cfdd89f830cb810b7153c261029f071c48c3125f4fe26ee",
       "scenario": {
         "id": "owner-aligned-judgment",
         "files": [
@@ -898,7 +898,7 @@
           "skill-evals/cases/chat-governance-corrections/artifacts/cases.json",
           "skill-evals/cases/chat-governance-corrections/input.json"
         ],
-        "contractSha256": "35f5a7160a9d79524b588eee465aa4c76f2428dd171003bcc5c7574e316bcd5c"
+        "contractSha256": "493623f9833c7efe4ad9439b741cccb217cbafd5aa33bb15cd98332bee1f6bf1"
       },
       "requiredChecks": [
         "live-product-contract-precedence",
@@ -913,12 +913,12 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/owner-aligned-judgment-2026-11-06-baseline-refresh.json",
-          "sha256": "fd3fe1b36657e4e6401375a334a32dec39a40f4a75b54dd7895ece02f8b82607",
-          "testedRevision": "c2a36bb3559d67fa611f770f3f0f344a9d7a2a8e",
-          "testedSourceSha256": "691b4fae4685174f235963eb6bcc9d7cbb14eb10e72bdfb83b5010b4db8b1b71",
+          "runRecord": "skill-evals/run-records/owner-aligned-judgment-2026-11-18-model-update-refresh.json",
+          "sha256": "4d2c9790cc2692fa719d57c8e0067ac1a5daa5dc29a66ea2c61d791feaeda6c9",
+          "testedRevision": "16788f6aecf6c399d1ef19d04d59ccdae2a8e0cf",
+          "testedSourceSha256": "7a74c17cef91ba639cfdd89f830cb810b7153c261029f071c48c3125f4fe26ee",
           "testedScenarioSha256": "54b4ae2bce4d363eecee4fad87a2b5e39ae29e0c98c722ac773dc9447afc6d02",
-          "testedScenarioContractSha256": "35f5a7160a9d79524b588eee465aa4c76f2428dd171003bcc5c7574e316bcd5c",
+          "testedScenarioContractSha256": "493623f9833c7efe4ad9439b741cccb217cbafd5aa33bb15cd98332bee1f6bf1",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
@@ -1416,7 +1416,7 @@
         "templates/project-hooks/README.md",
         "templates/project-hooks/hooks.json"
       ],
-      "sha256": "c4cd9492e197f4099468119272fe4b201fb3d124ac0e0a727552e4ae2592dc03",
+      "sha256": "408858393d31b12638c01665e143fe02d58e8166ec8e5a758be227c826e963ce",
       "scenario": {
         "id": "context-approach-continuity",
         "files": [
@@ -1452,10 +1452,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/context-approach-continuity-2026-10-15-chat-corrections.json",
-          "sha256": "ad8e5471ac797a34ae9fd584f84d624abb7d3c05e34dc4f42344616885362480",
-          "testedRevision": "3467de86b8c1fec9361ae12229a2778735b2fda0",
-          "testedSourceSha256": "c4cd9492e197f4099468119272fe4b201fb3d124ac0e0a727552e4ae2592dc03",
+          "runRecord": "skill-evals/run-records/context-approach-continuity-2026-11-18-model-update-refresh.json",
+          "sha256": "a42de710cb65e0670c4434ccaa75d206a269f6825a72cc1447276bfe243f97a4",
+          "testedRevision": "872aad9fbde870a22595e8877fcf50121e136543",
+          "testedSourceSha256": "408858393d31b12638c01665e143fe02d58e8166ec8e5a758be227c826e963ce",
           "testedScenarioSha256": "15fe8d6e1c98cd377d1f39af05b23b099aa0f20aaa7f06c0d3d7fe90ead13eae",
           "testedScenarioContractSha256": "311ab149b274f23b878c14280e03b7b3ada9aeef7fbe78d3b6023fb0443fcec4",
           "runtime": {
@@ -1619,7 +1619,7 @@
         "shared/references/system-health-reviewer.md",
         "shared/references/product-workflow-profiles.md"
       ],
-      "sha256": "d90954027403650da04274b74fb0bef696dd93c98408e759d2a2b43947fb18e8",
+      "sha256": "3a8db9de481cdb7f3da2306c7dffc5ad506c1019ec4f7e8a4e50d838c70aa788",
       "scenario": {
         "id": "system-health-reviewer-evidence",
         "files": [
@@ -1639,7 +1639,7 @@
           "skill-evals/cases/system-health-reviewer/input.json",
           "skill-evals/cases/system-health-reviewer/artifacts/cases.json"
         ],
-        "contractSha256": "f703d95cc6578036104ebf32af7f81c488c0409bc2fb8078ad25b3c602892be2"
+        "contractSha256": "3793872fb811694496fe46609915af7ac1be3826edfbe17ea7cc2846df4dea99"
       },
       "requiredChecks": [
         "empty-retrieval-fallback-or-unknown",
@@ -1654,12 +1654,12 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/system-health-reviewer-evidence-2026-11-06-baseline-refresh.json",
-          "sha256": "2d058c1f76154b6c5cc30a9c66882f894a368494f4f4b7288fd889c66fcec060",
-          "testedRevision": "c2a36bb3559d67fa611f770f3f0f344a9d7a2a8e",
-          "testedSourceSha256": "d90954027403650da04274b74fb0bef696dd93c98408e759d2a2b43947fb18e8",
+          "runRecord": "skill-evals/run-records/system-health-reviewer-evidence-2026-11-18-model-update-refresh.json",
+          "sha256": "2e492044c3ee29fc69350f69471cb676ad1a8c14b6346c728e7698e120492ca4",
+          "testedRevision": "872aad9fbde870a22595e8877fcf50121e136543",
+          "testedSourceSha256": "3a8db9de481cdb7f3da2306c7dffc5ad506c1019ec4f7e8a4e50d838c70aa788",
           "testedScenarioSha256": "f04da5b96ef16ff69905ca893b02f0103b71b56cb7f5f7460662e617d2c85723",
-          "testedScenarioContractSha256": "f703d95cc6578036104ebf32af7f81c488c0409bc2fb8078ad25b3c602892be2",
+          "testedScenarioContractSha256": "3793872fb811694496fe46609915af7ac1be3826edfbe17ea7cc2846df4dea99",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "runId": "context-approach-continuity-2026-11-18-model-update-refresh",
+  "scenario": "context-approach-continuity",
+  "result": "succeeded",
+  "startedAt": "2026-11-18T05:43:31.717Z",
+  "durationMs": 442283,
+  "checks": [
+    {
+      "name": "holistic-probe",
+      "result": "pass"
+    },
+    {
+      "name": "proportional-choice",
+      "result": "pass"
+    },
+    {
+      "name": "source-first-recovery",
+      "result": "pass"
+    },
+    {
+      "name": "negative-constraints-and-failed-proof",
+      "result": "pass"
+    },
+    {
+      "name": "stale-approval-rejected",
+      "result": "pass"
+    },
+    {
+      "name": "model-aware-unknown-fallback",
+      "result": "pass"
+    },
+    {
+      "name": "hook-activation-honesty",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 7,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "context-approach-continuity-2026-11-18-model-update-refresh",
+    "artifactPointer": "private-visualization:model-routing-2026-11-18/other/accepted-checks/context-approach-continuity.json"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-11-18T05:50:53.000Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Fresh frozen-source development regressions at exact revision 872aad9fbde870a22595e8877fcf50121e136543, independently scored against all registered checks. Duration is shared preparation-to-scoring interval including packet prep, coordination and scoring, not per-actor runtime or summable cost. Host token/cost telemetry unavailable. Synthetic decisions only; no live automation, product runtime, held-out transfer or production proof. VoiceOver/narration excluded by owner direction, not passed."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "development-regression"
+  ]
+}

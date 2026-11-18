@@ -111,7 +111,7 @@ require_text "wp-product-orchestrator/SKILL.md" "Require current approval for pr
 require_text "wp-product-orchestrator/SKILL.md" "issue-side before evidence and PR-side after proof" "orchestrator design proof"
 require_text "wp-product-orchestrator/SKILL.md" "Prefer the product's primary Studio site" "orchestrator primary proof-environment default"
 require_text "wp-product-orchestrator/SKILL.md" "Creating a Studio site requires explicit owner approval" "orchestrator new Studio gate"
-require_text "wp-product-orchestrator/SKILL.md" "Routine check-ins should be delta-first and proportional" "orchestrator check-in discipline"
+require_text "wp-product-orchestrator/SKILL.md" "Keep check-ins delta-first and proportional" "orchestrator check-in discipline"
 require_text "wp-product-orchestrator/SKILL.md" "require bounded recovery and the self-improvement route" "orchestrator failure classification"
 require_text "wp-product-orchestrator/SKILL.md" "references/router.md" "orchestrator focused router"
 require_text "wp-product-orchestrator/references/router.md" "delegation-protocol.md" "orchestrator delegation decision route"
