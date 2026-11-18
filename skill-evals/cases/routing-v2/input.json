@@ -16,7 +16,7 @@
     },
     {
       "id": "R4",
-      "task": "The user explicitly locks gpt-6-sol/high for a review; inventory only exposes gpt-6-luna with low/medium/high. A separate low-consequence evidence task is ready. State dispositions."
+      "task": "Only current model A is available in this case. The owner explicitly requests B/high for the review. A separate unlocked deterministic evidence task can be completed by A. State both dispositions."
     },
     {
       "id": "R5",
