@@ -1,6 +1,6 @@
-# WordPress 7.0 And 7.1 Enterprise Compatibility
+# WordPress Compatibility: 7.0, 7.1 And 7.2 Testing
 
-Use for WordPress 7.0/7.1 compatibility, `Tested up to`, or upgrades; recheck live Core.
+Use for Core upgrades, `Tested up to`, and deciding which editor or API changes apply to an installed build.
 
 ## Evidence State
 
@@ -13,7 +13,18 @@ Checked 2026-08-30 against official WordPress sources:
 
 Recheck official release/security/dev sources and runtime registry. Classify relied-on capabilities as `production`, `release-candidate`, `experimental/deferred`, or `unverified`; documentation does not prove shipment.
 
-Release freshness rechecked 2026-11-06: the [7.1 Field Guide](https://make.wordpress.org/core/2026/08/05/wordpress-7-1-field-guide/) remains the versioned developer baseline. [7.1.4](https://wordpress.org/news/2026/10/wordpress-7-1-4/) is the latest published stable security release observed in the official release feed; [7.2 Beta 4](https://wordpress.org/news/2026/11/wordpress-7-2-beta-4/) is testing-only, not production compatibility proof. Earlier focused API notes above retain their original check date. Verify later patches, Gutenberg-only behavior, and 7.2/trunk separately.
+On 2026-11-18 the [release archive](https://wordpress.org/download/releases/) listed 7.1.4 as stable. [7.2 RC1](https://wordpress.org/news/2026/11/wordpress-7-2-release-candidate-1/) is a separate testing target. Earlier API notes retain their original check date. Recheck these sources before changing a support floor or making a release claim.
+
+## 7.2 Release Candidate: What To Test
+
+- **Editor and themes:** In [custom style controls](https://make.wordpress.org/core/2026/11/18/api-for-style-state-aware-block-styling-controls/), read and write the selected viewport or pseudo-state without replacing the base style. Use `getStyleForState` and `setStyleForState` for the selected state; the inspector group controls placement, not persistence. Compare base and hover before and after save/reopen. Use the public InspectorControls `group` prop; check editor and frontend Navigation Link styling because a parent-rendered block's [Additional CSS can now apply](https://make.wordpress.org/core/2026/11/18/miscellaneous-editor-changes-in-wordpress-7-2/) where it was previously ignored.
+- **Interactive blocks:** Change unique IDs such as `data-wp-watch--refresh` to `data-wp-watch---refresh`; keep ordinary directive arguments such as `data-wp-on--click`; test each handler, not just initial markup. Remove assumptions that `data-wp-ignore` prevents hydration. Prefer text for untrusted values: [`asDangerousHTML()`](https://make.wordpress.org/core/2026/11/17/changes-to-the-interactivity-api-in-wordpress-7-2/) marks HTML as trusted, it does not sanitize it.
+- **REST clients:** [Revision and autosave revision responses](https://make.wordpress.org/core/2026/11/17/rest-api-changes-in-wordpress-7-2/) omit non-revisioned meta; do not write absent keys back as defaults. Test restore and an author's own draft autosave separately: the latter can return the post. The comments collection normalizes status to an array; keep existing permission checks.
+- **Withdrawn, not an RC feature:** The November 17 correction to the [Secrets API note](https://make.wordpress.org/core/2026/11/11/the-secrets-api-in-wordpress-7-2/) removes it from 7.2. Do not require it, migrate production credentials, or clear existing values on upgrade. For a site that experimented with a beta, identify the actual package and provider before planning recovery. A missing API, read-only provider, or failed write is not permission to discard credentials, log them, or store them in plaintext.
+- **Dependencies:** [jQuery Migrate 3.6.0](https://make.wordpress.org/core/2026/11/17/preparing-for-jquery-4-with-wordpress-7-2/) helps surface deprecations; it is not jQuery 4. The [November developer roundup](https://developer.wordpress.org/news/2026/11/whats-new-for-developers-november-2026/) places React 19 in the Gutenberg plugin, not Core 7.2. Test with Gutenberg disabled before attributing behavior to Core.
+
+- **Bundled assets:** Check [CSS module collisions](https://make.wordpress.org/core/2026/11/16/update-bundled-wordpress-packages-and-wordpress-build-to-fix-css-module-class-name-collisions/) when a plugin ships its own WordPress packages. Updating Core does not rebuild the plugin bundle. Test [admin icons](https://make.wordpress.org/core/2026/11/05/svg-icons-in-the-admin-bar-and-menu-in-wordpress-7-2/) against actual SVG markup, not Dashicon pseudo-elements.
+- **Media:** Test [Media Library and modal uploads](https://make.wordpress.org/core/2026/11/17/media-changes-in-wordpress-7-2/) as well as the editor: verify multisite quotas, remote assets, animated sub-sizes and fallback on the packaged candidate.
 
 ## WordPress 7.0 Production Baseline
 

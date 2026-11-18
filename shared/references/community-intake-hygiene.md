@@ -43,5 +43,6 @@ Use this reference for external contributor/community PRs and issues, plus repo 
 - Prefer a packaged artifact or zip for Playground when source archives miss build assets or vendor. If that is not possible, treat it as a tooling/release-readiness gap and create a focused issue.
 - Playground comments should be updated, not spammed, and should include the test route and any safe test credentials.
 - Playground previews must not expose secrets and must never trigger production deploy/publish actions.
+- A Blueprint recreates the starting site, not a user's edits. Before claiming persistence, identify the [Playground storage mode and limitations](https://developer.wordpress.org/playground/developers/limitations/) and reopen the same site after closing it. Export/import proves portability, not automatic persistence. A temporary browser session is not a backup or evidence about a production database, mail transport, or cron runner.
 - Contributor PRs should also get the Playground link when technically possible.
 - For UI/user-workflow PRs, treat missing Playground or equivalent visual/browser proof as a readiness gap to challenge before merge or release-ready reporting.
