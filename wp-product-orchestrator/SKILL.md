@@ -35,7 +35,7 @@ Own product decisions and evidence for one exact product/repository. This respon
 
 Use `references/router.md` to select one primary mode plus one confirmed-risk support. Do not load the full reference set. Before delegation, follow the model/effort and handoff routes. Durable chats and scheduled heartbeats are optional workflow choices only when explicitly adopted and authorized; invoking this skill grants no permission to create, archive, interrupt, replace, fork, pause, or reschedule chats or automations. Existing chats and jobs remain unchanged absent exact applicable authorization.
 
-Routine check-ins should be delta-first and proportional; use the check-in route only when relevant. Report the exact blocker and next safe action; return partial results on timeout without implying permission to stop a job. Repeated inactivity, empty/system-error turns, wrong path/base/model, missing proof, or owner-instruction drift require bounded recovery and the self-improvement route.
+Routine check-ins should be delta-first and proportional; use the check-in route only when relevant. Report the exact blocker and next safe action; return partial results on timeout without implying permission to stop a job. Repeated inactivity, empty/system-error turns, wrong path/base or violated explicit model constraint, missing proof, or owner-instruction drift require bounded recovery and the self-improvement route.
 
 ## Workflow
 

@@ -12,11 +12,11 @@ Delegate when parallel mapping, independent lanes, second review, or browser/CI 
 
 ## Availability-First Routing Contract
 
-At each delegation, verify runtime availability and the reviewed versioned policy identified by `contracts/routing-policy.json`. Its canonical owner is agent-loop's `policies/model-routing.json`; do not duplicate fixed role/model assignments in skills. The October 2 descriptor is a proposal until adoption is reviewed. Existing explicit user locks and active configuration stay in force meanwhile.
+Use the current model by default, including for workers and independent review. Role, difficulty, cost preference and retries are not reasons to switch. The Loop proposal in `contracts/routing-policy.json` does not configure this host.
 
-Assess complexity, uncertainty, consequence, evidence quality, tool/context needs, latency and budget. Select model capability and reasoning independently from the supported authorized set. Role names describe responsibilities and conservative defaults, not permanent models. A deterministic consequential check can need a capable model with low effort; ambiguous implementation can need a stronger model with high effort. A default effort is not a floor after evidence removes uncertainty. Verify supported reasoning at runtime. Use xhigh only with concrete task justification. Never use max/ultra without explicit owner approval; the current executable policy does not select them.
+Explicit model and effort locks are hard constraints. Honor the owner's request or hold the affected assignment if unavailable. Without a request, switch only for a verified required capability the current model lacks, using a supported alternative within existing budget, permissions and data boundaries. No suitable alternative: report the gap. Model selection changes capability, not authority.
 
-Explicit model and effort locks are hard constraints. If the required combination is unavailable or insufficient, stop only that assignment and ask the owner; do not silently fall back. Runtime exposure, inherited settings, relative cost ranks and this guidance do not authorize another model or spending. Model selection changes capability, not authority.
+Choose supported effort separately: low for routine deterministic work, medium by default, high for ambiguity or consequential risk. Use xhigh only with concrete complexity or failed-proof justification; max/ultra require explicit owner approval. Reduce effort when uncertainty clears.
 
 ### Capacity And Concurrency
 
@@ -24,11 +24,11 @@ Verify each route's feasibility before reserving capacity. Held work consumes no
 
 ### Work Classification
 
-Use current evidence rather than title or role stereotypes. Preserve high-consequence capability floors, explicit locks, tool/context support, budget and owner/security/release gates. Missing metadata is unavailable, not proof of support. An unavailable judgment can hold while separately useful evidence work continues. Compare accepted outcomes, retries, latency and actual available telemetry before claiming savings.
+Use current evidence rather than title or role stereotypes. Meet task-derived capability needs, explicit task constraints, tool/context support, budget and owner/security/release gates. Missing metadata is unavailable, not proof of support. If no supported combination can do the work safely, hold that assignment while useful independent work continues. Compare accepted outcomes, retries, latency and actual available telemetry before claiming savings.
 
 ### Escalation And De-Escalation
 
-Escalate for concrete complexity, unresolved ambiguity or failed reasoning; de-escalate effort after planning or deterministic proof removes uncertainty. Access, approval, policy, stale inputs and tool outages need their own recovery, not a stronger model. Escalation-only models require the canonical policy's explicit eligible record. A held assignment reports the requested combination, support constraint, impact and next action in plain language.
+Reassess effort as evidence changes. Access, approval, stale inputs and tool outages need their own recovery, not a stronger model. Use supported controls; never claim prose changed an in-flight runtime. Report an unavailable required control or capability without expanding action authority.
 
 Retry advice is bounded by cause and lifetime attempts. Correct reasoning failures before reviewed requeue; a work item's claimed reviewer is not authenticated approval. Preserve source history, stop on exhausted budgets and keep all side-effect gates. Never reset attempts to hide failed work.
 
@@ -44,7 +44,7 @@ Give workers outcomes and constraints; let them choose routine execution steps. 
 
 For code work, include the proportional quality contract from `../../wp-expert/references/planning-drift-control.md`: ownership/contracts, modularity/maintainability and scalability boundary, performance hot path/budget, security/privacy boundary, tests/proof, and rollback. Workers execute that contract and return a quality receipt; they do not spend the execution turn rebuilding an omitted plan.
 
-Fully planned work uses the reviewed authorized policy and current evidence; explicit locks remain binding. Compare quality, retries, duration, and available token telemetry before claiming savings.
+Fully planned work uses the current task-based policy and evidence; explicit task constraints remain binding. Compare quality, retries, duration, and available token telemetry before claiming savings.
 
 ### Worker Context Boundary
 
@@ -78,7 +78,7 @@ Keep output within the requested limit.
 
 ## Reusable Project Profiles
 
-Use the five optional [project agent templates](../../templates/project-agents/README.md): planner, implementer, reviewer, behavior validator, and release readiness. PO coordinates; CTO escalates. Select only needed roles, pass compact packets, and keep review independent. Templates must not pin transient models/reasoning; verify availability and assign both at dispatch when inheritance is unsuitable. They do not create persistent tasks or automations.
+Use the five optional [project agent templates](../../templates/project-agents/README.md): planner, implementer, reviewer, behavior validator, and release readiness. PO coordinates; CTO escalates. Select only needed roles, pass compact packets, and keep review independent. Templates must not pin transient models/reasoning; verify availability and inherit the current model unless one of the two exceptions applies. They do not create persistent tasks or automations.
 
 ## Project Configuration
 
@@ -100,7 +100,7 @@ For compaction/resume, use the context-window contract and optional [project hoo
 
 ## Parent Checklist
 
-Before delegation: verify availability, select only an owner-approved model/reasoning combination, front-load the plan, set one lane/output budget, prefer read-only unless exact fixing is assigned, and avoid duplicate exploration.
+Before delegation: verify model/effort support and inherited settings, apply the current-model default and explicit task constraints, front-load the plan, set one lane/output budget, prefer read-only unless exact fixing is assigned, and avoid duplicate exploration. This choice does not authorize delegation or new visible tasks.
 
 Keep payloads compact: do not batch broad parallel thread reads, full PR diffs, oversized issue bodies, or accumulated automation history. Create issues one at a time with concise bodies after narrow duplicate-screening.
 

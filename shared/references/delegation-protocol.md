@@ -75,7 +75,7 @@ Final status must not stop at "blocked because X". Use either:
 - `Recovered by doing Y; next work is Z`.
 - `Owner action required: approve/perform Y; meanwhile I completed A/B/C that did not need Y`.
 
-Stale active turn handling: if a product orchestrator has an older active/inProgress turn, an empty completed turn, `systemError`, missing proof, wrong path/base/model lane, repeated owner-instruction drift, or a pending worktree did not materialize, classify `Product thread topology drift`, escalate, and do not queue more work into that thread.
+Stale active turn handling: if a product orchestrator has an older active/inProgress turn, an empty completed turn, `systemError`, missing proof, wrong path/base or violated explicit model constraint, repeated owner-instruction drift, or a pending worktree did not materialize, classify `Product thread topology drift`, escalate, and do not queue more work into that thread.
 
 Missing milestone due dates are metadata, not blanket blockers. With clear scope and safe milestone/branch/base evidence, delegate; brief only unsafe ambiguity.
 
@@ -103,7 +103,7 @@ Every prompt includes:
 - Allowed/forbidden scope/files and validation commands.
 - Declared proof environment, exact target, mutation level, allowed fixtures, and cleanup owner; new Studio creation is owner-gated.
 - Screenshot requirement when admin, editor, frontend, style, layout, UX, or other design-visible output changes; include evidence or exact proof gap.
-- Suggested model/reasoning when useful.
+- Explicit owner request or required capability gap, if any.
 - Worker hard gates: no merge, release, issue close, milestone retarget, push to `main`, protected archive, or product decision. Parent direction cannot override worker restrictions or owner-only gates. Only bounded subdelegation may be authorized by the parent, with an explicit role and capacity budget.
 - Creating another user-visible task requires explicit owner authorization.
 - Stop condition and summary requirements.

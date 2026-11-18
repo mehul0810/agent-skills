@@ -23,6 +23,7 @@ class ProfilesTest(unittest.TestCase):
             lambda s: s + '\nmodel = "transient-model"\n',
             lambda s: s.replace('sandbox_mode = "read-only"', 'sandbox_mode = "danger-full-access"'),
             lambda s: s.replace('Do not subdelegate', 'Delegate freely'),
+            lambda s: s.replace('Use the current model unless', 'Select by role unless'),
             lambda s: s.replace('max/ultra require explicit owner approval', 'max/ultra are unrestricted'),
             lambda s: 'name = [',
         ]

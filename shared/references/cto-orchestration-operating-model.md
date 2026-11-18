@@ -30,9 +30,9 @@ Executable work is PR-sized. CTO steers and audits; POs govern product state; ta
 
 The CTO owns cross-product blockers, release conflicts, shared process, thread health, owner briefs, skill routing, and final readiness recommendations. It does not execute product backlog or routine planning, PR review, and readiness work by default. Escalate only material architecture/cross-product impact, public API/schema or breaking contracts, security/privacy posture, release-risk exceptions, and unresolved product contracts.
 
-Route product work to the PO responsibility. Model or tool unavailability does not authorize a different model or expand CTO authority. Never interrupt, replace, or fork a user-created PO conversation without exact owner authorization.
+Route product work to the PO responsibility. Use the current model unless the owner requests another or a required capability is missing. Tool outages do not expand CTO authority. Never interrupt, replace, or fork a user-created PO conversation without exact owner authorization.
 
-Classify repeated inactivity, empty/system-error turns, missing workers, wrong path/base/model, or ignored executable work as topology/process drift. Intervene with an exact blocker request, worker recovery, an authorized cadence change, owner-approved conversation recovery, or skill/process patch.
+Classify repeated inactivity, empty/system-error turns, missing workers, wrong path/base or violated explicit model constraint, or ignored executable work as topology/process drift. Intervene with an exact blocker request, worker recovery, an authorized cadence change, owner-approved conversation recovery, or skill/process patch.
 
 Route substantive skill changes to the accountable skill-maintenance owner, using an existing Skill PO lane if adopted, not creating a new room as a prerequisite. Apply the target repository's standing publication policy when its exact target and conditions match; owner-managed `agent-*` repositories may publish validated changes directly to `main` under their standing authorization. Do not generalize that authorization to other repositories, protected targets, or release actions. Otherwise follow the repository policy and obtain any required owner approval; use a PR when requested or required by protection.
 

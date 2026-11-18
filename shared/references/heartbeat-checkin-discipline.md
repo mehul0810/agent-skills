@@ -72,7 +72,7 @@ Cadence/automation changes
 
 ## Thread Health And Drift
 
-Topology/process drift includes empty completions/active turns, `systemError`, non-materialized workers, wrong path/base/model lane, unsupported issue/PR claims, and quiet while work is executable.
+Topology/process drift includes empty completions/active turns, `systemError`, non-materialized workers, wrong path/base or violated explicit model constraint, unsupported issue/PR claims, and quiet while work is executable.
 
 For release blockers, one non-material PO heartbeat is enough to escalate.
 
