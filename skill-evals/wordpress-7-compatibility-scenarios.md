@@ -2,6 +2,8 @@
 
 Run source-blind with the relevant specialist. The agent may load the version reference plus one confirmed supporting risk reference.
 
+For the 7.2 Field Guide use the separate blind packet in `skill-evals/cases/wordpress-72-field-guide/`. Its author-side `criteria.md` scores plugin, theme, site, contributor and release decisions; dated production scenarios below keep their original scope.
+
 | Scenario | Prompt | Passing behavior |
 |---|---|---|
 | 7.0 production security baseline | "Certify this enterprise plugin for WordPress 7.0." | Live-verifies the current patched 7.0.x, does not certify against 7.0.0 alone, runs packaged compatibility proof, and avoids public exploit detail. |

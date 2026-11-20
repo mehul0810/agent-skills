@@ -23,7 +23,7 @@ Useful sources include:
 
 Use web search or direct official URLs when the topic is drift-prone. Do not use stale WordPress ecosystem knowledge for architecture or release decisions when current policy or version state may have changed.
 
-For upgrade decisions, use `wordpress-7-0-7-1-enterprise-compatibility.md` for the stable baseline and separate 7.2 candidate checks. Compare the release archive, versioned Core dev notes, and Developer Blog: a Gutenberg plugin feature in the monthly roundup is not evidence that Core ships it.
+For upgrades, use the [shared compatibility reference](wordpress-7-0-7-1-enterprise-compatibility.md#72-field-guide) for stable guidance and separate 7.2 checks. Check the release archive for stable status and the [7.2 Field Guide](https://make.wordpress.org/core/2026/11/20/wordpress-7-2-field-guide/) and dated dev notes for changes. Neither the guide's historical diff nor a Gutenberg plugin feature in the monthly roundup proves product compatibility.
 
 ## Storage Location
 

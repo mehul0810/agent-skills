@@ -1,0 +1,5 @@
+{
+  "id": "wordpress-72-field-guide",
+  "request": "Answer the assigned independent maintainer briefs for the date shown. State what you would change or leave alone, what evidence matters, and what can be claimed now. Do not perform any product, account, release or infrastructure action.",
+  "artifacts": ["maintainers.md"]
+}
