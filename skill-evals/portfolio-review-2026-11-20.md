@@ -52,3 +52,24 @@ canonical multisite reference. The existing game stack/realism and WordPress
   under macOS's `/var` alias looked like symlinked evidence. The test now
   records the physical fixture root; the validator and the negative test for
   an actual evidence symlink are unchanged.
+
+## Installed commands
+
+On the first published revision, a contradictory report exited 1 at the
+canonical reviewer CLI but exited 0 with no output through the installed skill
+link. Node had imported the module without invoking its command. Candidate
+`e3ff58ea375afd504f27db35de9096169fe92b11` corrects this in the reviewer,
+the video shot-fidelity checker and the motion starter. The install smoke now
+uses both Codex and Claude links: it requires rejection diagnostics for invalid
+input, the expected self-test/help output and side-effect-free module imports.
+It does not run a renderer or validate media. The earlier behavioral records
+remain bound to their original candidate revisions.
+
+The changed CLI revision was independently rerun against all 41 reviewer and
+40 video checks. Video coverage includes separate full-catalog and standalone
+script requests. The initial reviewer run overcalled stale data without a
+freshness contract and omitted run-to-run variability (39/41). Separate
+synthetic reports distinguished unspecified, hourly and immediate freshness
+contracts and exposed a latency regression hidden by a better median. Both
+recovered checks passed; the original scores remain visible in the private
+evidence. The two writing baselines retain their earlier tested revision.

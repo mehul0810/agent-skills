@@ -425,7 +425,7 @@
         "wp-quality-reviewer/scripts/validate-review-report.mjs",
         "wp-quality-reviewer/scripts/accessibility-audit.mjs"
       ],
-      "sha256": "0a09a1c7c3a6eaaf65dec8adbecd8051e8eb7defdac28a86101fbe08076596eb",
+      "sha256": "6da39f9cb8cfb9ba4ce55d71ba8cb8a450b0bd3d3b3201bdd1cfe81c900cf429",
       "scenario": {
         "id": "multi-domain-release-quality-review",
         "files": [
@@ -497,10 +497,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-11-20-portfolio.json",
-          "sha256": "e8d641128aed0655cd000eb183c187b7627d4cc653815902e58395209a260329",
-          "testedRevision": "caa794f12ba64f71a280656649fd645af5e6994e",
-          "testedSourceSha256": "0a09a1c7c3a6eaaf65dec8adbecd8051e8eb7defdac28a86101fbe08076596eb",
+          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-11-20-installed-cli.json",
+          "sha256": "885b2fbce48d497d182399aab363d4814cf987cad817c02e6da20d6f972c80e4",
+          "testedRevision": "e3ff58ea375afd504f27db35de9096169fe92b11",
+          "testedSourceSha256": "6da39f9cb8cfb9ba4ce55d71ba8cb8a450b0bd3d3b3201bdd1cfe81c900cf429",
           "testedScenarioSha256": "dc871ec228dc5f669cf046b3719b6c9193ee3d1b17d9a11588f6eddfee9d1a25",
           "testedScenarioContractSha256": "8f69cb8f53c058aa7ca17282a64122c42b261d4ef5e0cba42f6acdc091a7de03",
           "runtime": {
@@ -990,7 +990,7 @@
         "product-video-producer/assets/motion-starter/scene.mjs",
         "product-video-producer/assets/motion-starter/README.md"
       ],
-      "sha256": "f7f59edd355bf762f7c87144bb1779ca4739b76d27a6544af69b28e11d4351c1",
+      "sha256": "841fe281b617221f3b19fe752fde9ae052d68dd1a78629ffdc0c06bd9d82bb41",
       "scenario": {
         "id": "product-video-truth-and-assets",
         "files": [
@@ -1090,10 +1090,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-11-20-portfolio.json",
-          "sha256": "ca2e7e8896f898d0145b0ac1ec7a2f7f99227339290b32ca847fa85455d75aac",
-          "testedRevision": "dbf886103da7d8a3c6f16aa498fa0ddc158c63bb",
-          "testedSourceSha256": "f7f59edd355bf762f7c87144bb1779ca4739b76d27a6544af69b28e11d4351c1",
+          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-11-20-installed-cli.json",
+          "sha256": "233030bfa175b29f0904569bc3b84e5a04cc430c579cabf4f32b7ea5ca4cbd38",
+          "testedRevision": "e3ff58ea375afd504f27db35de9096169fe92b11",
+          "testedSourceSha256": "841fe281b617221f3b19fe752fde9ae052d68dd1a78629ffdc0c06bd9d82bb41",
           "testedScenarioSha256": "c73de5eedf1dee85a45a49b23b404d1df8e65a62bd200478209cda6063be8b66",
           "testedScenarioContractSha256": "17de0a37f6a96a8cce76ac8b0f11c6e4f1cc1d042c04ee98fe1a409f72322df0",
           "runtime": {
