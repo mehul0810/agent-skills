@@ -38,7 +38,7 @@ Turn product truth, approved assets, footage, and references into distinctive, e
 - Real UI capture uses an identified build and role, sanitized deterministic fixtures, and consented voice/likeness; it never exposes customer data, secrets, credentials, internal URLs, or notifications.
 - A polished edit cannot conceal privacy, consent, rights, accessibility, product-truth, or output-identity gaps.
 - Apply the same acceptance criteria regardless of model or reasoning, not a promise of identical creativity. Repair, use permitted escalation, or report incomplete; never lower the bar or invent playback evidence. Current owner allocation overrides historical examples.
-- Do not publish, release, upload, change live video metadata, start/stop/apply a public experiment, or overwrite an approved master without explicit owner approval.
+- Keep each approved master immutable. Even when asked to replace it, export a new version and retain the approved file; publication approval is separate. Do not publish, release, upload, change live metadata, or start/stop/apply a public experiment without explicit owner approval.
 
 ## Required Handoff
 
