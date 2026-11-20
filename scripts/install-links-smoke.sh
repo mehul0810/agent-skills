@@ -137,6 +137,30 @@ while IFS= read -r skill_dir; do
   done
 done < <(find "$repo_root" -mindepth 1 -maxdepth 1 -type d -exec test -f "{}/SKILL.md" \; -print | sort)
 
+# A link that resolves is not proof that Node ran its CLI instead of just importing it.
+printf '{}\n' > "$tmp/incomplete-report.json"
+for root in "$tmp/codex/skills" "$tmp/claude/skills"; do
+  quality="$root/wp-quality-reviewer/scripts/validate-review-report.mjs"
+  fidelity="$root/product-video-producer/scripts/check-shot-fidelity.mjs"
+  motion="$root/product-video-producer/scripts/render-motion-starter.mjs"
+  for cli in "$quality" "$fidelity"; do
+    if node "$cli" "$tmp/incomplete-report.json" >"$tmp/cli-error" 2>&1; then
+      echo "ERROR: linked CLI silently accepted an incomplete document: $cli" >&2; exit 1
+    fi
+    [ -s "$tmp/cli-error" ] || { echo "ERROR: linked CLI gave no diagnostic: $cli" >&2; exit 1; }
+  done
+  node "$quality" --self-test | grep -F 'quality review validator self-test passed' >/dev/null
+  node "$fidelity" --self-test | grep -F 'self-test passed' >/dev/null
+  node "$motion" --help | grep -F 'Usage: node' >/dev/null
+  imported="$(SKILL_TEST_ROOT="$root" node --input-type=module -e '
+    import { pathToFileURL } from "node:url";
+    for (const file of ["wp-quality-reviewer/scripts/validate-review-report.mjs",
+      "product-video-producer/scripts/check-shot-fidelity.mjs", "product-video-producer/scripts/render-motion-starter.mjs"])
+      await import(pathToFileURL(process.env.SKILL_TEST_ROOT + "/" + file));
+  ')"
+  [ -z "$imported" ] || { echo "ERROR: importing a linked CLI ran it" >&2; exit 1; }
+done
+
 for required in product-video-producer wp-product-docs-writer loop-steward; do
   [ -L "$tmp/codex/skills/$required" ] || { echo "ERROR: required Codex skill missing: $required" >&2; exit 1; }
   [ -L "$tmp/claude/skills/$required" ] || { echo "ERROR: required Claude skill missing: $required" >&2; exit 1; }

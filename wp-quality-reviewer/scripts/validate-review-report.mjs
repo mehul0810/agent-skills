@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import fs from 'node:fs';
-import { pathToFileURL } from 'node:url';
+import { fileURLToPath } from 'node:url';
 import { validateAccessibilityAudit } from './accessibility-audit.mjs';
 
 const MODES = new Set(['security', 'performance', 'modularity', 'accessibility', 'multi']);
@@ -1097,4 +1097,5 @@ async function main() {
 	console.log(`quality review valid: ${arg}${scope}`);
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) await main();
+if (import.meta.main ?? (process.argv[1] && fs.existsSync(process.argv[1])
+	&& fs.realpathSync(process.argv[1]) === fileURLToPath(import.meta.url))) await main();

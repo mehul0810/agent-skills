@@ -2,7 +2,7 @@
 
 import fs from "node:fs";
 import process from "node:process";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
 
 const USAGE = `Usage: node check-shot-fidelity.mjs <input.json>\n       node check-shot-fidelity.mjs --self-test\n\nChecks source raster pixel coverage against each shot's rendered pixel footprint after crop and enlargement. Crop dimensions are available source pixels; zoom.x/y must be >= 1. For zoom-outs, enter the actual maximum rendered output footprint instead of a zoom factor below 1. This does not assess perceived or generated-video quality.`;
 const VECTOR_FORMATS = new Set(["ai", "eps", "pdf", "svg"]);
@@ -206,7 +206,8 @@ function main(argv) {
   if (result.overall_result !== "coverage_pass_or_vector_exempt") process.exitCode = 1;
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (import.meta.main ?? (process.argv[1] && fs.existsSync(process.argv[1])
+  && fs.realpathSync(process.argv[1]) === fileURLToPath(import.meta.url))) {
   try { main(process.argv.slice(2)); }
   catch (error) {
     process.stderr.write(`${error.message}\n`);
