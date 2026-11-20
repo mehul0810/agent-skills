@@ -9,11 +9,12 @@ Turn product truth, approved assets, footage, and references into distinctive, e
 
 ## Route
 
+- Route the work happening now. When planning a YouTube demo and a Short from supplied captures, start with the editing guide. Name later storyboard, channel and review deliverables without opening their guides until that stage begins.
 - Reference review, brand translation, storyboard, typography, pacing, composition, motion, or abstract storytelling: read `references/reference-to-storyboard.md`.
 - Cinematic film, instructional walkthrough, 3D scenes or advanced motion: use `references/production-modes.md` as the current stage's single optional support, replacing rather than stacking another reference. Combine modes only when the brief benefits.
 - Editing, real software capture, ingest/conform, sound, color, captions, rendering, manifest, QA, or user-critique iteration: read `references/render-review-iteration.md`.
 - YouTube long-form, Shorts, thumbnails/titles, channel packaging, disclosure, upload profiles, or retention learning: read `references/channel-delivery-feedback.md`.
-- Load the primary reference for the current stage; when needed, the production-mode reference is its one supporting reference. Do not load every stage reference in one context or stack another supporting reference with the mode guide. Handoff compact decisions between stages. Verify changing platform rules at delivery.
+- Load the primary reference for the current stage; add the production-mode guide only for a concrete mode question. Do not load every stage reference in one context. Carry decisions, not previous guides, into the next stage. Verify changing platform rules at delivery.
 - Use Creative Production or `imagegen` only for supporting visual exploration/assets. Preserve exact logos, product UI, typography, and copy from governed source files; composite them deterministically rather than asking generation to reproduce them.
 - Product claims/copy may route to `content-writer`; WordPress surfaces route to the relevant WP specialist. This skill owns the video artifact and proof.
 
