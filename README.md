@@ -1,8 +1,8 @@
 # Agent Skills
 
 Reusable skills for WordPress engineering, product operations, service-business
-development, content, design and media production. This repository supplies
-instructions and validation tools, not an always-running agent or scheduler.
+development, content, design, media production and game development. This
+repository supplies instructions and validation tools, not an always-running agent or scheduler.
 
 ## Repository Map
 
@@ -36,6 +36,7 @@ This repository contains WordPress engineering, product operations, organic-sear
 - `wp-product-docs-writer`: evidence-based WordPress.org `readme.txt` and directory-listing optimization, repository README, changelog, release-note, upgrade-notice, and product-document synchronization.
 - `content-writer`: organic search content writing for SEO, AEO, GEO, AI Overviews, AI Mode, answer engines, AI tools, briefs, outlines, drafts, audits, and content refreshes.
 - `product-video-producer`: premium enterprise promos, software demos, YouTube long-form/Shorts, editing/post, governed assets, deterministic delivery, accessibility, and evidence-led revision.
+- [`game-development`](game-development/SKILL.md): build playable games, choose the stack from the requirements, and judge realism from the player's camera. Use video production instead when the deliverable is a trailer.
 - `shared/references/research-token-discipline.md`: reusable reasoning, repo exploration, web search, validation, and output discipline across the skill pack.
 - `shared/references/session-continuity-pr-discipline.md`: reusable new-chat context rehydration, release-branch detection, explicit PR base selection, and branch/PR safety used by code-oriented skills.
 - `shared/references/project-subagent-routing.md`: project-level delegation and bounded mapping/review; see the model-policy limitation below before using its legacy allocation guidance.
@@ -204,6 +205,7 @@ wp-contributor/
 wp-product-docs-writer/
 content-writer/
 product-video-producer/
+game-development/
 ```
 
 Default invocations:
@@ -240,6 +242,8 @@ Use $wp-product-docs-writer to write or audit a WordPress.org readme or plugin-d
 Use $content-writer to research, brief, draft, rewrite, audit, or refresh organic-search-focused content for SEO, AEO, GEO, AI Overviews, answer engines, and AI tools.
 
 Use $product-video-producer for reference-led product films, software demos, YouTube long-form/Shorts, premium editing/post, deterministic delivery, accessible review packages, and bounded evidence-led revisions.
+
+Use $game-development to build a playable game, choose a stack for its target devices, or fix a scene that looks realistic in stills but not in play.
 ```
 
 ## Quick Start

@@ -1,0 +1,5 @@
+{
+  "id": "game-development-slice",
+  "request": "Make a tiny playable workshop game called Bench Zero. The player is looking straight at a well-used analog test meter on a service bench. Turn the trim control and submit a reading to bring the needle to zero. Show what happens on a miss, on success, and when starting another calibration. Make the instrument feel like a solid object under daylight, not a cartoon UI or a picture of an instrument beside unrelated controls. The artifact should open offline from one local file under 1 MB in a desktop browser, take keyboard and pointer input, and use only original work. There is no existing project or supplied photograph. Deliver one complete pass and identify what was actually tested.",
+  "artifacts": []
+}

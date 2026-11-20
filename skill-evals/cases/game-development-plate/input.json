@@ -1,0 +1,5 @@
+{
+  "id": "game-development-plate",
+  "request": "Build Bench Zero, a fixed-camera workshop game. The art department has produced the attached original workbench image for use in this game. The player uses the instrument's trim knob to bring a live needle to zero and submits a reading. Include a miss, a success, and another calibration. It should open offline from one local HTML file under 1 MB on desktop, with keyboard and pointer controls. Deliver the playable file and report what you could verify.",
+  "artifacts": ["workbench.jpg"]
+}

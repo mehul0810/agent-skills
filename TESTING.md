@@ -71,6 +71,12 @@ Use `skill-evals/README.md`. Run changed-role scenarios with a fresh agent and r
 
 Green grep/structure audits do not prove the behavior is correct.
 
+For game development, use the blind `game-development` (decisions),
+`game-development-slice` (no assets) and `game-development-plate` (supplied
+art) packets under `skill-evals/cases/`. Score them separately using
+`skill-evals/cases/game-development/criteria.md`. A still, an observed
+gameplay loop and sustained performance on target support different claims.
+
 For content-migration changes, the aggregate includes
 `node scripts/test-content-migration-regression.mjs`. Also run the blind
 `skill-evals/cases/content-migration-integrity/input.json` requests with a fresh
