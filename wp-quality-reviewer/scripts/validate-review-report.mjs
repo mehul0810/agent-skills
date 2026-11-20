@@ -853,6 +853,14 @@ export function validate(report) {
 		}
 	}
 	errors.push(...validateAccessibilityAudit(report, validateValidationReceipt));
+	if (isObject(report.accessibilityAudit?.checks)) {
+		const formalPass = report.accessibilityClaim === 'wcag22_aa_conformance'
+			&& (report.conclusion === 'pass' || domains.accessibility?.disposition === 'pass');
+		for (const [id, receipt] of Object.entries(report.accessibilityAudit.checks)) {
+			validateCandidateBinding(receipt, report.targetIdentity, `accessibilityAudit.checks.${id}`, errors,
+				{ required: formalPass && receipt?.result === 'pass' });
+		}
+	}
 	const keyboardReceipts = [
 		...Object.values(domains).flatMap((domain) => Array.isArray(domain?.validation) ? domain.validation : []),
 		...(Array.isArray(report.findings) ? report.findings.flatMap((finding) => Array.isArray(finding?.validation) ? finding.validation : []) : []),

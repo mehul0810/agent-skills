@@ -9,6 +9,7 @@ Use this for WordPress multisite, network activation, domain mapping, sunrise/dr
 - Prepare a network: https://developer.wordpress.org/advanced-administration/multisite/prepare-network/
 - Learn WordPress multisite development: https://learn.wordpress.org/lesson/developing-for-a-multisite-network/
 - VIP multisite imports: https://docs.wpvip.com/databases/import/multisite-database-imports/
+- Site context switching: https://developer.wordpress.org/reference/functions/switch_to_blog/ and https://developer.wordpress.org/reference/functions/restore_current_blog/
 
 Verify platform and host-specific multisite constraints before architecture or migration commitments.
 
@@ -23,6 +24,7 @@ Verify platform and host-specific multisite constraints before architecture or m
 
 - Never assume a single-site option/meta/table lookup is correct in multisite. Include site/blog ID in cache keys, table names, logs, queue args, and external IDs where behavior varies per site.
 - Avoid `switch_to_blog()` loops across large networks on web requests. Use WP-CLI, queues, indexed central tables, or search/index infrastructure for cross-network operations.
+- A switch changes the current site data and cache context, not the plugin or theme PHP loaded for the original request. Do not assume code active only on the target site becomes available. Pair every switch, including nested switches, with `restore_current_blog()` in `finally` so errors restore the caller's previous context even when it was already switched; switching back by ID does not balance the stack.
 - Use network options for true network config only. Do not put high-churn per-site state in network options.
 - Keep uploads, media URLs, domain mapping, SSL, redirects, and CDN behavior explicit per mapped domain.
 - Treat super-admin capabilities as a separate trust boundary from site admin capabilities.
@@ -51,6 +53,7 @@ Verify platform and host-specific multisite constraints before architecture or m
 ## Validation
 
 - Test single site, multiple sites, network active/per-site active modes, mapped domain, subsite admin, super admin, CLI batch, cache hit/miss, and deactivation/uninstall.
+- For site switches, test success and failure with an already-switched caller and nested switches. Verify the prior option, URL, cache and site context and switch stack are restored, not only the blog ID; verify target-only PHP is not assumed loaded.
 - For large networks, test against production-shaped site counts and avoid relying on dev networks with only two sites.
 
 ## Output Expectations

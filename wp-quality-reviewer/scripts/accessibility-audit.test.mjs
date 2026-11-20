@@ -22,6 +22,7 @@ function fixture() {
 		expected: 'All fixture controls remain available throughout the journey',
 		observed: 'The fixture assertions completed across the declared states',
 		result: 'pass', environment: 'Synthetic Safari VoiceOver fixture', artifact: 'fixtures/accessibility-proof.md',
+		identity: { commitSha: 'a'.repeat(40) },
 	};
 	return {
 		schemaVersion: 2, mode: 'accessibility',
@@ -52,6 +53,21 @@ test('canonical inventory has 55 unique A/AA criteria, not obsolete/AAA', () => 
 test('complete synthetic audit validates through schema and semantic gates', () => {
 	assert.ok(schemaValid(fixture()), JSON.stringify(schemaValid.errors));
 	assert.deepEqual(validate(fixture()), []);
+});
+test('formal check identity cannot contradict the audit target', () => {
+	const report = fixture();
+	assert.deepEqual(validate(report), []);
+	delete report.accessibilityAudit.checks.keyboard.identity;
+	assert.ok(validate(report).some((error) => error.includes('accessibilityAudit.checks.keyboard.identity is required')));
+	report.accessibilityAudit.checks.keyboard.identity = { commitSha: 'c'.repeat(40) };
+	assert.ok(validate(report).some((error) => error.includes('accessibilityAudit.checks.keyboard.identity.commitSha must match targetIdentity.commitSha')));
+});
+test('formal check package digest cannot contradict the audit target', () => {
+	const report = fixture();
+	report.targetIdentity = { kind: 'package', repository: 'fixture/accessibility', commitSha: 'a'.repeat(40), artifact: { path: 'dist/plugin.zip', sha256: 'b'.repeat(64) } };
+	report.conclusion = 'blocked'; report.domains.accessibility.disposition = 'partial';
+	report.accessibilityAudit.checks.keyboard.identity = { commitSha: 'a'.repeat(40), artifactSha256: 'c'.repeat(64) };
+	assert.ok(validate(report).some((error) => error.includes('accessibilityAudit.checks.keyboard.identity.artifactSha256 must match targetIdentity.artifact.sha256')));
 });
 test('ordinary scoped review stays lightweight without conformance claim', () => {
 	const report = fixture(); delete report.accessibilityAudit;
@@ -219,6 +235,7 @@ test('incomplete audit may truthfully report blocked, not conformant', () => {
 	report.accessibilityAudit.criteria['2.1.1'].status = 'blocked';
 	report.accessibilityAudit.criteria['2.1.1'].checks = ['unavailable'];
 	report.accessibilityAudit.checks.unavailable = { ...report.accessibilityAudit.checks.keyboard, result: 'blocked', observed: 'The required test environment was unavailable during review' };
+	delete report.accessibilityAudit.checks.unavailable.identity;
 	report.proofGaps = ['Keyboard journey remains untested on the required environment'];
 	assert.deepEqual(validate(report), []);
 });

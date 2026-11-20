@@ -20,12 +20,12 @@ Turn product truth, approved assets, footage, and references into distinctive, e
 ## Workflow
 
 1. Classify the work: enterprise promo/launch, educational/3D explainer, abstract motion, software demo, long-form, Short, edit, or delivery-only. Confirm audience, content promise, channel, duration, outcome, deliverables, and review owner.
-2. Establish project, source revision/hash, sequence, job and expected output identity. For edit/review/delivery-only work, bind the supplied artifact to its existing contract; never invent missing identity.
+2. Establish applicable project, source revision/hash, sequence, job and expected output identity. For edit/review/delivery-only work, bind the supplied artifact to its existing contract; never invent missing identity.
 3. Confirm approved claims, brand, product evidence, sanitized capture, media/likeness rights, accessibility, synthetic-media needs, and platform constraints.
 4. Inspect references and footage; record timestamped observations, intent, reusable principles, and originality boundaries.
 5. Preflight assets, rights, and capture. New narrative work needs a brief and shot-level storyboard with acceptance criteria; revisions inherit their contract. Validate a representative style sequence before scaling. Delegated direction permits internal selection/review; ask only for a requested checkpoint or unresolved material brand, claim, or scope decision.
-6. Edit non-destructively from an explicit timeline and render contract. Separate product truth from metaphor; never fabricate product UI, customers, metrics, capabilities, or outcomes.
-7. Deliver review render, intentional poster, manifest, accessibility assets, and relevant channel package. Validate metadata, narrative, UI truth, typography, logo, motion, audio, rights, claims, accessibility, and output identity.
+6. When editing or rendering is requested, edit non-destructively from an explicit timeline and render contract. Separate product truth from metaphor; never fabricate product UI, customers, metrics, capabilities, or outcomes.
+7. For a rendered deliverable, provide the review render, intentional poster, manifest, accessibility assets, and relevant channel package. For rendered or review-only work, validate applicable metadata, narrative, UI truth, typography, logo, motion, audio, rights, claims, accessibility, and output identity. Storyboard-only work stops at its requested deliverable.
 8. For direct critique, apply the exact bounded change and preserve invariants. For post-publication evidence, record one hypothesis and change only its implicated packaging/edit variable. Rerender only if video changed; report proof gaps without silently changing direction.
 
 ## Non-Negotiables
@@ -41,4 +41,4 @@ Turn product truth, approved assets, footage, and references into distinctive, e
 
 ## Required Handoff
 
-Report direction, project/job/output identity, render profile, paths, provenance, claims, accessibility, validation, changes, gaps, remaining approval.
+Report direction, applicable project/job/output identity, paths, provenance, claims, accessibility, validation, changes, gaps, and remaining approval. Include the render profile for rendered deliverables.
