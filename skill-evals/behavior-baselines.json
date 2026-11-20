@@ -425,7 +425,7 @@
         "wp-quality-reviewer/scripts/validate-review-report.mjs",
         "wp-quality-reviewer/scripts/accessibility-audit.mjs"
       ],
-      "sha256": "db4fc56ee13da79a7ec8e8c2dc802ae56323511837bd939a40ff0a760add5bf1",
+      "sha256": "0a09a1c7c3a6eaaf65dec8adbecd8051e8eb7defdac28a86101fbe08076596eb",
       "scenario": {
         "id": "multi-domain-release-quality-review",
         "files": [
@@ -497,10 +497,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-10-15-voiceover-exclusion.json",
-          "sha256": "04a9954ced4dca6281f261595e6888bc6b9376cf6e2edfd7b3b95f2b6617e976",
-          "testedRevision": "fbf46e5e9177b9cc9a318d90ca5ad8925fbff385",
-          "testedSourceSha256": "db4fc56ee13da79a7ec8e8c2dc802ae56323511837bd939a40ff0a760add5bf1",
+          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-11-20-portfolio.json",
+          "sha256": "e8d641128aed0655cd000eb183c187b7627d4cc653815902e58395209a260329",
+          "testedRevision": "caa794f12ba64f71a280656649fd645af5e6994e",
+          "testedSourceSha256": "0a09a1c7c3a6eaaf65dec8adbecd8051e8eb7defdac28a86101fbe08076596eb",
           "testedScenarioSha256": "dc871ec228dc5f669cf046b3719b6c9193ee3d1b17d9a11588f6eddfee9d1a25",
           "testedScenarioContractSha256": "8f69cb8f53c058aa7ca17282a64122c42b261d4ef5e0cba42f6acdc091a7de03",
           "runtime": {
@@ -990,7 +990,7 @@
         "product-video-producer/assets/motion-starter/scene.mjs",
         "product-video-producer/assets/motion-starter/README.md"
       ],
-      "sha256": "33fbb4b95961e5daf878c52d0d9976b37ecd6a0cc79ff81f49856e3d0b1df915",
+      "sha256": "f7f59edd355bf762f7c87144bb1779ca4739b76d27a6544af69b28e11d4351c1",
       "scenario": {
         "id": "product-video-truth-and-assets",
         "files": [
@@ -1090,10 +1090,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-10-15-voiceover-exclusion.json",
-          "sha256": "8ba649c7582226f1192bcf68e343a726a04fae754016627138dbcfc2c1d1f5cf",
-          "testedRevision": "fbf46e5e9177b9cc9a318d90ca5ad8925fbff385",
-          "testedSourceSha256": "33fbb4b95961e5daf878c52d0d9976b37ecd6a0cc79ff81f49856e3d0b1df915",
+          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-11-20-portfolio.json",
+          "sha256": "ca2e7e8896f898d0145b0ac1ec7a2f7f99227339290b32ca847fa85455d75aac",
+          "testedRevision": "dbf886103da7d8a3c6f16aa498fa0ddc158c63bb",
+          "testedSourceSha256": "f7f59edd355bf762f7c87144bb1779ca4739b76d27a6544af69b28e11d4351c1",
           "testedScenarioSha256": "c73de5eedf1dee85a45a49b23b404d1df8e65a62bd200478209cda6063be8b66",
           "testedScenarioContractSha256": "17de0a37f6a96a8cce76ac8b0f11c6e4f1cc1d042c04ee98fe1a409f72322df0",
           "runtime": {
@@ -1177,7 +1177,7 @@
         "content-writer/references/router.md",
         "shared/references/search-visibility-and-ai-discovery.md"
       ],
-      "sha256": "09f620d608ddfbfe6630844aa3cc7bffe726133113c2cfde18fc99ee509df3cc",
+      "sha256": "bdb33384e87273e28451249c6b680e78f0389e7892a620d916698dffbd8b17d1",
       "scenario": {
         "id": "content-writer-search-visibility",
         "files": [
@@ -1212,10 +1212,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/content-writer-search-visibility-2026-10-15-chat-corrections.json",
-          "sha256": "3930d5c05979ac3e563cdcc94fc8f1803053a8dfbd08617b7b600dc2c89c0003",
-          "testedRevision": "3467de86b8c1fec9361ae12229a2778735b2fda0",
-          "testedSourceSha256": "09f620d608ddfbfe6630844aa3cc7bffe726133113c2cfde18fc99ee509df3cc",
+          "runRecord": "skill-evals/run-records/content-writer-search-visibility-2026-11-20-portfolio.json",
+          "sha256": "b25e179e74db894010c619a4c29bee5c8914f950ecabbcf2fb8fe09dcc59e7be",
+          "testedRevision": "caa794f12ba64f71a280656649fd645af5e6994e",
+          "testedSourceSha256": "bdb33384e87273e28451249c6b680e78f0389e7892a620d916698dffbd8b17d1",
           "testedScenarioSha256": "7fc19d19e43a3fa241c4de6dd606b4cc808b765d2ec0a0f85a0093f685906d22",
           "testedScenarioContractSha256": "570f53d205034aaab3740d38e6ce13ec420a7cf67f95035bcbc263e35f6a883e",
           "runtime": {
@@ -1235,7 +1235,7 @@
         "content-writer/references/human-writing-quality-gate.md",
         "content-writer/references/readability-and-clarity.md"
       ],
-      "sha256": "d4184a8feac48ef14274219fa479a64197d3de5b8f7abe4a5d923761648e4542",
+      "sha256": "45fdc4428a94f4352d1c6aac0f014dfef5720c31a07e74b710c57003bf6a9e6d",
       "scenario": {
         "id": "content-writer-readability",
         "files": [
@@ -1285,10 +1285,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/content-writer-readability-2026-10-15-chat-corrections.json",
-          "sha256": "e56cfe40f055356b1502cf0b1570c9eb5e2e523a125f824f670fb4a150197947",
-          "testedRevision": "3467de86b8c1fec9361ae12229a2778735b2fda0",
-          "testedSourceSha256": "d4184a8feac48ef14274219fa479a64197d3de5b8f7abe4a5d923761648e4542",
+          "runRecord": "skill-evals/run-records/content-writer-readability-2026-11-20-portfolio.json",
+          "sha256": "4297e8275c6604ae90d844735b9ecb027e04702f966c2e937cd7d58f729443f9",
+          "testedRevision": "caa794f12ba64f71a280656649fd645af5e6994e",
+          "testedSourceSha256": "45fdc4428a94f4352d1c6aac0f014dfef5720c31a07e74b710c57003bf6a9e6d",
           "testedScenarioSha256": "423903d47208398ee8f7babbc3b3da132828c0ff03a70353f52ae8c3f490fd63",
           "testedScenarioContractSha256": "3c2a3fe6a487469d1c07e07cc54aac7f746eecc59dbf601d153fa5a52891583d",
           "runtime": {

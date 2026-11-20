@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "runId": "content-writer-readability-2026-11-20-portfolio",
+  "scenario": "content-writer-readability",
+  "result": "succeeded",
+  "startedAt": "2026-11-20T14:14:12.433Z",
+  "durationMs": 1304308,
+  "checks": [
+    {
+      "name": "audience-task-calibration",
+      "result": "pass"
+    },
+    {
+      "name": "plain-language-structure",
+      "result": "pass"
+    },
+    {
+      "name": "accessible-localized-copy",
+      "result": "pass"
+    },
+    {
+      "name": "reading-level-diagnostic",
+      "result": "pass"
+    },
+    {
+      "name": "complex-high-stakes-precision",
+      "result": "pass"
+    },
+    {
+      "name": "progressive-disclosure-precision",
+      "result": "pass"
+    },
+    {
+      "name": "no-blanket-readability-gate",
+      "result": "pass"
+    },
+    {
+      "name": "reader-knowledge-and-feature-meaning",
+      "result": "pass"
+    },
+    {
+      "name": "verified-procedure-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "numeracy-and-scope",
+      "result": "pass"
+    },
+    {
+      "name": "reader-evidence-not-agent-opinion",
+      "result": "pass"
+    },
+    {
+      "name": "warning-preserving-rewrite",
+      "result": "pass"
+    },
+    {
+      "name": "labeled-mechanism-illustrations",
+      "result": "pass"
+    },
+    {
+      "name": "no-fabricated-proof-or-author-experience",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 14,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "content-writer-readability-2026-11-20-portfolio",
+    "artifactPointer": "codex-private:skill-portfolio-audit-20261120#receipts/accepted-content-writer-readability.json"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-11-20T14:35:56.741Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Independently scored frozen development decisions. Start-to-verification interval includes coordination, scoring and local preflight; it is not per-agent runtime or summable cost. First-pass gaps and earlier candidates were preserved; supplementary prompts cover only their recorded decisions. Host usage telemetry unavailable. Not proof of native execution, audience outcomes, accessibility conformance or a media master. See portfolio-review-2026-11-20.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}

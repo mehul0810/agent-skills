@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "runId": "content-writer-search-visibility-2026-11-20-portfolio",
+  "scenario": "content-writer-search-visibility",
+  "result": "succeeded",
+  "startedAt": "2026-11-20T14:14:12.433Z",
+  "durationMs": 1304308,
+  "checks": [
+    {
+      "name": "terminology-provider-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "provider-crawl-index-controls",
+      "result": "pass"
+    },
+    {
+      "name": "citation-sourceworthiness",
+      "result": "pass"
+    },
+    {
+      "name": "structured-data-visible-content",
+      "result": "pass"
+    },
+    {
+      "name": "programmatic-content-quality",
+      "result": "pass"
+    },
+    {
+      "name": "privacy-training-controls",
+      "result": "pass"
+    },
+    {
+      "name": "visibility-measurement-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "wordpress-search-handoff",
+      "result": "pass"
+    },
+    {
+      "name": "query-fanout-intent-plan",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 9,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "content-writer-search-visibility-2026-11-20-portfolio",
+    "artifactPointer": "codex-private:skill-portfolio-audit-20261120#receipts/accepted-content-writer-search-visibility.json"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-11-20T14:35:56.741Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Independently scored frozen development decisions. Start-to-verification interval includes coordination, scoring and local preflight; it is not per-agent runtime or summable cost. First-pass gaps and earlier candidates were preserved; supplementary prompts cover only their recorded decisions. Host usage telemetry unavailable. Not proof of native execution, audience outcomes, accessibility conformance or a media master. See portfolio-review-2026-11-20.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}

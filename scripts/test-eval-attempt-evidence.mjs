@@ -6,7 +6,8 @@ import path from 'node:path';
 import { buildPacket } from './build-eval-packet.mjs';
 import { preflightReceipt } from './eval-feedback-loop.mjs';
 
-const root = fs.mkdtempSync(path.join(os.tmpdir(), 'attempt-evidence-'));
+// Record the physical fixture path even when the host's temp directory is an alias.
+const root = fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(), 'attempt-evidence-')));
 const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const revision = 'a'.repeat(40);
 let checks = 0;

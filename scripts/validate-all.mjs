@@ -10,6 +10,7 @@ export function validationChecks(python) {
     ['Diff', 'git', ['diff', '--check']],
     ['Validation Python regression', 'node', ['scripts/test-validation-python.mjs']],
     ['Validation process runner regression', 'node', ['scripts/test-validation-runner.mjs']],
+    ['Reference validator regression', 'node', ['scripts/test-validate-references.mjs']],
     ['Evaluation packet regression', 'node', ['scripts/test-eval-packet.mjs']],
     ['Current status fixture regression', 'node', ['--test', 'scripts/test-current-status-fixture.mjs']],
     ['Skill gap fixture regression', 'node', ['--test', 'scripts/test-skill-gap-fixtures.mjs']],
