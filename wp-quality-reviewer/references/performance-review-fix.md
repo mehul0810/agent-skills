@@ -23,7 +23,9 @@ Define the measured path before changing code:
 - Baseline metric and budget: query count/time, PHP/request time, memory, cache hit rate, remote latency, queue age, asset bytes, long tasks, LCP/INP/CLS, or a repo-defined SLA.
 - Repeatable measurement command or trace. Do not compare unrelated environments.
 
-For elevated, high-traffic, release-critical, or user-visible latency work, extend the receipt with repeated-run distribution (p50/p75/p95 or p99 when the sample supports it), sample/run count, variance, error rate, cache state, field-versus-lab classification, measurement provenance, and material limitations. A median alone can hide tail failure; do not require p99 for a small deterministic local change.
+For elevated latency proof, record a repeated-run distribution, typed `statistic`, observation `sampleSize`, separate `runCount`, variance, error rate, cache state, field/lab provenance and limitations. Compare the same metric, unit and statistic under matching conditions. A percentile budget uses the actual candidate `distribution` value as `after`; median means p50. Diagnostic percentiles are not extra targets.
+
+The validator's minimum observation counts are 2/4/20/100 for p50/p75/p95/p99 respectively, not confidence guarantees. Five runs are not five requests. Size the sample for the observed variation; do not require p99 when p95 is the target. A green record verifies neither the trace nor the sampling design.
 
 ## Review Workflow
 
@@ -86,5 +88,7 @@ Re-measure the same path and conditions. Every fixed finding must report:
 - For elevated paths, tail distribution, error rate, cache state, field/lab classification, provenance, and limitations.
 - Functional/regression checks, cache correctness, and failure behavior.
 - Remaining bottleneck or operational risk.
+
+A valid report may document a failure. A passing budget check requires a comparable result within budget and no regression; stable results can pass. A fixed performance finding or explicit `improvementClaim` additionally requires strict improvement. Record failed or blocked checks honestly rather than changing their measured values; a failed or blocked primary performance receipt cannot support a passing performance domain. Subordinate failures require a non-passing receipt and must not be hidden by a pass.
 
 Add a regression budget/check when stable and cheap enough. For release-critical paths, test the package or release-branch build with realistic data and cold/warm states. Never claim “faster” without comparable before/after evidence.

@@ -31,12 +31,12 @@ Record a compact capacity envelope:
 - Growth horizon: launch, near-term, and agreed forecast cardinality/traffic; state confidence and the assumptions that would invalidate it.
 - Budgets and headroom: latency/error/DB/worker/cache/queue/provider/storage budgets, measured saturation point, remaining headroom, and the signal that triggers scaling or scope reduction.
 - Fairness and admission: per-site/tenant/actor quotas or concurrency caps, priority classes, noisy-neighbor isolation, load shedding, and bounded degradation. State `Not applicable - reason` when the surface is single-tenant and non-shared.
-- Queue capacity: arrival rate versus service rate, worker concurrency, maximum age/depth, drain-time target, retry/dead-letter behavior, pause/resume, and duplicate or poison-work handling.
+- Queue capacity: arrival rate versus service rate, worker concurrency, maximum age/depth, drain-time target, retry/dead-letter behavior, pause/resume, and duplicate or poison-work handling. For a fully synchronous path with no background work, record why queue measurements do not apply rather than inventing zeroes.
 - Data lifecycle: write amplification, hot-key/partition risk, storage and index growth, retention/archive/compaction, migration and reindex limits, backup size, and restore time at the forecast point.
 - Distributed behavior: primary/replica consistency, cache invalidation, lock ownership, failover, dependency outage, and recovery or graceful-degradation behavior where applicable.
 - Action ownership: the next scale action, trigger, owner, deadline, and rollback or capacity-reduction path.
 
-For elevated or release-critical work, the receipt must include the tested revision/package, environment, workload and forecast, budgets, headroom/saturation evidence, fairness/admission result, queue and storage results, failure/recovery behavior, provenance, and limitations. A single median, a green load-test command, or a platform autoscaling claim is not a capacity guarantee. For low-volume work, record a concise non-applicable reason instead of running a speculative load test.
+For elevated or release-critical work, bind the envelope to the tested revision/package and environment. Keep workload, forecast, budgets, headroom/saturation, storage, failures/recovery, provenance and limitations. Record actual fairness and queue results when applicable; in a formal report use `{"status":"not_applicable","reason":"..."}` for each genuinely absent dimension. Real shared tenants or queues cannot use that exclusion. Neither a median nor autoscaling proves capacity. For low-volume work, explain non-applicability instead of running a speculative load test.
 
 ## VIP-Specific Guardrails
 

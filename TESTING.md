@@ -71,6 +71,11 @@ Use `skill-evals/README.md`. Run changed-role scenarios with a fresh agent and r
 
 Green grep/structure audits do not prove the behavior is correct.
 
+For release-report changes, use the blind `skill-evals/cases/quality-report-decisions/`
+packet and score against its separate criteria. Exercise the actual validator on
+both admissible and contradictory synthetic records. A valid failure report is a
+positive test of the CLI, not a passing candidate or a verified product artifact.
+
 For game development, use the blind `game-development` (decisions),
 `game-development-slice` (no assets) and `game-development-plate` (supplied
 art) packets under `skill-evals/cases/`. Score them separately using

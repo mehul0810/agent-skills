@@ -23,10 +23,10 @@ require_text "wp-quality-reviewer/references/multi-domain-release-review.md" "ta
 require_text "wp-quality-reviewer/scripts/validate-review-report.mjs" "artifactSha256 is required for release-candidate proof" "release package digest enforcement"
 require_text "wp-quality-reviewer/scripts/validate-review-report.mjs" "boundary-specific negative case" "security claim semantic proof"
 require_text "wp-quality-reviewer/scripts/validate-review-report.mjs" "baselineConditions and candidateConditions must match" "performance comparability enforcement"
-require_text "wp-quality-reviewer/scripts/validate-review-report.mjs" "requires p95 and p99 for elevated proof" "elevated tail enforcement"
+require_text "wp-quality-reviewer/scripts/validate-review-report.mjs" "after must equal the candidate distribution statistic" "budgeted percentile must match its observations"
 require_text "wp-quality-reviewer/scripts/validate-review-report.mjs" "expand_migrate_contract" "migration sequencing enforcement"
-require_text "wp-quality-reviewer/scripts/validate-review-report.mjs" "authorization evidence from another commit" "nested authorization candidate binding"
-require_text "wp-quality-reviewer/scripts/validate-review-report.mjs" "scope cannot omit risks" "scope-derived risk enforcement"
+require_text "wp-quality-reviewer/scripts/review-report-self-test.mjs" "authorization evidence from another commit" "nested authorization candidate binding"
+require_text "wp-quality-reviewer/scripts/review-report-self-test.mjs" "scope cannot omit risks" "scope-derived risk enforcement"
 require_text "wp-quality-reviewer/scripts/validate-review-report.mjs" "capacityEnvelope is required for declared scale risk" "scale capacity envelope enforcement"
 require_text "wp-quality-reviewer/scripts/validate-review-report.mjs" "requires automated accessibility scan proof" "packaged accessibility proof stack"
 require_text "wp-quality-reviewer/scripts/accessibility-audit.mjs" "named browser and assistiveTechnology fields" "formal AA named environment"
@@ -79,14 +79,14 @@ require_text "wp-quality-reviewer/references/accessibility-review-fix.md" "0.12e
 require_text "product-video-producer/references/render-review-iteration.md" "a descriptive transcript alone is not a substitute" "AA audio description boundary"
 node "$repo_root/wp-quality-reviewer/scripts/accessibility-audit.test.mjs"
 require_text "wp-quality-reviewer/scripts/validate-review-report.mjs" "finding.negativeTests" "security validator proof"
-require_text "wp-quality-reviewer/scripts/validate-review-report.mjs" "must improve and meet the lower-is-better budget" "performance improvement and budget proof"
+require_text "wp-quality-reviewer/scripts/validate-review-report.mjs" "must meet budget without regression" "performance improvement and budget proof"
 require_text "wp-quality-reviewer/scripts/validate-review-report.mjs" "manualChecks" "accessibility validator proof"
 require_text "wp-quality-reviewer/scripts/validate-review-report.mjs" "must be a structured evidence receipt" "structured evidence receipt validation"
-require_text "wp-quality-reviewer/scripts/validate-review-report.mjs" "empty multi domains" "complete domain negative self-test"
-require_text "wp-quality-reviewer/scripts/validate-review-report.mjs" "critical fix without independent review" "critical independent review negative self-test"
-require_text "wp-quality-reviewer/scripts/validate-review-report.mjs" "failed modularity proof" "modularity pass-only negative self-test"
-require_text "wp-quality-reviewer/scripts/validate-review-report.mjs" "vague evidence" "vague evidence negative self-test"
-require_text "wp-quality-reviewer/scripts/validate-review-report.mjs" "unknown top key" "schema parity negative self-test"
+require_text "wp-quality-reviewer/scripts/review-report-self-test.mjs" "empty multi domains" "complete domain negative self-test"
+require_text "wp-quality-reviewer/scripts/review-report-self-test.mjs" "critical fix without independent review" "critical independent review negative self-test"
+require_text "wp-quality-reviewer/scripts/review-report-self-test.mjs" "failed modularity proof" "modularity pass-only negative self-test"
+require_text "wp-quality-reviewer/scripts/review-report-self-test.mjs" "vague evidence" "vague evidence negative self-test"
+require_text "wp-quality-reviewer/scripts/review-report-self-test.mjs" "unknown top key" "schema parity negative self-test"
 require_text "shared/schemas/wp-quality-review.schema.json" '"domainDisposition"' "quality domain disposition schema"
 require_text "shared/schemas/wp-quality-review.schema.json" '"independentReview"' "critical independent review schema"
 require_text "shared/schemas/wp-quality-review.schema.json" '"distribution"' "performance distribution schema"
@@ -114,5 +114,7 @@ if [ "$errors" -gt 0 ]; then
   echo "quality reviewer behavior audit failed: $errors issue(s)" >&2
   exit 1
 fi
+
+node --test "$repo_root/wp-quality-reviewer/scripts/performance-measurement.test.mjs" "$repo_root/wp-quality-reviewer/scripts/applicability-schema.test.mjs"
 
 echo "quality reviewer behavior audit passed"
