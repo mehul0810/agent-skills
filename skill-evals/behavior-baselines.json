@@ -18,7 +18,7 @@
         "wp-plugin-expert/SKILL.md",
         "wp-plugin-expert/references/router.md"
       ],
-      "sha256": "4693221b1c25d0a57e695b60e2aa3a51c94556fccd89e6413333bac98cf7e991",
+      "sha256": "87a98b1f7a2fd0e57dbb471529881b0f90f000dbcd774ddce22f21dd70535e43",
       "scenario": {
         "id": "elevated-enterprise-runtime-assurance",
         "files": [
@@ -41,10 +41,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-11-06-baseline-refresh.json",
-          "sha256": "f8af612aef98d81bf75b29936bedc8444f5208e7b430d2a87e2a223913a1d614",
-          "testedRevision": "c2a36bb3559d67fa611f770f3f0f344a9d7a2a8e",
-          "testedSourceSha256": "4693221b1c25d0a57e695b60e2aa3a51c94556fccd89e6413333bac98cf7e991",
+          "runRecord": "skill-evals/run-records/enterprise-runtime-assurance-2026-11-20-quality-contracts.json",
+          "sha256": "fc94c715c74121984e247501275ad3314d599ec2a768bbb31264b6cb898a382d",
+          "testedRevision": "fc2316c2ce46f34fb2e684e89133c700cb13b7d9",
+          "testedSourceSha256": "87a98b1f7a2fd0e57dbb471529881b0f90f000dbcd774ddce22f21dd70535e43",
           "testedScenarioSha256": "3d842125a654c717b1b68f1fe273d32f8bf4ac54bae26ac39dbacefb0f92eb84",
           "testedScenarioContractSha256": "a5e92da73927c18518f1dd51dabe014c350387dde50c4dbd14968ced5c3d40e8",
           "runtime": {
@@ -423,9 +423,10 @@
         "wp-quality-reviewer/references/multi-domain-release-review.md",
         "shared/schemas/wp-quality-review.schema.json",
         "wp-quality-reviewer/scripts/validate-review-report.mjs",
-        "wp-quality-reviewer/scripts/accessibility-audit.mjs"
+        "wp-quality-reviewer/scripts/accessibility-audit.mjs",
+        "wp-quality-reviewer/scripts/review-report-self-test.mjs"
       ],
-      "sha256": "6da39f9cb8cfb9ba4ce55d71ba8cb8a450b0bd3d3b3201bdd1cfe81c900cf429",
+      "sha256": "26dbcf68dfe6c17ad84d3b8c1ab338510355f36205deb8261c57ee9a0518142d",
       "scenario": {
         "id": "multi-domain-release-quality-review",
         "files": [
@@ -447,10 +448,14 @@
           "Lifecycle and unresolved evidence",
           "Hostile execution and partial coverage"
         ],
-        "sha256": "dc871ec228dc5f669cf046b3719b6c9193ee3d1b17d9a11588f6eddfee9d1a25",
+        "sha256": "82fc0a1e42471ac04b50501a1224d84f5be1e8cf0b16b31f31226b2f29597924",
         "sha256Scope": "legacy-anchor-line",
-        "fixtureFiles": [],
-        "contractSha256": "8f69cb8f53c058aa7ca17282a64122c42b261d4ef5e0cba42f6acdc091a7de03"
+        "fixtureFiles": [
+          "skill-evals/cases/quality-report-decisions/artifacts/briefs.md",
+          "skill-evals/cases/quality-report-decisions/criteria.md",
+          "skill-evals/cases/quality-report-decisions/input.json"
+        ],
+        "contractSha256": "458504946669e512158427c15880c11be28ac88b1710efb817d8707296a6f444"
       },
       "requiredChecks": [
         "compact-multi-domain-route",
@@ -497,12 +502,12 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-11-20-installed-cli.json",
-          "sha256": "885b2fbce48d497d182399aab363d4814cf987cad817c02e6da20d6f972c80e4",
-          "testedRevision": "e3ff58ea375afd504f27db35de9096169fe92b11",
-          "testedSourceSha256": "6da39f9cb8cfb9ba4ce55d71ba8cb8a450b0bd3d3b3201bdd1cfe81c900cf429",
-          "testedScenarioSha256": "dc871ec228dc5f669cf046b3719b6c9193ee3d1b17d9a11588f6eddfee9d1a25",
-          "testedScenarioContractSha256": "8f69cb8f53c058aa7ca17282a64122c42b261d4ef5e0cba42f6acdc091a7de03",
+          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-11-20-quality-contracts.json",
+          "sha256": "75bf5cd00c2611aea96f6e4babfbf9b417432f1c510d1a98ea6b7c2fd67d896d",
+          "testedRevision": "fc2316c2ce46f34fb2e684e89133c700cb13b7d9",
+          "testedSourceSha256": "26dbcf68dfe6c17ad84d3b8c1ab338510355f36205deb8261c57ee9a0518142d",
+          "testedScenarioSha256": "82fc0a1e42471ac04b50501a1224d84f5be1e8cf0b16b31f31226b2f29597924",
+          "testedScenarioContractSha256": "458504946669e512158427c15880c11be28ac88b1710efb817d8707296a6f444",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
