@@ -1,0 +1,5 @@
+{
+  "id": "apple-app-development",
+  "request": "For each independent brief, identify the owning workflow, the change or next decision, and what could actually be verified. Answer as the engineer assigned to the task; do not build, publish, install tools, or contact accounts in these decision exercises.",
+  "artifacts": ["briefs.md"]
+}

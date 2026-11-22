@@ -1,7 +1,7 @@
 # Agent Skills
 
 Reusable skills for WordPress engineering, product operations, service-business
-development, content, design, media production and game development. This
+development, content, design, media, games and native Apple apps. This
 repository supplies instructions and validation tools, not an always-running agent or scheduler.
 
 ## Repository Map
@@ -20,7 +20,7 @@ Product-specific implementation and release truth remain in each product reposit
 
 For current behavior, use repository `AGENTS.md`, the selected `SKILL.md`, its routed reference, schemas/scripts, and registered behavior evidence in that order. `QUICK_REFERENCE.md` is a convenience index; `PLANNING_REPORT.md`, older changelog entries, examples, and chat history are non-normative. Live product and ecosystem facts must be reverified at their owning source.
 
-This repository contains WordPress engineering, product operations, organic-search content, behavior-proof, and media-production Codex skills:
+Choose the skill by the requested deliverable:
 
 - `wp-expert`: thin umbrella router for ambiguous WordPress engineering that points to the narrow specialist skill.
 - `wp-plugin-expert`: enterprise WordPress plugin engineering for plugin architecture, admin screens, REST APIs, custom tables, WordPress.org releases, Composer/npm, tests, CI, security, performance, and troubleshooting.
@@ -37,6 +37,7 @@ This repository contains WordPress engineering, product operations, organic-sear
 - `content-writer`: organic search content writing for SEO, AEO, GEO, AI Overviews, AI Mode, answer engines, AI tools, briefs, outlines, drafts, audits, and content refreshes.
 - `product-video-producer`: premium enterprise promos, software demos, YouTube long-form/Shorts, editing/post, governed assets, deterministic delivery, accessibility, and evidence-led revision.
 - [`game-development`](game-development/SKILL.md): build playable games, choose the stack from the requirements, and judge realism from the player's camera. Use video production instead when the deliverable is a trailer.
+- [`apple-app-development`](apple-app-development/SKILL.md): build, debug, and review native apps for Apple devices. Choose the platform from the brief, verify the actual Xcode destination, and keep local testing separate from distribution.
 - `shared/references/research-token-discipline.md`: reusable reasoning, repo exploration, web search, validation, and output discipline across the skill pack.
 - `shared/references/session-continuity-pr-discipline.md`: reusable new-chat context rehydration, release-branch detection, explicit PR base selection, and branch/PR safety used by code-oriented skills.
 - `shared/references/project-subagent-routing.md`: project-level delegation and bounded mapping/review; see the model-policy limitation below before using its legacy allocation guidance.
@@ -206,6 +207,7 @@ wp-product-docs-writer/
 content-writer/
 product-video-producer/
 game-development/
+apple-app-development/
 ```
 
 Default invocations:
@@ -244,6 +246,8 @@ Use $content-writer to research, brief, draft, rewrite, audit, or refresh organi
 Use $product-video-producer for reference-led product films, software demos, YouTube long-form/Shorts, premium editing/post, deterministic delivery, accessible review packages, and bounded evidence-led revisions.
 
 Use $game-development to build a playable game, choose a stack for its target devices, or fix a scene that looks realistic in stills but not in play.
+
+Use $apple-app-development to add a feature to an iPhone and iPad app without raising its deployment target, and test the user flow on a named destination.
 ```
 
 ## Quick Start

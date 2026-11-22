@@ -82,6 +82,13 @@ art) packets under `skill-evals/cases/`. Score them separately using
 `skill-evals/cases/game-development/criteria.md`. A still, an observed
 gameplay loop and sustained performance on target support different claims.
 
+For native Apple apps and the dependency-reuse decision, use the blind
+`skill-evals/cases/apple-app-development/` packet and the separate
+`apple-app-native-build` packet. Keep the former's `criteria.md` away from both
+performers. Run the native task in a disposable project on an available
+destination; do not add Xcode to the portable Node gate. Report decisions,
+compiled artifacts, UI interactions, and physical-device evidence separately.
+
 For content-migration changes, the aggregate includes
 `node scripts/test-content-migration-regression.mjs`. Also run the blind
 `skill-evals/cases/content-migration-integrity/input.json` requests with a fresh

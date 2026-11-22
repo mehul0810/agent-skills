@@ -4,6 +4,8 @@ Use this when reviewing, building, packaging, deploying, or contributing WordPre
 
 ## Core Rule
 
+Before adding a runtime dependency, test the hardest acceptance case against an existing repo component or supported platform API. If it works, reuse it; if it doesn't, name the missing behavior and add only what supplies it. For example, a native date control can collect one date, but it doesn't enforce a booking blackout on the server. Keep authorization, validation, accessibility and fallback behavior either way. Fewer lines or packages alone aren't success.
+
 Never ship development-only packages to production. Development dependencies can exist in source manifests, lockfiles, local environments, and CI build stages, but they must not be installed, bundled, committed as runtime code, or included in the production artifact unless the target platform explicitly requires them at runtime.
 
 ## Composer Rules
