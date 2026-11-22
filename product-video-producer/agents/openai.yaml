@@ -1,4 +1,4 @@
 interface:
   display_name: "Product Video Producer"
-  short_description: "Enterprise product films, demos, YouTube, and post"
-  default_prompt: "Use $product-video-producer to plan, edit, validate, or package a premium product or brand video from governed evidence."
+  short_description: "Intros, motion graphics, creator videos, demos and tutorials"
+  default_prompt: "Use $product-video-producer to turn my brief and approved assets into a format-specific video, with visible proof for each product claim."

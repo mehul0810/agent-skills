@@ -18,6 +18,7 @@ Choose delivery profile:
 
 - `1080p`: 1920x1080.
 - `4K UHD`: 3840x2160, only when the intended channel and source assets justify it.
+- For vertical or square, compose natively for the destination; these landscape dimensions are not universal.
 - Preserve cadence; record rate, frames, timebase, scan, pixel aspect and format. Derivatives are progressive CFR unless required otherwise.
 - Use square pixels, duration and color tags. Default enterprise web to managed Rec.709 SDR; HDR needs monitored grade and separate reviewed SDR.
 - Audio: 48 kHz; measure channel/client loudness and true peak. YouTube does not publish a universal required LUFS value.
@@ -53,6 +54,14 @@ Manifest binds identity, lineage, storyboard, toolchain, profile, provenance, cl
 - Check logos on light/dark frames for matte boxes, halos, color shifts, distortion and clear space.
 - Confirm UI is real/versioned or unmistakably conceptual, and product/scale/security/outcome claims evidenced.
 - Compare the render to storyboard acceptance criteria, not merely to source code or timeline settings.
+
+For mobile placements, sample the **encoded** intro, smallest secondary label, demonstrated control and disclosure at the intended player width. Optionally supply a current, cleared transparent PNG of the placement's overlays, not guessed universal margins. For example, from the skill directory:
+
+```bash
+node scripts/review-placement-frames.mjs --input review.mp4 --width 390 --times 0,2.5 --output phone-check --overlay placement.png
+```
+
+The FFmpeg/ffprobe helper writes clean and guided stills to a new directory. Compare them at actual size. Without a guide, overlay clearance is unknown; neither mode proves normal-speed reading time, app playback or platform acceptance.
 
 ## Critique Loop
 

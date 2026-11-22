@@ -1,32 +1,32 @@
 ---
 name: product-video-producer
-description: "Use for product/brand video, 3D explainers and abstract motion: promos, software demos, YouTube long-form/Shorts, editing, storyboards, deterministic delivery, and evidence-led revisions without invented claims or fake UI."
+description: "Create or edit brand intros, motion graphics, influencer/avatar videos, product demos, instructional walkthroughs, 3D explainers and social cutdowns. Use for storyboards through rendered delivery, not standalone images."
 ---
 
 # Product Video Producer
 
-Turn product truth, approved assets, footage, and references into distinctive, evidence-led video with deterministic outputs and bounded review.
+Make video from approved assets, footage and verifiable claims.
 
 ## Route
 
-- Route the work happening now. When planning a YouTube demo and a Short from supplied captures, start with the editing guide. Name later storyboard, channel and review deliverables without opening their guides until that stage begins.
-- Reference review, brand translation, storyboard, typography, pacing, composition, motion, or abstract storytelling: read `references/reference-to-storyboard.md`.
-- Cinematic film, instructional walkthrough, 3D scenes or advanced motion: use `references/production-modes.md` as the current stage's single optional support, replacing rather than stacking another reference. Combine modes only when the brief benefits.
+- For a YouTube demo and Short from supplied captures, start with editing. Defer storyboard, channel and review guides to their stages.
+- Reference analysis, brand, storyboard, composition, pacing or abstract storytelling: `references/reference-to-storyboard.md`.
+- Intro/ident, motion graphic, cinematic film, instructional walkthrough, product demo or 3D treatment: use `references/production-modes.md`. For a creator, influencer, UGC-style or avatar-led shoot, use `references/presenter-video.md` instead.
 - Editing, real software capture, ingest/conform, sound, color, captions, rendering, manifest, QA, or user-critique iteration: read `references/render-review-iteration.md`.
 - YouTube long-form, Shorts, thumbnails/titles, channel packaging, disclosure, upload profiles, or retention learning: read `references/channel-delivery-feedback.md`.
 - Load the primary reference for the current stage; add the production-mode guide only for a concrete mode question. Do not load every stage reference in one context. Carry decisions, not previous guides, into the next stage. Verify changing platform rules at delivery.
-- Use Creative Production or `imagegen` only for supporting visual exploration/assets. Preserve exact logos, product UI, typography, and copy from governed source files; composite them deterministically rather than asking generation to reproduce them.
+- Use Creative Production or `imagegen` for supporting assets, not exact logos, UI or copy; composite governed sources.
 - Product claims/copy may route to `content-writer`; WordPress surfaces route to the relevant WP specialist. This skill owns the video artifact and proof.
 
 ## Workflow
 
-1. Classify the work: enterprise promo/launch, educational/3D explainer, abstract motion, software demo, long-form, Short, edit, or delivery-only. Confirm audience, content promise, channel, duration, outcome, deliverables, and review owner.
+1. Classify the work: enterprise promo/launch, opener, presenter, explainer, demo, tutorial, edit or delivery-only. Choose what the viewer must recognize, believe or reproduce. Confirm placement, duration, assets, deliverables and review owner.
 2. Establish applicable project, source revision/hash, sequence, job and expected output identity. For edit/review/delivery-only work, bind the supplied artifact to its existing contract; never invent missing identity.
 3. Confirm approved claims, brand, product evidence, sanitized capture, media/likeness rights, accessibility, synthetic-media needs, and platform constraints.
 4. Inspect references and footage; record timestamped observations, intent, reusable principles, and originality boundaries.
-5. Preflight assets, rights, and capture. New narrative work needs a brief and shot-level storyboard with acceptance criteria; revisions inherit their contract. Validate a representative style sequence before scaling. Delegated direction permits internal selection/review; ask only for a requested checkpoint or unresolved material brand, claim, or scope decision.
+5. Preflight assets and capture. Storyboard new work with shot-level acceptance criteria; revisions inherit their contract. Validate a representative style sequence before scaling. Under delegated direction, ask only at a requested checkpoint or material unresolved decision.
 6. When editing or rendering is requested, edit non-destructively from an explicit timeline and render contract. Separate product truth from metaphor; never fabricate product UI, customers, metrics, capabilities, or outcomes.
-7. For a rendered deliverable, provide the review render, intentional poster, manifest, accessibility assets, and relevant channel package. For rendered or review-only work, validate applicable metadata, narrative, UI truth, typography, logo, motion, audio, rights, claims, accessibility, and output identity. Storyboard-only work stops at its requested deliverable.
+7. Deliver the requested render, poster, manifest, accessibility assets and channel package. Review picture, sound, rights, claims, accessibility and output identity against the brief. Stop at the storyboard when that's the request.
 8. For direct critique, apply the exact bounded change and preserve invariants. For post-publication evidence, record one hypothesis and change only its implicated packaging/edit variable. Rerender only if video changed; report proof gaps without silently changing direction.
 
 ## Non-Negotiables

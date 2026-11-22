@@ -490,6 +490,15 @@
       ]
     },
     {
+      "name": "Product video presenter",
+      "maxWords": 1500,
+      "warningPercent": 85,
+      "files": [
+        "product-video-producer/SKILL.md",
+        "product-video-producer/references/presenter-video.md"
+      ]
+    },
+    {
       "name": "Product video story mode",
       "maxWords": 2700,
       "warningPercent": 85,
@@ -733,7 +742,8 @@
         "4K render provenance bundle",
         "MP4 completion identity",
         "Generated frame identity continuity",
-        "VFR proxy and picture-lock lineage"
+        "VFR proxy and picture-lock lineage",
+        "## Creator And Format Decisions"
       ]
     },
     {

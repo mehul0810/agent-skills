@@ -2,6 +2,12 @@
 
 Choose mode(s) from the requested outcome, not a formula. Main-skill truth, rights, accessibility, output identity and publication boundaries still apply.
 
+## Openers And Motion Graphics
+
+Match the opening to its placement. **Cold open:** show the question or result the film pays off. **Series ident:** preserve the approved mark, timing and handoff into shot one. **Silent event loop:** make the idea readable mid-cycle and check the last-to-first seam. A logo-first ident can be right; a tutorial need not start with one. [YouTube's intro metric](https://support.google.com/youtube/answer/9314415) is not a prescribed bumper length.
+
+Give motion a verb and a physical rule. In a printmaking opener, a registration line aligns two ink plates, settles on the title, then match-cuts to the press edge. In an explainer that line could split to show two paths. Block poses and holds in a rough animatic. Adjust spacing or the [speed curve](https://helpx.adobe.com/after-effects/desktop/animate-in-after-effects/speed-between-keyframes/speed.html) where weight or direction changes. Preview through the handoff. If the effect hides the point, cut.
+
 ## Cinematic Film
 
 For story-led film, define encounter, change and lasting image/sound. Flexible treatment arc, not a required three-act structure. Give each shot job, subject, composition, duration and transition; motivate camera/light from subject or reveal, otherwise hold still. Never imply unverified state.
@@ -13,6 +19,16 @@ Use sound motifs only to connect scenes or signal change; identify source/licens
 Identify learner goal/prerequisites; capture verified start state with build, role, viewport and sanitized fixture. Map actions to visible results and reliable success checks. Name confirmation source when results are absent or mark unverified. Match labels to build.
 
 Keep cursor, highlights, zoom and narration subordinate. Show controls before action; allow reading, pause for async work and disclose meaningful waits, skips, assumptions or branches. Include needed choices/warnings; narrate important visual-only changes. Verify learners can start, follow steps, see results, recover from relevant failure and confirm completion. Clean recording alone proves none; do not claim success or accessibility conformance without evidence.
+
+## Product Demo Or Walkthrough?
+
+Log useful takes as source/timecode, starting state, action, resulting evidence. Cut for the viewer:
+
+- **Buyer demo:** answer one buying question with the shortest honest evidence chain. For example, open on a labeled preview of the final export, return to the source selection, follow the actual export, then show the opened file. Do not imply an instant export, paid feature availability, or a quantified saving.
+- **Learner walkthrough:** from the same takes, retain the starting role, exact control, meaningful wait, file location and reopen check. If permission is denied, show the real recovery or label the missing take. Give the steps to a second person when claiming reproducibility.
+- **Physical demo:** show the same specimen, conditions and observable change. A replacement sample or beauty shot cannot prove cause. For an [Apple App Store preview](https://developer.apple.com/app-store/app-previews/), use captured in-app footage, not the presenter-led sales cut.
+
+See [TechSmith's screen-state storyboard](https://www.techsmith.com/blog/how-to-storyboard-a-video/) for planning capture around what changes on screen.
 
 ## Optional Advanced Motion
 

@@ -82,7 +82,7 @@ Choose the narrowest skill for the result you need. Open its `SKILL.md` for scop
 | [loop-steward](loop-steward/SKILL.md) | Review and manage policy-eligible control-plane changes, not routine WordPress implementation. |
 | [content-writer](content-writer/SKILL.md) | Research, draft, or improve useful search-oriented content. |
 | [explanatory-diagrams](explanatory-diagrams/SKILL.md) | Draw or repair an editable diagram so readers can trace a relationship, branch, or exception. |
-| [product-video-producer](product-video-producer/SKILL.md) | Produce and review product videos, demos, and motion deliverables. |
+| [product-video-producer](product-video-producer/SKILL.md) | Create intros, motion graphics, creator/avatar videos, product demos, walkthroughs and social cutdowns. |
 | [game-development](game-development/SKILL.md) | Build and verify playable games. |
 | [apple-app-development](apple-app-development/SKILL.md) | Build, debug, or review native Apple-platform apps. |
 

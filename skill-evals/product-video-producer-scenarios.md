@@ -89,3 +89,7 @@ Inspect position, scale and velocity through a continuous handoff and check enco
 ## Subject-Led 3D Regression
 
 Cases 43-48 in the blind packet test subject-specific visual language, geometry purpose, encoded-motion inspection and safe exceptions. Science and fragrance treatments must differ beyond palette; physical Saturn rings, explicit abstract ring art and approved series identity remain valid. Check unwanted guides and intermediate geometry without inventing playback evidence. Future-style feedback does not itself request replacement videos. These decision checks supplement, not replace, rendered creative review.
+
+## Creator And Format Decisions
+
+Use the separate `cases/video-formats/` packet. Distinguish an ident from a cold open or an installation loop; a presenter from an endorser; a buyer demo from a reproducible lesson; annotated frame samples from platform playback. Score the timecoded paper edits and the usable safe alternatives, not just the presence of rights or QA vocabulary.
