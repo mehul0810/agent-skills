@@ -166,6 +166,7 @@ For conversion-guidance changes, use `skill-evals/conversion-journey-scenarios.m
 For requests explicitly asking for imagery and animated decision sections, add
 the blind `skill-evals/cases/marketing-visual-proof/` packet. Give its criteria
 only to the scorer; include the narrow static and missing-evidence cases.
+See the [worked decision and rendered evaluation](skill-evals/marketing-visual-proof-2026-11-22.md).
 This is repository evaluation infrastructure, not an installed-skill dependency.
 Supplement decision cases with a fresh rendered journey: supply only a frozen
 brief and rendered candidate to the independent reviewer, retain safe
