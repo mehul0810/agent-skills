@@ -61,7 +61,7 @@ For mobile placements, sample the **encoded** intro, smallest secondary label, d
 node scripts/review-placement-frames.mjs --input review.mp4 --width 390 --times 0,2.5 --output phone-check --overlay placement.png
 ```
 
-The FFmpeg/ffprobe helper writes clean and guided stills to a new directory. Compare them at actual size. Without a guide, overlay clearance is unknown; neither mode proves normal-speed reading time, app playback or platform acceptance.
+The FFmpeg/ffprobe helper writes clean and guided stills to a new directory. For an untagged video, use `--assume-square` only if the source composition confirms square pixels; do not guess from dimensions. Compare at actual size. Without a guide, overlay clearance is unknown; neither mode proves reading time, app playback or platform acceptance.
 
 ## Critique Loop
 

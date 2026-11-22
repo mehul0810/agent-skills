@@ -62,6 +62,15 @@ test('encoded fixture extraction and fail-closed boundaries', { skip: available 
     const rotatedInfo = JSON.parse(call('ffprobe', ['-v', 'error', '-show_streams', '-of', 'json', rotated]).stdout);
     assert.ok(rotatedInfo.streams[0].side_data_list?.some(x => x.rotation), 'rotation fixture must contain rotation metadata');
     make(['-f', 'lavfi', '-i', 'testsrc2=size=320x180:rate=10:duration=1,setsar=2/1', '-c:v', 'mpeg4', anamorphic]);
+    const untagged = join(dir, 'untagged.mov');
+    make(['-f', 'lavfi', '-i', 'testsrc2=size=180x320:rate=10:duration=1,setsar=0', '-c:v', 'png', untagged]);
+    const inspect = (input, name, ...flags) => call(link, ['--input', input, '--width', '90', '--times', '0', '--output', join(dir, name), ...flags]);
+    assert.match(inspect(untagged, 'no-assumption').stderr, /No pixel-aspect tag/);
+    assert.ok(!existsSync(join(dir, 'no-assumption')));
+    const assumed = inspect(untagged, 'confirmed', '--assume-square');
+    assert.equal(assumed.status, 0, assumed.stderr);
+    assert.match(assumed.stderr, /caller-confirmed/);
+    for (const input of [anamorphic, rotated]) assert.notEqual(inspect(input, 'wrong-override', '--assume-square').status, 0);
     writeFileSync(playlist, '#EXTM3U\n#EXTINF:1,\nvideo.mp4\n');
     for (const [name, input] of [['rotated', rotated], ['anamorphic', anamorphic], ['playlist', playlist], ['directory', dir]]) {
       const dest = join(dir, `bad-${name}`);

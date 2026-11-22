@@ -4,29 +4,32 @@ import { existsSync, mkdirSync, realpathSync, statSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const usage = `Usage: node review-placement-frames.mjs --input VIDEO --width PIXELS --times SECONDS[,SECONDS...] --output NEW_DIR [--overlay GUIDE.png]
+const usage = `Usage: node review-placement-frames.mjs --input VIDEO --width PIXELS --times SECONDS[,SECONDS...] --output NEW_DIR [--overlay GUIDE.png] [--assume-square]
 
 Extract PNG frames from an encoded video at a logical player width. Optionally
 composite a local transparent PNG guide with the same aspect ratio. The output
 directory must not already exist. Requires ffmpeg and ffprobe on PATH. Only
 local regular MOV/MP4 and Matroska/WebM videos and PNG guides are accepted.
 Guide alpha is normalized to 8-bit RGBA; fully transparent or opaque guides,
-rotation/display matrices and non-square pixels are rejected. Frames are not
+rotation/display matrices and non-square pixels are rejected. For an untagged
+video, use --assume-square only if the source composition confirms square pixels. Frames are not
 proof of playback, legibility, or any platform's safe areas.`;
 
 export function parseArgs(args) {
   if (args.length === 1 && args[0] === '--help') return { help: true };
   const options = {};
-  for (let i = 0; i < args.length; i += 2) {
-    const key = args[i];
-    if (!['--input', '--width', '--times', '--output', '--overlay'].includes(key) || options[key] !== undefined || !args[i + 1] || args[i + 1].startsWith('--')) throw new Error('Invalid or duplicate option');
-    options[key] = args[i + 1];
+  for (let i = 0; i < args.length;) {
+    const key = args[i++];
+    if (Object.hasOwn(options, key)) throw new Error('Duplicate option');
+    if (key === '--assume-square') { options[key] = true; continue; }
+    if (!['--input', '--width', '--times', '--output', '--overlay'].includes(key) || !args[i] || args[i].startsWith('--')) throw new Error('Invalid or missing option');
+    options[key] = args[i++];
   }
   for (const key of ['--input', '--width', '--times', '--output']) if (!options[key]) throw new Error(`Missing ${key}`);
   if (!/^[1-9]\d*$/.test(options['--width']) || Number(options['--width']) > 8192) throw new Error('Width must be an integer from 1 to 8192');
   const parts = options['--times'].split(',');
   if (parts.length > 100 || parts.some(x => !/^(?:\d+)(?:\.\d+)?$/.test(x) || !Number.isFinite(Number(x)))) throw new Error('Times must be comma-separated non-negative seconds (maximum 100)');
-  return { input: resolve(options['--input']), width: Number(options['--width']), times: parts.map(Number), output: resolve(options['--output']), overlay: options['--overlay'] && resolve(options['--overlay']) };
+  return { input: resolve(options['--input']), width: Number(options['--width']), times: parts.map(Number), output: resolve(options['--output']), overlay: options['--overlay'] && resolve(options['--overlay']), assumeSquare: options['--assume-square'] === true };
 }
 
 function run(command, args) {
@@ -54,8 +57,11 @@ export function main(args) {
   const info = probe(options.input, 'mov,matroska,webm');
   const source = videoStream(info);
   geometry(source);
-  if (source.sample_aspect_ratio !== '1:1') throw new Error('Video must declare square pixels');
-  const duration = Number(source.duration || info.format?.duration);
+  if (source.sample_aspect_ratio !== '1:1') {
+    if (!options.assumeSquare) throw new Error('No pixel-aspect tag: confirm square pixels in the source composition before using --assume-square');
+    console.error('No pixel-aspect tag: using caller-confirmed square pixels');
+  }
+  const duration = [source.duration, info.format?.duration].map(Number).find(n => Number.isFinite(n) && n > 0);
   if (!Number.isFinite(duration) || duration <= 0 || options.times.some(t => t >= duration)) throw new Error('Each sample time must be less than the known video duration');
   const height = Math.max(1, Math.round(options.width * source.height / source.width));
   if (height > 8192) throw new Error('Resulting height exceeds 8192 pixels');
