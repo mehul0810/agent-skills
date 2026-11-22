@@ -72,6 +72,8 @@ writes. It does not run Antigravity; use the [native discovery check](README.md#
 
 ## Behavioral Gate
 
+For a change confined to the walkthrough recorder, use `npm run test:walkthrough` while iterating. It runs the same portable recorder tests as the video audit without the unrelated motion tests. A skipped native test is not a browser pass. See the [video dependency audit and cross-skill handoff](skill-evals/video-evaluation-scope.md) for why this does not reduce the full publication or fresh-agent gates.
+
 For a recording change, run the portable video gate and the actual capture test
 separately. From a disposable project with Node 24, project-local Playwright,
 its matching Chromium and FFmpeg/ffprobe preinstalled:

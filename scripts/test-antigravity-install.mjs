@@ -58,6 +58,7 @@ try {
   skill(path.join(root, 'local-private'));
 
   reject(/not registered/, '--check-antigravity');
+  install('--refresh');
   for (const dir of [config, env.CODEX_HOME, env.CLAUDE_HOME]) {
     assert.ok(!fs.existsSync(dir), 'read-only check created host configuration');
   }
@@ -72,6 +73,50 @@ try {
   assert.deepEqual(read(), { entries: [entry(['alpha'])] });
   assert.equal(fs.statSync(manifest).mode & 0o777, 0o600);
   install('--check-antigravity', 'alpha');
+  const codexDir = path.join(env.CODEX_HOME, 'skills');
+  const claudeDir = path.join(env.CLAUDE_HOME, 'skills');
+  fs.unlinkSync(path.join(codexDir, 'retired'));
+  fs.unlinkSync(path.join(claudeDir, 'alpha'));
+  const selectedBytes = fs.readFileSync(manifest, 'utf8');
+  install('--refresh');
+  assert.equal(fs.readFileSync(manifest, 'utf8'), selectedBytes);
+  assert.ok(!fs.existsSync(path.join(codexDir, 'retired')));
+  assert.ok(!fs.existsSync(path.join(claudeDir, 'alpha')));
+  assert.ok(fs.existsSync(path.join(codexDir, 'alpha')));
+  assert.ok(fs.existsSync(path.join(claudeDir, 'retired')));
+  fs.unlinkSync(path.join(codexDir, 'alpha'));
+  const movedTarget = path.join(tmp, 'moved-away', 'alpha');
+  fs.symlinkSync(movedTarget, path.join(codexDir, 'alpha'));
+  reject(/ambiguous skill link/, '--refresh');
+  assert.equal(fs.readlinkSync(path.join(codexDir, 'alpha')), movedTarget);
+  fs.unlinkSync(path.join(codexDir, 'alpha'));
+  const relativeTarget = path.relative(codexDir, path.join(root, 'alpha'));
+  fs.symlinkSync(relativeTarget, path.join(codexDir, 'alpha'));
+  reject(/ambiguous skill link/, '--refresh');
+  assert.equal(fs.readlinkSync(path.join(codexDir, 'alpha')), relativeTarget);
+  fs.unlinkSync(path.join(codexDir, 'alpha'));
+  fs.symlinkSync(path.join(root, 'alpha'), path.join(codexDir, 'alpha'));
+  for (const dependency of ['shared', 'templates']) {
+    const dep = path.join(codexDir, dependency);
+    fs.unlinkSync(dep);
+    reject(/missing or incorrect required dependency link/, '--refresh');
+    assert.ok(!fs.existsSync(dep));
+    fs.symlinkSync(tmp, dep);
+    reject(/missing or incorrect required dependency link/, '--refresh');
+    assert.equal(fs.readlinkSync(dep), tmp);
+    fs.unlinkSync(dep);
+    fs.mkdirSync(dep);
+    reject(/missing or incorrect required dependency link/, '--refresh');
+    assert.ok(fs.lstatSync(dep).isDirectory());
+    fs.rmdirSync(dep);
+    fs.symlinkSync(path.join(root, dependency), dep);
+  }
+  write({ entries: [{ path: root }] });
+  const unfiltered = fs.readFileSync(manifest, 'utf8');
+  reject(/cannot verify only public skills/, '--refresh');
+  assert.equal(fs.readFileSync(manifest, 'utf8'), unfiltered);
+  fs.writeFileSync(manifest, selectedBytes);
+  reject(/cannot be combined/, '--refresh', 'alpha');
   reject(/out of sync/, '--check-antigravity');
   install('retired');
   assert.deepEqual(read().entries, [entry(['alpha', 'retired'])]);
@@ -92,8 +137,18 @@ try {
   git('add', 'new-public');
   install();
   assert.deepEqual(read().entries[1], managed, 'staged-only skill was published');
+  git('commit', '-qm', 'Add a public skill');
+  const beforeRefresh = fs.readFileSync(manifest, 'utf8');
+  install('--refresh');
+  assert.equal(fs.readFileSync(manifest, 'utf8'), beforeRefresh);
+  assert.ok(!fs.existsSync(path.join(codexDir, 'new-public')));
+  assert.ok(!fs.existsSync(path.join(claudeDir, 'new-public')));
   git('rm', '-q', 'retired/SKILL.md');
-  git('commit', '-qm', 'Add a public skill and retire one');
+  git('commit', '-qm', 'Retire a public skill');
+  reject(/stale or ambiguous pack link|stale or nonpublic/, '--refresh');
+  assert.ok(fs.lstatSync(path.join(claudeDir, 'retired')).isSymbolicLink());
+  assert.ok(!fs.existsSync(path.join(codexDir, 'new-public')));
+  assert.ok(!fs.existsSync(path.join(claudeDir, 'new-public')));
   const beforeCheck = fs.readFileSync(manifest, 'utf8');
   reject(/out of sync/, '--check-antigravity');
   assert.equal(fs.readFileSync(manifest, 'utf8'), beforeCheck);
@@ -122,6 +177,7 @@ try {
     JSON.stringify({ entries: [entry([]), entry([])] }), JSON.stringify({ entries: [entry('alpha')] })]) {
     fs.writeFileSync(manifest, bad);
     reject(/Antigravity:/, '--force', '--antigravity');
+    reject(/Antigravity:/, '--refresh');
     assert.equal(fs.readFileSync(manifest, 'utf8'), bad);
     assert.ok(!fs.existsSync(link));
   }
@@ -130,11 +186,13 @@ try {
   fs.unlinkSync(manifest);
   fs.symlinkSync(outside, manifest);
   reject(/symlinked target/, '--antigravity');
+  reject(/symlinked target/, '--refresh');
   assert.equal(fs.readFileSync(outside, 'utf8'), bytes);
   fs.unlinkSync(manifest);
   fs.rmdirSync(config);
   fs.symlinkSync(tmp, config);
   reject(/symlinked target/, '--antigravity');
+  reject(/symlinked target/, '--refresh');
   assert.ok(!fs.existsSync(path.join(tmp, 'skills.json')));
   fs.unlinkSync(config);
   fs.mkdirSync(config);

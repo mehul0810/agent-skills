@@ -8,25 +8,21 @@ The skill pack currently uses validated rolling `main` distribution. `VERSION` n
 cd /path/to/agent-skills
 git status --short --branch
 git pull --ff-only origin main
-npm ci
-npm test
-bash scripts/install-global-skill-links.sh
-bash scripts/check-global-skill-links.sh
+bash scripts/install-global-skill-links.sh --refresh
 ```
 
-Preserve local changes. If the checkout is dirty or cannot fast-forward, inspect the divergence instead of resetting it.
+Start from a clean checkout. If it is dirty or cannot fast-forward, stop and inspect the divergence instead of resetting it. Updating the checkout updates the code behind the existing links; `--refresh` checks those selections in place. It neither installs missing skills nor registers a new host. An empty host stays empty, and Codex and Claude Code may have different selections. Review stale or moved paths manually. A link check is not proof of host discovery. npm is not required for this consumer update; maintainers use [the full validation gate](TESTING.md#full-gate).
 
 For Antigravity, run the installer from the same shared checkout registered in
-`~/.gemini/config/skills.json`. The ordinary no-argument rerun above updates its
-public skill list, including additions and retirements. Use
+`~/.gemini/config/skills.json`. `--refresh` preserves an explicit Antigravity list rather than adding new public names. If you deliberately want **the full current catalog, including newly added skills**, run `bash scripts/install-global-skill-links.sh` without arguments. That command installs all skills in both link-based hosts and syncs the already registered Antigravity list. To add just one public skill, pass its name instead. Use
 `bash scripts/install-global-skill-links.sh --antigravity` for first-time
 registration and `bash scripts/install-global-skill-links.sh --check-antigravity`
-for read-only verification. If you move the checkout, review the old manifest
+for read-only verification of a full registration. Refresh reports a stale name or an unfiltered Antigravity entry for manual review without rewriting it. Inspect an obsolete or foreign link rather than using `--force` as an upgrade shortcut. If you move the checkout, review the old manifest
 entry yourself; the installer does not remove entries for other paths.
 
 ## Update A ZIP Installation
 
-Replace the repository directory with the reviewed archive, then rerun installation and validation. Existing Codex and Claude links should resolve to the new repository location; recreate them when the path changed. Antigravity sync requires a Git checkout so it can distinguish public skills from untracked files.
+Use a reviewed archive at the same stable path, preserving any local work. Run `bash scripts/install-global-skill-links.sh --refresh` there to check existing Codex and Claude selections. If the path changed, inspect the old links instead of assuming the new checkout owns them. Antigravity registration and sync require a Git checkout.
 
 ## Product Repo Kit
 
@@ -61,8 +57,7 @@ The validator rejects prior schema versions rather than silently upgrading evide
 ```bash
 git rev-parse HEAD
 cat VERSION
-bash scripts/check-global-skill-links.sh
-bash scripts/validate-references.sh
+bash scripts/install-global-skill-links.sh --refresh
 ```
 
 Restart Codex or Claude after changing skill links if the host caches discovery metadata.

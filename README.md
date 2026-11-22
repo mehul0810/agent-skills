@@ -37,6 +37,8 @@ Use one kept checkout for Codex, Claude Code, and optionally Antigravity. Codex 
 
 The check confirms filesystem links, not that a host discovered or used a skill. If it is not available, confirm the correct host home, restart the host, and inspect the skill and shared links. This repository does not install custom slash commands. Invocation and discovery depend on the host; explicitly name a skill if automatic selection is uncertain. Native host loading and task results require separate observation.
 
+**Already installed?** [Upgrade without adding skills](UPGRADE.md#update-a-git-installation). After updating the same checkout, `bash scripts/install-global-skill-links.sh --refresh` checks your existing selections. A plain installer run deliberately selects the entire catalog; it is not the subset-preserving update command.
+
 ### Global Symlink Installer
 
 The installer selects top-level `<name>/SKILL.md` files committed in this checkout's `HEAD`, validates the selected skills, and links rather than copies them. It does not follow skill-directory or skill-file symlinks, descend into nested repos, or install untracked drafts. Existing real files and directories in the host link roots are preserved; a conflict stops installation. Inspect an incorrect symlink and its target before using `--force` to repoint it.
@@ -51,7 +53,7 @@ Run these commands **from the shared Git checkout you intend to keep**. Antigrav
 # First time only: register this checkout in ~/.gemini/config/skills.json.
 bash scripts/install-global-skill-links.sh --antigravity
 
-# After updating the checkout: sync new and retired public skill names.
+# To opt into every current public skill, including newly added ones:
 bash scripts/install-global-skill-links.sh
 
 # Verify this checkout's full allowlist on disk without making changes.
@@ -88,12 +90,19 @@ Choose the narrowest skill for the result you need. Open its `SKILL.md` for scop
 
 ### Try A Task
 
-These prompts are starting points, not promises of a particular result. Give the agent the relevant files, environment, constraints, and permission for the requested work.
+Try a worked example before installing the whole pack:
+
+| Example | What you can actually inspect |
+| --- | --- |
+| [Record a walkthrough](examples/recorded-walkthrough/README.md) | [Watch the 12-second MP4](examples/recorded-walkthrough/proof-desk.mp4), then record the same proof comparison yourself. The page changes under a held drag; no frames came from screenshots. |
+| [Fix a WordPress filter](examples/wordpress-before-after/README.md) | Run the same input against two small snippets using real WordPress core. One leaves the text unchanged; the other appends the expected note. No site or database required. |
+| [Trace a selected install](examples/decision-flow/README.md) | Inspect the editable diagram and trace two host links to the same kept checkout. |
+
+For your own work, give the agent the relevant files, environment, constraints, and permission for the requested task:
 
 - “Use wp-theme-expert to improve this block theme's mobile navigation. Preserve the existing design and show what you checked.” Expected: a scoped change with responsive evidence and any untested states.
 - “Use wp-quality-reviewer to review this plugin's REST endpoints for authorization problems. Do not edit files.” Expected: prioritized, evidence-backed findings or an explicit statement that none were found.
 - “Use wp-product-docs-writer to draft release notes from this candidate diff. Separate shipped changes from plans and do not publish.” Expected: a reviewable draft grounded in the supplied revision.
-- For a small source-owned decision diagram and its limits, see the [decision-flow example](examples/decision-flow/README.md). This is a repository example, not an installed skill path.
 
 ## Source Of Truth
 
@@ -116,6 +125,10 @@ Use `--check` to audit drift or `--stage-update` to prepare reviewable candidate
 Repository contributors should follow [TESTING.md](TESTING.md). The aggregate uses Node.js 24 and Python 3.11 or newer; its checks are separate from installing skills for use. Scenario decisions, rendered results, native editing, runtime activation, and user outcomes are different evidence classes. See the [evaluation protocol](skill-evals/README.md). No identical-quality or token-saving guarantee across models is established.
 
 [package-lock.json](package-lock.json) pins this repository's harness dependency; newer harness source does not automatically upgrade it. See [migration evidence](skill-evals/execution-reliability-2026-09-25.md) for the recorded runtime-proof limits.
+
+## License
+
+The repository's original skills, scripts, documentation and examples are available under the [MIT License](LICENSE). You can use, adapt and redistribute them, including commercially; keep the copyright and permission notice with copies or substantial portions. This does not relicense dependencies, third-party assets, or materials with their own notices. In particular, the [benchmark asset provenance](skill-evals/frontend-benchmark/cases/margin-notes/packet/assets/ASSET-PROVENANCE.txt) and [font licenses](skill-evals/frontend-benchmark/cases/margin-notes/packet/assets/FONT-LICENSES.txt) continue to apply. The license does not cover private companion repositories or material you supply when using a skill.
 
 ## Repository Map
 

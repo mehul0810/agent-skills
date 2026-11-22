@@ -1,6 +1,7 @@
 {
   "name": "@mehul0810/agent-skills",
   "private": true,
+  "license": "MIT",
   "engines": {
     "node": ">=24 <25"
   },
@@ -21,6 +22,7 @@
     "run-record:example": "agent-harness validate-run --file skill-evals/run-record.example.json",
     "run-record:behavior": "node scripts/validate-behavior-run-records.mjs",
     "eval:plan": "node scripts/eval-feedback-loop.mjs plan",
+    "eval:prepare": "node scripts/prepare-eval-receipt.mjs",
     "eval:preflight": "node scripts/eval-feedback-loop.mjs preflight",
     "test:eval-feedback-loop": "node scripts/test-eval-feedback-loop.mjs",
     "validate:behavior-evidence": "node scripts/behavior-evidence-audit.mjs --self-test && node scripts/behavior-evidence-audit.mjs",
@@ -29,6 +31,7 @@
     "validate:visual": "node wp-expert/scripts/validate-visual-proof.mjs --self-test && node wp-expert/scripts/validate-asset-production.mjs --self-test && node wp-expert/scripts/validate-spatial-proof.mjs --self-test && node wp-expert/scripts/capture-spatial-measurements.mjs --self-test && bash scripts/visual-wordpress-behavior-audit.sh",
     "validate:quality": "node wp-quality-reviewer/scripts/validate-review-report.mjs --self-test && bash scripts/quality-reviewer-behavior-audit.sh",
     "validate:video": "node product-video-producer/scripts/validate-video-manifest.mjs --self-test && bash scripts/video-production-behavior-audit.sh",
+    "test:walkthrough": "node --test scripts/test-walkthrough-*.mjs",
     "test:context-bundle": "node scripts/test-context-bundle.mjs",
     "test": "node scripts/validate-all.mjs"
   },

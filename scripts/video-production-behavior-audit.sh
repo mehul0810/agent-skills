@@ -122,7 +122,7 @@ require_text "skill-evals/product-video-producer-scenarios.md" "Blind motion cal
 if ! node "$repo_root/product-video-producer/scripts/check-shot-fidelity.mjs" --self-test; then
   errors=$((errors + 1))
 fi
-if ! node --test "$repo_root/product-video-producer/assets/motion-starter/"*.test.mjs "$repo_root/scripts/test-walkthrough-plan.mjs" "$repo_root/scripts/test-walkthrough-pointer.mjs" "$repo_root/scripts/test-walkthrough-recording.mjs"; then
+if ! node --test "$repo_root/product-video-producer/assets/motion-starter/"*.test.mjs "$repo_root/scripts/"test-walkthrough-*.mjs; then
   errors=$((errors + 1))
 fi
 

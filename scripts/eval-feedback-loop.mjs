@@ -7,6 +7,7 @@ import { verifyPacket } from './build-eval-packet.mjs';
 import { DEFAULT_FILE_LIMITS, normalizeFileLimits, safeReadFile, listRegularFiles } from './bounded-files.mjs';
 import { analyzeConfigChange, CONFIG_PATH } from './eval-config-planner.mjs';
 import { preflightAttempts } from './eval-attempt-evidence.mjs';
+import { bindGrade } from './eval-grade-binding.mjs';
 
 const rootDefault = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SHA256 = /^[a-f0-9]{64}$/;
@@ -115,7 +116,11 @@ export function preflightReceipt(root, receipt, {
   verify = verifyPacket,
   hashBytes = sha256,
   limits = DEFAULT_FILE_LIMITS,
+  requireGrade = false,
 } = {}) {
+  if (requireGrade && (receipt?.schemaVersion !== 1 || receipt.preparation === undefined)) {
+    return { valid: false, errors: ['--require-grade requires a prepared schemaVersion 1 receipt; unprepared and schemaVersion 2 receipts are unsupported'], state: 'invalid', admission: 'not-performed' };
+  }
   if (receipt?.schemaVersion === 2) {
     return preflightAttempts(root, receipt, { readFile, listFiles, verify, hashBytes, limits }, preflightReceipt);
   }
@@ -152,6 +157,14 @@ export function preflightReceipt(root, receipt, {
       if (!resultDigests.has(key)) resultDigests.set(key, hashBytes(readCached(file)));
       return resultDigests.get(key);
     };
+    if (receipt.preparation !== undefined) {
+      const preparation = receipt.preparation;
+      if (!preparation || Object.keys(preparation).some(key => !['gradePath', 'gradeSha256'].includes(key))
+        || !SHA256.test(preparation.gradeSha256 ?? '')) throw new Error('invalid preparation grade reference');
+      const gradeFile = resolveEvidenceFile(root, preparation.gradePath);
+      if (digestFile(gradeFile) !== preparation.gradeSha256) throw new Error('preparation grade hash mismatch');
+      bindGrade(JSON.parse(readCached(gradeFile)), receipt.evaluation, receipt.checks, { maxEntries: limits.maxEntries });
+    }
     const resultHasCase = (file, packetId, caseId) => {
       const key = path.resolve(file);
       let index = resultCaseIndexes.get(key);
@@ -161,10 +174,15 @@ export function preflightReceipt(root, receipt, {
           resultCaseIndexes.set(key, new Set());
           return false;
         }
-        index = new Set(result.cases.filter((item) => item?.packetId && item?.id
-          && ((typeof item?.outcome === 'string' && item.outcome.trim())
-            || (typeof item?.decision === 'string' && item.decision.trim())))
-          .map((item) => JSON.stringify([item.packetId, item.id])));
+        if (receipt.preparation !== undefined && result.cases.length > limits.maxEntries) throw new Error('result cases exceed entry limit');
+        index = new Set();
+        const duplicates = new Set();
+        for (const item of result.cases) {
+          const id = JSON.stringify([item?.packetId, item?.id]);
+          if (receipt.preparation !== undefined && (index.has(id) || duplicates.has(id))) { index.delete(id); duplicates.add(id); continue; }
+          if (item?.packetId && item?.id && ((typeof item?.outcome === 'string' && item.outcome.trim()) || (typeof item?.decision === 'string' && item.decision.trim()))) index.add(id);
+          else if (receipt.preparation !== undefined) duplicates.add(id);
+        }
         resultCaseIndexes.set(key, index);
       }
       return index.has(JSON.stringify([packetId, caseId]));
@@ -246,6 +264,11 @@ export function preflightReceipt(root, receipt, {
 function options(args) {
   const result = {};
   for (let i = 0; i < args.length; i++) {
+    if (args[i] === '--require-grade') {
+      if (result.requireGrade) throw new Error('repeated option: --require-grade');
+      result.requireGrade = true;
+      continue;
+    }
     if (!args[i].startsWith('--') || !args[i + 1] || args[i + 1].startsWith('--')) throw new Error(`invalid option near ${args[i]}`);
     const key = args[i].slice(2);
     if (key === 'file') (result.file ??= []).push(args[++i]);
@@ -260,6 +283,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     const [mode, ...rest] = process.argv.slice(2);
     const opts = options(rest);
     if (mode === 'plan') {
+      if (opts.requireGrade) throw new Error('--require-grade is only supported by preflight');
       let changed = opts.file ?? [];
       if (opts.base) {
         const { execFileSync } = await import('node:child_process');
@@ -295,9 +319,9 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
       const output = planBaselines(manifest, changed, { semanticConfig });
       console.log(JSON.stringify(output, null, 2));
     } else if (mode === 'preflight' && opts.receipt) {
-      const result = preflightReceipt(rootDefault, readJson(path.resolve(rootDefault, opts.receipt)));
+      const result = preflightReceipt(rootDefault, readJson(path.resolve(rootDefault, opts.receipt)), { requireGrade: opts.requireGrade });
       console.log(JSON.stringify(result, null, 2));
       if (!result.valid) process.exitCode = 1;
-    } else throw new Error('Usage: eval-feedback-loop.mjs plan (--base REF [--head REF] | --file PATH...) | preflight --receipt PATH');
+    } else throw new Error('Usage: eval-feedback-loop.mjs plan (--base REF [--head REF] | --file PATH...) | preflight --receipt PATH [--require-grade]');
   } catch (error) { console.error(error.message); process.exitCode = 1; }
 }

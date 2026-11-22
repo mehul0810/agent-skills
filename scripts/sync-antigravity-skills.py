@@ -65,7 +65,9 @@ def sync(mode, path, public, selected):
             matches.append(entry)
     if len(matches) > 1:
         raise ValueError("multiple entries for this checkout; reconcile them before syncing")
-    if not matches and mode == "auto":
+    if not matches and mode in {"auto", "refresh"}:
+        if mode == "refresh":
+            print("Antigravity: this checkout is not registered; unchanged")
         return
     if not matches and mode == "check":
         raise ValueError("this checkout is not registered; install with --antigravity")
@@ -76,6 +78,14 @@ def sync(mode, path, public, selected):
     previous = entry.get("include_only", [])
     if not isinstance(previous, list) or not all(isinstance(n, str) for n in previous):
         raise ValueError("include_only must be an array of skill names")
+    if mode == "refresh":
+        if "include_only" not in entry:
+            raise ValueError("unfiltered entry preserved; cannot verify only public skills are exposed; choose registration or sync deliberately")
+        stale = sorted(set(previous) - public)
+        if stale:
+            raise ValueError(f"stale or nonpublic selected names preserved; review manually: {', '.join(stale)}")
+        print(f"Antigravity: existing selection of {len(previous)} skills preserved")
+        return
     # A selected install is additive. An existing unfiltered entry already
     # exposed the full pack; narrow it to public names without losing skills.
     existing = public if matches and "include_only" not in entry else public.intersection(previous)
@@ -96,7 +106,7 @@ if __name__ == "__main__":
     action, manifest, *names = sys.argv[1:]
     try:
         public_names = set(sys.stdin.read().splitlines())
-        if action not in {"auto", "sync", "check"} or not public_names or not set(names) <= public_names:
+        if action not in {"auto", "sync", "check", "refresh"} or not public_names or not set(names) <= public_names:
             raise ValueError("invalid sync mode or public skill selection")
         sync(action, Path(manifest), public_names, names)
     except (ValueError, OSError) as error:
