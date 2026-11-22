@@ -105,7 +105,10 @@
         "sha256": "168416f3f9957a78a16ab3339fa253bfee79efd81d322b10c662d9244b63e12d",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [
-          "skill-evals/cases/design-route-regression/input.json"
+          "skill-evals/cases/design-route-regression/input.json",
+          "skill-evals/cases/live-reference-transfer/input.json",
+          "skill-evals/cases/live-reference-transfer/artifacts/requests.json",
+          "skill-evals/cases/live-reference-transfer/criteria.md"
         ],
         "contractSha256": "fffff90556a6327eb6c63901efa3769fc7525a6082feb078e3556be8d3f1048c"
       },
@@ -134,7 +137,8 @@
         "custom-interaction-pattern-contract",
         "enterprise-form-recovery",
         "browser-assistive-technology-matrix",
-        "token-integrity-proof-provenance"
+        "token-integrity-proof-provenance",
+        "live-reference-cross-brand-motion-proof"
       ],
       "evidence": [
         {

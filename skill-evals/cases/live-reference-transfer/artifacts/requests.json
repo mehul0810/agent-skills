@@ -1,0 +1,27 @@
+[
+  {
+    "id": "different-brand",
+    "request": "I like the color, typography and animated background of the reference homepage. Bring that feel to our different brand's homepage while keeping our existing offer and navigation. Explain what you would do and how you would check it.",
+    "reference": {
+      "url": "https://reference.example/",
+      "observations": [
+        "At 1440x900 the heading is light text over a dark blue field with a bright accent. A broad soft shape moves behind it over several seconds.",
+        "At 390x844 the heading wraps to three lines and the shape remains behind the copy. No font metadata or asset license was supplied."
+      ]
+    },
+    "destination": {
+      "url": "https://destination.example/",
+      "facts": "A separate brand with its own logo, green accent, product copy and navigation. The existing homepage uses editable WordPress blocks. No customer metrics or testimonials were supplied."
+    }
+  },
+  {
+    "id": "meaningful-animation",
+    "request": "The reference uses a short animation to explain a choice. If we adapt that idea, how should a visitor who cannot or does not watch it understand the choice?",
+    "facts": "The destination has two options and an existing text explanation. There is no evidence that the animation improves understanding."
+  },
+  {
+    "id": "bounded-static",
+    "request": "Match only the approved static heading spacing in our existing homepage. Do not change its direction or add motion.",
+    "facts": "The approved target and editable blocks are available. No motion is present."
+  }
+]
