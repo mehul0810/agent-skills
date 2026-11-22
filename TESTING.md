@@ -170,6 +170,7 @@ private evidence. It is opt-in, not extra setup for small fixes. For repository
 review-rule changes, use `skill-evals/scoped-review-workflow-scenarios.md` and test
 safe counterexamples as well as violations and ordinary bugs.
 For general production review, run the [three-diff packet](skill-evals/cases/production-change-review/input.json) using the [isolated comparison procedure](skill-evals/scoped-review-workflow-scenarios.md#production-change-review). Use the same revision, model, effort and raw inputs; keep the adjacent scoring criteria out of both arms. Score changed-line defects, unnecessary refactors, false blockers and unverified runtime claims separately.
+See the [pilot handoffs, scores and limits](skill-evals/production-change-review-2026-11-22.md) for a worked run.
 For native hook activation proof, use `templates/project-hooks/activation-proof.md`;
 it records existing boundaries without enabling hooks or changing trust.
 

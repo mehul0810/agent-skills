@@ -1,0 +1,38 @@
+{
+  "arms": {
+    "Ibis": {
+      "wordpress": {
+        "result": "pass",
+        "reason": "Correctly identifies the equality-boundary release blocker at class-availability.php:43, its client impact, the dashboard disagreement, the separate history contract, and the missing boundary and runtime evidence. Its equality-test recommendation is useful; the supplied tests do not prove equality behavior."
+      },
+      "service": {
+        "result": "pass",
+        "reason": "Correctly identifies the missing workspace-membership decision at exports.js:20 as a release blocker and the per-row settings query at digest.js:36 as a follow-up, with accurate 500-row count and no unsupported latency claim. Calls for cross-workspace testing and authorized access, while distinguishing narrow tests from integration and live proof."
+      },
+      "clean": {
+        "result": "pass",
+        "reason": "Correctly reports no material finding and preserves the destination and same-tab contract. Separates static source evidence from browser, deployment, and live-link proof without inventing a release blocker."
+      }
+    },
+    "Aster": {
+      "wordpress": {
+        "result": "pass",
+        "reason": "Correctly identifies the equality-boundary release blocker at class-availability.php:43, its client impact, separate history contract, missing equality coverage, and absent runtime proof. Caveat: it prescribes a shared domain helper alongside the fix as if required, although the contract requires matching behavior, not that refactor; the boundary tests are a useful recommendation rather than observed execution."
+      },
+      "service": {
+        "result": "pass",
+        "reason": "Correctly identifies the missing server-side workspace-membership decision at exports.js:20 as a release blocker and per-row settings queries at digest.js:36 as a follow-up, with correct count, non-empty-build remedy, and no measured latency claim. Covers member access and cross-workspace denial, and distinguishes supplied narrow tests from integration and live proof."
+      },
+      "clean": {
+        "result": "pass",
+        "reason": "Correctly reports no material finding and preserves the destination and same-tab contract. Separates static source evidence from browser, deployment, and live proof without inventing a release gate."
+      }
+    }
+  },
+  "inputHashes": {
+    "Ibis": "a7d08b15d6c534ca499e17be1e0712b201c10eb7087992d1031615842e6d5c3c",
+    "Aster": "732204ce91c4548552dc02816e0a2075b64a07f34403eccaf52371b957038f5a",
+    "manifest": "f7a4cee2cf7991edef604bfe11e5d82aa202837f78ecb332b14b8e5fbe748a57"
+  },
+  "summary": "Both arms pass all three independently scored cases and accurately distinguish the two release blockers, the digest follow-up, and the clean change. Aster's additional shared-helper prescription is not necessary to restore the WordPress contract; Ibis avoids that extra prescription. Neither establishes actual execution, latency, exposure, deployment, or production behavior. This small synthetic comparison does not establish general performance."
+}

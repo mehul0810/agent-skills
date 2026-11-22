@@ -426,7 +426,7 @@
         "wp-quality-reviewer/scripts/accessibility-audit.mjs",
         "wp-quality-reviewer/scripts/review-report-self-test.mjs"
       ],
-      "sha256": "26dbcf68dfe6c17ad84d3b8c1ab338510355f36205deb8261c57ee9a0518142d",
+      "sha256": "1ef730bc658ed66eb79206aa29f3ca813562ba770dd53710431cb5410fefc692",
       "scenario": {
         "id": "multi-domain-release-quality-review",
         "files": [
@@ -502,10 +502,10 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-11-20-quality-contracts.json",
-          "sha256": "75bf5cd00c2611aea96f6e4babfbf9b417432f1c510d1a98ea6b7c2fd67d896d",
-          "testedRevision": "fc2316c2ce46f34fb2e684e89133c700cb13b7d9",
-          "testedSourceSha256": "26dbcf68dfe6c17ad84d3b8c1ab338510355f36205deb8261c57ee9a0518142d",
+          "runRecord": "skill-evals/run-records/wp-quality-reviewer-2026-11-22-production-review.json",
+          "sha256": "ba9112365b414d3e9ad7b9705cb8e5dc827ed66a36d6c1e3d4606a250df18949",
+          "testedRevision": "3d9d598533059abb09750a70acf9b777d91699f8",
+          "testedSourceSha256": "1ef730bc658ed66eb79206aa29f3ca813562ba770dd53710431cb5410fefc692",
           "testedScenarioSha256": "82fc0a1e42471ac04b50501a1224d84f5be1e8cf0b16b31f31226b2f29597924",
           "testedScenarioContractSha256": "458504946669e512158427c15880c11be28ac88b1710efb817d8707296a6f444",
           "runtime": {
@@ -1507,7 +1507,7 @@
         "templates/project-agents/wp-reviewer.toml",
         "templates/project-hooks/activation-proof.md"
       ],
-      "sha256": "bf3f9c302c72c22bada582f347998d643b924ce765c27762d570b58cdb5fe30c",
+      "sha256": "051fa6ed2b3fe37bd998c581fe42cdc2ef40f9941668db1eedf14303e597025b",
       "scenario": {
         "id": "scoped-review-workflow",
         "files": [
@@ -1520,7 +1520,7 @@
           "## Linked Evidence And Visual Transfer",
           "## Hook Activation Honesty"
         ],
-        "sha256": "c3ec2ad278838bb033689d38078c307be4df9fbe5ec300eb581b39e12831d806",
+        "sha256": "e34644237905a24ad3e57af3a4a391460d1d8bea0f7871c93232c6b1baa13bfa",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [
           "skill-evals/cases/production-change-review/artifacts/01-wordpress.txt",
@@ -1529,7 +1529,7 @@
           "skill-evals/cases/production-change-review/criteria.md",
           "skill-evals/cases/production-change-review/input.json"
         ],
-        "contractSha256": "e917f801dc0feaaab10e07765be24894d6e792a3695779fe6305bf81e0bd7d3f"
+        "contractSha256": "5d1b0b59455efbd8da70ee39cf50a32d20e23243f6d9de0aed5d2139b810f59b"
       },
       "requiredChecks": [
         "unreachable-route-detected",
@@ -1550,12 +1550,12 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/scoped-review-workflow-2026-10-15-voiceover-exclusion.json",
-          "sha256": "361b40d7be9b054c67041580c6f2176005efa62f225268fc1dbfc3dc2a444265",
-          "testedRevision": "fbf46e5e9177b9cc9a318d90ca5ad8925fbff385",
-          "testedSourceSha256": "bf3f9c302c72c22bada582f347998d643b924ce765c27762d570b58cdb5fe30c",
-          "testedScenarioSha256": "c3ec2ad278838bb033689d38078c307be4df9fbe5ec300eb581b39e12831d806",
-          "testedScenarioContractSha256": "e917f801dc0feaaab10e07765be24894d6e792a3695779fe6305bf81e0bd7d3f",
+          "runRecord": "skill-evals/run-records/scoped-review-workflow-2026-11-22-production-review.json",
+          "sha256": "a6305d105fe515fc03ccf6c879596c5c5d88a64d44120f12a372ca9f2d0ecdf0",
+          "testedRevision": "d246dfab4a6968bf4ad81a3114af6c8728575b18",
+          "testedSourceSha256": "051fa6ed2b3fe37bd998c581fe42cdc2ef40f9941668db1eedf14303e597025b",
+          "testedScenarioSha256": "e34644237905a24ad3e57af3a4a391460d1d8bea0f7871c93232c6b1baa13bfa",
+          "testedScenarioContractSha256": "5d1b0b59455efbd8da70ee39cf50a32d20e23243f6d9de0aed5d2139b810f59b",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
