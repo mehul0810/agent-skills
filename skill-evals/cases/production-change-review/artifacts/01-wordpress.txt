@@ -1,0 +1,34 @@
+Case 1: WordPress plugin change under review
+
+Product contract: An active reservation occupies a place until its expiry time,
+including the exact expiry instant. Both the dashboard count and the REST
+availability response must count the same reservations. The dashboard updates
+on page load; clients use the REST response to decide whether to show a place
+as available. Reservation expiry values and the supplied clock are UTC seconds.
+
+Changed file: plugin/includes/class-availability.php (new-file line numbers)
+@@ -41,7 +41,7 @@ public function rest_count( $reservations, $now ) {
+ 41     $count = 0;
+ 42     foreach ( $reservations as $reservation ) {
+-43         if ( $reservation->expires_at >= $now ) {
++43         if ( $reservation->expires_at > $now ) {
+ 44             ++$count;
+ 45         }
+ 46     }
+ 47     return $count;
+
+Unchanged consumer: plugin/includes/class-dashboard.php
+ 60 public function count_active( $reservations, $now ) {
+ 61     return count( array_filter( $reservations, function ( $r ) use ( $now ) {
+ 62         return $r->expires_at >= $now;
+ 63     } ) );
+ 64 }
+
+Separately, plugin/includes/class-history.php:28 uses `expires_at > $now`
+to select records for a retrospective display. Its documented display contract
+excludes the current second and it does not supply availability or counts.
+
+Test record supplied with change: unit tests for both availability consumers
+pass with expiry values one second before and one second after the clock; there
+is no equality example. No WordPress integration, package, deployment, or live
+site evidence was supplied. The patch has not been released.

@@ -1,0 +1,17 @@
+Case 3: Documentation site change under review
+
+Consumer contract: the existing help link opens the support guide in the same
+browser tab. The accessible link name should identify its destination. This
+page is static and the destination path is unchanged.
+
+Changed file: site/help.html (new-file line numbers)
+@@ -71,3 +71,3 @@
+ 71 <p>Need help with your account?</p>
+-72 <a href="/support/guide">Click here</a>
++72 <a href="/support/guide">Open the support guide</a>
+ 73 </section>
+
+Supplied checks: the static HTML test confirms the href and link text. The
+support guide exists in the checked-in site source. No rendered browser,
+deployed site, or live-link check is supplied. This wording is approved for the
+site's existing English locale; localization is not in this change's scope.

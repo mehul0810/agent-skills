@@ -12,6 +12,16 @@ Include an ordinary off-by-one bug in a busy diff beside these changes. Score
 coverage, false findings on safe cases, ordinary-bug retention and actionable
 location/rule citations separately; more findings are not inherently better.
 
+## Production Change Review
+
+Use the three independent raw diffs in `cases/production-change-review/`.
+Build one immutable performer packet and give it to both fresh reviewers:
+ordinary review and review with the shared production guide. Keep the criteria
+and other reviewer's findings out of both contexts. Have a separate scorer
+compare concrete changed-line findings, proportional action and clean-case
+restraint without knowing which reviewer used the guide. Report observed
+differences, including ties; never infer general effectiveness from three cases.
+
 ## Reproducible Journey
 
 Give one configured fixture with no UI save interaction, one readiness timeout,

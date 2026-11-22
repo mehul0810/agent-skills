@@ -169,6 +169,7 @@ readiness from real-control journeys and links existing harness run records to
 private evidence. It is opt-in, not extra setup for small fixes. For repository
 review-rule changes, use `skill-evals/scoped-review-workflow-scenarios.md` and test
 safe counterexamples as well as violations and ordinary bugs.
+For general production review, run the [three-diff packet](skill-evals/cases/production-change-review/input.json) blind in separate ordinary and guided reviewer contexts. Use the same revision, model, effort and raw inputs; keep the adjacent scoring criteria out of both arms. Score changed-line defects, unnecessary refactors, false blockers and unverified runtime claims separately.
 For native hook activation proof, use `templates/project-hooks/activation-proof.md`;
 it records existing boundaries without enabling hooks or changing trust.
 

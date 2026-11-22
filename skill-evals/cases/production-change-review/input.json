@@ -1,0 +1,5 @@
+{
+  "id": "production-change-review",
+  "request": "Independently review each of the three proposed changes in the supplied artifacts. For each, report actionable findings first, with severity, exact changed source path and line, a concrete affected scenario, and the reason it matters. Distinguish release blockers from follow-ups and state when there are no material findings. Also describe what the supplied evidence does and does not establish for runtime and go-live. Treat the cases as independent. Do not modify files, execute code, contact services, or infer facts outside the packet.",
+  "artifacts": ["01-wordpress.txt", "02-service.txt", "03-clean.txt"]
+}

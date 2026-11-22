@@ -31,6 +31,8 @@ Findings first: unsafe authority, lost expertise/reachability, wrong routing, un
 
 ## Code Review Rules
 
+For an ordinary diff, apply the [production change review](shared/references/production-change-review.md): trace affected callers and look for concrete correctness, security, performance and shared-rule regressions. Findings are not a tally of checklist items.
+
 - **Reachable expertise:** When shortening a skill or moving a reference, preserve a reachable route for each retained capability. A smaller kernel is safe when the owning router still reaches the detail; flag removed or misleading routes, not wording changes alone. Safe path: update callers and prove the affected route with a fresh scenario.
 - **Evidence identity:** Changes to baselines, runtime compatibility or proof claims must preserve the original tested revision, artifact identity and limitations. A passing fixture or adapter cannot establish native execution. Safe path: keep historical evidence labeled, use the explicit dependency receipt where eligible, or run fresh proof. Do not flag a correctly labeled blocked or inconclusive result as dishonest success.
 

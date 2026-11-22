@@ -11,6 +11,7 @@ Own the review, remediation, and proof loop. Do not depend on an external Codex 
 
 Load only the primary mode that matches the requested outcome:
 
+- General production code or PR review: [production change review](../shared/references/production-change-review.md). Follow affected callers; deepen into a focused mode only for a concrete risk. A review request alone does not authorize fixes.
 - Authorization, data flow, REST/admin actions, uploads, webhooks, secrets, dependencies, privacy, or abuse: `references/security-review-fix.md`.
 - Queries, cache, options, requests, jobs, bundles, editor/admin speed, Core Web Vitals, or capacity: `references/performance-review-fix.md`.
 - Duplication, coupling, boundaries, architecture, comments, testability, dead code, or maintainability: `references/modularity-review-fix.md`.

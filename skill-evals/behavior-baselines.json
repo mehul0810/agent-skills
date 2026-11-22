@@ -1500,8 +1500,11 @@
       "name": "scoped-review-workflow",
       "files": [
         "AGENTS.md",
+        "shared/references/production-change-review.md",
         "templates/operational-proof/README.md",
         "templates/operational-proof/run.md",
+        "templates/product-repo/.codex/agents/wp-pr-reviewer.toml",
+        "templates/project-agents/wp-reviewer.toml",
         "templates/project-hooks/activation-proof.md"
       ],
       "sha256": "bf3f9c302c72c22bada582f347998d643b924ce765c27762d570b58cdb5fe30c",
@@ -1512,13 +1515,20 @@
         ],
         "anchors": [
           "## Review Coverage And Restraint",
+          "## Production Change Review",
           "## Reproducible Journey",
           "## Linked Evidence And Visual Transfer",
           "## Hook Activation Honesty"
         ],
         "sha256": "c3ec2ad278838bb033689d38078c307be4df9fbe5ec300eb581b39e12831d806",
         "sha256Scope": "legacy-anchor-line",
-        "fixtureFiles": [],
+        "fixtureFiles": [
+          "skill-evals/cases/production-change-review/artifacts/01-wordpress.txt",
+          "skill-evals/cases/production-change-review/artifacts/02-service.txt",
+          "skill-evals/cases/production-change-review/artifacts/03-clean.txt",
+          "skill-evals/cases/production-change-review/criteria.md",
+          "skill-evals/cases/production-change-review/input.json"
+        ],
         "contractSha256": "e917f801dc0feaaab10e07765be24894d6e792a3695779fe6305bf81e0bd7d3f"
       },
       "requiredChecks": [
@@ -1533,7 +1543,10 @@
         "real-control-proof-accepted",
         "schema-not-authority",
         "destination-and-performance-proof",
-        "native-hook-honesty"
+        "native-hook-honesty",
+        "shared-rule-and-independent-contract",
+        "access-boundary-and-counted-work",
+        "clean-change-without-invented-blockers"
       ],
       "evidence": [
         {

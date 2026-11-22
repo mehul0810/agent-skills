@@ -102,6 +102,7 @@ For your own work, give the agent the relevant files, environment, constraints, 
 
 - “Use wp-theme-expert to improve this block theme's mobile navigation. Preserve the existing design and show what you checked.” Expected: a scoped change with responsive evidence and any untested states.
 - “Use wp-quality-reviewer to review this plugin's REST endpoints for authorization problems. Do not edit files.” Expected: prioritized, evidence-backed findings or an explicit statement that none were found.
+- “Review this diff for production risks. Follow the callers and show which repeated decisions must agree.” Use the [production change review](shared/references/production-change-review.md) in any stack. Expect changed-line findings, a distinction between measured and inferred impact, and no forced refactor when similar code serves different contracts.
 - “Use wp-product-docs-writer to draft release notes from this candidate diff. Separate shipped changes from plans and do not publish.” Expected: a reviewable draft grounded in the supplied revision.
 
 ## Source Of Truth
