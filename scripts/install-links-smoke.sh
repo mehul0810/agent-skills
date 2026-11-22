@@ -3,10 +3,12 @@ set -euo pipefail
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 tmp="$(mktemp -d)"
+scratch="$tmp"
 actual_tmp=""
-trap 'rm -rf "$tmp"; [ -z "$actual_tmp" ] || rm -rf "$actual_tmp"' EXIT
+trap 'rm -rf "$scratch"; [ -z "$actual_tmp" ] || rm -rf "$actual_tmp"' EXIT
 tmp="$tmp/path with spaces"
-mkdir -p "$tmp"
+export HOME="$tmp/home"
+mkdir -p "$HOME"
 
 # Selected installs are checked without requiring every other skill or policy.
 CODEX_HOME="$tmp/selected-codex" CLAUDE_HOME="$tmp/selected-claude" \
@@ -169,15 +171,15 @@ fi
   echo "ERROR: standard /tmp symlink path was modified" >&2; exit 1;
 }
 
-while IFS= read -r skill_dir; do
-  skill="$(basename "$skill_dir")"
+while IFS= read -r skill; do
+  skill_dir="$repo_root/$skill"
   for root in "$tmp/codex/skills" "$tmp/claude/skills"; do
     link="$root/$skill"
     [ -L "$link" ] || { echo "ERROR: missing symlink $link" >&2; exit 1; }
     [ "$(readlink "$link")" = "$skill_dir" ] || { echo "ERROR: wrong target $link" >&2; exit 1; }
     [ -f "$link/SKILL.md" ] || { echo "ERROR: unreadable skill $link" >&2; exit 1; }
   done
-done < <(find "$repo_root" -mindepth 1 -maxdepth 1 -type d -exec test -f "{}/SKILL.md" \; -print | sort)
+done < <(bash "$repo_root/scripts/list-global-skills.sh")
 
 # A link that resolves is not proof that Node ran its CLI instead of just importing it.
 printf '{}\n' > "$tmp/incomplete-report.json"

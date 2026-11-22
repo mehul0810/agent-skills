@@ -15,6 +15,9 @@ and target paths before linking. Existing non-symlink paths are preserved, and
 incorrect links are skipped unless `--force` is explicitly supplied. Other
 optional design-default operations are separate from this example.
 
+If this checkout was registered with Antigravity, the same named install also
+adds `wp-expert` to its [manifest](../../README.md#antigravity), not a third symlink.
+
 A filesystem link does not prove that either host discovers or loads the skill
 at runtime. See the [installer source](../../scripts/install-global-skill-links.sh)
 for the complete behavior and options.

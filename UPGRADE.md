@@ -16,9 +16,17 @@ bash scripts/check-global-skill-links.sh
 
 Preserve local changes. If the checkout is dirty or cannot fast-forward, inspect the divergence instead of resetting it.
 
+For Antigravity, run the installer from the same shared checkout registered in
+`~/.gemini/config/skills.json`. The ordinary no-argument rerun above updates its
+public skill list, including additions and retirements. Use
+`bash scripts/install-global-skill-links.sh --antigravity` for first-time
+registration and `bash scripts/install-global-skill-links.sh --check-antigravity`
+for read-only verification. If you move the checkout, review the old manifest
+entry yourself; the installer does not remove entries for other paths.
+
 ## Update A ZIP Installation
 
-Replace the repository directory with the reviewed archive, then rerun installation and validation. Existing global links should resolve to the new repository location; recreate them when the path changed.
+Replace the repository directory with the reviewed archive, then rerun installation and validation. Existing Codex and Claude links should resolve to the new repository location; recreate them when the path changed. Antigravity sync requires a Git checkout so it can distinguish public skills from untracked files.
 
 ## Product Repo Kit
 

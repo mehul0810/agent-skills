@@ -29,6 +29,7 @@ export function validationChecks(python) {
     ['Evidence validator regression', 'node', ['scripts/behavior-evidence-audit.mjs', '--self-test']],
     ['Quality validator regression', 'node', ['wp-quality-reviewer/scripts/validate-review-report.mjs', '--self-test']],
     ['Install links', 'bash', ['scripts/install-links-smoke.sh']],
+    ['Antigravity installer sync', 'node', ['scripts/test-antigravity-install.mjs']],
   ];
 }
 

@@ -11,11 +11,12 @@ if [ "$#" -eq 1 ] && [ "$1" = "--health" ]; then
   health=1
   shift
 fi
+inventory="$(bash "$repo_root/scripts/list-global-skills.sh")"
 for name in "$@"; do
   case "$name" in
     -*|*[!a-z0-9-]*|'') echo "Usage: bash scripts/check-global-skill-links.sh [--health | skill-name ...]" >&2; exit 2 ;;
   esac
-  if [ ! -f "$repo_root/$name/SKILL.md" ]; then
+  if ! grep -Fxq -- "$name" <<< "$inventory"; then
     echo "Unknown skill: $name" >&2
     exit 2
   fi
@@ -65,7 +66,7 @@ check_stale_pack_links() {
     target="$(readlink "$link_path")"
     case "$target" in
       "$repo_root"/*)
-        if [ "$name" != "shared" ] && [ "$name" != "templates" ] && [ ! -f "$repo_root/$name/SKILL.md" ]; then
+        if [ "$name" != "shared" ] && [ "$name" != "templates" ] && ! grep -Fxq -- "$name" <<< "$inventory"; then
           echo "STALE: $link_path -> $target (retired pack link; review before removal)" >&2
           errors=$((errors + 1))
         fi
@@ -83,14 +84,7 @@ check_skill() {
 if [ "$#" -gt 0 ]; then
   for name in "$@"; do check_skill "$repo_root/$name"; done
 else
-  while IFS= read -r skill_dir; do check_skill "$skill_dir"; done < <(
-    find "$repo_root" -mindepth 1 -maxdepth 1 -type d \
-      ! -name ".git" \
-      ! -name "shared" \
-      ! -name "scripts" \
-      -exec test -f "{}/SKILL.md" \; \
-      -print | sort
-  )
+  while IFS= read -r name; do check_skill "$repo_root/$name"; done <<< "$inventory"
 fi
 
 check_link "$codex_skills_dir" "shared" "$repo_root/shared"

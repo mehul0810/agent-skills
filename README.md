@@ -4,7 +4,7 @@ Give your coding agent a specific job: build a WordPress plugin, draw how a syst
 
 ## Quick Start
 
-These instructions set up the skill files for Codex and Claude Code on the same machine. You need Git and Bash; Node and Python are only needed for repository validation, not for linking skills.
+Use one kept checkout for Codex, Claude Code, and optionally Antigravity. Codex and Claude links need Git and Bash. Reading or syncing an existing Antigravity manifest also needs Python 3 (standard library only). You do not need npm to install skills.
 
 1. Clone the repository into a location you intend to keep. The installer makes symlinks to this checkout, so moving or deleting it breaks them.
 
@@ -19,7 +19,7 @@ These instructions set up the skill files for Codex and Claude Code on the same 
    # One skill (replace the name with one from the catalog below).
    bash scripts/install-global-skill-links.sh wp-plugin-expert
 
-   # Or install every skill.
+   # Or install every public skill. Also refreshes an already registered Antigravity checkout.
    bash scripts/install-global-skill-links.sh
    ```
 
@@ -39,9 +39,28 @@ The check confirms filesystem links, not that a host discovered or used a skill.
 
 ### Global Symlink Installer
 
-The installer validates skill names and frontmatter, then creates links rather than copying files. Existing real files and directories are preserved; a conflict stops installation. Incorrect symlinks also stop it unless `--force` is explicitly used to repoint them. Inspect a conflict and its target before using `--force`.
+The installer selects top-level `<name>/SKILL.md` files committed in this checkout's `HEAD`, validates the selected skills, and links rather than copies them. It does not follow skill-directory or skill-file symlinks, descend into nested repos, or install untracked drafts. Existing real files and directories in the host link roots are preserved; a conflict stops installation. Inspect an incorrect symlink and its target before using `--force` to repoint it.
 
 Global design defaults are separate and opt-in: `bash scripts/install-global-skill-links.sh --design-defaults` appends the marked policy to `${CODEX_HOME:-$HOME/.codex}/AGENTS.md` when safe. Ordinary installs do not edit that policy. `--check-design-defaults` checks its on-disk state without writing. The checker’s `--health` mode expects the full pack **and** these optional defaults; it is not a success check for a selected install or an ordinary install without that policy.
+
+### Antigravity
+
+Run these commands **from the shared Git checkout you intend to keep**. Antigravity reads the skills there directly; there is no second copy or symlink tree.
+
+```bash
+# First time only: register this checkout in ~/.gemini/config/skills.json.
+bash scripts/install-global-skill-links.sh --antigravity
+
+# After updating the checkout: sync new and retired public skill names.
+bash scripts/install-global-skill-links.sh
+
+# Verify this checkout's full allowlist on disk without making changes.
+bash scripts/install-global-skill-links.sh --check-antigravity
+```
+
+A plain run leaves an unregistered Antigravity configuration alone. Once registered, the installer manages only `include_only` for this checkout's entry. A full run replaces that list with the current public catalog. A named run adds only those names to the existing selection and drops retired names; use a named run for a subset, or Antigravity's `exclude` for lasting exceptions on full runs. Other entries, inherits, and exclusions are preserved. No parent directory, sibling repository, or private agent pack is registered. A malformed manifest or duplicate entries for this checkout must be fixed manually; `--force` does not bypass that check.
+
+To verify **discovery**, open **Customizations > Installed > Skills & Rules** in Antigravity. Look for the skill with the Global badge sourced from `~/.gemini/config/skills.json`. The on-disk check verifies the list, not host discovery or execution. See [Google's discovery guide](https://antigravity.google/docs/customization-discovery#check-what-antigravity-loaded).
 
 ## Skills
 

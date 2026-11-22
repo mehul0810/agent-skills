@@ -63,6 +63,13 @@ When the local Skill Creator is installed, also run `quick_validate.py` for ever
 
 `npm test` is the aggregate publication gate: it runs reference/domain/token/routing checks, record validation, regression self-tests, and install-link proof once at their owning layer. It prints timings and expands failures. Do not repeat the full gate without changed inputs. During iteration use the affected `validate:*` command or reference mode; those focused checks do not replace the final gate. Shell syntax and Skill Creator checks remain separate.
 
+For installer changes, run `bash scripts/install-links-smoke.sh` and
+`node scripts/test-antigravity-install.mjs`. The latter commits a new skill and
+retires one in a disposable Git checkout, reruns the actual installer, and checks
+the personal manifest in an isolated home. It covers selected and full installs,
+no-op reruns, private and symlinked sources, unrelated settings, and refused
+writes. It does not run Antigravity; use the [native discovery check](README.md#antigravity) for that.
+
 ## Behavioral Gate
 
 Honor the standing owner exclusion of macOS VoiceOver and voice-over narration verification. Do not execute or request these checks, substitute another screen reader to recreate them, or block ordinary completion solely on their absence. Mark them excluded by owner direction, not passed. Synthetic tests of exclusion receipts and fresh-agent decisions remain required for changes to this policy; they do not perform the excluded checks. Retain all other applicable accessibility, safety, artifact-identity and formal-claim gates. A later explicit owner request can restore the named check for its scope.
