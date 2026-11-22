@@ -70,7 +70,7 @@
         "wp-expert/references/visual-parity-regression.md",
         "wp-expert/references/wordpress-design-system.md"
       ],
-      "sha256": "47be20644ab0b8ac9daf8e8f07d741a551606241212cb9b5ad127279ecfebdf3",
+      "sha256": "c4bfcc02ddd1028c77c62a334870b82b3847b2522e0392f4bff3b510a6b03493",
       "scenario": {
         "id": "premium-enterprise-design-experience",
         "files": [
@@ -110,7 +110,7 @@
           "skill-evals/cases/live-reference-transfer/artifacts/requests.json",
           "skill-evals/cases/live-reference-transfer/criteria.md"
         ],
-        "contractSha256": "fffff90556a6327eb6c63901efa3769fc7525a6082feb078e3556be8d3f1048c"
+        "contractSha256": "3bd6e453876daa6f22915088ed591d0d014b7e4131b6478dc1354135564bef85"
       },
       "requiredChecks": [
         "greenfield-taste-route",
@@ -142,12 +142,12 @@
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/design-experience-routing-2026-11-06-baseline-refresh.json",
-          "sha256": "ab8b11ce78aa22d2fc19ebe55478fb940f9d594a0b56f8673f1c9aeccb88ad24",
-          "testedRevision": "f9b8800ba3c5b8ba77f1b5ec37fbc76cba6104d5",
-          "testedSourceSha256": "47be20644ab0b8ac9daf8e8f07d741a551606241212cb9b5ad127279ecfebdf3",
+          "runRecord": "skill-evals/run-records/design-experience-routing-2026-11-22-live-reference.json",
+          "sha256": "b2735994b404e890a07ad2c14d33fd358a1cb6cec4349ab575d76087ca62db77",
+          "testedRevision": "76a642700a8d8e63025a05267b65f913752938c4",
+          "testedSourceSha256": "c4bfcc02ddd1028c77c62a334870b82b3847b2522e0392f4bff3b510a6b03493",
           "testedScenarioSha256": "168416f3f9957a78a16ab3339fa253bfee79efd81d322b10c662d9244b63e12d",
-          "testedScenarioContractSha256": "fffff90556a6327eb6c63901efa3769fc7525a6082feb078e3556be8d3f1048c",
+          "testedScenarioContractSha256": "3bd6e453876daa6f22915088ed591d0d014b7e4131b6478dc1354135564bef85",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",

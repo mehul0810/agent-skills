@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "runId": "design-experience-routing-2026-11-22-live-reference",
+  "scenario": "premium-enterprise-design-experience",
+  "result": "succeeded",
+  "startedAt": "2026-11-22T09:05:43.000Z",
+  "durationMs": 715020,
+  "checks": [
+    {
+      "name": "greenfield-taste-route",
+      "result": "pass"
+    },
+    {
+      "name": "design-read-and-four-dials",
+      "result": "pass"
+    },
+    {
+      "name": "operational-dashboard-route-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "preserve-redesign-contracts",
+      "result": "pass"
+    },
+    {
+      "name": "motivated-motion-and-reduced-motion",
+      "result": "pass"
+    },
+    {
+      "name": "anti-template-composition",
+      "result": "pass"
+    },
+    {
+      "name": "usability-outcome-evidence-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "material-direction-checkpoint",
+      "result": "pass"
+    },
+    {
+      "name": "plug-and-play-defaults-advanced-controls",
+      "result": "pass"
+    },
+    {
+      "name": "enterprise-accountability-failure-proof",
+      "result": "pass"
+    },
+    {
+      "name": "trend-adoption-and-removal-path",
+      "result": "pass"
+    },
+    {
+      "name": "adaptive-ai-transparency-and-control",
+      "result": "pass"
+    },
+    {
+      "name": "voice-equivalent-path-and-privacy",
+      "result": "pass"
+    },
+    {
+      "name": "typography-loading-and-reduced-motion",
+      "result": "pass"
+    },
+    {
+      "name": "immersive-fallback-and-performance",
+      "result": "pass"
+    },
+    {
+      "name": "enterprise-progressive-depth",
+      "result": "pass"
+    },
+    {
+      "name": "source-visual-intent-routing",
+      "result": "pass"
+    },
+    {
+      "name": "design-understanding-evidence-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "growth-redesign-evidence-before-generation",
+      "result": "pass"
+    },
+    {
+      "name": "globalized-adaptive-interface-contract",
+      "result": "pass"
+    },
+    {
+      "name": "wordpress-design-system-package-transition",
+      "result": "pass"
+    },
+    {
+      "name": "custom-interaction-pattern-contract",
+      "result": "pass"
+    },
+    {
+      "name": "enterprise-form-recovery",
+      "result": "pass"
+    },
+    {
+      "name": "browser-assistive-technology-matrix",
+      "result": "pass"
+    },
+    {
+      "name": "token-integrity-proof-provenance",
+      "result": "pass"
+    },
+    {
+      "name": "live-reference-cross-brand-motion-proof",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 26,
+    "first_pass_checks": 12,
+    "first_pass_case_mappings": 39,
+    "first_recovery_case_mappings": 53,
+    "final_case_mappings": 54,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "design-experience-routing-2026-11-22-live-reference",
+    "artifactPointer": "skill-evals/live-reference-transfer-2026-11-22.md#decision-evidence"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-11-22T09:17:38.020Z",
+    "metricNames": [
+      "checks_passed",
+      "first_pass_checks",
+      "first_pass_case_mappings",
+      "first_recovery_case_mappings",
+      "final_case_mappings",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Independent synthetic design decisions; initial and targeted follow-up results retained separately. No measured user outcome, runtime or conformance pass. Host telemetry unavailable; shared elapsed interval includes coordination and scoring."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "development-regression"
+  ]
+}
