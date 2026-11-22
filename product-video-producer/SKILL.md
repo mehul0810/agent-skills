@@ -12,7 +12,7 @@ Make video from approved assets, footage and verifiable claims.
 - YouTube demo plus Short from captures: start in editing. Name the later channel stage (long-form opening/title/thumbnail; independently cut Short) and review stage (hash and probe both exports against their timelines). Don't load later guides yet.
 - Reference analysis, brand, storyboard, composition, pacing or abstract storytelling: `references/reference-to-storyboard.md`.
 - Intro/ident, motion graphic, cinematic film, instructional walkthrough, product demo or 3D treatment: use `references/production-modes.md`. For a creator, influencer, UGC-style or avatar-led shoot, use `references/presenter-video.md` instead.
-- Editing, real software capture, ingest/conform, sound, color, captions, rendering, manifest, QA, or user-critique iteration: read `references/render-review-iteration.md`.
+- To operate software and record a walkthrough with computer use, or repeat a recorded take, start with `references/computer-use-walkthrough.md`. To edit existing footage, conform, mix, caption, render or check delivery, use `references/render-review-iteration.md`.
 - YouTube long-form, Shorts, thumbnails/titles, channel packaging, disclosure, upload profiles, or retention learning: read `references/channel-delivery-feedback.md`.
 - Load the primary reference for the current stage; add the production-mode guide only for a concrete mode question. Do not load every stage reference in one context. Carry decisions, not previous guides, into the next stage. Verify changing platform rules at delivery.
 - Use Creative Production or `imagegen` for supporting assets, not exact logos, UI or copy; composite governed sources.

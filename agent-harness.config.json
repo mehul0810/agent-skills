@@ -490,6 +490,15 @@
       ]
     },
     {
+      "name": "Product video computer-use capture",
+      "maxWords": 1500,
+      "warningPercent": 85,
+      "files": [
+        "product-video-producer/SKILL.md",
+        "product-video-producer/references/computer-use-walkthrough.md"
+      ]
+    },
+    {
       "name": "Product video presenter",
       "maxWords": 1500,
       "warningPercent": 85,

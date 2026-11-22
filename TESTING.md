@@ -72,6 +72,20 @@ writes. It does not run Antigravity; use the [native discovery check](README.md#
 
 ## Behavioral Gate
 
+For a recording change, run the portable video gate and the actual capture test
+separately. From a disposable project with Node 24, project-local Playwright,
+its matching Chromium and FFmpeg/ffprobe preinstalled:
+
+```sh
+WALKTHROUGH_NATIVE_TEST=1 node "$AGENT_SKILLS/scripts/test-walkthrough-recording.mjs"
+```
+
+Set `AGENT_SKILLS` to this checkout's absolute path. The portable gate explicitly
+skips the native test when not requested. The native test records the fixture
+and a reusable local plan, not a real customer workflow. Guided computer-use
+capture requires actually operating the same headed window and inspecting the
+finalized take; it is not established by a headless pass.
+
 Honor the standing owner exclusion of macOS VoiceOver and voice-over narration verification. Do not execute or request these checks, substitute another screen reader to recreate them, or block ordinary completion solely on their absence. Mark them excluded by owner direction, not passed. Synthetic tests of exclusion receipts and fresh-agent decisions remain required for changes to this policy; they do not perform the excluded checks. Retain all other applicable accessibility, safety, artifact-identity and formal-claim gates. A later explicit owner request can restore the named check for its scope.
 
 Use `skill-evals/README.md`. Run changed-role scenarios with a fresh agent and raw artifacts for changes affecting authority, routing, release behavior, hallucination controls, design execution, runtime assurance, graph closure, or owner-correction learning. Store a sanitized run record or durable evidence pointer with the changed behavior.

@@ -93,3 +93,10 @@ Cases 43-48 in the blind packet test subject-specific visual language, geometry 
 ## Creator And Format Decisions
 
 Use the separate `cases/video-formats/` packet. Distinguish an ident from a cold open or an installation loop; a presenter from an endorser; a buyer demo from a reproducible lesson; annotated frame samples from platform playback. Score the timecoded paper edits and the usable safe alternatives, not just the presence of rights or QA vocabulary.
+
+## Computer-Use Recording
+
+Use the separate blind `video-computer-use` packet for same-window capture,
+human-paced, observable UI actions, screenshots-only fallback, reproducible
+retakes and truthful handling of a silent capture receipt. Paper decisions and
+actual guided and automatic recordings must be reported separately.
