@@ -163,6 +163,9 @@ Treat these as synthetic decisions, not live retrieval/automation proof. Re-run
 affected governance baselines when an owning router changes.
 
 For conversion-guidance changes, use `skill-evals/conversion-journey-scenarios.md`.
+For requests explicitly asking for imagery and animated decision sections, add
+the blind `skill-evals/cases/marketing-visual-proof/` packet. Give its criteria
+only to the scorer; include the narrow static and missing-evidence cases.
 This is repository evaluation infrastructure, not an installed-skill dependency.
 Supplement decision cases with a fresh rendered journey: supply only a frozen
 brief and rendered candidate to the independent reviewer, retain safe
