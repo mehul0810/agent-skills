@@ -85,6 +85,10 @@ skips the native test when not requested. The native test records the fixture
 and a reusable local plan, not a real customer workflow. Guided computer-use
 capture requires actually operating the same headed window and inspecting the
 finalized take; it is not established by a headless pass.
+Record the build, role, actual viewport and sanitized starting state in the
+editor's handoff. For the bundled rehearsal that is a fresh Proof desk page at
+960x600, ending with both "Comparison ready" and "Not sent" visible. Do not
+reuse that viewport or those expected values as evidence for another app.
 
 Honor the standing owner exclusion of macOS VoiceOver and voice-over narration verification. Do not execute or request these checks, substitute another screen reader to recreate them, or block ordinary completion solely on their absence. Mark them excluded by owner direction, not passed. Synthetic tests of exclusion receipts and fresh-agent decisions remain required for changes to this policy; they do not perform the excluded checks. Retain all other applicable accessibility, safety, artifact-identity and formal-claim gates. A later explicit owner request can restore the named check for its scope.
 
