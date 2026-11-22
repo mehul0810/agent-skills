@@ -984,23 +984,26 @@
         "product-video-producer/agents/openai.yaml",
         "product-video-producer/references/reference-to-storyboard.md",
         "product-video-producer/references/production-modes.md",
+        "product-video-producer/references/presenter-video.md",
         "product-video-producer/references/render-review-iteration.md",
         "product-video-producer/references/channel-delivery-feedback.md",
         "product-video-producer/assets/video-manifest.template.json",
         "product-video-producer/assets/video-manifest.schema.json",
         "product-video-producer/scripts/validate-video-manifest.mjs",
         "product-video-producer/scripts/check-shot-fidelity.mjs",
+        "product-video-producer/scripts/review-placement-frames.mjs",
         "product-video-producer/assets/shot-fidelity.example.json",
         "product-video-producer/scripts/render-motion-starter.mjs",
         "product-video-producer/assets/motion-starter/scene.mjs",
         "product-video-producer/assets/motion-starter/README.md"
       ],
-      "sha256": "841fe281b617221f3b19fe752fde9ae052d68dd1a78629ffdc0c06bd9d82bb41",
+      "sha256": "59d50923e0562eeff07059373bfef9a5ac1d4e8207989a4301918e3ea6fee61c",
       "scenario": {
         "id": "product-video-truth-and-assets",
         "files": [
           "skill-evals/product-video-producer-scenarios.md",
-          "skill-evals/cases/video-production/criteria.md"
+          "skill-evals/cases/video-production/criteria.md",
+          "skill-evals/cases/video-formats/criteria.md"
         ],
         "anchors": [
           "Automatic video specialist selection",
@@ -1034,9 +1037,10 @@
           "Temporal handoff and deliberate stillness",
           "## Script-To-Motion Checks",
           "## Subject-Led 3D Checks",
-          "## Subject-Led 3D Regression"
+          "## Subject-Led 3D Regression",
+          "## Creator And Format Decisions"
         ],
-        "sha256": "c73de5eedf1dee85a45a49b23b404d1df8e65a62bd200478209cda6063be8b66",
+        "sha256": "b14b44fdac5e77f3ef28694012776ed6d71214ef3d1a39f83bc709e6ff8a1506",
         "sha256Scope": "legacy-anchor-line",
         "fixtureFiles": [
           "skill-evals/cases/video-production/input.json",
@@ -1047,9 +1051,11 @@
           "skill-evals/cases/video-production/artifacts/case-37/generated-shot-01.svg",
           "skill-evals/cases/video-production/artifacts/case-37/generated-shot-02.svg",
           "skill-evals/cases/video-production/artifacts/case-37/generated-shot-03.svg",
-          "skill-evals/cases/video-production/artifacts/case-38/proxy-timeline-lineage.json"
+          "skill-evals/cases/video-production/artifacts/case-38/proxy-timeline-lineage.json",
+          "skill-evals/cases/video-formats/input.json",
+          "skill-evals/cases/video-formats/artifacts/takes.json"
         ],
-        "contractSha256": "17de0a37f6a96a8cce76ac8b0f11c6e4f1cc1d042c04ee98fe1a409f72322df0"
+        "contractSha256": "8e7413e2ca1e56a8e1f8bd28b6af409625b8915a8379f3c4d47734629c8dc84e"
       },
       "requiredChecks": [
         "automatic-specialist-routing",
@@ -1091,16 +1097,20 @@
         "temporal-handoff-and-inbetween-verification",
         "subject-led-visual-language",
         "geometry-role-and-safe-ring-exceptions",
-        "encoded-3d-artifact-review"
+        "encoded-3d-artifact-review",
+        "placement-specific-openers-and-motion",
+        "truthful-creator-performance-and-disclosures",
+        "evidence-led-demo-versus-walkthrough",
+        "encoded-placement-review-limits"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-11-20-installed-cli.json",
-          "sha256": "233030bfa175b29f0904569bc3b84e5a04cc430c579cabf4f32b7ea5ca4cbd38",
-          "testedRevision": "e3ff58ea375afd504f27db35de9096169fe92b11",
-          "testedSourceSha256": "841fe281b617221f3b19fe752fde9ae052d68dd1a78629ffdc0c06bd9d82bb41",
-          "testedScenarioSha256": "c73de5eedf1dee85a45a49b23b404d1df8e65a62bd200478209cda6063be8b66",
-          "testedScenarioContractSha256": "17de0a37f6a96a8cce76ac8b0f11c6e4f1cc1d042c04ee98fe1a409f72322df0",
+          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-11-22-video-formats.json",
+          "sha256": "2dbb9ee41b32bf026df653998012eb1770e530c9e89711375ac9b73cddbf678f",
+          "testedRevision": "89e5df5fd4e34126454ff6c22df03552c3ca2e18",
+          "testedSourceSha256": "59d50923e0562eeff07059373bfef9a5ac1d4e8207989a4301918e3ea6fee61c",
+          "testedScenarioSha256": "b14b44fdac5e77f3ef28694012776ed6d71214ef3d1a39f83bc709e6ff8a1506",
+          "testedScenarioContractSha256": "8e7413e2ca1e56a8e1f8bd28b6af409625b8915a8379f3c4d47734629c8dc84e",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
