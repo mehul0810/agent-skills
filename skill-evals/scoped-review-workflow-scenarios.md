@@ -15,9 +15,12 @@ location/rule citations separately; more findings are not inherently better.
 ## Production Change Review
 
 Use the three independent raw diffs in `cases/production-change-review/`.
-Build one immutable performer packet and give it to both fresh reviewers:
-ordinary review and review with the shared production guide. Keep the criteria
-and other reviewer's findings out of both contexts. Have a separate scorer
+Build one immutable performer packet. Start both reviewers outside the checkout
+in a neutral working directory, with no automatic project or global review
+guide. Record effective instruction sources and the exact input for each arm;
+add the guide only to one. If implicit instructions cannot be excluded, report
+descriptive results only, not an isolated comparison. Keep the criteria and
+other reviewer's findings out of both contexts. Have a separate scorer
 compare concrete changed-line findings, proportional action and clean-case
 restraint without knowing which reviewer used the guide. Report observed
 differences, including ties; never infer general effectiveness from three cases.
