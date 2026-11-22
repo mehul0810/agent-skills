@@ -18,6 +18,36 @@ const fixture = path.join(root, 'product-video-producer/assets/walkthrough-start
 const nativeCwd = process.cwd();
 const invoke = args => spawnSync(process.execPath, [cli, ...args], {cwd: root, encoding: 'utf8', timeout: 15000});
 
+// A hard cut, stationary preview, or pointer-only movement has fewer than four
+// ordered divider positions. Positions are measured from decoded app pixels.
+function hasContinuousWipe(positions) {
+  let last = -Infinity, steps = 0;
+  for (const x of positions) {
+    if (x !== null && x >= last + 40) { last = x; steps++; }
+  }
+  return steps >= 4;
+}
+
+function wipePosition(frame, width = 960, height = 600) {
+  let best = null;
+  for (let y = 0; y < height; y += 4) {
+    let green = 0, ivory = 0, edge = 0;
+    for (let x = 32; x < width - 32; x += 4) {
+      const i = (y * width + x) * 3, [r, g, b] = frame.subarray(i, i + 3);
+      if (r >= 35 && r <= 70 && g >= 80 && g <= 120 && b >= 65 && b <= 100) { green++; edge = x; }
+      if (r >= 205 && r <= 245 && g >= 190 && g <= 230 && b >= 145 && b <= 195) ivory++;
+    }
+    if (green >= 8 && ivory >= 8 && green + ivory >= 140 && (!best || green + ivory > best.count)) best = {count: green + ivory, edge};
+  }
+  return best?.edge ?? null;
+}
+
+test('continuous wipe detector rejects hard cuts and pointer-only movement', () => {
+  assert.equal(hasContinuousWipe([100, 100, 800, 800]), false);
+  assert.equal(hasContinuousWipe([300, 300, 300, 300, 300]), false);
+  assert.equal(hasContinuousWipe([100, 180, 260, 340, 420]), true);
+});
+
 test('help succeeds without browser dependencies', () => {
   const result = invoke(['--help']);
   assert.equal(result.status, 0, result.stderr);
@@ -101,8 +131,15 @@ test('native demo and reviewed local plan produce probeable UI-driven captures',
         await page.goto(`http://127.0.0.1:${server.address().port}/demo`);
         assert.equal(await page.getByText('Proof desk', {exact: true}).count(), 1);
         await page.getByRole('button', {name: 'Open proof'}).click();
+        const slider = page.getByRole('slider', {name: 'Proof comparison'});
+        assert.equal(await slider.isVisible(), false);
         await page.getByRole('button', {name: 'Compare versions'}).click();
         await page.getByText('Comparison ready', {exact: true}).waitFor();
+        assert.equal(await slider.isVisible(), true);
+        await slider.focus();
+        await page.keyboard.press('ArrowRight');
+        assert.equal(await slider.inputValue(), '16');
+        assert.equal(await page.locator('#wipe').evaluate(el => el.style.getPropertyValue('--split')), '16%');
         const layout = await page.evaluate(() => ({width: document.documentElement.scrollWidth, viewport: innerWidth, status: document.querySelector('#status').getBoundingClientRect().bottom, height: innerHeight}));
         assert.ok(layout.width <= layout.viewport, `horizontal overflow at ${viewport.width}px`);
         if (viewport.width >= 960) assert.ok(layout.status <= layout.height, `status below viewport at ${viewport.width}px`);
@@ -132,6 +169,19 @@ test('native demo and reviewed local plan produce probeable UI-driven captures',
       const streams = JSON.parse(probe.stdout).streams;
       assert.ok(streams.some(s => s.codec_type === 'video' && s.width === 960 && s.height === 600));
       assert.ok(!streams.some(s => s.codec_type === 'audio'));
+      if (name === 'demo') {
+        const start = receipt.observedActions.find(a => a.action === 'comparison_drag_started')?.elapsedSincePageCreatedMs;
+        const end = receipt.observedActions.find(a => a.action === 'comparison_drag_completed')?.elapsedSincePageCreatedMs;
+        assert.ok(Number.isFinite(start) && Number.isFinite(end) && end > start, 'missing deliberate drag interval');
+        // Page creation is a wall-clock proxy for video start, not a frame-exact
+        // timestamp. A half-second margin covers encoder startup uncertainty.
+        const from = Math.max(0, start / 1000 - 0.5), duration = (end - start) / 1000 + 1;
+        const decoded = spawnSync('ffmpeg', ['-v', 'error', '-ss', String(from), '-i', path.join(out, receipt.clip.file), '-t', String(duration), '-vf', 'fps=5', '-f', 'rawvideo', '-pix_fmt', 'rgb24', 'pipe:1'], {maxBuffer: 40 * 1024 * 1024});
+        assert.equal(decoded.status, 0, decoded.stderr?.toString() || 'ffmpeg unavailable');
+        const frameSize = 960 * 600 * 3, positions = [];
+        for (let i = 0; i + frameSize <= decoded.stdout.length; i += frameSize) positions.push(wipePosition(decoded.stdout.subarray(i, i + frameSize)));
+        assert.ok(hasContinuousWipe(positions), `decoded app wipe lacks ordered intermediate positions: ${JSON.stringify(positions)}`);
+      }
     }
     const demoOut = path.join(dir, 'demo');
     const previousReceipt = await readFile(path.join(demoOut, 'receipt.json'), 'utf8');

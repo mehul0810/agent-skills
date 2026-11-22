@@ -89,6 +89,9 @@ Record the build, role, actual viewport and sanitized starting state in the
 editor's handoff. For the bundled rehearsal that is a fresh Proof desk page at
 960x600, ending with both "Comparison ready" and "Not sent" visible. Do not
 reuse that viewport or those expected values as evidence for another app.
+For continuous actions, inspect the application **during** held input in the
+encoded take. A moving pointer, frame count or successful end state alone does
+not prove that the editor visibly drew, resized or scrolled through the action.
 
 Honor the standing owner exclusion of macOS VoiceOver and voice-over narration verification. Do not execute or request these checks, substitute another screen reader to recreate them, or block ordinary completion solely on their absence. Mark them excluded by owner direction, not passed. Synthetic tests of exclusion receipts and fresh-agent decisions remain required for changes to this policy; they do not perform the excluded checks. Retain all other applicable accessibility, safety, artifact-identity and formal-claim gates. A later explicit owner request can restore the named check for its scope.
 

@@ -1,6 +1,7 @@
 import { constants } from 'node:fs';
 import { open } from 'node:fs/promises';
 import { setTimeout as hold } from 'node:timers/promises';
+import { moveToWalkthroughTarget } from './walkthrough-pointer.mjs';
 
 const roles = new Set(['button', 'tab', 'radio', 'checkbox', 'link']);
 const limit = 16 * 1024;
@@ -38,7 +39,7 @@ export async function loadPlan(file) {
   } finally { await handle.close(); }
 }
 
-export async function performPlan(page, plan, onObserved, { pause = hold, now = () => performance.now() } = {}) {
+export async function performPlan(page, plan, onObserved, { pause = hold, now = () => performance.now(), mouse } = {}) {
   const start = now();
   const action = { timeout: 5000 };
   await pause(1000); // Leave room for the viewer to locate the starting state.
@@ -48,6 +49,7 @@ export async function performPlan(page, plan, onObserved, { pause = hold, now = 
     if (await target.count() !== 1 || await result.count() > 1 || await result.isVisible()) {
       throw Error(`Step ${i + 1}: ambiguous control or result already on screen; no click attempted`);
     }
+    if (mouse) await moveToWalkthroughTarget(target, mouse);
     await target.hover(action);
     await pause(450);
     if (await result.isVisible()) throw Error(`Step ${i + 1}: result appeared before clicking`);

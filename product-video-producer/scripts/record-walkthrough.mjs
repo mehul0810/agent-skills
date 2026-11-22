@@ -7,10 +7,12 @@ import path from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 import {createInterface} from 'node:readline';
 import {loadPlan, performPlan} from './walkthrough-plan.mjs';
+import {installWalkthroughPointer, createWalkthroughMouse, moveToWalkthroughTarget} from './walkthrough-pointer.mjs';
 
 const help = `Usage: node record-walkthrough.mjs --demo [--guided] --out NEW_DIR
        node record-walkthrough.mjs --url http://127.0.0.1:PORT/path --guided --out NEW_DIR
        node record-walkthrough.mjs --url http://127.0.0.1:PORT/path --plan FILE --out NEW_DIR
+All modes accept --no-pointer for a raw take without the event-backed pointer cue.
 Node 24 and project-installed Playwright with Chromium are required; nothing is downloaded.
 Guided capture opens an isolated browser and ends on Enter in a terminal (maximum 5 minutes).
 Use only a sanitized, owned local app. The page video excludes desktop, microphone and system audio;
@@ -36,9 +38,9 @@ export function parseArgs(argv) {
   const result = {};
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    if (!['--demo', '--guided', '--url', '--out', '--plan'].includes(arg) || Object.hasOwn(result, arg.slice(2))) throw new Error('Invalid or repeated argument');
+    if (!['--demo', '--guided', '--url', '--out', '--plan', '--no-pointer'].includes(arg) || Object.hasOwn(result, arg.slice(2))) throw new Error('Invalid or repeated argument');
     const key = arg.slice(2);
-    if (key === 'demo' || key === 'guided') result[key] = true;
+    if (key === 'demo' || key === 'guided' || key === 'no-pointer') result[key] = true;
     else {
       const value = argv[++i];
       if (!value || value.startsWith('--')) throw new Error('Missing argument value');
@@ -68,11 +70,12 @@ function resolvePlaywright() {
   return chromium;
 }
 
-async function autoDemo(page, observed) {
+async function autoDemo(page, observed, mouse, pageCreatedAt) {
   await page.getByText('Proof desk', {exact: true}).waitFor({state: 'visible'});
   observed.push('proof_desk_visible');
   await page.waitForTimeout(1600);
   const open = page.getByRole('button', {name: 'Open proof', exact: true});
+  await moveToWalkthroughTarget(open, mouse);
   await open.hover();
   await page.waitForTimeout(700);
   await open.click();
@@ -80,12 +83,26 @@ async function autoDemo(page, observed) {
   const compare = page.getByRole('button', {name: 'Compare versions', exact: true});
   await compare.waitFor({state: 'visible'});
   await page.waitForTimeout(900);
+  await moveToWalkthroughTarget(compare, mouse);
   await compare.hover();
   await page.waitForTimeout(700);
   await compare.click();
   observed.push('compare_versions_clicked');
   await page.getByText('Comparison ready', {exact: true}).waitFor({state: 'visible'});
   observed.push('comparison_ready_visible');
+  const slider = page.getByRole('slider', {name: 'Proof comparison', exact: true});
+  await slider.hover({trial: true, timeout: 5000});
+  const box = await slider.boundingBox();
+  const initial = Number(await slider.inputValue());
+  if (!box || box.width <= 24 || box.height <= 0 || initial !== 15) throw Error('Comparison control is not in its expected starting state');
+  const sliderX = value => box.x + 12 + (box.width - 24) * value / 100;
+  await mouse.move(sliderX(initial), box.y + box.height / 2);
+  const current = await slider.boundingBox();
+  if (!current || ['x', 'y', 'width', 'height'].some(key => current[key] !== box[key]) || Number(await slider.inputValue()) !== initial) throw Error('Comparison control moved before drag');
+  observed.push({action: 'comparison_drag_started', elapsedSincePageCreatedMs: Date.now() - pageCreatedAt});
+  await mouse.drag(sliderX(85), box.y + box.height / 2, 2000);
+  if (Number(await slider.inputValue()) <= initial) throw Error('Comparison did not change');
+  observed.push({action: 'comparison_drag_completed', elapsedSincePageCreatedMs: Date.now() - pageCreatedAt});
   await page.waitForTimeout(2400);
 }
 
@@ -111,7 +128,7 @@ export async function main(argv) {
     startedAt: new Date(start).toISOString(), durationLimitSeconds: limitMs / 1000,
     viewport: size, videoSize: size, observedActions: observed,
     humanVerification: 'unknown', playbackReview: 'not performed', productSuccess: 'requires independent verification',
-    boundaries: {capture: 'browser page only', microphone: false, systemAudio: false, desktop: false, hardwareCursor: 'may not appear', mediaFormat: 'Playwright Chromium WebM; probe independently', nativePermissionAndChooserPrompts: 'not reliably observable; absence and outcome unverified'}
+    boundaries: {capture: 'browser page only', microphone: false, systemAudio: false, desktop: false, hardwareCursor: 'may not appear', pointerCue: options['no-pointer'] ? 'disabled' : 'trusted browser pointer events; not the OS cursor or independent evidence', mediaFormat: 'Playwright Chromium WebM; probe independently', nativePermissionAndChooserPrompts: 'not reliably observable; absence and outcome unverified'}
   };
   let browser, context, page, timer, rl, interrupted = false, finished = false;
   let boundaryViolation = false, rejectBoundary;
@@ -125,6 +142,7 @@ export async function main(argv) {
   try {
     browser = await chromium.launch({headless: !options.guided, timeout: 15000});
     context = await browser.newContext({viewport: size, recordVideo: {dir: output, size}, serviceWorkers: 'block', acceptDownloads: false});
+    if (!options['no-pointer']) await installWalkthroughPointer(context);
     if (typeof context.routeWebSocket !== 'function') throw new Error('Installed Playwright lacks WebSocket interception');
     await context.routeWebSocket('**/*', socket => socket.close());
     const origin = options.url ? approvedOrigin(options.url) : null;
@@ -164,6 +182,9 @@ export async function main(argv) {
       } else await route.abort('blockedbyclient');
     });
     page = await context.newPage();
+    const pageCreatedAt = Date.now();
+    receipt.pageCreatedAt = new Date(pageCreatedAt).toISOString();
+    receipt.boundaries.actionTiming = 'wall-clock elapsed since page creation; not exact encoded video timestamps';
     context.on('page', popup => {
       if (popup !== page) {
         failBoundary();
@@ -183,6 +204,8 @@ export async function main(argv) {
     });
     const capture = async () => {
       await page.goto(options.url || fixtureUrl, {waitUntil: 'load', timeout: 15000});
+      const mouse = createWalkthroughMouse(page);
+      if (!options.guided) await mouse.move(size.width / 2, size.height / 2, 0);
       if (options.guided) {
         process.stdout.write('Isolated capture is recording. Press Enter to finish; this does not verify the take.\n');
         await new Promise((resolve, reject) => {
@@ -193,8 +216,8 @@ export async function main(argv) {
         });
         if (interrupted) throw new Error('Capture interrupted');
       } else if (plan) {
-        await performPlan(page, plan, (step, elapsedMs) => observed.push({step, elapsedMs}));
-      } else await autoDemo(page, observed);
+        await performPlan(page, plan, (step, elapsedMs) => observed.push({step, elapsedMs}), {mouse});
+      } else await autoDemo(page, observed, mouse, pageCreatedAt);
     };
     await Promise.race([capture(), stopped]);
     if (boundaryViolation) throw new Error('Capture surface boundary violated');
