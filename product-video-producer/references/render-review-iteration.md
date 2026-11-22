@@ -6,7 +6,7 @@ Prove the exact project root, source revision/file hash, sequence/composition, j
 
 - Ingest originals read-only; record hashes, rights, cadence/timecode, color, audio and provenance. Logically exclude corrupt/partial media but preserve in place. Moving, renaming, replacing/deleting owner footage requires approval.
 - For proxies, retain a source-to-proxy map and relink/conform check. Transcode VFR/incompatible sources before precision edits; never silently resample.
-- Version timelines non-destructively. Assigned reviewer approves picture lock before final sound, color, captions, and graphics; delegated internal review suffices unless owner review is required. Editorial changes revoke lock and affected proof, not unrelated authority.
+- Version rough and fine cuts. Before finishing sound, color, captions or graphics, the assigned reviewer locks a specific timeline revision; honor owner checkpoints. Bind the approved review export's hash, locked revision and relinked originals to the master render receipt. A changed cut reopens lock and invalidates its derivatives.
 - Preserve truthful chronology: J/L cuts, punch-ins and compression cannot manufacture outcomes.
 - Record source-to-cutdown lineage. Programmatic video may mark proxy/conform/master `not_applicable` with reason.
 
@@ -43,7 +43,7 @@ Manifest binds identity, lineage, storyboard, toolchain, profile, provenance, cl
 - Color-manage; inspect scopes/displays. Never relabel SDR/P3 as HDR or apply LUTs without source/output interpretation.
 - Human-review caption wording, timing, line breaks, speakers and meaningful non-speech cues. Never rely on auto-captions as final proof.
 - For WCAG 2.2 AA prerecorded synchronized video, convey important visuals in audio or add integrated narration/audio description (`1.2.5`); a descriptive transcript alone is not a substitute. Provide prerecorded (`1.2.2`) and applicable live captions (`1.2.4`). Record destination, visual coverage and manual evidence.
-- Captions must not obscure UI; meet flash limits. Embedded/autoplay video needs poster, controls and relevant reduced-motion fallback.
+- For an embedded demo, check the actual player: can a viewer read the captions and UI at phone size, hear speech over music/effects, operate controls and choose a still/reduced-motion alternative to autoplay? Check flash limits. A transcript does not answer these questions.
 - Locale variants preserve separate text, caption, and audio tracks plus locale UI identification; check expansion, glyph/RTL, pronunciation, timing and crop safety.
 
 ## QA Gate

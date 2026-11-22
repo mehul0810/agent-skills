@@ -9,7 +9,7 @@ Make video from approved assets, footage and verifiable claims.
 
 ## Route
 
-- For a YouTube demo and Short from supplied captures, start with editing. Defer storyboard, channel and review guides to their stages.
+- YouTube demo plus Short from captures: start in editing. Name the later channel stage (long-form opening/title/thumbnail; independently cut Short) and review stage (hash and probe both exports against their timelines). Don't load later guides yet.
 - Reference analysis, brand, storyboard, composition, pacing or abstract storytelling: `references/reference-to-storyboard.md`.
 - Intro/ident, motion graphic, cinematic film, instructional walkthrough, product demo or 3D treatment: use `references/production-modes.md`. For a creator, influencer, UGC-style or avatar-led shoot, use `references/presenter-video.md` instead.
 - Editing, real software capture, ingest/conform, sound, color, captions, rendering, manifest, QA, or user-critique iteration: read `references/render-review-iteration.md`.

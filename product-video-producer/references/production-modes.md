@@ -18,7 +18,7 @@ Use sound motifs only to connect scenes or signal change; identify source/licens
 
 Identify learner goal/prerequisites; capture verified start state with build, role, viewport and sanitized fixture. Map actions to visible results and reliable success checks. Name confirmation source when results are absent or mark unverified. Match labels to build.
 
-Keep cursor, highlights, zoom and narration subordinate. Show controls before action; allow reading, pause for async work and disclose meaningful waits, skips, assumptions or branches. Include needed choices/warnings; narrate important visual-only changes. Verify learners can start, follow steps, see results, recover from relevant failure and confirm completion. Clean recording alone proves none; do not claim success or accessibility conformance without evidence.
+Pace one action at a time: park the cursor on the named control, finish that spoken instruction before clicking, then hold on the result long enough to read it. Explain visual-only changes. Preserve meaningful waits, choices, warnings and recovery; label skips. Verify a learner can start, follow and confirm completion. Clean footage alone proves neither a repeatable task nor accessibility conformance.
 
 ## Product Demo Or Walkthrough?
 
