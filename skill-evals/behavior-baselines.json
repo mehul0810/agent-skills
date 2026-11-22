@@ -994,6 +994,7 @@
         "product-video-producer/scripts/check-shot-fidelity.mjs",
         "product-video-producer/scripts/review-placement-frames.mjs",
         "product-video-producer/scripts/record-walkthrough.mjs",
+        "product-video-producer/scripts/walkthrough-pointer.mjs",
         "product-video-producer/scripts/walkthrough-plan.mjs",
         "product-video-producer/assets/walkthrough-starter/demo.html",
         "product-video-producer/assets/walkthrough-starter/compare.json",
@@ -1002,7 +1003,7 @@
         "product-video-producer/assets/motion-starter/scene.mjs",
         "product-video-producer/assets/motion-starter/README.md"
       ],
-      "sha256": "b309177c44d57073c666fbbb1bb5c968ffd979f042a488599d2584443c7134cb",
+      "sha256": "17db68d65ad298f0ba05fbcd6686c5da1e6248d134183c968ba8744eaa839e42",
       "scenario": {
         "id": "product-video-truth-and-assets",
         "files": [
@@ -1063,7 +1064,7 @@
           "skill-evals/cases/video-formats/artifacts/takes.json",
           "skill-evals/cases/video-computer-use/input.json"
         ],
-        "contractSha256": "2d9f50bb4a488a61769bae5dc17429a843fa0185aea9e011633edfa88cd90f7e"
+        "contractSha256": "3c0ba9f6aaf13c99e98f43078dc536a9d6f4351ab092f013fdd2317166ca7fbb"
       },
       "requiredChecks": [
         "automatic-specialist-routing",
@@ -1113,16 +1114,17 @@
         "same-surface-walkthrough-capture-and-human-pacing",
         "privacy-and-missing-recorder-fallback",
         "bounded-observable-retakes",
-        "finalized-recording-versus-product-proof"
+        "finalized-recording-versus-product-proof",
+        "continuous-input-and-encoded-app-motion"
       ],
       "evidence": [
         {
-          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-11-22-computer-use.json",
-          "sha256": "378cede561249a4eea8698b40d37d2fc7bd247faebfe6fcdd1e89dacc6509d04",
-          "testedRevision": "816b08ef6aa7510286b3b89d844396f99f81f276",
-          "testedSourceSha256": "b309177c44d57073c666fbbb1bb5c968ffd979f042a488599d2584443c7134cb",
+          "runRecord": "skill-evals/run-records/product-video-truth-and-assets-2026-11-22-live-gestures.json",
+          "sha256": "4884b5db40a7d1df0a451b4bc7c479ac5a4518f5752fe5f2ec883a7fbfe3108d",
+          "testedRevision": "3ed3b3232274bc75dfc6f20f6dd178feb28293ef",
+          "testedSourceSha256": "17db68d65ad298f0ba05fbcd6686c5da1e6248d134183c968ba8744eaa839e42",
           "testedScenarioSha256": "733f2f71b6fdffb4f05f2dce3dc6990f07c9b513a0f3bf2a4569f7d0cd5b4cf9",
-          "testedScenarioContractSha256": "2d9f50bb4a488a61769bae5dc17429a843fa0185aea9e011633edfa88cd90f7e",
+          "testedScenarioContractSha256": "3c0ba9f6aaf13c99e98f43078dc536a9d6f4351ab092f013fdd2317166ca7fbb",
           "runtime": {
             "host": "codex-desktop",
             "isolation": "fresh-agent",
