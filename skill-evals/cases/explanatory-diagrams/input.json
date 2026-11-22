@@ -1,0 +1,5 @@
+{
+  "id": "explanatory-diagrams",
+  "request": "The museum's help center embeds hold.svg in a 340 CSS-pixel column on phones and a 680-pixel column on desktop. Staff say it gives visitors the wrong impression. Correct the supplied SVG, keep it editable, and supply the equivalent short help text. Use the staff note as the source of truth. Deliver hold.svg and help.md locally; no hosted tools, product changes, or publication. In a separate ticket the editor wants only the wording 'Back to holds' replaced with 'Back to requests' in the supplied footer. Return the corrected footer as footer.txt; don't redesign that ticket.",
+  "artifacts": ["staff-note.md", "hold.svg", "footer.txt"]
+}

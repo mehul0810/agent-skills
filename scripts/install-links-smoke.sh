@@ -8,6 +8,48 @@ trap 'rm -rf "$tmp"; [ -z "$actual_tmp" ] || rm -rf "$actual_tmp"' EXIT
 tmp="$tmp/path with spaces"
 mkdir -p "$tmp"
 
+# Selected installs are checked without requiring every other skill or policy.
+CODEX_HOME="$tmp/selected-codex" CLAUDE_HOME="$tmp/selected-claude" \
+  bash "$repo_root/scripts/install-global-skill-links.sh" wp-expert >/dev/null
+selected_check() {
+  CODEX_HOME="$tmp/selected-codex" CLAUDE_HOME="$tmp/selected-claude" \
+    bash "$repo_root/scripts/check-global-skill-links.sh" "$@"
+}
+selected_check wp-expert >/dev/null
+if selected_check >/dev/null 2>&1; then
+  echo "ERROR: a selective install satisfied full-pack verification" >&2; exit 1
+fi
+[ ! -e "$tmp/selected-codex/AGENTS.md" ] && [ ! -e "$tmp/selected-claude/AGENTS.md" ] || {
+  echo "ERROR: selected install or check wrote policy" >&2; exit 1;
+}
+for invalid in ../wp-expert /tmp/wp-expert not-a-skill --unknown; do
+  code=0; selected_check "$invalid" >/dev/null 2>&1 || code=$?
+  [ "$code" -eq 2 ] || { echo "ERROR: expected usage failure for $invalid, got $code" >&2; exit 1; }
+done
+for extra in wp-expert --health; do
+  code=0; selected_check --health "$extra" >/dev/null 2>&1 || code=$?
+  [ "$code" -eq 2 ] || { echo "ERROR: expected usage failure for --health $extra, got $code" >&2; exit 1; }
+done
+for target in wp-expert shared templates; do
+  link="$tmp/selected-codex/skills/$target"
+  unlink "$link"
+  if selected_check wp-expert >/dev/null 2>&1; then
+    echo "ERROR: checker accepted missing $target" >&2; exit 1
+  fi
+  ln -s "$tmp/wrong-target" "$link"
+  if selected_check wp-expert >/dev/null 2>&1; then
+    echo "ERROR: checker accepted wrong $target" >&2; exit 1
+  fi
+  unlink "$link"
+  ln -s "$repo_root/$target" "$link"
+done
+ln -s "$repo_root/retired-skill" "$tmp/selected-claude/skills/retired-skill"
+if selected_check wp-expert >/dev/null 2>&1; then
+  echo "ERROR: selective checker accepted stale pack link" >&2; exit 1
+fi
+unlink "$tmp/selected-claude/skills/retired-skill"
+selected_check wp-expert >/dev/null
+
 CODEX_HOME="$tmp/codex" CLAUDE_HOME="$tmp/claude" \
   bash "$repo_root/scripts/install-global-skill-links.sh" >/dev/null
 

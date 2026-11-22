@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="650" viewBox="0 0 360 650" role="img" aria-labelledby="title desc">
+  <title id="title">One selected skill, two host links</title>
+  <desc id="desc">The selected skill is linked in both Codex and Claude. Each host link points back to the same skill directory in the kept repository clone.</desc>
+  <rect width="360" height="650" fill="#f6f4ed"/>
+  <g font-family="Verdana, sans-serif" fill="#172c2d">
+    <text x="24" y="38" font-size="12" font-weight="700" letter-spacing="1.5">INSTALLER / SELECTED SKILL</text>
+    <text x="24" y="72" font-size="24" font-weight="700">One skill. Two hosts.</text>
+    <text x="24" y="96" font-size="14">Where do the links point?</text>
+
+    <rect x="24" y="120" width="312" height="76" rx="8" fill="#172c2d"/>
+    <text x="40" y="146" fill="#d1e4dc" font-size="13">Selected skill directory</text>
+    <text x="40" y="178" fill="#ffffff" font-family="Menlo, Consolas, monospace" font-size="22">wp-expert</text>
+
+    <text x="24" y="229" font-size="12" font-weight="700" letter-spacing="1">TWO HOST LINKS</text>
+    <rect x="24" y="242" width="312" height="67" rx="8" fill="#ffffff" stroke="#77918a" stroke-width="1.5"/>
+    <text x="40" y="265" font-size="14" font-weight="700">Codex</text>
+    <text x="40" y="289" font-family="Menlo, Consolas, monospace" font-size="14">~/.codex/skills/wp-expert</text>
+
+    <rect x="24" y="323" width="312" height="67" rx="8" fill="#ffffff" stroke="#77918a" stroke-width="1.5"/>
+    <text x="40" y="346" font-size="14" font-weight="700">Claude Code</text>
+    <text x="40" y="370" font-family="Menlo, Consolas, monospace" font-size="14">~/.claude/skills/wp-expert</text>
+
+    <path d="M24 276 H12 V457 H112 V472 M336 357 H348 V457 H248 V472" fill="none" stroke="#315f54" stroke-width="2.5"/>
+    <path d="M106 465 L112 472 L118 465 M242 465 L248 472 L254 465" fill="none" stroke="#315f54" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="92" y="422" width="176" height="29" rx="14.5" fill="#e0ebe3"/>
+    <text x="180" y="441" font-size="12" font-weight="700" text-anchor="middle">EACH LINK POINTS TO</text>
+
+    <rect x="24" y="472" width="312" height="83" rx="8" fill="#e0ebe3" stroke="#315f54" stroke-width="1.5"/>
+    <text x="40" y="497" font-size="13" font-weight="700">Kept repository clone</text>
+    <text x="40" y="521" font-family="Menlo, Consolas, monospace" font-size="13">&lt;clone&gt;/wp-expert</text>
+    <text x="40" y="541" font-size="12">One source directory, not a copy.</text>
+
+    <path d="M24 582 H336" stroke="#b8c5bc"/>
+    <text x="24" y="606" font-size="13">Default host paths shown.</text>
+    <text x="24" y="625" font-size="13">Links alone do not prove runtime loading.</text>
+  </g>
+</svg>

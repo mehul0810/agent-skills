@@ -1,449 +1,113 @@
 # Agent Skills
 
-Reusable skills for WordPress engineering, product operations, service-business
-development, content, design, media, games and native Apple apps. This
-repository supplies instructions and validation tools, not an always-running agent or scheduler.
-
-## Repository Map
-
-| Repository | Responsibility |
-| --- | --- |
-| [agent-skills](https://github.com/mehul0810/agent-skills) | Reusable specialist behavior, references, templates and skill evaluations. |
-| [agent-harness](https://github.com/mehul0810/agent-harness) | Deterministic validation, context planning and evidence contracts. |
-| [agent-loop](https://github.com/mehul0810/agent-loop) | Live-state checks, bounded work selection and advisory workflow output. |
-| [agent-book](https://github.com/mehul0810/agent-book) | Compact decisions and evidence pointers, not live product truth. |
-| [agent-decide](https://github.com/mehul0810/agent-decide) | Shadow-only typed routing and evaluation; no automatic execution or promotion. |
-
-Product-specific implementation and release truth remain in each product repository.
-
-## Source Of Truth
-
-For current behavior, use repository `AGENTS.md`, the selected `SKILL.md`, its routed reference, schemas/scripts, and registered behavior evidence in that order. `QUICK_REFERENCE.md` is a convenience index; `PLANNING_REPORT.md`, older changelog entries, examples, and chat history are non-normative. Live product and ecosystem facts must be reverified at their owning source.
-
-Choose the skill by the requested deliverable:
-
-- `wp-expert`: thin umbrella router for ambiguous WordPress engineering that points to the narrow specialist skill.
-- `wp-plugin-expert`: enterprise WordPress plugin engineering for plugin architecture, admin screens, REST APIs, custom tables, WordPress.org releases, Composer/npm, tests, CI, security, performance, and troubleshooting.
-- `wp-theme-expert`: enterprise WordPress theme, block theme, FSE, `theme.json`, custom block, design-to-theme, visual parity, and premium responsive theme engineering.
-- `wp-site-expert`: enterprise WordPress site, UX, CRO, SEO/AEO/GEO, analytics, accessibility, content architecture, performance, and premium visitor/admin experience engineering.
-- `wp-quality-reviewer`: focused WordPress security, performance, modularity/maintainability, and accessibility review-and-fix workflows with evidence-backed enterprise proof.
-- `wp-portfolio-cto`: cross-product WordPress portfolio control room for portfolio heartbeats, product-thread health, release conflicts, owner decision briefs, and shared workflow governance.
-- `wp-product-orchestrator`: one-product WordPress plugin/theme orchestrator for issue intake, milestone scope, release-readiness drive, worker delegation, validation synthesis, and PR workflow.
-- `wp-service-business-development`: opportunity qualification, discovery, offers, scopes, estimates, proposals, retainers and capacity decisions; not autonomous outreach or commercial commitments.
-- `loop-steward`: independent control-plane PR review, bounded revision, validation, and policy-gated merge decisions for `agent-loop`, `agent-book`, and `agent-skills`.
-- `behavior-validator`: independent source-blind validation of observable WordPress runtime, editor, UI, API, packaged-build, and generated-artifact behavior against an explicit contract.
-- `wp-contributor`: official WordPress project contribution workflows for Core, Meta, Gutenberg, Trac, GitHub PRs, patches, testing, docs, triage, releases, and contributor communication.
-- `wp-product-docs-writer`: evidence-based WordPress.org `readme.txt` and directory-listing optimization, repository README, changelog, release-note, upgrade-notice, and product-document synchronization.
-- `content-writer`: organic search content writing for SEO, AEO, GEO, AI Overviews, AI Mode, answer engines, AI tools, briefs, outlines, drafts, audits, and content refreshes.
-- `product-video-producer`: premium enterprise promos, software demos, YouTube long-form/Shorts, editing/post, governed assets, deterministic delivery, accessibility, and evidence-led revision.
-- [`game-development`](game-development/SKILL.md): build playable games, choose the stack from the requirements, and judge realism from the player's camera. Use video production instead when the deliverable is a trailer.
-- [`apple-app-development`](apple-app-development/SKILL.md): build, debug, and review native apps for Apple devices. Choose the platform from the brief, verify the actual Xcode destination, and keep local testing separate from distribution.
-- `shared/references/research-token-discipline.md`: reusable reasoning, repo exploration, web search, validation, and output discipline across the skill pack.
-- `shared/references/session-continuity-pr-discipline.md`: reusable new-chat context rehydration, release-branch detection, explicit PR base selection, and branch/PR safety used by code-oriented skills.
-- `shared/references/project-subagent-routing.md`: project-level delegation and bounded mapping/review; see the model-policy limitation below before using its legacy allocation guidance.
-- `shared/references/product-autonomy-permissions.md`: reusable autonomy boundaries, permission levels, stop conditions, and owner-decision format for product/plugin/theme workflows.
-- `shared/references/product-queue-triage.md`: reusable issue/PR queue triage, autonomous candidate selection, release-blocker detection, and owner-facing output format.
-- `shared/references/live-proof-wordpress.md`: reusable WordPress live-proof gates for plugins, themes, FSE, REST, WP-CLI, admin, frontend, integrations, and releases.
-- `shared/references/production-dependency-discipline.md`: reusable Composer/npm production dependency hygiene across engineering skills.
-- `shared/references/enterprise-code-quality-gate.md`: reusable enterprise/WPVIP-grade code creation and review gate for modularity, performance, security, maintainability, observability, and rare-scenario tests.
-
-## Modular WordPress Expert Coverage
-
-`wp-expert` is intentionally a router. Use the specialist skills directly when the task intent is clear:
-
-- `wp-plugin-expert` for plugin/product implementation, review, debugging, release, and hardening work.
-- `wp-theme-expert` for theme, FSE, block editor, design-to-theme, visual parity, and editor/frontend parity work.
-- `wp-site-expert` for whole-site, landing page, UX, CRO, SEO/content, analytics, accessibility, and premium site polish work.
-- `wp-quality-reviewer` for explicit security, performance, modularity/maintainability, or accessibility audits, fixes, and independent reassessment.
-- `wp-portfolio-cto` for cross-product portfolio governance, product-thread health, release conflicts, and owner portfolio briefs.
-- `wp-product-orchestrator` for one plugin/theme product's backlog, release train, GitHub issue/PR queue, and delegated implementation workflow.
-- `loop-steward` for active control-plane PRs that need independent review, bounded repair, or a policy-gated merge decision.
-- `behavior-validator` for black-box proof that a WordPress UI, editor flow, API side effect, packaged candidate, or generated artifact behaves as promised without implementation context.
-- `wp-product-docs-writer` for factual README, WordPress.org listing, changelog, release-note, upgrade-notice, and release-document work grounded in shipped evidence.
-- `product-video-producer` for product/brand films, software demos, YouTube long-form/Shorts, editing/post, motion direction, deterministic delivery, and video learning.
-
-Detailed playbooks remain in specialist `references/` directories and `shared/references/`; skills load them only when needed.
-
-## WordPress Expertise Coverage
-
-- Plugin development and refactoring.
-- Plugin product architecture: add-ons/pro boundaries, public hooks/filters, extension contracts, feature flags, dependency detection, diagnostics contracts, and upgrade-safe public APIs.
-- Plugin debuggability and supportability: Site Health checks, redacted support bundles, log levels, correlation IDs, safe recovery controls, and enterprise support exports.
-- Third-party API integrations of any type using official documentation or user-provided specs: REST, GraphQL, SOAP/WSDL, XML-RPC, SDKs, webhooks, OAuth, API keys, rate limits, retries, idempotency, queues, and provider operations.
-- Runtime and toolchain version policy: choose the minimum stable actively maintained non-EOL PHP, Node, npm, Composer, database, CI image, and tool versions that satisfy WordPress, host/VIP, dependency, and deployment constraints.
-- Changelog and release notes expertise: public/internal changelogs, unreleased feature aggregation, WordPress.org `readme.txt` changelog rules, SemVer impact, security notes, migrations, and developer-facing API notes.
-- Release contract and backward compatibility policy: preserve launched/public contracts and real production/client data, but avoid compatibility shims for abandoned intermediate shapes of unreleased features.
-- Duplicate code, modularity, and maintainability review: find repeated logic, reduce drift, improve service boundaries, add better tests, and keep refactors simple and reliable.
-- Enterprise code-quality gate: generated and reviewed code must be modular, performant, secure, maintainable, testable, and validated against relevant rare/failure scenarios.
-- Test coverage discipline: every PR/change makes an explicit test decision, adds or updates coverage when behavior risk warrants it, and flags missing coverage as a concrete review finding.
-- Planning drift control and risk-calibrated validation: scope guardrails, stop/ask triggers, and exact user-fed CSS/value changes that can be confirmed by diff without unnecessary visual verification.
-- Thinking, brainstorming, and engineering discipline: bounded option generation, anti-overengineering gates, reference-loading budgets, premium polish stopping rules, and token-conscious planning.
-- Requirements analysis, PRDs, scope of work, technical breakdowns, Codex-aware estimates, milestones, and delivery buffers.
-- WooCommerce and commerce engineering: HPOS, Checkout Blocks, Store API, payment/shipping integrations, subscriptions, refunds, order operations, and high-scale store validation.
-- Headless and decoupled WordPress: REST vs WPGraphQL, Next.js/React frontends, previews, cache revalidation, media, redirects, and editorial workflows.
-- Advanced multisite and network engineering: network activation, domain mapping, cross-site data, tenant governance, provisioning, migrations, and cache boundaries.
-- Technical SEO engineering: canonicals, redirects, robots, sitemaps, structured data, crawl budget, Core Web Vitals, hreflang, and migration SEO checks.
-- Privacy, consent, and data governance: consent, telemetry, personal data export/erase, data retention, audit logs, PII minimization, and vendor disclosures.
-- Content modeling and information architecture: CPTs, taxonomies, meta, custom tables, block-based content models, editorial workflows, and scalable admin/search behavior.
-- Database table architecture review: custom table decisioning, schema design, query-to-index mapping, migrations, multisite ownership, retention, privacy, concurrency, and maintainability review.
-- Disaster recovery and business continuity: RTO/RPO, backups, restore drills, rollback, queue/search/cache recovery, incident communication, and release backout planning.
-- AI and LLM WordPress product engineering: provider abstraction, streaming UX, embeddings, structured outputs, cost controls, prompt safety, privacy, and auditability.
-- Marketplace and product readiness: freemium/pro boundaries, licensing, update servers, support diagnostics, WordPress.org compliance, onboarding, and release packaging.
-- WordPress.org Plugin Directory guideline review, block directory eligibility, readme policy, licensing, tracking, and trademark checks.
-- WordPress.org release operations: SVN-first verification, `trunk/`, `tags/<version>/`, `assets/`, production `vendor/`, Plugin Check fallbacks, 10up deploy behavior, and GitHub ZIP workflows.
-- Theme development, classic themes, block themes, and `theme.json`.
-- Hybrid theme migration and modernization: classic-to-block migration, page-builder-to-block migration, child-theme modernization, WooCommerce template cleanup, and SEO/content preservation.
-- Style guide, design pattern, and design token translation into WordPress-native primitives, including custom themes and custom child themes on top of existing parent themes.
-- Block/FSE architecture decisioning: theme vs plugin ownership, content model, editor ownership, templates, parts, patterns, variations, bindings, custom blocks, dynamic rendering, and Interactivity API.
-- Design-to-FSE custom block themes: map designs to `theme.json`, core blocks, patterns, template parts, block styles, and custom blocks only when necessary, without Custom HTML or Shortcode blocks.
-- Block Bindings in block themes: map supported core block attributes to dynamic sources before creating custom blocks when native editability is sufficient.
-- Ollie block theme and Ollie Pro expertise: Site Editor workflows, child themes, design tokens, Pro pattern library, setup wizard, starter sites, extensions, Menu Designer, WooCommerce layouts, and troubleshooting.
-- Blocksy theme and Blocksy Pro expertise: Customizer workflows, Companion plugin, header/footer builders, Content Blocks, Dynamic Data, starter sites, Shop Extra/WooCommerce, Advanced Menu, Pro extensions, licensing, and troubleshooting.
-- Block editor compatible code generation and dynamic/static block work.
-- React with WordPress enterprise standards: admin/editor apps, frontend interactive blocks, headless boundaries, dependency extraction, REST contracts, `@wordpress/data`, `@wordpress/components`, testing, accessibility, and release artifacts.
-- UX product strategy and design QA: discovery, user journeys, information architecture, UX writing, conversion flows, usability checks, design-system governance, and enterprise/premium quality scoring.
-- Conversion-focused website engineering: landing pages, lead funnels, checkout/booking flows, offer clarity, CTA strategy, trust proof, form friction, CRO-safe experiments, and conversion-quality gates.
-- Analytics and measurement engineering: GA4/GTM/data layer, consent-aware tracking, WooCommerce/lead funnel events, telemetry boundaries, duplicate-event prevention, and validation without production pollution.
-- Product-grade UI/UX improvement: visual QA, interaction states, forms, dashboards, responsive polish, and conversion clarity.
-- Premium and enterprise visual quality discipline: never settle for generic, inconsistent, or unfinished UI when the project requires a polished brand experience.
-- Image/screenshot/mockup-to-implementation discipline: treat provided designs as the visual source of truth, target pixel-faithful parity, and document any accessibility, responsive, editability, performance, or WordPress-platform deviation.
-- Visual parity regression workflow: deterministic screenshot/state checks across Site Editor, block editor canvas, and frontend surfaces.
-- Theme/frontend performance quality gate: Core Web Vitals, fonts, images, asset scoping, CLS/LCP/INP, block CSS bloat, frontend/editor CSS separation, and responsive media validation.
-- Local HTTPS testing support for custom WordPress development domains that are blocked by the in-app browser, using terminal probes and certificate-error-tolerant browser runners.
-- Mobile-first responsive architecture for frontend/customer-facing flows and responsive-safe admin/editor interfaces.
-- WordPress Design System support: `@wordpress/components`, design tokens, Figma-to-code mapping, and accessibility.
-- Admin UX, settings screens, onboarding, list tables, notices, and frontend UI improvement.
-- Performance, caching, database scale, security, privacy, secrets, and PII handling.
-- Performance profiling and scale budgets: baseline/measure hot paths, query count, object-cache behavior, REST/admin/editor latency, Core Web Vitals, async backpressure, and high-traffic acceptance checks.
-- Security threat modeling and review: assets, actors, trust boundaries, REST/admin/upload/webhook/OAuth/MCP entry points, capability/ownership checks, abuse cases, and negative security tests.
-- Enterprise architecture, multisite, migrations, async jobs, observability, and rollout/backout planning.
-- Observability and incident response: SLOs, VIP Insights, New Relic, logs, slow queries, runbooks, and postmortems.
-- Edge caching and CDN architecture: page cache, object cache, static assets, personalization, purge strategy, and stampede protection.
-- Load testing and capacity planning for launches, traffic spikes, high-origin-load scenarios, and VIP coordination.
-- Enterprise Search and content-scale querying: indexing, search offload, relevance, admin search, and multisite boundaries.
-- Security operations and compliance: access governance, penetration testing, audit evidence, privacy, dependency risk, and incident response.
-- Deployment and release resilience: built artifacts, feature flags, rollback, smoke checks, cache/search impact, and release communication.
-- Content migration and editorial scale: large imports, media migration, redirects, SEO preservation, roles, workflows, and launch cutovers.
-- Accessibility, internationalization, localization, RTL, multilingual/global readiness, and WCAG-aligned UI validation.
-- WordPress monorepos, multi-plugin/theme packages, shared tooling, generated artifacts, and release engineering.
-- Production dependency hygiene for Composer and npm: development-only packages stay in source/CI and out of runtime artifacts.
-- WordPress VIP readiness and high-traffic production constraints.
-- VIP and enterprise launch readiness: go/no-go matrix, code/data/cache/search/CDN/redirects/observability/rollback/support checks, launch windows, and post-launch monitoring.
-- Troubleshooting, incident triage, WP-CLI probes, activation checks, and operational debugging.
-- Advanced troubleshooting decision trees: symptom-to-probe matrix, plugin/theme conflict isolation, REST nonce/auth debugging, object-cache/CDN debugging, production triage, and rollback-first mitigation.
-- Coding standards, linting, static analysis, tests, GitHub Actions, CI/CD, PR workflows, and releases.
-- Enterprise GitHub workflows: issue triage, labels, milestones, scoped commits, PR descriptions, review response discipline.
-- New-chat and PR branch discipline: rehydrate repo context, check release/hotfix/support branches, explicitly pass PR base branches, and verify PR `baseRefName` before reporting success.
-- Issue milestone to PR base discipline: when work belongs to an issue milestone, create PRs against the matching release/hotfix/support branch instead of defaulting to `main` or `trunk`.
-- Project-level Codex subagent routing: use model-free `.codex/agents/*.toml` templates, skill-level lanes, bounded mappers/reviewers, and runtime capability tiers.
-- Efficient tests and maintainable code comments/docblocks for onboarding and future regression prevention.
-- Enterprise acceptance criteria templates: definition-of-done gates for plugin features, themes, REST APIs, migrations, performance fixes, security fixes, and conversion pages.
-- Webpack, Composer, npm, dependency extraction, lockfiles, build scripts, and release artifact packaging.
-- Small focused commits for separable validated changes, followed by pushing all task commits after completion when a remote is configured.
-
-## wp-portfolio-cto Coverage
-
-- Cross-product WordPress portfolio control room: portfolio heartbeat, assigned-product sweep, quiet product reporting, product-thread health, and owner decision briefs.
-- Cross-product release governance: release conflicts, shared branch/release process, production/beta approval readiness, and owner testing confirmation.
-- Workflow governance: route product execution back to product threads, detect portfolio execution drift, protect user-created product/control threads, and route repeatable failures into skills or repo docs.
-
-## wp-product-orchestrator Coverage
-
-- One-product plugin/theme workflow: issue triage, PR repair, subagent coordination, validation, owner decisions, and release readiness.
-- Product-aware autonomy boundaries: classify work as autonomous, needs owner, blocked, release blocker, or defer based on `PRODUCT.md`, milestones, release branches, and risk.
-- Simplified plugin development workflow: one-issue-at-a-time root cause, implementation, tests, live proof, focused commit, and PR preparation using the narrowest specialist lane.
-- Simplified theme/FSE workflow: concrete design-token, pattern, template, responsive, visual parity, editor/frontend parity, and premium polish work with clear escalation for broad design decisions.
-- Project-level subagent orchestration: use the lowest sufficient available tier for bounded mapping/fixing and the strongest suitable reasoning-capable tier for high-risk review or decisions.
-- WordPress live-proof gates: plugin activation, admin/settings, REST, WP-CLI, block editor, Site Editor, frontend, WooCommerce, external APIs, local HTTPS, package, and WordPress.org release proof.
-- Product-repo starter kit in `templates/product-repo/` plus `scripts/install-product-agent-kit.sh` to install `AGENTS.md`, `PRODUCT.md`, `.codex/agents`, and workflow prompts into plugin/theme repositories.
-
-## content-writer Coverage
-
-- SEO, AEO, GEO, AI Overviews, AI Mode, answer-engine, and AI-tool-aware content planning and writing.
-- Topic research, content briefs, outlines, drafts, landing pages, comparison pages, product/service pages, FAQs, metadata, content audits, and refresh plans.
-- Helpful people-first content, E-E-A-T/trust signals, search intent mapping, entity coverage, schema-aware copy, internal-link guidance, and source-grounded fact handling.
-- Organic search content for any topic, with stronger source standards for current, regulated, YMYL, technical, or high-stakes topics.
-- Broad SEO/AEO/GEO strategy and web campaigns; WordPress.org directory listing optimization routes to `wp-product-docs-writer`.
-
-## wp-product-docs-writer Coverage
-
-- WordPress.org `readme.txt`, repository `README.md`, changelogs, release notes, upgrade notices, and cross-document synchronization.
-- WordPress.org directory listing positioning and search-intent mapping, grounded in verified capabilities and current directory guidance; distinct from broad Google SEO and conversion measurement.
-- Shipped/planned/conflicting claim classification grounded in tags, candidate diffs, packages, runtime proof, and accepted repo docs.
-- Stable-tag, version, compatibility, installation, screenshot, external-service, privacy, and support disclosure checks without release or publishing authority.
-
-## wp-contributor Coverage
-
-- WordPress Core contribution through `wordpress-develop`, Core Trac, SVN/Git patches, and linked GitHub PRs.
-- WordPress Meta contribution using Meta Handbook workflows for WordPress.org, WordCamp.org, Make sites, developer.wordpress.org, directories, profiles, badges, Trac/GitHub/SVN paths, local environments, Slack escalation, and project infrastructure.
-- Gutenberg and block editor contribution through `wordpress/gutenberg` guidelines, GitHub issues, PRs, labels, milestones, package boundaries, editor tests, accessibility, React Native parity, Storybook, and Core sync awareness.
-- WordPress AI contribution guidelines: responsible AI-assisted contribution, disclosure, GPL compatibility, no-AI-slop quality bar, tests/QA, documentation, issue/support use, and maintainer expectations.
-- Ticket triage, issue reproduction, component/milestone/keyword guidance, patch refreshes, review comments, and maintainer-ready summaries.
-- Testing and validation strategy for Core, Meta, and Gutenberg using existing repo scripts first.
-- Enterprise code-quality gate for upstream patches and reviews: modularity, performance, security, maintainability, and rare/failure scenario coverage framed as concrete acceptance risks.
-- Production dependency hygiene for Composer and npm in contribution packaging, CI artifacts, release branches, and deploy checks.
-- New-chat and PR branch discipline for contribution work: verify trunk/main versus release/backport branches, explicitly set PR bases, and avoid defaulting to the wrong upstream branch.
-- Project-level Codex subagent routing for contribution work: use bounded mappers/reviewers for Core, Meta, Gutenberg, tests, docs, and backport surfaces while keeping PRs and final decisions parent-owned.
-- WordPress coding standards, inline docs, i18n, accessibility, performance, privacy, security, dev-note, props, and commit-message guidance.
-- Release phase, backport, RC/minor-release caution, and private security disclosure workflows.
-
-## Skills
-
-Install or reference the skill folders:
-
-```text
-wp-expert/
-wp-plugin-expert/
-wp-theme-expert/
-wp-site-expert/
-wp-quality-reviewer/
-wp-portfolio-cto/
-wp-product-orchestrator/
-wp-service-business-development/
-loop-steward/
-behavior-validator/
-wp-contributor/
-wp-product-docs-writer/
-content-writer/
-product-video-producer/
-game-development/
-apple-app-development/
-```
-
-Default invocations:
-
-```text
-Use $wp-expert when the WordPress task is ambiguous and needs routing to the right specialist.
-
-Use $wp-plugin-expert to review, implement, debug, harden, refactor, test, package, or release a WordPress plugin, plugin product architecture, REST/admin feature, custom table, third-party API integration, WooCommerce extension, WordPress.org plugin, or enterprise/VIP plugin codebase.
-
-Use $wp-theme-expert to build, review, debug, or improve a WordPress theme, custom child theme, block/FSE theme, `theme.json`, templates, patterns, block styles, custom block, design-to-theme implementation, Ollie/Blocksy site, visual parity task, or editor/frontend parity issue.
-
-Use $wp-site-expert to plan, build, review, or improve a WordPress website, landing page, conversion flow, UX/IA, content model, SEO/AEO/GEO surface, analytics/tracking setup, accessibility, performance, responsive polish, or premium enterprise site experience.
-
-Use $wp-quality-reviewer for a focused independent WordPress security, performance, modularity/maintainability, or accessibility audit and review-led remediation.
-
-Use the relevant specialist with `shared/references/project-subagent-routing.md` when a project needs subagent profiles or skill routing; current explicit model restrictions take precedence over legacy allocation guidance. Use $wp-expert only if the lane is ambiguous.
-
-Use $wp-portfolio-cto for cross-product WordPress portfolio governance, portfolio heartbeats, product-thread health, release conflicts, owner decision briefs, and shared workflow improvements.
-
-Use $wp-product-orchestrator to triage, plan, delegate, validate, commit, push, or prepare PRs for one WordPress plugin/theme product thread.
-
-Use $wp-service-business-development to qualify a WordPress services opportunity, plan discovery, draft scope or proposals, or evaluate retainer and capacity options without making commercial commitments.
-
-Use $loop-steward to review, repair, validate, and policy-gate a pull request in agent-loop, agent-book, or agent-skills.
-
-Use $behavior-validator to independently validate observable WordPress runtime, editor, UI, API, packaged-build, or generated-artifact behavior without reading source, diffs, tests, or implementation notes.
-
-Use $wp-contributor to contribute to WordPress Core, Meta, Gutenberg, wordpress-develop, WordPress.org, WordCamp.org, Trac tickets, GitHub PRs, patches, tests, docs, standards, AI-assisted contribution guidelines, enterprise code-quality gates, triage, release/backport work, or contributor communication.
-
-Use $wp-contributor with `shared/references/project-subagent-routing.md` when a contribution repo needs bounded Core/Meta/Gutenberg subagent mapping, review, or test triage.
-
-Use $wp-product-docs-writer to write or audit a WordPress.org readme or plugin-directory listing optimization, repository README, changelog, release note, upgrade notice, or synchronized release documentation from verified product evidence.
-
-Use $content-writer to research, brief, draft, rewrite, audit, or refresh organic-search-focused content for SEO, AEO, GEO, AI Overviews, answer engines, and AI tools.
-
-Use $product-video-producer for reference-led product films, software demos, YouTube long-form/Shorts, premium editing/post, deterministic delivery, accessible review packages, and bounded evidence-led revisions.
-
-Use $game-development to build a playable game, choose a stack for its target devices, or fix a scene that looks realistic in stills but not in play.
-
-Use $apple-app-development to add a feature to an iPhone and iPad app without raising its deployment target, and test the user flow on a named destination.
-```
+Give your coding agent a specific job: build a WordPress plugin, draw how a system works, test a native Apple app, or improve a playable game. [Choose a skill by outcome](#skills) or [see a worked example](examples/decision-flow/README.md). These are instructions and resources, not an always-running agent or permission to publish, deploy, or release.
 
 ## Quick Start
 
-### Install Globally For Claude Code
+These instructions set up the skill files for Codex and Claude Code on the same machine. You need Git and Bash; Node and Python are only needed for repository validation, not for linking skills.
 
-Clone this repo and run the installer from the repo root:
+1. Clone the repository into a location you intend to keep. The installer makes symlinks to this checkout, so moving or deleting it breaks them.
 
-```bash
-git clone https://github.com/mehul0810/agent-skills.git
-cd agent-skills
+   ```bash
+   git clone https://github.com/mehul0810/agent-skills.git
+   cd agent-skills
+   ```
 
-# Install all skills globally.
-bash scripts/install-global-skill-links.sh
-```
+2. Install one skill, or install all skills. The command always targets **both** `${CODEX_HOME:-$HOME/.codex}/skills` and `${CLAUDE_HOME:-$HOME/.claude}/skills`, even if you use only one host. It also links `shared/` and `templates/` in both roots. Review the installer before running it.
 
-This symlinks the skills into `~/.claude/skills/`, where Claude Code discovers personal/global skills across projects:
+   ```bash
+   # One skill (replace the name with one from the catalog below).
+   bash scripts/install-global-skill-links.sh wp-plugin-expert
 
-```text
-~/.claude/skills/wp-expert/SKILL.md
-~/.claude/skills/wp-plugin-expert/SKILL.md
-~/.claude/skills/wp-theme-expert/SKILL.md
-~/.claude/skills/wp-site-expert/SKILL.md
-~/.claude/skills/wp-quality-reviewer/SKILL.md
-~/.claude/skills/wp-portfolio-cto/SKILL.md
-~/.claude/skills/wp-product-orchestrator/SKILL.md
-~/.claude/skills/loop-steward/SKILL.md
-~/.claude/skills/behavior-validator/SKILL.md
-~/.claude/skills/wp-contributor/SKILL.md
-~/.claude/skills/wp-product-docs-writer/SKILL.md
-~/.claude/skills/content-writer/SKILL.md
-~/.claude/skills/product-video-producer/SKILL.md
-~/.claude/skills/shared/references/*.md
-~/.claude/skills/templates/product-repo/*
-```
+   # Or install every skill.
+   bash scripts/install-global-skill-links.sh
+   ```
 
-Install selected skills only:
+3. Check the corresponding links on disk. The selected check covers the named skills, shared resources, templates, and stale links in both roots. With no names, it expects the whole pack.
 
-```bash
-bash scripts/install-global-skill-links.sh wp-expert
-bash scripts/install-global-skill-links.sh wp-plugin-expert wp-theme-expert wp-site-expert
-bash scripts/install-global-skill-links.sh wp-quality-reviewer behavior-validator
-bash scripts/install-global-skill-links.sh wp-expert wp-plugin-expert wp-theme-expert wp-site-expert wp-portfolio-cto wp-product-orchestrator wp-contributor
-bash scripts/install-global-skill-links.sh loop-steward
-bash scripts/install-global-skill-links.sh wp-product-docs-writer
-bash scripts/install-global-skill-links.sh content-writer
-bash scripts/install-global-skill-links.sh product-video-producer
-```
+   ```bash
+   # After the one-skill example:
+   bash scripts/check-global-skill-links.sh wp-plugin-expert
 
-Repoint incorrect symlinks if needed. Real files and directories are always preserved:
+   # After installing all skills:
+   bash scripts/check-global-skill-links.sh
+   ```
 
-```bash
-bash scripts/install-global-skill-links.sh --force
-```
+4. Start a new session in your host and ask for a task, for example: “Use the wp-plugin-expert skill to review this plugin's REST permission checks. Report findings with file locations; do not change code.” Give the agent access to the relevant project and review its evidence before acting.
 
-Global design defaults are opt-in. This appends the repository's marked policy to
-`$CODEX_HOME/AGENTS.md` (or `~/.codex/AGENTS.md`); it preserves existing content
-and refuses an existing conflicting Design Defaults section. Ordinary skill
-installs do not edit global policy:
+The check confirms filesystem links, not that a host discovered or used a skill. If it is not available, confirm the correct host home, restart the host, and inspect the skill and shared links. This repository does not install custom slash commands. Invocation and discovery depend on the host; explicitly name a skill if automatic selection is uncertain. Native host loading and task results require separate observation.
 
-```bash
-bash scripts/install-global-skill-links.sh --design-defaults
-bash scripts/install-global-skill-links.sh --check-design-defaults
-```
+### Global Symlink Installer
 
-The check verifies that the marked policy and shared design reference are
-resolvable on disk. It does not prove that any runtime loaded the policy.
+The installer validates skill names and frontmatter, then creates links rather than copying files. Existing real files and directories are preserved; a conflict stops installation. Incorrect symlinks also stop it unless `--force` is explicitly used to repoint them. Inspect a conflict and its target before using `--force`.
 
-Verify Claude can see the skill files on disk:
+Global design defaults are separate and opt-in: `bash scripts/install-global-skill-links.sh --design-defaults` appends the marked policy to `${CODEX_HOME:-$HOME/.codex}/AGENTS.md` when safe. Ordinary installs do not edit that policy. `--check-design-defaults` checks its on-disk state without writing. The checker’s `--health` mode expects the full pack **and** these optional defaults; it is not a success check for a selected install or an ordinary install without that policy.
 
-```bash
-ls -la ~/.claude/skills
-test -f ~/.claude/skills/wp-expert/SKILL.md && echo "wp-expert installed"
-test -f ~/.claude/skills/wp-plugin-expert/SKILL.md && echo "wp-plugin-expert installed"
-test -f ~/.claude/skills/wp-theme-expert/SKILL.md && echo "wp-theme-expert installed"
-test -f ~/.claude/skills/wp-site-expert/SKILL.md && echo "wp-site-expert installed"
-test -f ~/.claude/skills/wp-quality-reviewer/SKILL.md && echo "wp-quality-reviewer installed"
-test -f ~/.claude/skills/wp-portfolio-cto/SKILL.md && echo "wp-portfolio-cto installed"
-test -f ~/.claude/skills/wp-product-orchestrator/SKILL.md && echo "wp-product-orchestrator installed"
-test -f ~/.claude/skills/loop-steward/SKILL.md && echo "loop-steward installed"
-test -f ~/.claude/skills/behavior-validator/SKILL.md && echo "behavior-validator installed"
-test -f ~/.claude/skills/wp-contributor/SKILL.md && echo "wp-contributor installed"
-test -f ~/.claude/skills/wp-product-docs-writer/SKILL.md && echo "wp-product-docs-writer installed"
-test -f ~/.claude/skills/content-writer/SKILL.md && echo "content-writer installed"
-test -f ~/.claude/skills/product-video-producer/SKILL.md && echo "product-video-producer installed"
-```
+## Skills
 
-Run `bash scripts/check-global-skill-links.sh` after adding or renaming a skill. After first install, restart Claude Code if the skills do not appear immediately. `loop-steward` remains a conditional control-plane role; it is not part of routine WordPress execution.
+Choose the narrowest skill for the result you need. Open its `SKILL.md` for scope and routed references.
 
-Run `bash scripts/check-global-skill-links.sh --health` for unified installation
-health: it checks both Codex and Claude skill links plus the configured Codex
-design-defaults policy and shared-reference link. This is filesystem configuration
-proof only; it does not verify that either runtime loaded the skills or policy.
+| Skill | Use it for |
+| --- | --- |
+| [wp-expert](wp-expert/SKILL.md) | Route an ambiguous WordPress engineering task to a specialist. |
+| [wp-plugin-expert](wp-plugin-expert/SKILL.md) | Build, debug, review, test, or package a WordPress plugin. |
+| [wp-theme-expert](wp-theme-expert/SKILL.md) | Build or improve a WordPress theme, templates, or block-theme presentation. |
+| [wp-site-expert](wp-site-expert/SKILL.md) | Improve a WordPress site's pages, journeys, content, or editor-managed experience. |
+| [wp-quality-reviewer](wp-quality-reviewer/SKILL.md) | Review and fix focused WordPress security, performance, maintainability, or accessibility risks. |
+| [wp-product-orchestrator](wp-product-orchestrator/SKILL.md) | Coordinate one WordPress product's backlog, implementation, and release readiness. |
+| [wp-portfolio-cto](wp-portfolio-cto/SKILL.md) | Resolve cross-product WordPress governance and release conflicts. |
+| [wp-service-business-development](wp-service-business-development/SKILL.md) | Qualify WordPress service opportunities and prepare scopes or estimates. |
+| [wp-contributor](wp-contributor/SKILL.md) | Contribute to WordPress Core, Gutenberg, Meta, or related projects. |
+| [wp-product-docs-writer](wp-product-docs-writer/SKILL.md) | Write evidence-backed product readmes, changelogs, and release documentation. |
+| [behavior-validator](behavior-validator/SKILL.md) | Independently check observable behavior against a specific contract. |
+| [loop-steward](loop-steward/SKILL.md) | Review and manage policy-eligible control-plane changes, not routine WordPress implementation. |
+| [content-writer](content-writer/SKILL.md) | Research, draft, or improve useful search-oriented content. |
+| [explanatory-diagrams](explanatory-diagrams/SKILL.md) | Draw or repair an editable diagram so readers can trace a relationship, branch, or exception. |
+| [product-video-producer](product-video-producer/SKILL.md) | Produce and review product videos, demos, and motion deliverables. |
+| [game-development](game-development/SKILL.md) | Build and verify playable games. |
+| [apple-app-development](apple-app-development/SKILL.md) | Build, debug, or review native Apple-platform apps. |
 
-### Install Globally For Codex
+### Try A Task
 
-The same installer also symlinks skills into Codex's global skills directory:
+These prompts are starting points, not promises of a particular result. Give the agent the relevant files, environment, constraints, and permission for the requested work.
 
-```text
-~/.codex/skills/wp-expert/SKILL.md
-~/.codex/skills/wp-plugin-expert/SKILL.md
-~/.codex/skills/wp-theme-expert/SKILL.md
-~/.codex/skills/wp-site-expert/SKILL.md
-~/.codex/skills/wp-quality-reviewer/SKILL.md
-~/.codex/skills/wp-portfolio-cto/SKILL.md
-~/.codex/skills/wp-product-orchestrator/SKILL.md
-~/.codex/skills/loop-steward/SKILL.md
-~/.codex/skills/behavior-validator/SKILL.md
-~/.codex/skills/wp-contributor/SKILL.md
-~/.codex/skills/wp-product-docs-writer/SKILL.md
-~/.codex/skills/content-writer/SKILL.md
-~/.codex/skills/product-video-producer/SKILL.md
-~/.codex/skills/shared/references/*.md
-~/.codex/skills/templates/product-repo/*
-```
+- “Use wp-theme-expert to improve this block theme's mobile navigation. Preserve the existing design and show what you checked.” Expected: a scoped change with responsive evidence and any untested states.
+- “Use wp-quality-reviewer to review this plugin's REST endpoints for authorization problems. Do not edit files.” Expected: prioritized, evidence-backed findings or an explicit statement that none were found.
+- “Use wp-product-docs-writer to draft release notes from this candidate diff. Separate shipped changes from plans and do not publish.” Expected: a reviewable draft grounded in the supplied revision.
+- For a small source-owned decision diagram and its limits, see the [decision-flow example](examples/decision-flow/README.md). This is a repository example, not an installed skill path.
 
-If `CODEX_HOME` or `CLAUDE_HOME` is set, the installer uses those locations instead of `~/.codex` or `~/.claude`.
+## Source Of Truth
 
-## Global Symlink Installer
+For current behavior, consult the relevant `SKILL.md`, its routed references, and repository instructions, schemas, and scripts. [QUICK_REFERENCE.md](QUICK_REFERENCE.md) is a convenience index; [EXAMPLES.md](EXAMPLES.md), [PLANNING_REPORT.md](PLANNING_REPORT.md), and older changelog entries are non-normative. Verify live product and ecosystem facts at their owning source.
 
-This repo uses Agent Skills format (`SKILL.md`) so the same skill folders work in both Codex and Claude Code.
-
-What it does:
-
-- Validates each skill folder has compatible frontmatter (`name`, `description`) and naming.
-- Symlinks skills to Codex global path: `${CODEX_HOME:-~/.codex}/skills/<skill-name>`.
-- Symlinks skills to Claude global path: `${CLAUDE_HOME:-~/.claude}/skills/<skill-name>`.
-- Symlinks shared references to both skill roots as `shared/` so `../shared/references/*.md` resolves consistently from symlinked skill folders.
-- Symlinks product repo templates to both skill roots as `templates/` so starter-kit paths are available from global installs.
-- Preserves any real file or directory already present at a target path.
-- Provides `scripts/check-global-skill-links.sh` for read-only live parity checks.
+The shared [project subagent routing reference](shared/references/project-subagent-routing.md) defaults to the current model, subject to explicit owner constraints and verified capability exceptions. It does not configure a host or grant delegation authority.
 
 ## Product Repo Autonomy Kit
 
-Install the starter kit into a WordPress plugin/theme repo:
+The optional starter kit installs missing guidance into a WordPress plugin or theme repository without overwriting repo-owned guidance:
 
 ```bash
 bash /path/to/agent-skills/scripts/install-product-agent-kit.sh /path/to/product-repo
 ```
 
-This installs missing starter-kit files without overwriting repo-owned guidance. Use `--check` to audit drift or `--stage-update` to stage reviewable candidates under `.codex/product-agent-kit-updates/`; `--force` is intentionally unsupported.
-
-## Design
-
-The skills are intentionally token-efficient:
-
-- Each `SKILL.md` contains the core operating workflow and reference router.
-- Each `references/` directory contains deeper playbooks loaded only when relevant.
-- Clear plugin, theme, site, product, contribution, content, and video tasks should trigger the specialist directly; `wp-expert` is only the ambiguous WordPress-task router.
-- Skill frontmatter descriptions and default prompts are intentionally short because they affect baseline skill-selection context.
-- The shared `research-token-discipline.md` reference keeps web/research behavior explicit without duplicating guidance across skills.
-- The shared `session-continuity-pr-discipline.md` reference keeps new-chat context recovery and PR base-branch safety explicit across code-oriented skills.
-- The shared `project-subagent-routing.md` reference keeps project-level subagent/model routing explicit without bloating hot-path skill instructions.
-- The shared product autonomy, queue triage, and live-proof references keep autonomous plugin/theme work explicit without bloating `wp-expert`.
-- The shared `production-dependency-discipline.md` reference keeps Composer/npm production-artifact hygiene consistent across engineering skills.
-- The shared `enterprise-code-quality-gate.md` reference keeps modular, secure, performant, maintainable, test-backed engineering expectations consistent across code-oriented skills.
-- The `wp-expert/references/thinking-brainstorming-engineering-discipline.md` reference keeps brainstorming convergence, anti-overengineering, reference budgets, and premium polish stopping rules explicit without bloating the core skill.
-- The `wp-expert/references/ux-product-strategy-design-qa.md` reference keeps premium UI/UX strategy, image parity, and design QA explicit without bloating the core skill.
-- Focused `wp-expert/references/` playbooks keep plugin product architecture, troubleshooting, conversion engineering, frontend performance, launch readiness, hybrid migration, supportability, analytics, and acceptance criteria loadable only when needed.
-- Each `scripts/` directory contains lightweight discovery, validation, and workflow helpers.
-- `scripts/skill-token-audit.sh` guards frontmatter, `SKILL.md`, prompt, and reference word budgets so future improvements do not quietly increase token usage.
-- `scripts/route-budget-audit.sh` guards representative cumulative skill/router/reference paths rather than only individual files.
-- `npm run context:bundle --silent -- --route "Product video editing" --route "Product video story and editing"` prints one deduplicated file manifest for named routes, preserving each route's harness diagnostics and word budgets. In the current config, this pair shares 2,176 words across two files; the count is recomputed from the live repository when run. Use `--json` for machine-readable output or `--config <path>` for another config. It reports word-count overlap only, loads no file contents into the output, does not automatically choose context, and does not prove token savings or actual model usage. The manifest is sequential, not an atomic filesystem snapshot or runtime policy; readers remain responsible for loading only the needed files.
-- `skill-evals/README.md` defines the fresh-agent behavior gate; structural audits never substitute for scenario execution.
-- `skill-evals/wp-expert-scenarios.md` contains lightweight scenario prompts for checking routing and behavior after skill changes.
-
-See `PLANNING_REPORT.md` for the planning rationale and validation history.
+Use `--check` to audit drift or `--stage-update` to prepare reviewable candidates. Review the [template](templates/product-repo/) and script before use. It does not authorize deployment or release.
 
 ## Validation And Limits
 
-Use Node.js 24 and Python 3.11 or newer. If the default `python3` is older, set
-`PYTHON` to an installed compatible executable as described in [TESTING.md](TESTING.md).
+Repository contributors should follow [TESTING.md](TESTING.md). The aggregate uses Node.js 24 and Python 3.11 or newer; its checks are separate from installing skills for use. Scenario decisions, rendered results, native editing, runtime activation, and user outcomes are different evidence classes. See the [evaluation protocol](skill-evals/README.md). No identical-quality or token-saving guarantee across models is established.
 
-```bash
-npm ci
-npm test
-bash -n scripts/*.sh
-git diff --check
-```
+[package-lock.json](package-lock.json) pins this repository's harness dependency; newer harness source does not automatically upgrade it. See [migration evidence](skill-evals/execution-reliability-2026-09-25.md) for the recorded runtime-proof limits.
 
-The full aggregate is also used by the manually dispatched CI workflow. For
-focused iteration, use the `validate:*` and `context:*` scripts in
-[package.json](package.json); focused checks do not replace the publication gate.
+## Repository Map
 
-- **Runtime activation:** successful installation and filesystem health checks do
-  not prove that a host loaded a skill, hook or model configuration.
-- **Quality evidence:** decision scenarios, rendered results, native editing and
-  actual user outcomes are separate proof classes. See the
-  [evaluation protocol](skill-evals/README.md); no identical-quality or token-saving
-  guarantee across models is established.
-- **Harness version:** [package-lock.json](package-lock.json) records the installed
-  revision. New harness source does not automatically upgrade this consumer.
-  The [migration evidence](skill-evals/execution-reliability-2026-09-25.md) records
-  the pending runtime migration and its required fresh proof.
-- **Model-policy mismatch:** some shared routing references still describe legacy
-  families and fallback preferences. They are not reconciled with the owner's
-  newer strict model policy. Current explicit owner/host restrictions take
-  precedence; do not treat model availability as permission to fall back. This
-  README update does not change those references or enforce runtime selection.
+Start here for skills. The public harness is for maintainers validating contracts; the private companion repos are not required to install or use this collection.
+
+| Repository | Responsibility |
+| --- | --- |
+| [agent-skills](https://github.com/mehul0810/agent-skills) | Reusable specialist behavior, references, templates, and evaluations. |
+| [agent-harness](https://github.com/mehul0810/agent-harness) | Deterministic validation, context planning, and evidence contracts. |
+| [agent-loop](https://github.com/mehul0810/agent-loop) | Live-state checks, bounded work selection, and advisory workflow output. |
+| [agent-book](https://github.com/mehul0810/agent-book) | Compact decisions and evidence pointers, not live product truth. |
+| [agent-decide](https://github.com/mehul0810/agent-decide) | Shadow-only typed routing and evaluation, without automatic execution or promotion. |
+
+Product-specific implementation and release truth remain in each product repository. See the [nine-repository design review](skill-evals/public-skills-review-2026-11-22.md) for the tradeoffs, [CONTRIBUTING.md](CONTRIBUTING.md) for development, and [TESTING.md](TESTING.md) for validation.

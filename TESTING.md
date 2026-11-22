@@ -157,6 +157,12 @@ score. These checks do not establish native authoring, production usability or
 business impact. Preserve failed attempts; a held-out case used to tune a fix must
 become development material and be replaced before claiming transfer.
 
+For explanatory diagrams, give a fresh performer the installed skill and the
+request and artifacts under `skill-evals/cases/explanatory-diagrams/`, not its
+`criteria.md`. Independently trace the rendered SVG at the two specified embed
+widths against the fixture, including its exception and text-only countercase.
+That checks the explanation, not the operation of a real product.
+
 For source-design implementation capability, run `skill-evals/frontend-benchmark/EXECUTION.md`: a frozen held-out target, fresh native WordPress implementation, independent fidelity and UI-only author proof, and bounded repair. Report actual failed/blocked gates; a discrimination or persistence-only pass does not satisfy this execution test.
 
 For Pen-to-WordPress acceptance changes, also dispatch the blind

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 396" role="img" aria-labelledby="title description">
+  <title id="title">Visitor hold status</title>
+  <desc id="description">A submitted request stays submitted if the item is unavailable. When the item is available, the desk moves it to Ready for pickup. When the visitor collects the item, staff mark it Collected.</desc>
+  <defs>
+    <marker id="tip" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#314451"/></marker>
+  </defs>
+  <rect width="340" height="396" fill="#faf9f6"/>
+  <g fill="#e4eeeb" stroke="#314451" stroke-width="1.5">
+    <rect x="65" y="18" width="210" height="52"/>
+    <rect x="65" y="184" width="210" height="52"/>
+    <rect x="65" y="326" width="210" height="52"/>
+  </g>
+  <g font-family="sans-serif" fill="#172b35">
+    <g text-anchor="middle" font-size="18">
+      <text x="170" y="50">Submitted</text>
+      <text x="170" y="216">Ready for pickup</text>
+      <text x="170" y="358">Collected</text>
+    </g>
+    <g text-anchor="middle" font-size="14">
+      <text x="170" y="92">Item unavailable:</text>
+      <text x="170" y="111">stays Submitted</text>
+      <text x="170" y="143">Item available:</text>
+      <text x="170" y="161">desk moves request</text>
+      <text x="170" y="271">Visitor collects item:</text>
+      <text x="170" y="289">staff mark Collected</text>
+    </g>
+  </g>
+  <g fill="none" stroke="#314451" stroke-width="2.5" marker-end="url(#tip)">
+    <path d="M275 44 H300 V210 H281"/>
+    <path d="M65 210 H40 V352 H59"/>
+  </g>
+</svg>

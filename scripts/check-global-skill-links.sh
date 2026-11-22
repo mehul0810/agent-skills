@@ -7,13 +7,19 @@ claude_skills_dir="${CLAUDE_HOME:-$HOME/.claude}/skills"
 errors=0
 health=0
 
-if [ "$#" -gt 0 ]; then
-  [ "$#" -eq 1 ] && [ "$1" = "--health" ] || {
-    echo "Usage: bash scripts/check-global-skill-links.sh [--health]" >&2
-    exit 2
-  }
+if [ "$#" -eq 1 ] && [ "$1" = "--health" ]; then
   health=1
+  shift
 fi
+for name in "$@"; do
+  case "$name" in
+    -*|*[!a-z0-9-]*|'') echo "Usage: bash scripts/check-global-skill-links.sh [--health | skill-name ...]" >&2; exit 2 ;;
+  esac
+  if [ ! -f "$repo_root/$name/SKILL.md" ]; then
+    echo "Unknown skill: $name" >&2
+    exit 2
+  fi
+done
 
 check_link() {
   local root="$1"
@@ -68,18 +74,24 @@ check_stale_pack_links() {
   done
 }
 
-while IFS= read -r skill_dir; do
+check_skill() {
+  local skill_dir="$1" skill_name
   skill_name="$(basename "$skill_dir")"
   check_link "$codex_skills_dir" "$skill_name" "$skill_dir"
   check_link "$claude_skills_dir" "$skill_name" "$skill_dir"
-done < <(
-  find "$repo_root" -mindepth 1 -maxdepth 1 -type d \
-    ! -name ".git" \
-    ! -name "shared" \
-    ! -name "scripts" \
-    -exec test -f "{}/SKILL.md" \; \
-    -print | sort
-)
+}
+if [ "$#" -gt 0 ]; then
+  for name in "$@"; do check_skill "$repo_root/$name"; done
+else
+  while IFS= read -r skill_dir; do check_skill "$skill_dir"; done < <(
+    find "$repo_root" -mindepth 1 -maxdepth 1 -type d \
+      ! -name ".git" \
+      ! -name "shared" \
+      ! -name "scripts" \
+      -exec test -f "{}/SKILL.md" \; \
+      -print | sort
+  )
+fi
 
 check_link "$codex_skills_dir" "shared" "$repo_root/shared"
 check_link "$claude_skills_dir" "shared" "$repo_root/shared"
@@ -107,7 +119,7 @@ if [ "$errors" -gt 0 ] || [ "$health_errors" -gt 0 ]; then
 fi
 
 if [ "$health" -eq 0 ]; then
-  echo "global skill links match this checkout"
+  echo "checked skill links match this checkout; runtime loading is not verified"
 else
   echo "installation health: configured filesystem state verified; runtime loading is not verified"
 fi
