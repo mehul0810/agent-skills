@@ -129,14 +129,6 @@ For UX review, evaluate:
 
 Match evidence to consequence; do not require research for every polish change.
 
-For disputed navigation, give a realistic goal in the visitor's words, without naming the menu label, icon or path. Compare first choices in a plain text tree with plausible neighboring branches and in the actual rendered navigation, including its narrow layout. Keep the task and labels the same. Record the expected destination separately, along with wrong turns and what remains unknown. Match the next decision to the observation:
-
-- **Wrong branch in a plain text tree:** try one alternative label or grouping against plausible neighbors; don't rebuild the page yet.
-- **Right branch in the tree, missed on the rendered page:** keep wording fixed. Inspect what the narrow menu hides; compare one change to placement, disclosure or contrast. Use fresh comparable participants or counterbalance equivalent tasks where practical: seeing the answer once can teach it. A discrepancy suggests what to investigate, not what caused it.
-- **Right first choice, unfinished task:** follow the link through the actual destination, action and recovery. A first click proves neither completion nor audience-wide usability.
-
-Don't recruit people, add tracking or expand an exact copy fix solely to apply this technique.
-
 - **Low-risk/familiar:** heuristic and accessibility checks, content stress, and an independent task walkthrough. Claim implementation quality, not proven user excellence.
 - **Material journey:** observe representative users or a valid proxy on realistic tasks. Record completion, wrong turns, help, errors/recovery, and time-to-value without implying statistical certainty.
 - **Enterprise-critical:** combine task observations with relevant support, funnel/product analytics, accessibility, or controlled-rollout signals. Define success and guardrails first.
