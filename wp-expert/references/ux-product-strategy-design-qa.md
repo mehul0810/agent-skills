@@ -129,7 +129,13 @@ For UX review, evaluate:
 
 Match evidence to consequence; do not require research for every polish change.
 
-For disputed navigation, choose a test for the uncertainty. **Names and grouping:** give a realistic goal in the visitor's words, without the menu label, icon name or path; try it against a plain text tree with plausible neighboring destinations. **Visual discoverability:** keep the task and labels fixed and observe the first selection in the rendered layout, including a narrow view. If the tree works but the control is missed, investigate its prominence before renaming or migrating content. **Task completion:** follow through to the intended destination, action and recovery. A correct first click proves neither completion nor audience-wide usability. Record the expected destination separately from the prompt, the observed wrong turn and what remains unknown. Don't recruit people, add tracking or expand an exact copy fix solely to apply this technique.
+For disputed navigation, ask for a realistic goal in the visitor's words, without naming the menu label, icon or path. Record the expected destination separately, along with wrong turns and what remains unknown. Match the next decision to the observation:
+
+- **Wrong branch in a plain text tree:** try one alternative label or grouping against plausible neighbors; don't rebuild the page yet.
+- **Right branch in the tree, missed on the rendered page:** keep wording fixed. Inspect what the narrow menu hides; compare one change to placement, disclosure or contrast. Use fresh comparable participants or counterbalance equivalent tasks where practical: seeing the answer once can teach it. A discrepancy suggests what to investigate, not what caused it.
+- **Right first choice, unfinished task:** follow the link through the actual destination, action and recovery. A first click proves neither completion nor audience-wide usability.
+
+Don't recruit people, add tracking or expand an exact copy fix solely to apply this technique.
 
 - **Low-risk/familiar:** heuristic and accessibility checks, content stress, and an independent task walkthrough. Claim implementation quality, not proven user excellence.
 - **Material journey:** observe representative users or a valid proxy on realistic tasks. Record completion, wrong turns, help, errors/recovery, and time-to-value without implying statistical certainty.
