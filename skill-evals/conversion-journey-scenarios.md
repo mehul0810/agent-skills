@@ -22,4 +22,6 @@ Use a fresh agent with `wp-site-expert` and the supplied synthetic brief only. D
 
 ## Evidence Boundary
 
+For catalog, comparison, product-example and help-discovery decisions, also use the blind [product-choice cases](cases/product-choice-journeys/input.json); keep their scoring criteria outside the performer packet. A two-link copy correction is the negative control: this guidance must not manufacture a finder.
+
 Record loaded references, observed decisions, failures, elapsed time, and unavailable telemetry under `skill-evals/README.md`. A text-only fresh-agent pass establishes decision behavior only. Rendered evidence, successful synthetic journeys, accessibility checks, representative-user comprehension, and measured business outcomes remain separate claims. No live form submissions, new tracking, hooks, or deployments are authorized by these cases.

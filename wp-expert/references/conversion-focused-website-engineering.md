@@ -1,16 +1,13 @@
 # Conversion Focused Website Engineering
 
-Use this for WordPress websites, landing pages, lead funnels, pricing pages, checkout flows, booking flows, product pages, campaign pages, and CRO improvements that must improve conversion while preserving enterprise, VIP, accessibility, SEO, privacy, and performance standards.
+Use for WordPress marketing, pricing, product, campaign, booking and checkout journeys. Preserve enterprise/VIP, accessibility, SEO, privacy and performance standards.
 
-Use this as the primary conversion reference. Add only one support reference for a confirmed UX, SEO, privacy, performance, theme, commerce, or enterprise-proof risk; do not load the complete website stack by default.
+Use as primary; add at most one support reference for a confirmed risk.
 
 ## Conversion Engineering Principles
 
-- Conversion starts with offer clarity, trust, speed, and task completion; decoration is secondary.
-- Preserve accessibility, SEO, privacy, and performance while improving conversion.
-- Avoid dark patterns, misleading scarcity, inaccessible modals, hidden costs, or consent-hostile tracking.
-- Measure the right event before optimizing the layout.
-- Optimize for the target visitor segment, not generic best practices.
+- Start with the visitor, offer, trust, speed and task completion. Set the outcome and guardrails before optimizing.
+- Reject misleading scarcity, inaccessible modals, hidden costs and consent-hostile tracking.
 
 ## Conversion Brief
 
@@ -39,10 +36,16 @@ Choose architecture for the visitor's decision, not a universal high-converting 
 - Content hierarchy: select and order problem, promise, mechanism, proof, offer, objections, details, CTA, FAQ, and fallback path for the actual journey; not every page needs every section.
 - CTAs: specific verbs, consistent destination, visible at natural decision points, and keyboard accessible.
 - Forms: minimal fields, clear labels, inline errors, privacy expectation, success state, and recovery for failed submission.
-- Trust: testimonials, logos, reviews, case studies, security/privacy statements, guarantees, transparent pricing, support expectations.
-- For enterprise audiences, prefer proof-led hierarchy: claim, evidence, workflow/control, and outcome. Use role/use-case/task-based IA and real screenshots or customer evidence before decorative filler.
-- Friction reducers: FAQs, comparison tables, social proof, payment/shipping clarity, no surprise costs, visible contact path.
+- For enterprise buyers, organize by role or task; ground each claim in a relevant case, workflow or control and its outcome. Publish only supported proof, policies and guarantees.
+- Resolve the actual objection: show payment/shipping terms, relevant evidence, or a clear help path rather than a generic FAQ.
 - Mobile: primary CTA and form path must be usable without pinch/zoom or layout jumps.
+
+## Choose The Right Element
+
+- **Discover:** For a broad catalog, let people start with a known name or the job they need done. Pair recognizable thumbnails or icons with text. Show what matched, a useful no-match route and a way to clear filters. A short, stable list needs links, not a search application.
+- **Compare:** Frame product views consistently so scale or crop does not imply a false difference. Align distinguishing attributes in the same units; show shared facts once. Pair selection color with a visible name or mark. On a phone, keep the option name with each value. Change a selection, resize and return; check the values as well as the control.
+- **Understand:** For an invisible service, pair an example input with its verdict and explanation. For software, follow the same sample through the workflow. Distinguish a view-only illustration, a playable recording, a resettable sample and a live action; label and test only what is offered. Prefer a still when it answers the question.
+- **Look up or recover:** Switch from a spacious product story to compact, labeled facts or steps. Let someone start from a symptom as well as a product name. Keep orientation when a desktop index becomes a mobile disclosure; provide a direct help or prerequisite path without forcing purchase.
 
 ## Business Model And Decision Path
 
@@ -59,16 +62,15 @@ Use these as conditional examples, not mandatory layouts. Preserve approved bran
 ## Demonstration And Expectation Continuity
 
 - Select product media by the uncertainty it resolves. Show a meaningful input, action, and outcome where useful; a decorative dashboard crop is not workflow explanation. Apply the existing design-taste truth and asset rules; never invent customer proof or product states.
-- For a requested rich marketing experience, place relevant, truthful visual evidence across the decision journey, not just one hero illustration or ambient decoration. Connect each selected visual to a specific visitor objection or decision and its next step; use available approved product or process evidence, not fabricated customers, claims, or checkout states. If evidence or access is missing, disclose the gap and use clearly labeled conceptual material or a truthful nonvisual alternative rather than implying proof.
-- For each requested animated section, specify its trigger, visible starting state, what changes on screen, and the result that answers a visitor's question. For example, choosing a fabric swatch can update the same chair image and reveal its care instructions. Pick moments specific to this offering, not canned reveals or background particles. Implement and exercise those sequences; keep the answer and next action readable in static and reduced-motion states. Leave bounded static requests static.
+- For rich marketing pages, distribute approved product or process evidence across the journey. Pair each visual with a visitor's question and next step. A hero illustration is not enough. If proof or access is missing, disclose it; use labeled concepts or truthful text, not invented customers, results or checkout states.
+- For each requested animated section, name its trigger, starting state, visible change and result. A fabric swatch might update the same chair image and reveal its care instructions. Exercise the sequence; preserve its answer and action in static and reduced-motion states. Skip canned reveals and leave bounded static requests static.
 - Tie typography, imagery, copy, and composition to the offering. If swapping the logo leaves the entire story equally plausible for an unrelated business, inspect missing specificity before adding visual effects. This is a diagnostic, not a ban on familiar patterns or restrained brands.
 - Follow the primary CTA to its destination: compare its promise with the actual next step, required information, cost, and commitment. Distinguish free setup from paid activation, monthly equivalents from annual billing, and exploration from purchase when applicable.
 - For inquiries, explain the next step and any verified response expectation; do not invent service-level promises. Offer a relevant lower-commitment path when it helps the visitor, not another competing button by default.
-- On mobile, review decision order as well as stacking: when the promise, evidence, price conditions, and action become available; whether comparisons remain understandable; and whether sticky controls obscure content or focus.
-- On each tested width, walk the rendered page in reading order: where can the visitor first understand the offer, see the evidence, read the commitment, and take the next step? Exercise the requested sequences there. Record inaccessible destinations or missing evidence; a palette, single hero or plan is not implementation proof.
+- Walk each tested width in reading order: when are the promise, evidence, price conditions and next action available? Exercise requested sequences there. Check that mobile comparisons retain meaning and sticky controls do not cover content or focus. Record missing evidence or destinations; a hero or plan is not implementation proof.
 - Record inspected URL/artifact, viewport, state, CTA destination, result, and untested steps in the existing proof record. Screenshots prove visible states, not successful submission, user comprehension, or conversion uplift. Use synthetic safe journeys for forms; do not submit live inquiries just to test a reference site.
 
-For materially changed journeys, test the visitor's actual next step with the project's available proof tooling. Deterministic checks can verify evidence fields and artifact identity, not subjective design quality; keep hooks out of taste scoring. Missing tooling or unrun steps remain explicit proof gaps, not prerequisites to invent a new harness.
+Test the actual next step with available tools. Hooks can check evidence fields and artifact identity, not taste. Report unrun steps; do not invent a harness.
 
 ## WordPress Implementation Rules
 
