@@ -129,7 +129,7 @@ For UX review, evaluate:
 
 Match evidence to consequence; do not require research for every polish change.
 
-For disputed navigation, ask for a realistic goal in the visitor's words, without naming the menu label, icon or path. Record the expected destination separately, along with wrong turns and what remains unknown. Match the next decision to the observation:
+For disputed navigation, give a realistic goal in the visitor's words, without naming the menu label, icon or path. Compare first choices in a plain text tree with plausible neighboring branches and in the actual rendered navigation, including its narrow layout. Keep the task and labels the same. Record the expected destination separately, along with wrong turns and what remains unknown. Match the next decision to the observation:
 
 - **Wrong branch in a plain text tree:** try one alternative label or grouping against plausible neighbors; don't rebuild the page yet.
 - **Right branch in the tree, missed on the rendered page:** keep wording fixed. Inspect what the narrow menu hides; compare one change to placement, disclosure or contrast. Use fresh comparable participants or counterbalance equivalent tasks where practical: seeing the answer once can teach it. A discrepancy suggests what to investigate, not what caused it.
