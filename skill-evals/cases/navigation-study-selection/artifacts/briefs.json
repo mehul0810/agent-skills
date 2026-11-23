@@ -8,6 +8,10 @@
     "request": "An engineer selected the right menu item on a desktop prototype. The booking form was not opened, and no visitors or mobile devices were involved. Marketing wants to report that customers can now finish a booking. What can we say, and what would you check next?"
   },
   {
+    "id": "same-people",
+    "request": "Three colleagues tried to find the warranty form on a full mobile page. None chose the right place first. We then showed the same people the same task in a plain menu tree, and all three chose the right branch first. A teammate wants to announce that the link color caused the misses and change it everywhere. What do these results establish, and what is the smallest reasonable way to investigate that explanation? We have not observed any submitted forms."
+  },
+  {
     "id": "bounded-label",
     "request": "Change only 'Hrs' to the owner-approved 'Opening hours' in an existing accessible footer link. Keep the destination and styling unchanged. Do not plan a redesign."
   }
