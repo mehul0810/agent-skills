@@ -103,8 +103,10 @@ Green grep/structure audits do not prove the behavior is correct.
 
 For a redesign inspired by another live brand, build the blind
 `skill-evals/cases/live-reference-transfer/` packet and keep its criteria with
-the scorer. Test the three decisions separately: cross-brand transfer,
-meaning conveyed by animation, and a bounded static request. For a real pilot,
+the scorer. Test cross-brand transfer, meaning conveyed by animation and a
+bounded static request separately. The original print cover adds two decisions:
+adapt its drafting details to a different brand, or leave a real inventory
+control alone outside the requested label edit. For a real pilot,
 compare the reference and destination on desktop and mobile, follow the main
 action to its actual destination, and exercise any adopted motion. A still
 does not prove movement, and a synthetic decision does not prove rendered work.
