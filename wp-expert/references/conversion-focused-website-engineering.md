@@ -43,9 +43,9 @@ Choose architecture for the visitor's decision, not a universal high-converting 
 ## Choose The Right Element
 
 - **Discover:** For a broad catalog, let people start with a known name or the job they need done. Pair recognizable thumbnails or icons with text. Show what matched, a useful no-match route and a way to clear filters. A short, stable list needs links, not a search application.
-- **Compare:** Frame product views consistently so scale or crop does not imply a false difference. Align distinguishing attributes in the same units; show shared facts once. Pair selection color with a visible name or mark. On a phone, keep the option name with each value. Change a selection, resize and return; check the values as well as the control.
+- **Compare:** Frame product views consistently; crop must not imply a false difference. Align distinguishing attributes in the same units; show shared facts once. Pair selection color with a visible name or mark. Keep names with values on a phone. Change a selection, resize and return; check the values, then follow the selected item's link and verify its identity and facts at the destination.
 - **Understand:** For an invisible service, pair an example input with its verdict and explanation. For software, follow the same sample through the workflow. Distinguish a view-only illustration, a playable recording, a resettable sample and a live action; label and test only what is offered. Prefer a still when it answers the question.
-- **Look up or recover:** Switch from a spacious product story to compact, labeled facts or steps. Let someone start from a symptom as well as a product name. Keep orientation when a desktop index becomes a mobile disclosure; provide a direct help or prerequisite path without forcing purchase.
+- **Look up or recover:** Switch from a spacious product story to compact, labeled steps. Route a symptom to the affected variant and its first verified action, not just a generic help center; link rather than guessing if instructions are unavailable. Keep orientation when a desktop index becomes a mobile disclosure. Don't force a purchase.
 
 ## Business Model And Decision Path
 
@@ -57,12 +57,12 @@ Use these as conditional examples, not mandatory layouts. Preserve approved bran
 | Enterprise services | Can this team solve our problem with acceptable risk? | Establish buyer fit, show relevant case evidence, explain engagement, qualify inquiry. |
 | Developer tools | Can I use this in my environment? | Explain capability, offer a working example, expose docs, support adoption; separate paid services when relevant. |
 | Personal brand | Should I read, subscribe, learn, or hire? | Connect a consistent editorial subject to distinct audience needs and relevant offers, without forcing every reader into a sales funnel. |
-| Creative studio | Is this the right craft and experience for our project? | Demonstrate work, expose relevant projects and services, provide direct contact; essential paths must not depend on immersive media finishing. |
+| Creative studio | Is this the right craft and experience for our project? | Demonstrate work and services. Keep direct work/contact links available while immersive media loads, on failure and with reduced motion. |
 
 ## Demonstration And Expectation Continuity
 
 - Select product media by the uncertainty it resolves. Show a meaningful input, action, and outcome where useful; a decorative dashboard crop is not workflow explanation. Apply the existing design-taste truth and asset rules; never invent customer proof or product states.
-- For rich marketing pages, distribute approved product or process evidence across the journey. Pair each visual with a visitor's question and next step. A hero illustration is not enough. If proof or access is missing, disclose it; use labeled concepts or truthful text, not invented customers, results or checkout states.
+- For rich marketing pages, distribute approved evidence across the journey. For each visual, connect a specific objection to the visible answer and next step: "Will it fit?" might lead from a packed/unpacked view of the same bag to its dimensioned drawing. A hero is not enough. Disclose missing proof; use labeled concepts or truthful text, not invented customers, results or checkout states.
 - For each requested animated section, name its trigger, starting state, visible change and result. A fabric swatch might update the same chair image and reveal its care instructions. Exercise the sequence; preserve its answer and action in static and reduced-motion states. Skip canned reveals and leave bounded static requests static.
 - Tie typography, imagery, copy, and composition to the offering. If swapping the logo leaves the entire story equally plausible for an unrelated business, inspect missing specificity before adding visual effects. This is a diagnostic, not a ban on familiar patterns or restrained brands.
 - Follow the primary CTA to its destination: compare its promise with the actual next step, required information, cost, and commitment. Distinguish free setup from paid activation, monthly equivalents from annual billing, and exploration from purchase when applicable.
