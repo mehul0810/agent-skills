@@ -195,6 +195,8 @@ separate gates. Cross-model decision passes do not prove equal generated quality
 
 For design calibration, use `skill-evals/frontend-benchmark/README.md`. Give independent evaluators only its contract and rendered artifacts. Record detected/missed defects separately from deterministic smoke checks; the fixture is not native WordPress or production repair proof.
 
+For reusable brand-pattern translation, run the blind `skill-evals/cases/editorial-signature/` briefs with the theme skill. For a disputed navigation label or affordance, run `skill-evals/cases/navigation-study-selection/` with the site skill. Keep each `criteria.md` outside its performer packet. Browser tests can verify an implemented route or responsive pattern, not whether real visitors find it unaided.
+
 For creative exploration changes, use `skill-evals/creative-exploration-scenarios.md`.
 Freeze guidance before a separate author prepares an unseen held-out brief; keep
 criteria outside generation packets. Independently inspect the actual concept

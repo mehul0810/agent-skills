@@ -1,0 +1,5 @@
+{
+  "id": "editorial-signature",
+  "request": "Use the supplied theme skill to respond to each independent request in briefs.json. Give the design and implementation decisions you would hand to an editor and developer, and proportionate verification. Do not implement, browse or claim checks have run. Identify the guidance read.",
+  "artifacts": ["briefs.json"]
+}

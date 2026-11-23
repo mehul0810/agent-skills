@@ -64,6 +64,12 @@ Rules:
 
 ## Pattern And Component Translation
 
+### Make A Visual Idea Repeatable
+
+For a family of editorial or branded pages, extract a relationship from an **approved** artifact, not just its colors. Write one rule an editor can reuse: what stays recognizable, which real content field may vary, and what happens when that field or image is absent. For example, a trail journal might align distance entries to a ruled margin while allowing the title and route photograph to change. If distance is unknown, omit the entry; never draw a fictional elevation profile. A gallery or an agency's pitch can suggest a direction, not establish shipped behavior, asset rights or brand approval.
+
+Put the stable relationship in the smallest existing pattern or block style; leave titles, media and meaningful labels editable. Try a second real item with different text and no image. If it needs per-post CSS or a designer to reposition every title, simplify the rule. Check the same component in a full-width slot and a narrow parent **at the same viewport** before adding a breakpoint. Prefer wrapping or intrinsic tracks; use a container query only if the composition itself must switch. Keep reading order and the main link intact. Don't invent a signature, run a study or change approved geometry for a bounded edit.
+
 ### System Contract And Change Control
 
 For material system work, keep one compact component inventory in DESIGN.md: purpose, semantic token aliases, variants, supported states, content limits, responsive/container behavior, keyboard/focus contract, WordPress owner and editing controls. Reuse existing accessible primitives; a visually identical component with different behavior is not equivalent. Do not create a component library for a single bounded page.

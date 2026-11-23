@@ -1,0 +1,14 @@
+[
+  {
+    "id": "two-explanations",
+    "request": "The repair cooperative thinks people cannot find how to have a broken clasp fixed. The correct article is under 'Aftercare'; 'Workshops' and 'Stockists' are other plausible sections. Nobody knows whether the label or the visually subdued link is responsible. Suggest the smallest useful investigation, include the actual task wording you would give a visitor, and explain what different results would mean."
+  },
+  {
+    "id": "one-correct-click",
+    "request": "An engineer selected the right menu item on a desktop prototype. The booking form was not opened, and no visitors or mobile devices were involved. Marketing wants to report that customers can now finish a booking. What can we say, and what would you check next?"
+  },
+  {
+    "id": "bounded-label",
+    "request": "Change only 'Hrs' to the owner-approved 'Opening hours' in an existing accessible footer link. Keep the destination and styling unchanged. Do not plan a redesign."
+  }
+]
