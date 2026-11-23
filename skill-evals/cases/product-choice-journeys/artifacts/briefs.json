@@ -14,5 +14,9 @@
   {
     "id": "two-guides",
     "request": "Our approved help page has two always-visible links to installation guides, each named for its hardware model. Change only the second link from 'Wall kit' to 'Wall bracket'. The destination is already correct; keep the layout."
+  },
+  {
+    "id": "decline-the-offer",
+    "request": "The studio would like more newsletter signups from its fixture guide. A draft makes 'Subscribe' a button but puts 'No thanks, I prefer working in the dark' in tiny type to dismiss the invitation. Review the draft. The guide and all specifications are available without subscribing."
   }
 ]

@@ -7,7 +7,7 @@ Use as primary; add at most one support reference for a confirmed risk.
 ## Conversion Engineering Principles
 
 - Start with the visitor, offer, trust, speed and task completion. Set the outcome and guardrails before optimizing.
-- Reject misleading scarcity, inaccessible modals, hidden costs and consent-hostile tracking.
+- Reject dark patterns, not just misleading scarcity, hidden costs or consent-hostile tracking. Make refusal understandable and usable; keep dialogs accessible.
 
 ## Conversion Brief
 
