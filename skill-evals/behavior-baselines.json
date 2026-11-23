@@ -108,6 +108,7 @@
           "skill-evals/cases/design-route-regression/input.json",
           "skill-evals/cases/live-reference-transfer/input.json",
           "skill-evals/cases/live-reference-transfer/artifacts/requests.json",
+          "skill-evals/cases/live-reference-transfer/artifacts/cover.svg",
           "skill-evals/cases/live-reference-transfer/criteria.md"
         ],
         "contractSha256": "3bd6e453876daa6f22915088ed591d0d014b7e4131b6478dc1354135564bef85"
@@ -138,7 +139,8 @@
         "enterprise-form-recovery",
         "browser-assistive-technology-matrix",
         "token-integrity-proof-provenance",
-        "live-reference-cross-brand-motion-proof"
+        "live-reference-cross-brand-motion-proof",
+        "exposed-grid-transfer-and-control-boundary"
       ],
       "evidence": [
         {

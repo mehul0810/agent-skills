@@ -38,7 +38,7 @@ For reference-led work, distinguish **observed**, **inferred**, and **adopted** 
 
 Annotate what to borrow, why, and what not to transfer. Choose a coherent direction, not an average of styles; describe compositional relationships because palette/radius alone do not establish identity. Preserve semantic warning/error colors. Verify asset/font rights and weights; do not assume exported components are reusable.
 
-For a liked live site used to influence a different brand, inspect the actual reference and destination with real content at relevant desktop and mobile states. Record URL, time, viewport, state and what is observed versus inferred; sample the reference over time before describing a moving background. Translate the mechanism (color relationships, type hierarchy, layering, timing and behavior) into the destination's own identity and truthful content, not the source's logo, copy, claims, assets or a presumed exact font. If access or motion observation fails, say what is unknown rather than inventing it.
+For cross-brand inspiration, inspect the live reference and destination with real content on desktop and mobile. Record time and sample movement before describing it. Translate color relationships, type hierarchy, layering and timing into the destination's identity and truthful content. Don't copy logos, copy, claims or assets, guess a font, or invent unseen behavior; note access gaps.
 
 For an adopted moving background, make the first frame and reduced-motion state stable and legible, and offer a visible pause for continuing motion. Decorative motion must not carry essential information; if animation explains a decision, its stable first frame and reduced-motion state must communicate that meaning too. Verify the actual moving content separately from still captures: pause/resume, reduced motion, text and control contrast throughout movement, and mobile behavior. A screenshot alone cannot establish animation, timing, or accessibility; record what was actually observed and any gaps.
 
@@ -64,6 +64,8 @@ Classify the work:
 ## 3. Compose Before Styling
 
 Give each section/panel one job. Plan hierarchy, action, content, real asset, layout, and narrow-width behavior before styling.
+
+**Exposed layout grid.** When a drafting aesthetic fits, anchor hairline rules to actual columns and registration-style crosshairs to selected intersections. Diagonal hatching can separate sections; an outline logomark, wordmark on construction guides, or repeated outlined display type can frame them. Use only approved logo variants; decorative guides aren't official specifications. Don't infer a moving marquee from a still. Keep ornament non-focusable, pointer-transparent and hidden from assistive technology; real controls and labels are not decoration. With ornament off, text, grouping, focus and actions must still work. Simplify at narrow widths; skip this treatment for routine admin or unrelated edits.
 
 Check for agent-default repetition:
 

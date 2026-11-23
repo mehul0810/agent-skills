@@ -23,5 +23,15 @@
     "id": "bounded-static",
     "request": "Match only the approved static heading spacing in our existing homepage. Do not change its direction or add motion.",
     "facts": "The approved target and editable blocks are available. No motion is present."
+  },
+  {
+    "id": "cover-to-catalog",
+    "request": "I like the graphic details in the supplied Field Notes cover. What are they called, and which would you use on a WordPress catalog of handmade glass? Describe a concrete treatment around the collection heading, product information and ordering link. The file is a single still.",
+    "facts": "Our brand is Glass Index. We have product photographs and permission to use our solid wordmark unchanged, but no approved outline version or symbol. Product titles range from two to twelve words, and orders must also be easy to start on a phone."
+  },
+  {
+    "id": "inventory-label",
+    "request": "For our warehouse staff's existing WordPress inventory screen, change only the accessible name of the plus button from Add to Add shelf. The same project's visual inspiration folder contains the Field Notes cover.",
+    "facts": "The plus button adds a real shelf and has a visible keyboard focus indicator. The approved dense layout, button appearance, and behavior must stay as they are."
   }
 ]

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" width="640" height="320" role="img" aria-labelledby="title">
+  <title id="title">Field Notes, issue 04. A fictional print cover.</title>
+  <defs>
+    <pattern id="a" patternUnits="userSpaceOnUse" width="7" height="7">
+      <path d="M-1 1 1-1M0 7 7 0M6 8 8 6" fill="none" stroke="#b98d72" stroke-width=".8"/>
+    </pattern>
+    <path id="b" d="M-4 0H4M0-4V4" stroke="#82583f" fill="none"/>
+  </defs>
+  <path fill="#fff8eb" d="M0 0h640v320H0z"/>
+  <path d="M28 0v320M370 0v320M612 0v320M0 34h640M0 198h640M0 219h640M0 288h640" fill="none" stroke="#d7c8b6"/>
+  <path fill="url(#a)" d="M28 198h584v21H28z"/>
+  <g>
+    <use href="#b" x="28" y="34"/><use href="#b" x="370" y="34"/><use href="#b" x="612" y="34"/>
+    <use href="#b" x="28" y="198"/><use href="#b" x="370" y="198"/><use href="#b" x="612" y="198"/>
+    <use href="#b" x="28" y="288"/><use href="#b" x="612" y="288"/>
+  </g>
+  <g font-family="serif" fill="#362c25">
+    <text x="51" y="104" font-size="54">Field Notes</text>
+    <text x="53" y="145" font-size="19">Objects made by hand.</text>
+  </g>
+  <g fill="none" stroke="#b78c73">
+    <circle cx="490" cy="112" r="58"/>
+    <path d="m490 59 48 78h-96zM450 54v116M530 54v116M425 84h130M425 138h130" stroke-width=".8"/>
+  </g>
+  <text x="48" y="280" font-family="sans-serif" font-size="66" font-weight="bold" fill="none" stroke="#b78c73">04 / 04 / 04</text>
+</svg>
