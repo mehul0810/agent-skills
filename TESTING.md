@@ -131,6 +131,12 @@ ran, or a particular Unreal version or device was tested. See the
 [dated Unreal evaluation](skill-evals/game-development-unreal-2026-11-24.md)
 for the native editor result and the limits of the browser pilots.
 
+For Unity, Three.js, Godot or session-lifecycle changes, use the blind
+`game-development-engine-routes` packet and its separate `criteria.md`.
+Keep its decisions separate from a Unity player, a served Three.js backend,
+a Godot export, or two connected clients actually tested. A software WebGL
+run verifies only the interactions/rendering observed, not target GPU speed.
+
 For native Apple apps and the dependency-reuse decision, use the blind
 `skill-evals/cases/apple-app-development/` packet and the separate
 `apple-app-native-build` packet. Keep the former's `criteria.md` away from both

@@ -1,0 +1,5 @@
+{
+  "id": "game-development-engine-routes",
+  "request": "For each independent game project in the supplied briefs, recommend the smallest workable change and an acceptance test on the actual delivery path. Name the skill reference or references you would use for that case and why. Distinguish what the brief establishes from what remains to be checked. These are decision exercises; do not install, build, publish or modify anything.",
+  "artifacts": ["briefs.md"]
+}
