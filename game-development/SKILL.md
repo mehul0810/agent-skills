@@ -1,6 +1,6 @@
 ---
 name: game-development
-description: Build, improve, or review playable games and choose a stack from gameplay, platform, and hardware requirements. Includes Unreal Engine 5 projects, Blueprints, C++, packaging, and performance. Not for standalone illustrations, trailers, or ordinary websites.
+description: Build, improve, or review playable games and choose a stack for gameplay, platform, and hardware. Use for realistic game worlds, controls, performance, and Unreal Engine 5 projects (Blueprints, C++, packaging), not standalone illustrations, trailers, or ordinary websites.
 ---
 
 # Game Development
