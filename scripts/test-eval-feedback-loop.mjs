@@ -25,6 +25,13 @@ const plan = planBaselines(manifest, ['skill-evals/fixture.json']);
 assert.deepEqual(plan.affected.map((item) => item.baseline), ['sample-baseline']);
 assert.deepEqual(plan.affected[0].requiredChecks, baseline.requiredChecks);
 assert.equal(plan.fullAggregateRequired, true);
+for (const file of ['wp-expert/references/style-guide-theme-translation.md', 'skill-evals/cases/editorial-signature/artifacts/briefs.json']) {
+  assert.deepEqual(planBaselines(manifest, [file]).supplementalScenarios, ['skill-evals/cases/editorial-signature']);
+}
+for (const file of ['wp-expert/references/ux-product-strategy-design-qa.md', 'skill-evals/cases/navigation-study-selection/artifacts/briefs.json']) {
+  assert.deepEqual(planBaselines(manifest, [file]).supplementalScenarios, ['skill-evals/cases/navigation-study-selection']);
+}
+assert.deepEqual(planBaselines(manifest, ['unrelated.md']).supplementalScenarios, []);
 const unrelated = planBaselines(manifest, ['notes/unmapped.md']);
 assert.deepEqual(unrelated.affected, []);
 assert.deepEqual(unrelated.unmapped, ['notes/unmapped.md']);

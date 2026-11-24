@@ -20,6 +20,10 @@ const GLOBAL_INPUTS = new Set([
   'package-lock.json',
   'agent-harness.config.json',
 ]);
+const SUPPLEMENTAL_SCENARIOS = [
+  { scenario: 'skill-evals/cases/editorial-signature', inputs: ['wp-expert/references/style-guide-theme-translation.md', 'wp-theme-expert/SKILL.md', 'wp-theme-expert/references/router.md'] },
+  { scenario: 'skill-evals/cases/navigation-study-selection', inputs: ['wp-expert/references/ux-product-strategy-design-qa.md', 'wp-site-expert/SKILL.md', 'wp-site-expert/references/router.md'] },
+];
 
 function safeRepoPath(value) {
   if (typeof value !== 'string' || !value || path.isAbsolute(value) || value.includes('\\')
@@ -74,6 +78,7 @@ export function planBaselines(manifest, changedPaths, { semanticConfig = null } 
   return {
     changedPaths: paths,
     affected: [...all].sort().map((name) => ({ baseline: name, requiredChecks: [...byName.get(name).requiredChecks] })),
+    supplementalScenarios: SUPPLEMENTAL_SCENARIOS.filter(({ scenario, inputs }) => paths.some(file => inputs.includes(file) || file.startsWith(`${scenario}/`))).map(({ scenario }) => scenario),
     unmapped,
     fullAggregateRequired: true,
     policy: 'Run every required check for each affected baseline; never select a subset. Unmapped changes invalidate selective planning. Run the full aggregate gate before publication.',

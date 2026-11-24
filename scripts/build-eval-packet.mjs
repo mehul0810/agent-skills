@@ -63,7 +63,7 @@ export function buildPacket(caseRoot, output, sourceRevision, options = {}) {
   }
   if (files.length + artifactDirectories.size + 2 > maxEntries) throw new Error('Packet exceeds entry limit');
   let totalBytes = inputBytes.length;
-  const payloads = files.map(file => {
+  let payloads = files.map(file => {
     const source = path.join(root, 'artifacts', file);
     const parts = file.split('/');
     if (parts.length + 1 > maxDepth) throw new Error('Artifact exceeds depth limit');
@@ -80,11 +80,44 @@ export function buildPacket(caseRoot, output, sourceRevision, options = {}) {
     if (totalBytes > maxTotalBytes) throw new Error('Packet exceeds total byte limit');
     return [file, bytes];
   });
-  const requestBytes = Buffer.from(input.request + '\n');
+  verifyRepositoryInputs(root, sourceRevision, [['input.json', inputBytes], ...payloads.map(([file, bytes]) => [`artifacts/${file}`, bytes])]);
+  let request = input.request;
+  if (options.caseIds !== undefined) {
+    const ids = options.caseIds;
+    if (!Array.isArray(ids) || !ids.length || ids.some(id => typeof id !== 'string' || !id) || new Set(ids).size !== ids.length) throw new Error('Case IDs must be non-empty and unique');
+    if (input.id === 'design-route-regression' && files.length === 0) {
+      const lines = input.request.split('\n');
+      const intro = 'Use the repository\'s owning WordPress skills to answer these independent hypothetical requests. Report concrete decisions, actually loaded routes, and required proof; no implementation.';
+      const warning = 'These are synthetic decisions, not supplied source images or runtime proof. Do not claim to have inspected missing screenshots, packages or real users.';
+      const cases = new Map();
+      if (lines[0] !== intro || lines.filter(line => line === warning).length !== 1) throw new Error('Unsupported design regression format');
+      for (const line of lines.slice(1)) {
+        if (!line || line === warning) continue;
+        const match = line.match(/^([1-9][0-9]*)\. (.+)$/);
+        if (!match || cases.has(match[1])) throw new Error('Unsupported design regression format');
+        cases.set(match[1], line);
+      }
+      if (cases.size !== 26 || Array.from({ length: 26 }, (_, i) => String(i + 1)).some(id => !cases.has(id))) throw new Error('Unsupported design regression format');
+      request = [intro, ...ids.map(id => {
+        if (!cases.has(id)) throw new Error(`Unknown case ID: ${id}`);
+        return cases.get(id);
+      }), '', warning].join('\n');
+    } else if (['editorial-signature', 'navigation-study-selection'].includes(input.id) && files.length === 1 && files[0] === 'briefs.json') {
+      const briefs = JSON.parse(payloads[0][1]);
+      if (!Array.isArray(briefs) || briefs.some(brief => !brief || Object.keys(brief).sort().join(',') !== 'id,request' || typeof brief.id !== 'string' || !brief.id || typeof brief.request !== 'string' || !brief.request.trim()) || new Set(briefs.map(brief => brief.id)).size !== briefs.length) throw new Error('Invalid selectable briefs');
+      const selected = ids.map(id => {
+        const brief = briefs.find(item => item.id === id);
+        if (!brief) throw new Error(`Unknown case ID: ${id}`);
+        return brief;
+      });
+      payloads = [['briefs.json', Buffer.from(JSON.stringify(selected, null, 2) + '\n')]];
+      if (payloads[0][1].length > maxFileBytes) throw new Error('Artifact exceeds byte limit');
+    } else throw new Error('Case selection unsupported for this packet');
+  }
+  const requestBytes = Buffer.from(request + '\n');
   const packetBytes = requestBytes.length + payloads.reduce((sum, [, bytes]) => sum + bytes.length, 0);
   if (requestBytes.length > maxFileBytes) throw new Error('Request exceeds byte limit');
   if (packetBytes > maxTotalBytes) throw new Error('Packet exceeds total byte limit');
-  verifyRepositoryInputs(root, sourceRevision, [['input.json', inputBytes], ...payloads.map(([file, bytes]) => [`artifacts/${file}`, bytes])]);
   const manifest = { version: 2, id: input.id, sourceRevision, files: {} };
   manifest.files['request.md'] = sha(requestBytes);
   for (const [file, bytes] of payloads) manifest.files['artifacts/' + file] = sha(bytes);
@@ -133,9 +166,12 @@ export function verifyPacket(output, options = {}) {
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
   try {
-    const [mode, source, output] = process.argv.slice(2);
+    const [mode, source, output, ...args] = process.argv.slice(2);
     if (mode === 'verify' && source && !output) console.log(JSON.stringify(verifyPacket(path.resolve(source))));
-    else if (mode === 'build' && source && output) console.log(JSON.stringify(buildPacket(path.resolve(source), path.resolve(output), execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim())));
-    else throw new Error('Usage: build-eval-packet.mjs build CASE OUTPUT | verify OUTPUT');
+    else if (mode === 'build' && source && output) {
+      if (args.length % 2 || args.some((arg, index) => index % 2 === 0 && arg !== '--case')) throw new Error('Expected repeated --case ID options');
+      const caseIds = args.length ? args.filter((_, index) => index % 2 === 1) : undefined;
+      console.log(JSON.stringify(buildPacket(path.resolve(source), path.resolve(output), execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(), { caseIds })));
+    } else throw new Error('Usage: build-eval-packet.mjs build CASE OUTPUT [--case ID ...] | verify OUTPUT');
   } catch (error) { console.error(error.message); process.exitCode = 1; }
 }

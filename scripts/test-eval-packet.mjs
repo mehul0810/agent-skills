@@ -143,4 +143,33 @@ execFileSync('git', ['-C', path.join(root, 'repo'), 'commit', '-qm', 'ignored ca
 const ignoredRevision = execFileSync('git', ['-C', path.join(root, 'repo'), 'rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
 fs.writeFileSync(path.join(repoCase, 'artifacts', 'ignored.txt'), 'ignored selected fixture');
 assert.throws(() => buildPacket(repoCase, path.join(root, 'ignored-input'), ignoredRevision), /not present at source revision/);
+
+// Selectable design packets contain only requested briefs, never adjacent cases or criteria.
+for (const name of ['editorial-signature', 'navigation-study-selection']) {
+  const design = path.resolve('skill-evals/cases', name);
+  const briefs = JSON.parse(fs.readFileSync(path.join(design, 'artifacts/briefs.json')));
+  const designRevision = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+  const target = path.join(root, `selected-${name}`);
+  buildPacket(design, target, designRevision, { caseIds: [briefs[0].id] });
+  assert.deepEqual(JSON.parse(fs.readFileSync(path.join(target, 'artifacts/briefs.json'))), [briefs[0]]);
+  assert.equal(fs.existsSync(path.join(target, 'criteria.md')), false);
+  assert.equal(verifyPacket(target).id, name);
+  assert.throws(() => buildPacket(design, path.join(root, `duplicate-${name}`), designRevision, { caseIds: [briefs[0].id, briefs[0].id] }), /unique/);
+  assert.throws(() => buildPacket(design, path.join(root, `unknown-${name}`), designRevision, { caseIds: ['unknown'] }), /Unknown/);
+}
+assert.throws(() => buildPacket(source, path.join(root, 'unsupported-selection'), 'a'.repeat(40), { caseIds: ['sample'] }), /unsupported/);
+const broad = path.resolve('skill-evals/cases/design-route-regression');
+const broadRevision = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+const broadInput = JSON.parse(fs.readFileSync(path.join(broad, 'input.json')));
+const broadFull = path.join(root, 'broad-full');
+buildPacket(broad, broadFull, broadRevision);
+assert.equal(fs.readFileSync(path.join(broadFull, 'request.md'), 'utf8'), broadInput.request + '\n');
+const broadSelected = path.join(root, 'broad-selected');
+buildPacket(broad, broadSelected, broadRevision, { caseIds: ['7'] });
+const broadRequest = fs.readFileSync(path.join(broadSelected, 'request.md'), 'utf8');
+assert.match(broadRequest, /^7\. /m);
+assert.doesNotMatch(broadRequest, /^([1-6]|[89]|1[0-9]|2[0-6])\. /m);
+assert.match(broadRequest, /synthetic decisions/);
+assert.throws(() => buildPacket(broad, path.join(root, 'broad-unknown'), broadRevision, { caseIds: ['27'] }), /Unknown/);
+assert.throws(() => buildPacket(broad, path.join(root, 'broad-duplicate'), broadRevision, { caseIds: ['7', '7'] }), /unique/);
 console.log('Evaluation packet isolation and integrity tests passed');
