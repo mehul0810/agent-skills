@@ -136,6 +136,8 @@ For Unity, Three.js, Godot or session-lifecycle changes, use the blind
 Keep its decisions separate from a Unity player, a served Three.js backend,
 a Godot export, or two connected clients actually tested. A software WebGL
 run verifies only the interactions/rendering observed, not target GPU speed.
+The [engine and session evidence](skill-evals/game-development-engines-2026-11-24.md)
+records which checks actually ran and which did not.
 
 For native Apple apps and the dependency-reuse decision, use the blind
 `skill-evals/cases/apple-app-development/` packet and the separate
