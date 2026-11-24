@@ -42,6 +42,7 @@ Gamification must support an explicit user goal without coercive rewards, manipu
 ## Immersive Media And Guided Motion
 
 - Use 3D, WebGL, spatial media, scroll-linked motion, or nonlinear navigation only when it improves understanding, evaluation, or task completion.
+- Inspect existing product motion tokens and the applicable performance budget. Use established timing tokens; otherwise choose the shortest effective duration validated in context, not a universal range.
 - Preserve conventional navigation, browser history, deep links, semantic reading order, keyboard/touch operation, and content access without the effect.
 - Provide static, reduced-motion, reduced-data, unsupported-browser, and failed-load fallbacks. Do not scroll-hijack.
 - Budget and measure LCP, CLS, INP, CPU/GPU work, memory, media weight, battery/data cost, and editor responsiveness proportionally to risk.

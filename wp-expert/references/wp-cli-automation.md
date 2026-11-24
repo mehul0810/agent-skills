@@ -9,6 +9,8 @@ Use this for WP-CLI probes, admin-free verification, scaffolding, search-replace
 
 ## Discovery
 
+Before running even a probe in an unfamiliar checkout, inspect [WP-CLI configuration](https://make.wordpress.org/cli/handbook/references/config/) without bootstrapping WordPress. Flags take precedence over `wp-cli.local.yml`, then `wp-cli.yml` (both searched up the directory tree), then the user config (`WP_CLI_CONFIG_PATH` or `~/.wp-cli/config.yml`). Resolve the alias, path, URL and [remote host or container](https://make.wordpress.org/cli/handbook/guides/running-commands-remotely/). Follow inherited YAML files. Inspect applicable packages, `require` and `exec` hooks, and (for SSH) `WP_CLI_SSH_PRE_CMD`: even a read or dry run can execute code. `--skip-plugins` does not skip must-use plugins. If the target or hooks are unexpected, stop before invoking WP-CLI; do not print credentials from configuration.
+
 ```bash
 wp cli info
 wp core version
@@ -61,6 +63,8 @@ wp search-replace 'https://old.example' 'https://new.example' --all-tables --dry
 ```
 
 ## Cron And Queues
+
+For [recurring events](https://developer.wordpress.org/plugins/cron/scheduling-wp-cron-events/), pass the same hook **and argument array** to [`wp_next_scheduled()`](https://developer.wordpress.org/reference/functions/wp_next_scheduled/), scheduling, and cleanup. Argument types and order matter. Test two IDs under one hook: repeated setup must leave one event per ID; removing one must leave the other intact. Running an event executes its callback, not just a diagnostic.
 
 ```bash
 wp cron event list

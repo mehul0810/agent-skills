@@ -1,27 +1,24 @@
 # Availability-First Model Routing Scenarios
 
-Fresh-agent scenarios for version `routing-v2-2026-10-02`. Give an evaluator the
-current routing reference, reviewed catalog, runtime inventory and each task;
+Give a fresh evaluator the current routing reference, runtime inventory and each task;
 keep expected dispositions outside its input. These are synthetic decisions,
 not proof of installed routing, live quota, throughput or token savings.
 
 ## Routine Evidence Lane
 
 An exact two-file evidence check has complete inputs and low uncertainty.
-Expect the least sufficient authorized capability and low supported effort;
+Expect the current capable model and low supported effort;
 no escalation merely because a stronger model is exposed.
 
 ## Independent Capability And Effort
 
 Compare ambiguous ordinary implementation against a deterministic consequential
-check with strong evidence. Expect capable/deeper reasoning for the first and
-consequence-preserving capability with proportionate effort for the second.
+check with strong evidence. Keep the capable current model for both; adjust supported effort to uncertainty and risk.
 Do not hardcode a role's model or treat its default effort as a floor.
 
 ## Owner Model Policy Overrides Runtime Inventory
 
-Expose an unapproved model with attractive metadata. Expect selection only from
-the reviewed authorized set; runtime availability does not grant authorization.
+Expose a cheaper or stronger alternative: keep the capable current model. For a verified missing modality, use a supported alternative within budget and data boundaries. Do not substitute for an explicit unavailable request or bypass budget or access limits.
 
 ## Unavailable Explicit Request
 

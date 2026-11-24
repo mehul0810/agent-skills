@@ -1,0 +1,17 @@
+[
+  {
+    "id": "rich-marketing",
+    "request": "Create a rich homepage for a scheduling product. I want relevant imagery throughout and meaningful animated sections triggered as visitors scroll or interact, not just a decorative hero. Help visitors decide whether to start a trial, and explain how you would verify the result.",
+    "facts": "Approved product workflow captures show creating a schedule and reviewing availability. Trial terms and the trial destination are available. The existing site uses editable WordPress blocks. No customer testimonials or metrics were supplied."
+  },
+  {
+    "id": "small-static",
+    "request": "Adjust only the spacing of the approved static heading on our existing page. Keep everything else unchanged and do not add motion.",
+    "facts": "The approved target and editable blocks are available. There is no animation in scope."
+  },
+  {
+    "id": "missing-evidence",
+    "request": "Improve our service landing page with proof and a purchase path. We want to show customer results and explain what happens at checkout.",
+    "facts": "No customer results or approved customer images are available. Checkout requires inaccessible credentials and its terms are unverified. Existing service descriptions and contact details are available."
+  }
+]

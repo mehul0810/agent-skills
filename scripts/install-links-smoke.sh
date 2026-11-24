@@ -3,10 +3,54 @@ set -euo pipefail
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 tmp="$(mktemp -d)"
+scratch="$tmp"
 actual_tmp=""
-trap 'rm -rf "$tmp"; [ -z "$actual_tmp" ] || rm -rf "$actual_tmp"' EXIT
+trap 'rm -rf "$scratch"; [ -z "$actual_tmp" ] || rm -rf "$actual_tmp"' EXIT
 tmp="$tmp/path with spaces"
-mkdir -p "$tmp"
+export HOME="$tmp/home"
+mkdir -p "$HOME"
+
+# Selected installs are checked without requiring every other skill or policy.
+CODEX_HOME="$tmp/selected-codex" CLAUDE_HOME="$tmp/selected-claude" \
+  bash "$repo_root/scripts/install-global-skill-links.sh" wp-expert >/dev/null
+selected_check() {
+  CODEX_HOME="$tmp/selected-codex" CLAUDE_HOME="$tmp/selected-claude" \
+    bash "$repo_root/scripts/check-global-skill-links.sh" "$@"
+}
+selected_check wp-expert >/dev/null
+if selected_check >/dev/null 2>&1; then
+  echo "ERROR: a selective install satisfied full-pack verification" >&2; exit 1
+fi
+[ ! -e "$tmp/selected-codex/AGENTS.md" ] && [ ! -e "$tmp/selected-claude/AGENTS.md" ] || {
+  echo "ERROR: selected install or check wrote policy" >&2; exit 1;
+}
+for invalid in ../wp-expert /tmp/wp-expert not-a-skill --unknown; do
+  code=0; selected_check "$invalid" >/dev/null 2>&1 || code=$?
+  [ "$code" -eq 2 ] || { echo "ERROR: expected usage failure for $invalid, got $code" >&2; exit 1; }
+done
+for extra in wp-expert --health; do
+  code=0; selected_check --health "$extra" >/dev/null 2>&1 || code=$?
+  [ "$code" -eq 2 ] || { echo "ERROR: expected usage failure for --health $extra, got $code" >&2; exit 1; }
+done
+for target in wp-expert shared templates; do
+  link="$tmp/selected-codex/skills/$target"
+  unlink "$link"
+  if selected_check wp-expert >/dev/null 2>&1; then
+    echo "ERROR: checker accepted missing $target" >&2; exit 1
+  fi
+  ln -s "$tmp/wrong-target" "$link"
+  if selected_check wp-expert >/dev/null 2>&1; then
+    echo "ERROR: checker accepted wrong $target" >&2; exit 1
+  fi
+  unlink "$link"
+  ln -s "$repo_root/$target" "$link"
+done
+ln -s "$repo_root/retired-skill" "$tmp/selected-claude/skills/retired-skill"
+if selected_check wp-expert >/dev/null 2>&1; then
+  echo "ERROR: selective checker accepted stale pack link" >&2; exit 1
+fi
+unlink "$tmp/selected-claude/skills/retired-skill"
+selected_check wp-expert >/dev/null
 
 CODEX_HOME="$tmp/codex" CLAUDE_HOME="$tmp/claude" \
   bash "$repo_root/scripts/install-global-skill-links.sh" >/dev/null
@@ -127,15 +171,39 @@ fi
   echo "ERROR: standard /tmp symlink path was modified" >&2; exit 1;
 }
 
-while IFS= read -r skill_dir; do
-  skill="$(basename "$skill_dir")"
+while IFS= read -r skill; do
+  skill_dir="$repo_root/$skill"
   for root in "$tmp/codex/skills" "$tmp/claude/skills"; do
     link="$root/$skill"
     [ -L "$link" ] || { echo "ERROR: missing symlink $link" >&2; exit 1; }
     [ "$(readlink "$link")" = "$skill_dir" ] || { echo "ERROR: wrong target $link" >&2; exit 1; }
     [ -f "$link/SKILL.md" ] || { echo "ERROR: unreadable skill $link" >&2; exit 1; }
   done
-done < <(find "$repo_root" -mindepth 1 -maxdepth 1 -type d -exec test -f "{}/SKILL.md" \; -print | sort)
+done < <(bash "$repo_root/scripts/list-global-skills.sh")
+
+# A link that resolves is not proof that Node ran its CLI instead of just importing it.
+printf '{}\n' > "$tmp/incomplete-report.json"
+for root in "$tmp/codex/skills" "$tmp/claude/skills"; do
+  quality="$root/wp-quality-reviewer/scripts/validate-review-report.mjs"
+  fidelity="$root/product-video-producer/scripts/check-shot-fidelity.mjs"
+  motion="$root/product-video-producer/scripts/render-motion-starter.mjs"
+  for cli in "$quality" "$fidelity"; do
+    if node "$cli" "$tmp/incomplete-report.json" >"$tmp/cli-error" 2>&1; then
+      echo "ERROR: linked CLI silently accepted an incomplete document: $cli" >&2; exit 1
+    fi
+    [ -s "$tmp/cli-error" ] || { echo "ERROR: linked CLI gave no diagnostic: $cli" >&2; exit 1; }
+  done
+  node "$quality" --self-test | grep -F 'quality review validator self-test passed' >/dev/null
+  node "$fidelity" --self-test | grep -F 'self-test passed' >/dev/null
+  node "$motion" --help | grep -F 'Usage: node' >/dev/null
+  imported="$(SKILL_TEST_ROOT="$root" node --input-type=module -e '
+    import { pathToFileURL } from "node:url";
+    for (const file of ["wp-quality-reviewer/scripts/validate-review-report.mjs",
+      "product-video-producer/scripts/check-shot-fidelity.mjs", "product-video-producer/scripts/render-motion-starter.mjs"])
+      await import(pathToFileURL(process.env.SKILL_TEST_ROOT + "/" + file));
+  ')"
+  [ -z "$imported" ] || { echo "ERROR: importing a linked CLI ran it" >&2; exit 1; }
+done
 
 for required in product-video-producer wp-product-docs-writer loop-steward; do
   [ -L "$tmp/codex/skills/$required" ] || { echo "ERROR: required Codex skill missing: $required" >&2; exit 1; }

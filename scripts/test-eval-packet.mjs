@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import os from 'node:os';
 import path from 'node:path';
 import assert from 'node:assert/strict';
@@ -143,4 +144,102 @@ execFileSync('git', ['-C', path.join(root, 'repo'), 'commit', '-qm', 'ignored ca
 const ignoredRevision = execFileSync('git', ['-C', path.join(root, 'repo'), 'rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
 fs.writeFileSync(path.join(repoCase, 'artifacts', 'ignored.txt'), 'ignored selected fixture');
 assert.throws(() => buildPacket(repoCase, path.join(root, 'ignored-input'), ignoredRevision), /not present at source revision/);
+
+// Selectable design packets contain only requested briefs, never adjacent cases or criteria.
+for (const name of ['editorial-signature', 'navigation-study-selection']) {
+  const design = path.resolve('skill-evals/cases', name);
+  const briefs = JSON.parse(fs.readFileSync(path.join(design, 'artifacts/briefs.json')));
+  const designRevision = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+  const target = path.join(root, `selected-${name}`);
+  buildPacket(design, target, designRevision, { caseIds: [briefs[0].id] });
+  assert.deepEqual(JSON.parse(fs.readFileSync(path.join(target, 'artifacts/briefs.json'))), [briefs[0]]);
+  assert.equal(fs.existsSync(path.join(target, 'criteria.md')), false);
+  assert.equal(verifyPacket(target).id, name);
+  assert.deepEqual(verifyPacket(target).selection.caseIds, [briefs[0].id]);
+  assert.throws(() => buildPacket(design, path.join(root, `duplicate-${name}`), designRevision, { caseIds: [briefs[0].id, briefs[0].id] }), /unique/);
+  assert.throws(() => buildPacket(design, path.join(root, `unknown-${name}`), designRevision, { caseIds: ['unknown'] }), /Unknown/);
+}
+assert.throws(() => buildPacket(source, path.join(root, 'unsupported-selection'), 'a'.repeat(40), { caseIds: ['sample'] }), /unsupported/);
+const broad = path.resolve('skill-evals/cases/design-route-regression');
+const broadRevision = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+const broadInput = JSON.parse(fs.readFileSync(path.join(broad, 'input.json')));
+const broadFull = path.join(root, 'broad-full');
+buildPacket(broad, broadFull, broadRevision);
+assert.equal(fs.readFileSync(path.join(broadFull, 'request.md'), 'utf8'), broadInput.request + '\n');
+const broadSelected = path.join(root, 'broad-selected');
+buildPacket(broad, broadSelected, broadRevision, { caseIds: ['7'] });
+const broadRequest = fs.readFileSync(path.join(broadSelected, 'request.md'), 'utf8');
+assert.deepEqual(verifyPacket(broadSelected).selection.caseIds, ['7']);
+assert.match(broadRequest, /^7\. /m);
+assert.doesNotMatch(broadRequest, /^([1-6]|[89]|1[0-9]|2[0-6])\. /m);
+assert.match(broadRequest, /synthetic decisions/);
+assert.throws(() => buildPacket(broad, path.join(root, 'broad-unknown'), broadRevision, { caseIds: ['27'] }), /Unknown/);
+assert.throws(() => buildPacket(broad, path.join(root, 'broad-duplicate'), broadRevision, { caseIds: ['7', '7'] }), /unique/);
+const reseal = (directory, edit) => {
+  const manifestPath = path.join(directory, 'manifest.json');
+  const value = JSON.parse(fs.readFileSync(manifestPath));
+  edit(value);
+  for (const file of Object.keys(value.files)) value.files[file] = crypto.createHash('sha256').update(fs.readFileSync(path.join(directory, file))).digest('hex');
+  value.packetDigest = crypto.createHash('sha256').update(JSON.stringify(Object.entries(value.files).sort(([a], [b]) => a.localeCompare(b)))).digest('hex');
+  fs.writeFileSync(manifestPath, JSON.stringify(value));
+};
+const wrongPrompt = path.join(root, 'wrong-prompt');
+fs.cpSync(broadSelected, wrongPrompt, { recursive: true });
+reseal(wrongPrompt, () => fs.writeFileSync(path.join(wrongPrompt, 'request.md'), broadRequest.replace(/^7\. .+$/m, '7. A different request.')));
+assert.throws(() => verifyPacket(wrongPrompt), /differs from committed selection/);
+reseal(wrongPrompt, value => { value.version = 2; delete value.selection; });
+assert.throws(() => verifyPacket(wrongPrompt), /differs from committed selection/, 'removing selection metadata must not bypass provenance');
+const extraPrompt = path.join(root, 'extra-prompt');
+fs.cpSync(broadSelected, extraPrompt, { recursive: true });
+reseal(extraPrompt, () => fs.appendFileSync(path.join(extraPrompt, 'request.md'), 'Neighboring prompt content without a number.\n'));
+assert.throws(() => verifyPacket(extraPrompt), /differs from committed selection/);
+const extraArtifact = path.join(root, 'extra-artifact');
+fs.cpSync(broadSelected, extraArtifact, { recursive: true });
+reseal(extraArtifact, value => { fs.writeFileSync(path.join(extraArtifact, 'extra.txt'), 'extra'); value.files['extra.txt'] = ''; });
+assert.throws(() => verifyPacket(extraArtifact), /unexpected packet artifacts/);
+const unavailableSource = path.join(root, 'unavailable-source');
+fs.cpSync(broadSelected, unavailableSource, { recursive: true });
+reseal(unavailableSource, value => { value.sourceRevision = 'a'.repeat(40); });
+assert.throws(() => verifyPacket(unavailableSource), /source unavailable/);
+const wrongBrief = path.join(root, 'wrong-brief');
+fs.cpSync(path.join(root, 'selected-editorial-signature'), wrongBrief, { recursive: true });
+reseal(wrongBrief, () => {
+  const file = path.join(wrongBrief, 'artifacts/briefs.json');
+  const briefs = JSON.parse(fs.readFileSync(file));
+  briefs[0].request = 'Another request under the same ID.';
+  fs.writeFileSync(file, JSON.stringify(briefs, null, 2) + '\n');
+});
+assert.throws(() => verifyPacket(wrongBrief), /briefs differ from committed selection/);
+const broadManifestPath = path.join(broadSelected, 'manifest.json');
+const selectedManifest = JSON.parse(fs.readFileSync(broadManifestPath));
+selectedManifest.selection.caseIds = ['8'];
+fs.writeFileSync(broadManifestPath, JSON.stringify(selectedManifest));
+assert.throws(() => verifyPacket(broadSelected), /selection does not match/);
+selectedManifest.selection.caseIds = ['7', '7'];
+fs.writeFileSync(broadManifestPath, JSON.stringify(selectedManifest));
+assert.throws(() => verifyPacket(broadSelected), /selection does not match/);
+delete selectedManifest.selection;
+selectedManifest.version = 2;
+fs.writeFileSync(broadManifestPath, JSON.stringify(selectedManifest));
+assert.deepEqual(verifyPacket(broadSelected).selection.caseIds, ['7'], 'legacy partial packets remain identifiable after metadata removal');
+const allSelected = path.join(root, 'all-selected');
+buildPacket(broad, allSelected, broadRevision, { caseIds: Array.from({ length: 26 }, (_, i) => String(i + 1)) });
+reseal(allSelected, value => { value.version = 2; delete value.selection; });
+assert.equal(verifyPacket(allSelected).selection.caseIds.length, 26, 'downgrading a fully selected packet does not turn it into a historical full packet');
+const incorrectFull = path.join(root, 'incorrect-full');
+fs.cpSync(allSelected, incorrectFull, { recursive: true });
+reseal(incorrectFull, () => {
+  const file = path.join(incorrectFull, 'request.md');
+  fs.writeFileSync(file, fs.readFileSync(file, 'utf8').replace(/^8\. .+$/m, '8. A different request.'));
+});
+assert.throws(() => verifyPacket(incorrectFull), /differs from committed selection/, 'an apparent full inventory must match its committed source');
+const historicRevision = '5eb5dd1ea1da71892fe21929811c02b86b7c6cce';
+const historicSource = path.join(root, 'historic-navigation');
+fs.mkdirSync(path.join(historicSource, 'artifacts'), { recursive: true });
+for (const file of ['input.json', 'artifacts/briefs.json']) {
+  fs.writeFileSync(path.join(historicSource, file), execFileSync('git', ['show', `${historicRevision}:skill-evals/cases/navigation-study-selection/${file}`]));
+}
+const historicPacket = path.join(root, 'historic-packet');
+buildPacket(historicSource, historicPacket, historicRevision);
+assert.equal(verifyPacket(historicPacket).selection, undefined, 'a historical full packet is not reclassified as partial');
 console.log('Evaluation packet isolation and integrity tests passed');

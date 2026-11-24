@@ -1,0 +1,5 @@
+{
+  "id": "apple-app-native-build",
+  "request": "Build a small offline iPhone app named Tally Slip. Start at zero, add one through a visible labeled control, keep the count after terminating and reopening, and reset to zero. Deliver a buildable project and show whether the actual interface works on an available iOS Simulator. Report the toolchain, destination, exact checks, and any missing proof. Use only synthetic data, a disposable workspace, and available Apple tooling. No network dependencies, physical devices, account changes, uploads, or publication. Do not change the machine's active Xcode or install a runtime.",
+  "artifacts": []
+}

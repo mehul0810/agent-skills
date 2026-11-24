@@ -29,7 +29,7 @@ For elevated primary work, use `enterprise-runtime-assurance.md` as the single s
 
 ### Compact Non-Breaking Modularity Checkpoint
 
-For every implementation, apply a changed-surface check even when no refactor was requested: inventory launched/public contracts and real data, preserve observable behavior with characterization or consumer proof, keep a no-growth posture for legacy code, and stop for an intentional public or stored-contract break. Load [`modularity-review-fix.md`](../../wp-quality-reviewer/references/modularity-review-fix.md) only when the check finds a confirmed duplication, coupling, boundary, migration, or testability concern.
+For every implementation, apply a changed-surface check even when no refactor was requested: inventory launched/public contracts and real data, preserve observable behavior with characterization or consumer proof, keep a no-growth posture for legacy code, and stop for an intentional public or stored-contract break. Load [`modularity-review-fix.md`](../../wp-quality-reviewer/references/modularity-review-fix.md) only when the check finds a confirmed duplication, coupling, boundary, migration, or testability concern, or a measured changed-code size threshold breach.
 
 ## Implementation Bar
 

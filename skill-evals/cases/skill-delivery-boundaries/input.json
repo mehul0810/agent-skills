@@ -1,0 +1,5 @@
+{
+  "id": "skill-delivery-boundaries",
+  "request": "Handle the assigned independent briefs using the relevant skill. Deliver the requested text or plan when possible. Distinguish what can be delivered now from what requires actual product or media evidence. No production, publication or external actions.",
+  "artifacts": ["briefs.md"]
+}

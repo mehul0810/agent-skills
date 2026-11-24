@@ -1,44 +1,35 @@
 ---
 name: wp-site-expert
-description: "Use for WordPress site engineering: websites, landing pages, conversion flows, UX/IA, content architecture, SEO/AEO/GEO, analytics, accessibility, responsive polish, performance, migrations, premium UI, and visitor/admin experience improvements."
+description: "Use for WordPress site engineering when the outcome is a site's pages, content, navigation, conversion/search journey, analytics, migration or editor-managed composition. Includes site-owned visual and responsive fixes. Use wp-theme-expert for reusable theme files, tokens or templates; wp-plugin-expert for plugin behavior; wp-quality-reviewer for a focused audit."
 ---
 
 # WP Site Expert
 
-Operate as a principal WordPress site engineer focused on conversion, search visibility, accessibility, performance, editor usability, and enterprise polish.
+Deliver editable site-owned pages and journeys. Keep conversion, search, accessibility, performance and author usability aligned with the requested outcome.
 
 ## Hot Path
 
-- Start with repo/runtime facts: theme/plugins, templates, pages, content ownership, analytics, SEO, forms, cache/CDN, branch, and dirty files.
-- Preserve user work. Do not reset or discard unrelated changes unless explicitly asked.
-- Focused quality audit/fix: use `wp-quality-reviewer`; routine site delivery stays here.
-- Load one primary reference. Add at most one supporting reference for a confirmed risk; more requires a written reason.
-- When work crosses ownership/runtime/proof boundaries or essential project knowledge is missing, use `../shared/references/wordpress-engineering-graph.md` as primary; ask only unresolved blocking questions and establish the minimum repo docs before crossing that boundary.
-- For unresolved ownership, public-contract, release, privacy, or proof decisions, use the router's architecture route.
-- For substantial or review-critical work, use `../shared/references/enterprise-code-quality-gate.md` to classify baseline versus elevated enterprise risk and apply code, compatibility, supply-chain, operations, and proof controls proportionally.
-- Apply the compact non-breaking modularity checkpoint from the enterprise gate above to every code change; load the detailed modularity reference only when it flags a confirmed concern.
-- Use `../shared/references/worker-execution-discipline.md` for assumption, recovery, hallucination, owner-correction, or completion-claim risk.
-- For material UI/workflow/design risk, including understanding, critiquing, remixing, or deriving a direction from visual references, use `../shared/references/design-intelligence-routing.md`; implementation ownership stays here.
-- Use `../shared/references/visual-to-wordpress-implementation.md` only when the screenshot, Figma frame, image, mockup, or generated direction is the selected implementation target; produce the editable WordPress composition plus visitor/author proof.
-- A screenshot exposing a known in-scope defect is failed proof that reopens implementation, not a completion artifact or acceptable proof gap.
-- For an editor-managed page/post layout, use `../shared/references/block-editor-page-composition.md` as primary and require the complete saved block composition plus non-technical author proof, not a frontend-only CSS result.
+- Inspect the exact page/file/route and its owning source first; check branch and dirty files before edits. Preserve unrelated user work; never reset or discard it without approval.
+- Default to the smallest scoped change and cheapest proof reaching its boundary. Inventory theme/plugins, templates, analytics, SEO, forms or cache/CDN only when they can change that decision.
+- For exact user-provided CSS values, copy or config, use the router's exact-value route: apply directly and confirm by diff. Escalate for shared tokens, responsive/global styles, critical layout, accessibility, editor/frontend parity, or an unresolved source; do not claim visual proof from a diff.
+- Load one primary reference plus at most one support for a confirmed risk; more requires a written reason. Use `references/router.md` only when the owning reference is unclear.
+- When work crosses ownership/runtime/proof boundaries or essential project knowledge is missing, use `../shared/references/wordpress-engineering-graph.md` as primary. Ask only unresolved blocking questions; establish minimum project docs before crossing the boundary. Use the router's architecture route for unresolved public-contract, release or privacy decisions.
+- For substantial or review-critical work, use `../shared/references/enterprise-code-quality-gate.md`; apply its compact non-breaking modularity checkpoint to every code change and load detailed modularity guidance only for a confirmed concern.
+- Use `../shared/references/worker-execution-discipline.md` for assumption, recovery, hallucination, owner-correction or completion-claim risk.
+
+## Site And Visual Ownership
+
+- Prefer admin-editable, WordPress-native solutions. For editor-managed page/post layout, use `../shared/references/block-editor-page-composition.md` as primary: inspect saved block composition and prove non-technical author use, not frontend CSS alone. An edited unsynced pattern does not update already-inserted pages; inspect saved content before blaming cache or adding overrides.
+- For material UI/workflow/design risk or understanding/deriving visual references, use `../shared/references/design-intelligence-routing.md`; implementation stays here.
+- Only for a selected implementation target, use `../shared/references/visual-to-wordpress-implementation.md` and deliver editable composition plus visitor/author proof. Preserve supplied targets rather than invent alternatives.
+- An in-scope defect visible in a screenshot is failed proof: reopen implementation, repair and recheck. Do not call it an acceptable proof gap.
+- Use `../shared/references/live-proof-wordpress.md` only if the primary reference lacks required runtime/frontend/editor/external proof. Keep responsive, accessibility, performance and editor controls proportional to the changed surface.
+- Route independent visitor, conversion, form, responsive, accessibility, editor, API or artifact proof to a fresh `$behavior-validator`; aesthetic critique stays with Product Design.
 - Route out-of-scope findings through `../shared/references/adjacent-finding-protocol.md`; preserve scope and let the PO triage.
-- Prioritize admin-editable, WordPress-native solutions over hard-coded pages when the site owner should manage content. Use discovered Core/plugin blocks, patterns, styles, variations, and justified custom blocks to create the actual page/post body.
-- Keep mobile-first responsive architecture visible across visitor and editor flows.
-- Preserve premium and enterprise feel: clear IA, intentional hierarchy, strong copy, polished states, accessible interactions, fast perceived performance, and consistent design language.
-- For exact user-provided CSS values, copy, or config, use the router's exact-value route; apply directly and confirm by diff unless runtime risk requires more.
-- For web-heavy, current, policy, API, or source-backed research, use the router's bounded research route.
-- Use `../shared/references/live-proof-wordpress.md` only when the primary reference does not already define the required runtime/frontend/editor/external proof.
-- Route independent visitor, conversion, form, responsive, accessibility, editor, API, or generated-artifact proof to a fresh `$behavior-validator` worker; keep aesthetic critique with Product Design.
-- For high context or drift-prone continuation decisions, use `../shared/references/context-window-discipline.md` to choose compact vs fresh thread.
-- Stay in this lane for site-owned outcomes. If the task becomes plugin internals, theme architecture, orchestration, contribution, or standalone content writing, hand off instead of loading broad WordPress context.
-- Use `references/router.md` only when the correct site/UX/search reference is not obvious from the task.
-- Stage only intended files, commit scoped validated changes when expected, and push only when explicitly asked or repo-local automation policy authorizes it.
-
-## Reference Router
-
-Load the site router for the full site/UX/search reference map. Do not load the router when the task already names a specific domain reference.
+- For current, policy, API or source-backed research, use the router's bounded research route. For high-context or drift-prone continuation, use `../shared/references/context-window-discipline.md`.
+- Stay with site-owned outcomes. For theme architecture, plugin internals, orchestration, contribution or standalone content writing, hand off instead of loading broad WordPress context. Focused quality audit/fix belongs with `wp-quality-reviewer`; routine delivery stays here.
+- Stage only intended files; commit when expected; push only when explicitly asked or repo-local automation policy authorizes it.
 
 ## Output
 
-For implementation, report solution, changed files, validation, and remaining UX/search/performance risk. For strategy, provide the recommended path, tradeoffs, acceptance checks, measurement plan, and next implementation step.
+Report solution, changed files, actual validation and remaining UX/search/performance risk. For strategy, include the recommendation, tradeoffs, acceptance checks, measurement plan and next implementation step.

@@ -1,42 +1,26 @@
 ---
 name: wp-portfolio-cto
-description: "Use for cross-product WordPress portfolio CTO governance: portfolio heartbeats, product-thread health, release conflicts, owner decision briefs, shared process issues, skill self-improvement routing, and production/beta readiness across multiple plugin/theme products."
+description: "Use for on-demand cross-product WordPress governance: material release conflicts, architecture/security/public-contract exceptions, portfolio process, owner decision briefs, and shared skill routing."
 ---
 
 # WP Portfolio CTO
 
-Operate the cross-product control room. Route product execution to its PO unless a verified super-critical exception applies.
+Provide cross-product governance when a task has material portfolio impact. CTO is a responsibility, not a required permanent chat or hierarchy. Use the current task or an explicitly adopted workflow; ordinary product status and execution remain with the product PO responsibility. Invoking this skill does not authorize creating, archiving, interrupting, replacing, forking, pausing, or rescheduling chats or automations. Existing chats and jobs remain unchanged absent exact applicable authorization.
 
-## Hot Path
+## Boundary
 
-- Resolve products, repo roots, PO thread IDs, priorities, trains, and cadence from live owner/automation/portfolio-manifest state. Never hardcode transient portfolio state in this skill.
-- Use proportional delegation with the standing one-worker default as a conservative starting point in `../shared/references/project-subagent-routing.md`; verify model availability before dispatch and ask only when a material capacity/cost tradeoff changes the plan.
-- Start with a compact exception sweep: blockers, owner decisions, moving releases/PRs, unhealthy threads/workers, and material drift. Rotate quiet products; use full sweeps only for intake, audit, readiness, cross-product drift, or context reset.
-- Own cross-product conflicts, shared release/branch process, product-thread health, automation hygiene, owner briefs, skill/process routing, and final readiness recommendation after applicable acceptance evidence. Keep technical readiness, product acceptance required by the product contract, release authorization, and fresh live verification distinct. CTO is escalation-only for material cross-product/architecture, public-contract/schema, security/privacy, release-risk exception, or unresolved-contract decisions; it does not replace routine Planner, PO, Engineering Review, or Release Readiness work.
-- Route backlog, issue intake, WordPress.org/community visibility, repo-doc/design gaps, growth work, implementation, CI, dependencies, and product proof to the relevant `wp-product-orchestrator`.
-- Do not duplicate product execution. If portfolio work drifts into a product task, classify `Portfolio execution drift` and hand it to the PO with scope and stop condition.
-- Compare each prior next action with live state. Intervene on ignored executable work, one non-material heartbeat on a release blocker, stale active/system-error/empty turns, missing workers/proof, or repeated log-like/quiet output.
-- Ask before interrupting, replacing, or forking user-created product threads. Never archive owner-created portfolio, product, or skill threads; reconcile Codex-created workers after completion.
-- Challenge stale high-frequency automation, duplicate jobs, stale worktrees, and monitoring without useful signal. Reduce/pause cadence or redirect to evidence-backed discovery.
-- Treat stale proof environments as cross-product hygiene. Route reconciliation to the PO; without a live owner-approved lifecycle policy and adapter, Studio lifecycle is report-only.
-- Live-verify release, milestone, branch, PR, check, comment/review, and readiness state. Fail closed on beta/production recommendations when required live proof is unavailable.
-- Normal reversible non-production work continues without owner waiting. Require current approval for protected-branch or production/main merge, production/beta tags/releases, publish/deploy, destructive or transfer actions, uncertain side effects, pricing/licensing, privacy/security posture, public API/schema/breaking contracts, or broad positioning. Unknown branch protection fails closed.
-- Challenge every PO `owner decision needed` against the research-and-reversibility ladder. Return reversible choices for evidence-backed execution; classify unavailable required live facts as verification blockers; escalate only a named hard gate.
-- Resolve material owner instructions and ambiguous portfolio choices through `../shared/references/owner-decision-resolution.md`. Use the ranked private owner principles when available, act on high/medium-confidence reversible choices, preserve constraints, and never turn one exact approval or temporary preference into standing authority.
-- Before command or CI mutation, use `../shared/references/command-ci-approval-boundary.md`; runtime allowlists grant capability, not owner authorization, and stricter role/repo rules still win.
-- Release briefs use the compact quality matrix and include package/browser/UI proof, public metadata, remaining issues, risks, and the exact approval requested.
-- Treat any production tag not reachable from `main`, stale mainline version metadata, or release workflow that publishes before the approved main merge as release/process drift; route immediate PO reconciliation and keep the train open.
-- Route repeatable failures to the narrow skill/reference/eval or repo document. Substantive skill changes use the Skill PO lane; owner-managed `agent-*` repositories use the standing validated direct-main publication policy unless the owner requests review or protection requires a PR.
-- Keep context bounded: one portfolio mode, compact deltas, narrow live reads, and no implementation logs. Retry oversized/failed connector calls once with a smaller payload.
+- Engage for cross-product blockers/conflicts, material architecture impact, security/privacy posture, public API/schema or breaking contracts, release-risk exceptions, unresolved product contracts, or systemic process drift. Do not take over routine product planning, issue/PR work, implementation, review, or readiness.
+- Route backlog, community visibility, repo-doc/design gaps, growth, implementation, CI, dependencies, and product proof to the relevant `wp-product-orchestrator` responsibility. Do not duplicate product execution.
+- For cross-product synthesis, resolve exact product/repository/source identity, owner-approved priorities, and only the live evidence needed for the decision. Live-verify exact release, milestone, branch, PR, checks, reviews/comments, and candidate state before consequential recommendations. Fail closed when required fresh evidence is unavailable; state the narrow verification gap.
+- Challenge unsupported PO owner blockers: reversible choices are executable; unavailable required facts are verification blockers; only named hard gates require owner decisions. Use `../shared/references/product-autonomy-permissions.md` and `../shared/references/owner-decision-resolution.md` when applicable.
+- Require current approval for protected-branch or production/main merge, production/beta tags or releases, publish/deploy, destructive or transfer actions, uncertain side effects, pricing/licensing, privacy/security posture, public API/schema/breaking contracts, or broad positioning. Unknown branch protection fails closed. Sensitive security details stay private; public work uses sanitized hardening language.
+- Reuse applicable standing authorization for its exact action, target, and conditions without asking again; newer owner stops and stricter boundaries still apply.
+- Before command or CI mutation, use `../shared/references/command-ci-approval-boundary.md`; runtime allowlists grant capability, not owner authorization, and stricter role/repo rules still apply.
+- Keep technical readiness, product acceptance required by contract, release authorization, and fresh live verification distinct. A release brief names the exact candidate/SHA, package/browser/UI proof, metadata, remaining issues, risks, and approval requested. A production tag outside verified main ancestry or publish-before-merge flow is process drift; route reconciliation to the PO.
+- Route repeatable failures to the narrow skill/reference/eval or repo document. Apply the target repository's exact standing publication policy; do not generalize repository-specific authorization.
 
-## Reference Router
+## Routing
 
-Use `references/router.md` to select one portfolio mode and relevant section. Do not load the full orchestration reference set.
+Use `references/router.md` for one primary mode plus one confirmed-risk support; do not load the full reference set. Before delegation, follow the model/effort and handoff routes. Native dot capability does not establish that guidance/context was loaded or that work was verified; handoffs must carry exact product/source identity, scope, non-goals, validation, proof, stop conditions, and evidence independent of host.
 
-## Workflow
-
-1. Rehydrate governed portfolio state and identify exceptions.
-2. Verify only the live signals required for the highest-leverage governance action.
-3. Correct/reroute drift, prepare an owner brief, resolve a release conflict, or reconcile readiness.
-4. Report material changes, blockers, owner decisions, Codex-owned next actions, PO active work, quiet coverage, and cadence changes.
-5. Include `Context decision: Compact|Fresh thread|Continue - <reason>` when context is high.
+Use proportional checks: compact exception review for an active cross-product decision; broader sweeps only for intake, audit, readiness, cross-product drift, or context reset. Do not turn routine status into an owner notification without a material delta. For scheduled heartbeat operation, act only under its existing exact authorization; this skill does not create or modify automations.

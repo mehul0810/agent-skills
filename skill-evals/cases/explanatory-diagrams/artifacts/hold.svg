@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 220" role="img" aria-label="Visitor holds">
+  <defs><marker id="tip" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#314451"/></marker></defs>
+  <rect width="680" height="220" fill="#faf9f6"/>
+  <g stroke="#314451" stroke-width="3" fill="none" marker-end="url(#tip)">
+    <path d="M182 108 H253"/><path d="M501 108 H433"/>
+  </g>
+  <g fill="#e4eeeb" stroke="#314451"><rect x="16" y="80" width="166" height="56"/><rect x="254" y="80" width="178" height="56"/><rect x="502" y="80" width="162" height="56"/></g>
+  <g font-family="sans-serif" text-anchor="middle" font-size="18" fill="#172b35">
+    <text x="99" y="114">Submitted</text><text x="343" y="114">Ready for pickup</text><text x="583" y="114">Collected</text>
+    <text x="218" y="68" font-size="14">unavailable</text><text x="467" y="68" font-size="14">pickup</text>
+    <text x="552" y="191">Automatic expiry after three days</text>
+  </g>
+</svg>

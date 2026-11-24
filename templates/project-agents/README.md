@@ -10,15 +10,15 @@ After verifying the exact Git root, installed named skills and current host supp
 
 ## Dispatch
 
-| Profile | Inputs and output | Preferred capability |
-| --- | --- | --- |
-| wp-planner | Problem/evidence to implementation-ready packet | Balanced; strong for ambiguity |
-| wp-implementer | One issue/contract to scoped diff and checks | Balanced; economical for exact work |
-| wp-reviewer | Immutable diff/contract to independent findings | Balanced; strong for high risk |
-| wp-behavior-validator | Acceptance contract/package to observable proof | Lowest sufficient for actual tool/visual judgment |
-| wp-release-readiness | Candidate/evidence to GO/NO-GO brief | Strong for release judgment |
+| Profile | Inputs and output |
+| --- | --- |
+| wp-planner | Problem/evidence to implementation-ready packet |
+| wp-implementer | One issue/contract to scoped diff and checks |
+| wp-reviewer | Immutable diff/contract to independent findings |
+| wp-behavior-validator | Acceptance contract/package to observable proof |
+| wp-release-readiness | Candidate/evidence to GO/NO-GO brief |
 
-Follow `shared/references/project-subagent-routing.md` in the installed skill pack for runtime allocation. Recheck model and reasoning availability; no model IDs are pinned in these reusable templates. Use only the current owner-approved model/reasoning policy; runtime exposure and inherited settings do not authorize a different model. Ask the owner before substituting when the required model or reasoning is unavailable. Do not silently inherit an expensive tier for deterministic work.
+Follow `shared/references/project-subagent-routing.md` in the installed skill pack for runtime allocation. Inherit the current model by default. Override only for an explicit owner request or a verified missing capability; check runtime support, budget and effort limits. If a requested model is unavailable, ask rather than substitute.
 
 Packet: exact product/repo/path; issue and milestone; branch/base or candidate; scope/non-goals; acceptance criteria; validation commands; proof environment and mutation limits; relevant skill; risks/authority; concise output and stop condition. Supply URLs and deltas rather than full histories. A validator receives source-blind artifacts, not implementation explanations. Reviewer may inspect relevant callers beyond the diff.
 

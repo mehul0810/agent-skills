@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 460" role="img" aria-labelledby="title desc">
+  <title id="title">Visitor hold request states</title>
+  <desc id="desc">A request stays Submitted while the item is unavailable. When the item is available, the desk moves it to Ready for pickup. When the visitor collects the item, staff mark it Collected.</desc>
+  <defs>
+    <marker id="tip" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#314451"/></marker>
+  </defs>
+  <rect width="340" height="460" fill="#faf9f6"/>
+  <g font-family="sans-serif" text-anchor="middle" fill="#172b35">
+    <text x="170" y="29" font-size="19" font-weight="bold">Your hold request</text>
+    <rect x="20" y="48" width="300" height="94" rx="6" fill="#e4eeeb" stroke="#314451" stroke-width="2"/>
+    <text x="170" y="78" font-size="18" font-weight="bold">Submitted</text>
+    <text x="170" y="105" font-size="15">Item unavailable?</text>
+    <text x="170" y="126" font-size="15">The request stays Submitted.</text>
+    <path d="M170 142 V212" fill="none" stroke="#314451" stroke-width="2" marker-end="url(#tip)"/>
+    <rect x="50" y="162" width="240" height="24" fill="#faf9f6"/>
+    <text x="170" y="179" font-size="15">Item available: desk moves it</text>
+    <rect x="20" y="212" width="300" height="58" rx="6" fill="#e4eeeb" stroke="#314451" stroke-width="2"/>
+    <text x="170" y="248" font-size="18" font-weight="bold">Ready for pickup</text>
+    <path d="M170 270 V348" fill="none" stroke="#314451" stroke-width="2" marker-end="url(#tip)"/>
+    <rect x="68" y="292" width="204" height="40" fill="#faf9f6"/>
+    <text x="170" y="308" font-size="15">Visitor collects the item;</text>
+    <text x="170" y="327" font-size="15">staff mark it Collected</text>
+    <rect x="20" y="348" width="300" height="58" rx="6" fill="#e4eeeb" stroke="#314451" stroke-width="2"/>
+    <text x="170" y="384" font-size="18" font-weight="bold">Collected</text>
+  </g>
+</svg>

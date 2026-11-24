@@ -1,31 +1,32 @@
 ---
 name: product-video-producer
-description: "Use for premium product and brand video: enterprise promos, software demos, YouTube long-form/Shorts, editing and post-production, storyboards, motion, deterministic delivery, and evidence-led revisions without invented claims or fake UI."
+description: "Create or edit brand intros, motion graphics, influencer/avatar videos, product demos, instructional walkthroughs, 3D explainers and social cutdowns. Use for storyboards through rendered delivery, not standalone images."
 ---
 
 # Product Video Producer
 
-Turn product truth, approved assets, footage, and references into distinctive, evidence-led video with deterministic outputs and bounded review.
+Make video from approved assets, footage and verifiable claims.
 
 ## Route
 
-- Reference review, brand translation, storyboard, typography, pacing, composition, motion, or abstract storytelling: read `references/reference-to-storyboard.md`.
-- Cinematic film, instructional walkthrough, or advanced motion execution: use the relevant mode guidance in `references/production-modes.md` as the single optional support for the current stage, replacing rather than stacking another supporting reference. Keep modes optional and combine only when the brief benefits.
-- Editing, real software capture, ingest/conform, sound, color, captions, rendering, manifest, QA, or user-critique iteration: read `references/render-review-iteration.md`.
+- YouTube demo plus Short from captures: start in editing. Name the later channel stage (long-form opening/title/thumbnail; independently cut Short) and review stage (hash and probe both exports against their timelines). Don't load later guides yet.
+- Reference analysis, brand, storyboard, composition, pacing or abstract storytelling: `references/reference-to-storyboard.md`.
+- Intro/ident, motion graphic, cinematic film, instructional walkthrough, product demo or 3D treatment: use `references/production-modes.md`. For a creator, influencer, UGC-style or avatar-led shoot, use `references/presenter-video.md` instead.
+- To operate software and record a walkthrough with computer use, or repeat a recorded take, start with `references/computer-use-walkthrough.md`. To edit existing footage, conform, mix, caption, render or check delivery, use `references/render-review-iteration.md`.
 - YouTube long-form, Shorts, thumbnails/titles, channel packaging, disclosure, upload profiles, or retention learning: read `references/channel-delivery-feedback.md`.
-- Load the primary reference for the current stage; when needed, the production-mode reference is its one supporting reference. Do not load every stage reference in one context or stack another supporting reference with the mode guide. Handoff compact decisions between stages. Verify changing platform rules at delivery.
-- Use Creative Production or `imagegen` only for supporting visual exploration/assets. Preserve exact logos, product UI, typography, and copy from governed source files; composite them deterministically rather than asking generation to reproduce them.
+- Load the primary reference for the current stage; add the production-mode guide only for a concrete mode question. Do not load every stage reference in one context. Carry decisions, not previous guides, into the next stage. Verify changing platform rules at delivery.
+- Use Creative Production or `imagegen` for supporting assets, not exact logos, UI or copy; composite governed sources.
 - Product claims/copy may route to `content-writer`; WordPress surfaces route to the relevant WP specialist. This skill owns the video artifact and proof.
 
 ## Workflow
 
-1. Classify the work: enterprise promo/launch, explainer or software demo, long-form, Short, edit, or delivery-only. Confirm audience, one content promise, channel, duration, outcome, deliverables, and review owner.
-2. Establish project, source revision/hash, sequence, job and expected output identity. For edit/review/delivery-only work, bind the supplied artifact to its existing contract; never invent missing identity.
+1. Classify the work: enterprise promo/launch, opener, presenter, explainer, demo, tutorial, edit or delivery-only. Choose what the viewer must recognize, believe or reproduce. Confirm placement, duration, assets, deliverables and review owner.
+2. Establish applicable project, source revision/hash, sequence, job and expected output identity. For edit/review/delivery-only work, bind the supplied artifact to its existing contract; never invent missing identity.
 3. Confirm approved claims, brand, product evidence, sanitized capture, media/likeness rights, accessibility, synthetic-media needs, and platform constraints.
 4. Inspect references and footage; record timestamped observations, intent, reusable principles, and originality boundaries.
-5. Preflight assets, rights, and capture. New narrative work needs a brief and shot-level storyboard with acceptance criteria; revisions inherit their contract. Validate a representative style sequence before scaling. Delegated direction permits internal selection/review; ask only for a requested checkpoint or unresolved material brand, claim, or scope decision.
-6. Edit non-destructively from an explicit timeline and render contract. Separate product truth from metaphor; never fabricate product UI, customers, metrics, capabilities, or outcomes.
-7. Deliver review render, intentional poster, manifest, accessibility assets, and relevant channel package. Validate metadata, narrative, UI truth, typography, logo, motion, audio, rights, claims, accessibility, and output identity.
+5. Preflight assets and capture. Storyboard new work with shot-level acceptance criteria; revisions inherit their contract. Validate a representative style sequence before scaling. Under delegated direction, ask only at a requested checkpoint or material unresolved decision.
+6. When editing or rendering is requested, edit non-destructively from an explicit timeline and render contract. Separate product truth from metaphor; never fabricate product UI, customers, metrics, capabilities, or outcomes.
+7. Deliver the requested render, poster, manifest, accessibility assets and channel package. Review picture, sound, rights, claims, accessibility and output identity against the brief. Stop at the storyboard when that's the request.
 8. For direct critique, apply the exact bounded change and preserve invariants. For post-publication evidence, record one hypothesis and change only its implicated packaging/edit variable. Rerender only if video changed; report proof gaps without silently changing direction.
 
 ## Non-Negotiables
@@ -37,8 +38,8 @@ Turn product truth, approved assets, footage, and references into distinctive, e
 - Real UI capture uses an identified build and role, sanitized deterministic fixtures, and consented voice/likeness; it never exposes customer data, secrets, credentials, internal URLs, or notifications.
 - A polished edit cannot conceal privacy, consent, rights, accessibility, product-truth, or output-identity gaps.
 - Apply the same acceptance criteria regardless of model or reasoning, not a promise of identical creativity. Repair, use permitted escalation, or report incomplete; never lower the bar or invent playback evidence. Current owner allocation overrides historical examples.
-- Do not publish, release, upload, change live video metadata, start/stop/apply a public experiment, or overwrite an approved master without explicit owner approval.
+- Keep each approved master immutable. Even when asked to replace it, export a new version and retain the approved file; publication approval is separate. Do not publish, release, upload, change live metadata, or start/stop/apply a public experiment without explicit owner approval.
 
 ## Required Handoff
 
-Report direction, project/job/output identity, render profile, paths, provenance, claims, accessibility, validation, changes, gaps, remaining approval.
+Report direction, applicable project/job/output identity, paths, provenance, claims, accessibility, validation, changes, gaps, and remaining approval. Include the render profile for rendered deliverables.

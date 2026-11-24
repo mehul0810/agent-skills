@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "runId": "enterprise-runtime-assurance-2026-11-06-baseline-refresh",
+  "scenario": "elevated-enterprise-runtime-assurance",
+  "result": "succeeded",
+  "startedAt": "2026-11-06T05:13:58.163Z",
+  "durationMs": 7087553,
+  "checks": [
+    {
+      "name": "elevated-risk-classification",
+      "result": "pass"
+    },
+    {
+      "name": "compatibility-matrix-and-adaptive-docs",
+      "result": "pass"
+    },
+    {
+      "name": "artifact-sbom-license-vulnerability-provenance",
+      "result": "pass"
+    },
+    {
+      "name": "operations-observation-rollback-recovery",
+      "result": "pass"
+    },
+    {
+      "name": "missing-release-evidence-fails-closed",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 5,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "enterprise-runtime-assurance-2026-11-06-baseline-refresh",
+    "artifactPointer": "codex-private:baseline-refresh-20261106#accepted-checks/enterprise-runtime-assurance.json"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-11-06T07:12:05.716Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Fresh frozen-source development regressions independently accepted after retained failed/incomplete attempts and targeted recoveries. Shared parent-observed batch interval includes coordination and scoring, not per-actor runtime or summable cost. Host token/cost telemetry unavailable. Synthetic decisions and actual local fixture mechanics only; native/production acceptance and excluded VoiceOver/narration are not claimed. See baseline-refresh-evidence-2026-11-06.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "development-regression"
+  ]
+}

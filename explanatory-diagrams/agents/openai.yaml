@@ -1,0 +1,4 @@
+interface:
+  display_name: "Explanatory Diagrams"
+  short_description: "Turn source facts into editable, readable diagrams"
+  default_prompt: "Use $explanatory-diagrams to turn these source facts into an editable diagram and verify that a reader can trace the important exception."

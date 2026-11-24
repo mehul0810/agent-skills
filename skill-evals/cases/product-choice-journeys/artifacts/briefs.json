@@ -1,0 +1,22 @@
+[
+  {
+    "id": "choose-a-recorder",
+    "request": "Redesign our 32-model audio recorder catalog. Some shoppers ask for a model by name, others need to record a concert without mains power. We have approved product photos, battery runtime in hours and input counts for each model. The same models have to be distinguishable on a phone. We cannot take orders; readers can open each model's specifications."
+  },
+  {
+    "id": "explain-a-check",
+    "request": "Show how our file preflight service finds an embedded-font issue. We have an approved recording of the sample document, the warning and its resolution. There is no public sandbox and we cannot accept visitor files. What belongs on the page, and how would you check it?"
+  },
+  {
+    "id": "help-with-a-symptom",
+    "request": "Customers say 'one channel is silent' and seldom know the product name. Two recorder families have that symptom. Both print the family name next to the serial label. The verified Field guide starts with selecting Stereo under Recording Mode; the Desk guide starts with enabling Input 2 under Sources. The article index currently disappears on phones. Offer a practical route for an existing owner who is not shopping."
+  },
+  {
+    "id": "two-guides",
+    "request": "Our approved help page has two always-visible links to installation guides, each named for its hardware model. Change only the second link from 'Wall kit' to 'Wall bracket'. The destination is already correct; keep the layout."
+  },
+  {
+    "id": "decline-the-offer",
+    "request": "The studio would like more newsletter signups from its fixture guide. A draft makes 'Subscribe' a button but puts 'No thanks, I prefer working in the dark' in tiny type to dismiss the invitation. Review the draft. The guide and all specifications are available without subscribing."
+  }
+]

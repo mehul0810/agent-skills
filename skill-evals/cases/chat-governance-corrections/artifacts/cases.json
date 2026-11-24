@@ -1,0 +1,38 @@
+[
+  {
+    "case": "worker-01",
+    "request": "A Codex-created disposable Test & Proof worker is tracked by exact ID. Its accepted scoped report says BLOCKED because a compatibility environment is unavailable. The report and evidence are saved durably. The worker is idle with a final summary. It transferred the unresolved environment check to the named product PO, who acknowledged receipt. No correction is assigned, and there is no PR. Reconcile the worker and product status."
+  },
+  {
+    "case": "worker-02",
+    "request": "A Codex-created disposable Release Readiness worker is tracked by exact ID. Its accepted NO-GO report and evidence are saved durably, and it is idle with a final summary. The unresolved production-ancestry check was sent to the named PO, but there is no acknowledgement. No correction is assigned. Reconcile the worker and candidate status."
+  },
+  {
+    "case": "worker-03",
+    "request": "A Codex-created implementation worker is tracked by exact ID. Its PR failed independent review at the current head, the worker has an assigned code correction, and a separate diagnostic report was accepted. Reconcile the worker and implementation status."
+  },
+  {
+    "case": "worker-04",
+    "request": "An owner-created Product Test & Proof role task is protected, tracked by exact ID, idle with a final summary, and has issued a durable NO-GO report. Reconcile this task."
+  },
+  {
+    "case": "worker-05",
+    "request": "A Codex-created disposable Release Readiness worker is tracked by exact ID. Its scoped NO-GO report and evidence are accepted and durable. It is idle with a final summary. The unresolved release-ancestry check was transferred to the named PO, who acknowledged it. No correction is assigned, and there is no PR. Reconcile the worker and candidate status."
+  },
+  {
+    "case": "worker-06",
+    "request": "A Codex-created disposable implementation worker is tracked by exact ID. It pushed a commit and opened a PR, but independent review has not run, applicable Test & Proof is incomplete, and the issue/train are not reconciled. The worker is not idle and has no final summary. Reconcile the worker."
+  },
+  {
+    "case": "worker-07",
+    "request": "An owner-created disposable task is tracked by exact ID. It is not a role or control task; it is idle with a final summary and has an accepted durable report. Reconcile this task."
+  },
+  {
+    "case": "cadence-01",
+    "request": "At 09:00 UTC the owner directly instructed the product PO to check release readiness every 15 minutes while the current release-readiness blocker remains unresolved, with the instruction ending once that blocker clears. The owner did not authorize merge or publication. At 09:05 UTC a scheduler replay displays an adaptive four-hour rule that was configured last week. At 09:10 UTC a repeated heartbeat notification is unchanged. State how to handle cadence, notification, and release authority now."
+  },
+  {
+    "case": "cadence-02",
+    "request": "Last week the owner directly set a 15-minute product readiness check cadence until the launch-week monitoring window ended. That window ended yesterday. An automation replay today repeats the old 15-minute instruction, and the still-active governed rule is adaptive cadence based on material changes. No newer owner instruction is present. State how to handle cadence and whether the replay changes owner authority."
+  }
+]

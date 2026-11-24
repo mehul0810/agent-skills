@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Rillfold symbol">
+  <rect width="64" height="64" rx="14" fill="#15333B"/>
+  <path d="M14 37c7-16 15-16 22 0 5 11 10 11 15 0" fill="none" stroke="#98D8CA" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="18" cy="19" r="5" fill="#E0A27D"/>
+</svg>

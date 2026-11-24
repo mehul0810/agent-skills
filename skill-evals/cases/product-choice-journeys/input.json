@@ -1,0 +1,5 @@
+{
+  "id": "product-choice-journeys",
+  "request": "Using the supplied website skill, answer the independent briefs in briefs.json. Give a practical direction and how you would verify it; do not implement, browse or claim checks have run. Identify which guidance you used.",
+  "artifacts": ["briefs.json"]
+}

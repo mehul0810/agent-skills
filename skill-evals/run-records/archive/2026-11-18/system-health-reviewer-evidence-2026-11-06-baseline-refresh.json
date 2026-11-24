@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "runId": "system-health-reviewer-evidence-2026-11-06-baseline-refresh",
+  "scenario": "system-health-reviewer-evidence",
+  "result": "succeeded",
+  "startedAt": "2026-11-06T05:13:58.163Z",
+  "durationMs": 7087553,
+  "checks": [
+    {
+      "name": "empty-retrieval-fallback-or-unknown",
+      "result": "pass"
+    },
+    {
+      "name": "modern-event-role-and-turn-binding",
+      "result": "pass"
+    },
+    {
+      "name": "current-turn-cursor-integrity",
+      "result": "pass"
+    },
+    {
+      "name": "quiet-blocker-owner-next-action",
+      "result": "pass"
+    },
+    {
+      "name": "sample-not-portfolio-health",
+      "result": "pass"
+    },
+    {
+      "name": "correct-target-fresh-settings",
+      "result": "pass"
+    },
+    {
+      "name": "current-owner-model-policy",
+      "result": "pass"
+    },
+    {
+      "name": "observe-route-no-self-approval",
+      "result": "pass"
+    },
+    {
+      "name": "healthy-scoped-noop",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 9,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "system-health-reviewer-evidence-2026-11-06-baseline-refresh",
+    "artifactPointer": "codex-private:baseline-refresh-20261106#accepted-checks/system-health-reviewer-evidence.json"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-11-06T07:12:05.716Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Fresh frozen-source development regressions independently accepted after retained failed/incomplete attempts and targeted recoveries. Shared parent-observed batch interval includes coordination and scoring, not per-actor runtime or summable cost. Host token/cost telemetry unavailable. Synthetic decisions and actual local fixture mechanics only; native/production acceptance and excluded VoiceOver/narration are not claimed. See baseline-refresh-evidence-2026-11-06.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized",
+    "development-regression"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "runId": "wp-contributor-upstream-process-2026-10-15-voiceover-exclusion",
+  "scenario": "wp-contributor-upstream-process",
+  "result": "succeeded",
+  "startedAt": "2026-10-15T14:38:35.102Z",
+  "durationMs": 3541235,
+  "checks": [
+    {
+      "name": "live-upstream-state",
+      "result": "pass"
+    },
+    {
+      "name": "trunk-reproduction-and-focused-tests",
+      "result": "pass"
+    },
+    {
+      "name": "gutenberg-current-guidance",
+      "result": "pass"
+    },
+    {
+      "name": "meta-surface-and-privacy",
+      "result": "pass"
+    },
+    {
+      "name": "security-private-disclosure",
+      "result": "pass"
+    },
+    {
+      "name": "ai-human-verification-and-disclosure",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 6,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "wp-contributor-upstream-process-2026-10-15-voiceover-exclusion",
+    "artifactPointer": "codex-private:voiceover-rollout-20261015-final#evidence/prepared/wp-contributor-upstream-process.json"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-10-15T15:37:36.337Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Fresh frozen-source development decisions independently scored; failed attempts retained. Shared parent-observed freeze-to-admission interval includes coordination/retries, not per-actor runtime or cost. Host telemetry unavailable. Synthetic decisions/CLI/render review only; no live VoiceOver, narration, native, conformance, production or held-out claims."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}

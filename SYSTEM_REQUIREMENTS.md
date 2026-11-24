@@ -8,6 +8,7 @@ This file defines tools needed to maintain and validate this skill repository. P
 - Node.js matching `.nvmrc` and `package.json#engines`. Run `npm ci`; do not substitute an EOL line. The checked 2026-09-04 baseline is Node 24 LTS.
 - npm from that Node distribution.
 - Bash 3.2 or newer. Repository scripts intentionally avoid Bash 4-only features and are checked with `bash -n` plus runtime self-tests.
+- Antigravity manifest sync needs a Git checkout and `python3` with the standard library. No npm install, Antigravity CLI, or Python packages are needed to write or check its allowlist.
 - Python 3.11 or newer for `npm test` and aggregate profile validation (`tomllib` is required). Set `PYTHON` to the compatible interpreter when it is not the default `python3` on `PATH`; see `TESTING.md`.
 - PyYAML is optional and needed only when running Skill Creator's `quick_validate.py`; it is not an aggregate test dependency.
 - `gh` only for live GitHub inspection or owner-authorized mutations.

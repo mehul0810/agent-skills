@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import {readFile, writeFile, mkdir, stat, lstat} from 'node:fs/promises';
-import {existsSync} from 'node:fs';
+import {existsSync, realpathSync} from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 import {createHash} from 'node:crypto';
@@ -131,4 +131,6 @@ export async function main(argv) {
   await writeFile(path.join(o.output,'receipt.json'),JSON.stringify(receipt,null,2)+'\n');
   process.stdout.write(`${video}\n`);
 }
-if (process.argv[1] && path.resolve(process.argv[1]) === self) main(process.argv.slice(2)).catch(e=>{process.stderr.write(`${e.message}\n`);process.exitCode=1;});
+if (import.meta.main ?? (process.argv[1] && existsSync(process.argv[1]) && realpathSync(process.argv[1]) === self)) {
+  main(process.argv.slice(2)).catch(e=>{process.stderr.write(`${e.message}\n`);process.exitCode=1;});
+}

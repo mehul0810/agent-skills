@@ -1,6 +1,6 @@
 ---
 name: wp-expert
-description: Router for ambiguous WordPress work. Use when explicitly requested or unclear whether the task belongs to wp-plugin-expert, wp-theme-expert, wp-site-expert, wp-quality-reviewer, behavior-validator, wp-portfolio-cto, wp-product-orchestrator, wp-contributor, wp-product-docs-writer, or content-writer; clear tasks should trigger the specialist directly.
+description: Router for ambiguous WordPress work. Use when explicitly requested or unclear whether the task belongs to wp-plugin-expert, wp-theme-expert, wp-site-expert, wp-quality-reviewer, behavior-validator, wp-portfolio-cto, wp-product-orchestrator, wp-contributor, wp-product-docs-writer, wp-service-business-development, or content-writer; clear tasks should trigger the specialist directly.
 ---
 
 # WP Expert
@@ -20,6 +20,7 @@ Use this skill as the thin WordPress engineering router. Prefer the narrow speci
 - WordPress Core, Meta, Gutenberg, Trac, upstream patches, contributor docs, or official contribution workflow: use `wp-contributor`.
 - Factual WordPress.org `readme.txt`, repository `README.md`, changelog, release notes, upgrade notice, or product-document synchronization: use `wp-product-docs-writer`.
 - Organic-search writing, briefs, drafts, content refreshes, AI Overview/AEO/GEO writing: use `content-writer`.
+- Consulting lead qualification, commercial SOWs/estimates/proposals, retainers, or delivery-capacity commitments: use `wp-service-business-development`; internal implementation planning stays with the artifact specialist.
 - Control-plane PR review/repair/merge for `agent-loop`, `agent-book`, or `agent-skills`: use `loop-steward`, not a WordPress product role.
 
 ## Universal Rules

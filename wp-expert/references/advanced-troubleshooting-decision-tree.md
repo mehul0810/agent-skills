@@ -6,7 +6,7 @@ Use this as primary for systematic WordPress debugging when symptoms are broad, 
 
 - Stabilize first, diagnose second, refactor last.
 - Preserve evidence before changing state: error text, request URL, role, payload, recent deploy, logs, active theme/plugins, cache state, and environment versions.
-- Reproduce with the smallest safe probe before editing when feasible.
+- Before editing, make the smallest safe, repeatable probe fail for the reported symptom when feasible. If that first probe leaves more than one plausible cause, choose one safe probe that distinguishes them. After the fix, rerun the same probe and retain it as a regression check when stable. If the symptom cannot be reproduced safely, report that limit rather than claiming it fixed.
 - Prefer reversible mitigations: feature flag, rollback, disable integration, reduce batch size, purge targeted cache, or pause queue.
 - Never use destructive database/filesystem commands without explicit approval.
 

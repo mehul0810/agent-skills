@@ -31,6 +31,7 @@ Get enough evidence to make a correct decision without loading unnecessary files
 - Favor primary sources: WordPress handbooks, source repos, vendor docs, standards, changelogs, release notes, API specs, and code.
 - Avoid SEO blogs, outdated tutorials, and generic snippets for authoritative decisions unless the task is explicitly comparative research.
 - Open only the pages needed. Use in-page search, headings, and targeted excerpts instead of reading entire doc sets.
+- Use the [official WordPress Agent Skills catalog](https://make.wordpress.org/ai/handbook/projects/agent-skills/) as a lookup index for an unfamiliar WordPress surface. Read only the relevant upstream skill and verify version-sensitive claims against the owning handbook, release notes, or source. Lookup does not require installing or running the skill.
 - Record version, date, branch, or product edition when it changes the recommendation.
 - If official docs cannot be found for an API or product, ask the user for documentation instead of guessing.
 
@@ -39,6 +40,7 @@ Get enough evidence to make a correct decision without loading unnecessary files
 - Start with `rg --files`, `rg`, `git diff --stat`, `git status --short --branch`, and small `sed -n` reads.
 - Do not dump large files, entire directories, vendor code, build output, lockfiles, or generated assets unless they are the source of truth.
 - When searching for behavior, find entry points first: hooks, routes, blocks, templates, package scripts, service registration, tests, and CI jobs.
+- If literal search is too noisy for a code shape, use an already available [`ast-grep`](https://ast-grep.github.io/reference/cli/run) locally in search-only mode for the relevant language and paths. Confirm matches in context; when the tool or language support is unavailable, use focused `rg` and file reads. Do not install tooling just for the lookup.
 - Reuse already gathered context inside the same turn; do not re-open the same files or pages unless something changed.
 
 ## Reasoning Discipline

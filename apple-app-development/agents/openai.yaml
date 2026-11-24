@@ -1,0 +1,4 @@
+interface:
+  display_name: "Apple App Development"
+  short_description: "Build and test native apps for Apple devices"
+  default_prompt: "Use $apple-app-development to implement this app change for the intended Apple device and verify the user flow on an available destination."

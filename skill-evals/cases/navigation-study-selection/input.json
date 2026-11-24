@@ -1,0 +1,5 @@
+{
+  "id": "navigation-study-selection",
+  "request": "Using the supplied site skill, answer each independent request in briefs.json. Provide a practical test or implementation decision, what the supplied facts establish, and what is still unknown. Do not recruit participants, browse, change a site or add tracking.",
+  "artifacts": ["briefs.json"]
+}

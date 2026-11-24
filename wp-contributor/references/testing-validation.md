@@ -55,7 +55,7 @@ Discover scripts first with `npm run`. Common validation areas include:
 - Storybook or visual checks for components.
 - Manual editor testing for block behavior and accessibility.
 
-For editor UI changes, include keyboard and screen reader-relevant checks when possible.
+For editor UI changes, include keyboard and relevant accessibility checks. Honor the owner's VoiceOver exclusion: do not run/request it, substitute another reader, or block ordinary task completion solely on its absence. Record excluded by owner direction, never passed. Keep other checks and report any unmet upstream acceptance requirement without claiming upstream acceptance or AT/WCAG proof. A later explicit owner request can restore the named check.
 
 ## Meta Validation
 

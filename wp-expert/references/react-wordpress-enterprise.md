@@ -28,6 +28,7 @@ Pick the smallest React surface that solves the product problem.
 - Frontend blocks: prefer static/dynamic block markup plus small behavior. Use the Interactivity API for block frontend interactions when WordPress version support and project constraints fit. Mount React on the frontend only when client state, routing, or app complexity justifies the bundle and hydration cost.
 - Headless/decoupled frontends: treat WordPress as the content/API platform and own React versioning, routing, rendering, caching, auth, and deployment separately.
 - Classic admin/editor: keep classic-editor metadata in meta boxes. Do not show newly implemented meta boxes in the block editor; use document/sidebar panels or inspector panels instead.
+- For editor-managed post meta, use the entity/editor-data editing path when changes must participate in the editor's pending save state; a direct `apiFetch` mutation is immediate and separate. Register the meta schema with correct type, authorization, and sanitization, and enable REST/custom-field support for the post type. Preserve unrelated pending meta edits. Verify save, reload, autosave, and revisions only where the target supports them; test lower-privilege capability boundaries. Do not assume every data-store dispatch is buffered.
 
 ## Runtime And Dependency Rules
 
@@ -104,4 +105,4 @@ Pick the smallest React surface that solves the product problem.
 - Run the repository's canonical lint/type/test/build gates. For `@wordpress/scripts`, use `wp-scripts lint-js`, `wp-scripts test-unit-js`, TypeScript checks when configured, and the production build; `node --check` alone does not validate JSX or TypeScript.
 - Verify generated `*.asset.php` dependency lists, built files, source maps policy, and release artifact contents.
 - Smoke-test with a lower-privilege role to prove the UI does not merely hide unauthorized actions while REST still blocks them.
-- Validate accessibility with keyboard, screen reader smoke, reduced motion, zoom, RTL/translation, and automated checks where available.
+- Validate accessibility with keyboard, reduced motion, zoom, RTL/translation, and automated checks where available. Honor the owner's VoiceOver exclusion: record excluded by owner direction, not passed; do not require a substitute reader or block ordinary completion. Run screen-reader smoke only when authorized in scope; omitted proof cannot establish AT compatibility or WCAG conformance.

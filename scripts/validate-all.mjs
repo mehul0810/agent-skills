@@ -10,11 +10,18 @@ export function validationChecks(python) {
     ['Diff', 'git', ['diff', '--check']],
     ['Validation Python regression', 'node', ['scripts/test-validation-python.mjs']],
     ['Validation process runner regression', 'node', ['scripts/test-validation-runner.mjs']],
+    ['Reference validator regression', 'node', ['scripts/test-validate-references.mjs']],
     ['Evaluation packet regression', 'node', ['scripts/test-eval-packet.mjs']],
+    ['Current status fixture regression', 'node', ['--test', 'scripts/test-current-status-fixture.mjs']],
+    ['Skill gap fixture regression', 'node', ['--test', 'scripts/test-skill-gap-fixtures.mjs']],
     ['Evaluation feedback lifecycle regression', 'node', ['scripts/test-eval-feedback-loop.mjs']],
+    ['Grade-bound draft preparation', 'node', ['scripts/test-prepare-eval-receipt.mjs']],
+    ['Attempt evidence regression', 'node', ['scripts/test-eval-attempt-evidence.mjs']],
+    ['Consumer adoption regression', 'node', ['scripts/test-agent-consumer-adoption.mjs']],
     ['Continuity hook regression', 'node', ['scripts/test-continuity-hook.mjs']],
     ['Harness dependency compatibility', 'node', ['scripts/test-harness-runtime-fingerprint.mjs']],
     ['Context bundle regression', 'node', ['scripts/test-context-bundle.mjs']],
+    ['Content migration regression', 'node', ['scripts/test-content-migration-regression.mjs']],
     ['Agent profiles', python.executable, ['scripts/validate-agent-profiles.py']],
     ['Agent profile rejection regression', python.executable, ['-O', 'scripts/test-agent-profiles.py']],
     ['References and domain audits', 'bash', ['scripts/validate-references.sh']],
@@ -23,6 +30,7 @@ export function validationChecks(python) {
     ['Evidence validator regression', 'node', ['scripts/behavior-evidence-audit.mjs', '--self-test']],
     ['Quality validator regression', 'node', ['wp-quality-reviewer/scripts/validate-review-report.mjs', '--self-test']],
     ['Install links', 'bash', ['scripts/install-links-smoke.sh']],
+    ['Antigravity installer sync', 'node', ['scripts/test-antigravity-install.mjs']],
   ];
 }
 

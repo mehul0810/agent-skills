@@ -1,0 +1,5 @@
+{
+  "id": "marketing-visual-proof",
+  "request": "Using the supplied WordPress site-design guidance, respond independently to each request in requests.json. Give a concrete implementation direction and proportionate verification; do not edit a site, access external services, or claim a planned check has run. Record guidance loaded.",
+  "artifacts": ["requests.json"]
+}

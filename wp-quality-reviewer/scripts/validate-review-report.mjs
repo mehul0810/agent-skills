@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import fs from 'node:fs';
-import { pathToFileURL } from 'node:url';
+import { fileURLToPath } from 'node:url';
 import { validateAccessibilityAudit } from './accessibility-audit.mjs';
 
 const MODES = new Set(['security', 'performance', 'modularity', 'accessibility', 'multi']);
@@ -35,18 +35,34 @@ const INTERNAL_CONTRACT = /\b(?:internal|private|helper|implementation detail|un
 const GENERIC_SECURITY_CASE = /^(?:(?:security|generic|negative|access|test|actor|input|resource|case|boundary)\s*)+$/i;
 const GENERIC_BROWSER = /^(?:(?:generic|test|desktop|mobile)\s+)?(?:web\s+)?browser(?:\s+[\d.]+)?$/i;
 const GENERIC_ASSISTIVE_TECHNOLOGY = /^(?:(?:generic|test)\s+)?(?:screen\s+reader|assistive\s+technology|at|reader)(?:\s+[\d.]+)?$/i;
+const EXCLUSION_PLACEHOLDER = /\b(?:todo|tbd|placeholder|unknown|not specified|trust me)\b/i;
+
+function validateVoiceOverExclusion(value, prefix = 'voiceOverExclusion') {
+	const errors = [];
+	if (value === undefined) return errors;
+	if (!isObject(value)) return [`${prefix} must be an object`];
+	const allowed = new Set(['status', 'authority', 'reason', 'claims']);
+	for (const key of Object.keys(value)) if (!allowed.has(key)) errors.push(`${prefix}.${key} is not allowed`);
+	if (value.status !== 'excluded_by_owner') errors.push(`${prefix}.status must be excluded_by_owner`);
+	if (typeof value.authority !== 'string' || value.authority.trim().length < 12 || EXCLUSION_PLACEHOLDER.test(value.authority)) errors.push(`${prefix}.authority must be a meaningful owner-directive pointer`);
+	if (typeof value.reason !== 'string' || value.reason.trim().length < 12 || EXCLUSION_PLACEHOLDER.test(value.reason)) errors.push(`${prefix}.reason must be concrete and non-placeholder`);
+	if (value.claims !== 'not_verified') errors.push(`${prefix}.claims must be not_verified`);
+	return errors;
+}
 
 const KEYS = {
-	top: new Set(['schemaVersion', 'mode', 'targetIdentity', 'scope', 'qualityTarget', 'assuranceProfile', 'accessibilityClaim', 'accessibilityAudit', 'domains', 'findings', 'proofGaps', 'conclusion']),
+	top: new Set(['schemaVersion', 'mode', 'targetIdentity', 'scope', 'qualityTarget', 'assuranceProfile', 'accessibilityClaim', 'accessibilityAudit', 'voiceOverExclusion', 'domains', 'findings', 'proofGaps', 'conclusion']),
 	target: new Set(['kind', 'repository', 'commitSha', 'baseCommitSha', 'artifact']),
 	artifact: new Set(['path', 'sha256']),
 	scope: new Set(['targets', 'exclusions']),
-	domain: new Set(['disposition', 'evidence', 'validation', 'reason', 'authorizationMatrix', 'resourceBudget', 'capacityEnvelope']),
+	domain: new Set(['disposition', 'evidence', 'validation', 'reason', 'authorizationMatrix', 'resourceBudget', 'capacityEnvelope', 'migrationPlan', 'legacyDebtPaths', 'modularityRatchets', 'webhookScope']),
 	finding: new Set(['id', 'area', 'severity', 'status', 'riskFlags', 'evidence', 'impact', 'remediation', 'validation', 'performanceMeasurement', 'authorizationMatrix', 'resourceBudget', 'negativeTests', 'behaviorChecks', 'contractChecks', 'migrationPlan', 'modularityRatchet', 'manualChecks', 'aaaAdvisoryCriteria', 'independentReview', 'riskAcceptance']),
 	evidence: new Set(['kind', 'pointer', 'observation', 'environment', 'identity']),
 	validation: new Set(['kind', 'check', 'expected', 'observed', 'expectedState', 'observedState', 'result', 'environment', 'artifact', 'artifactSha256', 'identity', 'claim', 'browser', 'assistiveTechnology', 'performanceMeasurement', 'securityCases', 'contractCases', 'performanceChecks']),
 	measurement: new Set([
 		'metric',
+		'statistic',
+		'improvementClaim',
 		'unit',
 		'direction',
 		'before',
@@ -78,11 +94,17 @@ const KEYS = {
 	capacitySaturation: new Set(['metric', 'observed', 'budget', 'direction']),
 	capacityFairness: new Set(['scope', 'limit', 'unit']),
 	capacityQueue: new Set(['arrivalRate', 'serviceRate', 'maxBacklog', 'observedBacklog', 'drainSeconds', 'drainBudgetSeconds']),
+	notApplicable: new Set(['status', 'reason']),
+	webhookScope: new Set(['handler', 'action', 'resource', 'deniedActor', 'effect', 'effectReason', 'workload', 'workloadReason', 'workScope']),
 	capacityStorage: new Set(['currentBytes', 'projectedBytes', 'restoreSeconds', 'restoreBudgetSeconds']),
 	independentReview: new Set(['kind', 'runId', 'reviewedCommitSha', 'result', 'evidence']),
 	assuranceProfile: new Set(['level', 'risks']),
 	migrationPlan: new Set(['strategy', 'expandCheck', 'backfillCheck', 'idempotencyCheck', 'rollbackCheck', 'contractStatus', 'cleanupIssue', 'ownerApproval']),
 	modularityRatchet: new Set(['metric', 'baseline', 'after', 'budget', 'posture', 'owner', 'issue', 'rationale']),
+	typedRatchet: new Set(['path', 'measurements', 'evidence']),
+	ratchetMeasurements: new Set(['logicalFileLines', 'oversizedMethodCount', 'largestChangedMethod']),
+	ratchetMetric: new Set(['baseline', 'after', 'budget', 'posture', 'owner', 'issue', 'rationale', 'ownerApproval', 'approvalScope']),
+	ratchetApprovalScope: new Set(['owner', 'path', 'metric', 'budget']),
 };
 
 function isObject(value) {
@@ -197,7 +219,7 @@ function validateContractCases(cases, prefix, errors) {
 	}
 }
 
-function validatePerformanceChecks(checks, prefix, errors, requiredKinds = []) {
+function validatePerformanceChecks(checks, prefix, errors, requiredKinds = [], mustPass = true) {
 	if (!Array.isArray(checks) || checks.length === 0) {
 		errors.push(`${prefix} requires structured performance checks`);
 		return;
@@ -214,7 +236,8 @@ function validatePerformanceChecks(checks, prefix, errors, requiredKinds = []) {
 		else seen.add(check.kind);
 		if (!meaningfulText(check.expected)) errors.push(`${checkPrefix}.expected is required`);
 		if (!meaningfulText(check.observed)) errors.push(`${checkPrefix}.observed is required`);
-		if (check.result !== 'pass') errors.push(`${checkPrefix}.result must pass`);
+		if (!['pass', 'fail', 'blocked'].includes(check.result)) errors.push(`${checkPrefix}.result is invalid`);
+		else if (mustPass && check.result !== 'pass') errors.push(`${checkPrefix}.result must pass`);
 	}
 	for (const kind of requiredKinds) {
 		if (!seen.has(kind)) errors.push(`${prefix} requires a passing ${kind} check`);
@@ -241,23 +264,40 @@ function validateValidationReceipt(receipt, prefix, errors) {
 	if (receipt.artifactSha256 !== undefined && !SHA256.test(receipt.artifactSha256)) errors.push(`${prefix}.artifactSha256 must be a 64-character digest`);
 	if (receipt.result === 'pass' && [receipt.check, receipt.expected, receipt.observed, receipt.artifact].some((value) => nonEmpty(value) && PLACEHOLDER_PROOF.test(value))) errors.push(`${prefix} pass cannot rely on placeholder proof`);
 	if (receipt.identity !== undefined) validateIdentityValues(receipt.identity, `${prefix}.identity`, errors);
-	if (receipt.claim !== undefined && !['security_negative', 'performance_comparable', 'modularity_behavior', 'accessibility_manual', 'accessibility_automated', 'contract_compatibility', 'migration_step'].includes(receipt.claim)) errors.push(`${prefix}.claim is invalid`);
+	if (receipt.claim !== undefined && !['security_negative', 'performance_comparable', 'modularity_behavior', 'accessibility_manual', 'accessibility_keyboard', 'accessibility_automated', 'contract_compatibility', 'migration_step'].includes(receipt.claim)) errors.push(`${prefix}.claim is invalid`);
 	const states = ['allow', 'deny', 'reject', 'sanitize', 'preserve', 'within_budget', 'accessible', 'success', 'failure', 'blocked'];
 	if (receipt.expectedState !== undefined && !states.includes(receipt.expectedState)) errors.push(`${prefix}.expectedState is invalid`);
 	if (receipt.observedState !== undefined && !states.includes(receipt.observedState)) errors.push(`${prefix}.observedState is invalid`);
 	if (receipt.result === 'pass' && receipt.expectedState !== undefined && receipt.expectedState !== receipt.observedState) errors.push(`${prefix} pass requires observedState to match expectedState`);
 	if (receipt.claim === 'security_negative' && !['deny', 'reject', 'sanitize'].includes(receipt.expectedState)) errors.push(`${prefix}.expectedState must be deny, reject, or sanitize for security_negative proof`);
-	if (receipt.claim === 'performance_comparable' && receipt.expectedState !== 'within_budget') errors.push(`${prefix}.expectedState must be within_budget for performance_comparable proof`);
+	if (receipt.claim === 'performance_comparable') {
+		if (receipt.expectedState !== 'within_budget') errors.push(`${prefix}.expectedState must be within_budget for performance_comparable proof`);
+		if (!['within_budget', 'failure', 'blocked'].includes(receipt.observedState)) errors.push(`${prefix}.observedState must describe the performance outcome`);
+		if (receipt.performanceMeasurement === undefined) errors.push(`${prefix}.performanceMeasurement is required for performance_comparable proof`);
+	}
 	if (['modularity_behavior', 'contract_compatibility'].includes(receipt.claim) && receipt.expectedState !== 'preserve') errors.push(`${prefix}.expectedState must be preserve for contract proof`);
-	if (['accessibility_manual', 'accessibility_automated'].includes(receipt.claim) && receipt.expectedState !== 'accessible') errors.push(`${prefix}.expectedState must be accessible for accessibility proof`);
+	if (['accessibility_manual', 'accessibility_keyboard', 'accessibility_automated'].includes(receipt.claim) && receipt.expectedState !== 'accessible') errors.push(`${prefix}.expectedState must be accessible for accessibility proof`);
+	if (receipt.claim === 'accessibility_keyboard') {
+		if (!['browser', 'manual'].includes(receipt.kind)) errors.push(`${prefix}.kind must be browser or manual for keyboard-only proof`);
+		if (!meaningfulText(receipt.browser, 3, 1) || GENERIC_BROWSER.test(receipt.browser.trim())) errors.push(`${prefix}.browser must name the keyboard-test browser`);
+		if (!nonEmpty(receipt.environment) || !nonEmpty(receipt.artifact) || receipt.identity === undefined) errors.push(`${prefix} keyboard proof requires environment, artifact, and candidate identity`);
+		if (!['accessible', 'failure', 'blocked'].includes(receipt.observedState)) errors.push(`${prefix}.observedState must be accessible, failure, or blocked for keyboard-only proof`);
+		if (receipt.result === 'pass' && receipt.observedState !== 'accessible') errors.push(`${prefix}.observedState must be accessible for passing keyboard-only proof`);
+		if (receipt.assistiveTechnology !== undefined) errors.push(`${prefix} keyboard proof cannot claim assistiveTechnology`);
+	}
 	if (receipt.claim === 'accessibility_automated' && !SHA256.test(receipt.artifactSha256 ?? '')) errors.push(`${prefix}.artifactSha256 is required for automated accessibility proof`);
 	if (receipt.browser !== undefined && (!meaningfulText(receipt.browser, 3, 1) || GENERIC_BROWSER.test(receipt.browser.trim()))) errors.push(`${prefix}.browser must name a supported browser`);
 	if (receipt.assistiveTechnology !== undefined && (!meaningfulText(receipt.assistiveTechnology, 3, 1) || GENERIC_ASSISTIVE_TECHNOLOGY.test(receipt.assistiveTechnology.trim()))) errors.push(`${prefix}.assistiveTechnology must name an assistive technology`);
-	if (receipt.performanceMeasurement !== undefined) validatePerformanceMeasurement(receipt.performanceMeasurement, `${prefix}.performanceMeasurement`, errors);
+	if (receipt.performanceMeasurement !== undefined) validatePerformanceMeasurement(receipt.performanceMeasurement, `${prefix}.performanceMeasurement`, errors, { outcome: receipt.result === 'pass', budgetLabel: receipt.expected });
 	if (receipt.securityCases !== undefined) validateSecurityCases(receipt.securityCases, `${prefix}.securityCases`, errors);
 	if (receipt.contractCases !== undefined) validateContractCases(receipt.contractCases, `${prefix}.contractCases`, errors);
-	if (receipt.performanceChecks !== undefined) validatePerformanceChecks(receipt.performanceChecks, `${prefix}.performanceChecks`, errors);
-	if (receipt.claim === 'security_negative') validateSecurityCases(receipt.securityCases, `${prefix}.securityCases`, errors);
+	if (receipt.performanceChecks !== undefined) validatePerformanceChecks(receipt.performanceChecks, `${prefix}.performanceChecks`, errors, [], receipt.result === 'pass');
+	if (receipt.claim === 'security_negative') {
+		validateSecurityCases(receipt.securityCases, `${prefix}.securityCases`, errors);
+		for (const [index, check] of (Array.isArray(receipt.securityCases) ? receipt.securityCases : []).entries()) {
+			if (check?.expected !== receipt.expectedState || check?.observed !== receipt.observedState) errors.push(`${prefix}.securityCases[${index}] outcome must match receipt boundary outcome`);
+		}
+	}
 	if (['modularity_behavior', 'contract_compatibility'].includes(receipt.claim)) validateContractCases(receipt.contractCases, `${prefix}.contractCases`, errors);
 }
 
@@ -378,7 +418,7 @@ function validateResourceBudget(budget, prefix, errors, target, requireBinding =
 	}
 }
 
-function validateCapacityEnvelope(envelope, prefix, errors, target, requireBinding = false) {
+function validateCapacityEnvelope(envelope, prefix, errors, target, requireBinding = false, risks = []) {
 	if (!isObject(envelope)) {
 		errors.push(`${prefix} is required for declared scale risk`);
 		return;
@@ -393,7 +433,11 @@ function validateCapacityEnvelope(envelope, prefix, errors, target, requireBindi
 	];
 	for (const [key, keys] of objects) {
 		if (!isObject(envelope[key])) errors.push(`${prefix}.${key} must be an object`);
-		else checkKeys(envelope[key], keys, `${prefix}.${key}`, errors);
+		else if (['queue', 'fairness'].includes(key) && envelope[key].status === 'not_applicable') {
+			checkKeys(envelope[key], KEYS.notApplicable, `${prefix}.${key}`, errors);
+			if (!meaningfulText(envelope[key].reason)) errors.push(`${prefix}.${key}.reason must justify not_applicable`);
+			if (risks.includes(key === 'queue' ? 'async_queue' : 'multi_tenant')) errors.push(`${prefix}.${key} cannot be not_applicable for declared ${key === 'queue' ? 'async_queue' : 'multi_tenant'} risk`);
+		} else checkKeys(envelope[key], keys, `${prefix}.${key}`, errors);
 	}
 	if (!meaningfulText(envelope.workload?.description)) errors.push(`${prefix}.workload.description is required`);
 	for (const key of ['concurrency', 'dataVolume', 'durationSeconds']) {
@@ -407,14 +451,18 @@ function validateCapacityEnvelope(envelope, prefix, errors, target, requireBindi
 	if (!['lower_is_better', 'higher_is_better'].includes(envelope.saturation?.direction)) errors.push(`${prefix}.saturation.direction is invalid`);
 	if (envelope.saturation?.direction === 'lower_is_better' && envelope.saturation.observed > envelope.saturation.budget) errors.push(`${prefix}.saturation exceeds its budget`);
 	if (envelope.saturation?.direction === 'higher_is_better' && envelope.saturation.observed < envelope.saturation.budget) errors.push(`${prefix}.saturation misses its budget`);
+	if (envelope.fairness?.status !== 'not_applicable') {
 	if (!meaningfulText(envelope.fairness?.scope, 4, 1)) errors.push(`${prefix}.fairness.scope is required`);
 	if (!Number.isFinite(envelope.fairness?.limit) || envelope.fairness.limit <= 0 || !nonEmpty(envelope.fairness?.unit)) errors.push(`${prefix}.fairness requires a positive limit and unit`);
+	}
+	if (envelope.queue?.status !== 'not_applicable') {
 	for (const key of ['arrivalRate', 'serviceRate', 'maxBacklog', 'observedBacklog', 'drainSeconds', 'drainBudgetSeconds']) {
 		if (!Number.isFinite(envelope.queue?.[key]) || envelope.queue[key] < 0) errors.push(`${prefix}.queue.${key} must be a non-negative number`);
 	}
 	if (Number.isFinite(envelope.queue?.arrivalRate) && Number.isFinite(envelope.queue?.serviceRate) && envelope.queue.serviceRate <= envelope.queue.arrivalRate) errors.push(`${prefix}.queue.serviceRate must exceed arrivalRate`);
 	if (Number.isFinite(envelope.queue?.observedBacklog) && Number.isFinite(envelope.queue?.maxBacklog) && envelope.queue.observedBacklog > envelope.queue.maxBacklog) errors.push(`${prefix}.queue.observedBacklog exceeds maxBacklog`);
 	if (Number.isFinite(envelope.queue?.drainSeconds) && Number.isFinite(envelope.queue?.drainBudgetSeconds) && envelope.queue.drainSeconds > envelope.queue.drainBudgetSeconds) errors.push(`${prefix}.queue.drainSeconds exceeds drainBudgetSeconds`);
+	}
 	for (const key of ['currentBytes', 'projectedBytes', 'restoreSeconds', 'restoreBudgetSeconds']) {
 		if (!Number.isFinite(envelope.storage?.[key]) || envelope.storage[key] < 0) errors.push(`${prefix}.storage.${key} must be a non-negative number`);
 	}
@@ -438,7 +486,7 @@ function validatePerformanceConditions(conditions, prefix, errors) {
 	if (!Number.isInteger(conditions.concurrency) || conditions.concurrency < 1) errors.push(`${prefix}.concurrency must be a positive integer`);
 }
 
-function validatePerformanceMeasurement(measurement, prefix, errors, { comparable = false, elevated = false } = {}) {
+function validatePerformanceMeasurement(measurement, prefix, errors, { comparable = false, elevated = false, outcome = false, improvement = false, budgetLabel = '' } = {}) {
 	if (!isObject(measurement)) {
 		errors.push(`${prefix} must be a structured measurement`);
 		return;
@@ -450,13 +498,29 @@ function validatePerformanceMeasurement(measurement, prefix, errors, { comparabl
 	for (const key of ['before', 'after', 'budget']) {
 		if (!Number.isFinite(measurement[key])) errors.push(`${prefix}.${key} must be numeric`);
 	}
-	if (Number.isFinite(measurement.before) && Number.isFinite(measurement.after) && Number.isFinite(measurement.budget)) {
-		if (measurement.direction === 'lower_is_better' && !(measurement.after < measurement.before && measurement.after <= measurement.budget)) {
-			errors.push(`${prefix} must improve and meet the lower-is-better budget`);
-		}
-		if (measurement.direction === 'higher_is_better' && !(measurement.after > measurement.before && measurement.after >= measurement.budget)) {
-			errors.push(`${prefix} must improve and meet the higher-is-better budget`);
-		}
+	const statistics = ['single', 'mean', 'median', 'p50', 'p75', 'p95', 'p99'];
+	if (measurement.statistic !== undefined && !statistics.includes(measurement.statistic)) errors.push(`${prefix}.statistic is invalid`);
+	if (measurement.improvementClaim !== undefined && typeof measurement.improvementClaim !== 'boolean') errors.push(`${prefix}.improvementClaim must be boolean`);
+	const explicitBudgetLabel = String(budgetLabel ?? '').match(/\b(?:p\s*(?:100|\d{1,2})|(?:100|\d{1,2})(?:st|nd|rd|th)?[\s-]+percentile)\b(?:(?!\bp\s*\d+\b).){0,40}\bbudget\b|\bbudget\s+(?:for|target(?:s|ing)?|of)\s+(?:p\s*(?:100|\d{1,2})|(?:100|\d{1,2})(?:st|nd|rd|th)?[\s-]+percentile)\b/gi)?.join(' ') ?? '';
+	const namedPercentiles = [measurement.metric, explicitBudgetLabel].flatMap((label) => [...String(label ?? '').matchAll(/\b(?:p\s*(100|\d{1,2})|(100|\d{1,2})(?:st|nd|rd|th)?[\s-]+percentile)\b/gi)].map((match) => `p${match[1] ?? match[2]}`));
+	const statistic = measurement.statistic === 'median' ? 'p50' : measurement.statistic;
+	if (namedPercentiles.some((name) => name !== statistic)) errors.push(`${prefix}.statistic must match the percentile named in metric or budget`);
+	const minimumObservations = { p50: 2, p75: 4, p95: 20, p99: 100 };
+	if (Object.hasOwn(minimumObservations, statistic) && (measurement.statistic !== 'median' || elevated || measurement.distribution !== undefined)) {
+		if (!Number.isInteger(measurement.sampleSize) || measurement.sampleSize < minimumObservations[statistic]) errors.push(`${prefix}.sampleSize must count at least ${minimumObservations[statistic]} observations for ${measurement.statistic}`);
+		if (!Number.isFinite(measurement.distribution?.[statistic]) || measurement.after !== measurement.distribution[statistic]) errors.push(`${prefix}.after must equal the candidate distribution statistic`);
+		if (!Number.isFinite(measurement.variance)) errors.push(`${prefix}.variance is required for percentile evidence`);
+		if (!meaningfulText(measurement.provenance, 8, 2)) errors.push(`${prefix}.provenance is required for percentile evidence`);
+	}
+	if (elevated && measurement.statistic === undefined) errors.push(`${prefix}.statistic is required for elevated proof`);
+	if (elevated && ['mean', 'single'].includes(measurement.statistic)) errors.push(`${prefix}.statistic must identify a distribution percentile for elevated tail proof`);
+	if ((outcome || improvement || measurement.improvementClaim === true) && Number.isFinite(measurement.before) && Number.isFinite(measurement.after) && Number.isFinite(measurement.budget)) {
+		const lower = measurement.direction === 'lower_is_better';
+		const within = lower ? measurement.after <= measurement.budget : measurement.after >= measurement.budget;
+		const nonregression = lower ? measurement.after <= measurement.before : measurement.after >= measurement.before;
+		const improved = lower ? measurement.after < measurement.before : measurement.after > measurement.before;
+		if (!within || !nonregression) errors.push(`${prefix} must meet budget without regression`);
+		if ((improvement || measurement.improvementClaim === true) && !improved) errors.push(`${prefix} must strictly improve for a fixed finding or improvement claim`);
 	}
 	if (!meaningfulText(measurement.conditions)) errors.push(`${prefix}.conditions must identify comparable conditions`);
 	if (measurement.sampleSize !== undefined && (!Number.isInteger(measurement.sampleSize) || measurement.sampleSize < 1)) {
@@ -485,8 +549,11 @@ function validatePerformanceMeasurement(measurement, prefix, errors, { comparabl
 	}
 	if (measurement.distribution !== undefined) {
 		validateDistribution(measurement.distribution, `${prefix}.distribution`, errors);
-		if (measurement.sampleSize === undefined && measurement.runCount === undefined) {
-			errors.push(`${prefix}.distribution requires sampleSize or runCount`);
+		for (const [statistic, minimum] of Object.entries(minimumObservations)) {
+			if (measurement.distribution?.[statistic] !== undefined && (!Number.isInteger(measurement.sampleSize) || measurement.sampleSize < minimum)) errors.push(`${prefix}.distribution.${statistic} requires at least ${minimum} observations`);
+		}
+		if (measurement.sampleSize === undefined) {
+			errors.push(`${prefix}.distribution requires sampleSize observations`);
 		}
 	}
 	if (measurement.fieldOrLab !== undefined && measurement.provenance === undefined) {
@@ -504,7 +571,9 @@ function validatePerformanceMeasurement(measurement, prefix, errors, { comparabl
 	}
 	if (elevated) {
 		if (!Number.isInteger(measurement.runCount) || measurement.runCount < 3) errors.push(`${prefix}.runCount must be at least 3 for elevated proof`);
-		if (!isObject(measurement.distribution) || !Number.isFinite(measurement.distribution.p95) || !Number.isFinite(measurement.distribution.p99)) errors.push(`${prefix}.distribution requires p95 and p99 for elevated proof`);
+		if (!isObject(measurement.distribution) || Object.keys(measurement.distribution).length === 0) errors.push(`${prefix}.distribution is required for elevated proof`);
+		if (!Number.isInteger(measurement.sampleSize) || measurement.sampleSize < 2) errors.push(`${prefix}.sampleSize must count at least 2 observations for elevated proof`);
+		if (!Number.isFinite(measurement.variance)) errors.push(`${prefix}.variance is required for elevated proof`);
 		if (!Number.isFinite(measurement.errorRate)) errors.push(`${prefix}.errorRate is required for elevated proof`);
 		for (const key of ['cacheState', 'fieldOrLab', 'provenance', 'limitations']) {
 			if (measurement[key] === undefined) errors.push(`${prefix}.${key} is required for elevated proof`);
@@ -522,7 +591,10 @@ function validateAssuranceProfile(profile, report, errors) {
 	if (!Array.isArray(profile.risks) || profile.risks.some((risk) => !ASSURANCE_RISKS.has(risk))) errors.push('assuranceProfile.risks is invalid');
 	const risks = Array.isArray(profile.risks) ? profile.risks : [];
 	if (risks.length > 0 && profile.level !== 'elevated') errors.push('assuranceProfile.level must be elevated when risks are declared');
-	const targetText = [report.qualityTarget, ...(Array.isArray(report.scope?.targets) ? report.scope.targets : [])].join(' ');
+	const targetText = [report.qualityTarget, ...(Array.isArray(report.scope?.targets) ? report.scope.targets : [])].join('; ');
+	// A negated scope is not a risk declaration. Do not erase "no queue limits" or a second, real queue.
+	const capacityText = targetText.replace(/\b(?:no|without(?: an?)?)\s+(?:async(?:hronous)?\s+)?(?:queues?|background jobs?)\b(?=\s*(?:[.,;)]|$|\band\b))/gi, '')
+		.replace(/\b(?:not\s+(?:a\s+)?|non[- ])multi[- ]tenant\b/gi, '');
 	const inferred = [
 		['high_traffic', /\b(?:high[- ]traffic|millions? of visits)\b/i],
 		['multi_tenant', /\bmulti[- ]tenant\b/i],
@@ -534,14 +606,15 @@ function validateAssuranceProfile(profile, report, errors) {
 		['sensitive_data', /\b(?:sensitive data|personal data|PII|credentials?|secrets?)\b/i],
 		['legacy_debt', /\b(?:legacy|[1-9]\d{3,}[+-]?[- ]line)\b[^.]{0,50}\b(?:file|class|module)\b/i],
 	];
-	for (const [risk, pattern] of inferred) {
-		if (pattern.test(targetText) && !risks.includes(risk)) errors.push(`assuranceProfile.risks must include ${risk} because scope declares it`);
+	const declared = inferred.filter(([risk, pattern]) => pattern.test(['async_queue', 'multi_tenant'].includes(risk) ? capacityText : targetText));
+	for (const [risk] of declared) {
+		if (!risks.includes(risk)) errors.push(`assuranceProfile.risks must include ${risk} because scope declares it`);
 	}
-	if (inferred.some(([, pattern]) => pattern.test(targetText)) && profile.level !== 'elevated') errors.push('assuranceProfile.level must be elevated for the stated risk profile');
+	if (declared.length && profile.level !== 'elevated') errors.push('assuranceProfile.level must be elevated for the stated risk profile');
 	return risks;
 }
 
-function validateMigrationPlan(plan, prefix, errors, target, requireBinding) {
+function validateMigrationPlan(plan, prefix, errors, target, requireBinding, mustPass) {
 	if (!isObject(plan)) {
 		errors.push(`${prefix} is required for a migration finding`);
 		return;
@@ -550,7 +623,8 @@ function validateMigrationPlan(plan, prefix, errors, target, requireBinding) {
 	if (plan.strategy !== 'expand_migrate_contract') errors.push(`${prefix}.strategy must be expand_migrate_contract`);
 	for (const key of ['expandCheck', 'backfillCheck', 'idempotencyCheck', 'rollbackCheck']) {
 		validateValidationReceipt(plan[key], `${prefix}.${key}`, errors);
-		if (plan[key]?.claim !== 'migration_step' || plan[key]?.result !== 'pass') errors.push(`${prefix}.${key} must be a passing migration_step receipt`);
+		if (plan[key]?.claim !== 'migration_step') errors.push(`${prefix}.${key}.claim must be migration_step`);
+		if (mustPass && plan[key]?.result !== 'pass') errors.push(`${prefix}.${key} must pass for a passing domain or fixed finding`);
 		validateCandidateBinding(plan[key], target, `${prefix}.${key}`, errors, { required: requireBinding });
 	}
 	if (!['deferred', 'owner_approved'].includes(plan.contractStatus)) errors.push(`${prefix}.contractStatus is invalid`);
@@ -558,6 +632,7 @@ function validateMigrationPlan(plan, prefix, errors, target, requireBinding) {
 	if (plan.contractStatus === 'owner_approved') {
 		validateEvidenceReceipt(plan.ownerApproval, `${prefix}.ownerApproval`, errors);
 		if (plan.ownerApproval?.kind !== 'owner') errors.push(`${prefix}.ownerApproval.kind must be owner`);
+		validateCandidateBinding(plan.ownerApproval, target, `${prefix}.ownerApproval`, errors, { required: requireBinding });
 	}
 }
 
@@ -579,6 +654,73 @@ function validateModularityRatchet(ratchet, prefix, errors) {
 			if (!meaningfulText(ratchet[key], key === 'issue' ? 5 : 8, key === 'issue' ? 1 : 2)) errors.push(`${prefix}.${key} is required for an exception`);
 		}
 		if (nonEmpty(ratchet.issue) && !LOCATOR.test(ratchet.issue)) errors.push(`${prefix}.issue must locate the tracked exception`);
+	}
+}
+
+function isRepositoryFilePath(path) {
+	if (!nonEmpty(path) || path !== path.trim() || /[\\:#?\x00-\x1f]/.test(path) || path.startsWith('/')) return false;
+	const segments = path.split('/');
+	return segments.every((segment) => segment !== '' && segment !== '.' && segment !== '..')
+		&& !/^(?:issues|pull|pulls)\/\d+$/i.test(path);
+}
+
+function validateTypedRatchets(ratchets, prefix, errors, target, requireBinding) {
+	if (!Array.isArray(ratchets) || ratchets.length === 0) {
+		errors.push(`${prefix} requires at least one path-specific ratchet`);
+		return;
+	}
+	const paths = new Set();
+	for (const [index, ratchet] of ratchets.entries()) {
+		const p = `${prefix}[${index}]`;
+		if (!isObject(ratchet)) {
+			errors.push(`${p} must be an object`);
+			continue;
+		}
+		checkKeys(ratchet, KEYS.typedRatchet, p, errors);
+		if (!isRepositoryFilePath(ratchet.path)) errors.push(`${p}.path must be a repository-relative file path`);
+		if (paths.has(ratchet.path)) errors.push(`${p}.path must be unique`);
+		paths.add(ratchet.path);
+		validateReceiptList(ratchet.evidence, `${p}.evidence`, errors, validateEvidenceReceipt, 1);
+		for (const [i, receipt] of (Array.isArray(ratchet.evidence) ? ratchet.evidence : []).entries()) {
+			validateCandidateBinding(receipt, target, `${p}.evidence[${i}]`, errors, { required: requireBinding });
+		}
+		if (!isObject(ratchet.measurements)) {
+			errors.push(`${p}.measurements is required`);
+			continue;
+		}
+		checkKeys(ratchet.measurements, KEYS.ratchetMeasurements, `${p}.measurements`, errors);
+		for (const key of KEYS.ratchetMeasurements) {
+			const metric = ratchet.measurements[key];
+			const mp = `${p}.measurements.${key}`;
+			if (!isObject(metric)) {
+				errors.push(`${mp} is required`);
+				continue;
+			}
+			checkKeys(metric, KEYS.ratchetMetric, mp, errors);
+			for (const field of ['baseline', 'after', 'budget']) {
+				if (!Number.isInteger(metric[field]) || metric[field] < 0) errors.push(`${mp}.${field} must be a non-negative integer`);
+			}
+			if (!['reduced', 'no_growth', 'exception'].includes(metric.posture)) errors.push(`${mp}.posture is invalid`);
+			if (metric.posture === 'reduced' && !(metric.after < metric.baseline && metric.after <= metric.budget)) errors.push(`${mp} reduced posture must reduce debt within budget`);
+			if (metric.posture === 'no_growth' && !(metric.after <= metric.baseline && metric.after <= metric.budget)) errors.push(`${mp} no_growth posture must not increase debt or exceed budget`);
+			if (metric.posture === 'exception') {
+				if (!(metric.after <= metric.budget)) errors.push(`${mp} exception must remain within the approved budget`);
+				if (!meaningfulText(metric.owner, 2, 1)) errors.push(`${mp}.owner is required for an exception`);
+				if (!meaningfulText(metric.issue, 5, 1) || !LOCATOR.test(metric.issue)) errors.push(`${mp}.issue must locate the tracked exception`);
+				if (!meaningfulText(metric.rationale, 8, 2)) errors.push(`${mp}.rationale is required for an exception`);
+				validateEvidenceReceipt(metric.ownerApproval, `${mp}.ownerApproval`, errors);
+				if (metric.ownerApproval?.kind !== 'owner') errors.push(`${mp}.ownerApproval.kind must be owner`);
+				validateCandidateBinding(metric.ownerApproval, target, `${mp}.ownerApproval`, errors, { required: requireBinding });
+				if (!isObject(metric.approvalScope)) {
+					errors.push(`${mp}.approvalScope is required for an exception`);
+				} else {
+					checkKeys(metric.approvalScope, KEYS.ratchetApprovalScope, `${mp}.approvalScope`, errors);
+					for (const [field, value] of Object.entries({ owner: metric.owner, path: ratchet.path, metric: key, budget: metric.budget })) {
+						if (metric.approvalScope[field] !== value) errors.push(`${mp}.approvalScope.${field} must match the approved exception`);
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -621,6 +763,7 @@ export function validate(report) {
 	const errors = [];
 	if (!isObject(report)) return ['report must be an object'];
 	checkKeys(report, KEYS.top, 'report', errors);
+	errors.push(...validateVoiceOverExclusion(report.voiceOverExclusion));
 	if (report.schemaVersion !== 2) errors.push('schemaVersion must be 2');
 	if (!MODES.has(report.mode)) errors.push('mode is invalid');
 	if (!CONCLUSIONS.has(report.conclusion)) errors.push('conclusion is invalid');
@@ -661,6 +804,8 @@ export function validate(report) {
 		} else {
 			validateReceiptList(domain.evidence, `domains.${area}.evidence`, errors, validateEvidenceReceipt, 1);
 		}
+		if (area === 'performance' && domain.disposition === 'pass' && Array.isArray(domain.validation) && domain.validation.some((receipt) => receipt?.claim === 'performance_comparable' && receipt.result !== 'pass')) errors.push('passing performance domain cannot contain a failed or blocked primary performance receipt');
+		if (area === 'performance' && report.conclusion === 'pass' && ['fail', 'partial'].includes(domain.disposition)) errors.push('passing report cannot contain a failed or partial performance domain');
 		const releasePass = report.targetIdentity?.kind === 'package' && report.conclusion === 'pass' && domain.disposition === 'pass';
 		if (report.targetIdentity?.kind === 'package' && report.conclusion === 'pass' && domain.disposition !== 'pass') {
 			errors.push(`packaged release pass requires domains.${area}.disposition to be pass`);
@@ -674,35 +819,67 @@ export function validate(report) {
 		for (const [index, receipt] of (Array.isArray(domain.validation) ? domain.validation : []).entries()) {
 			validateCandidateBinding(receipt, report.targetIdentity, `domains.${area}.validation[${index}]`, errors, { required: releasePass });
 		}
-		if (releasePass && Array.isArray(domain.validation) && !domain.validation.some((receipt) => RELEASE_VALIDATION_KINDS[area]?.has(receipt?.kind))) {
-			errors.push(`domains.${area}.validation requires release-appropriate ${[...RELEASE_VALIDATION_KINDS[area]].join(' or ')} proof`);
-		}
-		const claimedProof = releasePass && Array.isArray(domain.validation)
-			? domain.validation.find((receipt) => receipt?.claim === RELEASE_VALIDATION_CLAIMS[area]) : null;
-		if (releasePass && !claimedProof) errors.push(`domains.${area}.validation requires ${RELEASE_VALIDATION_CLAIMS[area]} proof`);
+		const requiredClaim = area === 'accessibility' && report.voiceOverExclusion
+			? 'accessibility_keyboard' : RELEASE_VALIDATION_CLAIMS[area];
+		const candidates = releasePass && Array.isArray(domain.validation)
+			? domain.validation.filter((receipt) => receipt?.claim === requiredClaim && RELEASE_VALIDATION_KINDS[area]?.has(receipt.kind) && receipt.result === 'pass' && receipt.expectedState === receipt.observedState && receipt.identity?.commitSha === report.targetIdentity.commitSha && receipt.identity?.artifactSha256 === report.targetIdentity.artifact?.sha256 && nonEmpty(receipt.artifact) && LOCATOR.test(receipt.artifact)) : [];
+		const performanceProofErrors = (receipt) => {
+			const proofErrors = [];
+			if (!receipt.performanceMeasurement) proofErrors.push('domains.performance.validation requires a comparable performanceMeasurement');
+			else validatePerformanceMeasurement(receipt.performanceMeasurement, 'domains.performance.validation.performanceMeasurement', proofErrors, { comparable: true, elevated: elevatedPerformance, outcome: true, budgetLabel: receipt.expected });
+			if (elevatedPerformance) validatePerformanceChecks(receipt.performanceChecks, 'domains.performance.validation.performanceChecks', proofErrors, ['tail', 'overload', 'recovery', 'cache', 'capacity']);
+			return proofErrors;
+		};
+		const claimedProof = candidates.find((receipt) => area !== 'performance' || performanceProofErrors(receipt).length === 0);
+		if (releasePass && area === 'performance' && !claimedProof && candidates.length) errors.push(...performanceProofErrors(candidates[0]));
+		if (releasePass && !claimedProof) errors.push(`domains.${area}.validation requires ${requiredClaim} proof on a release-appropriate candidate-bound receipt`);
 		if (releasePass && area === 'security' && claimedProof) validateSecurityCases(claimedProof.securityCases, 'domains.security.validation.securityCases', errors);
 		if (releasePass && area === 'modularity' && claimedProof) validateContractCases(claimedProof.contractCases, 'domains.modularity.validation.contractCases', errors);
-		if (releasePass && area === 'performance') {
-			if (!claimedProof?.performanceMeasurement) errors.push('domains.performance.validation requires a comparable performanceMeasurement');
-			else validatePerformanceMeasurement(claimedProof.performanceMeasurement, 'domains.performance.validation.performanceMeasurement', errors, { comparable: true, elevated: elevatedPerformance });
-			if (elevatedPerformance) validatePerformanceChecks(claimedProof?.performanceChecks, 'domains.performance.validation.performanceChecks', errors, ['tail', 'overload', 'recovery', 'cache', 'capacity']);
-		}
 		if (area === 'security' && domain.authorizationMatrix !== undefined) validateAuthorizationMatrix(domain.authorizationMatrix, `domains.${area}.authorizationMatrix`, errors, releasePass, report.targetIdentity, releasePass);
 		if (area === 'security' && domain.resourceBudget !== undefined) validateResourceBudget(domain.resourceBudget, `domains.${area}.resourceBudget`, errors, report.targetIdentity, releasePass);
-		if (area === 'performance' && domain.capacityEnvelope !== undefined) validateCapacityEnvelope(domain.capacityEnvelope, `domains.${area}.capacityEnvelope`, errors, report.targetIdentity, releasePass);
+		if (area === 'performance' && domain.capacityEnvelope !== undefined) validateCapacityEnvelope(domain.capacityEnvelope, `domains.${area}.capacityEnvelope`, errors, report.targetIdentity, releasePass, assuranceRisks);
 		if (area !== 'security' && domain.authorizationMatrix !== undefined) errors.push(`domains.${area}.authorizationMatrix is only valid for security`);
 		if (area !== 'security' && domain.resourceBudget !== undefined) errors.push(`domains.${area}.resourceBudget is only valid for security`);
+		if (area === 'modularity' && domain.migrationPlan !== undefined) validateMigrationPlan(domain.migrationPlan, `domains.${area}.migrationPlan`, errors, report.targetIdentity, releasePass, domain.disposition === 'pass');
+		if (area === 'modularity' && domain.modularityRatchets !== undefined) validateTypedRatchets(domain.modularityRatchets, `domains.${area}.modularityRatchets`, errors, report.targetIdentity, releasePass);
+		if (area === 'modularity' && domain.legacyDebtPaths !== undefined) {
+			const paths = domain.legacyDebtPaths;
+			if (!Array.isArray(paths) || paths.length === 0 || paths.some((path) => !isRepositoryFilePath(path)) || new Set(paths).size !== paths.length) errors.push(`domains.${area}.legacyDebtPaths must list distinct affected file paths`);
+		}
+		if (area !== 'modularity' && (domain.migrationPlan !== undefined || domain.modularityRatchets !== undefined || domain.legacyDebtPaths !== undefined)) errors.push(`domains.${area} modularity evidence is only valid for modularity`);
 		if (area !== 'performance' && domain.capacityEnvelope !== undefined) errors.push(`domains.${area}.capacityEnvelope is only valid for performance`);
+		if (domain.webhookScope !== undefined) {
+			if (area !== 'security' || !assuranceRisks.includes('external_webhook') || !isObject(domain.webhookScope)) errors.push('webhookScope is only valid for a declared external_webhook security scope');
+			else {
+				const scope = domain.webhookScope;
+				checkKeys(scope, KEYS.webhookScope, 'domains.security.webhookScope', errors);
+				if (!['mutating', 'privileged_read', 'read_only'].includes(scope.effect) || !meaningfulText(scope.effectReason)) errors.push('domains.security.webhookScope requires an effect and concrete effectReason');
+				if (!['abuse_prone', 'bounded'].includes(scope.workload) || !meaningfulText(scope.workloadReason)) errors.push('domains.security.webhookScope requires workload applicability and concrete workloadReason');
+				for (const key of ['handler', 'action', 'resource']) {
+					if (!meaningfulText(scope[key], 3, 1)) errors.push(`domains.security.webhookScope.${key} must identify the webhook operation`);
+				}
+				const privileged = ['mutating', 'privileged_read'].includes(scope.effect);
+				if (privileged && !meaningfulText(scope.deniedActor, 3, 1)) errors.push('domains.security.webhookScope.deniedActor is required for a privileged or mutating webhook');
+				if (scope.effect === 'read_only' && scope.deniedActor !== undefined) errors.push('webhookScope read_only cannot declare a privileged deniedActor');
+				if (scope.workload === 'abuse_prone' && !meaningfulText(scope.workScope, 8, 2)) errors.push('domains.security.webhookScope.workScope is required for an abuse-prone webhook');
+				if (scope.workload === 'bounded' && scope.workScope !== undefined) errors.push('webhookScope bounded cannot declare an abuse-prone workScope');
+				if (releasePass && privileged && !(Array.isArray(domain.authorizationMatrix) && domain.authorizationMatrix.some((row) => row?.actor === scope.deniedActor && row?.action === scope.action && row?.resource === scope.resource && row?.expected === 'deny' && row?.observed === 'deny'))) errors.push('domains.security.authorizationMatrix requires a matching denied actor, action and resource for the webhook');
+				if (releasePass && scope.workload === 'abuse_prone' && (!isObject(domain.resourceBudget) || domain.resourceBudget.scope !== scope.workScope)) errors.push('domains.security.resourceBudget.scope must match the webhook workScope');
+			}
+		}
+		if (releasePass && area === 'security' && assuranceRisks.includes('external_webhook') && domain.webhookScope === undefined) errors.push('domains.security.webhookScope is required for external webhook applicability');
 		if (releasePass && area === 'security' && assuranceRisks.some((risk) => ['public_api', 'sensitive_data', 'multi_tenant'].includes(risk)) && domain.authorizationMatrix === undefined) errors.push('domains.security.authorizationMatrix is required for declared trust-boundary risk');
 		if (releasePass && area === 'security' && assuranceRisks.some((risk) => ['public_api', 'high_traffic', 'async_queue', 'multi_tenant'].includes(risk)) && domain.resourceBudget === undefined) errors.push('domains.security.resourceBudget is required for declared abuse or scale risk');
 		if (releasePass && area === 'performance' && elevatedPerformance && domain.capacityEnvelope === undefined) errors.push('domains.performance.capacityEnvelope is required for declared scale risk');
 		if (releasePass && area === 'accessibility' && (
 			!meaningfulText(claimedProof?.browser, 3, 1)
 			|| GENERIC_BROWSER.test(claimedProof.browser.trim())
-			|| !meaningfulText(claimedProof?.assistiveTechnology, 3, 1)
-			|| GENERIC_ASSISTIVE_TECHNOLOGY.test(claimedProof.assistiveTechnology.trim())
+			|| (!report.voiceOverExclusion && (!meaningfulText(claimedProof?.assistiveTechnology, 3, 1)
+				|| GENERIC_ASSISTIVE_TECHNOLOGY.test(claimedProof.assistiveTechnology.trim())))
 		)) {
-			errors.push('domains.accessibility.validation requires named browser and assistiveTechnology proof');
+			errors.push(report.voiceOverExclusion
+				? 'domains.accessibility.validation requires named browser keyboard proof'
+				: 'domains.accessibility.validation requires named browser and assistiveTechnology proof');
 		}
 		if (releasePass) {
 			for (const [validationIndex, receipt] of (Array.isArray(domain.validation) ? domain.validation : []).entries()) {
@@ -760,7 +937,7 @@ export function validate(report) {
 				validateSecurityCases(receipt?.securityCases, `${prefix}.negativeTests[${testIndex}].securityCases`, errors);
 			}
 		}
-		if (finding.status === 'fixed' && finding.area === 'performance') validatePerformanceMeasurement(finding.performanceMeasurement, `${prefix}.performanceMeasurement`, errors, { comparable: releaseFix, elevated: releaseFix && elevatedPerformance });
+		if (finding.area === 'performance' && (finding.performanceMeasurement !== undefined || finding.status === 'fixed')) validatePerformanceMeasurement(finding.performanceMeasurement, `${prefix}.performanceMeasurement`, errors, { comparable: releaseFix, elevated: releaseFix && elevatedPerformance, improvement: finding.status === 'fixed' });
 		if (finding.authorizationMatrix !== undefined) {
 			if (finding.area !== 'security') errors.push(`${prefix}.authorizationMatrix is only valid for security findings`);
 			validateAuthorizationMatrix(finding.authorizationMatrix, `${prefix}.authorizationMatrix`, errors, finding.status === 'fixed', report.targetIdentity, releaseFix);
@@ -790,8 +967,14 @@ export function validate(report) {
 			}
 		}
 		if (finding.status === 'fixed' && finding.riskFlags?.includes('public_contract') && finding.contractChecks === undefined) errors.push(`${prefix}.contractChecks is required for public_contract findings`);
-		if (finding.riskFlags?.includes('migration')) validateMigrationPlan(finding.migrationPlan, `${prefix}.migrationPlan`, errors, report.targetIdentity, releaseFix);
-		if (finding.riskFlags?.includes('legacy_debt')) validateModularityRatchet(finding.modularityRatchet, `${prefix}.modularityRatchet`, errors);
+		if (finding.riskFlags?.includes('migration')) validateMigrationPlan(finding.migrationPlan, `${prefix}.migrationPlan`, errors, report.targetIdentity, releaseFix, finding.status === 'fixed');
+		if (finding.riskFlags?.includes('legacy_debt')) {
+			if (Array.isArray(finding.modularityRatchet)) validateTypedRatchets(finding.modularityRatchet, `${prefix}.modularityRatchet`, errors, report.targetIdentity, releaseFix);
+			else {
+				validateModularityRatchet(finding.modularityRatchet, `${prefix}.modularityRatchet`, errors);
+				if (releaseFix) errors.push(`${prefix}.modularityRatchet requires typed path-specific measurements for a package pass`);
+			}
+		}
 		if (finding.status === 'fixed' && finding.area === 'accessibility') {
 			validateReceiptList(finding.manualChecks, `${prefix}.manualChecks`, errors, validateValidationReceipt, 1, true);
 			for (const [manualIndex, receipt] of (Array.isArray(finding.manualChecks) ? finding.manualChecks : []).entries()) {
@@ -816,8 +999,20 @@ export function validate(report) {
 	for (const [flag, risk] of [['migration', 'migration'], ['legacy_debt', 'legacy_debt']]) {
 		if (report.targetIdentity?.kind === 'package' && report.conclusion === 'pass' && findings.some((finding) => finding?.riskFlags?.includes(flag)) && !assuranceRisks.includes(risk)) errors.push(`assuranceProfile.risks must include ${risk} because a finding declares ${flag}`);
 	}
-	if (report.targetIdentity?.kind === 'package' && report.conclusion === 'pass' && assuranceRisks.includes('migration') && !findings.some((finding) => finding?.status === 'fixed' && finding.riskFlags?.includes('migration'))) errors.push('packaged migration pass requires a fixed migration finding with migrationPlan proof');
-	if (report.targetIdentity?.kind === 'package' && report.conclusion === 'pass' && assuranceRisks.includes('legacy_debt') && !findings.some((finding) => finding?.status === 'fixed' && finding.riskFlags?.includes('legacy_debt'))) errors.push('packaged legacy-debt pass requires a fixed finding with modularityRatchet proof');
+	if (report.targetIdentity?.kind === 'package' && report.conclusion === 'pass' && assuranceRisks.includes('migration') && !findings.some((finding) => finding?.status === 'fixed' && finding.riskFlags?.includes('migration')) && !domains.modularity?.migrationPlan) errors.push('packaged migration pass requires modularity migrationPlan proof or a fixed migration finding');
+	if (report.targetIdentity?.kind === 'package' && report.conclusion === 'pass' && assuranceRisks.includes('legacy_debt')) {
+		const domain = domains.modularity;
+		const paths = domain?.legacyDebtPaths;
+		if (domain?.disposition !== 'pass' || !Array.isArray(paths) || paths.length === 0) {
+			errors.push('packaged legacy-debt pass requires a passing modularity domain and legacyDebtPaths inventory');
+		} else {
+			const domainRatchets = Array.isArray(domain.modularityRatchets) ? domain.modularityRatchets : [];
+			const findingRatchets = findings.filter((finding) => finding?.area === 'modularity' && finding.status === 'fixed' && finding.riskFlags?.includes('legacy_debt') && Array.isArray(finding.modularityRatchet)).flatMap((finding) => finding.modularityRatchet);
+			const proofPaths = [...domainRatchets, ...findingRatchets].map((ratchet) => ratchet?.path);
+			if (new Set(proofPaths).size !== proofPaths.length) errors.push('packaged legacy-debt proof must not duplicate paths across ratchets');
+			if (proofPaths.length !== paths.length || paths.some((path) => !proofPaths.includes(path)) || proofPaths.some((path) => !paths.includes(path))) errors.push('packaged legacy-debt ratchets must cover exactly the legacyDebtPaths inventory');
+		}
+	}
 	if (report.conclusion === 'pass' && unresolvedCritical) errors.push('pass cannot contain an open P0 or P1 finding');
 	if (report.conclusion === 'pass' && proofGaps.length > 0) errors.push('pass cannot contain proof gaps');
 	if (report.conclusion === 'pass') {
@@ -826,201 +1021,40 @@ export function validate(report) {
 		}
 	}
 	errors.push(...validateAccessibilityAudit(report, validateValidationReceipt));
-	return [...new Set(errors)];
-}
-
-function runSelfTest() {
-	const commitSha = 'a'.repeat(40);
-	const identity = { commitSha, artifactSha256: 'b'.repeat(64) };
-	const evidence = (pointer, observation, overrides = {}) => ({ kind: 'code', pointer, observation, identity, ...overrides });
-	const validation = (overrides = {}) => ({
-		kind: 'test',
-		check: 'npm run test:integration',
-		expected: 'The protected behavior completes without regression',
-		observed: 'All integration assertions completed successfully',
-		expectedState: 'success',
-		observedState: 'success',
-		result: 'pass',
-		artifact: 'artifacts/quality-review.log',
-		identity,
-		...overrides,
-	});
-	const validationKind = { security: 'test', performance: 'profile', modularity: 'test', accessibility: 'manual' };
-	const validationClaim = { security: 'security_negative', performance: 'performance_comparable', modularity: 'modularity_behavior', accessibility: 'accessibility_manual' };
-	const validationState = { security: 'deny', performance: 'within_budget', modularity: 'preserve', accessibility: 'accessible' };
-	const contractCases = [{ surface: 'user_journey', entryPoint: '/wp-admin/admin.php?page=plugin-settings', consumer: 'administrator', contract: 'Public settings save behavior', before: 'Valid settings are stored for administrators', after: 'Valid settings are stored for administrators', result: 'preserved' }];
-	const comparableConditions = { runtime: 'PHP 8.3 WordPress 7.0', dataset: '10,000 report rows', cacheState: 'warm object cache', concurrency: 1 };
-	const securityCases = [{ actorClass: 'wrong_object', actor: 'Authenticated subscriber account', input: 'GET request for another site report', resource: 'Site-owned private report record', boundary: 'ownership', expected: 'deny', observed: 'deny', result: 'pass' }];
-	const securityNegative = (overrides = {}) => validation({ check: 'Exercise lower capability and wrong object', claim: 'security_negative', securityCases, expectedState: 'deny', observedState: 'deny', ...overrides });
-	const performanceMeasurement = (overrides = {}) => ({ metric: 'request duration', unit: 'ms', direction: 'lower_is_better', before: 900, after: 320, budget: 500, conditions: 'same package fixture and warm cache', baselineConditions: comparableConditions, candidateConditions: comparableConditions, ...overrides });
-	const domain = (area) => {
-		const primary = validation({
-			kind: validationKind[area], claim: validationClaim[area],
-			expectedState: validationState[area], observedState: validationState[area],
-			environment: ['profile', 'manual'].includes(validationKind[area]) ? 'Local release candidate environment' : undefined,
-			browser: area === 'accessibility' ? 'Safari 26' : undefined,
-			assistiveTechnology: area === 'accessibility' ? 'VoiceOver' : undefined,
-			securityCases: area === 'security' ? securityCases : undefined,
-			contractCases: area === 'modularity' ? contractCases : undefined,
-			performanceMeasurement: area === 'performance' ? performanceMeasurement({ before: 420, after: 280, budget: 350 }) : undefined,
-		});
-		return {
-			disposition: 'pass',
-			evidence: [evidence(`artifacts/${area}-review.md`, `The ${area} review completed against the identified candidate`) ],
-			validation: area === 'accessibility' ? [primary, validation({ kind: 'static', claim: 'accessibility_automated', check: 'Run axe-core on the packaged settings journey', expectedState: 'accessible', observedState: 'accessible', artifactSha256: 'd'.repeat(64) })] : [primary],
-		};
-	};
-	const finding = {
-		id: 'MOD-1', area: 'modularity', severity: 'P2', status: 'fixed',
-		evidence: [evidence('src/Policy/CapabilityPolicy.php:18', 'Two entry points duplicated the same capability decision')],
-		impact: 'The duplicated policy could diverge during future maintenance',
-		remediation: 'Move the policy into one tested service boundary',
-		validation: [validation()],
-		behaviorChecks: [validation({ check: 'Exercise both public entry points', claim: 'modularity_behavior', contractCases, expectedState: 'preserve', observedState: 'preserve' })],
-	};
-	const base = {
-		schemaVersion: 2,
-		mode: 'multi',
-		targetIdentity: { kind: 'package', repository: 'owner/plugin', commitSha, artifact: { path: 'dist/plugin.zip', sha256: 'b'.repeat(64) } },
-		scope: { targets: ['plugin release candidate'], exclusions: [] },
-		qualityTarget: 'Enterprise release quality gate',
-		assuranceProfile: { level: 'standard', risks: [] },
-		accessibilityClaim: 'scoped_review',
-		domains: Object.fromEntries(AREAS.map((area) => [area, domain(area)])),
-		findings: [finding],
-		proofGaps: [],
-		conclusion: 'pass',
-	};
-	const independentReview = {
-		kind: 'fresh_source_aware', runId: 'review-run-1', reviewedCommitSha: commitSha, result: 'pass',
-		evidence: [evidence('artifacts/fresh-review.md', 'A separate reviewer verified the corrected candidate')],
-	};
-	const authorizationMatrix = [{
-		actor: 'subscriber', action: 'read report', resource: 'site-owned report', expected: 'deny', observed: 'deny',
-		evidence: [evidence('tests/authz.md', 'A subscriber request was denied before the report was disclosed')],
-	}];
-	const resourceBudget = {
-		scope: 'public report export request',
-		limits: [
-			{ name: 'items', value: 100, unit: 'items/request' },
-			{ name: 'timeout', value: 5000, unit: 'milliseconds' },
-		],
-		failureBehavior: 'Requests over the limit are rejected without starting background work',
-		evidence: [evidence('tests/abuse-budget.md', 'Over-limit export requests were rejected and did not grow the queue')],
-	};
-	const migrationStep = (check) => validation({ check, claim: 'migration_step' });
-	const migrationPlan = {
-		strategy: 'expand_migrate_contract',
-		expandCheck: migrationStep('Verify additive schema expansion'),
-		backfillCheck: migrationStep('Verify resumable data backfill'),
-		idempotencyCheck: migrationStep('Rerun migration without duplicate writes'),
-		rollbackCheck: migrationStep('Restore pre-migration package and data'),
-		contractStatus: 'deferred',
-		cleanupIssue: 'https://github.com/owner/plugin/issues/91',
-	};
-	const elevatedPerformanceChecks = ['tail', 'overload', 'recovery', 'cache', 'capacity'].map((kind) => ({
-		kind,
-		expected: `${kind} behavior remains within the declared release budget`,
-		observed: `${kind} behavior remained within the declared release budget`,
-		result: 'pass',
-	}));
-	const elevatedMeasurement = performanceMeasurement({
-		runCount: 5,
-		distribution: { p50: 280, p95: 440, p99: 490 },
-		errorRate: 0,
-		cacheState: 'warm',
-		fieldOrLab: 'lab',
-		provenance: 'Profile artifact at artifacts/performance-profile.json',
-		limitations: 'Lab proof excludes regional network latency',
-	});
-	const capacityEnvelope = {
-		workload: { description: 'Concurrent report requests over the projected dataset', concurrency: 25, dataVolume: 500000, durationSeconds: 300 },
-		headroomPercent: 35,
-		saturation: { metric: 'request latency', observed: 490, budget: 500, direction: 'lower_is_better' },
-		fairness: { scope: 'per tenant requests', limit: 10, unit: 'requests/second' },
-		queue: { arrivalRate: 20, serviceRate: 30, maxBacklog: 100, observedBacklog: 40, drainSeconds: 20, drainBudgetSeconds: 30 },
-		storage: { currentBytes: 1000000, projectedBytes: 3000000, restoreSeconds: 45, restoreBudgetSeconds: 60 },
-		failureBehavior: 'Over-budget work is rejected and retry attempts remain bounded',
-		evidence: [evidence('artifacts/capacity-envelope.json', 'Measured workload remained inside declared saturation and recovery budgets')],
-	};
-	const cases = [
-		['valid report', base, true],
-		['malformed findings', { ...base, findings: {} }, false],
-		['null finding', { ...base, findings: [null] }, false],
-		['malformed proof gaps', { ...base, proofGaps: null }, false],
-		['empty multi domains', { ...base, domains: {}, findings: [] }, false],
-		['missing multi domain', { ...base, domains: { ...base.domains, accessibility: undefined } }, false],
-		['mutable revision', { ...base, targetIdentity: { ...base.targetIdentity, commitSha: 'abc123' } }, false],
-		['unknown top key', { ...base, fabricated: true }, false],
-		['unknown finding key', { ...base, findings: [{ ...finding, fabricated: true }] }, false],
-		['unknown receipt key', { ...base, findings: [{ ...finding, evidence: [{ ...finding.evidence[0], fabricated: true }] }] }, false],
-		['release evidence from another commit', { ...base, domains: { ...base.domains, security: { ...base.domains.security, evidence: [{ ...base.domains.security.evidence[0], identity: { ...identity, commitSha: 'c'.repeat(40) } }] } } }, false],
-		['release evidence without package digest', { ...base, domains: { ...base.domains, security: { ...base.domains.security, evidence: [{ ...base.domains.security.evidence[0], identity: { commitSha } }] } } }, false],
-		['release pass without security execution proof', { ...base, domains: { ...base.domains, security: { disposition: 'pass', evidence: base.domains.security.evidence } } }, false],
-		['release pass with all domains not applicable', { ...base, domains: Object.fromEntries(AREAS.map((area) => [area, { disposition: 'not_applicable', reason: `${area} was incorrectly omitted from the release audit`, evidence: [], validation: [] }])) }, false],
-		['single mode wrong domain', { ...base, mode: 'security', domains: { performance: base.domains.performance }, findings: [] }, false],
-		['failed modularity proof', { ...base, findings: [{ ...finding, behaviorChecks: [validation({ result: 'fail' })] }] }, false],
-		['vague evidence', { ...base, domains: { ...base.domains, modularity: { disposition: 'pass', evidence: [{ kind: 'code', pointer: 'note-1', observation: 'all good' }] } } }, false],
-		['accepted critical without owner receipt', { ...base, findings: [{ ...finding, severity: 'P1', status: 'accepted' }] }, false],
-		['owner acceptance cannot pass an unresolved critical', { ...base, findings: [{ ...finding, severity: 'P1', status: 'accepted', riskAcceptance: { kind: 'owner', pointer: 'decisions/risk.md', observation: 'Owner accepted the unresolved release risk for later work' } }] }, false],
-		['critical fix without independent review', { ...base, findings: [{ ...finding, severity: 'P1' }] }, false],
-		['critical fix with independent review', { ...base, findings: [{ ...finding, severity: 'P1', independentReview }] }, true],
-		['independent review wrong commit', { ...base, findings: [{ ...finding, severity: 'P1', independentReview: { ...independentReview, reviewedCommitSha: 'c'.repeat(40) } }] }, false],
-		['independent review evidence wrong commit', { ...base, findings: [{ ...finding, severity: 'P1', independentReview: { ...independentReview, evidence: [{ ...independentReview.evidence[0], identity: { ...identity, commitSha: 'c'.repeat(40) } }] } }] }, false],
-		['generic security validation cannot pass release', { ...base, domains: { ...base.domains, security: { ...base.domains.security, validation: [{ ...base.domains.security.validation[0], claim: undefined }] } } }, false],
-		['performance validation needs comparable measurement', { ...base, domains: { ...base.domains, performance: { ...base.domains.performance, validation: [{ ...base.domains.performance.validation[0], performanceMeasurement: undefined }] } } }, false],
-		['performance validation rejects different conditions', { ...base, domains: { ...base.domains, performance: { ...base.domains.performance, validation: [{ ...base.domains.performance.validation[0], performanceMeasurement: { ...base.domains.performance.validation[0].performanceMeasurement, candidateConditions: { ...comparableConditions, cacheState: 'cold cache' } } }] } } }, false],
-		['performance validation rejects contradictory prose', { ...base, domains: { ...base.domains, performance: { ...base.domains.performance, validation: [{ ...base.domains.performance.validation[0], performanceMeasurement: { ...base.domains.performance.validation[0].performanceMeasurement, conditions: 'before used warm cache while after used cold cache and is non-comparable' } }] } } }, false],
-		['accessibility validation names browser and AT', { ...base, domains: { ...base.domains, accessibility: { ...base.domains.accessibility, validation: [{ ...base.domains.accessibility.validation[0], browser: undefined, assistiveTechnology: undefined }] } } }, false],
-		['accessibility rejects generic browser and AT', { ...base, domains: { ...base.domains, accessibility: { ...base.domains.accessibility, validation: [{ ...base.domains.accessibility.validation[0], browser: 'browser', assistiveTechnology: 'screen reader' }] } } }, false],
-		['security claim needs negative cases', { ...base, domains: { ...base.domains, security: { ...base.domains.security, validation: [{ ...base.domains.security.validation[0], securityCases: undefined }] } } }, false],
-		['security claim rejects generic case labels', { ...base, domains: { ...base.domains, security: { ...base.domains.security, validation: [{ ...base.domains.security.validation[0], securityCases: [{ actorClass: 'low_privilege', actor: 'Security test actor', input: 'Security negative test', resource: 'Security test resource', boundary: 'capability', expected: 'deny', observed: 'deny', result: 'pass' }] }] } } }, false],
-		['modularity claim needs contract cases', { ...base, domains: { ...base.domains, modularity: { ...base.domains.modularity, validation: [{ ...base.domains.modularity.validation[0], contractCases: undefined }] } } }, false],
-		['internal helper is not a public contract', { ...base, domains: { ...base.domains, modularity: { ...base.domains.modularity, validation: [{ ...base.domains.modularity.validation[0], contractCases: [{ ...contractCases[0], surface: 'internal_helper' }] }] } } }, false],
-		['internal helper cannot masquerade as user journey', { ...base, domains: { ...base.domains, modularity: { ...base.domains.modularity, validation: [{ ...base.domains.modularity.validation[0], contractCases: [{ ...contractCases[0], entryPoint: 'src/InternalHelper.php:20', contract: 'Internal helper unit test behavior' }] }] } } }, false],
-		['REST contract must locate a REST route', { ...base, domains: { ...base.domains, modularity: { ...base.domains.modularity, validation: [{ ...base.domains.modularity.validation[0], contractCases: [{ ...contractCases[0], surface: 'rest_route', entryPoint: 'tests/review.test.js:42' }] }] } } }, false],
-		['release validation state contradiction', { ...base, domains: { ...base.domains, security: { ...base.domains.security, validation: [{ ...base.domains.security.validation[0], observedState: 'allow' }] } } }, false],
-		['packaged accessibility needs automated scan', { ...base, domains: { ...base.domains, accessibility: { ...base.domains.accessibility, validation: [base.domains.accessibility.validation[0]] } } }, false],
-		['packaged accessibility rejects placeholder scan', { ...base, domains: { ...base.domains, accessibility: { ...base.domains.accessibility, validation: [base.domains.accessibility.validation[0], { ...base.domains.accessibility.validation[1], artifact: 'artifacts/TODO-a11y.md', observed: 'Placeholder scan will be completed after release' }] } } }, false],
-		['evidence rejects trust me assertion', { ...base, domains: { ...base.domains, security: { ...base.domains.security, evidence: [{ ...base.domains.security.evidence[0], observation: 'Trust me because this candidate has been checked carefully' }] } } }, false],
-		['performance regression', { ...base, findings: [{ ...finding, area: 'performance', performanceMeasurement: performanceMeasurement({ metric: 'query duration', before: 180, after: 3200, budget: 250 }) }] }, false],
-		['performance misses budget', { ...base, findings: [{ ...finding, area: 'performance', performanceMeasurement: performanceMeasurement({ metric: 'query duration', before: 3200, after: 300, budget: 250 }) }] }, false],
-		['performance distribution with provenance', { ...base, findings: [{ ...finding, area: 'performance', performanceMeasurement: performanceMeasurement({ sampleSize: 20, distribution: { p50: 280, p75: 340, p95: 480 }, variance: 40, errorRate: 0, cacheState: 'warm', fieldOrLab: 'lab', provenance: 'Server-Timing benchmark artifact', limitations: 'Synthetic fixture does not represent field traffic' }) }] }, true],
-		['performance distribution without sample', { ...base, findings: [{ ...finding, area: 'performance', performanceMeasurement: performanceMeasurement({ distribution: { p50: 280, p95: 480 } }) }] }, false],
-		['performance distribution out of order', { ...base, findings: [{ ...finding, area: 'performance', performanceMeasurement: performanceMeasurement({ sampleSize: 20, distribution: { p50: 500, p95: 480 } }) }] }, false],
-		['security authorization matrix', { ...base, findings: [{ ...finding, area: 'security', riskFlags: ['authorization_boundary'], negativeTests: [securityNegative()], authorizationMatrix, independentReview }] }, true],
-		['security authorization mismatch', { ...base, findings: [{ ...finding, area: 'security', riskFlags: ['authorization_boundary'], negativeTests: [securityNegative()], authorizationMatrix: [{ ...authorizationMatrix[0], observed: 'allow' }] }] }, false],
-		['open security authorization mismatch', { ...base, conclusion: 'partial', findings: [{ ...finding, area: 'security', status: 'open', riskFlags: ['authorization_boundary'], authorizationMatrix: [{ ...authorizationMatrix[0], observed: 'allow' }] }] }, true],
-		['security authorization flag without matrix', { ...base, findings: [{ ...finding, area: 'security', riskFlags: ['authorization_boundary'], negativeTests: [securityNegative()] }] }, false],
-		['resource abuse budget', { ...base, findings: [{ ...finding, area: 'security', riskFlags: ['resource_abuse'], negativeTests: [securityNegative({ check: 'Exercise over-limit request boundary' })], resourceBudget, independentReview }] }, true],
-		['resource abuse flag without budget', { ...base, findings: [{ ...finding, area: 'performance', riskFlags: ['resource_abuse'], performanceMeasurement: performanceMeasurement() }] }, false],
-		['authorization evidence from another commit', { ...base, findings: [{ ...finding, area: 'security', riskFlags: ['authorization_boundary'], negativeTests: [securityNegative()], authorizationMatrix: [{ ...authorizationMatrix[0], evidence: [{ ...authorizationMatrix[0].evidence[0], identity: { ...identity, commitSha: 'c'.repeat(40) } }] }], independentReview }] }, false],
-		['resource evidence from another commit', { ...base, findings: [{ ...finding, area: 'security', riskFlags: ['resource_abuse'], negativeTests: [securityNegative()], resourceBudget: { ...resourceBudget, evidence: [{ ...resourceBudget.evidence[0], identity: { ...identity, commitSha: 'c'.repeat(40) } }] }, independentReview }] }, false],
-		['high traffic release needs elevated proof', { ...base, qualityTarget: 'High-traffic release quality gate', assuranceProfile: { level: 'elevated', risks: ['high_traffic'] } }, false],
-		['high traffic release with complete proof', { ...base, qualityTarget: 'High-traffic release quality gate', assuranceProfile: { level: 'elevated', risks: ['high_traffic'] }, domains: { ...base.domains, security: { ...base.domains.security, resourceBudget }, performance: { ...base.domains.performance, capacityEnvelope, validation: [{ ...base.domains.performance.validation[0], performanceMeasurement: elevatedMeasurement, performanceChecks: elevatedPerformanceChecks }] } } }, true],
-		['high traffic text cannot claim standard assurance', { ...base, qualityTarget: 'High-traffic release quality gate', assuranceProfile: { level: 'standard', risks: [] } }, false],
-		['public multi-tenant REST scope cannot omit risks', { ...base, scope: { targets: ['Public multi-tenant bulk REST package'], exclusions: [] }, assuranceProfile: { level: 'elevated', risks: [] } }, false],
-		['public multi-tenant REST scope needs trust and capacity proof', { ...base, scope: { targets: ['Public multi-tenant bulk REST package'], exclusions: [] }, assuranceProfile: { level: 'elevated', risks: ['public_api', 'multi_tenant'] } }, false],
-		['custom-table migration scope needs fixed migration proof', { ...base, scope: { targets: ['Custom-table migration release package'], exclusions: [] }, assuranceProfile: { level: 'elevated', risks: ['custom_storage', 'migration'] } }, false],
-		['legacy file scope needs ratchet proof', { ...base, scope: { targets: ['9,240-line legacy plugin file package'], exclusions: [] }, assuranceProfile: { level: 'elevated', risks: ['legacy_debt'] } }, false],
-		['migration finding needs migration plan', { ...base, assuranceProfile: { level: 'elevated', risks: ['migration'] }, findings: [{ ...finding, riskFlags: ['migration'], independentReview }] }, false],
-		['migration finding with staged proof', { ...base, assuranceProfile: { level: 'elevated', risks: ['migration'] }, findings: [{ ...finding, riskFlags: ['migration'], migrationPlan, independentReview }] }, true],
-		['legacy debt needs ratchet', { ...base, assuranceProfile: { level: 'elevated', risks: ['legacy_debt'] }, findings: [{ ...finding, riskFlags: ['legacy_debt'], independentReview }] }, false],
-		['legacy debt no-growth ratchet', { ...base, assuranceProfile: { level: 'elevated', risks: ['legacy_debt'] }, findings: [{ ...finding, riskFlags: ['legacy_debt'], modularityRatchet: { metric: 'file lines', baseline: 9240, after: 9230, budget: 9240, posture: 'no_growth' }, independentReview }] }, true],
-		['package empty digest', { ...base, targetIdentity: { ...base.targetIdentity, artifact: { path: 'dist/plugin.zip', sha256: '' } } }, false],
-		['pass with partial domain', { ...base, domains: { ...base.domains, security: { ...base.domains.security, disposition: 'partial' } } }, false],
-	];
-	for (const [name, report, expected] of cases) {
-		let passed = false;
-		try { passed = validate(report).length === 0; } catch (error) { throw new Error(`self-test crashed: ${name}: ${error.message}`); }
-		if (passed !== expected) throw new Error(`self-test failed: ${name} (${validate(report).join('; ')})`);
+	if (isObject(report.accessibilityAudit?.checks)) {
+		const formalPass = report.accessibilityClaim === 'wcag22_aa_conformance'
+			&& (report.conclusion === 'pass' || domains.accessibility?.disposition === 'pass');
+		for (const [id, receipt] of Object.entries(report.accessibilityAudit.checks)) {
+			validateCandidateBinding(receipt, report.targetIdentity, `accessibilityAudit.checks.${id}`, errors,
+				{ required: formalPass && receipt?.result === 'pass' });
+		}
 	}
-	console.log('quality review validator self-test passed');
+	const keyboardReceipts = [
+		...Object.values(domains).flatMap((domain) => Array.isArray(domain?.validation) ? domain.validation : []),
+		...(Array.isArray(report.findings) ? report.findings.flatMap((finding) => Array.isArray(finding?.validation) ? finding.validation : []) : []),
+		...(isObject(report.accessibilityAudit?.checks) ? Object.values(report.accessibilityAudit.checks) : []),
+	];
+	for (const receipt of keyboardReceipts.filter((item) => item?.claim === 'accessibility_keyboard')) {
+		if (!report.voiceOverExclusion || report.targetIdentity?.kind !== 'package') errors.push('accessibility_keyboard proof requires a packaged report with voiceOverExclusion');
+		if (!domains.accessibility?.validation?.includes(receipt)) errors.push('accessibility_keyboard proof must be a domains.accessibility.validation receipt');
+	}
+	if (report.voiceOverExclusion && (!report.domains?.accessibility || report.domains.accessibility.disposition === 'not_applicable')) {
+		errors.push('voiceOverExclusion requires an applicable accessibility domain');
+	}
+	if (report.voiceOverExclusion && report.targetIdentity?.kind === 'package' && report.conclusion === 'pass') {
+		const keyboardProofs = Array.isArray(report.domains?.accessibility?.validation)
+			? report.domains.accessibility.validation.filter((receipt) => receipt?.claim === 'accessibility_keyboard') : [];
+		if (keyboardProofs.length === 0 || keyboardProofs.some((receipt) => receipt.result !== 'pass')) errors.push('packaged scoped accessibility pass with voiceOverExclusion requires at least one passing accessibility_keyboard receipt');
+	}
+	return [...new Set(errors)];
 }
 
 async function main() {
 	const arg = process.argv[2];
-	if (arg === '--self-test') return runSelfTest();
+	if (arg === '--self-test') {
+		const { runSelfTest } = await import('./review-report-self-test.mjs');
+		return runSelfTest(validate);
+	}
 	if (!arg) {
 		console.error('usage: validate-review-report.mjs <report.json> | --self-test');
 		process.exitCode = 2;
@@ -1042,7 +1076,8 @@ async function main() {
 	}
 	const scope = report.accessibilityClaim === 'scoped_review' ? ' (scoped accessibility review, not WCAG conformance)'
 		: report.accessibilityClaim === 'wcag22_aa_conformance' ? ' (formal AA evidence record; inspect artifacts before any conformance claim)' : '';
-	console.log(`quality review valid: ${arg}${scope}`);
+	console.log(`quality review valid: ${arg}; candidate conclusion: ${report.conclusion}${scope}`);
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) await main();
+if (import.meta.main ?? (process.argv[1] && fs.existsSync(process.argv[1])
+	&& fs.realpathSync(process.argv[1]) === fileURLToPath(import.meta.url))) await main();

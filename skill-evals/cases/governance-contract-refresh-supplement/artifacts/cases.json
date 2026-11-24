@@ -41,6 +41,6 @@
   },
   {
     "case": "case-supp-11",
-    "request": "A prior release decision was materially ambiguous. Attached artifacts contain the options, evidence, chosen path, rollback method, expected outcome, and a review trigger. The owner later accepts the choice but changes one assumption. State how to preserve a compact private decision receipt and sanitized calibration disposition without turning the result into general policy."
+    "request": "A prior release decision was materially ambiguous. Using the attached release-decision.md and private principles, prepare the actual compact private decision receipt and later sanitized calibration disposition now, rather than instructions for creating them later. Keep the original decision separate from the owner's changed assumption, mark unavailable facts unknown, and do not turn the disposition into general policy."
   }
 ]

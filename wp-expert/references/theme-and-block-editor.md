@@ -30,6 +30,7 @@ Before editing theme behavior, inspect:
 - Keep business logic out of templates. Move reusable behavior into functions/classes/hooks.
 - Escape template output late and preserve translation functions.
 - Avoid global query mutations; use scoped `pre_get_posts` checks and reset state.
+- For runtime markup, preserve hook placement: `wp_head` emits within `<head>`, `wp_body_open` immediately after the opening `<body>`, and `wp_footer` before `</body>`. Validate output in the supported theme/runtime and account for compatibility requirements.
 
 ## Block Theme Guidelines
 

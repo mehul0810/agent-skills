@@ -1,0 +1,7 @@
+# Rillfold native pilot (synthetic)
+
+Create one static, editable site-design pilot in a new disposable Pen document path to be supplied by the coordinator. Do not use a live site or an existing customer design. The target is one representative announcement screen at desktop and narrow mobile widths, plus one reused navigation lockup component. Use the supplied `asset-01.svg` symbol with the Rillfold wordmark in both navigation widths and in the screen's brand showcase. The symbol's silhouette must remain intact; do not redraw it. Use the source-record palette and a reversible calm, editorial direction.
+
+Content to place: heading `Make room for what matters`; body `Rillfold makes adaptable interiors for changing routines.`; section label `Our approach`; button label `Explore the approach`. These are synthetic approved words, not claims about a real business. No testimonials, pricing, customers, metrics, video behavior, or additional product capabilities are supplied.
+
+This pilot is static-only: no interactive prototype or WordPress implementation is requested. Keep text and artwork native/editable where supported, preserve the mark as an exact supplied vector asset, and show how one change to the reused lockup propagates across the desktop and mobile instances. Use the actual Pen runtime and format only after path, access, active document, and tool support are verified. A blocked native write should be reported, not replaced with a raster mockup or a claim of native completion.

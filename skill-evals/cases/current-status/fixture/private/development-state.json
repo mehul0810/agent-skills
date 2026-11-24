@@ -1,0 +1,118 @@
+{
+  "status-01": {
+    "repo": "acme-example/atlas-widget",
+    "number": 41,
+    "pr": {
+      "repository": "acme-example/atlas-widget",
+      "number": 41,
+      "state": "closed",
+      "merged": true,
+      "mergedAt": "2026-11-04T10:20:00Z",
+      "headSha": "a410000000000000000000000000000000000041",
+      "baseRef": "main",
+      "url": "https://github.com/acme-example/atlas-widget/pull/41"
+    }
+  },
+  "status-02": {
+    "repo": "acme-example/copper-theme",
+    "number": 72,
+    "pr": {
+      "repository": "acme-example/copper-theme",
+      "number": 72,
+      "state": "closed",
+      "merged": false,
+      "closedAt": "2026-11-03T16:05:00Z",
+      "headSha": "b720000000000000000000000000000000000072",
+      "baseRef": "main",
+      "url": "https://github.com/acme-example/copper-theme/pull/72"
+    }
+  },
+  "status-03": {
+    "repo": "acme-example/harbor-plugin",
+    "number": 19,
+    "pr": {
+      "error": "service_unavailable",
+      "message": "Synthetic GitHub lookup failed; no current PR state returned."
+    }
+  },
+  "status-04": {
+    "repo": "acme-example/river-blocks",
+    "number": 58,
+    "pr": {
+      "repository": "acme-example/river-blocks",
+      "number": 58,
+      "state": "open",
+      "merged": false,
+      "headSha": "d580000000000000000000000000000000000058",
+      "updatedAt": "2026-11-05T07:15:00Z",
+      "url": "https://github.com/acme-example/river-blocks/pull/58"
+    },
+    "checks": {
+      "repository": "acme-example/river-blocks",
+      "number": 58,
+      "runs": [
+        {
+          "sha": "c570000000000000000000000000000000000057",
+          "name": "test",
+          "conclusion": "success",
+          "completedAt": "2026-11-04T20:00:00Z"
+        },
+        {
+          "sha": "d580000000000000000000000000000000000058",
+          "name": "test",
+          "status": "queued",
+          "conclusion": null
+        }
+      ]
+    }
+  },
+  "status-05": {
+    "repo": "acme-example/cedar-core",
+    "number": 26,
+    "pr": {
+      "repository": "acme-example/cedar-core",
+      "number": 26,
+      "state": "open",
+      "merged": false,
+      "headSha": "e260000000000000000000000000000000000026",
+      "url": "https://github.com/acme-example/cedar-core/pull/26",
+      "note": "An unrelated acme-example/cedar-docs PR #26 is merged; this record is cedar-core."
+    }
+  },
+  "status-06": {
+    "repo": "acme-example/amber-ui",
+    "number": 13,
+    "pr": {
+      "repository": "acme-example/amber-ui",
+      "number": 13,
+      "state": "merged",
+      "merged": true,
+      "mergedAt": "2026-11-05T08:00:00Z",
+      "url": "https://github.com/acme-example/amber-ui/pull/13"
+    }
+  },
+  "status-07": {
+    "repo": "acme-example/mesa-editor",
+    "number": 34,
+    "recent": {
+      "source": "synthetic GitHub lookup",
+      "observationId": "mesa-34-same-turn-001",
+      "observedAt": "2026-11-05T08:31:00Z",
+      "scope": "current conversation turn",
+      "repository": "acme-example/mesa-editor",
+      "number": 34,
+      "state": "open",
+      "merged": false,
+      "headSha": "f340000000000000000000000000000000000034",
+      "url": "https://github.com/acme-example/mesa-editor/pull/34"
+    },
+    "pr": {
+      "repository": "acme-example/mesa-editor",
+      "number": 34,
+      "state": "open",
+      "merged": false,
+      "headSha": "f340000000000000000000000000000000000034",
+      "url": "https://github.com/acme-example/mesa-editor/pull/34"
+    }
+  }
+}

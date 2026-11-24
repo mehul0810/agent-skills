@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 390" role="img" aria-label="Illustration of a sunlit abstract landscape">
+  <rect width="600" height="390" fill="#15333B"/>
+  <circle cx="475" cy="102" r="94" fill="#E0A27D"/>
+  <path d="M0 300Q160 150 300 270T600 220V390H0Z" fill="#98D8CA"/>
+  <path d="M0 350Q180 230 310 340T600 300V390H0Z" fill="#F6F2E9"/>
+</svg>

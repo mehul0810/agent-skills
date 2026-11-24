@@ -4,85 +4,76 @@ Use this when translating supplied videos, screenshots, brand systems, or produc
 
 ## Reference Review
 
-Inspect the actual source. For each useful moment record:
+Inspect the source and record:
 
 - source and timestamp,
-- observed composition, typography, pace, transition, sound, or narrative device,
-- why it works for the apparent audience,
-- the reusable principle,
-- what must not be copied,
-- confidence and any access/provenance gap.
+- observed composition, typography, pace, transition, sound, narrative and audience effect,
+- reusable principle, originality boundary, confidence and access/provenance gaps.
 
-Do not describe a reference you could not view. Ask for the file or report the access gap instead of reconstructing it from a title or thumbnail.
+Do not describe a reference you could not view; request file or report access gap, not infer from title.
 
-For accessible video, verify metadata first, sample frames around cuts, then watch the complete motion and audio at normal speed. Review once for narrative and once for typography/composition/motion; a contact sheet alone cannot prove pacing, easing, or sound. Record exact timecodes rather than pasting the source video into prompts.
+Check metadata/sample cuts, then watch full-speed motion/audio. Review narrative and typography/composition/motion separately; a contact sheet alone cannot prove pacing, easing or sound. Record timecodes, not footage.
 
 ## Enterprise Translation
 
-Translate premium cues into the product's own system:
+Choose film job first: product/material reveal, metaphor, human story or software workflow. Combine if useful; brand film need not be UI tutorial. Compare commissioned examples [Apple Pro Apps](https://builders-club.com/projects/apple-unleashed), [OpenAI](https://builders-club.com/3d-motion/openai-the-intelligence-age), [Claude](https://www.motherlondon.com/work/claude-keep-thinking) without treating a company as one style. Sources reviewed 2026-10-04; distinguish claims, sampled frames and playback.
 
-- proof-led hierarchy before decorative spectacle,
-- confident negative space and a small number of focal elements,
-- buyer/task/workflow clarity rather than generic feature cards,
-- real product evidence, controls, approvals, reliability, and failure behavior,
-- deliberate color and motion anchored in the product brand,
-- readable typography with deliberate line breaks and enough hold time,
-- sound and transitions that support meaning rather than mask weak structure.
+Translate principles, not signatures: clear promise, brand-native imagery, negative space, readable type, deliberate rhythm/sound. Show consequences, not feature-card succession. Never copy distinctive motifs, choreography, soundtrack or claims.
 
-For AI or workflow products, show governed inputs, decisions, approvals, integrations, and outcomes. Do not use vague particles, glowing brains, magic automation, or impossible dashboards as substitutes for product truth.
+For AI/workflow products show governed inputs, decisions, approvals, integrations and outcomes. Vague particles, glowing brains, magic automation and impossible dashboards are not product truth.
 
-Each shot must teach something supported by evidence. Reject stock-office filler, fake customers, arbitrary zooms, subtitle walls and repeated bass hits that do not advance the promise. Product specificity matters more than ornamental density.
+Each shot advances an evidenced idea. Reject office filler, fake customers, arbitrary zooms, subtitle walls and purposeless bass hits.
 
 ## Storyboard Contract
 
-Every shot records:
+Before polishing narration, script viewer question, visible action/state change, evidence and payoff. Choose voice- or music-led structure; words complement, not duplicate, action. Deliver this shot plan:
 
 | Field | Requirement |
 |---|---|
-| Time | Start, end, and duration |
+| Time | Start/end frames, duration, reading hold |
 | Purpose | One narrative job |
 | Visual | Composition and background |
-| Copy | Exact approved text or no text |
+| Copy | Exact screen text and spoken line, or none |
 | Evidence | Product/claim source or `conceptual` |
 | Assets | Governed paths and provenance |
-| Motion | Entrance, hold, exit, easing |
+| Motion | Object identity, before/after state, path/key poses, easing, entrance/hold/exit |
 | Audio | Music/voice/SFX cue and license |
-| Transition | Reason for the transition |
+| Transition | Outgoing/incoming anchor, overlap, reason; intentional cut or continuous handoff |
 | Acceptance | Observable pass condition |
 
-Keep the arc compact: context, tension, product role, verified proof, outcome, next action. A launch teaser can omit detailed UI; an explainer cannot replace a real workflow with abstraction when the workflow itself is the promise.
+Derive arc from subject, not a fixed intro/reveal/CTA. Science, material studies and software need distinct pacing, imagery and sound. Keep workflows visible; narration/title cards cannot substitute for action.
 
 ## Asset Preflight
 
-- Prefer original SVG logos and licensed brand fonts. Raster logos require real alpha, adequate resolution, and edge checks on both light and dark backgrounds.
-- Treat a white rectangle behind a logo as a defect unless the brand specification explicitly defines that container.
+- Prefer approved SVG logos/licensed fonts; raster logos need alpha, adequate resolution and light/dark edge checks.
+- Treat a white rectangle behind a logo as a defect unless specified by brand.
 - Do not generate exact logos, UI screenshots, wordmarks, or readable product copy. Generate supporting scenes/textures separately and composite governed assets afterward.
-- For generated sequences, approve a representative style frame before motion; lock subject/object identity, palette, lighting, lens/camera language, aspect ratio, and reproducibility inputs. Inspect temporal consistency, geometry, unwanted text/watermarks, and frame-to-frame artifacts before compositing governed assets.
-- Capture real UI from a verified build and identify version/environment. If UI is unavailable or unreleased, use clearly conceptual shapes without browser chrome, controls, or interactions that could be mistaken for shipped UI.
-- Use sanitized deterministic fixture data for product captures. Hide secrets, personal/customer data, internal URLs, test credentials, and notifications. Record the actor/role, product version, viewport, fixture, and capture date. Obtain consent before using a person's likeness or voice.
-- For original camera or voice capture, lock controlled exposure, white balance, and frame rate; record clean dialogue and room tone; choose intentional framing, eyeline, and background; and obtain the required talent, voice, and location releases.
-- Preserve truthful chronology. Trimming pauses is acceptable; rearranging states, masking failures, or compositing a result that the product did not produce must be labeled as simulated or excluded.
-- Record palette values, type files/weights, source dimensions, licenses, and transformations. Never stretch, crop, recolor, or add effects to a protected mark without approval.
+- For generated sequences approve a representative style frame before motion; then lock identity, palette, lighting, camera language, aspect ratio and reproducibility inputs. Check temporal consistency, geometry, unwanted text/watermarks and artifacts before compositing governed assets.
+- Capture UI from verified build; identify version/environment. If unavailable/unreleased, use conceptual shapes without browser chrome, controls or interactions implying shipped UI.
+- Use sanitized deterministic fixture data; hide secrets, personal/customer data, internal URLs, test credentials and notifications. Record actor/role, version, viewport, fixture and date. Obtain likeness/voice consent.
+- For camera/voice capture lock controlled exposure, white balance, and frame rate; capture clean dialogue/room tone; plan framing/eyeline/background; obtain talent, voice and location releases.
+- Preserve truthful chronology. Trimming pauses is fine; rearranged states, masked failures or fabricated product results must be labeled simulated or excluded.
+- Record palette, font files/weights, dimensions, licenses and transformations. Never alter protected marks without approval.
 
-Generated or materially altered media needs a receipt: tool and source, human oversight, rights/consent, what changed, whether it looks realistic, and the destination disclosure decision. Preserve Content Credentials/C2PA data when the workflow supports it, but do not treat provenance metadata as proof that a product claim is true.
+Generated/altered media needs receipt: tool/source, oversight, rights/consent, changes, realism and disclosure. Preserve supported Content Credentials/C2PA; provenance does not prove product claims.
 
 ## Approval Gate
 
-For delegated direction, explore distinct compositions internally against audience, brand, truth and narrative; validate the storyboard and representative sequence before scaling. Ask only for requested selection or unresolved material brand, claim or scope decisions. Exact direction needs no reselection. Internal review is not publication permission; preserve preflight and claim gates.
+For delegated direction, compare audience, brand, truth and narrative; validate a representative sequence before scaling. Ask only for requested selection or material brand/claim/scope decisions; exact direction needs no reselection. Internal review is not publication permission.
 
-Enterprise need not mean minimalism. Consider editorial, cinematic, technical or expressive directions; use purposeful imagery or real UI rather than default text/cards. Generate supporting assets, never evidence. Separate exact composition/crop/type/timing fidelity from subjective craft.
+Choose visual language by subject, audience and genre. Do not inherit rings, metallic spheres, dark palettes, centered layouts, camera loops or narration cadence merely because code exists. Reuse infrastructure, not templates; preserve series identity. Novelty is not randomness. Separate fidelity from craft.
 
 ## Motion Direction Contract
 
-Do not promise first-render perfection. For new direction, prove a 5-10 second sequence combining typography, product evidence, transition and sound. Reuse approved direction without ceremonial approval; resolve missing assets/claims, never invent UI.
+Do not promise first-render perfection. For new direction, prove 5-10 seconds combining typography, product evidence, transition and sound. Reuse approved direction without ceremony; resolve missing assets/claims, never invent UI.
 
-Motion sheet: alignment, safe areas, typography, palette, focal hierarchy, camera/depth, entrance/hold/exit, easing and audio. Start with static composition and one dominant target per beat; motion explains relationships, directs attention or bridges scenes, not constant activity.
+Motion sheet: alignment, safe areas, type, palette, focal hierarchy, camera/depth, poses and audio. Define visible change without words. Entrance plus static card is not motion-led storytelling; reading stillness is valid.
 
-- Preserve spatial continuity: track the focal element across cuts, retain action/result context, and motivate camera pans or UI crops. Avoid arbitrary zooms, unexplained position jumps and perspective that makes UI unreadable.
-- Use intentional acceleration/deceleration and settling; reserve linear movement for constant-speed intent. Overshoot, springs, blur and parallax are optional, not premium defaults. No camera move during a reading hold unless legibility is proven.
-- Allocate entrance, readable hold and exit separately. Check exact copy at normal speed on the smallest intended display; no universal word-per-second value replaces this test. Do not synchronize every word or cut mechanically to a beat.
-- Choose voice-led or music-led structure before detailed animation. Map narrative beats and sound cues early, leave breathing room, and keep voice, music and effects separately adjustable. A sound cue must support meaning, not conceal a weak transition.
+- Preserve continuity: retain object IDs, focal anchor, scale and direction across handoffs. Specify poses/overlap; match position and velocity for continuing motion or justify cut. Avoid arbitrary zooms and unreadable UI perspective.
+- Shape acceleration/deceleration/settling; linear is for constant speed. Overshoot, springs, blur and parallax are optional. Inspect in-betweens for collisions, speed jumps and warped text; frame rate alone proves no smoothness. Keep reading holds stable.
+- Allocate entrance, reading hold and exit. Check exact copy at normal speed on smallest target; no universal words/second replaces this. Do not sync every word or mechanically cut to beat.
+- Map cues to visible events, leave space and keep voice/music/effects adjustable. Sound supports meaning, not weak transitions.
 
-Compose reusable opening, reveal, UI-action, comparison, workflow, evidence and CTA scenes. Parameterize assets/copy/timing/aspect; never copy distinctive reference sequences or flatten brand identity.
+Parameterize render mechanics; invent subject-specific composition/choreography, not reskinned stock scenes.
 
-Frames prove composition, not pacing/easing/audio. Record timecoded defects after playback.
+Frames prove composition, not pacing/easing/audio. Log timecoded defects after playback.

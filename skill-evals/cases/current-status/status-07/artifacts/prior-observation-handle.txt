@@ -1,0 +1,10 @@
+Synthetic GitHub lookup receipt from earlier in this same evaluation turn.
+Observation ID: mesa-34-same-turn-001
+Observed at: 2026-11-05T08:31:00Z
+Repository: acme-example/mesa-editor
+PR number: 34
+State: open
+Merged: false
+Head SHA: f340000000000000000000000000000000000034
+URL: https://github.com/acme-example/mesa-editor/pull/34
+Scenario continuity: no action or change occurred after this observation. This is a synthetic fixture, not proof that a native GitHub connector was activated.

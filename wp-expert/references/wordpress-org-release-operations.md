@@ -8,6 +8,10 @@ Use this for WordPress.org Plugin Directory releases, SVN deploy workflows, GitH
 - A GitHub Action can show failure even when the SVN commit completed server-side. Always verify SVN directly before assuming release failure, rerunning destructive steps, retagging, or rolling back.
 - Verify all release surfaces: `trunk/`, `tags/<version>/`, and `assets/`.
 - WordPress.org users will not run Composer or npm. The deployed plugin artifact must include runtime PHP dependencies and built assets required for the plugin to work.
+- Distinguish a completed SVN upload from directory distribution: the public plugin page and update API may have a propagation/cooldown delay, and security or policy blocks can prevent distribution. Do not infer public availability from an SVN commit, GitHub ZIP, or absence of an email.
+- Treat a confirmed version tag as immutable. Correct mistakes through an authorized new version/release process, not by replacing a confirmed tag.
+- Keep authorization for release execution and any WordPress.org confirmation/approval step distinct; perform confirmation only when explicitly authorized.
+- When release confirmation is enabled, verify its actual status in the directory workflow. Check the public WordPress.org ZIP contents/version and update API separately after propagation; a successful upload alone is not a completed public release.
 
 ## SVN Verification Checklist
 
@@ -71,11 +75,12 @@ For `.wordpress-org` or SVN `assets/` releases, confirm:
 
 ## Release Completion Criteria
 
-A WordPress.org release is complete only after:
+A WordPress.org SVN upload is verified only after:
 
 - SVN `trunk/` is correct.
 - SVN `tags/<version>/` exists and is correct.
 - SVN `assets/` is correct and preview renders expected assets.
+- The intended public distribution/update state is separately verified when relevant; absence of a rejection email is not proof that users can install or update.
 - Production `vendor/` contains runtime dependencies only.
 - Built JS/CSS/assets needed at runtime are present.
 - Plugin Check has run through a reliable path or the failure reason is documented with a lower-confidence fallback.

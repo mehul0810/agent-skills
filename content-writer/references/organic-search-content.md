@@ -133,6 +133,14 @@ For existing content:
 - Redirect consolidated URLs only when a better canonical target exists.
 - Preserve ranking URLs and internal links unless there is a clear consolidation or migration reason.
 
+## Search Console Refresh Loop
+
+- Use a first-party Google Search Console CSV or verified read-only access. Shortlist in Pages, then filter to each canonical page before exporting Queries; separate tabs are not joinable by row. Freeze comparable, finalized 28-day Web Search cohorts and record property, dates, filters, position band, device and query mix.
+- Calculate CTR as cohort clicks divided by cohort impressions, not an average of row CTRs. Report omitted queries and [the UI export's 1,000-row limit](https://support.google.com/webmasters/answer/12919797); report totals may cover more than the visible query rows.
+- A low CTR is a lead, not a diagnosis. Confirm indexing, Google's selected canonical, and query intent before editing. If evidence supports an editorial change, record one hypothesis and make one scoped change; keep a matched comparison page or cohort unchanged. Hold when coverage is thin, comparability is poor, or the likely issue is technical rather than editorial.
+- After verified recrawl, compare a matched, finalized 28-day window for both cohorts. Report impressions, clicks, CTR and average position separately; flag meaningful position, mix or event shifts. Report any defined conversion proxy with its own source and denominator, not as a Search Console outcome or proof of causation. Web metrics do not establish AEO/GEO visibility.
+- Record keep, revert/revise, or inconclusive with the reason. Take no new action or repeat alert for unchanged or insufficient evidence; revisit only when material new evidence becomes available.
+
 ## Output Formats
 
 Brief:

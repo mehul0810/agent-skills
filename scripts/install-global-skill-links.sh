@@ -7,22 +7,32 @@ claude_skills_dir="${CLAUDE_HOME:-$HOME/.claude}/skills"
 force=0
 design_defaults=0
 check_design_defaults=0
+antigravity=auto
+refresh=0
+antigravity_manifest="$HOME/.gemini/config/skills.json"
 
 usage() {
   cat <<'USAGE'
 Usage:
-  bash scripts/install-global-skill-links.sh [--force] [--design-defaults] [--check-design-defaults] [skill-name ...]
+  bash scripts/install-global-skill-links.sh [--force] [--design-defaults] [--antigravity] [skill-name ...]
+  bash scripts/install-global-skill-links.sh --check-antigravity [skill-name ...]
+  bash scripts/install-global-skill-links.sh --check-design-defaults
+  bash scripts/install-global-skill-links.sh --refresh
 
 Options:
   --force    Repoint incorrect symlinks. Real files/directories are never replaced.
+  --refresh  Verify existing selections without enrolling skills or hosts.
   --design-defaults  Append this repo's marked design defaults to CODEX_HOME/AGENTS.md.
   --check-design-defaults  Check the marked policy and shared-reference link without writing.
+  --antigravity  Register this Git checkout in ~/.gemini/config/skills.json.
+  --check-antigravity  Check this checkout's Antigravity allowlist without writing.
 
 Defaults:
-  - If no skill names are provided, all top-level skill directories in this repo
-    that contain SKILL.md are linked.
+  - No skill names: link all committed top-level skills (or skills in a reviewed ZIP).
   - Codex target:  ${CODEX_HOME:-~/.codex}/skills/<skill-name>
   - Claude target: ${CLAUDE_HOME:-~/.claude}/skills/<skill-name>
+  - Once registered, a normal rerun syncs Antigravity too. Named installs add
+    only those skills. Antigravity manifest handling needs Python 3, not npm.
 USAGE
 }
 
@@ -35,18 +45,29 @@ args=()
 while [ "$#" -gt 0 ]; do
   case "$1" in
     --force) force=1 ;;
+    --refresh) refresh=1 ;;
     --design-defaults) design_defaults=1 ;;
     --check-design-defaults) check_design_defaults=1 ;;
+    --antigravity|--check-antigravity)
+      [ "$antigravity" = auto ] || { echo "choose one Antigravity mode" >&2; exit 2; }
+      if [ "$1" = --antigravity ]; then antigravity=sync; else antigravity=check; fi ;;
     --) shift; args+=("$@"); break ;;
     -*) echo "unknown option: $1" >&2; exit 2 ;;
     *) args+=("$1") ;;
   esac
   shift
 done
+if [ "$refresh" -eq 1 ] && { [ "${#args[@]}" -gt 0 ] || [ "$force" -eq 1 ] || [ "$design_defaults" -eq 1 ] || [ "$check_design_defaults" -eq 1 ] || [ "$antigravity" != auto ]; }; then
+  echo "--refresh cannot be combined with names or other options" >&2; exit 2
+fi
 if [ "${#args[@]}" -gt 0 ]; then
   set -- "${args[@]}"
 else
   set --
+fi
+if { [ "$antigravity" != auto ] && [ "$check_design_defaults" -eq 1 ]; } ||
+   { [ "$antigravity" = check ] && { [ "$force" -eq 1 ] || [ "$design_defaults" -eq 1 ]; }; }; then
+  echo "run Antigravity checks separately from policy or link changes" >&2; exit 2
 fi
 
 design_policy="$repo_root/templates/global-design-defaults.md"
@@ -254,21 +275,79 @@ ensure_named_link() {
 }
 
 skill_dirs=()
+inventory="$(bash "$repo_root/scripts/list-global-skills.sh")"
+
+if [ "$refresh" -eq 1 ]; then
+  errors=0
+  for root in "$codex_skills_dir" "$claude_skills_dir"; do
+    assert_no_symlink_components "$root"
+    count=0
+    if [ -d "$root" ]; then
+      for link in "$root"/*; do
+        [ -L "$link" ] || continue
+        name="$(basename "$link")"
+        target="$(readlink "$link")"
+        if [ "$target" = "$repo_root/$name" ] && grep -Fxq -- "$name" <<< "$inventory"; then
+          validate_skill "$repo_root/$name"
+          count=$((count + 1))
+          echo "selected: $link -> $target"
+        elif [[ "$target" == "$repo_root/"* ]]; then
+          if { [ "$name" = shared ] || [ "$name" = templates ]; } && [ "$target" = "$repo_root/$name" ] && [ -e "$link" ]; then
+            continue
+          fi
+          echo "stale or ambiguous pack link, preserved: $link -> $target" >&2
+          errors=$((errors + 1))
+        elif grep -Fxq -- "$name" <<< "$inventory"; then
+          echo "ambiguous skill link, preserved: $link -> $target (not an exact link to this checkout)" >&2
+          errors=$((errors + 1))
+        fi
+      done
+    fi
+    if [ "$count" -eq 0 ]; then
+      echo "no prior skill links to this checkout: $root"
+    else
+      for name in shared templates; do
+        link="$root/$name"
+        if [ ! -L "$link" ] || [ "$(readlink "$link")" != "$repo_root/$name" ] || [ ! -d "$link" ]; then
+          echo "missing or incorrect required dependency link, preserved: $link (expected $repo_root/$name); repair manually" >&2
+          errors=$((errors + 1))
+        fi
+      done
+    fi
+  done
+  assert_no_symlink_components "$antigravity_manifest"
+  if [ -e "$antigravity_manifest" ] || [ -L "$antigravity_manifest" ]; then
+    command -v python3 >/dev/null || { echo "Python 3 is required to inspect Antigravity's skills.json" >&2; exit 1; }
+    python3 "$repo_root/scripts/sync-antigravity-skills.py" refresh "$antigravity_manifest" <<< "$inventory" || errors=$((errors + 1))
+  else
+    echo "Antigravity: no manifest; not registered"
+  fi
+  [ "$errors" -eq 0 ] || { echo "refresh requires manual review; no links or manifest were changed" >&2; exit 1; }
+  echo "refresh complete: existing selections preserved; runtime loading is not verified"
+  exit 0
+fi
 
 if [ "$#" -gt 0 ]; then
   for name in "$@"; do
-    candidate="$repo_root/$name"
-    if [ -d "$candidate" ] && [ -f "$candidate/SKILL.md" ]; then
-      skill_dirs+=("$candidate")
-    else
-      echo "skill not found or missing SKILL.md: $name" >&2
-      exit 1
+    if [[ ! "$name" =~ ^[a-z0-9][a-z0-9-]*$ ]] || ! grep -Fxq -- "$name" <<< "$inventory"; then
+      echo "not a public top-level skill in this checkout: $name" >&2; exit 2
     fi
+    skill_dirs+=("$repo_root/$name")
   done
 else
-  while IFS= read -r dir; do
-    skill_dirs+=("$dir")
-  done < <(find "$repo_root" -mindepth 1 -maxdepth 1 -type d ! -name ".git" ! -name "shared" ! -name "scripts" -exec test -f "{}/SKILL.md" \; -print | sort)
+  while IFS= read -r name; do skill_dirs+=("$repo_root/$name"); done <<< "$inventory"
+fi
+
+sync_antigravity() {
+  if [ "$antigravity" = auto ] && [ ! -e "$antigravity_manifest" ] && [ ! -L "$antigravity_manifest" ]; then return; fi
+  assert_no_symlink_components "$antigravity_manifest"
+  command -v python3 >/dev/null || { echo "Python 3 is required to read or sync Antigravity's skills.json" >&2; return 1; }
+  python3 "$repo_root/scripts/sync-antigravity-skills.py" "$antigravity" "$antigravity_manifest" "$@" <<< "$inventory"
+}
+
+if [ "$antigravity" = check ]; then
+  sync_antigravity "$@"
+  exit 0
 fi
 
 # Validate all target parents before the first mkdir/symlink operation.
@@ -291,11 +370,6 @@ for root in "$codex_skills_dir" "$claude_skills_dir"; do
   done
 done
 
-if [ "${#skill_dirs[@]}" -eq 0 ]; then
-  echo "no skills found to link" >&2
-  exit 1
-fi
-
 echo "repo root: $repo_root"
 echo "codex skills: $codex_skills_dir"
 echo "claude skills: $claude_skills_dir"
@@ -306,6 +380,8 @@ for skill_dir in "${skill_dirs[@]}"; do
   validate_skill "$skill_dir"
   echo "valid: $(basename "$skill_dir")"
 done
+
+sync_antigravity "$@"
 
 echo
 echo "== Symlink Codex =="

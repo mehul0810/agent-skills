@@ -1,0 +1,11 @@
+# Author-Only Criteria: Creative Exploration
+
+Do not provide this file to the evaluator. Judge the rendered concept-study.html, not claims in the handoff. Inspect both concepts at desktop and narrow mobile widths (around 390 px); open locally and check that comparison remains usable. Do not require a particular aesthetic.
+
+1. **Two real directions:** Both concepts use the same supplied facts and serve the same visitor decision, but differ in composition, interaction, or information hierarchy in an observable way. Palette, typeface, radius, or decoration changes alone do not count. No universal novelty quota applies; differences should be purposeful and task-fitting.
+2. **Visitor usefulness and truth:** A first-time visitor can find when/where, eligible items, participation expectations, uncertainty, booking/charge, and access contact. No invented repair guarantee, testimonial, attendance statistic, organizer credential, or additional fact. Supplied email's `.example` domain stays clearly fixture content.
+3. **Responsive/renderable artifact:** One self-contained HTML file renders both directions without network access or missing assets. Desktop and mobile hierarchy/reflow are intentional; no clipped content, unusable comparison controls, or horizontal overflow at narrow width.
+4. **Scope and evidence:** This is clearly a disposable concept study, not native WordPress, production-ready implementation, usability validation, or proof of actual event operations. Report path and limits; do not imply external execution or user testing.
+5. **Countercase restraint:** For the repeated peer schedule, preserve the useful stable row structure unless a concrete task problem justifies change; do not force novelty or redesign each peer as a different visual treatment. For the exact button-label request, change only the label and retain all specified properties; do not create alternatives or widen scope. State that proof should verify only the requested label change and preservation of the target, with broader final proof only if separately warranted.
+
+Expected deliverable: `concept-study.html` in a disposable local location. No source-code mutation beyond that artifact is needed. Concept-stage comparison/selection is distinct from later native WordPress authoring and final rendered, responsive, accessibility, and workflow proof.

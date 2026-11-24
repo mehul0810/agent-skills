@@ -1,0 +1,5 @@
+{
+  "sourceCount": 300,
+  "batchSize": 100,
+  "selectorChangesOnWrite": true
+}

@@ -490,6 +490,24 @@
       ]
     },
     {
+      "name": "Product video computer-use capture",
+      "maxWords": 1500,
+      "warningPercent": 85,
+      "files": [
+        "product-video-producer/SKILL.md",
+        "product-video-producer/references/computer-use-walkthrough.md"
+      ]
+    },
+    {
+      "name": "Product video presenter",
+      "maxWords": 1500,
+      "warningPercent": 85,
+      "files": [
+        "product-video-producer/SKILL.md",
+        "product-video-producer/references/presenter-video.md"
+      ]
+    },
+    {
       "name": "Product video story mode",
       "maxWords": 2700,
       "warningPercent": 85,
@@ -570,6 +588,11 @@
   ],
   "scenarios": [
     {
+      "name": "Creative Exploration",
+      "file": "skill-evals/creative-exploration-scenarios.md",
+      "requiredPhrases": ["# Creative Exploration Forward-Test Scenarios", "CE-1 Intent", "CE-2 Difference", "CE-3 Truth", "CE-4 Render", "CE-5 Restraint"]
+    },
+    {
       "name": "Conversion Journey",
       "file": "skill-evals/conversion-journey-scenarios.md",
       "requiredPhrases": ["# Conversion Journey Scenarios", "## Contrasting Decision Paths", "## Destination And Evidence Counterexamples", "## Evidence Boundary"]
@@ -602,7 +625,7 @@
     {
       "name": "Dedicated Product Role Topology",
       "file": "skill-evals/product-role-topology-scenarios.md",
-      "requiredPhrases": ["# Dedicated Product Role Topology Scenarios", "Dedicated product topology lifecycle", "Push is not completion", "Automatic reconciled archive", "Failed proof correction"]
+      "requiredPhrases": ["# Dedicated Product Role Topology Scenarios", "Dedicated product topology lifecycle", "Push is not completion", "Automatic reconciled archive", "Failed proof correction", "Accepted blocked evidence worker", "Missing handoff acknowledgement", "Owner-created role task", "Active implementation correction", "## Responsibility-First Coordination"]
     },
     {
       "name": "Visual WordPress",
@@ -618,7 +641,8 @@
         "Parent Stretch Is Not Child Padding",
         "Spatial Hierarchy Is Not A Mechanical Grid",
         "Independent Spatial Proof Rejects A Polished Near Miss",
-        "Pen Completion Must Follow The Rendered Candidate"
+        "Pen Completion Must Follow The Rendered Candidate",
+        "Evidence-Calibrated Brand Claims"
       ]
     },
     {
@@ -727,7 +751,8 @@
         "4K render provenance bundle",
         "MP4 completion identity",
         "Generated frame identity continuity",
-        "VFR proxy and picture-lock lineage"
+        "VFR proxy and picture-lock lineage",
+        "## Creator And Format Decisions"
       ]
     },
     {
@@ -748,7 +773,7 @@
     {
       "name": "Native Design Authoring",
       "file": "skill-evals/native-design-authoring-scenarios.md",
-      "requiredPhrases": ["# Native Design Authoring Scenarios", "## Editable Artifact Routing", "## Missing Write Capability", "## Pen Transfer Loss", "## Small Edit Restraint", "## Task-Matched Inspiration", "## Independent Acceptance Gates", "## Single Source And Publication", "## Proportional Handoff", "## High Fidelity Default", "## Navigation And Recovery", "## Purposeful Media", "## Placement Aware Image", "## Image Candidate Rejection", "## Exact Edit Restraint", "## Native Runtime Boundary", "## Truthful Visual Proof"]
+      "requiredPhrases": ["# Native Design Authoring Scenarios", "## Editable Artifact Routing", "## Missing Write Capability", "## Pen Transfer Loss", "## Small Edit Restraint", "## Task-Matched Inspiration", "## Independent Acceptance Gates", "## Single Source And Publication", "## Proportional Handoff", "## High Fidelity Default", "## Navigation And Recovery", "## Purposeful Media", "## Placement Aware Image", "## Image Candidate Rejection", "## Exact Edit Restraint", "## Native Runtime Boundary", "## Truthful Visual Proof", "## Supplied Mark In Native Placements"]
     },
     {
       "name": "Reference Design Adoption",
@@ -764,6 +789,39 @@
       "name": "Astra Simplification Pilot",
       "file": "skill-evals/astra-simplification-scenarios.md",
       "requiredPhrases": ["# Astra Simplification Pilot", "## Discovery Before Loading", "## Direct Execution And Safe Completion", "## Dependency And Recovery Boundaries", "## Paired Execution Evidence"]
+    },
+    {
+      "name": "Content Migration Integrity",
+      "file": "skill-evals/content-migration-integrity-scenarios.md",
+      "requiredPhrases": [
+        "# Content Migration Integrity Scenarios",
+        "CMI-1 Coverage",
+        "CMI-2 Honest status",
+        "CMI-3 Mutation safety",
+        "CMI-4 Resume integrity",
+        "CMI-5 No-progress/empty"
+      ]
+    },
+    {
+      "name": "Current Status Evidence",
+      "file": "skill-evals/current-status-scenarios.md",
+      "requiredPhrases": [
+        "# Current Status Evidence Scenarios",
+        "## Exact Target And Current State",
+        "## Unavailable Evidence",
+        "## Revision Matched CI",
+        "## Historical Scope And Receipt Reuse",
+        "## Execution And Scoring"
+      ]
+    },
+    {
+      "name": "Skill Gap Regression",
+      "file": "skill-evals/skill-gap-regression-scenarios.md",
+      "requiredPhrases": [
+        "# Skill Gap Regression Scenarios",
+        "Parent CTO directs a worker",
+        "case-supp-11"
+      ]
     }
   ]
 }

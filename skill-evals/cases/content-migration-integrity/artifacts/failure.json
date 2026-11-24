@@ -1,0 +1,4 @@
+{
+  "records": ["item-a", "item-b", "item-c"],
+  "writeResponses": {"item-b": ["temporary-error", "ok"], "item-a": ["ok"], "item-c": ["ok"]}
+}

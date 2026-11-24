@@ -72,7 +72,7 @@ Identify:
 ## Accessibility And Mobile Parity
 
 - Accessibility is a first-class acceptance criterion. Test keyboard-only navigation, focus order, focus visibility, labels, landmarks, announcements, color contrast, reduced motion, and screen-reader behavior when UI is affected.
-- Use the Gutenberg accessibility testing guide for keyboard and screen-reader checks; do not rely only on automated checks.
+- Use the Gutenberg accessibility testing guide for keyboard and authorized screen-reader checks; do not rely only on automated checks. Owner-excluded VoiceOver is not a completion gate: record excluded, never passed, without substitute readers. Preserve other checks/upstream limits; explicit requests restore scoped testing.
 - If a change touches function, class, variable names, shared components, editor flows, or files that have native counterparts, check corresponding `.native.js` or React Native/mobile editor paths to avoid mobile regressions.
 - For shared components and editor interactions, verify desktop, mobile-responsive behavior, and editor/frontend parity where the feature crosses those surfaces.
 

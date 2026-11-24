@@ -1,38 +1,38 @@
 # GitHub Actions Economy
 
-Use this reference when designing or auditing GitHub Actions. Verify repository visibility and runner/storage types before making a cost claim; if visibility is unknown, treat it as unknown rather than assuming public-repo pricing. GitHub-hosted CI may be useful for any task, but choose it for evidence, feedback, or a required control that justifies its total cost and optimize it for performance. Do not weaken required proof to save minutes.
+Use when designing/auditing Actions. Verify visibility and runner/storage before cost claims; unknown visibility stays unknown. Choose hosted CI for useful evidence, feedback, or controls, optimize total cost/performance, and never weaken required proof to save minutes.
 
 Official anchors: [Actions billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions), [workflow syntax](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [concurrency](https://docs.github.com/en/actions/concepts/workflows-and-actions/concurrency), [dependency caching](https://docs.github.com/en/actions/concepts/workflows-and-actions/dependency-caching), and [workflow artifacts](https://docs.github.com/en/actions/concepts/workflows-and-actions/workflow-artifacts).
 
 ## Visibility-Aware Cost Policy
 
-- **Private repositories:** local-first by default because standard hosted-runner minutes, artifact storage, and cache storage can consume plan allowances or incur charges. Keep hosted jobs only for required branch-protection checks, untrusted contributions, supported runtime/OS evidence, secret-backed integration, compliance, or release/package proof that local execution cannot safely and equivalently provide. Avoid duplicate push/PR/full-suite runs. Where available, use account/repository budgets and usage alerts as guardrails; do not imply those settings are configured without checking.
-- **Public repositories:** use standard GitHub-hosted CI for any task when it provides useful feedback or non-equivalent evidence; do not artificially restrict CI to release-only work. Optimize anyway: standard hosted runners are free for public repositories, but larger runners are billed, and artifact/cache storage or other limits remain relevant. Verify current plan/pricing for the exact runner and storage path.
-- **Unknown or changing visibility:** verify visibility before estimating cost or designing a policy that depends on public-runner treatment. Prefer the private-safe local-first shape until verified, without mislabeling the repository.
-- **Measure the whole workflow:** reduce redundant starts, runner minutes, setup/checkout/build work, matrix fan-out, retained artifact/cache volume, and noisy duplicate reports. State expected savings as an estimate unless comparable before/after usage is measured.
+- **Private repositories:** local-first; keep hosted jobs only for required protection, untrusted contributions, supported runtime/OS, secret-backed integration, compliance, or release/package proof unavailable safely and equivalently locally. Avoid duplicate push/PR/full-suite runs. Use available budgets/alerts, but do not claim they are configured without checking.
+- **Public repositories:** use standard hosted CI when it provides useful feedback or non-equivalent evidence, not only for releases. Standard hosted runners are free for public repositories; larger runners are billed, and artifact/cache storage or other limits remain relevant. Verify current plan/pricing for the exact runner/storage.
+- **Unknown/changing visibility:** verify before cost estimates or visibility-based policy; use private-safe local-first meanwhile without mislabeling the repo.
+- **Measure the whole workflow:** reduce duplicate starts, minutes, setup/checkout/build, matrix fan-out, retained artifact/cache volume, and reports. Savings remain estimates absent comparable before/after usage.
 
 ## Local-vs-hosted decision
 
-Run locally, through one canonical repository command, when the check is deterministic and the worker/maintainer can reproduce it. This is the default for private repositories, not a blanket prohibition on public CI:
+Use one canonical local command for deterministic checks maintainers can reproduce. This is private-repo default, not a public-CI prohibition:
 
 - PHP/JS/CSS/YAML syntax, lint, static analysis, unit/integration tests, and focused browser tests.
 - Build, production dependency install, package/ZIP assembly, Plugin Check, SBOM/provenance generation, and metadata checks.
 - Docs, changelog, schema, fixture, snapshot, and compatibility checks that do not require a hosted secret, operating system, or protected environment.
 
-Retain hosted jobs when they provide useful feedback or non-equivalent evidence. For private repositories, require a documented reason that justifies the cost; for public repositories, CI may cover ordinary validation as well as these cases:
+Retain hosted jobs for useful feedback or non-equivalent evidence. Document the cost rationale for private repos; public CI may also cover ordinary validation:
 
 - Release-candidate and stable validation from a clean runner against an explicit candidate SHA/version, including the production package and release proof.
 - Untrusted external contributions that need an isolated, read-only, secret-free runner.
 - A documented branch-protection check, supported PHP/WordPress/OS matrix, secret-backed non-production integration, or compliance/provenance control that cannot run safely and reproducibly locally.
 
-Do not retain PR and feature-push workflows merely because they already exist, or run the same full gate on every trigger. For private repositories, remove equivalent hosted work where local proof is sufficient; for public repositories, retain the useful trigger but still avoid duplicate full gates. Frequent scheduled polling, duplicate browser screenshots, and broad matrices without a supported combination are performance/capacity defects. Record private-repo exceptions and the evidence they provide in `AGENTS.md`, `TESTING.md`, or `RELEASE.md`.
+Do not preserve PR/feature-push workflows merely because they exist or run the same full gate on every trigger. Remove locally equivalent hosted work for private repos; retain useful public triggers without duplicate gates. Frequent polling, duplicate screenshots, and unsupported matrices waste capacity. Record private exceptions and evidence in `AGENTS.md`, `TESTING.md`, or `RELEASE.md`.
 
 ## Minimal workflow topology
 
-1. One local fast gate and one local full/package gate are the source of truth. Hosted jobs invoke those same scripts; they do not maintain a second YAML-only test implementation. Keep the fast gate short and changed-boundary focused, then run full/package proof at the trigger that needs it.
-2. Use one release workflow with `workflow_dispatch` inputs for the exact candidate SHA and version. Validate, build, and package once in a clean runner; pass the immutable artifact to later proof/publish jobs instead of checking out and rebuilding repeatedly.
-3. Keep beta/production publish in a separate environment-protected job. Give validation `contents: read`; grant write, deploy, or release permissions only to the smallest final job. A tag event is not release authorization unless the exact tag was created through the approved gate.
-4. Use reusable workflows or composite actions for genuinely shared logic, but avoid nested fan-out that runs the same setup and gate more than once.
+1. One local fast gate and one full/package gate are the source of truth; hosted jobs invoke these scripts, not YAML-only tests. Keep fast checks changed-boundary focused; run full/package proof only at needed triggers.
+2. One release workflow uses `workflow_dispatch` inputs for the exact candidate SHA and version. Validate, build, and package once in a clean runner; pass the immutable artifact to proof/publish jobs instead of rebuilding.
+3. Separate beta/production publish into an environment-protected job. Validation gets `contents: read`; only the smallest final job gets write/deploy/release permissions. A tag event is not release authorization unless created through the approved gate.
+4. Reuse workflows/composite actions for shared logic; avoid nested duplicate setup/gates.
 
 ## Trigger and cost controls
 
@@ -46,6 +46,6 @@ Do not retain PR and feature-push workflows merely because they already exist, o
 
 ## Migration and evidence
 
-Before changing workflows, verify visibility and inventory triggers, jobs, matrices, duration, runner type, cache/artifact storage, required checks, and release permissions. Classify each job as `local`, `useful public CI`, `documented private hosted exception`, or `release-only`; remove duplicate hosted jobs only after the canonical local command and any required protection check are proven. Re-run affected local gates, then a dry-run or non-publishing release workflow with an explicit candidate. Report measured or estimated runtime/minute/storage changes, retained evidence, and any proof gap.
+Before changes, verify visibility, triggers/jobs/matrices/duration, runner, cache/artifact storage, required checks, and release permissions. Classify jobs `local`, `useful public CI`, `documented private hosted exception`, or `release-only`; remove duplicates only after proving the canonical local command and protection checks. Re-run affected gates and a dry-run/non-publishing release workflow for an explicit candidate. Report measured/estimated runtime/minute/storage, retained evidence, and proof gaps.
 
-For WordPress plugins/themes, hosted release validation must still install the exact package, run Plugin Check and metadata/readme checks, capture required browser/golden-workflow proof, verify tag ancestry and package parity, and perform WordPress.org/SVN or deploy steps only in the owner-gated release job. Cost reduction never permits skipped security, performance, accessibility, compatibility, or rollback proof.
+For WordPress plugins/themes, hosted release validation still installs the exact package, runs Plugin Check and metadata/readme checks, captures required browser/golden-workflow proof, verifies tag ancestry/package parity, and performs WordPress.org/SVN or deploy steps only in the owner-gated release job. Cost cuts never skip security, performance, accessibility, compatibility, or rollback proof.

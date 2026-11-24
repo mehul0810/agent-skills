@@ -101,10 +101,11 @@ Cheap local checks:
 
 ```bash
 wp option list --autoload=on --format=json | wc -c
-wp transient delete --all
 wp cron event list
 curl -sS -o /dev/null -w '%{http_code} %{time_starttransfer} %{time_total}\n' https://example.test/wp-json/example/v1/route
 ```
+
+Do not clear all transients as part of a measurement recipe: this mutates unrelated site state and changes cache conditions. If a cold-cache probe is necessary, use an explicitly authorized, scoped disposable environment and document the exact cache keys/state changed and restoration or cleanup.
 
 Repo/runtime checks:
 

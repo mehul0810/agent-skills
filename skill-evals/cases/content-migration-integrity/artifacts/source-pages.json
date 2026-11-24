@@ -1,0 +1,13 @@
+{
+  "description": "Synthetic pagination examples only.",
+  "dynamic": [
+    {"identity": "page-1", "items": ["id-001", "id-002"], "next": "cursor-b"},
+    {"identity": "page-2", "items": ["id-002", "id-003"], "next": "cursor-c"},
+    {"identity": "page-3", "items": ["id-004"], "next": null}
+  ],
+  "clampedTerminal": [
+    {"request": 1, "identity": "page-1", "next": 2},
+    {"request": 2, "identity": "page-2", "next": 3},
+    {"request": 3, "identity": "page-2", "next": null}
+  ]
+}

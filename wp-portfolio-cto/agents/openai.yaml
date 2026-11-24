@@ -1,4 +1,4 @@
 interface:
   display_name: "WP Portfolio CTO"
-  short_description: "Cross-product WordPress portfolio control room"
-  default_prompt: "Use $wp-portfolio-cto for compact cross-product WordPress portfolio governance, product-thread health, release conflicts, owner decision briefs, and exception-based portfolio heartbeats."
+  short_description: "On-demand cross-product WordPress governance"
+  default_prompt: "Use $wp-portfolio-cto for on-demand cross-product WordPress governance: shared risks, release conflicts, material exceptions, and owner decision briefs."

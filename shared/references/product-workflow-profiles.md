@@ -6,7 +6,7 @@ Select one profile per task; use the existing role, release, proof and quality c
 
 Evidence/value -> duplicate-screened issue -> scoped milestone/acceptance packet -> implementation -> independent review + current proof -> delivery gate -> reconciliation -> measured outcome/learning.
 
-The packet identifies product/repo, issue, milestone, branch/base, scope/non-goals, value hypothesis, acceptance, risks, proof environment/mutation level, validation, model ceiling and stop condition. Work starts only with a coherent packet; unresolved hard gates block the affected action, not unrelated safe work. Research must validate need, alternatives and expected business/user value before feature expansion.
+The packet identifies product/repo, issue, milestone, branch/base, scope/non-goals, value hypothesis, acceptance, risks, proof environment/mutation level, validation, the applicable budget, any explicit model/effort requests and stop condition. Work starts only with a coherent packet; unresolved hard gates block the affected action, not unrelated safe work. Research must validate need, alternatives and expected business/user value before feature expansion.
 
 One issue/branch/worktree/PR; non-overlapping workers. Tests cover changed behavior and risk, not arbitrary exhaustive suites. Recheck proof after candidate/package changes. Preserve primary site data, native editor ownership, existing contracts and independent review. Cleanup remains subject to explicit destructive-action policy.
 

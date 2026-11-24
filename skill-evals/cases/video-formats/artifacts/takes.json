@@ -1,0 +1,13 @@
+{
+  "source": "fictional training capture log; no video supplied",
+  "build": "Proof Desk 4.1",
+  "role": "editor",
+  "fixture": "sample cover, local review copy",
+  "clips": [
+    {"id":"T1","in":"00:00","out":"00:04","picture":"Project > Covers. Open sample cover; draft A is selected."},
+    {"id":"T2","in":"00:00","out":"00:05","picture":"Choose Compare, select draft B, press Build proof."},
+    {"id":"T3","in":"00:00","out":"00:12","picture":"Building proof spinner. Same session and sample."},
+    {"id":"T4","in":"00:00","out":"00:05","picture":"Side-by-side proof A/B appears; status reads Local preview. Send button untouched."},
+    {"id":"T5","in":"00:00","out":"00:04","picture":"Viewer role from a different session sees Compare disabled."}
+  ]
+}

@@ -25,7 +25,7 @@ Create helpful, source-grounded content for search, answer engines, and AI disco
 2. Identify the audience, business goal, search intent, funnel stage, geography, language, brand voice, conversion action, and required sources.
 3. Research only what is needed. Use official/current sources when facts, search guidance, product details, or regulations may have changed.
 4. Build a compact brief: primary intent, secondary intents, entity/topic coverage, unique angle, evidence requirements, content structure, and conversion path.
-5. Write with answer-first structure: direct answer, useful depth, clear headings, examples, comparisons, FAQs, and next-step guidance.
+5. Write with an answer-first structure suited to the requested asset. Use headings, examples, comparisons, FAQs, and next-step guidance where useful or requested.
 6. Optimize without stuffing: natural keywords, related entities, internal-link targets, descriptive media needs, schema candidates, and metadata.
 7. Validate facts and clarity: can the reader understand the point, next action and important condition? Preserve precision and voice. Check duplication, accessibility, search intent and trust; load `references/readability-and-clarity.md` for confirmed clarity risk. Use the human-writing gate after factual review when needed.
 
@@ -50,7 +50,7 @@ Factual WordPress.org `readme.txt`, plugin-directory listing optimization, repos
 ## Output Expectations
 
 - For briefs: audience, intent, angle, outline, entities, source plan, schema candidates, internal links, and acceptance criteria.
-- For drafts: publish-ready content with title, meta description, headings, body copy, FAQs, source notes, and revision assumptions.
+- For drafts: deliver the requested content; include title, meta description, headings, FAQs, source notes, and revision assumptions as requested or appropriate. A commissioned full SEO package includes its specified components.
 - For WordPress page/post handoff: add a block-ready section brief covering hierarchy, copy/media/CTA intent, reusable/global intent, and dynamic states; do not fabricate serialized blocks or frontend CSS. `wp-site-expert` owns implementation.
 - For edits: the revised draft plus a short change summary; omit unrequested draft metadata.
 - For detection: quoted evidence, effect, and short fix; no rewriting, scoring, or authorship claims.

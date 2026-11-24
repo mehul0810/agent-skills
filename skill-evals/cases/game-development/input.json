@@ -1,0 +1,5 @@
+{
+  "id": "game-development",
+  "request": "For each independent brief in the supplied artifact, make a concrete first-pass development or review decision. Explain what you would ship, how you would check it, and what the available evidence permits you to say. These are decision exercises; do not build or publish anything.",
+  "artifacts": ["briefs.md"]
+}

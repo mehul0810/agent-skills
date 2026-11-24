@@ -11,6 +11,7 @@ Own the review, remediation, and proof loop. Do not depend on an external Codex 
 
 Load only the primary mode that matches the requested outcome:
 
+- General production code or PR review: [production change review](../shared/references/production-change-review.md). Follow affected callers; deepen into a focused mode only for a concrete risk. A review request alone does not authorize fixes.
 - Authorization, data flow, REST/admin actions, uploads, webhooks, secrets, dependencies, privacy, or abuse: `references/security-review-fix.md`.
 - Queries, cache, options, requests, jobs, bundles, editor/admin speed, Core Web Vitals, or capacity: `references/performance-review-fix.md`.
 - Duplication, coupling, boundaries, architecture, comments, testability, dead code, or maintainability: `references/modularity-review-fix.md`.
@@ -18,7 +19,7 @@ Load only the primary mode that matches the requested outcome:
 
 For a multi-domain enterprise/release audit, load `references/multi-domain-release-review.md` instead of all four detailed references. Load one detailed mode only when the compact pass confirms a material or ambiguous risk.
 
-For elevated or release-critical performance/security work, use the mode's structured tail/resilience or authorization/abuse receipt; routine low-risk work records a compact baseline or `Not applicable - reason`.
+Use structured tail/resilience or authorization/abuse receipts for elevated or release-critical work. Routine work needs only a baseline or `Not applicable - reason`.
 
 ## Routing Boundary
 
@@ -38,7 +39,7 @@ For elevated or release-critical performance/security work, use the mode's struc
 7. For `P0`/`P1`, release-critical, migration, or public-contract fixes, require a fresh source-aware re-review of the changed code and evidence before passing the gate. Add separate source-blind behavior proof when the claim is observable at runtime.
 8. Run a finish pass for adjacent risks, tests, docs, dead/debug code, and release impact. Preserve scope; route validated adjacent findings through the existing issue protocol.
 
-Every code review applies the compact non-breaking modularity checkpoint; the detailed modularity mode expands it only when a confirmed boundary, duplication, migration, or testability concern exists.
+Apply the compact non-breaking modularity checkpoint to code reviews. Open the detailed mode for a measured changed-file or method threshold breach, or a confirmed boundary, duplication, migration, or testability concern.
 
 ## Evidence And Severity
 

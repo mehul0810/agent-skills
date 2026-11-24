@@ -1,16 +1,16 @@
 # Planning Drift Control
 
-Use this when a task needs enough planning to prevent implementation drift, or when validation should be calibrated to risk instead of treated as all-or-nothing. Use `thinking-brainstorming-engineering-discipline.md` when the risk is over-planning, over-polishing, broad brainstorming, or overengineering.
+Use to prevent implementation drift or calibrate validation to risk. For over-planning, over-polishing, broad brainstorming or overengineering, use `thinking-brainstorming-engineering-discipline.md`.
 
 ## Principle
 
-Plan enough to protect scope, then execute narrowly. Validation should prove the risk that actually changed; do not spend tokens or time visually proving an exact user-supplied value change unless the change is cascade-sensitive or the user requested verification.
+Plan to protect scope, then execute narrowly. Prove changed risk; do not visually recheck exact user values unless cascade-sensitive or requested.
 
-Do not use planning as a substitute for decision-making. If multiple paths are plausible, compare up to 3 options, choose one, and proceed unless the wrong choice would be costly.
+Planning is not decision-making. If paths are plausible, compare up to 3, choose and proceed unless a wrong choice is costly.
 
 ## Drift-Resistant Plan Contract
 
-For substantial or ambiguous work, produce or mentally confirm:
+For substantial/ambiguous work, confirm:
 
 - Goal.
 - In scope.
@@ -21,41 +21,41 @@ For substantial or ambiguous work, produce or mentally confirm:
 - Validation level.
 - Stop/ask triggers.
 
-Keep this short. Use a written plan when the task is cross-cutting, security-sensitive, data-affecting, UI/UX ambiguous, or likely to span multiple files. Use a mental plan for trivial direct edits.
+Keep short. Write cross-cutting, security/data-sensitive, UI/UX-ambiguous or multi-file plans; trivial edits can be mental.
 
 ## Universal Code-Change Quality Plan
 
-Every code change needs a proportional quality contract before editing, not only substantial work:
+Every code change needs a proportional quality contract before editing:
 
-- Tiny isolated edit: internally confirm outcome, ownership/boundary, quality risk, and proof; no separate planning document or dimension-by-dimension receipt.
-- Normal behavior change: record goal/non-goals, owner/source of truth/contracts, modularity/maintainability and scalability boundary, performance hot path/budget, security/privacy boundary, tests/proof, and rollback.
-- Elevated public, high-traffic, sensitive-data, migration, or release work: use the architecture and enterprise gates as the written plan, including compatibility, observability, operational limits, and backout evidence.
+- Tiny edit: internally confirm outcome, ownership/boundary, risk and proof; no separate plan or dimension receipt.
+- Normal behavior change: record goal/non-goals, source/contracts, modularity/maintainability and scalability boundary, hot path/budget, security/privacy, tests/proof and rollback.
+- Elevated public, high-traffic, sensitive-data, migration or release work: written architecture/enterprise gates include compatibility, observability, limits and backout evidence.
 
 Resolve consequential unknowns before crossing their boundary; use reasonable reversible assumptions for routine details. In formal quality matrices use `Not applicable - reason` for irrelevant dimensions. The plan constrains scope and proof; it never authorizes release, destructive, public-contract, or other protected actions.
 
 ## Quality Receipt
 
-Before calling code complete or opening a PR, compare the diff with the plan. For small edits report outcome, applicable checks, and residual risks briefly; normal/elevated work reports quality dimensions as evidenced, not applicable with reason, or a named risk. Include relevant compatibility/backout and adjacent findings. Do not claim scalable, performant, maintainable, or secure from intent or a single tool result.
+Before completion/PR, compare diff to plan. Briefly report small-edit outcome, checks and risks; for normal/elevated work report dimensions as evidenced, not applicable with reason, or risk. Include compatibility/backout and adjacent findings. Intent or one tool result cannot prove scalability, performance, maintainability or security.
 
 ## Scope Drift Guard
 
 Before editing:
 
-- Map the exact requested outcome and intended files.
-- Identify what must not change.
-- Decide which validation level applies.
+- Map requested outcome/files.
+- Identify invariants.
+- Set validation level.
 
 During editing:
 
-- Do not fix adjacent issues unless they block the requested outcome.
-- If implementation needs unplanned files, public contracts, migrations, dependencies, or broader refactors, stop and ask or state the scope change before continuing.
+- Do not fix non-blocking adjacent issues.
+- If work needs unplanned files, contracts, migrations, dependencies or refactors, stop and ask/state scope change.
 - If a simple CSS/theme request reveals cascade, saved global styles, editor/frontend parity, or parent/child theme ambiguity, treat it as a higher-risk theme debugging task.
 
 After editing:
 
-- Compare the actual diff to the plan.
-- Confirm every changed file maps to the requested scope.
-- Call out any intentional deviation or unverified surface.
+- Compare diff to plan.
+- Map every changed file to scope.
+- Report deviations and unverified surfaces.
 
 ## Validation Levels
 

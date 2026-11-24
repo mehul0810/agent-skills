@@ -1,0 +1,5 @@
+{
+  "id": "creative-exploration-held-out",
+  "request": "Make a disposable HTML concept study for the visitor guide to a small maritime museum. There is no supplied design or brand direction; this is a greenfield exploration, not an implementation task. Help visitors orient themselves, choose a short visit route, and understand practical visit details. Use only the supplied copy. Present two meaningfully different, task-fitting compositions with identical information and a compact mobile version of each, so I can compare the directions. Save a self-contained, locally renderable concept-study.html in a temporary/disposable location. You may select a reversible direction for this exploration. No external images, fonts, libraries, services, or other media. Report the artifact path and limits; do not call it a finished site or WordPress implementation. Also answer the two independent, short design-decision prompts in countercases.txt; do not expand the HTML study to include them.",
+  "artifacts": ["brief.txt", "countercases.txt"]
+}

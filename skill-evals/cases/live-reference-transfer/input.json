@@ -1,0 +1,5 @@
+{
+  "id": "live-reference-transfer",
+  "request": "Using the supplied WordPress site-design guidance, respond to the independent requests in requests.json. Give a practical direction and verification plan for each; do not edit a site, contact external services, or claim that planned checks have run. Record the guidance you loaded.",
+  "artifacts": ["requests.json", "cover.svg"]
+}

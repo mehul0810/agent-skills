@@ -8,11 +8,11 @@ Use for WordPress frontend/admin/editor and interactive workflows. Target WCAG 2
 - WCAG 2.2: https://www.w3.org/TR/WCAG22/
 - WAI evaluation/APG: https://www.w3.org/WAI/test-evaluate/ and https://www.w3.org/WAI/ARIA/apg/
 
-WCAG is normative; ARIA APG is implementation guidance, not a conformance certificate. No automated tool alone determines accessibility; knowledgeable human evaluation is required.
+WCAG is normative; ARIA APG guides implementation. Automated tools cannot certify accessibility; human evaluation is required.
 
 ## Scope And Journey
 
-Define exact revision/build, representative surfaces/roles/tasks, tested browser/device/input/assistive-technology pairs, authored versus fixed UI, target standard, and review boundary. A scoped sample is not site-wide conformance.
+Define revision/build, surfaces/roles/tasks, tested browser/device/input/AT pairs, authored/fixed UI, standard and scope. Sampling is not site-wide conformance.
 
 When editor-managed output changes, test both produced and authoring experience.
 
@@ -55,15 +55,19 @@ Inspect applicable initial, hover, focus, active, selected, expanded, disabled, 
 
 ## Proof Stack
 
-Run only applicable layers, but never substitute automation for manual task proof:
+Owner-excluded VoiceOver never blocks completion: no substitute reader or claimed pass. Restore only on explicit request; retain other checks and formal-claim limits.
+
+Run applicable layers; automation cannot replace manual proof:
 
 1. Static/lint and automated browser scan such as axe or an existing equivalent.
 2. Keyboard-only journey: Tab/Shift+Tab, arrows where the pattern requires them, Enter/Space, Escape, focus entry/return, and no dead ends.
-3. Screen-reader smoke using an available supported pair, such as VoiceOver/Safari on macOS or NVDA/Firefox on Windows. Report the exact pair; do not invent coverage.
+3. Screen-reader smoke within authorized scope: name the actual tested pair, or record owner exclusion.
 4. Separate text-resize, reflow, spacing-override, and contrast checks above; add reduced-motion and forced-colors checks where relevant.
 5. WordPress author workflow and saved frontend behavior for editor-managed output.
 
-Record expected versus actual behavior and evidence for the affected states. Critical workflows require manual keyboard proof and assistive-technology proof or an explicit blocked gap.
+Record expected/actual behavior. Critical workflows need keyboard proof; missing AT is owner-excluded or blocked.
+
+Use `voiceOverExclusion` (`status: excluded_by_owner`, owner `authority`, `reason`, `claims: not_verified`) ; packaged reviews add `accessibility_keyboard` plus scan proof. Exclusion waives no defects or AT/conformance evidence.
 
 ## Completion And Claims
 

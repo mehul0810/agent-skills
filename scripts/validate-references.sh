@@ -104,8 +104,8 @@ validate_referenced_files() {
     skill_name="$(basename "$(dirname "$skill_file")")"
 
     # Extract reference file paths from SKILL.md
-    local ref_line
-    { grep -o '`references/[a-z0-9-]*\.md`' "$skill_file" 2>/dev/null || true; } | sed 's/`//g' | while read -r ref_path; do
+    local ref_path
+    while read -r ref_path; do
       local full_path="$(dirname "$skill_file")/$ref_path"
 
       if [ ! -f "$full_path" ]; then
@@ -113,13 +113,13 @@ validate_referenced_files() {
       else
         log_success "[$skill_name] Found: $ref_path"
       fi
-    done
+    done < <({ grep -o '`references/[a-z0-9-]*\.md`' "$skill_file" 2>/dev/null || true; } | sed 's/`//g')
   done
 
   # Also check shared references - resolve relative paths from each skill directory
   local skill_dir
   while IFS= read -r skill_dir; do
-    { grep -o '\.\./shared/references/[a-z0-9-]*\.md' "$skill_dir/SKILL.md" 2>/dev/null || true; } | sort -u | while read -r ref_path; do
+    while read -r ref_path; do
       # Resolve relative to the skill directory
       local full_path="$skill_dir/$ref_path"
 
@@ -128,9 +128,9 @@ validate_referenced_files() {
       else
         log_success "Found shared: $ref_path"
       fi
-    done
+    done < <({ grep -o '\.\./shared/references/[a-z0-9-]*\.md' "$skill_dir/SKILL.md" 2>/dev/null || true; } | sort -u)
 
-    { grep -o '\.\./wp-expert/references/[a-z0-9-]*\.md' "$skill_dir/SKILL.md" 2>/dev/null || true; } | sort -u | while read -r ref_path; do
+    while read -r ref_path; do
       # Specialist router skills reuse the canonical wp-expert reference playbooks.
       local full_path="$skill_dir/$ref_path"
 
@@ -139,7 +139,7 @@ validate_referenced_files() {
       else
         log_success "Found wp-expert reference: $ref_path"
       fi
-    done
+    done < <({ grep -o '\.\./wp-expert/references/[a-z0-9-]*\.md' "$skill_dir/SKILL.md" 2>/dev/null || true; } | sort -u)
   done < <(find_skill_dirs)
 }
 
@@ -168,8 +168,14 @@ validate_relative_reference_routes() {
         log_error "Broken route in ${source_file#$repo_root/}: $ref_path"
       fi
     done < <(
-      grep -Eo '`((\.\./)+|references/)[a-zA-Z0-9_./-]+\.md`|\]\(((\.\./)+|references/)[a-zA-Z0-9_./-]+\.md(#[^)]*)?\)' \
+      # Explicit relative Markdown links are routes, including siblings and ./ paths.
+      grep -Eo '`((\.\./)+|references/)[a-zA-Z0-9_./-]+\.md`|\]\(((\.\.?/)+)?[a-zA-Z0-9_][a-zA-Z0-9_.-]*(/[a-zA-Z0-9_.-]+)*\.md(#[^)]*)?\)' \
         "$source_file" 2>/dev/null | sort -u || true
+      # Bare code tokens count only in router bullet declarations, not prose.
+      if [ "$(basename "$source_file")" = "router.md" ]; then
+        grep -E '^-[[:space:]]*`[a-z0-9-]+\.md`:|^-[^`]*:[[:space:]]*`[a-z0-9-]+\.md`[.]?[[:space:]]*$' \
+          "$source_file" | grep -Eo '`[a-z0-9-]+\.md`' || true
+      fi
     )
   done < <(
     while IFS= read -r skill_dir; do
@@ -178,6 +184,9 @@ validate_relative_reference_routes() {
         find "$skill_dir/references" -maxdepth 1 -type f -name "*.md" -print
       fi
     done < <(find_skill_dirs)
+    if [ -d "$repo_root/shared/references" ]; then
+      find "$repo_root/shared/references" -maxdepth 1 -type f -name '*.md' -print
+    fi
   )
 
   if [ "$checked" -eq 0 ]; then
@@ -193,6 +202,7 @@ validate_routing_map() {
   echo "=== Validating reference routing map ==="
 
   local routing_file="$repo_root/wp-expert/references/reference-routing-map.md"
+  local errors_before="$errors"
 
   if [ ! -f "$routing_file" ]; then
     log_error "Reference routing map not found: $routing_file"
@@ -200,7 +210,7 @@ validate_routing_map() {
   fi
 
   # Extract references from routing map
-  grep -o '`[a-z0-9-]*\.md`' "$routing_file" | sed 's/`//g' | sort -u | while read -r ref_file; do
+  while read -r ref_file; do
     local full_path="$repo_root/wp-expert/references/$ref_file"
 
     local shared_path="$repo_root/shared/references/$ref_file"
@@ -214,9 +224,11 @@ validate_routing_map() {
     else
       log_success "Routing map: $ref_file exists"
     fi
-  done
+  done < <({ grep -o '`[a-z0-9-]*\.md`' "$routing_file" || true; } | sed 's/`//g' | sort -u)
 
-  log_success "Reference routing map is valid"
+  if [ "$errors" -eq "$errors_before" ]; then
+    log_success "Reference routing map is valid"
+  fi
 }
 
 # Check for unreferenced files

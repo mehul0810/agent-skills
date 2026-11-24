@@ -63,6 +63,8 @@ Make deterministic validation locally executable and expose one canonical comman
 
 ## GitHub Actions
 
+For upstream WordPress workflow changes, check the [Core GitHub Actions coding standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/github-actions/), including its actionlint and zizmor checks. Do not impose Core's tooling on unrelated product repositories; use their declared gates.
+
 Use `../../shared/references/github-actions-economy.md` for visibility-aware cost decisions, triggers, workflow performance, cache/artifact policy, concurrency, and release safety. Do not infer that CI is unnecessary in a public repository or that its storage/larger-runner usage is free. Keep owner approval and exact-candidate release boundaries below unchanged.
 
 ## CI Troubleshooting
@@ -74,6 +76,7 @@ Use `../../shared/references/github-actions-economy.md` for visibility-aware cos
 
 ## GitHub PR Workflow
 
+- For commit messages, PR/issue titles and bodies, use the cross-project writing standard in `../../shared/references/github-communication-protocol.md`; preserve explicit repository and upstream contribution formats.
 - Rehydrate repo context at the start of a new chat or resumed task: verify Git root, remote, default branch, current branch, dirty tree, ahead/behind state, workflow docs, active issue/milestone, and release/hotfix/support branches.
 - Fetch remote refs before deciding a PR base when network access is available.
 - Never create a PR by relying on the GitHub default base. Explicitly choose and pass `--base`; `main`/`trunk` is only correct when evidence says it is the intended target.

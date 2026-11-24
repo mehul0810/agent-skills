@@ -12,6 +12,13 @@ editable project reopened and relinked. A real pilot requires a supplied product
 truthful source assets, an authorized capture/build, and observable render/playback
 and, when requested, native-editor evidence.
 
+For intros, creator/avatar spots, motion loops and demo/tutorial cuts, also run
+`cases/video-formats/input.json` with only its raw capture log and the routed
+skill. Score separately against its author-only criteria. Test the placement CLI
+on an encoded fixture with and without a matching guide; inspect the resulting
+pixels. A paper edit, a real PNG comparison and a reviewed performance are three
+different results. No real-person likeness or voice upload is needed for this test.
+
 ## Frozen Inputs
 
 Freeze brief, audience, brand assets and rights, storyboard, aspect/duration,

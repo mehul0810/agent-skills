@@ -1,0 +1,5 @@
+{
+  "id": "quality-report-decisions",
+  "request": "For each independent case in briefs.md, tell the maintainer what the supplied evidence permits, what is still needed, and which decision or route to take. Distinguish the validity of a report from the disposition of its candidate. These are synthetic decisions; do not access a product or run any accessibility checks.",
+  "artifacts": ["briefs.md"]
+}

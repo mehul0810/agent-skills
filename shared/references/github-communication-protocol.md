@@ -1,38 +1,72 @@
 # GitHub Communication Protocol
 
-Use this reference when reading or writing GitHub issue and PR titles/bodies, comments and reviews, applying ownership labels, or deciding whether a GitHub comment is durable enough to post.
+Use for commit/issue/PR text, comments, reviews, handoffs, labels, and comment-posting decisions.
 
-## Plain-Language Titles And Messages
+## Cross-Project Writing Standard
 
-Apply this guidance to every future issue, PR, review and comment you write or update. Write so a reader without project knowledge can follow the main point. Aim for the ease of a simple explanation to a young reader, with a respectful adult tone; do not use baby talk or remove facts needed to judge the work.
+Default for new owner-managed work. Explicit repo/upstream conventions (including Core/Trac) take precedence; preserve required fields. Do not rename history, rewrite commits, edit others' drafts, or override generated dependency/release titles for consistency. Formatting grants no create, publish, merge, close, or release authority.
 
-- Use everyday words, short complete sentences and direct verbs. Explain needed technical terms the first time you use them. Keep exact commands, names, versions and identifiers where they matter.
-- Lead with what is wrong or what changed. Then explain why it matters, what was actually checked and what happens next, when relevant. A short title should name the problem or result. Scale the detail to the task; these are questions to answer, not mandatory headings for every comment.
-- Keep failed, blocked and unrun checks clear. Do not turn a unit-test pass into browser, security, compatibility or release proof. State an important risk or limit beside the claim it qualifies, even when that makes the explanation longer.
-- Put extra code paths, commands, logs and implementation detail in an optional `Technical details` section or linked evidence when they help a reviewer. Keep any fact needed to make a safe decision in the main explanation.
-- Before finishing, check whether the reader can say what happened, why it matters, what the evidence covers and what to do next. Do not force a reading-score target, a word-count limit or childish wording.
+### Titles
 
-Example wording for a rejected-edit fix, not a report of an actual test:
+Commit subjects, PR titles and issue titles share this shape:
 
-> A rejected change now leaves the saved web address alone. This keeps the existing link working. The unit tests passed; they check small parts of the code. We have not checked the form in a browser yet. Next: test the form before release.
+```text
+type(scope): plain-language summary
+```
 
-Two examples with an explained technical term, not reports of actual tests:
+- Lowercase type: `feat`, `fix`, `docs`, `refactor`, `test`, `perf`, `build`, `ci`, `chore` or `revert`, chosen by purpose, not size. Issue `fix` means requested work, not completion.
+- Scope: stable repo area, such as `auth`, `checkout` or `routing`. Omit only for a convention or no useful area; exclude workers, dates, priority, status and issue numbers.
+- Commit/PR: present-tense actual change. Issue: observed problem or requested outcome, without invented diagnosis/solution.
+- Aim for 72 characters, no final period; avoid unreadable abbreviations. Put links, versions and evidence in the body unless essential to identify work.
+- Avoid vague `update files`, inflated `production-ready` claims and agent jargon. Squash titles describe the combined change, not the last fixup.
 
-> The problem was reproduced on a local WordPress 7.1.2 site using PHP 8.2. PHP is the programming language WordPress uses. The live site has not been checked.
+Examples:
 
-> Three automated checks passed. PHP is the programming language WordPress uses. The check that the code works with PHP 8.4 failed. The security check could not run because access was missing. Release approval is still needed.
+| Artifact | Title |
+| --- | --- |
+| Bug issue | `fix(auth): sign-in repeats after a successful login` |
+| Fix commit and PR | `fix(auth): prevent repeated sign-in redirects` |
+| Feature issue | `feat(export): let users download filtered orders` |
+| Feature commit and PR | `feat(export): add filtered order downloads` |
+| Documentation | `docs(setup): explain local test prerequisites` |
+| CI maintenance | `ci(validation): reuse the local validation command` |
 
-Plain wording changes how the message reads. Existing posting permission, novelty and evidence requirements still apply.
+### Plain Language
+
+Write the main point for someone who does not know the project. Use everyday words, direct verbs and short, complete sentences. Explain a necessary technical term the first time the reader needs it. Keep exact versions and commands when they affect the decision. Aim for clarity, not baby talk or a reading-score target.
+
+Put a limitation beside the claim it qualifies. If a missing or failed check affects the reader's decision, name the next concrete action in the main message. Link logs or add optional technical details, but do not make readers open them to discover that a check failed or approval is missing.
+
+Examples for an unfamiliar reader, not reports of actual tests:
+
+> A rejected edit now leaves the saved web address alone. The unit tests passed; they check small parts of the code. Next, reject an edit in a browser and check that the old address still opens. That check has not run.
+
+> We reproduced the problem locally on WordPress 7.1.2 with PHP 8.2, the programming language WordPress uses. We did not check the live site.
+
+> Three checks passed, but the code failed its check on PHP 8.4, a version of the language WordPress uses. We could not run the security check without access. This is not ready for release.
+
+### Information Order
+
+Order: **summary, context, changes/scope, validation/evidence, risks and next action, links**. Scale to the artifact; small messages need no empty headings. Preserve material commands, paths, errors, versions, and IDs; explain unfamiliar terms.
+
+- **Commits:** typo-only may use the subject. Substantive messages include reason/non-obvious constraint and checks/gaps in the commit, not separate commentary. Footers require verified issue references/genuine attribution; never invent co-authors or closure keywords.
+- **PRs:** retain required template fields. Defaults: `Summary`; `Context` (issue/milestone, base evidence); `Changes` (scope, non-goals, files); `Validation` (revision/artifact, commands/results, screenshots/gaps); `Risks And Follow-Up` (risk, rollback, release impact, owner decisions, next action). Include milestone `Changelog:` per `commit-pr-discipline.md`; state missing issues/milestones, never fabricate. Headings alone do not complete a draft.
+- **Issues:** `Summary`, `Evidence`, `Acceptance Criteria`, `Scope And Constraints`. Bugs include actual/expected behavior, reproduction/environment; proposals separate evidence and assumptions. Acceptance is observable; proposed checks are not validation. Include dependencies, exclusions, canonical links. Sensitive reports use private channels.
+- **Comments/handoffs:** new decision/finding/outcome, needed evidence, exact next action/question. Short replies need no PR template; apply the novelty gate.
+- **Reviews:** severity-ordered findings with location, impact, reproduction/evidence; separate questions and proof gaps. Formatting is not review evidence.
+- **Changelogs/release notes:** audience-facing outcomes in repo version/category format, not commit prefixes/worker history. Include compatibility, migration, limitations; don't imply release/deployment before verification.
+
+Distinguish `Passed`, `Failed`, `Blocked`, and `Not run`, with command/environment/revision. Separate local, CI, package, editor/browser, and production proof. Proposed tests, synthetic decisions, and formatting do not prove runtime/release behavior. Explain material non-applicability; avoid unexplained checkmarks/empty sections.
 
 ## GitHub Issue And PR Comments
 
-Read GitHub issue and PR comments as part of the CTO control loop. Write GitHub comments sparingly.
+Read GitHub comments in the CTO control loop. Write GitHub comments sparingly. Do not post GitHub comments for routine notifications.
 
-Use the relevant Codex task for routine progress, retries, local tests, handoffs, periodic check-ins and CI polling. Keep implementation summaries, validation results and remaining proof gaps in the PR description/checks. Do not post GitHub comments for routine notifications.
+Use Codex for progress, retries, tests, handoffs, check-ins, and CI polling. Keep summaries, validation, and proof gaps in PR descriptions/checks; do not comment routine notifications.
 
-Before posting, inspect the exact issue/PR's existing comments, substantive reviews, PR body, CI and native timeline. Ask: is this new; does someone need to act or does it preserve a necessary durable record; is it already represented elsewhere? Default to skipping duplicates, including automatic PR links, commit notifications and green CI. If current evidence is unavailable, defer nonessential posting rather than guess novelty. This gate does not suppress an explicit owner-requested comment, a direct reply, or required substantive review feedback; keep those concise and specific.
+Before posting, inspect the exact issue/PR's existing comments, substantive reviews, PR body, CI and native timeline. Ask if it is new, needs action/preserves a durable record, or is already represented. Skip duplicates (automatic PR links, commit notifications, green CI). If evidence is unavailable, defer nonessential posting rather than guess. This gate does not suppress explicit owner requests, direct replies, or required substantive review feedback; keep them concise and specific.
 
-Reserve GitHub comments for durable repo-visible state transitions or decisions that future maintainers need to see:
+Reserve comments for durable repo-visible transitions/decisions future maintainers need:
 
 - Strategy or decision records that affect implementation or release sequencing.
 - Owner questions and answered-decision records.
@@ -45,9 +79,9 @@ Reserve GitHub comments for durable repo-visible state transitions or decisions 
 
 For contributor/community closures, comments should be owner-readable and explicit about why the item is closing, what shipped or replaced it, and any canonical PR/issue/release link.
 
-When opening a PR, comment on the linked issue with the PR link and scope only when it adds useful durable context beyond automatic linking. After merge, reconcile issue state; add a completion comment only when the disposition or remaining scope is not already clear. Explain material deferral or milestone changes when their rationale is missing. Preserve contributor courtesy and explicit owner requests. Do not delete or edit historical comments merely to clean up noise.
+When opening a PR, link it on the issue only if useful beyond automatic linking. After merge, reconcile issue state; comment on completion only if disposition/scope is unclear. Explain material deferrals or milestone changes with missing rationale. Preserve contributor courtesy and explicit owner requests. Do not delete or edit historical comments merely to clean up noise.
 
-Do not post comments just to say the orchestrator is checking, polling CI, waiting, continuing, delegating internally, or preparing another update. Keep that status in the CTO control chat thread.
+Do not post comments just to report checking, CI polling, waiting, continuing, internal delegation, or preparing another update. Keep that status in the CTO control chat thread.
 
 ## Contributor And Community Courtesy
 

@@ -1,4 +1,4 @@
 interface:
   display_name: "WP Product Orchestrator"
-  short_description: "Single-product WordPress release-readiness workflow"
-  default_prompt: "Use $wp-product-orchestrator for one WordPress plugin/theme product thread: issue intake, milestone scope, release readiness, delegation, validation, and PR workflow."
+  short_description: "Single-product WordPress coordination and readiness"
+  default_prompt: "Use $wp-product-orchestrator to coordinate one WordPress plugin/theme product: issue intake, milestone scope, release readiness, delegation, validation, and PR workflow."

@@ -1,25 +1,33 @@
+<!-- Title: type(scope): plain-language summary. Preserve explicit repo conventions. -->
+<!-- Explain material non-applicability; do not leave empty checklist headings. -->
+
 ## Summary
 
-## Skill/Reference Scope
+What changed and why it matters.
 
-## Linked Issue Or Owner Instruction
+## Context
 
-## Behavior Changed
+Linked issue or owner instruction, milestone if supplied, and explicit base branch evidence.
 
-## Non-Goals
+## Changes
 
-## Token And Routing Impact
+Skill/reference scope, behavior changed, non-goals, key files, and token/routing impact.
 
 ## Validation
 
 ```text
-Commands and results
+Passed / Failed / Blocked / Not run: command, result, tested revision/artifact
 ```
 
-## Fresh-Agent Scenarios
+Fresh-agent scenarios and evidence, or `Not applicable - reason`.
+Screenshots or other observable proof for visible changes, or the exact proof gap.
 
-State scenarios run and evidence, or `Not applicable - reason`.
+## Risks And Follow-Up
 
-## Risk And Rollback
+Risk:
+Rollback plan:
+Release impact:
+Owner decisions or remaining findings:
+Next action:
 
-## Follow-Up Findings
+Delegated chat/worktree reference when applicable. `Changelog:` for milestone issue PRs.

@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "runId": "product-video-truth-and-assets-2026-11-22-live-gestures",
+  "scenario": "product-video-truth-and-assets",
+  "result": "succeeded",
+  "startedAt": "2026-11-22T05:59:42.000Z",
+  "durationMs": 506360,
+  "checks": [
+    {
+      "name": "automatic-specialist-routing",
+      "result": "pass"
+    },
+    {
+      "name": "reference-originality-and-storyboard-gate",
+      "result": "pass"
+    },
+    {
+      "name": "inaccessible-reference-no-hallucination",
+      "result": "pass"
+    },
+    {
+      "name": "no-fake-ui-or-unsupported-claims",
+      "result": "pass"
+    },
+    {
+      "name": "governed-logo-alpha-asset",
+      "result": "pass"
+    },
+    {
+      "name": "storyboard-before-full-render",
+      "result": "pass"
+    },
+    {
+      "name": "deterministic-review-package",
+      "result": "pass"
+    },
+    {
+      "name": "strict-manifest-identity-and-approval",
+      "result": "pass"
+    },
+    {
+      "name": "bounded-critique-iteration",
+      "result": "pass"
+    },
+    {
+      "name": "privacy-safe-truthful-ui-capture",
+      "result": "pass"
+    },
+    {
+      "name": "enterprise-anti-slop-editorial-restraint",
+      "result": "pass"
+    },
+    {
+      "name": "generated-sequence-continuity-and-governed-compositing",
+      "result": "pass"
+    },
+    {
+      "name": "non-destructive-edit-and-output-lineage",
+      "result": "pass"
+    },
+    {
+      "name": "native-long-form-and-short-packages",
+      "result": "pass"
+    },
+    {
+      "name": "accessible-caption-audio-and-visual-equivalence",
+      "result": "pass"
+    },
+    {
+      "name": "synthetic-media-rights-and-disclosure",
+      "result": "pass"
+    },
+    {
+      "name": "exact-job-and-output-identity",
+      "result": "pass"
+    },
+    {
+      "name": "evidence-led-channel-learning",
+      "result": "pass"
+    },
+    {
+      "name": "owner-gated-publication-and-master-preservation",
+      "result": "pass"
+    },
+    {
+      "name": "representative-motion-sequence",
+      "result": "pass"
+    },
+    {
+      "name": "playback-not-contact-sheet",
+      "result": "pass"
+    },
+    {
+      "name": "frame-driven-deterministic-scenes",
+      "result": "pass"
+    },
+    {
+      "name": "blind-calibration-no-invented-results",
+      "result": "pass"
+    },
+    {
+      "name": "motion-cost-and-current-owner-allocation",
+      "result": "pass"
+    },
+    {
+      "name": "delegated-direction-and-explicit-selection",
+      "result": "pass"
+    },
+    {
+      "name": "model-neutral-quality-floor",
+      "result": "pass"
+    },
+    {
+      "name": "crop-zoom-source-coverage",
+      "result": "pass"
+    },
+    {
+      "name": "creative-range-and-purposeful-imagery",
+      "result": "pass"
+    },
+    {
+      "name": "preview-versus-uhd-proof",
+      "result": "pass"
+    },
+    {
+      "name": "cross-model-measurement-honesty",
+      "result": "pass"
+    },
+    {
+      "name": "cinematic-treatment-and-motivated-reveals",
+      "result": "pass"
+    },
+    {
+      "name": "repeatable-walkthrough-and-visible-verification",
+      "result": "pass"
+    },
+    {
+      "name": "optional-advanced-motion-feasibility",
+      "result": "pass"
+    },
+    {
+      "name": "requested-editable-handoff-reopen-relink-render-proof",
+      "result": "pass"
+    },
+    {
+      "name": "format-led-reference-translation",
+      "result": "pass"
+    },
+    {
+      "name": "visual-script-action-state-and-timing",
+      "result": "pass"
+    },
+    {
+      "name": "temporal-handoff-and-inbetween-verification",
+      "result": "pass"
+    },
+    {
+      "name": "subject-led-visual-language",
+      "result": "pass"
+    },
+    {
+      "name": "geometry-role-and-safe-ring-exceptions",
+      "result": "pass"
+    },
+    {
+      "name": "encoded-3d-artifact-review",
+      "result": "pass"
+    },
+    {
+      "name": "placement-specific-openers-and-motion",
+      "result": "pass"
+    },
+    {
+      "name": "truthful-creator-performance-and-disclosures",
+      "result": "pass"
+    },
+    {
+      "name": "evidence-led-demo-versus-walkthrough",
+      "result": "pass"
+    },
+    {
+      "name": "encoded-placement-review-limits",
+      "result": "pass"
+    },
+    {
+      "name": "same-surface-walkthrough-capture-and-human-pacing",
+      "result": "pass"
+    },
+    {
+      "name": "privacy-and-missing-recorder-fallback",
+      "result": "pass"
+    },
+    {
+      "name": "bounded-observable-retakes",
+      "result": "pass"
+    },
+    {
+      "name": "finalized-recording-versus-product-proof",
+      "result": "pass"
+    },
+    {
+      "name": "continuous-input-and-encoded-app-motion",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 49,
+    "first_pass_cases": 57,
+    "first_pass_checks": 46,
+    "recovery_cases": 3,
+    "individual_cases_after_recovery": 60,
+    "capture_cases": 5,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "product-video-truth-and-assets-2026-11-22-live-gestures",
+    "artifactPointer": "skill-evals/continuous-walkthrough-2026-11-22.md#decision-evidence"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-11-22T06:08:08.360Z",
+    "metricNames": [
+      "checks_passed",
+      "first_pass_cases",
+      "first_pass_checks",
+      "recovery_cases",
+      "individual_cases_after_recovery",
+      "capture_cases",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Independent synthetic case decisions. First-pass and bounded recovery scores are separate from continuous recording and measured real editor playback. The shared elapsed interval is not interval-per-case, cost, token usage or human approval."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}

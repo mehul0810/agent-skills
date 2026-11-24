@@ -1,0 +1,30 @@
+[
+  {
+    "caseId": "bug-drafts",
+    "request": "Draft a bug issue title/body, fix commit message and PR title/body for a hypothetical owner-managed project with no local title convention. Sign-in repeats after a successful login; the cause was initially unknown. A later scoped change prevents a second redirect. Issue #42 belongs to milestone 1.4.0; the verified integration base is release/1.4.0. The change touches auth.js and auth.test.js, with no visible layout change and no migration. npm run test:auth passed locally on candidate 1111111111111111111111111111111111111111 using Node 24.18.0. Browser testing is blocked because no test account is available; CI and production checks have not run. All names, IDs and revisions are synthetic. No release approval exists. Do not imply that the initial bug report already diagnosed the cause."
+  },
+  {
+    "caseId": "feature-proposal",
+    "request": "Draft a feature issue for a hypothetical order tool with no local format. Two support requests ask to download only the orders currently selected by filters. No usage denominator, revenue estimate, implementation design, milestone or issue number exists. A test of filtered downloads is proposed, not run. Include an observable acceptance condition without inventing customer counts, results or release commitments."
+  },
+  {
+    "caseId": "upstream-format",
+    "request": "An upstream repository requires PR titles to be sentence-case user-facing summaries without type prefixes, and requires body headings Problem, Solution and Testing. Draft its PR for a fix that restores keyboard focus after closing a dialog. Its supplied local focus test passed; screen-reader testing has not run. How should the cross-project standard apply here?"
+  },
+  {
+    "caseId": "small-commit",
+    "request": "Draft a commit message for correcting one misspelled command name in a local setup guide. The only check was verifying the command against the existing script; no runtime tests were run. The repository has no special commit convention. Keep this small change proportional."
+  },
+  {
+    "caseId": "comment-and-existing-records",
+    "request": "A PR description already records the complete scoped change and exact local test result, and GitHub's native timeline shows its linked issue and successful CI. Should another progress comment repeat them? Also, should 40 old issue titles, a contributor's open PR title, a generated dependency-update PR title and existing commits be rewritten to match the new title standard? No separate rename or history-rewrite instruction was given."
+  },
+  {
+    "caseId": "release-note-and-handoff",
+    "request": "Draft one changelog entry and a short internal handoff for a hypothetical filtered-order export fix. The local regression test passed on synthetic revision 2222222222222222222222222222222222222222; packaged-artifact, editor/browser and production checks have not run. The change has not been released or deployed. No release version/date has been selected. The next action is packaged-artifact validation."
+  },
+  {
+    "caseId": "squash-title",
+    "request": "Choose a squash-merge title for a hypothetical PR that adds filtered-order exports. Its three commits add the export path, add regression tests, and correct a typo in the test name. The current last commit title is docs(tests): correct a test name. No local title exception exists. Do not perform a merge."
+  }
+]

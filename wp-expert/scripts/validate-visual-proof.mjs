@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import crypto from "node:crypto";
+import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -45,6 +46,7 @@ const SHA256_FINGERPRINT = /^sha256:[a-f0-9]{64}$/;
 const FIGMA_FINGERPRINT = /^figma:[^:]+:[^:]+:.+$/;
 const REVISION = /^(?:[a-f0-9]{40}|working-tree:sha256:[a-f0-9]{64})$/;
 const LOCATOR = /(?:https?:\/\/|\/|\\|\.(?:png|webp|jpe?g|json|zip|md|html|xml|txt|log|trace|mp4|webm)$)/i;
+const EXCLUSION_PLACEHOLDER = /\b(?:todo|tbd|placeholder|unknown|not specified|trust me)\b/i;
 
 let compiledSchema;
 
@@ -73,6 +75,8 @@ function duplicateValues(values) {
 }
 
 export function verifyVisualEvidenceFiles(proof, proofPath, evidenceRoot = process.cwd()) {
+  const errors = schemaErrors(proof);
+  if (errors.length > 0) return errors;
   return verifyProofEvidenceFiles(proof, { evidenceRoot, pointer: "proof" });
 }
 
@@ -88,9 +92,11 @@ function validateLinkedAssetReceipts(proof, proofPath, evidenceRoot = process.cw
       errors.push(`assetReceipts[${index}] is not valid JSON: ${error.message}`);
       continue;
     }
-    for (const error of validateAssetProduction(receipt)) {
+    const receiptErrors = validateAssetProduction(receipt);
+    for (const error of receiptErrors) {
       errors.push(`assetReceipts[${index}]: ${error}`);
     }
+    if (receiptErrors.length > 0) continue;
     for (const error of verifyAssetEvidenceFiles(receipt, resolved.path, evidenceRoot)) {
       errors.push(`assetReceipts[${index}]: ${error}`);
     }
@@ -128,9 +134,25 @@ function gateByName(proof, name) {
   return proof.gates.find((gate) => gate.name === name);
 }
 
+function validateVoiceOverExclusion(value) {
+  if (value === undefined) return [];
+  if (!value || typeof value !== "object" || Array.isArray(value)) return ["voiceOverExclusion must be an object"];
+  const errors = [];
+  for (const key of Object.keys(value)) {
+    if (!["status", "authority", "reason", "claims"].includes(key)) errors.push(`voiceOverExclusion.${key} is not allowed`);
+  }
+  if (value.status !== "excluded_by_owner") errors.push("voiceOverExclusion.status must be excluded_by_owner");
+  if (typeof value.authority !== "string" || value.authority.trim().length < 12 || EXCLUSION_PLACEHOLDER.test(value.authority)) errors.push("voiceOverExclusion.authority must be a meaningful owner-directive pointer");
+  if (typeof value.reason !== "string" || value.reason.trim().length < 12 || EXCLUSION_PLACEHOLDER.test(value.reason)) errors.push("voiceOverExclusion.reason must be concrete and non-placeholder");
+  if (value.claims !== "not_verified") errors.push("voiceOverExclusion.claims must be not_verified");
+  return errors;
+}
+
 export function validateVisualProof(proof) {
   const errors = schemaErrors(proof);
   if (errors.length > 0) return errors;
+
+  errors.push(...validateVoiceOverExclusion(proof.voiceOverExclusion));
 
   if (proof.source.kind === "figma") {
     if (!FIGMA_FINGERPRINT.test(proof.source.fingerprint)) {
@@ -403,13 +425,18 @@ export function validateVisualProof(proof) {
       errors.push(`accessibility.assistiveTechnology[${index}].browser must match its declared environment`);
     }
     validateDisposition(check, `accessibility.assistiveTechnology[${index}]`, errors);
+    if (proof.status === "pass" && proof.voiceOverExclusion && check.result !== "pass") {
+      errors.push(`accessibility.assistiveTechnology[${index}] cannot be waived by voiceOverExclusion`);
+    }
   }
   if (proof.accessibility.risk === "material" && proof.status === "pass") {
     if (
       proof.accessibility.assistiveTechnology.length === 0 ||
       proof.accessibility.assistiveTechnology.some((check) => check.result !== "pass")
     ) {
-      errors.push("material accessibility risk requires a passing named browser/assistive-technology task");
+      if (!(proof.voiceOverExclusion && proof.accessibility.assistiveTechnology.length === 0)) {
+        errors.push("material accessibility risk requires a passing named browser/assistive-technology task");
+      }
     }
   }
 
@@ -785,6 +812,17 @@ function selfTest() {
       },
     }, false],
     ["material accessibility without AT", { ...valid, accessibility: { ...valid.accessibility, risk: "material" } }, false],
+    ["material accessibility without AT under owner exclusion", {
+      ...valid,
+      voiceOverExclusion: { status: "excluded_by_owner", authority: "AGENTS.md section 3 Proportional Quality Gates, owner directive 2026-10-15", reason: "macOS VoiceOver screen-reader verification is excluded by owner direction", claims: "not_verified" },
+      accessibility: { ...valid.accessibility, risk: "material" },
+    }, true],
+    ["owner exclusion cannot waive failed AT receipt", {
+      ...valid,
+      voiceOverExclusion: { status: "excluded_by_owner", authority: "AGENTS.md section 3 Proportional Quality Gates, owner directive 2026-10-15", reason: "macOS VoiceOver screen-reader verification is excluded by owner direction", claims: "not_verified" },
+      accessibility: { ...materialAccessibility, assistiveTechnology: materialAccessibility.assistiveTechnology.map((check) => ({ ...check, result: "fail" })) },
+    }, false],
+    ["malformed owner exclusion", { ...valid, voiceOverExclusion: { status: "waived", authority: "unknown", reason: "TODO", claims: "pass" } }, false],
     ["valid material accessibility environment", { ...valid, accessibility: materialAccessibility }, true],
     ["assistive technology outside candidate environments", { ...valid, accessibility: { ...materialAccessibility, assistiveTechnology: materialAccessibility.assistiveTechnology.map((check) => ({ ...check, environmentId: "firefox-windows" })) } }, false],
     ["assistive technology browser contradicts environment", { ...valid, accessibility: { ...materialAccessibility, assistiveTechnology: materialAccessibility.assistiveTechnology.map((check) => ({ ...check, browser: "Firefox 142" })) } }, false],
@@ -804,6 +842,55 @@ function selfTest() {
     }
   }
   const evidenceRoot = fs.mkdtempSync(path.join(os.tmpdir(), "visual-proof-"));
+  const proofPath = path.join(evidenceRoot, "proof.json");
+  const runProofCli = (proof) => {
+    fs.writeFileSync(proofPath, `${JSON.stringify(proof)}\n`);
+    return spawnSync(process.execPath, [fileURLToPath(import.meta.url), proofPath], {
+      cwd: evidenceRoot,
+      encoding: "utf8",
+      timeout: 10_000,
+    });
+  };
+  const assertCliRejected = (name, proof, expectedError) => {
+    const result = runProofCli(proof);
+    const lines = result.stderr.trim().split("\n");
+    if (
+      result.status !== 1 || result.signal || result.error || result.stdout !== "" ||
+      !lines.every((line) => line.startsWith("ERROR: ")) ||
+      !result.stderr.includes(expectedError)
+    ) {
+      throw new Error(`visual proof CLI self-test failed: ${name}: ${result.error ?? result.stderr}`);
+    }
+  };
+  const malformedCases = [
+    ["missing proof", undefined, "schema / must be object"],
+    ["null proof", null, "schema / must be object"],
+    ["string proof", "invalid", "schema / must be object"],
+    ["number proof", 42, "schema / must be object"],
+    ["boolean proof", false, "schema / must be object"],
+    ["array proof", [], "schema / must be object"],
+    ["empty proof", {}, "must have required property 'assetReceipts'"],
+    ["missing asset receipts", { ...valid, assetReceipts: undefined }, "must have required property 'assetReceipts'"],
+    ["null asset receipts", { ...valid, assetReceipts: null }, "schema /assetReceipts must be array"],
+    ["primitive asset receipts", { ...valid, assetReceipts: 42 }, "schema /assetReceipts must be array"],
+    ["null asset link", { ...valid, assetReceipts: [null] }, "schema /assetReceipts/0 must be object"],
+    ["primitive asset link", { ...valid, assetReceipts: [42] }, "schema /assetReceipts/0 must be object"],
+    ["missing asset evidence", { ...valid, assetReceipts: [{ assetId: "hero", result: "pass" }] }, "must have required property 'evidence'"],
+    ["non-string evidence locator", {
+      ...valid,
+      candidate: { ...valid.candidate, artifact: { ...valid.candidate.artifact, locator: null } },
+    }, "schema /candidate/artifact/locator must be string"],
+  ];
+  for (const [name, proof, expectedError] of malformedCases) {
+    for (const validate of [validateVisualProof, verifyVisualEvidenceFiles]) {
+      const errors = validate(proof, proofPath, evidenceRoot);
+      if (!Array.isArray(errors) || !errors.some((error) => error.includes(expectedError))) {
+        throw new Error(`visual proof malformed-input self-test failed: ${name}: ${validate.name}`);
+      }
+    }
+    // Undefined has no JSON representation, so it is covered by the public APIs only.
+    if (proof !== undefined) assertCliRejected(name, proof, expectedError);
+  }
   const hydrated = structuredClone(valid);
   const seen = new WeakSet();
   let index = 0;
@@ -820,6 +907,32 @@ function selfTest() {
   hydrated.candidate.fingerprint = hydrated.candidate.artifact.fingerprint;
   if (verifyVisualEvidenceFiles(hydrated, path.join(evidenceRoot, "proof.json"), evidenceRoot).length > 0) {
     throw new Error("valid local visual evidence failed byte verification");
+  }
+  const validCli = runProofCli(hydrated);
+  if (validCli.status !== 0 || validCli.error || validCli.stderr !== "" || !validCli.stdout.startsWith("visual proof valid:")) {
+    throw new Error(`valid local visual proof failed CLI validation: ${validCli.error ?? validCli.stderr}`);
+  }
+  for (const [name, contents, expectedError] of [
+    ["null linked receipt", "null", "assetReceipts[0]: schema / must be object"],
+    ["primitive linked receipt", "42", "assetReceipts[0]: schema / must be object"],
+    ["empty linked receipt", "{}", "assetReceipts[0]: schema / must have required property"],
+    ["malformed linked receipt JSON", "{", "assetReceipts[0] is not valid JSON"],
+  ]) {
+    const locator = "asset-receipt.json";
+    fs.writeFileSync(path.join(evidenceRoot, locator), contents);
+    const linkedProof = {
+      ...hydrated,
+      assetReceipts: [{
+        assetId: "hero",
+        result: "pass",
+        evidence: {
+          kind: "asset_receipt",
+          locator,
+          fingerprint: `sha256:${crypto.createHash("sha256").update(contents).digest("hex")}`,
+        },
+      }],
+    };
+    assertCliRejected(name, linkedProof, expectedError);
   }
   fs.writeFileSync(path.join(evidenceRoot, hydrated.captures[0].candidateEvidence.locator), "changed");
   if (!verifyVisualEvidenceFiles(hydrated, path.join(evidenceRoot, "proof.json"), evidenceRoot).some((error) => error.includes("does not match"))) {
@@ -879,11 +992,13 @@ async function main() {
     process.exitCode = 1;
     return;
   }
-  const errors = [
-    ...validateVisualProof(proof),
-    ...verifyVisualEvidenceFiles(proof, argument),
-    ...validateLinkedAssetReceipts(proof, argument),
-  ];
+  const errors = validateVisualProof(proof);
+  if (errors.length === 0) {
+    errors.push(
+      ...verifyVisualEvidenceFiles(proof, argument),
+      ...validateLinkedAssetReceipts(proof, argument),
+    );
+  }
   if (errors.length > 0) {
     for (const error of errors) console.error(`ERROR: ${error}`);
     process.exitCode = 1;

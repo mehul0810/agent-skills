@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "runId": "product-value-decision-2026-10-13-warning-cleanup",
+  "scenario": "product-value-decision",
+  "result": "succeeded",
+  "startedAt": "2026-10-13T06:04:16.111Z",
+  "durationMs": 16636192,
+  "checks": [
+    {
+      "name": "user-outcome-specificity",
+      "result": "pass"
+    },
+    {
+      "name": "business-outcome-specificity",
+      "result": "pass"
+    },
+    {
+      "name": "evidence-assumption-separation",
+      "result": "pass"
+    },
+    {
+      "name": "confidence-and-reach",
+      "result": "pass"
+    },
+    {
+      "name": "lifetime-cost-and-risk",
+      "result": "pass"
+    },
+    {
+      "name": "proportional-decision",
+      "result": "pass"
+    },
+    {
+      "name": "measurable-threshold-window",
+      "result": "pass"
+    },
+    {
+      "name": "no-invented-uplift",
+      "result": "pass"
+    },
+    {
+      "name": "mandatory-work-not-score-gated",
+      "result": "pass"
+    },
+    {
+      "name": "post-release-outcome-disposition",
+      "result": "pass"
+    },
+    {
+      "name": "quality-and-authority-boundary",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 11,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "product-value-decision-2026-10-13-warning-cleanup",
+    "artifactPointer": "codex-private:warning-cleanup-heldout-20261013#evidence/draft-receipts/product-value-decision.json"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-10-13T10:41:32.303Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Independent fresh synthetic decisions; failed/incomplete attempts and scorer corrections retained. Shared source-freeze-to-admission interval includes coordination, idle time and retries, not actor runtime, cost or summed durations. Token telemetry unavailable. No native/product/release assurance, reliability or savings claim. See warning-cleanup-review-2026-10-13.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}

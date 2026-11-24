@@ -8,7 +8,7 @@ Inspect the rendered surface, source visual, `DESIGN.md`, `theme.json`, WPDS com
 
 A selected exact, directional, or inspiration target is at least `material` risk and needs responsive proof. Reserve `baseline` for bounded work without a selected visual target. Declare parent-layout risk before capture.
 
-Define the smallest spatial contract before CSS:
+Before CSS, define:
 
 - token owner, affected surface, regions, reading order, containers, and responsive transitions,
 - semantic spacing roles: `inset` (inside a boundary), `inline` (same-line separation), `stack` (vertical sequence), `group` (related cluster), `section` (major transition), `gutter` (parallel tracks), and documented `optical` correction,
@@ -16,55 +16,53 @@ Define the smallest spatial contract before CSS:
 - invariants such as `related gap < group gap < section gap`, not unrelated numbers,
 - content-first regions versus element-first controls and justified density modes.
 
-Use a coherent existing scale. A 4/8-pixel grid is fallback, not proof; do not mechanically snap values or hide nudges in near-duplicate tokens. Optical exceptions need scope, reason, owner, and review trigger.
+Use the existing scale. A 4/8-pixel grid is fallback, not proof; do not snap mechanically or hide nudges in duplicate tokens. Optical exceptions need scope, reason, owner, and review trigger.
 
 ### Source-Calibrated Density
 
-In the existing visual manifest, record source/actual/tolerance/confidence for container width, header height, hero proportion, heading bounds and wraps, CTA dimensions, card inset/gap/media ratio and major section starts. Measure ratios when the source viewport is unknown; crop or rescale comparisons only with recorded transforms. A generated image is not evidence of its original CSS viewport. Set acceptance before rendering, never derive the expected values from the implementation being judged.
+In the visual manifest, record source/actual/tolerance/confidence for container, header, hero, heading bounds/wraps, CTA, card inset/gap/media ratio, and section starts. Use ratios when viewport is unknown; record crop/rescale transforms. Generated images do not establish original CSS viewports. Set acceptance before rendering, never from the judged implementation.
 
 Choose editorial, expressive marketing or productive interface density from the task and selected target. Enterprise quality is coherent hierarchy and usable controls, not universally large headings, tall heroes or generous padding. Preserve accessible hit areas when reducing visible bulk. Don't shrink the entire page with zoom or transforms.
 
-Calibrate the loaded font/weight first, then text-column width, size, line-height, tracking and wrapping at the reference viewport. Record font substitution instead of claiming exact parity. Do not force desktop line breaks into mobile/translations; fluid endpoints must preserve the intended hierarchy.
+Calibrate loaded font/weight before column width, size, line-height, tracking, and wrapping. Record substitutions; do not claim exact parity or force desktop breaks into mobile/translations. Fluid endpoints preserve hierarchy.
 
-Give borders, radius and shadows semantic roles: separation, interactive boundary, status or elevation. Check thickness/contrast, nested-radius consistency, focus/hover/disabled states and whether a box is needed. Generic computed-style checks can measure these; no new parallel proof format is needed.
+Give borders, radius, and shadows roles (separation, boundary, status, elevation); check contrast, nested radii, focus/hover/disabled, and whether a box is needed. Computed-style checks suffice; no parallel proof format.
 
 ## 2. Choose Layout By Relationship
 
 ### Visual Refinement Pass
 
-When refinement is in scope, inspect hierarchy, grouping, typography, surfaces, imagery, then details. Diagnose the competing relationship before adding decoration; this is not permission to redesign an approved target.
+When refining, inspect hierarchy, grouping, typography, surfaces, imagery, then details. Diagnose relationships before decoration; do not redesign an approved target.
 
-- If a heading or action is lost, first reduce unnecessary weight, surface contrast, or boxing around competing content rather than enlarging it again. Keep secondary text readable and interactive boundaries/focus visible; pale text is not a universal solution.
-- Example: a loud sidebar and boxed content compete. Test a quieter sidebar surface while retaining navigation state and contrast. Preserve a strong sidebar when navigation or the approved design requires it.
-- Keep labels closer to their own controls than adjacent groups. Do not replace visible form labels with placeholders. In read-only summaries, combine related values into meaningful phrases only when units, context, comparison and assistive-technology reading remain clear; sortable data may need separate columns.
+- If a heading/action is lost, reduce competing weight, contrast, or boxing before enlarging it. Keep secondary text and interactive/focus boundaries readable; preserve strong navigation when needed.
+- Keep labels with their controls; never replace visible form labels with placeholders. Combine summary values only when units/context/comparison and assistive reading remain clear; sortable data may need separate columns.
 - Action importance and consequence are separate. A rare destructive action need not dominate the everyday screen, but its label, consequence and required confirmation remain explicit. Never hide danger to achieve visual restraint.
-- Use spacing or surface contrast instead of redundant borders only if grouping remains clear. Keep useful table separators, input boundaries and forced-color affordances. Elevation should consistently express overlays, drag state or depth, not random card decoration.
-- Inspect imagery at its actual placement size. Prefer a truthful workflow crop or appropriate responsive capture over an unreadable whole-app thumbnail. Label simplified illustrations as illustrations; do not alter factual screenshots or remove material context. Choose icons for their optical size rather than assuming vector scalability guarantees balance. Stress author-uploaded aspect ratios and focal points without cropping away essential information.
+- Replace redundant borders with spacing/contrast only when grouping stays clear; retain table/input/forced-color boundaries. Elevation signals overlays, drag, or depth, not arbitrary cards.
+- Inspect imagery at placement size; use truthful workflow crops, label illustrations, preserve factual context, size icons optically, and stress author-uploaded ratios/focal points without losing essential content.
 
 Use original before/after examples with the same content and task. Preserve semantic headings, native controls, intentional density, and accessible contrast. These heuristics neither ban grids/borders nor prove usability or conversion lift.
 
-- Use Grid for two-dimensional tracks, Flex/Row for one-dimensional distribution, and flow/Stack for reading sequences. Compose axes rather than overloading one primitive.
-- Prefer `gap`, intrinsic sizing, `minmax()`, wrapping, logical properties, and block supports. Avoid negative margins, fixed variable-content heights, DOM-order tricks, and viewport offsets.
+- Use Grid for 2D tracks, Flex/Row for 1D distribution, and flow/Stack for reading; compose axes. Prefer `gap`, intrinsic sizing, `minmax()`, wrapping, logical properties, and block supports; avoid negative margins, fixed variable heights, DOM tricks, and viewport offsets.
 - Use subgrid when supported by the repository's browser policy and repeated child content must share parent tracks. Use container queries when a component responds to its available space rather than the viewport.
 - Use `clamp()` only when endpoints and interpolation express an approved relationship. Verify support and fallback for newer features.
 - Keep global values in `theme.json` or the token layer, variations in block styles/patterns/components, and exceptions in the narrowest owned stylesheet. Never patch CSS around a wrong block tree, template owner, or Site Editor override.
 
 ## 3. Design For Real Content And Direction
 
-Treat spacing as a content and workflow constraint:
+Treat spacing as a content/workflow constraint:
 
 - test short, typical, long, translated, RTL/bidi, missing-media, extreme-media, validation, loading, empty, and permission states that can change geometry,
 - preserve touch targets and grouping as dense workflows collapse; change density for task/information needs, not viewport alone,
 - prefer logical inline/block properties and verify mirrored alignment rather than assuming left/right symmetry,
 - keep editor/frontend behavior predictable for non-technical authors.
 
-Repeated cards under varied content need shared anchors without brittle empty height. Parent Grid/Flex stretch can mimic child-padding defects; inspect both geometries before changing the child.
+Repeated cards need shared anchors without brittle empty height. Parent Grid/Flex stretch can mimic child-padding defects; inspect both geometries before changing the child.
 
-For WordPress, trace root/parent contentSize and wideSize, block gap, nested Group padding, margin and layout constraints, theme/block CSS, user Global Styles and saved template overrides. Identify the winning declaration before editing. Verify the same token and block composition in the editor and frontend; do not overwrite user customizations merely to make a screenshot pass.
+For WordPress, trace root/parent contentSize/wideSize, block gap, Group padding/margins, layout constraints, theme/block CSS, Global Styles, and saved overrides. Identify the winning declaration. Verify token/composition in editor and frontend; never overwrite user customizations for a screenshot.
 
 ## 4. Capture Browser Geometry
 
-Screenshots show composition, not cause. For material work, capture a `wordpress-spatial-proof.schema.json` receipt and run `node wp-expert/scripts/validate-spatial-proof.mjs <receipt.json>` from the project root. Evidence paths must stay relative and local; escaping, remote-only, or oversized artifacts fail. Use `capture-spatial-measurements.mjs` where Playwright already exists or the project's browser harness. Incomplete proof is `blocked`/`FAIL`, never reduced risk.
+Screenshots show composition, not cause. Material work needs `wordpress-spatial-proof.schema.json` validated by `node wp-expert/scripts/validate-spatial-proof.mjs <receipt.json>`. Paths must be relative/local; escaping, remote-only, or oversized artifacts fail. Use `capture-spatial-measurements.mjs` when Playwright/project harness exists. Incomplete proof is `blocked`/`FAIL`, never reduced risk.
 
 Bind assertions to environment, token/exception, source, actual, tolerance, and immutable evidence. Measure only decision-bearing facts:
 

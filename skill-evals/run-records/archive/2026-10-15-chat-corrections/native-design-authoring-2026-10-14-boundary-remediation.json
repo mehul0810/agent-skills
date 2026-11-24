@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "runId": "native-design-authoring-2026-10-14-boundary-remediation",
+  "scenario": "native-design-authoring",
+  "result": "succeeded",
+  "startedAt": "2026-10-14T04:04:58.725Z",
+  "durationMs": 8567057,
+  "checks": [
+    {
+      "name": "editable-artifact-routing",
+      "result": "pass"
+    },
+    {
+      "name": "missing-write-capability",
+      "result": "pass"
+    },
+    {
+      "name": "pen-transfer-loss",
+      "result": "pass"
+    },
+    {
+      "name": "small-edit-restraint",
+      "result": "pass"
+    },
+    {
+      "name": "task-matched-inspiration",
+      "result": "pass"
+    },
+    {
+      "name": "independent-acceptance-gates",
+      "result": "pass"
+    },
+    {
+      "name": "single-source-and-publication",
+      "result": "pass"
+    },
+    {
+      "name": "proportional-handoff",
+      "result": "pass"
+    },
+    {
+      "name": "high-fidelity-default",
+      "result": "pass"
+    },
+    {
+      "name": "navigation-and-recovery",
+      "result": "pass"
+    },
+    {
+      "name": "purposeful-media",
+      "result": "pass"
+    },
+    {
+      "name": "placement-aware-image",
+      "result": "pass"
+    },
+    {
+      "name": "image-candidate-rejection",
+      "result": "pass"
+    },
+    {
+      "name": "exact-edit-restraint",
+      "result": "pass"
+    },
+    {
+      "name": "native-runtime-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "shared-editor-target-drift",
+      "result": "pass"
+    },
+    {
+      "name": "isolated-target-exception",
+      "result": "pass"
+    },
+    {
+      "name": "truthful-visual-proof",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 18,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "native-design-authoring-2026-10-14-boundary-remediation",
+    "artifactPointer": "codex-private:boundary-remediation-20261014#evidence/draft-receipts/native-design-authoring.json"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-10-14T06:27:45.782Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Fresh frozen-source synthetic decisions independently scored; failed/incomplete attempts retained. Shared parent-observed freeze-to-admission interval includes coordination/retries, not per-actor runtime or summable cost. Host token/cost telemetry unavailable; no native/product/release assurance. See boundary-remediation-review-2026-10-14.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}

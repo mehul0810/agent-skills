@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "runId": "product-development-governance-2026-10-15-chat-corrections",
+  "scenario": "product-development-governance",
+  "result": "succeeded",
+  "startedAt": "2026-10-14T15:45:08.268Z",
+  "durationMs": 43151193,
+  "checks": [
+    {
+      "name": "planner-discovery-packet",
+      "result": "pass"
+    },
+    {
+      "name": "po-train-and-post-release-learning",
+      "result": "pass"
+    },
+    {
+      "name": "independent-engineering-review",
+      "result": "pass"
+    },
+    {
+      "name": "exact-candidate-release-readiness",
+      "result": "pass"
+    },
+    {
+      "name": "cto-escalation-only",
+      "result": "pass"
+    },
+    {
+      "name": "sibling-product-identity",
+      "result": "pass"
+    },
+    {
+      "name": "outcome-named-temporary-tasks",
+      "result": "pass"
+    },
+    {
+      "name": "stable-production-mainline",
+      "result": "pass"
+    },
+    {
+      "name": "tag-derived-package",
+      "result": "pass"
+    },
+    {
+      "name": "plugin-milestone-scope-and-branch",
+      "result": "pass"
+    },
+    {
+      "name": "solo-owner-independent-review",
+      "result": "pass"
+    },
+    {
+      "name": "primary-studio-safe-first",
+      "result": "pass"
+    },
+    {
+      "name": "disposable-isolation-fallback",
+      "result": "pass"
+    },
+    {
+      "name": "new-studio-owner-approval",
+      "result": "pass"
+    },
+    {
+      "name": "unapproved-studio-proof-gap",
+      "result": "pass"
+    },
+    {
+      "name": "existing-studio-inventory-only",
+      "result": "pass"
+    },
+    {
+      "name": "independent-test-proof",
+      "result": "pass"
+    },
+    {
+      "name": "dedicated-role-tasks-protected",
+      "result": "pass"
+    },
+    {
+      "name": "same-project-disposable-workers",
+      "result": "pass"
+    },
+    {
+      "name": "exact-id-worker-archive",
+      "result": "pass"
+    },
+    {
+      "name": "push-not-completion",
+      "result": "pass"
+    },
+    {
+      "name": "failed-proof-correction",
+      "result": "pass"
+    },
+    {
+      "name": "worktree-cleanup-separate",
+      "result": "pass"
+    },
+    {
+      "name": "role-scoped-evidence-worker-completion",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 24,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "product-development-governance-2026-10-15-chat-corrections",
+    "artifactPointer": "codex-private:skill-gap-fixes-20261015-final-01#evidence/draft-receipts-03/product-development-governance.json"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-10-15T03:44:19.461Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Fresh frozen-source development regression independently scored after retained failed/incomplete attempts. Shared parent-observed freeze-to-admission duration includes coordination and retries, not per-actor runtime or summable cost. Host token/cost telemetry unavailable. Synthetic decisions and cited local fixtures only; native pilot remains partial, with no production or held-out claim. See chat-workflow-review-2026-10-15.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}

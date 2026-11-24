@@ -2,6 +2,8 @@
 
 Real-world scenarios showing how to use the WP Expert skill pack.
 
+For design work, the [UI and UX source atlas](examples/ui-ux-source-atlas.md) is an optional reading shelf of case studies, methods and implementation guides. The [worked navigation example](examples/navigation-study-worked-example.md) shows how to investigate a missed link without giving away the answer. Neither is part of the normal skill-loading path.
+
 ## Example 1: Reviewing a Plugin for Security & WordPress.org Compliance
 
 **Scenario**: A client submitted a plugin for WordPress.org review and you need to audit it for security, performance, and guideline compliance.

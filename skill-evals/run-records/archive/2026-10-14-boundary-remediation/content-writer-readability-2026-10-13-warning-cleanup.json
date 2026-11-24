@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "runId": "content-writer-readability-2026-10-13-warning-cleanup",
+  "scenario": "content-writer-readability",
+  "result": "succeeded",
+  "startedAt": "2026-10-13T06:04:16.111Z",
+  "durationMs": 16636192,
+  "checks": [
+    {
+      "name": "audience-task-calibration",
+      "result": "pass"
+    },
+    {
+      "name": "plain-language-structure",
+      "result": "pass"
+    },
+    {
+      "name": "accessible-localized-copy",
+      "result": "pass"
+    },
+    {
+      "name": "reading-level-diagnostic",
+      "result": "pass"
+    },
+    {
+      "name": "complex-high-stakes-precision",
+      "result": "pass"
+    },
+    {
+      "name": "progressive-disclosure-precision",
+      "result": "pass"
+    },
+    {
+      "name": "no-blanket-readability-gate",
+      "result": "pass"
+    },
+    {
+      "name": "reader-knowledge-and-feature-meaning",
+      "result": "pass"
+    },
+    {
+      "name": "verified-procedure-boundary",
+      "result": "pass"
+    },
+    {
+      "name": "numeracy-and-scope",
+      "result": "pass"
+    },
+    {
+      "name": "reader-evidence-not-agent-opinion",
+      "result": "pass"
+    },
+    {
+      "name": "warning-preserving-rewrite",
+      "result": "pass"
+    }
+  ],
+  "metrics": {
+    "checks_passed": 12,
+    "host_telemetry_available": 0,
+    "shared_batch_interval": 1
+  },
+  "lineage": {
+    "verificationId": "content-writer-readability-2026-10-13-warning-cleanup",
+    "artifactPointer": "codex-private:warning-cleanup-heldout-20261013#evidence/draft-receipts/content-writer-readability.json"
+  },
+  "measurement": {
+    "status": "met",
+    "verifiedAt": "2026-10-13T10:41:32.303Z",
+    "metricNames": [
+      "checks_passed",
+      "host_telemetry_available",
+      "shared_batch_interval"
+    ],
+    "summary": "Independent fresh synthetic decisions; failed/incomplete attempts and scorer corrections retained. Shared source-freeze-to-admission interval includes coordination, idle time and retries, not actor runtime, cost or summed durations. Token telemetry unavailable. No native/product/release assurance, reliability or savings claim. See warning-cleanup-review-2026-10-13.md."
+  },
+  "tags": [
+    "fresh-agent",
+    "sanitized"
+  ]
+}

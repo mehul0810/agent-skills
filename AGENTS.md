@@ -17,6 +17,8 @@ This repository owns reusable Agent Skills, shared references, eval specificatio
 
 ## Required Validation
 
+The owner's standing policy excludes macOS VoiceOver screen-reader checks and voice-over narration verification unless explicitly requested later. Do not run/request them, substitute another reader, or block ordinary completion solely on their absence. Record excluded by owner direction, never passed. Preserve keyboard/focus, semantics, labels, contrast, captions, automated checks and other safety gates; do not claim unverified AT compatibility, narration or WCAG conformance. Synthetic validator tests of receipts do not run these excluded checks.
+
 Run the commands in `TESTING.md`. Any authority, routing, release, hallucination, design, or self-learning change also requires fresh-agent scenarios for the changed role and a concise commit or durable evidence note.
 
 ## Skill Admission Gate
@@ -28,6 +30,8 @@ Add a top-level skill only for a recurring portable workflow, tool boundary, or 
 Findings first: unsafe authority, lost expertise/reachability, wrong routing, unverified claims, missing proof, token-route regressions, and stale transient policy. Avoid broad wording churn when a router, deterministic audit, or scenario closes the gap more cheaply.
 
 ## Code Review Rules
+
+For an ordinary diff, apply the [production change review](shared/references/production-change-review.md): trace affected callers and look for concrete correctness, security, performance and shared-rule regressions. Findings are not a tally of checklist items.
 
 - **Reachable expertise:** When shortening a skill or moving a reference, preserve a reachable route for each retained capability. A smaller kernel is safe when the owning router still reaches the detail; flag removed or misleading routes, not wording changes alone. Safe path: update callers and prove the affected route with a fresh scenario.
 - **Evidence identity:** Changes to baselines, runtime compatibility or proof claims must preserve the original tested revision, artifact identity and limitations. A passing fixture or adapter cannot establish native execution. Safe path: keep historical evidence labeled, use the explicit dependency receipt where eligible, or run fresh proof. Do not flag a correctly labeled blocked or inconclusive result as dishonest success.

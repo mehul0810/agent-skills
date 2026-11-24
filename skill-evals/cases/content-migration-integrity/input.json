@@ -1,0 +1,5 @@
+{
+  "id": "content-migration-integrity",
+  "request": "Plan and validate a safe, bounded migration of a paginated content source. Source pages can reveal later pages dynamically, may repeat items, and one endpoint clamps an out-of-range request to its last page. The destination writes change which source records match the migration selector. The expected source population is 300 records, processed in batches of 100. One write fails once and must be retried. Provide a compact synthetic test or executable demonstration showing how coverage, progress, failure/resume, and completion are determined. Include a budget-stop example and a truly empty-source example. Do not access or mutate WordPress, external systems, or real data.",
+  "artifacts": ["source-pages.json", "live-selector.json", "failure.json"]
+}

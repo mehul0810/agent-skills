@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "steps": [
+    { "role": "button", "name": "Open proof", "expect": "Compare versions", "holdMs": 1600 },
+    { "role": "button", "name": "Compare versions", "expect": "Comparison ready", "holdMs": 2300 }
+  ]
+}

@@ -1,6 +1,6 @@
 # Third-Party API Integrations
 
-Use this for integrating any external API with WordPress: REST, GraphQL, SOAP/WSDL, XML-RPC, webhooks, SDKs, OpenAPI/Swagger specs, Postman collections, OAuth, API keys, JWT, mTLS, file APIs, payment/shipping/CRM/marketing/search/AI providers, and private client APIs.
+Use for WordPress integration with external REST/GraphQL/SOAP/XML-RPC, webhooks, SDKs/specs, OAuth/API keys/JWT/mTLS, file, payment/shipping/CRM/marketing/search/AI or private APIs.
 
 ## Current Official Anchors
 
@@ -14,46 +14,40 @@ Use this for integrating any external API with WordPress: REST, GraphQL, SOAP/WS
 
 ## Documentation-First Rule
 
-Never invent API behavior. Build from current documentation and verified runtime responses.
+Never invent API behavior; use current docs and verified runtime responses.
 
-1. Use the user-provided docs/spec first when available.
-2. If no docs are provided, search the web for the official developer portal, API reference, OpenAPI/Swagger spec, Postman collection, SDK repository, changelog, status page, and deprecation policy.
-3. Prefer official docs over blog posts, examples, Stack Overflow, or copied snippets.
-4. Confirm API version, environment base URLs, auth method, rate limits, pagination, idempotency, webhook signatures, error format, date/timezone rules, and deprecation dates.
-5. If official docs cannot be found or critical details are missing, ask the user for the docs/spec/link, sandbox access path, or missing contract details before implementing.
-6. Do not ask the user to paste secrets into chat. Ask for environment variable names, local config location, or a safe credential setup path.
+1. Use supplied docs/spec first; otherwise find official portal, API reference/spec, Postman collection, SDK, changelog, status and deprecation policy.
+2. Prefer official sources over blogs, examples, forums or snippets.
+3. Confirm version, environment/base URLs, auth, limits, pagination, idempotency, signatures, errors, date/timezone and deprecation.
+4. If docs/details are missing, request docs/link, sandbox path or contract before implementation. Never request secrets in chat; ask for env names, local config or safe setup.
 
 ## API Intake Checklist
 
-Capture these facts before coding:
+Before coding, capture:
 
-- Provider, product, API version, environment: sandbox, staging, production.
-- Protocol: REST, GraphQL, SOAP/WSDL, XML-RPC, SDK-only, file/SFTP, webhook-only, event stream.
-- Auth: API key, bearer/JWT, OAuth 2.0 flow, HMAC signature, basic auth, mTLS, application password, session token.
-- Required scopes, token lifetime, refresh behavior, revocation, rotation, and tenant/account boundaries.
-- Endpoints/operations, request schema, response schema, errors, pagination/cursors, filters, sorting, and rate limits.
-- Idempotency keys, retry rules, timeout guidance, webhooks, callback verification, replay windows, and delivery retries.
-- Data sensitivity, PII, retention, deletion/export requirements, logging restrictions, and compliance constraints.
-- SDK license, maintenance status, dependency footprint, WordPress/PHP version compatibility, and testability.
+- Provider/product, API version, environment, protocol and auth flow.
+- Scopes, token lifetime/refresh/revocation/rotation and tenant/account boundaries.
+- Operations/schemas/errors, pagination/filters/sort/limits; idempotency, retries, timeouts, webhook verification/replay/delivery.
+- Data sensitivity/PII, retention, deletion/export, logging and compliance; SDK license/maintenance/dependencies, WP/PHP compatibility and testability.
 
 ## WordPress Architecture
 
-- Put provider communication behind a dedicated client/service layer; keep hooks, controllers, admin UI, and cron callbacks thin.
+- Isolate provider communication in a client/service; keep hooks, controllers, UI and cron thin.
 - Use WordPress HTTP API functions for PHP requests unless the project has a justified HTTP client abstraction.
-- For internal UI/API boundaries, expose WordPress REST routes instead of `admin-ajax.php` when possible.
+- Prefer REST over `admin-ajax.php` for internal UI/API boundaries.
 - Store credentials in the safest available project pattern: constants/env-backed config, encrypted secrets manager, VIP environment variables, or protected options with capability-gated admin screens.
 - Never expose API secrets, refresh tokens, webhook secrets, private URLs, PII, or raw provider payloads in localized JS, HTML, REST responses, logs, cache keys, cron args, screenshots, or PR text.
-- Model provider payloads into validated DTOs/arrays at the boundary. Do not let raw provider responses leak across the plugin/theme.
+- Normalize payloads into validated DTOs/arrays at boundary; raw responses stay inside client.
 - Add filters/actions for enterprise customization only at stable boundaries: request args, normalized response, retry decision, and event processed.
 
 ## Request Design
 
-- Use explicit timeouts, usually short on user-facing paths and longer only in background jobs.
+- Set explicit timeouts: short for user paths, longer only in background.
 - Fail closed for privileged actions and sensitive data.
 - Use bounded retries with exponential backoff only for retry-safe failures: timeouts, 429, 503, selected 5xx, and documented transient codes.
 - Respect `Retry-After`, rate-limit headers, provider backoff guidance, and account-level quotas.
 - Use idempotency keys for create/update/payment/order/shipping operations when the API supports them.
-- Abort or coalesce duplicate in-flight work where possible.
+- Abort/coalesce duplicate in-flight work.
 - Cache safe deterministic reads with explicit TTL and invalidation; do not cache secrets or sensitive payloads.
 - Avoid synchronous remote calls on page render, checkout/form submission, login, editor load, or admin bootstrap unless no async path is acceptable and failure behavior is defined.
 
@@ -68,12 +62,12 @@ Capture these facts before coding:
 
 ## Webhooks And Inbound Events
 
-- Register webhook endpoints as REST routes with explicit methods and permission/signature checks.
+- Register webhook REST routes with explicit methods and permission/signature checks.
 - Verify signatures before parsing or acting on data.
 - Store and check provider event IDs for idempotency and replay protection.
-- Respond quickly, then enqueue expensive processing through Action Scheduler, cron, queue, or WP-CLI.
+- Respond quickly; enqueue expensive processing.
 - Redact and bound stored payloads. Keep raw payloads only when business/compliance requirements justify it.
-- Provide admin/CLI tools to replay failed events safely.
+- Provide safe admin/CLI replay tools.
 
 ## Protocol Notes
 

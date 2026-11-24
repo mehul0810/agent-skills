@@ -1,0 +1,4 @@
+interface:
+  display_name: "Game Development"
+  short_description: "Build playable games with grounded art and a stack that fits"
+  default_prompt: "Use $game-development to build a playable game from my brief, choose the stack for the target hardware, and verify the look and feel in play."

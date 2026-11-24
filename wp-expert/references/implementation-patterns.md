@@ -141,45 +141,11 @@ Rules:
 - Identifiers are whitelisted, not interpolated from user input.
 - Limits and offsets are bounded before query execution.
 
-## Async Token Pattern
+## Async Job Contract
 
-Use this when a job needs sensitive payload data.
+For sensitive or durable work, persist the job payload in a private durable store appropriate to the application (for example, a protected custom table or private post/meta record); transients alone are not a durable queue. Schedule or dispatch only an opaque job ID. Never place PII or secrets in cron/action arguments.
 
-```php
-$token = wp_generate_uuid4();
-set_transient(
-    'example_job_' . $token,
-    array(
-        'record_id' => $record_id,
-        'payload'   => $redacted_or_private_payload,
-    ),
-    HOUR_IN_SECONDS
-);
-
-wp_schedule_single_event( time() + 10, 'example_process_job', array( $token ) );
-```
-
-Job handler:
-
-```php
-public function process_job( string $token ): void {
-    $payload = get_transient( 'example_job_' . $token );
-
-    if ( ! is_array( $payload ) ) {
-        return;
-    }
-
-    delete_transient( 'example_job_' . $token );
-
-    // Re-check record existence and idempotency before side effects.
-}
-```
-
-Rules:
-
-- Cron/action args carry token/ID only, not PII or secrets.
-- Job is idempotent and can safely retry.
-- Payload expires and is deleted after use.
+The worker should atomically claim the job with a lease or equivalent concurrency control, reload and validate its private payload, and re-check authorization/state before side effects. Make side effects idempotent; do not promise exactly-once execution. Acknowledge/delete the job only after successful completion. On failure, retain observable status/error metadata and use bounded retries with recovery for expired claims. Define payload retention and cleanup explicitly; do not delete the only payload before work succeeds. Scheduling/dispatch failure must remain visible and recoverable rather than silently losing the job.
 
 ## Object Cache Wrapper
 

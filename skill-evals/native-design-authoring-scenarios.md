@@ -73,3 +73,7 @@ Another writer is using the shared UI for B, but an explicit scoped API independ
 ## Truthful Visual Proof
 
 Do not fabricate product evidence, customers or metrics. Use truthful captures or clearly illustrative artwork, and distinguish video poster from playback. Premium aesthetics do not authorize false claims.
+
+## Supplied Mark In Native Placements
+
+Use the blind `cases/brand-identity-regression/input.json` packet and actual supplied vectors/rendered candidates. Inspect the requested brand showcase and desktop/mobile navigation at the declared sizes. A polished substitute or text-only approximation cannot pass an exact supplied-mark contract. Honor the separate approved wordmark-only scope; do not require a symbol in every composition. Native pilot planning and rendered gallery inspection are not native write, propagation, save/reopen or production proof.

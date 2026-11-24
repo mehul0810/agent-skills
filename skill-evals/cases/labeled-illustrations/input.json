@@ -1,0 +1,5 @@
+{
+  "id": "labeled-illustrations",
+  "request": "Use the supplied content-writing skill and relevant guidance to complete each independent request in cases.json. These are synthetic editorial tasks, not live product or customer evidence. Return only the requested copy plus necessary factual limitations and actually loaded guidance paths. Do not publish, inspect accounts, access external systems, or claim reader testing.",
+  "artifacts": ["cases.json"]
+}
