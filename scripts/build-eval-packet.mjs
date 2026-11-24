@@ -3,10 +3,16 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
-import { pathToFileURL } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { DEFAULT_FILE_LIMITS, listRegularFiles, normalizeFileLimits, safeReadFile } from './bounded-files.mjs';
 
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
+const SELECTABLE_CASES = {
+  'editorial-signature': ['season-notes', 'one-caption'],
+  'navigation-study-selection': ['two-explanations', 'one-correct-click', 'same-people', 'bounded-label'],
+  'design-route-regression': Array.from({ length: 26 }, (_, i) => String(i + 1)),
+};
+export function selectableCaseIds(id) { return SELECTABLE_CASES[id] ? [...SELECTABLE_CASES[id]] : null; }
 function packetDigest(files, hashBytes = sha) {
   return hashBytes(Buffer.from(JSON.stringify(Object.entries(files).sort(([a], [b]) => a.localeCompare(b)))));
 }
@@ -18,6 +24,19 @@ function repositoryFor(root) {
     if (/not a git repository/i.test(error.stderr?.toString?.() || error.message)) return null;
     throw error;
   }
+}
+function matchesCommittedFullPacket(manifest, contents) {
+  try {
+    const repo = repositoryFor(path.dirname(fileURLToPath(import.meta.url)));
+    if (!repo) return false;
+    const root = `skill-evals/cases/${manifest.id}`;
+    const revision = manifest.sourceRevision ?? manifest.revision;
+    const show = file => execFileSync('git', ['-C', repo, 'show', `${revision}:${root}/${file}`], { encoding: 'buffer', stdio: ['ignore', 'pipe', 'pipe'] });
+    const input = JSON.parse(show('input.json'));
+    if (input.id !== manifest.id || !Array.isArray(input.artifacts) || !contents.get('request.md').equals(Buffer.from(input.request + '\n'))) return false;
+    if (contents.size !== input.artifacts.length + 1) return false;
+    return input.artifacts.every(file => contents.get(`artifacts/${file}`)?.equals(show(`artifacts/${file}`)));
+  } catch { return false; }
 }
 function verifyRepositoryInputs(root, revision, selectedFiles) {
   const repo = repositoryFor(root);
@@ -105,6 +124,7 @@ export function buildPacket(caseRoot, output, sourceRevision, options = {}) {
     } else if (['editorial-signature', 'navigation-study-selection'].includes(input.id) && files.length === 1 && files[0] === 'briefs.json') {
       const briefs = JSON.parse(payloads[0][1]);
       if (!Array.isArray(briefs) || briefs.some(brief => !brief || Object.keys(brief).sort().join(',') !== 'id,request' || typeof brief.id !== 'string' || !brief.id || typeof brief.request !== 'string' || !brief.request.trim()) || new Set(briefs.map(brief => brief.id)).size !== briefs.length) throw new Error('Invalid selectable briefs');
+      if (JSON.stringify(briefs.map(brief => brief.id).sort()) !== JSON.stringify(selectableCaseIds(input.id).sort())) throw new Error('Unsupported selectable case inventory');
       const selected = ids.map(id => {
         const brief = briefs.find(item => item.id === id);
         if (!brief) throw new Error(`Unknown case ID: ${id}`);
@@ -118,7 +138,8 @@ export function buildPacket(caseRoot, output, sourceRevision, options = {}) {
   const packetBytes = requestBytes.length + payloads.reduce((sum, [, bytes]) => sum + bytes.length, 0);
   if (requestBytes.length > maxFileBytes) throw new Error('Request exceeds byte limit');
   if (packetBytes > maxTotalBytes) throw new Error('Packet exceeds total byte limit');
-  const manifest = { version: 2, id: input.id, sourceRevision, files: {} };
+  const manifest = { version: options.caseIds === undefined ? 2 : 3, id: input.id, sourceRevision, files: {} };
+  if (options.caseIds !== undefined) manifest.selection = { caseIds: [...options.caseIds] };
   manifest.files['request.md'] = sha(requestBytes);
   for (const [file, bytes] of payloads) manifest.files['artifacts/' + file] = sha(bytes);
   manifest.packetDigest = packetDigest(manifest.files);
@@ -151,15 +172,38 @@ export function verifyPacket(output, options = {}) {
   if (totalBytes > normalizedLimits.maxTotalBytes) throw new Error('Packet exceeds total byte limit');
   const manifest = JSON.parse(manifestBytes);
   const validV1 = manifest.version === 1 && /^[a-f0-9]{40}$/.test(manifest.revision);
-  const validV2 = manifest.version === 2 && /^[a-f0-9]{40}$/.test(manifest.sourceRevision) && manifest.files && manifest.packetDigest === packetDigest(manifest.files, hashBytes);
-  if ((!validV1 && !validV2) || !manifest.files || !Object.hasOwn(manifest.files, 'request.md')) throw new Error('Invalid packet manifest');
+  const validV2 = [2, 3].includes(manifest.version) && /^[a-f0-9]{40}$/.test(manifest.sourceRevision) && manifest.files && manifest.packetDigest === packetDigest(manifest.files, hashBytes);
+  if ((!validV1 && !validV2) || !manifest.files || !Object.hasOwn(manifest.files, 'request.md') || (manifest.version !== 3 && Object.hasOwn(manifest, 'selection'))) throw new Error('Invalid packet manifest');
   if (JSON.stringify(actual) !== JSON.stringify(Object.keys(manifest.files).sort())) throw new Error('Unlisted or missing packet file');
+  const packetContents = new Map();
   for (const [file, hash] of Object.entries(manifest.files)) {
     relativeFile(file);
     const bytes = readFile(path.join(root, file), { maxBytes: normalizedLimits.maxFileBytes });
     totalBytes += bytes.length;
     if (totalBytes > normalizedLimits.maxTotalBytes) throw new Error('Packet exceeds total byte limit');
     if (!/^[a-f0-9]{64}$/.test(hash) || hashBytes(bytes) !== hash) throw new Error('Packet content changed');
+    packetContents.set(file, bytes);
+  }
+  const inventory = selectableCaseIds(manifest.id);
+  if (manifest.version === 3 || (inventory && !matchesCommittedFullPacket(manifest, packetContents))) {
+    if (!inventory) throw new Error('Unsupported selected packet');
+    let actual;
+    if (manifest.id === 'design-route-regression') {
+      actual = [...packetContents.get('request.md').toString('utf8').matchAll(/^([1-9][0-9]*)\. .+$/gm)].map(match => match[1]);
+    } else {
+      const bytes = packetContents.get('artifacts/briefs.json');
+      if (!bytes) throw new Error('Selected packet is missing briefs');
+      const briefs = JSON.parse(bytes);
+      if (!Array.isArray(briefs) || briefs.some(item => !item || Object.keys(item).sort().join(',') !== 'id,request' || typeof item.request !== 'string' || !item.request.trim())) throw new Error('Invalid selected briefs');
+      actual = briefs.map(item => item.id);
+    }
+    if (!actual.length || new Set(actual).size !== actual.length || actual.some(id => !inventory.includes(id))) throw new Error('Invalid packet case inventory');
+    if (manifest.version === 3) {
+      if (!manifest.selection || Object.keys(manifest.selection).join(',') !== 'caseIds' || !Array.isArray(manifest.selection.caseIds) || JSON.stringify(manifest.selection.caseIds) !== JSON.stringify(actual)) throw new Error('Packet selection does not match payload');
+    } else if (actual.length < inventory.length) {
+      // Detect pre-selection-metadata packets without modifying their historical bytes.
+      Object.defineProperty(manifest, 'selection', { value: { caseIds: actual }, enumerable: false });
+    }
   }
   if (validV1) return manifest;
   return manifest;

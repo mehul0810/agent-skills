@@ -3,7 +3,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { verifyPacket } from './build-eval-packet.mjs';
+import { selectableCaseIds, verifyPacket } from './build-eval-packet.mjs';
 import { DEFAULT_FILE_LIMITS, normalizeFileLimits, safeReadFile, listRegularFiles } from './bounded-files.mjs';
 import { analyzeConfigChange, CONFIG_PATH } from './eval-config-planner.mjs';
 import { preflightAttempts } from './eval-attempt-evidence.mjs';
@@ -21,8 +21,8 @@ const GLOBAL_INPUTS = new Set([
   'agent-harness.config.json',
 ]);
 const SUPPLEMENTAL_SCENARIOS = [
-  { scenario: 'skill-evals/cases/editorial-signature', inputs: ['wp-expert/references/style-guide-theme-translation.md', 'wp-theme-expert/SKILL.md', 'wp-theme-expert/references/router.md'] },
-  { scenario: 'skill-evals/cases/navigation-study-selection', inputs: ['wp-expert/references/ux-product-strategy-design-qa.md', 'wp-site-expert/SKILL.md', 'wp-site-expert/references/router.md'] },
+  { scenario: 'skill-evals/cases/editorial-signature', inputs: ['wp-expert/references/style-guide-theme-translation.md', 'wp-theme-expert/SKILL.md', 'wp-theme-expert/references/router.md', 'shared/references/design-intelligence-routing.md', 'shared/references/spatial-layout-and-alignment-system.md', 'shared/references/frontend-design-taste.md'] },
+  { scenario: 'skill-evals/cases/navigation-study-selection', inputs: ['wp-expert/references/ux-product-strategy-design-qa.md', 'wp-site-expert/SKILL.md', 'wp-site-expert/references/router.md', 'shared/references/design-intelligence-routing.md', 'shared/references/frontend-design-taste.md'] },
 ];
 
 function safeRepoPath(value) {
@@ -157,6 +157,7 @@ export function preflightReceipt(root, receipt, {
     const resultCaseIndexes = new Map();
     const resultDigests = new Map();
     const verifiedPackets = new Map();
+    const selectedCoverage = new Map();
     const digestFile = (file) => {
       const key = path.resolve(file);
       if (!resultDigests.has(key)) resultDigests.set(key, hashBytes(readCached(file)));
@@ -252,6 +253,11 @@ export function preflightReceipt(root, receipt, {
           const packet = verified.packet;
           const sourceRevision = packet.sourceRevision ?? packet.revision;
           if (packet.id !== ref.packetId || sourceRevision !== receipt.testedRevision) throw new Error('packet id or packet revision does not match receipt');
+          if (packet.selection) {
+            if (!packet.selection.caseIds.includes(ref.caseId)) throw new Error(`case ${ref.caseId} is not in packet selection`);
+            if (!selectedCoverage.has(packet.id)) selectedCoverage.set(packet.id, new Set());
+            selectedCoverage.get(packet.id).add(ref.caseId);
+          }
           if (!resultHasCase(resultFile, ref.packetId, ref.caseId)) {
             throw new Error(`case ${ref.packetId}/${ref.caseId} is not locatable in structured result evidence`);
           }
@@ -259,8 +265,9 @@ export function preflightReceipt(root, receipt, {
       }
     }
     for (const name of required) if (!seen.has(name)) errors.push(`missing required check: ${name}`);
-    const state = errors.length ? 'invalid' : outcomes.includes('fail') ? 'failed' : outcomes.includes('incomplete') ? 'incomplete' : 'complete';
-    return { valid: errors.length === 0, errors, state, admission: 'not-performed' };
+    const partialSelections = [...selectedCoverage].filter(([id, covered]) => selectableCaseIds(id).some(caseId => !covered.has(caseId))).map(([id]) => id);
+    const state = errors.length ? 'invalid' : outcomes.includes('fail') ? 'failed' : outcomes.includes('incomplete') || partialSelections.length ? 'incomplete' : 'complete';
+    return { valid: errors.length === 0, errors, state, admission: 'not-performed', ...(partialSelections.length ? { partialSelections } : {}) };
   } catch (error) {
     return { valid: false, errors: [error.message], state: 'invalid', admission: 'not-performed' };
   }

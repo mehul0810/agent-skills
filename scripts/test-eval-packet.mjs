@@ -154,6 +154,7 @@ for (const name of ['editorial-signature', 'navigation-study-selection']) {
   assert.deepEqual(JSON.parse(fs.readFileSync(path.join(target, 'artifacts/briefs.json'))), [briefs[0]]);
   assert.equal(fs.existsSync(path.join(target, 'criteria.md')), false);
   assert.equal(verifyPacket(target).id, name);
+  assert.deepEqual(verifyPacket(target).selection.caseIds, [briefs[0].id]);
   assert.throws(() => buildPacket(design, path.join(root, `duplicate-${name}`), designRevision, { caseIds: [briefs[0].id, briefs[0].id] }), /unique/);
   assert.throws(() => buildPacket(design, path.join(root, `unknown-${name}`), designRevision, { caseIds: ['unknown'] }), /Unknown/);
 }
@@ -167,9 +168,31 @@ assert.equal(fs.readFileSync(path.join(broadFull, 'request.md'), 'utf8'), broadI
 const broadSelected = path.join(root, 'broad-selected');
 buildPacket(broad, broadSelected, broadRevision, { caseIds: ['7'] });
 const broadRequest = fs.readFileSync(path.join(broadSelected, 'request.md'), 'utf8');
+assert.deepEqual(verifyPacket(broadSelected).selection.caseIds, ['7']);
 assert.match(broadRequest, /^7\. /m);
 assert.doesNotMatch(broadRequest, /^([1-6]|[89]|1[0-9]|2[0-6])\. /m);
 assert.match(broadRequest, /synthetic decisions/);
 assert.throws(() => buildPacket(broad, path.join(root, 'broad-unknown'), broadRevision, { caseIds: ['27'] }), /Unknown/);
 assert.throws(() => buildPacket(broad, path.join(root, 'broad-duplicate'), broadRevision, { caseIds: ['7', '7'] }), /unique/);
+const broadManifestPath = path.join(broadSelected, 'manifest.json');
+const selectedManifest = JSON.parse(fs.readFileSync(broadManifestPath));
+selectedManifest.selection.caseIds = ['8'];
+fs.writeFileSync(broadManifestPath, JSON.stringify(selectedManifest));
+assert.throws(() => verifyPacket(broadSelected), /selection does not match/);
+selectedManifest.selection.caseIds = ['7', '7'];
+fs.writeFileSync(broadManifestPath, JSON.stringify(selectedManifest));
+assert.throws(() => verifyPacket(broadSelected), /selection does not match/);
+delete selectedManifest.selection;
+selectedManifest.version = 2;
+fs.writeFileSync(broadManifestPath, JSON.stringify(selectedManifest));
+assert.deepEqual(verifyPacket(broadSelected).selection.caseIds, ['7'], 'legacy partial packets remain identifiable after metadata removal');
+const historicRevision = '5eb5dd1ea1da71892fe21929811c02b86b7c6cce';
+const historicSource = path.join(root, 'historic-navigation');
+fs.mkdirSync(path.join(historicSource, 'artifacts'), { recursive: true });
+for (const file of ['input.json', 'artifacts/briefs.json']) {
+  fs.writeFileSync(path.join(historicSource, file), execFileSync('git', ['show', `${historicRevision}:skill-evals/cases/navigation-study-selection/${file}`]));
+}
+const historicPacket = path.join(root, 'historic-packet');
+buildPacket(historicSource, historicPacket, historicRevision);
+assert.equal(verifyPacket(historicPacket).selection, undefined, 'a historical full packet is not reclassified as partial');
 console.log('Evaluation packet isolation and integrity tests passed');

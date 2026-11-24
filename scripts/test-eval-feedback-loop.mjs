@@ -31,6 +31,10 @@ for (const file of ['wp-expert/references/style-guide-theme-translation.md', 'sk
 for (const file of ['wp-expert/references/ux-product-strategy-design-qa.md', 'skill-evals/cases/navigation-study-selection/artifacts/briefs.json']) {
   assert.deepEqual(planBaselines(manifest, [file]).supplementalScenarios, ['skill-evals/cases/navigation-study-selection']);
 }
+assert.deepEqual(planBaselines(manifest, ['shared/references/spatial-layout-and-alignment-system.md']).supplementalScenarios, ['skill-evals/cases/editorial-signature']);
+for (const file of ['shared/references/frontend-design-taste.md', 'shared/references/design-intelligence-routing.md']) {
+  assert.deepEqual(planBaselines(manifest, [file]).supplementalScenarios, ['skill-evals/cases/editorial-signature', 'skill-evals/cases/navigation-study-selection']);
+}
 assert.deepEqual(planBaselines(manifest, ['unrelated.md']).supplementalScenarios, []);
 const unrelated = planBaselines(manifest, ['notes/unmapped.md']);
 assert.deepEqual(unrelated.affected, []);
@@ -168,6 +172,43 @@ try {
   assert.equal(failedPacketVerifications, 1, 'failed packet verification is cached only for this preflight invocation');
   fs.writeFileSync(path.join(root, packetPath, 'request.md'), 'Review fixture\n');
   assert.equal(preflightReceipt(root, receipt).valid, true, 'a later invocation must reread corrected packet bytes');
+
+  const selectedSource = path.join(root, 'selected-source');
+  fs.cpSync(path.join(repoRoot, 'skill-evals/cases/design-route-regression'), selectedSource, { recursive: true });
+  const selectedPath = path.join(root, 'selected-eight');
+  buildPacket(selectedSource, selectedPath, revision, { caseIds: ['8'] });
+  const selectedHash = hashFile(path.join(selectedPath, 'manifest.json'));
+  const selectedResult = path.join(root, 'selected-result.json');
+  const selectedRef = { packetId: 'design-route-regression', caseId: '8', packetPath: selectedPath, manifestSha256: selectedHash, resultPath: selectedResult };
+  const selectedReceipt = structuredClone(receipt);
+  const setSelectedCase = id => {
+    fs.writeFileSync(selectedResult, JSON.stringify({ cases: [{ packetId: selectedRef.packetId, id, outcome: 'observed' }] }));
+    selectedReceipt.checks.forEach(check => { check.cases = [{ ...selectedRef, caseId: id, resultSha256: hashFile(selectedResult) }]; });
+  };
+  setSelectedCase('8');
+  assert.equal(preflightReceipt(root, selectedReceipt).state, 'incomplete');
+  assert.deepEqual(preflightReceipt(root, selectedReceipt).partialSelections, ['design-route-regression']);
+  setSelectedCase('7');
+  assert.ok(preflightReceipt(root, selectedReceipt).errors.some(error => error.includes('not in packet selection')));
+  setSelectedCase('8');
+  selectedReceipt.checks.pop();
+  assert.ok(preflightReceipt(root, selectedReceipt).errors.some(error => error.includes('missing required check')));
+
+  const themeSource = path.join(root, 'theme-source');
+  fs.cpSync(path.join(repoRoot, 'skill-evals/cases/editorial-signature'), themeSource, { recursive: true });
+  const themeResult = path.join(root, 'theme-result.json');
+  const themeIds = ['season-notes', 'one-caption'];
+  fs.writeFileSync(themeResult, JSON.stringify({ cases: themeIds.map(id => ({ packetId: 'editorial-signature', id, outcome: 'observed' })) }));
+  const themeRefs = themeIds.map(id => {
+    const packetPath = path.join(root, `theme-${id}`);
+    buildPacket(themeSource, packetPath, revision, { caseIds: [id] });
+    return { packetId: 'editorial-signature', caseId: id, packetPath, manifestSha256: hashFile(path.join(packetPath, 'manifest.json')), resultPath: themeResult, resultSha256: hashFile(themeResult) };
+  });
+  const completeSelection = structuredClone(receipt);
+  completeSelection.checks.forEach(check => { check.cases = themeRefs; });
+  assert.equal(preflightReceipt(root, completeSelection).state, 'complete');
+  completeSelection.checks.pop();
+  assert.equal(preflightReceipt(root, completeSelection).state, 'invalid', 'case inventory does not replace required checks');
   fs.rmSync(resultFile, { force: true });
   fs.rmSync(root, { recursive: true, force: true });
 } finally {
