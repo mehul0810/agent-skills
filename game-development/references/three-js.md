@@ -20,7 +20,7 @@ pointer.set(2 * (event.clientX - r.left) / r.width - 1,
 raycaster.setFromCamera(pointer, camera);
 ```
 
-Skip a zero-size canvas and adjust for any letterbox or split viewport. Test the pictured control after scrolling, resizing and changing pixel density. Keep camera projection and the drawing buffer in sync with the displayed canvas; cap the rendering resolution to the measured device budget, not blindly to device pixel ratio. [Responsive sizing](https://threejs.org/manual/pages/responsive.html) explains the distinction.
+Skip a zero-size canvas and adjust for any letterbox or split viewport. Test the pictured control after scrolling, resizing and changing pixel density. Switch from pointer to keyboard on that same object; keep a visible selection indicator and do not trap the surrounding page's keys. Keep camera projection and the drawing buffer in sync with the displayed canvas; cap the rendering resolution to the measured device budget, not blindly to device pixel ratio. [Responsive sizing](https://threejs.org/manual/pages/responsive.html) explains the distinction.
 
 ## Check assets, lifecycle and delivery
 
