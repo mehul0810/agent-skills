@@ -127,7 +127,9 @@ For changes to Unreal guidance, also build the blind `game-development-unreal`
 packet and score its decisions against its own `criteria.md`. It covers engine
 identity, safe upgrades, native packaged play and two different browser
 constraints. These decisions are not proof that an editor started, a package
-ran, or a particular Unreal version or device was tested.
+ran, or a particular Unreal version or device was tested. See the
+[dated Unreal evaluation](skill-evals/game-development-unreal-2026-11-24.md)
+for the native editor result and the limits of the browser pilots.
 
 For native Apple apps and the dependency-reuse decision, use the blind
 `skill-evals/cases/apple-app-development/` packet and the separate
