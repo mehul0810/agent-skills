@@ -38,6 +38,46 @@ function matchesCommittedFullPacket(manifest, contents) {
     return input.artifacts.every(file => contents.get(`artifacts/${file}`)?.equals(show(`artifacts/${file}`)));
   } catch { return false; }
 }
+function verifyCommittedSelection(manifest, contents, ids) {
+  const repo = repositoryFor(path.dirname(fileURLToPath(import.meta.url)));
+  if (!repo) throw new Error('Selected packet source unavailable: source repository unavailable');
+  const root = `skill-evals/cases/${manifest.id}`;
+  const revision = manifest.sourceRevision ?? manifest.revision;
+  const show = file => {
+    try { return execFileSync('git', ['-C', repo, 'show', `${revision}:${root}/${file}`], { encoding: 'buffer', stdio: ['ignore', 'pipe', 'pipe'] }); }
+    catch { throw new Error(`Selected packet source unavailable: committed ${file} at ${revision}`); }
+  };
+  try {
+    const input = JSON.parse(show('input.json'));
+    if (input.id !== manifest.id || !Array.isArray(input.artifacts)) throw new Error('source input mismatch');
+    if (manifest.id === 'design-route-regression') {
+      if (input.artifacts.length || contents.size !== 1) throw new Error('unexpected packet artifacts');
+      const lines = input.request.split('\n');
+      const intro = 'Use the repository\'s owning WordPress skills to answer these independent hypothetical requests. Report concrete decisions, actually loaded routes, and required proof; no implementation.';
+      const warning = 'These are synthetic decisions, not supplied source images or runtime proof. Do not claim to have inspected missing screenshots, packages or real users.';
+      const cases = new Map();
+      if (lines[0] !== intro || lines.filter(line => line === warning).length !== 1) throw new Error('unsupported source cases');
+      for (const line of lines.slice(1)) {
+        if (!line || line === warning) continue;
+        const match = line.match(/^([1-9][0-9]*)\. (.+)$/);
+        if (!match || cases.has(match[1])) throw new Error('unsupported source cases');
+        cases.set(match[1], line);
+      }
+      if (cases.size !== 26 || selectableCaseIds(manifest.id).some(id => !cases.has(id)) || ids.some(id => !cases.has(id))) throw new Error('unsupported source cases');
+      const expected = Buffer.from([intro, ...ids.map(id => cases.get(id)), '', warning].join('\n') + '\n');
+      if (!contents.get('request.md').equals(expected)) throw new Error('request differs from committed selection');
+    } else {
+      if (JSON.stringify(input.artifacts) !== JSON.stringify(['briefs.json']) || contents.size !== 2 || !contents.get('request.md').equals(Buffer.from(input.request + '\n'))) throw new Error('unexpected packet contents');
+      const briefs = JSON.parse(show('artifacts/briefs.json'));
+      if (!Array.isArray(briefs)) throw new Error('invalid source briefs');
+      const selected = ids.map(id => briefs.find(brief => brief.id === id));
+      if (selected.some(item => !item) || !contents.get('artifacts/briefs.json')?.equals(Buffer.from(JSON.stringify(selected, null, 2) + '\n'))) throw new Error('briefs differ from committed selection');
+    }
+  } catch (error) {
+    if (error.message.startsWith('Selected packet source unavailable:')) throw error;
+    throw new Error(`Selected packet source mismatch: ${error.message}`);
+  }
+}
 function verifyRepositoryInputs(root, revision, selectedFiles) {
   const repo = repositoryFor(root);
   if (!repo) return;
@@ -200,8 +240,10 @@ export function verifyPacket(output, options = {}) {
     if (!actual.length || new Set(actual).size !== actual.length || actual.some(id => !inventory.includes(id))) throw new Error('Invalid packet case inventory');
     if (manifest.version === 3) {
       if (!manifest.selection || Object.keys(manifest.selection).join(',') !== 'caseIds' || !Array.isArray(manifest.selection.caseIds) || JSON.stringify(manifest.selection.caseIds) !== JSON.stringify(actual)) throw new Error('Packet selection does not match payload');
+      verifyCommittedSelection(manifest, packetContents, actual);
     } else if (actual.length < inventory.length) {
       // Detect pre-selection-metadata packets without modifying their historical bytes.
+      verifyCommittedSelection(manifest, packetContents, actual);
       Object.defineProperty(manifest, 'selection', { value: { caseIds: actual }, enumerable: false });
     }
   }

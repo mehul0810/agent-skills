@@ -173,14 +173,15 @@ try {
   fs.writeFileSync(path.join(root, packetPath, 'request.md'), 'Review fixture\n');
   assert.equal(preflightReceipt(root, receipt).valid, true, 'a later invocation must reread corrected packet bytes');
 
-  const selectedSource = path.join(root, 'selected-source');
-  fs.cpSync(path.join(repoRoot, 'skill-evals/cases/design-route-regression'), selectedSource, { recursive: true });
+  const selectedSource = path.join(repoRoot, 'skill-evals/cases/design-route-regression');
+  const sourceRevision = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repoRoot, encoding: 'utf8' }).trim();
   const selectedPath = path.join(root, 'selected-eight');
-  buildPacket(selectedSource, selectedPath, revision, { caseIds: ['8'] });
+  buildPacket(selectedSource, selectedPath, sourceRevision, { caseIds: ['8'] });
   const selectedHash = hashFile(path.join(selectedPath, 'manifest.json'));
   const selectedResult = path.join(root, 'selected-result.json');
   const selectedRef = { packetId: 'design-route-regression', caseId: '8', packetPath: selectedPath, manifestSha256: selectedHash, resultPath: selectedResult };
   const selectedReceipt = structuredClone(receipt);
+  selectedReceipt.testedRevision = sourceRevision;
   const setSelectedCase = id => {
     fs.writeFileSync(selectedResult, JSON.stringify({ cases: [{ packetId: selectedRef.packetId, id, outcome: 'observed' }] }));
     selectedReceipt.checks.forEach(check => { check.cases = [{ ...selectedRef, caseId: id, resultSha256: hashFile(selectedResult) }]; });
@@ -194,17 +195,17 @@ try {
   selectedReceipt.checks.pop();
   assert.ok(preflightReceipt(root, selectedReceipt).errors.some(error => error.includes('missing required check')));
 
-  const themeSource = path.join(root, 'theme-source');
-  fs.cpSync(path.join(repoRoot, 'skill-evals/cases/editorial-signature'), themeSource, { recursive: true });
+  const themeSource = path.join(repoRoot, 'skill-evals/cases/editorial-signature');
   const themeResult = path.join(root, 'theme-result.json');
   const themeIds = ['season-notes', 'one-caption'];
   fs.writeFileSync(themeResult, JSON.stringify({ cases: themeIds.map(id => ({ packetId: 'editorial-signature', id, outcome: 'observed' })) }));
   const themeRefs = themeIds.map(id => {
     const packetPath = path.join(root, `theme-${id}`);
-    buildPacket(themeSource, packetPath, revision, { caseIds: [id] });
+    buildPacket(themeSource, packetPath, sourceRevision, { caseIds: [id] });
     return { packetId: 'editorial-signature', caseId: id, packetPath, manifestSha256: hashFile(path.join(packetPath, 'manifest.json')), resultPath: themeResult, resultSha256: hashFile(themeResult) };
   });
   const completeSelection = structuredClone(receipt);
+  completeSelection.testedRevision = sourceRevision;
   completeSelection.checks.forEach(check => { check.cases = themeRefs; });
   assert.equal(preflightReceipt(root, completeSelection).state, 'complete');
   completeSelection.checks.pop();
