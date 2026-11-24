@@ -123,6 +123,12 @@ art) packets under `skill-evals/cases/`. Score them separately using
 `skill-evals/cases/game-development/criteria.md`. A still, an observed
 gameplay loop and sustained performance on target support different claims.
 
+For changes to Unreal guidance, also build the blind `game-development-unreal`
+packet and score its decisions against its own `criteria.md`. It covers engine
+identity, safe upgrades, native packaged play and two different browser
+constraints. These decisions are not proof that an editor started, a package
+ran, or a particular Unreal version or device was tested.
+
 For native Apple apps and the dependency-reuse decision, use the blind
 `skill-evals/cases/apple-app-development/` packet and the separate
 `apple-app-native-build` packet. Keep the former's `criteria.md` away from both

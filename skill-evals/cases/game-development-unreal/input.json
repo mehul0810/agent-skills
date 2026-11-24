@@ -1,0 +1,5 @@
+{
+  "id": "game-development-unreal",
+  "request": "Give a concrete development decision for each independent project note. Identify the next useful action, what would justify shipping or rejecting it, and what the available evidence already establishes. This is a planning exercise: do not install, convert, package or publish anything.",
+  "artifacts": ["briefs.md"]
+}

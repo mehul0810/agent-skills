@@ -1,0 +1,11 @@
+# Unreal decision scoring
+
+Score each brief separately. A pass needs the decision and a falsifiable check, not a list of engine terms. Keep these criteria out of the performer's packet.
+
+| Case | What earns a pass |
+|---|---|
+| 1. Pinboard | Keep the source pin. Distinguish the descriptor format from the engine identifier; resolve the association to the team's actual installation/source revision and verify build metadata against CI. If the matching build is absent, obtain it through the team's approved path or hold editor execution. Do not rewrite the descriptor or convert just to fix input. |
+| 2. Field Journal | Protect the 5.8.4 shipping project and saves; attempt or propose a bounded contact fix there. Treat 5.9 as a preview on the supplied date. Run any requested comparison on an isolated copy against repeatable animation/play and plugin/package checks; do not promote with an unsupported required plugin or propose reopening resaved assets in 5.8. |
+| 3. Glasshouse online | Recognize that Preview 2 removed Preview 1's content-only restriction: no dummy C++ class; the matching emsdk and host toolchain are still required. Distinguish this experimental wasm64/WebGPU export from streaming. Package, serve, cold-load and play on the specified browser/device, with an observable interaction and load/frame checks; don't claim exhibition readiness from editor preview, a cook, or this brief. |
+| 4. Cabinet labels | Honor first-launch offline, no WebGPU, fixed camera and existing stack. Neither this Web export nor remote streaming meets those constraints. Improve photographic depth/light/contact while keeping the hit area and moving feedback aligned; verify the real offline entry, input and result on the kiosk. Do not imply that all browser games need Unreal guidance. |
+| 5. Last tram | Separate the entry-map/cook issue from input mapping, possession or runtime asset/plugin availability; reproduce, narrow and retest the actual package. The tail exceeds the roughly 16.7 ms budget. Profile the same busy route on target to identify the CPU, GPU or streaming cause before prescribing an optimization. Replay the controller loop from a clean launch and compare frame-time distributions; editor play is insufficient. |

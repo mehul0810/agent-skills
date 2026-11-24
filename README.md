@@ -85,7 +85,7 @@ Choose the narrowest skill for the result you need. Open its `SKILL.md` for scop
 | [content-writer](content-writer/SKILL.md) | Research, draft, or improve useful search-oriented content. |
 | [explanatory-diagrams](explanatory-diagrams/SKILL.md) | Draw or repair an editable diagram so readers can trace a relationship, branch, or exception. |
 | [product-video-producer](product-video-producer/SKILL.md) | Create intros, motion graphics, creator videos and demos; [operate an app and record a walkthrough](product-video-producer/references/computer-use-walkthrough.md), or edit existing footage. |
-| [game-development](game-development/SKILL.md) | Build and verify playable games. |
+| [game-development](game-development/SKILL.md) | Build and verify playable games on a stack that fits, including version-pinned Unreal Engine 5 projects. |
 | [apple-app-development](apple-app-development/SKILL.md) | Build, debug, or review native Apple-platform apps. |
 
 ### Try A Task
