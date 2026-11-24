@@ -226,6 +226,13 @@ const allSelected = path.join(root, 'all-selected');
 buildPacket(broad, allSelected, broadRevision, { caseIds: Array.from({ length: 26 }, (_, i) => String(i + 1)) });
 reseal(allSelected, value => { value.version = 2; delete value.selection; });
 assert.equal(verifyPacket(allSelected).selection.caseIds.length, 26, 'downgrading a fully selected packet does not turn it into a historical full packet');
+const incorrectFull = path.join(root, 'incorrect-full');
+fs.cpSync(allSelected, incorrectFull, { recursive: true });
+reseal(incorrectFull, () => {
+  const file = path.join(incorrectFull, 'request.md');
+  fs.writeFileSync(file, fs.readFileSync(file, 'utf8').replace(/^8\. .+$/m, '8. A different request.'));
+});
+assert.throws(() => verifyPacket(incorrectFull), /differs from committed selection/, 'an apparent full inventory must match its committed source');
 const historicRevision = '5eb5dd1ea1da71892fe21929811c02b86b7c6cce';
 const historicSource = path.join(root, 'historic-navigation');
 fs.mkdirSync(path.join(historicSource, 'artifacts'), { recursive: true });
