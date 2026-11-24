@@ -31,6 +31,20 @@ Examples:
 | Documentation | `docs(setup): explain local test prerequisites` |
 | CI maintenance | `ci(validation): reuse the local validation command` |
 
+### Plain Language
+
+Write the main point for someone who does not know the project. Use everyday words, direct verbs and short, complete sentences. Explain a necessary technical term the first time the reader needs it. Keep exact versions and commands when they affect the decision. Aim for clarity, not baby talk or a reading-score target.
+
+Put a limitation beside the claim it qualifies. If a missing or failed check affects the reader's decision, name the next concrete action in the main message. Link logs or add optional technical details, but do not make readers open them to discover that a check failed or approval is missing.
+
+Examples for an unfamiliar reader, not reports of actual tests:
+
+> A rejected edit now leaves the saved web address alone. The unit tests passed; they check small parts of the code. Next, reject an edit in a browser and check that the old address still opens. That check has not run.
+
+> We reproduced the problem locally on WordPress 7.1.2 with PHP 8.2, the programming language WordPress uses. We did not check the live site.
+
+> Three checks passed, but the code failed its check on PHP 8.4, a version of the language WordPress uses. We could not run the security check without access. This is not ready for release.
+
 ### Information Order
 
 Order: **summary, context, changes/scope, validation/evidence, risks and next action, links**. Scale to the artifact; small messages need no empty headings. Preserve material commands, paths, errors, versions, and IDs; explain unfamiliar terms.

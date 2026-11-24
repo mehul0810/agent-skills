@@ -2,7 +2,7 @@
 
 Use this reference before committing, pushing, opening a PR, updating a PR body, or handing off product work.
 
-Use the **Cross-Project Writing Standard** in `github-communication-protocol.md` for titles and information order. It covers commit messages, PRs, issues, reviews and handoffs; explicit repository/upstream conventions remain valid. Formatting does not change the branch or authorization gates below.
+Use the **Cross-Project Writing Standard** in `github-communication-protocol.md` for titles, plain language and information order. It covers commit messages, PRs, issues, reviews and handoffs; explicit repository/upstream conventions remain valid. Formatting does not change the branch or authorization gates below.
 
 ## Branch Discipline
 
