@@ -20,7 +20,9 @@ pointer.set(2 * (event.clientX - r.left) / r.width - 1,
 raycaster.setFromCamera(pointer, camera);
 ```
 
-Skip a zero-size canvas and adjust for any letterbox or split viewport. Test the pictured control after scrolling, resizing and changing pixel density. Switch from pointer to keyboard on that same object; keep a visible selection indicator and do not trap the surrounding page's keys. Keep camera projection and the drawing buffer in sync with the displayed canvas; cap the rendering resolution to the measured device budget, not blindly to device pixel ratio. [Responsive sizing](https://threejs.org/manual/pages/responsive.html) explains the distinction.
+Skip a zero-size canvas and adjust for any letterbox or split viewport. Test the pictured control after scrolling, resizing and changing pixel density. Keep camera projection and the drawing buffer in sync with the displayed canvas; cap rendering resolution to the measured device budget, not blindly to device pixel ratio. [Responsive sizing](https://threejs.org/manual/pages/responsive.html) explains the distinction.
+
+Keyboard **focus** (which surface receives keys) and world **selection** (which object will act) are different states. Show and inspect both, for example a visible keyboard focus outline around the canvas and a ring on the lens being inspected. Tab in, activate with keys, Tab back to the article, then click the pictured lens and switch to keys again. If a drag handler cancels default focus, focus the surface on that intentional press. Consume arrows only while the game owns focus; hovering or loading a scene should not capture page navigation.
 
 ## Check assets, lifecycle and delivery
 
