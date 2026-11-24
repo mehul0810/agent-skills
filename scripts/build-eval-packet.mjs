@@ -241,7 +241,7 @@ export function verifyPacket(output, options = {}) {
     if (manifest.version === 3) {
       if (!manifest.selection || Object.keys(manifest.selection).join(',') !== 'caseIds' || !Array.isArray(manifest.selection.caseIds) || JSON.stringify(manifest.selection.caseIds) !== JSON.stringify(actual)) throw new Error('Packet selection does not match payload');
       verifyCommittedSelection(manifest, packetContents, actual);
-    } else if (actual.length < inventory.length) {
+    } else {
       // Detect pre-selection-metadata packets without modifying their historical bytes.
       verifyCommittedSelection(manifest, packetContents, actual);
       Object.defineProperty(manifest, 'selection', { value: { caseIds: actual }, enumerable: false });
