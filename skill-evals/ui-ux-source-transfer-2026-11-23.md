@@ -38,6 +38,14 @@ At `fcdfc84cb7726f95c10eada3ac540b23c6218571`, the first drafts passed 27/56 map
 
 **Release decision:** do not register either candidate run, do not weaken the rubric, and do not repeat the exercise until it passes by chance. Restore the installed site guide to the published bytes; retain the candidate commit, tests and worked example for a future repair. The theme change is independent: neither its source nor its routing changed during those site revisions. The separate theme scenarios and rendered specimen apply to the same theme guidance that ships. Private reading traces, packet freezes, grades, browser evidence and both failed preflights are retained in the dated UI/UX source survey.
 
+## Isolated follow-up (2026-11-24)
+
+Two fresh performers each received the same isolated requests: `navigation-study-selection/two-explanations` and `design-route-regression/7`. Only the site UX guide differed: shipped `795220e` versus held `fcdfc84`. Each performer saw one guide, not the scoring key or the other response. The original packet manifests were built at `e744eaf`; later receipt-format changes do not change what the performers saw.
+
+Both independent graders credited the held-guide response for distinguishing a tree test from a rendered first-choice test and for naming the four design dials. Neither credited the shipped-guide response on those points, or either response on all four checks mapped to the landing-page brief. The first grader also expected an eight-section redesign that the brief did not request. A separate grader scored only the supplied task; both grades and first responses were retained rather than retrying the exercise.
+
+This is one response per guide on two known requests. It does not establish the cause of the broader failures, visitor outcomes, or a new baseline. Keep the shipped site guide and the full gate unchanged.
+
 ## Browser specimen
 
 A separate performer made an original, offline listening-notes archive. Its catalog-number spine remains while the record, title, source and illustration can change. The first Chromium review found real problems despite the passing theme decisions: two different records offered identically named “Read notes” links, and following an anchor scrolled without visibly focusing the destination. The first specimen and review were retained.
