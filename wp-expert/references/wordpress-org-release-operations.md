@@ -2,6 +2,12 @@
 
 Use this for WordPress.org Plugin Directory releases, SVN deploy workflows, GitHub Actions release automation, plugin ZIP generation, `.wordpress-org` assets, production `vendor/`, Plugin Check automation, and post-release verification.
 
+## A compatibility-only readme change
+
+A release reminder starts a test, not a bulk edit. Identify the **distributed plugin version and ZIP/hash**. On disposable sites, run that same artifact on current stable and the exact target Core build, with Gutenberg off for Core claims. Select supported PHP, browser, role and integration paths from the [version checklist](../../shared/references/wordpress-7-0-7-1-enterprise-compatibility.md#72-field-guide). Mark untouched paths not applicable with a reason; missing tools, failing paths or a different artifact are not passes.
+
+When that plugin's applicable matrix passes, prepare the [readme field](https://developer.wordpress.org/plugins/wordpress-org/how-your-readme-txt-works/) as `Tested up to: 7.2` (not `7.2-RC3` or a PHP version). An RC pass can support the [maintainer outreach](https://wordpress.org/news/2026/11/wordpress-7-2-release-candidate-3/); label the tested build and recheck the final before claiming stable compatibility. Don't alter `Stable tag`, plugin version, `Requires at least` or `Requires PHP` for this alone. Preparing a readme diff does not authorize SVN, tagging or deployment.
+
 ## Core Release Truths
 
 - WordPress.org deployment is SVN-first. The source of truth after deployment is the WordPress.org SVN repository, not the GitHub Actions conclusion alone.

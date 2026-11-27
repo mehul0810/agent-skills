@@ -1,0 +1,9 @@
+# WordPress 7.2 plugin-readiness decisions
+
+Score each ticket separately against its observed answer. These are planning decisions, not evidence that the plugin or PHP executed.
+
+1. **Readme:** A may prepare exactly `Tested up to: 7.2` based on its exact artifact and named RC; B stays unchanged pending its own package matrix. December 8 is scheduled, not proof of GA; recheck final before claiming stable support. No minimum, stable tag, plugin version or publication change.
+2. **Media:** Compare actual REST create, sub-size sideload and finalize with classic server upload. Explain why AJAX/original-only logic misses browser-generated sizes; distinguish upload and sideload prefilters. Verify remote originals/derivatives, animation and quota failure/partial results on the actual path without weakening isolation.
+3. **Editor:** Replace the removed prop with `group`, change the deprecated image editor's stylesheet owner, use owned selectors and destination-document Emotion styles where needed. Deprecation isn't removal; CSS aspect-ratio is an alternative. Account for inline SVG and old glyphs, and exercise plugin-owned jQuery warnings without replacing Core or claiming jQuery 4.
+4. **PHP:** Pair PHP 8.6 with matched WordPress 7.2+ tests and keep older supported rows separate. Check both TTF MIME values, honest flush outcomes including failure, actual GD flip output, and string-to-integer object identity assumptions. No minimum change or plugin-wide claim from Core alone.
+5. **REST and blocks:** Don't synthesize missing revision metadata; allow for own-draft autosaves. Status is an array; mixed non-default statuses are not public. CORS isn't authorization. Prefer text for remote plain text; trust wrappers aren't sanitizers. Remove ignore, repair only the unique ID (not the click argument), and exercise hydration and forward/back navigation with the new router state.

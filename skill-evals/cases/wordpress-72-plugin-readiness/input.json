@@ -1,0 +1,5 @@
+{
+  "id": "wordpress-72-plugin-readiness",
+  "request": "Respond to the five independent maintainer tickets as of November 27, 2026. Give the smallest change or decision, checks that distinguish the alternatives, and what can actually be claimed. Use the supplied skill tree; no customer sites, account, publication or infrastructure actions.",
+  "artifacts": ["tickets.md"]
+}
