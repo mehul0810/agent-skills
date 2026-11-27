@@ -12,7 +12,7 @@ Checked 2026-08-30:
 
 Recheck official releases, advisories and runtime registry. Classify capabilities as `production`, `release-candidate`, `experimental/deferred`, or `unverified`.
 
-Report stable and candidate separately. November 20: **7.1.5 stable / 7.2 RC2**. November 27, 2026: [7.1.5 stable](https://wordpress.org/download/releases/) / [7.2 RC3](https://wordpress.org/news/2026/11/wordpress-7-2-release-candidate-3/) for non-production testing; December 8 scheduled, not shipped. The [Field Guide](https://make.wordpress.org/core/2026/11/20/wordpress-7-2-field-guide/) compares 7.1.4 with RC1.
+Release test pairs (stable / candidate): November 20: **7.1.5 / 7.2 RC2**. November 27, 2026: [7.1.5](https://wordpress.org/download/releases/) / [7.2 RC3](https://wordpress.org/news/2026/11/wordpress-7-2-release-candidate-3/) for non-production testing; December 8 scheduled, not shipped. The [Field Guide](https://make.wordpress.org/core/2026/11/20/wordpress-7-2-field-guide/) compares 7.1.4 with RC1.
 
 ## 7.2 Field Guide
 
@@ -75,11 +75,11 @@ React 19, real-time collaboration, and the proposed On This Day widget did not s
 
 Record per product:
 
-1. Exact dated Core/plugin builds; PHP/database/browser/multisite, theme, Gutenberg, cache and relevant plugins.
-2. API/block/support inventory, feature detection and older-Core fallbacks.
+1. RC readiness: **run the same ZIP separately on current patched stable and the named RC**, Gutenberg off. Record builds/date, PHP/database/browser/multisite, theme/cache/plugins.
+2. API/block/support inventory, feature detection, older-Core fallbacks.
 3. Applicable lifecycle (install through uninstall), admin/settings, editor save/reopen, frontend, REST/cron/CLI, capabilities, i18n/RTL, multisite, accessibility and rollback.
-4. Regressions: iframe boundaries, Global Styles precedence, responsive/pseudo states, media errors, icons/SVG, Abilities/AI privacy, DataViews lifecycle and bundled libraries.
-5. Package proof, local checks, changed-UI captures, performance/query/asset comparison, security/privacy review and gaps.
-6. Align headers/readme/package/docs. Prepare only `Tested up to: 7.2` for the exact passing package. Name the RC; recheck final for stable claims. Leave minimums, plugin version and stable tag unchanged; no bulk edit or publication.
+4. Regressions: iframes, Global Styles precedence, responsive/pseudo states, media errors, icons/SVG, Abilities/AI privacy, DataViews lifecycle, bundled libraries.
+5. Package proof, local checks, UI captures, performance/query/asset comparisons, security/privacy review, gaps.
+6. Align headers/readme/package/docs. Prepare only `Tested up to: 7.2` for that passing package. Label RC; recheck final for stable claims. Keep minimums, plugin version and stable tag. No bulk edits or publication.
 
 Require a tested rollback and no unexplained notices/deprecations, editor/frontend divergence, lost editability or capability/privacy/performance regressions. Report untested boundaries.
