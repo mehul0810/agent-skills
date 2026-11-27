@@ -101,6 +101,13 @@ Use `skill-evals/README.md`. Run changed-role scenarios with a fresh agent and r
 
 Green grep/structure audits do not prove the behavior is correct.
 
+For WordPress 7.2 compatibility or plugin-directory readme guidance, run the
+[plugin-readiness tickets](skill-evals/cases/wordpress-72-plugin-readiness/input.json)
+and [historical Field Guide briefs](skill-evals/cases/wordpress-72-field-guide/input.json)
+against the same frozen skills; withhold both sets of criteria from performers.
+Grade each brief as of its stated date. A sound readme decision does not
+establish that the distributed plugin ran on the candidate, final Core or PHP 8.6.
+
 For a redesign inspired by another live brand, build the blind
 `skill-evals/cases/live-reference-transfer/` packet and keep its criteria with
 the scorer. Test cross-brand transfer, meaning conveyed by animation and a
