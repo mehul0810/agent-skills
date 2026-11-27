@@ -107,6 +107,7 @@ and [historical Field Guide briefs](skill-evals/cases/wordpress-72-field-guide/i
 against the same frozen skills; withhold both sets of criteria from performers.
 Grade each brief as of its stated date. A sound readme decision does not
 establish that the distributed plugin ran on the candidate, final Core or PHP 8.6.
+See the [November 27 validation record](skill-evals/wordpress-72-plugin-readiness-2026-11-27.md) for the checked releases and observed evidence.
 
 For a redesign inspired by another live brand, build the blind
 `skill-evals/cases/live-reference-transfer/` packet and keep its criteria with
